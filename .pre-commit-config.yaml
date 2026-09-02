@@ -1,0 +1,15 @@
+# Install once: uvx pre-commit install
+# START_HERE.py (py:percent) is the source of truth; START_HERE.ipynb is the paired view.
+repos:
+  - repo: https://github.com/kynan/nbstripout
+    rev: 0.9.1
+    hooks:
+      - id: nbstripout
+        # language_info carries the local Python version; lines_to_next_cell is jupytext spacing bookkeeping.
+        args: [--extra-keys, 'metadata.language_info cell.metadata.lines_to_next_cell']
+  - repo: https://github.com/jupytext/jupytext
+    rev: v1.19.5
+    hooks:
+      - id: jupytext
+        args: [--sync]
+        files: ^START_HERE\.(ipynb|py)$
