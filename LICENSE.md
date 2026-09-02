@@ -3,7 +3,8 @@
 ## Sponsor-produced content
 
 The corridor knowledge base in this repository (all root-level `.csv` files, `README.md`,
-`DATA_DICTIONARY.md`, `START_HERE.ipynb`, `05_incidents_by_decade.png`) is released by
+`DATA_DICTIONARY.md`, `START_HERE.ipynb`, `05_incidents_by_decade.png`, the `map/` app, and
+the research notes in `docs/`) is released by
 Oxcart Assembly / BNBD under Creative Commons Attribution 4.0 International (CC BY 4.0).
 
 You may share and adapt it, including commercially, with attribution:
@@ -17,13 +18,10 @@ reference and reproduced with permission of the author. It is not CC-licensed.
 
 ## Third-party sources in `/public_sources`
 
-These files are redistributed here so the analysis in the proposal can be checked
-independently. They carry their own terms.
+These files are redistributed here for convenience. They carry their own terms.
 
 | File | Source | Terms |
 |---|---|---|
-| `national-register-listed_20260522.xlsx` | National Park Service, National Register of Historic Places | U.S. federal government work, public domain (17 U.S.C. 105) |
-| `federal-DOEs_20260522.xlsx` | National Park Service, federal Determinations of Eligibility | U.S. federal government work, public domain |
 | `holc_baltimore_1937.geojson` | Mapping Inequality: Redlining in New Deal America, Digital Scholarship Lab, University of Richmond | CC BY-NC-SA 4.0. Attribution required, derivatives share-alike. See https://dsl.richmond.edu/panorama/redlining/ |
 
 ## A note on the sensitivity flags

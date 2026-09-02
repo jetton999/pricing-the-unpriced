@@ -1,0 +1,4 @@
+# Outputs never reach git: nbstripout runs as a clean filter (after `nbstripout --install`)
+# and as a pre-commit hook. See docs/students-and-coding-agents.md, step 4.
+*.ipynb filter=nbstripout
+*.ipynb diff=ipynb

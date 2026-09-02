@@ -1,4 +1,4 @@
-# Data Dictionary — column listings per table
+# Data Dictionary: column listings per table
 
 
 ## properties

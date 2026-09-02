@@ -1,0 +1,779 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pricing the Unpriced: NYU CUSP Capstone Proposal, revised September 2026</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Barlow+Condensed:wght@500;600;700;800;900&family=Crimson+Pro:ital,wght@0,400;0,600;1,400;1,600&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+:root{
+  --dark:#0e1016; --dark-2:#171c28;
+  --cream:#f3ecda; --cream-2:#ebe3ce; --cream-3:#e2d8bf;
+  --ink:#1b1712; --ink-2:#4d463c;
+  --amber:#e8a82d; --amber-soft:#d0921c; --amber-dim:rgba(232,168,45,.12);
+  --teal:#2f7d72; --oxblood:#8e2b1c;
+  --stone:#9a9183; --stone-light:#8a8377;
+  --rule:#cbbfa2; --rule-2:#ddd3bc; --rule-dark:#2a3040;
+  --disp:'Barlow Condensed','Oswald','Arial Narrow',sans-serif;
+  --body:'Crimson Pro',Georgia,'Times New Roman',serif;
+  --sans:'Barlow',system-ui,-apple-system,sans-serif;
+  --mono:'IBM Plex Mono','SF Mono',ui-monospace,monospace;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:var(--sans);font-size:15.5px;line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+.mono{font-family:var(--mono);text-transform:uppercase;letter-spacing:.14em;font-size:.62rem;color:var(--stone);font-weight:500;}
+em{font-style:italic}
+strong{font-weight:600}
+p{margin:0 0 .95rem}
+
+/* ---------- COVER ---------- */
+.cover{background:var(--dark);color:#e9e4d6;min-height:100vh;position:relative;overflow:hidden;padding:44px 56px 60px;}
+.cover .top{display:flex;justify-content:space-between;font-family:var(--mono);font-size:.6rem;letter-spacing:.09em;text-transform:uppercase;color:var(--stone);line-height:1.85;}
+.cover .top .r{text-align:right}
+.cover .top b{color:#e9e4d6;font-weight:600}
+.rail{position:absolute;left:56px;top:150px;bottom:120px;width:1px;background:var(--rule-dark);}
+.rail .node{position:absolute;left:-3px;font-family:var(--mono);font-size:.55rem;letter-spacing:.06em;color:var(--stone-light);white-space:nowrap;}
+.rail .node::before{content:"";position:absolute;left:-3px;top:2px;width:8px;height:8px;border-radius:50%;background:var(--amber);}
+.rail .node.hollow::before{background:transparent;border:1.5px solid var(--stone);}
+.rail .node span{margin-left:16px}
+.cover .body{max-width:640px;margin-left:190px;padding-top:150px;}
+.cover .eyebrow{font-family:var(--mono);text-transform:uppercase;letter-spacing:.22em;font-size:.66rem;color:var(--teal);font-weight:500;margin-bottom:22px;}
+.cover h1{font-family:var(--disp);font-weight:900;text-transform:uppercase;line-height:.86;letter-spacing:.4px;font-size:clamp(58px,10vw,118px);margin:0;color:#f3ecda;}
+.cover h1 .b{color:var(--amber);display:block;}
+.cover .dek{font-family:var(--body);font-style:italic;font-size:1.32rem;line-height:1.42;color:#cdc7b8;max-width:34ch;margin:26px 0 0;}
+.statband{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:44px;border-top:1px solid var(--rule-dark);border-bottom:1px solid var(--rule-dark);}
+.statband .s{padding:16px 16px 15px;border-right:1px solid var(--rule-dark);}
+.statband .s:last-child{border-right:0}
+.statband .n{font-family:var(--disp);font-weight:800;font-size:1.85rem;color:var(--amber);line-height:1;letter-spacing:.5px;}
+.statband .l{font-family:var(--mono);text-transform:uppercase;letter-spacing:.06em;font-size:.54rem;color:var(--stone-light);margin-top:8px;line-height:1.5;}
+.cover .meta{font-family:var(--mono);font-size:.58rem;letter-spacing:.05em;color:var(--stone);text-transform:uppercase;margin-top:22px;line-height:1.9;}
+.cover .meta b{color:#cdc7b8;font-weight:600}
+.cover .foot{position:absolute;left:56px;bottom:38px;font-family:var(--mono);font-size:.54rem;letter-spacing:.08em;color:var(--stone-light);text-transform:uppercase;}
+
+/* ---------- CONTENTS ---------- */
+.contents{max-width:760px;margin:0 auto;padding:60px 40px 30px;}
+.contents h2{font-family:var(--disp);font-weight:800;text-transform:uppercase;font-size:2.4rem;letter-spacing:.5px;margin:0 0 26px;}
+.toc-row{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:10px 0;border-bottom:1px solid var(--rule-2);align-items:baseline;}
+.toc-row .n{font-family:var(--mono);font-weight:600;color:var(--amber-soft);font-size:.95rem;}
+.toc-row .t{font-family:var(--disp);font-weight:700;text-transform:uppercase;letter-spacing:.02em;font-size:1.12rem;color:var(--ink);}
+.toc-row .d{font-family:var(--body);font-style:italic;color:var(--ink-2);font-size:.94rem;margin-top:2px;}
+
+/* ---------- SECTIONS ---------- */
+.doc{max-width:820px;margin:0 auto;padding:0 20px;}
+.section{padding:40px 0 12px 0;position:relative;}
+.section .marker{display:none;font-family:var(--mono);font-size:.55rem;letter-spacing:.08em;color:var(--stone);text-transform:uppercase;}
+.head .num.cont{color:var(--stone-light);}
+.pfoot{display:none;}
+.eyebrow{font-family:var(--mono);text-transform:uppercase;letter-spacing:.2em;font-size:.63rem;color:var(--teal);font-weight:500;margin-bottom:12px;}
+.head{display:flex;align-items:flex-start;gap:18px;margin-bottom:16px;}
+.head .num{font-family:var(--disp);font-weight:800;font-size:3.1rem;color:var(--amber);line-height:.82;letter-spacing:.5px;}
+.head h2{font-family:var(--disp);font-weight:800;text-transform:uppercase;letter-spacing:.01em;font-size:2.15rem;line-height:.96;margin:0;color:var(--ink);text-wrap:balance;}
+.head.h2b{margin-top:34px}
+.ruleline{height:2px;background:var(--ink);margin:0 0 20px;}
+.dek{font-family:var(--body);font-style:italic;font-size:1.16rem;line-height:1.5;color:var(--ink);margin:0 0 18px;}
+h3.sub{font-family:var(--disp);font-weight:700;text-transform:uppercase;letter-spacing:.02em;font-size:1.16rem;color:var(--ink);margin:22px 0 8px;}
+ul{margin:0 0 1rem;padding-left:0;list-style:none}
+ul li{position:relative;padding-left:20px;margin-bottom:.5rem;line-height:1.5;}
+ul li::before{content:"";position:absolute;left:2px;top:.62em;width:6px;height:6px;background:var(--amber);border-radius:50%;}
+.runin{font-family:var(--sans);font-weight:700;color:var(--ink);}
+
+/* tier tags */
+.tag{font-family:var(--mono);font-size:.58rem;text-transform:uppercase;letter-spacing:.06em;font-weight:600;padding:1px 6px;border-radius:2px;white-space:nowrap;}
+.tag.c{background:rgba(47,125,114,.14);color:var(--teal);}
+.tag.x{background:var(--amber-dim);color:var(--amber-soft);}
+.tag.l{background:rgba(0,0,0,.06);color:var(--stone);}
+.tag.bad{background:rgba(163,32,32,.1);color:#a32020;}
+.ok{color:#1f7a3d;font-weight:700}
+.warn{color:#b26a00;font-weight:700}
+.bad{color:#a32020;font-weight:700}
+
+/* scope box */
+.scopebox{background:var(--dark);color:#e9e4d6;padding:20px 24px;margin:22px 0;border-left:4px solid var(--amber);}
+.scopebox .sb-title{font-family:var(--mono);text-transform:uppercase;letter-spacing:.18em;font-size:.62rem;color:var(--amber);font-weight:600;margin-bottom:10px;}
+.scopebox p{margin:0;font-family:var(--sans);font-size:.96rem;line-height:1.55;color:#e9e4d6;}
+.scopebox b{color:#fff}
+
+/* callout */
+.callout{background:var(--amber-dim);border-left:4px solid var(--amber);padding:16px 20px;margin:20px 0;}
+.callout p{margin:0;font-family:var(--sans);font-weight:600;font-size:1.02rem;line-height:1.4;color:var(--ink);}
+.callout.teal{background:rgba(47,125,114,.09);border-left-color:var(--teal);}
+
+/* equation box */
+.eq{background:var(--cream-2);border-left:4px solid var(--teal);padding:14px 18px;margin:14px 0 18px;font-family:var(--body);font-size:1.06rem;color:var(--ink);}
+.eq .n{float:right;font-family:var(--mono);font-size:.56rem;letter-spacing:.06em;color:var(--stone);text-transform:uppercase;margin-top:4px;}
+.eq i{font-style:italic}
+.eq .op{color:var(--oxblood);font-weight:700}
+
+/* tables */
+.tbl-wrap{overflow-x:auto;margin:16px 0 20px;}
+table{width:100%;border-collapse:collapse;font-family:var(--sans);font-size:.82rem;color:var(--ink);}
+th{font-family:var(--mono);text-transform:uppercase;letter-spacing:.07em;font-size:.56rem;color:var(--stone);text-align:left;font-weight:600;border-bottom:1.5px solid var(--ink);padding:8px 10px;}
+td{padding:9px 10px;border-bottom:1px solid var(--rule-2);vertical-align:top;line-height:1.4;}
+tr:nth-child(even) td{background:rgba(0,0,0,.018)}
+
+/* ---------- VISUALS ---------- */
+figure.viz{margin:22px 0;padding:0;}
+.viz figcaption{font-family:var(--mono);font-size:.6rem;letter-spacing:.07em;color:var(--stone);text-transform:uppercase;margin-top:10px;}
+.viz figcaption b{color:var(--ink)}
+
+/* V1 nested scale */
+.nest .row{display:grid;grid-template-columns:200px 1fr 120px;align-items:center;gap:10px;margin-bottom:7px;}
+.nest .lb{font-family:var(--mono);font-size:.6rem;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-2);text-align:right;line-height:1.4;}
+.nest .bar{height:20px;border-radius:2px;}
+.nest .val{font-family:var(--disp);font-weight:800;font-size:1.1rem;color:var(--ink);}
+.nest .val small{font-family:var(--mono);font-size:.55rem;color:var(--stone);display:block;font-weight:500;letter-spacing:.04em}
+
+/* V2 architecture */
+.arch{display:flex;flex-wrap:wrap;gap:6px;align-items:stretch;margin:8px 0 4px;}
+.arch .stage{flex:1 1 100px;min-width:96px;border:1.5px solid var(--rule);border-radius:3px;padding:8px 9px;position:relative;background:#fff8;}
+.arch .stage.exists{border-color:var(--teal);background:rgba(47,125,114,.07);}
+.arch .stage.build{border-color:var(--amber-soft);background:var(--amber-dim);}
+.arch .stage .st{font-family:var(--sans);font-weight:700;font-size:.74rem;line-height:1.25;color:var(--ink);}
+.arch .stage .sd{font-family:var(--mono);font-size:.52rem;letter-spacing:.03em;color:var(--stone);text-transform:uppercase;margin-top:4px;line-height:1.4;}
+.arch-legend{display:flex;gap:18px;margin-top:8px;font-family:var(--mono);font-size:.56rem;letter-spacing:.06em;text-transform:uppercase;color:var(--stone);}
+.arch-legend .sw{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:-1px;}
+
+/* V3 pilot mockup */
+.mock{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:8px 0 4px;}
+.mock .panel{border:1.5px solid var(--rule);border-radius:4px;background:#fff9;overflow:hidden;}
+.mock .ph{background:var(--dark);color:#e9e4d6;padding:8px 10px;font-family:var(--disp);font-weight:700;text-transform:uppercase;font-size:.86rem;letter-spacing:.03em;}
+.mock .pb{padding:10px;}
+.mock .line{font-family:var(--sans);font-size:.72rem;line-height:1.45;color:var(--ink-2);margin-bottom:6px;}
+.mock .line b{color:var(--ink)}
+.mock .badge{display:inline-block;font-family:var(--mono);font-size:.5rem;letter-spacing:.07em;text-transform:uppercase;font-weight:600;padding:1px 5px;border-radius:2px;margin-bottom:7px;}
+.mock .badge.fact{background:rgba(47,125,114,.14);color:var(--teal);}
+.mock .badge.est{background:var(--amber-dim);color:var(--amber-soft);}
+.mock .badge.scn{background:rgba(142,43,28,.1);color:var(--oxblood);}
+@media(max-width:640px){.mock{grid-template-columns:1fr}}
+
+/* stat band on cream */
+.stat-cream{display:grid;grid-template-columns:repeat(4,1fr);border:1.5px solid var(--ink);margin:18px 0;}
+.stat-cream .s{padding:12px 14px;border-right:1px solid var(--rule);}
+.stat-cream .s:last-child{border-right:0}
+.stat-cream .n{font-family:var(--disp);font-weight:800;font-size:1.7rem;line-height:1;color:var(--ink)}
+.stat-cream .n.am{color:var(--amber-soft)} .stat-cream .n.te{color:var(--teal)}
+.stat-cream .l{font-family:var(--mono);text-transform:uppercase;letter-spacing:.05em;font-size:.53rem;color:var(--stone);margin-top:7px;line-height:1.5;}
+/* three-card row */
+.cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:16px 0;}
+.cards3 .card{border:1.5px solid var(--rule);border-top:3px solid var(--oxblood);padding:12px 14px;background:#fff8;}
+.cards3 .card:nth-child(2){border-top-color:var(--teal)} .cards3 .card:nth-child(3){border-top-color:var(--amber)}
+.cards3 .ck{font-family:var(--mono);font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;color:var(--oxblood);font-weight:600;margin-bottom:6px;}
+.cards3 .card:nth-child(2) .ck{color:var(--teal)} .cards3 .card:nth-child(3) .ck{color:var(--amber-soft)}
+.cards3 h4{font-family:var(--disp);font-weight:700;text-transform:uppercase;font-size:1.02rem;margin:0 0 6px;line-height:1.05;}
+.cards3 p{font-family:var(--sans);font-size:.8rem;line-height:1.5;color:var(--ink-2);margin:0;}
+@media(max-width:640px){.cards3{grid-template-columns:1fr}}
+/* seam schematic */
+.seam{margin:10px 0 4px;}
+.seam .title{text-align:center;font-family:var(--disp);font-weight:700;text-transform:uppercase;font-size:.95rem;margin-bottom:10px;}
+.seam .grid{display:grid;grid-template-columns:1fr 46px 1fr;gap:0;align-items:start;}
+.seam .side{padding:8px 12px;}
+.seam .side.w{text-align:right}
+.seam .sh{font-family:var(--disp);font-weight:700;text-transform:uppercase;font-size:.92rem;}
+.seam .sh.tw{color:var(--teal)} .seam .sh.te{color:var(--oxblood)}
+.seam .sd{font-family:var(--mono);font-size:.53rem;letter-spacing:.05em;text-transform:uppercase;color:var(--stone);margin-top:3px;line-height:1.6}
+.seam .spine{position:relative;display:flex;flex-direction:column;align-items:center;}
+.seam .line{width:4px;background:var(--ink);min-height:230px;}
+.seam .cap{font-family:var(--mono);font-size:.5rem;color:var(--stone);letter-spacing:.05em;padding:2px 0;}
+.seam .node{position:absolute;top:46%;left:50%;transform:translate(-50%,-50%);width:12px;height:12px;border-radius:50%;background:var(--amber);border:2px solid var(--ink);}
+.seam .chip{border:1.5px solid var(--oxblood);border-radius:3px;padding:5px 9px;margin:0 0 6px;background:#fff8;display:inline-block;text-align:left;}
+.seam .chip.g{border-color:var(--teal)}
+.seam .chip b{font-family:var(--sans);font-size:.72rem;display:block;}
+.seam .chip .m{font-family:var(--mono);font-size:.52rem;color:var(--stone);letter-spacing:.04em;text-transform:uppercase;}
+/* mini bars */
+.minibar .row{display:grid;grid-template-columns:190px 1fr;gap:10px;align-items:center;margin-bottom:6px;}
+.minibar .lb{font-family:var(--mono);font-size:.55rem;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-2);text-align:right;line-height:1.4}
+.minibar .bar{height:16px;border-radius:2px;position:relative;}
+.minibar .bar span{position:absolute;left:8px;top:50%;transform:translateY(-50%);font-family:var(--mono);font-size:.52rem;letter-spacing:.04em;color:#fff;white-space:nowrap;text-transform:uppercase}
+/* source note */
+.srcnote{font-family:var(--mono);font-size:.56rem;line-height:1.7;letter-spacing:.03em;color:var(--stone);border-top:1px dashed var(--rule);margin-top:18px;padding-top:10px;}
+
+
+/* pipeline flow + gate */
+.flow{display:flex;align-items:stretch;flex-wrap:nowrap}
+.flow .stage{flex:1;border:1.5px solid var(--amber-soft);background:var(--amber-dim);border-radius:3px;padding:7px 8px;min-width:0}
+.flow .stage.exists{border-color:var(--teal);background:rgba(47,125,114,.07)}
+.flow .stage .st{font-family:var(--sans);font-weight:700;font-size:.7rem;line-height:1.2;color:var(--ink)}
+.flow .stage .sd{font-family:var(--mono);font-size:.48rem;letter-spacing:.03em;color:var(--stone);text-transform:uppercase;margin-top:3px;line-height:1.4}
+.flow .arr{display:flex;align-items:center;padding:0 4px;font-family:var(--mono);color:var(--amber-soft);font-weight:600;font-size:.85rem}
+.vdown{text-align:center;font-family:var(--mono);color:var(--stone);font-size:.8rem;line-height:1;margin:4px 0}
+.gaterow{display:flex;align-items:center;justify-content:center;gap:10px;margin:2px 0}
+.gate{width:84px;height:84px;flex:0 0 84px;transform:rotate(45deg);border:2px solid var(--oxblood);background:rgba(142,43,28,.05);display:flex;align-items:center;justify-content:center;margin:10px 18px}
+.gate span{transform:rotate(-45deg);font-family:var(--mono);font-size:.43rem;font-weight:600;letter-spacing:.02em;text-align:center;color:var(--oxblood);width:100px;line-height:1.5}
+.gout{flex:1;border-radius:3px;padding:8px 10px;font-family:var(--sans);font-size:.72rem;line-height:1.35;color:var(--ink)}
+.gout b{display:block;font-family:var(--mono);font-size:.5rem;letter-spacing:.08em;text-transform:uppercase;margin-bottom:3px}
+.gout.pass{border:1.5px solid var(--teal);background:rgba(47,125,114,.07)}
+.gout.pass b{color:var(--teal)}
+.gout.fail{border:1.5px solid var(--stone);background:rgba(0,0,0,.03);color:var(--ink-2)}
+.gout.fail b{color:var(--stone)}
+/* browser chrome */
+.browser{border:1.5px solid var(--rule);border-radius:6px;overflow:hidden;background:#fff6}
+.browser .bbar{display:flex;align-items:center;gap:8px;background:var(--dark);padding:7px 10px}
+.browser .dots span{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:4px}
+.browser .url{flex:1;background:var(--dark-2);border-radius:3px;padding:4px 10px;font-family:var(--mono);font-size:.56rem;color:#cdc7b8;letter-spacing:.03em}
+.browser .url b{color:var(--amber)}
+.browser .inner{padding:10px}
+.mock .obs{display:flex;justify-content:space-between;gap:6px;font-family:var(--mono);font-size:.52rem;letter-spacing:.02em;color:var(--ink-2);border-bottom:1px solid var(--rule-2);padding:3px 0}
+.mock .obs b{color:var(--ink);font-weight:600}
+.meter{display:grid;grid-template-columns:64px 1fr 26px;gap:6px;align-items:center;margin-bottom:3px}
+.meter .k{font-family:var(--mono);font-size:.44rem;font-weight:600;color:var(--ink-2);letter-spacing:.02em}
+.meter .tr{height:7px;background:rgba(0,0,0,.08);border-radius:2px;position:relative}
+.meter .fl{position:absolute;left:0;top:0;bottom:0;background:var(--teal);border-radius:2px}
+.meter .v{font-family:var(--mono);font-size:.5rem;color:var(--stone)}
+/* nine-month timeline */
+.tl9 .band{display:flex;border:1.5px solid var(--ink);border-radius:3px;overflow:hidden}
+.tl9 .seg{flex:1;padding:7px 8px;border-right:1px solid var(--rule);background:#fff6}
+.tl9 .seg.sp{background:var(--amber-dim)}
+.tl9 .seg:last-child{border-right:0}
+.tl9 .seg .w{font-family:var(--mono);font-size:.48rem;letter-spacing:.05em;color:var(--stone);text-transform:uppercase}
+.tl9 .seg .t{font-family:var(--disp);font-weight:700;text-transform:uppercase;font-size:.82rem;color:var(--ink);line-height:1.05;margin-top:2px}
+.tl9 .mile{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;margin-top:7px}
+.tl9 .m{position:relative;font-family:var(--mono);font-size:.48rem;letter-spacing:.02em;color:var(--ink-2);text-transform:uppercase;padding-left:11px;line-height:1.45}
+.tl9 .m::before{content:"◆";position:absolute;left:0;top:0;color:var(--amber-soft);font-size:.55rem}
+/* minibar threshold */
+.minibar{position:relative}
+.minibar .thresh{position:absolute;top:-2px;height:calc(100% - 2px);left:calc(200px + (100% - 200px)*0.32);border-left:2px dashed var(--oxblood);pointer-events:none}
+.minibar .threshlbl{position:absolute;top:-14px;left:calc(200px + (100% - 200px)*0.32 + 6px);font-family:var(--mono);font-size:.48rem;letter-spacing:.05em;color:var(--oxblood);text-transform:uppercase}
+.nest .bar.hatch{background:repeating-linear-gradient(45deg,transparent,transparent 4px,rgba(0,0,0,.08) 4px,rgba(0,0,0,.08) 8px);border:1px dashed var(--stone)}
+
+/* footer / sources */
+.foot-sec{max-width:820px;margin:0 auto;padding:36px 20px 60px 20px;}
+.refs{font-family:var(--sans);font-size:.8rem;line-height:1.5;color:var(--ink-2);}
+.refs div{padding-left:22px;text-indent:-22px;margin-bottom:8px;}
+.pagefoot{font-family:var(--mono);font-size:.55rem;letter-spacing:.08em;color:var(--stone);text-transform:uppercase;border-top:1px solid var(--rule);margin-top:28px;padding-top:12px;display:flex;justify-content:space-between;}
+a{color:var(--teal);text-decoration:none}
+a:hover{text-decoration:underline}
+
+@media (max-width:640px){
+  .statband,.stat-cream{grid-template-columns:repeat(2,1fr)}
+  .cover{padding:32px 24px 48px}.cover .body{margin-left:0;padding-top:120px}.rail{display:none}
+  .section{padding-left:26px}.section .marker{display:none}
+  .nest .row{grid-template-columns:110px 1fr 90px}
+}
+@media print{
+  @page{size:letter;margin:0;}
+  *{-webkit-print-color-adjust:exact !important;print-color-adjust:exact !important}
+  body{font-size:9.5pt;background:var(--cream);line-height:1.55}
+  p{margin:0 0 .8rem}
+  ul li{margin-bottom:.4rem}
+  .srcnote{margin-top:12px;padding-top:8px;font-size:.53rem}
+  .cover{height:100vh;min-height:0;box-sizing:border-box;padding:34px 44px;page-break-after:always;overflow:hidden;}
+  .rail{left:44px;top:118px;bottom:64px}
+  .cover .body,.cover .rail{padding-top:0}
+  .cover .body{margin-left:160px;padding-top:88px}
+  .cover .foot{position:absolute;left:44px;bottom:26px}
+  .cover h1{font-size:62px}
+  .contents{max-width:none;margin:0;padding:38px 64px 24px 100px;page-break-after:always;}
+  .contents h2{margin-bottom:14px;font-size:2.1rem}
+  .toc-row{padding:6px 0}
+  .toc-row .d{font-size:.88rem}
+  h3.sub{padding-top:10px}
+  table{font-size:.76rem}
+  td,th{padding:5px 7px}
+  .cards3 .card{padding:9px 11px}
+  .cards3 p{font-size:.75rem}
+  .minibar .row{margin-bottom:4px}
+  .stat-cream .s{padding:9px 11px}
+  .doc{max-width:none;margin:0;padding:0 64px 0 100px;}
+  .section{padding:38px 0 50px 0;break-after:page;min-height:100vh;box-sizing:border-box;}
+  .section .marker{display:block;position:absolute;left:-86px;top:42px;width:70px;white-space:normal;text-align:left;line-height:1.8;}
+  .head .num{font-size:2.7rem}
+  .head h2{font-size:1.95rem}
+  .head{margin-bottom:12px}
+  h3.sub{margin:16px 0 7px}
+  figure.viz{margin:14px 0}
+  .callout,.scopebox{margin:14px 0}
+  .eq{margin:10px 0 14px;padding:11px 16px}
+  .dek{font-size:1.08rem;margin-bottom:14px}
+  .ruleline{margin-bottom:14px}
+  .nest .row{margin-bottom:4px;grid-template-columns:185px 1fr 115px}
+  .nest .bar{height:14px}
+  .nest .lb{font-size:.54rem}
+  .nest .val{font-size:.95rem}
+  .callout p,.scopebox p{font-size:.92rem;line-height:1.45}
+  .contents{position:relative;min-height:100vh;box-sizing:border-box;}
+  .foot-sec{max-width:none;margin:0;padding:48px 64px 64px 100px;min-height:100vh;box-sizing:border-box;position:relative;break-before:auto;}
+  .pfoot{display:flex;position:absolute;bottom:18px;left:0;right:0;justify-content:space-between;font-family:var(--mono);font-size:.54rem;letter-spacing:.08em;color:var(--stone);text-transform:uppercase;}
+  .contents .pfoot{left:100px;right:64px;}
+  .foot-sec .pfoot{left:100px;right:64px;}
+  .foot-sec .pagefoot{display:none}
+  p,li{orphans:3;widows:3}
+  .scopebox,.callout,.eq,.toc-row,tr,li,figure.viz,.mock .panel,.arch .stage,.cards3 .card,.stat-cream,.seam,.minibar .row,.srcnote,.browser,.gaterow,.flow,.tl9{break-inside:avoid}
+  .gate{width:64px;height:64px;flex-basis:64px;margin:5px 12px}
+  .gate span{font-size:.38rem;width:80px}
+  .gout{padding:6px 9px;font-size:.69rem}
+  .flow .stage{padding:5px 7px}
+  .flow .stage .sd{font-size:.44rem}
+  .vdown{margin:2px 0;font-size:.7rem}
+  ul li{margin-bottom:.34rem}
+  thead{display:table-header-group}
+  h2,h3,.head,.dek{break-after:avoid}
+  a{color:var(--ink)}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ COVER ============ -->
+<header class="cover">
+  <div class="top">
+    <div>
+      NYU CUSP · CAPSTONE PROPOSAL 2026–2027<br>
+      <b>Pricing the Unpriced</b><br>
+      Greenmount Corridor · Baltimore, Maryland
+    </div>
+    <div class="r">
+      REVISED SEPTEMBER 2026<br>
+      <b>Sponsor of record: BNBD</b><br>
+      Applied Product + Research Capstone
+    </div>
+  </div>
+
+  <div class="rail">
+    <div class="node" style="top:0"><span>3400 · NORTH END</span></div>
+    <div class="node" style="top:22%"><span>3200 · CORE SPINE</span></div>
+    <div class="node" style="top:44%"><span>3000 · PEABODY</span></div>
+    <div class="node hollow" style="top:66%"><span>2700 · ENP CORE</span></div>
+    <div class="node" style="top:100%"><span>2500 · SOUTH END</span></div>
+  </div>
+
+  <div class="body">
+    <div class="eyebrow">Heritage · Highest and Best Use · Tenant Ownership</div>
+    <h1>Pricing<br>the<span class="b">Unpriced</span></h1>
+    <p class="dek">Two projects on one deeply documented corridor: what each building should become, given what it was, and how a tenant who succeeds there can end up owning it.</p>
+
+    <div class="statband">
+      <div class="s"><div class="n">1,874</div><div class="l">Corridor properties in the data package</div></div>
+      <div class="s"><div class="n">3,602</div><div class="l">Hand-researched historical records</div></div>
+      <div class="s"><div class="n">1658</div><div class="l">Earliest dated record · Stansbury land assignment</div></div>
+      <div class="s"><div class="n">11</div><div class="l">Worker and tenant ownership cases studied</div></div>
+    </div>
+
+    <div class="meta">
+      Sponsor of record <b>Baltimore Neighborhood Business Districts (Jeff Jetton, VP)</b> · Strategy <b>Oxcart Assembly</b><br>
+      Faculty <b>Manny Patole, NYU CUSP</b> &nbsp;·&nbsp; Primary CUSP focus area <b>Urban Infrastructure</b><br>
+      Two semesters · Sept 2026 – May 2027 &nbsp;·&nbsp; Data package <b>github.com/jetton999/pricing-the-unpriced</b>
+    </div>
+  </div>
+
+  <div class="foot">PRICING THE UNPRICED · NYU CUSP CAPSTONE · REVISED PROPOSAL · SEPTEMBER 2026</div>
+</header>
+
+<!-- ============ CONTENTS ============ -->
+<section class="contents">
+  <h2>Contents</h2>
+  <div class="toc-row"><div class="n">01</div><div><div class="t">Project Summary</div><div class="d">One record, two projects, and what changed since the July proposal.</div></div></div>
+  <div class="toc-row"><div class="n">02</div><div><div class="t">The Corridor on the Record</div><div class="d">What the data package holds, how deep it goes, and the one trap in it.</div></div></div>
+  <div class="toc-row"><div class="n">03</div><div><div class="t">Idea 1: Heritage-Anchored Highest and Best Use</div><div class="d">A documented past use as the prior for a future use; venues, content, and experiences; an assemblage that does not saturate.</div></div></div>
+  <div class="toc-row"><div class="n">04</div><div><div class="t">Idea 2: From Tenant to Owner</div><div class="d">A lease that ends in ownership; what eleven Baltimore, DC, and NYC cases show about how that gets financed.</div></div></div>
+  <div class="toc-row"><div class="n">05</div><div><div class="t">Data &amp; Tools in Hand</div><div class="d">Nine tables, a starter notebook, a standalone map, and what the sponsor adds under NDA.</div></div></div>
+  <div class="toc-row"><div class="n">06</div><div><div class="t">Work Plan &amp; Skills</div><div class="d">Fall: read the record and build the first models. Spring: test, harden, hand off.</div></div></div>
+  <div class="toc-row"><div class="n">07</div><div><div class="t">Deliverables</div><div class="d">What each idea produces, and what both share.</div></div></div>
+  <div class="toc-row"><div class="n">08</div><div><div class="t">Ethics, Risks &amp; the Sponsor</div><div class="d">Sensitivity flags, no appraisals, securities law, and who maintains what.</div></div></div>
+  <div class="pfoot"><span>Pricing the Unpriced · NYU CUSP Capstone</span><span>02</span></div>
+</section>
+
+<div class="doc">
+
+<!-- 01 SUMMARY -->
+<section class="section"><div class="marker">01 · SUMMARY</div>
+  <div class="eyebrow">Project Summary</div>
+  <div class="head"><div class="num">01</div><h2>One Record,<br>Two Projects</h2></div>
+  <div class="ruleline"></div>
+  <p class="dek">The sponsor has spent years documenting the Greenmount corridor: deeds, directories, fire-insurance maps, newspapers, interment rolls, and per-property research papers, tied to 1,874 parcels. This proposal puts that record to two applied uses.</p>
+  <p><strong>Idea 1</strong> asks what an assemblage of corridor buildings should become. It starts from what each address <em>was</em>, on the premise that a documented historic use is a strong prior for a future one. It treats the history itself as a use too: a film, a podcast, an immersive walk-through, a revived trade name. It ends with an optimizer that assigns uses across a block without saturating it.</p>
+  <p><strong>Idea 2</strong> asks how the businesses the sponsor is recruiting into the corridor can end up owning their buildings. They sign as ordinary tenants of a small real estate trust. The project designs the lease that lets a tenant who succeeds buy the building on terms fixed at signing, while the trust's investors are still paid. It is grounded in eleven real worker and tenant buyouts in Baltimore, Washington, and New York.</p>
+
+  <div class="cards3">
+    <div class="card"><div class="ck">The record</div><h4>What exists</h4><p>1,874 properties, 20,308 incident rows of which 3,602 are hand-researched, 3,103 people and businesses, 115 registered trademarks and patents, and a standalone map to browse it all.</p></div>
+    <div class="card"><div class="ck">Idea 1</div><h4>What it was, what it could be</h4><p>Use-history timelines, a candidate-use generator anchored to that history, a comps engine, and an assemblage optimizer with a saturation constraint.</p></div>
+    <div class="card"><div class="ck">Idea 2</div><h4>From tenant to owner</h4><p>A case file, the lease mechanics, a two-sided cash-flow model stress-tested on a real restaurant's books, and a term sheet the sponsor can recruit with.</p></div>
+  </div>
+
+  <div class="scopebox">
+    <div class="sb-title">What changed since the July proposal</div>
+    <p>The July submission framed the capstone around scoring each property's documented history and testing that score against sale prices. <b>This revision replaces that with two applied projects that use the same record.</b> The data package, its layer distinction, and its warnings carry over unchanged. A team may take one idea or both; each stands on its own.</p>
+  </div>
+  <div class="pfoot"><span>Pricing the Unpriced · NYU CUSP Capstone</span><span>03</span></div>
+</section>
+
+<!-- 02 THE RECORD -->
+<section class="section"><div class="marker">02 · THE RECORD</div>
+  <div class="eyebrow">The Corridor on the Record</div>
+  <div class="head"><div class="num">02</div><h2>Deep Where It Is Deep,<br>Silent Where It Is Silent</h2></div>
+  <div class="ruleline"></div>
+  <p class="dek">The incident table has 20,308 rows. That number is misleading on its own, and separating its two layers is the first job for either idea.</p>
+
+  <figure class="viz">
+    <div class="nest">
+      <div class="row"><div class="lb">All incident rows</div><div class="bar" style="width:100%;background:var(--cream-3)"></div><div class="val">20,308</div></div>
+      <div class="row"><div class="lb">Administrative feeds<br>311 · permits · assessments · crime</div><div class="bar" style="width:82%;background:var(--stone)"></div><div class="val">16,706<small>machine-ingested, mostly 2020s</small></div></div>
+      <div class="row"><div class="lb">Curated historical records</div><div class="bar" style="width:18%;background:var(--teal)"></div><div class="val">3,602<small>40+ archival sources</small></div></div>
+      <div class="row"><div class="lb">Records before 1950</div><div class="bar" style="width:11%;background:var(--amber-soft)"></div><div class="val">2,259<small>back to 1658</small></div></div>
+    </div>
+    <figcaption><b>Fig. 1 · Two layers in one table.</b> The administrative layer is volume. The curated layer is the history. A model that rewards paperwork learns nothing about significance.</figcaption>
+  </figure>
+
+  <h3 class="sub">Where the curated layer comes from</h3>
+  <figure class="viz">
+    <div class="minibar">
+      <div class="row"><div class="lb">Research white papers</div><div class="bar" style="width:100%;background:var(--teal)"><span>1,138</span></div></div>
+      <div class="row"><div class="lb">Newspapers.com clippings</div><div class="bar" style="width:58%;background:var(--teal)"><span>661</span></div></div>
+      <div class="row"><div class="lb">Church interment rolls</div><div class="bar" style="width:51%;background:var(--stone)"><span>583</span></div></div>
+      <div class="row"><div class="lb">MDLandRec deeds</div><div class="bar" style="width:43%;background:var(--teal)"><span>492</span></div></div>
+      <div class="row"><div class="lb">Sanborn fire-insurance maps</div><div class="bar" style="width:22%;background:var(--amber-soft)"><span>254</span></div></div>
+      <div class="row"><div class="lb">National Register nominations</div><div class="bar" style="width:12%;background:var(--amber-soft)"><span>139</span></div></div>
+      <div class="row"><div class="lb">Polk city directories</div><div class="bar" style="width:6%;background:var(--amber-soft)"><span>63</span></div></div>
+    </div>
+    <figcaption><b>Fig. 2 · The largest curated sources.</b> Amber marks the sources that state a building's <em>use</em> outright, which is what Idea 1 reads first.</figcaption>
+  </figure>
+
+  <div class="stat-cream">
+    <div class="s"><div class="n">316</div><div class="l">Properties with any curated record</div></div>
+    <div class="s"><div class="n am">68</div><div class="l">With ten or more</div></div>
+    <div class="s"><div class="n am">22</div><div class="l">With twenty-five or more</div></div>
+    <div class="s"><div class="n te">678</div><div class="l">Business-operated-here links</div></div>
+  </div>
+  <div class="callout"><p>Sparse documentation is not evidence of no history. Research followed interest and grant funding, not a sampling frame. Treat the silent parcels as unmeasured.</p></div>
+  <div class="pfoot"><span>Pricing the Unpriced · NYU CUSP Capstone</span><span>04</span></div>
+</section>
+
+<!-- 03 IDEA 1 -->
+<section class="section"><div class="marker">03 · IDEA 1</div>
+  <div class="eyebrow">Idea 1: Heritage-Anchored Highest and Best Use</div>
+  <div class="head"><div class="num">03</div><h2>What It Was,<br>What It Could Be</h2></div>
+  <div class="ruleline"></div>
+  <p class="dek">Given an assemblage of properties, what should each one become, what would that earn, and does the mix work as a block?</p>
+  <p><span class="runin">The premise.</span> Conventional highest-and-best-use analysis starts from zoning and square footage. This one starts from what the address was. A documented historic use is a strong prior for a future use: the building was built for it, and the neighborhood remembers it. The corridor's own record is the source of these priors.</p>
+  <p><span class="runin">One example.</span> The corridor has two documented theatres: the Boulevard, an Art Deco house that ran from the 1920s to the 1970s, and the Waverly, built around 1910 and now a Shoe City. A live-music hall in the Boulevard is a use the building has already proven. That is one historic use inspiring one proposed use. The same move applies to every address with a use history: a former grocery, a hall, a bank, a garage, a church.</p>
+
+  <figure class="viz">
+    <div class="browser">
+      <div class="bbar"><span class="dots"><span style="background:var(--oxblood)"></span><span style="background:var(--amber)"></span><span style="background:var(--teal)"></span></span><span class="url">use history &nbsp;·&nbsp; <b>3313 Greenmount Ave</b> &nbsp;·&nbsp; 85 use-bearing records · from the data package</span></div>
+      <div class="inner">
+        <div class="mock" style="grid-template-columns:1fr">
+        <div class="panel"><div class="pb">
+          <div class="obs"><span><b>1905</b> · Zepp Photo Supply and Lanvale Cycle Co, at old 1129 York Road</span><span>Polk directory</span></div>
+          <div class="obs"><span><b>1922</b> · R. M. Almond, furniture repaired and reupholstered</span><span>newspaper</span></div>
+          <div class="obs"><span><b>1923</b> · Esselman Motor Co; permit for a two-story garage</span><span>newspaper · permit</span></div>
+          <div class="obs"><span><b>1928</b> · Schwaab's Confectionery; Owings Bros.</span><span>newspaper</span></div>
+          <div class="obs"><span><b>1930</b> · Boulevard Bowling Academy</span><span>newspaper</span></div>
+          <div class="obs"><span><b>1947</b> · Wagner's Food Stores</span><span>newspaper</span></div>
+          <div class="obs"><span><b>1962–70</b> · Eddie's, Save-A-Dollar, Shapiro's, Foodland</span><span>newspaper</span></div>
+          <div class="obs"><span><b>1985</b> · Kawasaki dealership</span><span>newspaper</span></div>
+          <div class="obs"><span><b>2013</b> · contributing resource, Waverly Main Street Historic District</span><span>NRHP</span></div>
+        </div></div>
+        </div>
+      </div>
+    </div>
+    <figcaption><b>Fig. 3 · A first use history, straight from the export.</b> Photo supply, bicycles, autos, candy, bowling, forty years of groceries, motorcycles. The starter notebook prints this in one cell; the map app shows it on a click.</figcaption>
+  </figure>
+
+  <h3 class="sub">Uses beyond the building</h3>
+  <p>A "use" need not be a tenant. The history is also raw material, and the sponsor already treats it that way, anchoring new works to a deed: a feature film rooted in the 1858 arson at St. John's, 3009 Greenmount, and an album rooted in a razed home on Barclay Street. The optimizer should be able to consider:</p>
+  <ul>
+    <li><span class="runin">Screen and audio.</span> A documentary, series, or podcast per block or per property. The 1,138 research white papers are the treatments; 115 registered trademarks and patents tied to corridor addresses are story seeds.</li>
+    <li><span class="runin">Immersive experience, in the Meow Wolf mode.</span> One large vacant footprint becomes a walk-through of the corridor's own strata: the 1688 land patents, the turnpike tollgate, Mechanics' Hall, the theatres, the enslavers in the chain of title. The deepest-documented properties tell you which rooms have the most material.</li>
+    <li><span class="runin">Heritage revivals.</span> Reopen a business under its documented historic name and trade dress. The trademark research to clear the name is already in hand.</li>
+    <li><span class="runin">Interpretive layer.</span> Walking tours, plaques, an AR overlay on the storefronts. Cheap, and it lifts every other use on the block.</li>
+  </ul>
+  <div class="callout teal"><p>Content uses do not saturate: a podcast about the Boulevard does not compete with a concert hall in it. Venues do saturate. The model treats the two differently.</p></div>
+  <div class="pfoot"><span>Pricing the Unpriced · NYU CUSP Capstone</span><span>05</span></div>
+</section>
+
+<!-- 03b IDEA 1 CONT -->
+<section class="section"><div class="marker">03 · IDEA 1 CONT.</div>
+  <div class="eyebrow">Idea 1, Continued</div>
+  <div class="head"><div class="num cont">03</div><h2>From Timeline<br>to Assemblage</h2></div>
+  <div class="ruleline"></div>
+  <figure class="viz">
+    <div class="flow">
+      <div class="stage exists"><div class="st">Curated record</div><div class="sd">Exists · Sanborn, Polk, papers, deeds</div></div>
+      <div class="arr">→</div>
+      <div class="stage"><div class="st">Use-history timeline</div><div class="sd">Build · per property</div></div>
+      <div class="arr">→</div>
+      <div class="stage"><div class="st">Candidate-use generator</div><div class="sd">Build · anchored to history</div></div>
+      <div class="arr">→</div>
+      <div class="stage"><div class="st">Comps engine</div><div class="sd">Build · revenue / sqft, rent</div></div>
+    </div>
+    <div class="vdown">↓</div>
+    <div class="gaterow">
+      <div class="gout fail"><b>Saturates</b>Three of the same thing on one block. Reassign; content uses stay, venue uses move.</div>
+      <div class="gate"><span>DOES THE MIX SATURATE THE BLOCK?</span></div>
+      <div class="gout pass"><b>Clears</b>An assemblage plan: one use per building, comps-backed, with the historic anchor cited for each.</div>
+    </div>
+    <figcaption><b>Fig. 4 · Idea 1 as a pipeline.</b> Teal exists; amber is built. The gate is the saturation constraint, measured against the corridor's existing business mix.</figcaption>
+  </figure>
+
+  <h3 class="sub">What students build</h3>
+  <ul>
+    <li><span class="tag c">Committed</span> A <span class="runin">use-history timeline</span> per property, extracted from the curated layer.</li>
+    <li><span class="tag c">Committed</span> A <span class="runin">candidate-use generator</span> that proposes uses anchored to that history, including content and experience uses.</li>
+    <li><span class="tag c">Committed</span> A <span class="runin">comps engine</span>: operating examples of each candidate use in comparable corridors, with revenue per square foot and achievable rent.</li>
+    <li><span class="tag c">Committed</span> An <span class="runin">assemblage optimizer</span> that assigns uses across a block side with a saturation constraint.</li>
+  </ul>
+
+  <h3 class="sub">What the data already holds</h3>
+  <ul>
+    <li><span class="runin">Use history per address.</span> Sanborn footprints and uses (1915), Polk directories, 661 clippings, 678 business-operated-here links, National Register nomination text.</li>
+    <li><span class="runin">Present state per property.</span> Zoning, year built, square footage, dwelling units, permits, vacancy, violations, tax certificates, receivership, whether a business trades there.</li>
+    <li><span class="runin">Market context per property.</span> Market typology, median sale price, days on market, inventory; HUD fair market rent; median household income; walkability and transit access; historic district, main street, opportunity zone, and CDBG flags. Nearby business counts and walk scores are empty in this export.</li>
+    <li><span class="runin">Assemblages.</span> The export has no acquisition groupings. Block side (141 values) is the default unit; the sponsor names specific assemblages.</li>
+    <li><span class="runin">One calibration point.</span> Daily sales for an operating restaurant at 2731 Greenmount, from the sponsor under NDA, to sanity-check revenue estimates.</li>
+  </ul>
+  <p><span class="runin">Hard parts.</span> A property with lots of paperwork is not necessarily significant. Comps will mostly come from outside Baltimore. "Over-saturated" needs a definition students can defend.</p>
+  <div class="pfoot"><span>Pricing the Unpriced · NYU CUSP Capstone</span><span>06</span></div>
+</section>
+
+<!-- 04 IDEA 2 -->
+<section class="section"><div class="marker">04 · IDEA 2</div>
+  <div class="eyebrow">Idea 2: Tenant-Owned Exit for a Neighborhood REIT</div>
+  <div class="head"><div class="num">04</div><h2>From Tenant<br>to Owner</h2></div>
+  <div class="ruleline"></div>
+  <p class="dek">Design a lease that starts a business as an ordinary tenant and ends with it owning the building, while the trust's investors still get paid.</p>
+  <p><span class="runin">Why.</span> The sponsor is recruiting businesses to start and operate in the corridor. They sign as regular tenants of a small real estate investment trust. The idea is that a tenant who succeeds can buy its building from the trust, on terms fixed at signing. That gives the trust an exit other than a sale to an institutional buyer, and keeps the upside in the neighborhood. Worker buyouts are now routine in Baltimore. A tenant path to owning the <em>building</em> is not.</p>
+
+  <h3 class="sub">What the local record shows</h3>
+  <p>Eleven cases were checked. The ones that matter:</p>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>Case</th><th>Year</th><th>What moved</th><th>Structure</th><th>Financing</th><th>Building?</th></tr></thead>
+    <tbody>
+      <tr><td>Wine Source, Hampden</td><td>2024</td><td>Business</td><td>Worker co-op</td><td>BRED loan, GoFundMe</td><td><span class="bad">No</span>, founder kept it</td></tr>
+      <tr><td>Waverly Ace Hardware (13-store chain)</td><td>2021</td><td>Business, 30% then phased to 100%</td><td>ESOP</td><td>National Cooperative Bank</td><td><span class="warn">Not reported</span></td></tr>
+      <tr><td>Common Ground Café, Hampden</td><td>2023</td><td>Business + lease</td><td>Worker co-op</td><td>BRED, GoFundMe</td><td><span class="bad">No</span></td></tr>
+      <tr><td>Tabard Inn, DC</td><td>1993 / 2018</td><td>Shares, 30% then 51%</td><td>ESOP</td><td>Undisclosed</td><td><span class="warn">Unconfirmed</span></td></tr>
+      <tr><td>Red Emma's, 3128 Greenmount</td><td>2021–22</td><td>Two buildings</td><td>Worker co-op</td><td>Seed Commons line, MD capital grant, CBP fund, ~$1.6M</td><td><span class="ok">Yes</span></td></tr>
+      <tr><td>WaterBottle co-op, West Baltimore</td><td>2020</td><td>Contracting firm + rentals</td><td>Worker co-op</td><td>BRED, ~$5M cumulative, 22 homes</td><td><span class="ok">Yes</span></td></tr>
+      <tr><td>East New York Community Land Trust, Brooklyn</td><td>2026</td><td>9,500 sf commercial</td><td>CLT</td><td>$1M state, $650k CDFI loan, $720k crowdfund; $2.3M price</td><td><span class="ok">Yes</span></td></tr>
+      <tr><td>3218 Wisconsin Ave, DC</td><td>2019</td><td>20-unit apartment</td><td>Limited-equity co-op via TOPA</td><td>LISC, DC Preservation Fund</td><td><span class="ok">Yes</span></td></tr>
+      <tr><td>Plaza 122, Portland</td><td>2014–17</td><td>29k sf strip retail</td><td>Community Investment Trust</td><td>Bank at 75% LTV, sub-debt at 2–4%, $10/mo shares</td><td><span class="ok">Yes</span></td></tr>
+    </tbody>
+  </table></div>
+  <div class="srcnote">Sources and the two unverified rows are documented in <b>docs/worker-owned-exits.md</b> in the data package. Deal prices in worker buyouts are almost never disclosed.</div>
+  <div class="pfoot"><span>Pricing the Unpriced · NYU CUSP Capstone</span><span>07</span></div>
+</section>
+
+<!-- 04b IDEA 2 CONT -->
+<section class="section"><div class="marker">04 · IDEA 2 CONT.</div>
+  <div class="eyebrow">Idea 2, Continued</div>
+  <div class="head"><div class="num cont">04</div><h2>What the Cases<br>Teach</h2></div>
+  <div class="ruleline"></div>
+  <ul>
+    <li><span class="runin">Worker buyouts almost always exclude the real estate.</span> The seller keeps the dirt and the co-op leases. The two Baltimore co-ops that own property bought it later, with separate and larger financing. A trust buyout looks like the land-trust and investment-trust cases, not the co-op conversions.</li>
+    <li><span class="runin">One lender does most Baltimore deals.</span> BRED, backed by Seed Commons: repayment as a share of net profit, no personal guarantees. It is a business lender; its real-estate exposure is the exception. NYC analogs are New Economy Project and The Working World; DC's are LISC and the DC Preservation Fund.</li>
+    <li><span class="runin">Seller financing showed up in none of the cases.</span> Bank plus CDFI, or CDFI alone, was the norm. Existing mortgages on the trust's buildings would need lender consent, not a seller note.</li>
+    <li><span class="runin">Every real-estate case used public capital.</span> State grants for Red Emma's, a state earmark for East New York, DHCD money in DC. Crowdfunding is real but small.</li>
+    <li><span class="runin">Plaza 122 is the only case where neighbors, not just tenants, bought in and could exit.</span> Ten dollars a month, a bank letter of credit against loss, 9% dividends. That securities scaffolding is the template for a tenants-plus-neighbors buyout.</li>
+    <li><span class="runin">ESOPs suit scale and phase in over years.</span> Co-ops suit storefronts and close in months.</li>
+  </ul>
+
+  <figure class="viz">
+    <div class="nest">
+      <div class="row"><div class="lb">Senior debt<br>bank or CDFI</div><div class="bar" style="width:73%;background:var(--ink)"></div><div class="val">70–75%<small>of value · LTV</small></div></div>
+      <div class="row"><div class="lb">Subordinated patient loan<br>nonprofit or impact investor</div><div class="bar" style="width:18%;background:var(--teal)"></div><div class="val">2–4%<small>interest · retired by equity raise</small></div></div>
+      <div class="row"><div class="lb">Public grant<br>state capital, city funds</div><div class="bar" style="width:12%;background:var(--amber-soft)"></div><div class="val">varies<small>present in every real-estate case</small></div></div>
+      <div class="row"><div class="lb">Tenant and neighbor equity<br>raised over time</div><div class="bar hatch" style="width:18%"></div><div class="val">grows<small>rent credits · monthly shares</small></div></div>
+    </div>
+    <figcaption><b>Fig. 5 · The capital stack that recurs.</b> The hatched bar is what the lease designs: equity that accrues to the tenant and, in the Plaza 122 model, to neighbors, until it retires the subordinated loan.</figcaption>
+  </figure>
+
+  <h3 class="sub">What students build</h3>
+  <ul>
+    <li><span class="tag c">Committed</span> A <span class="runin">case file</span>: the table above, extended and verified, with the public deal terms. Interviews with BRED, Red Emma's, and the Ace owners on what they would do differently.</li>
+    <li><span class="tag c">Committed</span> The <span class="runin">lease mechanics</span>: how rent accrues toward equity, what triggers the option to buy, whether the price is set at signing or at conversion, and what happens if the tenant leaves early.</li>
+    <li><span class="tag c">Committed</span> A <span class="runin">two-sided cash-flow model</span>: tenant cost of occupancy over the lease; investor return under a range of conversion timings; the Plaza 122 stack tested against corridor numbers.</li>
+    <li><span class="tag c">Committed</span> A <span class="runin">stress test on real books</span>: can a new restaurant's margin carry rent now, and a mortgage at 75% loan-to-value plus sub-debt later?</li>
+    <li><span class="tag c">Committed</span> A <span class="runin">lease-with-option term sheet</span> the sponsor can use in recruiting.</li>
+  </ul>
+
+  <h3 class="sub">What the data already holds</h3>
+  <ul>
+    <li><span class="runin">Property level, in the export.</span> Last sale price and date, assessed value, an automated value estimate, fair market rent, owner name and type, ground rent, and baseline snapshots frozen on two dates in July 2026.</li>
+    <li><span class="runin">Tenant level, from the sponsor under NDA.</span> Daily sales, channel split, and profit and loss for the operating restaurant at 2731 Greenmount.</li>
+    <li><span class="runin">Deal level, from the sponsor.</span> Which properties the trust holds, lease terms, investor return targets, and the cap table.</li>
+  </ul>
+  <p><span class="runin">Hard parts.</span> New businesses fail often, and the lease has to survive that. Restaurant margins are thin. Fixing a price years ahead means someone bears the appreciation risk. Buildings with several tenants need a rule for who buys. Securities law applies once neighbors are buying shares.</p>
+  <div class="pfoot"><span>Pricing the Unpriced · NYU CUSP Capstone</span><span>08</span></div>
+</section>
+
+<!-- 05 DATA & TOOLS -->
+<section class="section"><div class="marker">05 · DATA</div>
+  <div class="eyebrow">Data &amp; Tools in Hand</div>
+  <div class="head"><div class="num">05</div><h2>Everything Students<br>Need Is in the Repo</h2></div>
+  <div class="ruleline"></div>
+  <p class="dek">The data package is a public GitHub repository. No sponsor systems, logins, or installs are required to begin. Students never need to touch the sponsor's production tools.</p>
+
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>File</th><th>Rows</th><th>What it is</th></tr></thead>
+    <tbody>
+      <tr><td>properties.csv</td><td>1,874</td><td>Properties with ~80 fields: assessment, sale history, vacancy, zoning, market, transit, program flags. 1,791 have coordinates.</td></tr>
+      <tr><td>property_incidents.csv</td><td>20,308</td><td>The claim layer: every dated event at an address, with source, evidence status, date precision, sensitivity, rights.</td></tr>
+      <tr><td>subjects.csv</td><td>3,103</td><td>People, businesses, organizations, families, congregations.</td></tr>
+      <tr><td>incident_subjects.csv</td><td>5,462</td><td>Who did what at which address: owned, operated_at, sold, lived_at, interred_at.</td></tr>
+      <tr><td>incident_links.csv</td><td>236</td><td>Claim-to-claim links, including 3 contradictions.</td></tr>
+      <tr><td>registered_ips.csv</td><td>115</td><td>Trademarks and patents with an address of record.</td></tr>
+      <tr><td>property_parcels.csv</td><td>50,860</td><td>The SDAT parcel roll: the linkage layer.</td></tr>
+      <tr><td>grant_program_matches.csv</td><td>11,789</td><td>Property-to-program eligibility matches.</td></tr>
+      <tr><td>baseline_snapshots.csv</td><td>887</td><td>Two July 2026 capture days, 29 fields each: the "before" line.</td></tr>
+    </tbody>
+  </table></div>
+
+  <figure class="viz">
+    <div class="browser">
+      <div class="bbar"><span class="dots"><span style="background:var(--oxblood)"></span><span style="background:var(--amber)"></span><span style="background:var(--teal)"></span></span><span class="url">localhost:8765 &nbsp;·&nbsp; <b>python3 map/app.py</b> &nbsp;·&nbsp; standard library only</span></div>
+      <div class="inner">
+      <div class="mock">
+        <div class="panel"><div class="ph">Map</div><div class="pb">
+          <span class="badge fact">1,791 markers · four depth tiers</span>
+          <div class="line">Markers coloured by curated depth: 0, 1–9, 10–24, 25+. Search by address, owner, or person. Lot and building outlines on click.</div>
+        </div></div>
+        <div class="panel"><div class="ph">History</div><div class="pb">
+          <span class="badge fact">Curated · oldest first</span>
+          <div class="obs"><span><b>1905</b> · two businesses at old 1129 York Road</span><span>Polk</span></div>
+          <div class="obs"><span><b>1914</b> · Sanborn sheet, 3300 block</span><span>Sanborn</span></div>
+          <div class="obs"><span><b>1930</b> · Boulevard Bowling Academy</span><span>newspaper</span></div>
+          <div class="line" style="margin-top:6px">Dashed dots mark circa, decade, and range precision. Flagged rows carry a badge and sit behind a click.</div>
+        </div></div>
+        <div class="panel"><div class="ph">People &amp; IP</div><div class="pb">
+          <span class="badge est">Subjects · registered IP · baseline</span>
+          <div class="obs"><span>Esselman Motor Co</span><span>operated_at</span></div>
+          <div class="obs"><span>Zepp Photo Supply Co</span><span>operated_at</span></div>
+          <div class="obs"><span>Baseline 2026-07-22</span><span>29 fields</span></div>
+          <div class="line" style="margin-top:6px">Empty sections say "none in export" rather than disappearing.</div>
+        </div></div>
+      </div>
+      </div>
+    </div>
+    <figcaption><b>Fig. 6 · The standalone map app shipped with the data.</b> One Python file, one HTML page, no install. Its check mode reproduces the 3,602 / 16,706 layer split.</figcaption>
+  </figure>
+
+  <ul>
+    <li><span class="runin">START_HERE.ipynb.</span> Loads the nine tables, separates the layers, ranks properties by depth, then splits by idea: use histories and block-side assemblage units for Idea 1; commercial sale prices, the July baseline, and a first lease-to-own calculator for Idea 2.</li>
+    <li><span class="runin">verify_claims.py.</span> Checks every number in the README against the CSVs. Standard library only.</li>
+    <li><span class="runin">docs/worker-owned-exits.md.</span> The eleven-case research file behind Idea 2, with sources.</li>
+    <li><span class="runin">public_sources/.</span> The 1937 HOLC redlining polygons for Baltimore.</li>
+    <li><span class="runin">From the sponsor, under NDA.</span> Restaurant sales and P&amp;L for 2731 Greenmount; trust holdings, lease terms, investor targets; named assemblages.</li>
+  </ul>
+  <div class="pfoot"><span>Pricing the Unpriced · NYU CUSP Capstone</span><span>09</span></div>
+</section>
+
+<!-- 06 WORK PLAN -->
+<section class="section"><div class="marker">06 · WORK PLAN</div>
+  <div class="eyebrow">Work Plan &amp; Skills</div>
+  <div class="head"><div class="num">06</div><h2>Read the Record,<br>Then Build on It</h2></div>
+  <div class="ruleline"></div>
+  <figure class="viz">
+    <div class="tl9">
+      <div class="band">
+        <div class="seg"><div class="w">Sept</div><div class="t">Data readiness</div></div>
+        <div class="seg"><div class="w">Oct</div><div class="t">Use histories · Case file</div></div>
+        <div class="seg"><div class="w">Nov</div><div class="t">Candidate uses · Lease mechanics</div></div>
+        <div class="seg"><div class="w">Dec</div><div class="t">Fall demo</div></div>
+        <div class="seg sp"><div class="w">Feb</div><div class="t">Comps · Cash-flow model</div></div>
+        <div class="seg sp"><div class="w">Mar</div><div class="t">Optimizer · Stress test</div></div>
+        <div class="seg sp"><div class="w">Apr–May</div><div class="t">Harden · Hand off</div></div>
+      </div>
+      <div class="mile">
+        <div class="m">Layer split reproduced; silences mapped</div>
+        <div class="m">First use histories for the deep 68</div>
+        <div class="m">Interviews with BRED, Red Emma's, Ace</div>
+        <div class="m">Assemblage plan v0 · Term sheet v0</div>
+        <div class="m">Restaurant books under NDA</div>
+        <div class="m">Sponsor sign-off · public repo updated</div>
+      </div>
+    </div>
+    <figcaption><b>Fig. 7 · Nine months, two tracks.</b> Fall reads the record and builds first versions. Spring tests them against comps and real books, then hands off.</figcaption>
+  </figure>
+
+  <h3 class="sub">Fall: build and demonstrate</h3>
+  <ul>
+    <li><span class="runin">Idea 1.</span> Extract use histories for the 68 properties with ten or more curated records. Draft the candidate-use generator. Define saturation against the corridor's existing business mix.</li>
+    <li><span class="runin">Idea 2.</span> Verify and extend the case file. Interview the Baltimore lenders and co-ops. Draft the lease mechanics and a first term sheet.</li>
+    <li><span class="runin">Both.</span> A data-readiness memo: what the export can and cannot answer, and which silences matter.</li>
+  </ul>
+  <h3 class="sub">Spring: validate, harden, hand off</h3>
+  <ul>
+    <li><span class="runin">Idea 1.</span> Comps from comparable corridors. The optimizer on one sponsor-named assemblage. A written plan the sponsor can take to a lender.</li>
+    <li><span class="runin">Idea 2.</span> The two-sided cash-flow model. The stress test on the 2731 Greenmount books. A term sheet the sponsor can put in front of a lawyer.</li>
+  </ul>
+  <h3 class="sub">Skills the work exercises</h3>
+  <p>Record linkage and text extraction across archival sources; spatial analysis at block-side scale; market research and comparable analysis; real estate finance and cash-flow modeling; qualitative interviewing; and writing for a sponsor who will act on the result.</p>
+  <div class="pfoot"><span>Pricing the Unpriced · NYU CUSP Capstone</span><span>10</span></div>
+</section>
+
+<!-- 07 DELIVERABLES -->
+<section class="section"><div class="marker">07 · DELIVERABLES</div>
+  <div class="eyebrow">Deliverables</div>
+  <div class="head"><div class="num">07</div><h2>What Each Idea<br>Produces</h2></div>
+  <div class="ruleline"></div>
+  <h3 class="sub">Idea 1</h3>
+  <ul>
+    <li><span class="tag c">Committed</span> Use-history timelines, as a table and as an addition to the map app.</li>
+    <li><span class="tag c">Committed</span> The candidate-use generator with its rules written down.</li>
+    <li><span class="tag c">Committed</span> A comps library with sources.</li>
+    <li><span class="tag c">Committed</span> An assemblage plan for one sponsor-named assemblage, with the saturation analysis behind it.</li>
+  </ul>
+  <h3 class="sub">Idea 2</h3>
+  <ul>
+    <li><span class="tag c">Committed</span> The verified case file and interview notes.</li>
+    <li><span class="tag c">Committed</span> The lease mechanics memo.</li>
+    <li><span class="tag c">Committed</span> The two-sided cash-flow model, as a spreadsheet or notebook, with the stress-test results.</li>
+    <li><span class="tag c">Committed</span> A lease-with-option term sheet.</li>
+  </ul>
+  <h3 class="sub">Both</h3>
+  <ul>
+    <li><span class="tag c">Committed</span> The data-readiness memo.</li>
+    <li><span class="tag c">Committed</span> Code and documentation back into the public repository, runnable with no install step.</li>
+    <li><span class="tag x">Conditional</span> One creative prototype, if the core stays on track: a pilot podcast episode, an immersive-room treatment, or a revived trade-dress study.</li>
+  </ul>
+  <div class="callout teal"><p>A team may take one idea or both. Each is scoped to stand alone, and the shared deliverables are the same either way.</p></div>
+  <div class="pfoot"><span>Pricing the Unpriced · NYU CUSP Capstone</span><span>11</span></div>
+</section>
+
+<!-- 08 ETHICS -->
+<section class="section"><div class="marker">08 · ETHICS</div>
+  <div class="eyebrow">Ethics, Risks &amp; the Sponsor</div>
+  <div class="head"><div class="num">08</div><h2>Public Duties,<br>Named</h2></div>
+  <div class="ruleline"></div>
+  <ul>
+    <li><span class="runin">No personal data.</span> Owner names are SDAT public record. Seventeen contact phone numbers were redacted before publication. Nothing in the package is private.</li>
+    <li><span class="runin">Sensitivity flags are a design input.</span> Fifty-two incident rows are flagged trauma, personal rights, displacement, or commercialization. They are sourced to published reporting and public records. They exist so that a use proposal or a public narrative does not surface a terrible event with no framing. They are never dropped and never quoted verbatim without review.</li>
+    <li><span class="runin">No appraisals.</span> Revenue estimates and comps are planning figures with stated assumptions, never a valuation, promise, or guaranteed return. Assessed value is an administrative number, not a market price.</li>
+    <li><span class="runin">Securities law.</span> Any structure in which neighbors buy shares needs counsel before it is offered. The term sheet is a starting point for a lawyer, not an offering.</li>
+    <li><span class="runin">Extraction.</span> The point of Idea 2 is to keep upside in the neighborhood. The point of Idea 1 is to propose uses the corridor recognises as its own. Both are judged against that.</li>
+    <li><span class="runin">If it fails.</span> If comps cannot be found for a candidate use, the plan says so. If no lease survives the stress test, the finding is that the model needs more public capital, and that is the deliverable.</li>
+  </ul>
+  <h3 class="sub">What the sponsor provides</h3>
+  <ul>
+    <li>The public data package, maintained on GitHub, with the standalone map and notebook.</li>
+    <li>Under NDA: restaurant books for 2731 Greenmount, trust holdings and lease terms, investor targets, named assemblages.</li>
+    <li>Introductions to BRED, Red Emma's, the Ace Hardware owners, and the Waverly Main Street organisation.</li>
+    <li>Deployment and maintenance of anything the sponsor adopts. Students are not the IT department.</li>
+  </ul>
+  <div class="pfoot"><span>Pricing the Unpriced · NYU CUSP Capstone</span><span>12</span></div>
+</section>
+
+</div>
+
+<!-- ============ SOURCES ============ -->
+<section class="foot-sec">
+  <div class="eyebrow">Sources</div>
+  <div class="refs">
+    <div>Greenmount Corridor knowledge base, Oxcart Assembly / BNBD, 2026. CC BY 4.0. github.com/jetton999/pricing-the-unpriced</div>
+    <div>Waverly Main Street Historic District, National Register nomination B-5229, Maryland Historical Trust, 2013.</div>
+    <div>The Baltimore Banner, "Wine Source becomes a worker-owned cooperative," 2024. Baltimore Fishbowl, "From Red Emma's to the Wine Source," 2024.</div>
+    <div>National Cooperative Bank, press release on financing the A Few Cool Hardware Stores ESOP, August 2021.</div>
+    <div>Baltimore Brew, "Red Emma's move is seen as a boost for Greenmount Avenue and Waverly," May 2021. Seed Commons, "An ecosystem for economic democracy."</div>
+    <div>Next City, "When a café owner shut down his business, workers revived it as a co-op," 2023.</div>
+    <div>Brownstoner and New Economy Project on the East New York Community Land Trust purchase of 161 Jamaica Avenue, 2026.</div>
+    <div>LISC DC, "Community members purchase building, maintain affordability in DC's wealthiest ward," 2019. UHAB, "Bronx tenants take steps towards homeownership," 2022.</div>
+    <div>Mercy Corps, East Portland Community Investment Trust case study; Next City, "How these Portland residents got to own a piece of their neighborhood."</div>
+    <div>Mapping Inequality: Redlining in New Deal America, Digital Scholarship Lab, University of Richmond. HOLC Baltimore, 1937. CC BY-NC-SA 4.0.</div>
+  </div>
+  <div class="pagefoot"><span>Pricing the Unpriced · NYU CUSP Capstone · Revised September 2026</span><span>Sponsor of record: BNBD</span></div>
+  <div class="pfoot"><span>Pricing the Unpriced · NYU CUSP Capstone</span><span>13</span></div>
+</section>
+
+</body>
+</html>
