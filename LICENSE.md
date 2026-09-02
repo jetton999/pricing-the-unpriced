@@ -3,7 +3,8 @@
 ## Sponsor-produced content
 
 The corridor knowledge base in this repository (all root-level `.csv` files, `README.md`,
-`DATA_DICTIONARY.md`, `START_HERE.ipynb`, `05_incidents_by_decade.png`) is released by
+`DATA_DICTIONARY.md`, `START_HERE.ipynb`, `START_HERE.py`, `05_incidents_by_decade.png`, the `map/`
+app, `PROJECT_IDEAS.md`, and the research notes in `docs/`) is released by
 Oxcart Assembly / BNBD under Creative Commons Attribution 4.0 International (CC BY 4.0).
 
 You may share and adapt it, including commercially, with attribution:

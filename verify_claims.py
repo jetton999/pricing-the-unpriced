@@ -121,6 +121,10 @@ def main():
     check("baseline capture 2026-07-13", captures.get("2026-07-13", 0), 351)
     check("baseline capture 2026-07-22", captures.get("2026-07-22", 0), 536)
 
+    # Earliest dated curated record (the README's "back to 1658" claim)
+    curated_years = [year_of(r) for r in incidents if not is_admin(r["source"])]
+    check("earliest curated record year", min(y for y in curated_years if y), 1658)
+
     # The graph, built exactly as notebook cell 11 builds it: property <-> subject,
     # joined through the incident, parallel edges collapsed.
     incident_to_property = {r["id"]: r["property_id"] for r in incidents}

@@ -12,6 +12,26 @@ carried no analytical value.
 
 ---
 
+## Two applied project ideas (September 2026)
+
+Since the July proposal, the sponsor has sketched two applied projects that run on this same
+record. Both are described in **[PROJECT_IDEAS.md](PROJECT_IDEAS.md)**, and a revised proposal
+presenting them is in **[`site/`](site/)**.
+
+1. **Heritage-anchored highest and best use.** Given an assemblage of buildings, what should each
+   one become, what would it earn, and does the mix work as a block? It starts from what each
+   address *was*. The use-history timeline it needs is exactly what the provenance layer in this
+   package produces.
+2. **From tenant to owner.** A lease that starts a business as an ordinary tenant and ends with it
+   owning the building, designed against eleven documented worker- and tenant-ownership cases
+   in Baltimore, DC, New York, and Portland (`docs/worker-owned-exits.md`).
+
+A team may take one idea or both. The data package below, its layer distinction, and its warnings
+carry over unchanged. `map/` is a standard-library map of every property with its history, people,
+and registered IP: run `python3 map/app.py` and open the printed URL.
+
+---
+
 ## QUICKSTART
 
 ```bash
@@ -21,8 +41,11 @@ pip install pandas matplotlib networkx jupyter
 jupyter notebook START_HERE.ipynb
 ```
 
-Open **`START_HERE.ipynb`** in the same folder as the CSVs and run it top to bottom.
-GitHub also renders it in the browser, if you would rather read the code and its output first.
+Open **`START_HERE.ipynb`** in the same folder as the CSVs and run it top to bottom. It is a
+two-track walkthrough: the data tour, then the two project ideas. `START_HERE.py` is the same
+notebook paired with jupytext and is the source of truth; edit that, then sync with
+`uvx jupytext --sync START_HERE.py`. GitHub also renders the notebook in the browser, if you
+would rather read the code and its output first.
 Needs `pandas`, `matplotlib`, `networkx`. In about five minutes it will:
 
 1. Load all nine tables and show you how they join
@@ -44,7 +67,9 @@ The incident table has **20,308 rows, and that number is misleading on its own.*
 | **Administrative feeds** | ~16,700 | Machine-ingested: 311 complaints (6,641), permits (5,329), SDAT assessments (3,064), crime (803), tax certificates, code violations. Overwhelmingly 2020s. |
 | **Curated historical records** | ~3,600 | Hand-researched across 40+ archival sources: research white papers (1,138), Newspapers.com (661), church interment rolls (583), MDLandRec deeds (492), Sanborn fire-insurance maps (254), NRHP nominations (139), Polk directories, Hopkins atlases, Chronicling America, census records. |
 
-**3,633 incidents predate 2000. 2,259 predate 1950.** The archival layer runs back to the 1730s.
+**3,633 incidents predate 2000. 2,259 predate 1950.** The earliest dated record is 1658, the
+Stansbury land assignment that underlies the 1688 Huntington and Merryman's Lot patent; the first
+recorded residence on the tract is 1736.
 
 Separating these two layers is not a preprocessing chore. **It is the research problem.**
 An index that rewards whichever property generated the most paperwork has learned nothing
@@ -147,6 +172,8 @@ and cannot be redistributed; the committed corridor work does not depend on it.
   curated). The one figure that moved the other way is registered IP: the proposal says "~150
   registered intellectual-property records," and the actual count is 115 (101 trademarks,
   11 patents, 3 entity registrations). The CSVs are authoritative; `verify_claims.py` checks them.
+- `PROJECT_IDEAS.md` — the two applied project ideas; `site/` — the revised proposal presenting them.
+- `map/` — standard-library map app over these CSVs; `docs/` — background research for the ideas.
 - `DATA_DICTIONARY.md` — column listings per table.
 - `row_counts.txt` — export row counts.
 - `05_incidents_by_decade.png` — the corpus at a glance.

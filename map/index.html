@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Greenmount Corridor — property map</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"
+      integrity="sha512-h9FcoyWjHcOcmEVkxOfTLnmZFWIH0iZhZT1H2TbOq55xssQGEJHEaIm+PgoUaZbRvQTNTluNOEfb1ZRy6D3BOw=="
+      crossorigin="anonymous" referrerpolicy="no-referrer">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header id="topbar">
+  <div class="brand">
+    <strong>Greenmount corridor</strong>
+    <span id="stats" class="muted">loading…</span>
+  </div>
+  <div class="search">
+    <input id="q" type="search" placeholder="Search address, owner, or person / business name…" autocomplete="off">
+    <ul id="results" hidden></ul>
+  </div>
+  <div class="layers">
+    <label><input type="checkbox" id="toggle-lots"> Lot polygons (visible set)</label>
+    <label><input type="checkbox" id="toggle-hoods"> Neighborhood bounds</label>
+  </div>
+</header>
+
+<div id="main">
+  <div id="map"></div>
+  <aside id="sidebar" class="empty">
+    <div id="sidebar-empty">
+      <h2>Pick a property</h2>
+      <p>Click a marker to see its curated history, administrative feed, people and
+         businesses, registered IP, and baseline snapshots.</p>
+      <p class="muted">Marker colour is curated depth: the number of hand-researched
+         records at that address. Administrative volume (311, permits, assessments) is
+         deliberately not part of the colour.</p>
+    </div>
+    <div id="sidebar-body" hidden></div>
+  </aside>
+</div>
+
+<div id="legend">
+  <div class="legend-title">Curated records</div>
+  <div><i style="background:#c8c3b8"></i> 0</div>
+  <div><i style="background:#f3c66b"></i> 1–9</div>
+  <div><i style="background:#e58a2d"></i> 10–24</div>
+  <div><i style="background:#a4290f"></i> 25+</div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"
+        integrity="sha512-puJW3E/qXDqYp9IfhAI54BJEaWIfloJ7JWs7OeD5i6ruC9JZL1gERT1wjtwXFlh7CjE7ZJ+/vcRZRkIYIb6p4g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="/app.js"></script>
+</body>
+</html>
