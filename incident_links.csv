@@ -1,0 +1,237 @@
+id,property_incident_id,related_incident_id,link_type,note,created_at,updated_at
+1,17831,17818,duplicates,Same event as the village-level stub; this claim sits on the exact parcel (3114 = merged 3116 site) with primary citations.,2026-07-14 15:56:41 -0400,2026-07-14 15:56:41 -0400
+2,17840,17819,duplicates,Same event as the village-level stub; detailed claim on 414 E 31st itself.,2026-07-14 15:56:41 -0400,2026-07-14 15:56:41 -0400
+3,17862,17820,related,Polk 1901 household detail behind the Baden/Coffield/Bateman house stub; location 3109 vs 3101-3103 flagged.,2026-07-14 15:56:41 -0400,2026-07-14 15:56:41 -0400
+4,17861,17817,supports,"NPS narrative + booklet keeper roster deepen the toll-gate stub (1810 origin, Walkers, Scofield signboard, Reese elegy).",2026-07-14 15:56:42 -0400,2026-07-14 15:56:42 -0400
+5,17825,17826,supports,The 1913 Sun ad and the 1915 Polk listing document the same Adelaide Hall operation (Christie superintendency).,2026-07-14 15:56:42 -0400,2026-07-14 15:56:42 -0400
+6,17856,17863,related,The 1870 Aull-Collyer marriage ties booklet item 25 (the Collyer house) into the Aull family line.,2026-07-14 15:56:42 -0400,2026-07-14 15:56:42 -0400
+7,17855,17810,supports,The BRG12 owner-by-owner plat is the land-acquisition instrument behind the Olmsted parkway claim.,2026-07-14 15:56:42 -0400,2026-07-14 15:56:42 -0400
+8,17836,17855,related,'Maggie Aull' of the plat's Greenmount lots = Margaret E. Aull of 3116.,2026-07-14 15:56:42 -0400,2026-07-14 15:56:42 -0400
+9,17823,17830,related,Aull left Eagle Nest by 1912 (conversion) and died at Rossiter Ave in 1921.,2026-07-14 15:56:43 -0400,2026-07-14 15:56:43 -0400
+10,17874,17845,contradicts,1871 terminus timetables + Sun 7/19/1871 'erected recently' vs the 1872 (booklet) / 1873 (CHAP) build dates.,2026-07-14 16:14:10 -0400,2026-07-14 16:14:10 -0400
+11,17865,17861,supports,1871: Brady's place at 'the first tollgate' — contemporary corroboration of the tollgate as landmark.,2026-07-14 16:14:10 -0400,2026-07-14 16:14:10 -0400
+12,17870,17859,supports,"County-paper arc adds exact date (Wed Jan 10, 5 a.m.), east-side location, frozen-plug cause, 100-car order, site abandonment.",2026-07-14 16:14:10 -0400,2026-07-14 16:14:10 -0400
+13,17875,17826,supports,German charity directory keeps Adelaide Hall at 2510 Greenmount into 1918.,2026-07-14 16:14:10 -0400,2026-07-14 16:14:10 -0400
+14,17872,17834,supports,The 1886 partition is how the sisters held the ground they rebuilt on in 1895.,2026-07-14 16:14:11 -0400,2026-07-14 16:14:11 -0400
+15,17866,17855,related,Aull fighting street-opening commissioners in 1906; the family's lots appear on the later 33rd St plat.,2026-07-14 16:14:11 -0400,2026-07-14 16:14:11 -0400
+16,17876,17855,related,Margaret trading York-turnpike lots in the plat era.,2026-07-14 16:14:11 -0400,2026-07-14 16:14:11 -0400
+17,17865,17864,supports,1871: Clemens 'the owner of most of the land' at Oxford — three years after laying it off.,2026-07-14 16:14:11 -0400,2026-07-14 16:14:11 -0400
+18,17878,17865,supports,Sun 1871: Brady's place at 'the first tollgate' — contemporary sighting of the estate.,2026-07-14 16:30:07 -0400,2026-07-14 16:30:07 -0400
+19,17879,6562,related,The Brady/Biays house block = the Terrapin-Oriole Park block; 1934 mansion photo vs 1914-44 park footprint is an open tension.,2026-07-14 16:30:07 -0400,2026-07-14 16:30:07 -0400
+20,17877,17861,related,Biays/Brady grounds sat at the 'first tollgate' reach of the turnpike (Gilmor La = Vineyard La).,2026-07-14 16:30:07 -0400,2026-07-14 16:30:07 -0400
+21,17883,17870,related,The truck company was quartered in the Waverly car barn (1902-03) three years before it burned.,2026-07-14 17:24:13 -0400,2026-07-14 17:24:13 -0400
+22,17881,17861,related,"The 1878 firehouse lot was bought 'on the York road, near the tollgate' (Mrs. Blum lot).",2026-07-14 17:24:13 -0400,2026-07-14 17:24:13 -0400
+23,17882,17860,related,"Resolves Old Land Marks item 34: 'No. 7 Truck House, 1893' = the 1878 building under its post-1890 designation.",2026-07-14 17:24:13 -0400,2026-07-14 17:24:13 -0400
+24,17888,17865,supports,"Bokel's brick store from the 1871 portrait, on fire in 1893 and saved by the Waverly company.",2026-07-14 17:24:13 -0400,2026-07-14 17:24:13 -0400
+25,17881,10371,duplicates,"Same 1878 county-firehouse claim; this one adds the commissioners (Hoen/Boehm conflict), architect J. Appleton Wilson, Leonhardt apparatus, Mrs. Blum lot, and the Sun 7/3/1902 retrospective verbatim.",2026-07-14 17:25:16 -0400,2026-07-14 17:25:16 -0400
+26,17883,10374,duplicates,Same demolition/rebuild claim; adds plaque vs city-list vs NPS date spread and the car-barn quartering.,2026-07-14 17:25:17 -0400,2026-07-14 17:25:17 -0400
+27,17883,10375,duplicates,"Same 1903 move-in claim, Sun 3/3/1903 verbatim.",2026-07-14 17:25:17 -0400,2026-07-14 17:25:17 -0400
+28,17884,10377,duplicates,"Same 1915 Treshman hose-wagon claim; adds crew and horse names, Christmas-gardens origin (Daly).",2026-07-14 17:25:17 -0400,2026-07-14 17:25:17 -0400
+29,17886,10378,related,"Compendium covering the same 1947 promotions plus 1950-64 personnel items and the Krepner correction (Engine 1, not 31).",2026-07-14 17:25:17 -0400,2026-07-14 17:25:17 -0400
+30,17886,10379,related,Compendium includes the 1960 Whitehead injury.,2026-07-14 17:25:18 -0400,2026-07-14 17:25:18 -0400
+31,17886,10380,related,Compendium includes Capt. Ruffing (d. 1964).,2026-07-14 17:25:18 -0400,2026-07-14 17:25:18 -0400
+32,17887,10383,duplicates,"Same 2010 reopening claim; adds Vozzella byline, Gamewell gong survival, Omaha-orange wagon detail.",2026-07-14 17:25:18 -0400,2026-07-14 17:25:18 -0400
+33,17901,17899,related,"The value arc: $16,000 leasehold purchase (1985) condemned at $4,400 (2022).",2026-07-14 21:42:08 -0400,2026-07-14 21:42:08 -0400
+34,17900,17898,supports,The 1987 distribution recites and closes the loop on the 1962 Platt-to-Levy ground-rent creation.,2026-07-14 21:42:09 -0400,2026-07-14 21:42:09 -0400
+35,17902,17899,supports,"Same 1985 three-parcel transaction, corner lot 2701.",2026-07-14 21:42:09 -0400,2026-07-14 21:42:09 -0400
+36,17903,17899,supports,"Same 1985 three-parcel transaction, middle lot 2703.",2026-07-14 21:42:09 -0400,2026-07-14 21:42:09 -0400
+37,17900,6447,duplicates,"Same 1987 Platt->Weitzman->Levy transfer; this claim adds the read instruments (SEB 1168/487+491), estate valuations, and the natural-love-and-affection recital.",2026-07-14 21:43:37 -0400,2026-07-14 21:43:37 -0400
+38,17901,6752,supports,"The SDAT $4,400 'sale' of 2022 is the condemnation award (MB 24810/89) - the instrument behind the data point.",2026-07-14 21:43:37 -0400,2026-07-14 21:43:37 -0400
+39,17909,17898,supports,The June 1962 on-premises auction is the market event inside the May-June 1962 lease/assignment paper shuffle.,2026-07-14 21:51:14 -0400,2026-07-14 21:51:14 -0400
+40,17911,17899,related,Delinquency begins within three years of the 14%-financed purchase.,2026-07-14 21:51:14 -0400,2026-07-14 21:51:14 -0400
+41,17912,17901,related,The condemnation closes out a lien balance that had grown to ~70x the leasehold's condemned value.,2026-07-14 21:51:14 -0400,2026-07-14 21:51:14 -0400
+42,17904,17900,related,L. Levy at 2705 in 1923; the ground rent returns to Alfred Levy in 1987 — surname continuity held at verify.,2026-07-14 21:51:14 -0400,2026-07-14 21:51:14 -0400
+43,17929,6417,contradicts,Obit: Varsalona opened Joe's Shoe Repair 'shortly after' arriving in 1919; the Polk-based stub has the Stoler family shoe store running 1913-1922. Succession likely ~1919-1922 — both retained until a directory year pins the handoff.,2026-07-14 22:05:52 -0400,2026-07-14 22:05:52 -0400
+44,17914,6417,supports,"Max Stoler resident at 2703 in 1915, inside the Polk shoe-store window.",2026-07-14 22:05:52 -0400,2026-07-14 22:05:52 -0400
+45,17917,17929,supports,First-class shoemaker wanted at 2703 in 1921 — the shop the obituary dates from 1919 is operating.,2026-07-14 22:05:52 -0400,2026-07-14 22:05:52 -0400
+46,17918,17929,supports,"'Joseph Barsnoll' selling a Landis stitcher at 2703 = Joseph Varsalona, probable typesetting mangle.",2026-07-14 22:05:52 -0400,2026-07-14 22:05:52 -0400
+47,17924,17926,supports,"Concetta Barsalona (1942, engagement ring) is Mrs. Concetta Meyls (1945, valentine) — the Varsalona spelling chain.",2026-07-14 22:05:53 -0400,2026-07-14 22:05:53 -0400
+48,17928,17927,supports,Next-day follow-up with photographs to the McCardell dispatch.,2026-07-14 22:05:53 -0400,2026-07-14 22:05:53 -0400
+49,17926,6446,related,The Meyls family the title chain shows selling 2703 to Strucko in 1985 is the household the 1945 valentine reached.,2026-07-14 22:05:53 -0400,2026-07-14 22:05:53 -0400
+50,17922,17904,related,Sandlot twins: Loyalty Club (Jewish Educational Alliance) booking from 2705 in 1923 (Homewood 2396); Rosebud A.C. (Afro-American) booking from 2703 in 1930 (Homewood 3196).,2026-07-14 22:05:53 -0400,2026-07-14 22:05:53 -0400
+51,17921,17929,supports,A Domina resident at 2703 in 1926; the 1971 obit names Joe's wife as 'the former Josephine Domina.',2026-07-14 22:05:53 -0400,2026-07-14 22:05:53 -0400
+52,17936,17935,related,"Two Neuman crashes in four days, June 1915.",2026-07-14 23:28:23 -0400,2026-07-14 23:28:23 -0400
+53,17937,17935,supports,"The $475 verdict is the lawsuit from the June 25, 1915 Baltimore-near-Front crash — Mrs. Tarlton was the pedestrian at the store window.",2026-07-14 23:28:23 -0400,2026-07-14 23:28:23 -0400
+54,17939,17929,related,A turn-key shoe-repair store for rent at 2701 in Jan 1918; Varsalona opens Joe's Shoe Repair at 2703 the following year — the corner's shoe trade moves one door north.,2026-07-14 23:28:23 -0400,2026-07-14 23:28:23 -0400
+55,17943,6415,supports,Barber help-wanted ads corroborate the Polk finding of a barbershop in the rear.,2026-07-14 23:28:23 -0400,2026-07-14 23:28:23 -0400
+56,17947,14828,supports,The 1930 ad's '3-story' matches the 1928 Sanborn's redrawn 3-story store (2-story in 1915).,2026-07-14 23:28:23 -0400,2026-07-14 23:28:23 -0400
+57,17942,6415,supports,Confectionery era attested from Jan 1922 — the Polk succession's final stage.,2026-07-14 23:28:23 -0400,2026-07-14 23:28:23 -0400
+58,17951,17926,related,The corner's two front-line war stories: Pfc. Meyls's 1945 valentine to 2703; T/Sgt. Hayes (DSC) dying at 2701 in 1972.,2026-07-14 23:28:24 -0400,2026-07-14 23:28:24 -0400
+59,17953,6445,supports,"The index record behind the title-chain stub: SEB 487/238-240, with grantor names.",2026-07-14 23:28:24 -0400,2026-07-14 23:28:24 -0400
+60,17953,17902,supports,The same-day trio mortgage (SEB 487/241-245) named Paul V. and Concetta C. Meyls as mortgagees — family financing.,2026-07-14 23:28:24 -0400,2026-07-14 23:28:24 -0400
+61,17954,6744,supports,"SDAT's $5,000 'sale' of 2022 is this condemnation (Book 24810/95-98).",2026-07-14 23:28:24 -0400,2026-07-14 23:28:24 -0400
+62,17954,17901,related,The city took the corner trio together — 2701's notice sits six pages after 2705's inquisition in the same book.,2026-07-14 23:28:24 -0400,2026-07-14 23:28:24 -0400
+63,17956,17941,supports,'Ph. Wolfe 7616 for key' in the 1921 flat ad = the Wolf owner family the 1973 deed names (surname match; held probable).,2026-07-14 23:54:02 -0400,2026-07-14 23:54:02 -0400
+64,17956,17948,related,"The 1930-36 must-sell ads' 'Wolfe 1956' phone contact is the same owner family, never finding a buyer — they held until 1973.",2026-07-14 23:54:02 -0400,2026-07-14 23:54:02 -0400
+65,17958,17929,related,"Mr. Joe died a tenant (June 1971); his widow, daughter and granddaughter bought the shop building 27 months later.",2026-07-14 23:54:02 -0400,2026-07-14 23:54:02 -0400
+66,17957,6446,supports,"The read instrument behind the 2703 title-chain stub: $32,000 for the 2701+2703 pair, grantors named.",2026-07-14 23:54:02 -0400,2026-07-14 23:54:02 -0400
+67,17958,6417,related,"Ownership vs occupancy separated: Polk's shoe-store operators (Stoler, then Varsalona) were tenants; the fee ran Wolf -> Varsalona/Meyls women (1973) -> Strucko (1985).",2026-07-14 23:54:02 -0400,2026-07-14 23:54:02 -0400
+68,17959,17944,supports,"Names the operator behind the February 1924 whole-corner listing: F. J. Coughlin, selling by-owner; a broker (Plaza 1848) took it over by April 8.",2026-07-15 00:14:20 -0400,2026-07-15 00:14:20 -0400
+69,17960,17946,supports,"The June 1929 'Munsey Building broker' identified: the office of Isaac Lobe Straus (see Mr. Rifman), 1316 Munsey Bldg.",2026-07-15 00:14:20 -0400,2026-07-15 00:14:20 -0400
+70,17960,17947,related,The same pre- and post-Crash sale campaign — still offering the 3-story fee-simple corner in April 1930.,2026-07-15 00:14:20 -0400,2026-07-15 00:14:20 -0400
+71,17961,17950,related,"The $1,200 confectionery on offer is the Jumbo's-era store of 1950.",2026-07-15 00:14:20 -0400,2026-07-15 00:14:20 -0400
+72,17963,17961,supports,"Fourteen months after the $1,200 listing: 'no reasonable offer refused or will rent with fixtures.'",2026-07-15 00:14:21 -0400,2026-07-15 00:14:21 -0400
+73,17964,17963,related,"The 1956 'will rent with fixtures' found its answer outside food retail — by March 1957 the storefront is Phoebus & Sons, plumbing and heating.",2026-07-15 00:14:21 -0400,2026-07-15 00:14:21 -0400
+74,17966,17964,related,Heating-trades continuity at the corner: Phoebus & Sons (1957) to AALL Furnace Cleaning and Repair (1968).,2026-07-15 00:14:21 -0400,2026-07-15 00:14:21 -0400
+75,17967,17966,related,"1968-69: furnace company and wig shop advertising from the same address — the multi-tenant corner (store, side store, flats).",2026-07-15 00:14:21 -0400,2026-07-15 00:14:21 -0400
+76,17968,17951,supports,The official city death list entry (styled 'Jr.') corroborating the November 23 DSC obituary.,2026-07-15 00:14:21 -0400,2026-07-15 00:14:21 -0400
+77,17970,17902,supports,"Tax arrears three years into the $38,000-at-14% family mortgage, two years before its April 1990 balloon — the financing strain surfacing in public record.",2026-07-15 00:14:22 -0400,2026-07-15 00:14:22 -0400
+78,17970,17954,related,The opening of the late-Strucko-era distress arc that ends with the city taking the trio in 2022.,2026-07-15 00:14:22 -0400,2026-07-15 00:14:22 -0400
+79,17971,17970,related,Same March 1988 delinquency list — the Strucko trio consecutive.,2026-07-15 00:14:22 -0400,2026-07-15 00:14:22 -0400
+80,17972,17931,supports,The tailor was at 2701 by his 1902 marriage license — nine years before the Easter-suit campaign.,2026-07-15 00:41:31 -0400,2026-07-15 00:41:31 -0400
+81,17976,17937,supports,"The Evening Sun's fuller verdict story: the crash was Neuman's first driving lesson, instructor aboard.",2026-07-15 00:41:32 -0400,2026-07-15 00:41:32 -0400
+82,17976,17935,supports,"Same June 24, 1915 crash — the court record corrects the Sun's 'employed by the Motor Car Company' to a first lesson.",2026-07-15 00:41:32 -0400,2026-07-15 00:41:32 -0400
+83,17977,17976,related,Sixteen days after the $475 verdict: five county lots straw-conveyed into tenancy by the entireties.,2026-07-15 00:41:32 -0400,2026-07-15 00:41:32 -0400
+84,17978,17976,related,Two months after the verdict: the 27th St lot gets the same entireties treatment via Ganster.,2026-07-15 00:41:32 -0400,2026-07-15 00:41:32 -0400
+85,17982,17959,supports,"The deed behind the 1924 ad: Coughlin bought 2701 from Neuman in Nov 1921 (deed: Thomas J.; ad: F. J. — kin or misprint, unresolved).",2026-07-15 00:41:32 -0400,2026-07-15 00:41:32 -0400
+86,17982,17944,supports,Names the 1924 seller's acquisition: Coughlin had held the corner since Nov 1921.,2026-07-15 00:41:32 -0400,2026-07-15 00:41:32 -0400
+87,17982,17941,related,The March 1921 flat ads were Neuman subdividing in his final year of ownership.,2026-07-15 00:41:33 -0400,2026-07-15 00:41:33 -0400
+88,17982,17942,supports,The confectionery era's first help-wanted (Jan 1922) comes weeks after Coughlin took title — his store.,2026-07-15 00:41:33 -0400,2026-07-15 00:41:33 -0400
+89,17985,17938,supports,Nan Neuman's wedding resolves 'Naniss Newman' of the 1917 children's roll.,2026-07-15 00:41:33 -0400,2026-07-15 00:41:33 -0400
+90,17987,17936,related,"Ida Neuman, thrown from the automobile at Eutaw and Mulberry in 1915, dies at Liberty Garden in 1939.",2026-07-15 00:41:33 -0400,2026-07-15 00:41:33 -0400
+91,17988,17931,related,The 57-year arc closes: from Easter suits at 2701 (1911) to the Jack Lewis Home (1959).,2026-07-15 00:41:33 -0400,2026-07-15 00:41:33 -0400
+92,17984,17986,related,The Rudo connection predates the marriage: Zachary Rudo conveyed the Barclay St property through Neuman in 1922; Ben H. Rudo married Rebecca Neuman in 1930.,2026-07-15 00:41:34 -0400,2026-07-15 00:41:34 -0400
+93,17990,17982,related,"Sold 2701 mid-November, bought 2705-2707 the first week of December — Neuman moved two doors up, not away.",2026-07-15 00:41:34 -0400,2026-07-15 00:41:34 -0400
+94,17991,17990,supports,"Neuman's 16-month holding of 2705: Cohen (Dec 1921) in, Mark Levy (Apr 1923) out.",2026-07-15 00:41:34 -0400,2026-07-15 00:41:34 -0400
+95,17991,17904,supports,The deed and the sandlot notices are the same April: the Levys arrive at 2705 in 1923.,2026-07-15 00:41:34 -0400,2026-07-15 00:41:34 -0400
+96,17994,17993,related,Neuman sold 2707 the year after the concrete-block zoning fight.,2026-07-15 00:41:34 -0400,2026-07-15 00:41:34 -0400
+97,17992,17990,duplicates,"One deed, two parcels: the Cohen-to-Neuman 2705-2707 conveyance recorded on both timelines.",2026-07-15 00:41:35 -0400,2026-07-15 00:41:35 -0400
+98,17995,17982,related,"Two years after buying for ~$12,000, Coughlin re-titles 2701 through William Lovitt — the corner's second straw-conveying owner in a row.",2026-07-15 00:57:58 -0400,2026-07-15 00:57:58 -0400
+99,17995,17959,related,The Lovitt round-trip precedes the March 1924 'F. J. COUGHLIN' sale ad by three months.,2026-07-15 00:57:58 -0400,2026-07-15 00:57:58 -0400
+100,17996,17960,related,"If the June 1929 decedent is 2701's owner, the August 1929 Straus-office listing is his estate selling — and the $7,000 real inventory is the corner, marked down from the $12,000 of 1921.",2026-07-15 00:57:58 -0400,2026-07-15 00:57:58 -0400
+101,17996,17947,related,The campaign still running in April 1930 fits an estate that had to sell into the Crash.,2026-07-15 00:57:58 -0400,2026-07-15 00:57:58 -0400
+102,17997,17982,related,The identity file for the 1921 buyer: candidate leads and ruled-out collisions.,2026-07-15 00:57:58 -0400,2026-07-15 00:57:58 -0400
+103,18000,17999,duplicates,"One matchbook, two parcels: the chain's HQ and its Greenmount location.",2026-07-15 01:07:21 -0400,2026-07-15 01:07:21 -0400
+104,17998,6562,related,"The block's succession: Mt. Jefferson -> Brady estate -> Terrapin/Oriole Park -> (post-1944 fire) Waverly Tower Shopping Center, pizza included.",2026-07-15 01:07:21 -0400,2026-07-15 01:07:21 -0400
+105,18001,5558,related,The corner store's real lineage (Mart's Delicatessen era) under its fictional one (Freddy's ribs).,2026-07-15 01:13:48 -0400,2026-07-15 01:13:48 -0400
+106,18001,12,related,The city demolition dataset marks 2601 'Full Demo Complete' 9/2017 — but Street View Oct 2023 shows the one-story storefront standing (see the correction incident). The two-story portion may be what fell.,2026-07-15 01:13:49 -0400,2026-07-15 01:13:49 -0400
+107,18002,5123,supports,"No buyer at $119,000: Nazli still held the parcel when he deeded it to Matthew Kelley in 2018.",2026-07-15 01:13:49 -0400,2026-07-15 01:13:49 -0400
+108,18002,12,related,"Three years after the worldwide listing coverage, the city recorded a full demolition here — yet the storefront stands in Oct 2023 imagery. Tension recorded, unresolved.",2026-07-15 01:13:49 -0400,2026-07-15 01:13:49 -0400
+109,18002,6884,related,"The razed lot at $2,683 (2020) against the $119,000 ask of 2014.",2026-07-15 01:13:49 -0400,2026-07-15 01:13:49 -0400
+110,18002,6885,related,"And $20,000 in 2024 — the full fame-to-ground price arc.",2026-07-15 01:13:49 -0400,2026-07-15 01:13:49 -0400
+111,18003,12,contradicts,RESOLVED: the demo record's blocklot 4070A-001 was the adjacent CITY lot until the 2024 consolidation; the 2601 storefront (old 4070A-003) never fell. Contradiction was an artifact of lot consolidation — kept as the record of how it was untangled.,2026-07-15 01:16:45 -0400,2026-07-15 01:16:45 -0400
+112,18004,6884,supports,"SDAT's '$2,683 sale' of 2020 decoded: the adjacent city lot, Liber 22378/1 — not the storefront.",2026-07-15 01:23:35 -0400,2026-07-15 01:23:35 -0400
+113,18004,12,supports,"The 2017 demolition's true site: the city's lot (old 4070A-001), cleared, then sold to the storefront's owners in 2020.",2026-07-15 01:23:35 -0400,2026-07-15 01:23:35 -0400
+114,18004,18003,related,The blue-fenced side yard in the Oct 2023 Street View is this lot.,2026-07-15 01:23:35 -0400,2026-07-15 01:23:35 -0400
+115,5124,6885,supports,"SDAT's '$20,000 sale' of 2024 decoded: a 50% interest buyout between co-owners Kelley and Bowen.",2026-07-15 01:23:35 -0400,2026-07-15 01:23:35 -0400
+116,5123,18002,supports,"The 2014 listing's resolution: sold October 2018 for $109,000 — $10,000 under the peak-fame ask.",2026-07-15 01:23:35 -0400,2026-07-15 01:23:35 -0400
+117,5122,18002,related,"The $119,000 ask came from an owner whose 2009 basis was $0.00 — 'Gifted.'",2026-07-15 01:23:36 -0400,2026-07-15 01:23:36 -0400
+118,18005,5123,supports,"The 2018 purchase-money note, still performing: MERS -> PrimeLending -> Nationstar.",2026-07-15 01:23:36 -0400,2026-07-15 01:23:36 -0400
+119,5118,17964,related,PROVEN one family: Edgar D. Phoebus (2601's owner to 1961) was the father of Omar E. Phoebus of 'Omar E. Phoebus & Sons' at 2701 — dockets 1939-40 + obits 1961/1965.,2026-07-15 01:23:36 -0400,2026-07-15 01:23:36 -0400
+120,18006,5118,supports,Edgar deeded 2601 in May 1961 and died suddenly October 8 — the sale as an estate put in order.,2026-07-15 01:30:03 -0400,2026-07-15 01:30:03 -0400
+121,18008,17964,supports,"The proprietor of the 1957 water-heater shop, deceased 1965 — 'and Sons' named: John, David, Robert et al.",2026-07-15 01:30:03 -0400,2026-07-15 01:30:03 -0400
+122,18008,18006,related,"Father and son, 2601 and 2701 — the Phoebus family's two corners, three years apart in death.",2026-07-15 01:30:03 -0400,2026-07-15 01:30:03 -0400
+123,18007,5119,supports,The Blackwell siblings sold 2601 to Harry Abell Realty ten months after their father Henry's death.,2026-07-15 01:30:04 -0400,2026-07-15 01:30:04 -0400
+124,18009,5124,supports,"Ground truth for the 2024 deed: Bowen, sole owner, in residence and in business at 2601.",2026-07-15 01:30:04 -0400,2026-07-15 01:30:04 -0400
+125,18009,18001,related,The Freddy's storefront's current act: a production company — Human Being Productions — working where House of Cards shot.,2026-07-15 01:30:04 -0400,2026-07-15 01:30:04 -0400
+126,18010,6562,supports,"The tabernacle photo carries the Oriole Park sign — the ballpark block's 1915-16 streetscape, camera-verified.",2026-07-15 01:37:56 -0400,2026-07-15 01:37:56 -0400
+127,18013,6417,related,"Stolers at 2703 (shoe store, 1913-22) and Lena & Louis at 3208 (merchants, 1926) — one immigrant family's ladder up the avenue? Kinship unproven.",2026-07-15 01:37:56 -0400,2026-07-15 01:37:56 -0400
+128,18011,17818,related,The annotating hand resembles the Aull-family ledger; the schoolhouse plate belongs to the same Old Land Marks orbit.,2026-07-15 01:37:56 -0400,2026-07-15 01:37:56 -0400
+129,18012,17818,related,The map's four red dots on York Road at the tollgate = the Old Land Marks anchor sites.,2026-07-15 01:37:56 -0400,2026-07-15 01:37:56 -0400
+130,18016,11310,supports,"The ca.1921 contributing resource at its midcentury peak, camera-verified 1963.",2026-07-15 01:45:21 -0400,2026-07-15 01:45:21 -0400
+131,18017,10451,supports,Still a first-run neighborhood house in 1963 — a decade past the mid-century listings evidence.,2026-07-15 01:45:22 -0400,2026-07-15 01:45:22 -0400
+132,18017,17765,related,"Forrest's 1909 picture house, 54 years on, in Kodachrome.",2026-07-15 01:45:22 -0400,2026-07-15 01:45:22 -0400
+133,18017,14918,related,"The theatre of the Rabai's-era memory block, photographed in color.",2026-07-15 01:45:22 -0400,2026-07-15 01:45:22 -0400
+134,18016,18017,related,"One year, two marquees: Waverly's twin picture houses (3211 and 3302) both first-run in 1963 Kodachrome.",2026-07-15 01:45:22 -0400,2026-07-15 01:45:22 -0400
+135,18022,18019,supports,The 1942 amateur-night stage became the 1962 twist joint — twenty years of live entertainment at 3128 before the record.,2026-07-15 01:55:12 -0400,2026-07-15 01:55:12 -0400
+136,18022,18018,related,The cafe attested from 1935; the 45 is its canon capstone.,2026-07-15 01:55:13 -0400,2026-07-15 01:55:13 -0400
+137,18023,18018,related,"Sweeney's Cafe, 3128 — member of the 1958 Park & Shop association.",2026-07-15 01:55:13 -0400,2026-07-15 01:55:13 -0400
+138,18023,18017,related,"The directory's district, five years before the Kodachromes: the same blocks at coordinated-retail high tide.",2026-07-15 01:55:13 -0400,2026-07-15 01:55:13 -0400
+139,18023,18016,related,"Same district, same era — the association page and the 3300-block marquee in color.",2026-07-15 01:55:13 -0400,2026-07-15 01:55:13 -0400
+140,18024,17904,related,"Waverly's sandlot lineage: White Sox (1908, 500 fans) -> Loyalty Club (1923, booked from 2705) -> Rosebud A.C. (1930, booked from 2703).",2026-07-15 01:55:13 -0400,2026-07-15 01:55:13 -0400
+141,18025,5118,related,"A Vinson animal hospital at 3015 in 1958; Robert L. and Evelyn D. Vinson buy 2601 in 1961 — same family? Unproven, queued.",2026-07-15 01:55:14 -0400,2026-07-15 01:55:14 -0400
+142,18026,18022,related,The avenue's record store two doors from the bar that cut its own record.,2026-07-15 01:55:14 -0400,2026-07-15 01:55:14 -0400
+143,18029,18030,duplicates,"One purchase, two parcels: Red Emma's forever home.",2026-07-15 01:58:18 -0400,2026-07-15 01:58:18 -0400
+144,18028,18000,related,The building's succession: Hooper's Restaurants general offices -> Early Attic antiques (~1974-2010s) -> Red Emma's (2021).,2026-07-15 01:58:18 -0400,2026-07-15 01:58:18 -0400
+145,18029,18028,related,From Fannin's sidewalk furniture to the co-op bookstore: the same storefront's stubborn retail life.,2026-07-15 01:58:18 -0400,2026-07-15 01:58:18 -0400
+146,18030,18022,related,The bar that got its own record in 1962 is a bookstore-cafe with a stage again — the 3128 venue lineage unbroken.,2026-07-15 01:58:19 -0400,2026-07-15 01:58:19 -0400
+147,18030,18019,related,Amateur nights with cash prizes (1942) -> readings and shows at Red Emma's (2021+): eighty years of performance at 3128.,2026-07-15 01:58:19 -0400,2026-07-15 01:58:19 -0400
+148,18030,18023,related,"Waverly Main Street — heir to the 1958 Park & Shop association — helped fund the purchase: the district organism recruiting its anchor, 63 years on.",2026-07-15 01:58:19 -0400,2026-07-15 01:58:19 -0400
+149,18032,5412,supports,The painted sign is the Conklin family firm's own artifact — the moving company behind 2602's existing canon.,2026-07-15 02:21:40 -0400,2026-07-15 02:21:40 -0400
+150,18033,17996,supports,"The deed proves the will: Coughlin devised 2701 to Kelly (ERD 164/299), and she sold it May 31, 1930 — the estate-liquidation hypothesis confirmed.",2026-07-15 03:03:21 -0400,2026-07-15 03:03:21 -0400
+151,18033,17960,supports,"The Straus-office sale campaign that began August 1929 ends here: sold to the Varsalonas, May 1930.",2026-07-15 03:03:22 -0400,2026-07-15 03:03:22 -0400
+152,18033,17947,supports,"The ad still running April 1930 found its buyer within weeks — settlement May 31, 1930.",2026-07-15 03:03:22 -0400,2026-07-15 03:03:22 -0400
+153,18033,17995,supports,"The recital pins the Lovitt round-trip's return leg: December 5, 1923, SCL 4114/511.",2026-07-15 03:03:22 -0400,2026-07-15 03:03:22 -0400
+154,18033,18037,related,"Nine years after taking 2703, the Varsalonas buy the corner next door — the shop expands into ownership of the block corner.",2026-07-15 03:03:22 -0400,2026-07-15 03:03:22 -0400
+155,18034,18033,supports,"The purchase money: $6,500 on 50 building-association shares, same morning, same notary-attorney (Lennox B. Clemens).",2026-07-15 03:03:22 -0400,2026-07-15 03:03:22 -0400
+156,18036,18035,supports,"Six months after writing the lease, McColgan sells its reversion to Mutual Life — the two halves of the 1898 split.",2026-07-15 03:03:23 -0400,2026-07-15 03:03:23 -0400
+157,18038,18037,supports,"The $3,000 purchase-money first mortgage behind the assignment — Geppi's community credit, paid off January 1924.",2026-07-15 03:03:23 -0400,2026-07-15 03:03:23 -0400
+158,18039,18037,supports,"The Stolers' $1,500 take-back completes the financing: ~$4,500 carried, no bank involved.",2026-07-15 03:03:23 -0400,2026-07-15 03:03:23 -0400
+159,18040,18035,related,"The $90 rent created May 24, 1898 is 'forever merged and extinguished' — 44 years later, by the tenants' purchase.",2026-07-15 03:03:23 -0400,2026-07-15 03:03:23 -0400
+160,18040,18036,supports,Monumental (ex-Mutual) sells the reversion it bought in 1898 to the leaseholders — the recital carries the whole pedigree.,2026-07-15 03:03:23 -0400,2026-07-15 03:03:23 -0400
+161,18041,18040,supports,"The $1,500 share-loan purchase money for the ground-rent buyout, recorded the same day.",2026-07-15 03:03:24 -0400,2026-07-15 03:03:24 -0400
+162,17958,17929,supports,"The deed recital dates Joseph's death 'on or about May 31, 1971' — a Monday; the Sun obit said he 'died unexpectedly Monday.'",2026-07-15 03:03:24 -0400,2026-07-15 03:03:24 -0400
+163,17956,17953,supports,The 1985 deed's true source instrument — its recital miscites the liber (3072 for 3074); date and parties confirmed from the image.,2026-07-15 03:03:24 -0400,2026-07-15 03:03:24 -0400
+164,17958,17957,supports,The 1985 deed's true source instrument — recital miscites the liber (3072 for 3074).,2026-07-15 03:03:24 -0400,2026-07-15 03:03:24 -0400
+165,18037,18013,related,"Same surname, same avenue: Max & Sophie Stoler leave 2703 in 1921; Lena Stoler declares for citizenship from 3208 in 1926. Kinship unproven.",2026-07-15 03:03:24 -0400,2026-07-15 03:03:24 -0400
+166,18037,11893,related,"The Sicilian block cluster: Varsalona the shoemaker at 2703 (1921), Bongiorno the grocer at 2711 — two arrival stories, five doors apart.",2026-07-15 03:03:25 -0400,2026-07-15 03:03:25 -0400
+167,18042,5118,supports,"The 1972 estate deed's recital confirmed: Phoebus -> Vinson, May 15, 1961, JFC 1070/378, read in full.",2026-07-15 03:19:54 -0400,2026-07-15 03:19:54 -0400
+168,18042,18006,supports,Edgar signed the deed by mark in May and was dead by October — the by-mark signature and the 'suddenly' of the obituary bracket his last summer.,2026-07-15 03:19:54 -0400,2026-07-15 03:19:54 -0400
+169,18043,18042,supports,The purchase-money financing recorded in the same run as the deed.,2026-07-15 03:19:54 -0400,2026-07-15 03:19:54 -0400
+170,18044,18042,supports,"The 1961 deed's recital confirmed: Barnett & Burdette -> Phoebus, January 27, 1947, MLP 7080/179, read in full.",2026-07-15 03:19:54 -0400,2026-07-15 03:19:54 -0400
+171,18045,18044,supports,"The $8,060 Augusta share loan that carried the ~$12,000 purchase.",2026-07-15 03:19:54 -0400,2026-07-15 03:19:54 -0400
+172,18046,17898,supports,The two halves of the 1962 paper shuffle: Platts lease to Levy May 17; Levy assigns to the Meylses June 25.,2026-07-15 03:19:55 -0400,2026-07-15 03:19:55 -0400
+173,18046,17909,supports,"Eighteen days after the on-premises auction, the deed lands — the Meylses read as the auction buyers, ~$4,000 by the stamps.",2026-07-15 03:19:55 -0400,2026-07-15 03:19:55 -0400
+174,18046,17899,related,"The bookends of the Meyls tenure: in at ~$4,000 in 1962, out at $16,000 in 1985 — with 2701 and 2703 sold to Strucko the same day.",2026-07-15 03:19:55 -0400,2026-07-15 03:19:55 -0400
+175,18046,17956,related,"Concetta Meyls née Varsalona in both instruments: the 1962 leasehold next door, the 1973 joint tenancy on the family's corner pair — three parcels, one family.",2026-07-15 03:19:55 -0400,2026-07-15 03:19:55 -0400
+176,18042,18043,related,"Fourth building-association purchase in this chain family: Waverly 1930 (2701), Title Permanent 1942 (2703), Augusta 1947, Yolanda 1961.",2026-07-15 03:19:55 -0400,2026-07-15 03:19:55 -0400
+177,18050,18004,duplicates,,2026-07-15 03:56:31 -0400,2026-07-15 03:56:31 -0400
+178,18047,18004,related,,2026-07-15 03:56:31 -0400,2026-07-15 03:56:31 -0400
+179,18048,18004,related,,2026-07-15 03:56:31 -0400,2026-07-15 03:56:31 -0400
+180,18049,18004,related,,2026-07-15 03:56:31 -0400,2026-07-15 03:56:31 -0400
+181,18057,18051,duplicates,"Same instrument: JB 1404/446, Pratt->McColgan 1892, one deed covering the row",2026-07-15 05:06:34 -0400,2026-07-15 05:06:34 -0400
+182,18060,18051,duplicates,"Same instrument: JB 1404/446, Pratt->McColgan 1892, one deed covering the row",2026-07-15 05:06:34 -0400,2026-07-15 05:06:34 -0400
+183,18068,18051,duplicates,"Same instrument: JB 1404/446, Pratt->McColgan 1892, one deed covering the row",2026-07-15 05:06:34 -0400,2026-07-15 05:06:34 -0400
+184,18071,18051,related,The 1892 Pratt-McColgan deed recites Pratt's earlier sale of the Coll tract (2601 block) and creates the Boone St reservation,2026-07-15 05:06:34 -0400,2026-07-15 05:06:34 -0400
+185,18074,18071,related,2565 and 2601 both sit in Edward J. Coll's tract bought from Enoch Pratt,2026-07-15 05:06:34 -0400,2026-07-15 05:06:34 -0400
+186,18052,18035,duplicates,"Same instrument: RO 1734/497, ten-lot Dail lease",2026-07-15 05:06:35 -0400,2026-07-15 05:06:35 -0400
+187,18061,18035,duplicates,"Same instrument: RO 1734/497, ten-lot Dail lease",2026-07-15 05:06:35 -0400,2026-07-15 05:06:35 -0400
+188,18069,18035,duplicates,"Same instrument: RO 1734/497, ten-lot Dail lease",2026-07-15 05:06:35 -0400,2026-07-15 05:06:35 -0400
+189,18054,18036,duplicates,"Same instrument: RO 1764/209, four-lot reversion sale to Mutual Life",2026-07-15 05:06:35 -0400,2026-07-15 05:06:35 -0400
+190,18062,18036,duplicates,"Same instrument: RO 1764/209, four-lot reversion sale to Mutual Life",2026-07-15 05:06:35 -0400,2026-07-15 05:06:35 -0400
+191,18070,18036,duplicates,"Same instrument: RO 1764/209, four-lot reversion sale to Mutual Life",2026-07-15 05:06:35 -0400,2026-07-15 05:06:35 -0400
+192,18053,18052,related,Same recording run: the builder's materials mortgage on the corner lot,2026-07-15 05:06:36 -0400,2026-07-15 05:06:36 -0400
+193,18055,18054,related,Mutual Life exits the 2701 reversion it bought in 1898,2026-07-15 05:06:36 -0400,2026-07-15 05:06:36 -0400
+194,18065,18062,related,Monumental (ex-Mutual) redeems the 2705 reversion bought in 1898,2026-07-15 05:06:36 -0400,2026-07-15 05:06:36 -0400
+195,18063,17990,supports,"The 1923 assignment's recital confirms the Dec 2, 1921 Cohen->Neuman purchase (SCL 3805/141)",2026-07-15 05:06:36 -0400,2026-07-15 05:06:36 -0400
+196,18064,18063,related,Same-run purchase-money financing,2026-07-15 05:06:36 -0400,2026-07-15 05:06:36 -0400
+197,18066,18065,related,The 1947 straw deed's recital is the source for the 1945 fee merger,2026-07-15 05:06:37 -0400,2026-07-15 05:06:37 -0400
+198,18067,17898,related,Deed (12:45 PM) and lease-back (12:46 PM) — two halves of one family transaction,2026-07-15 05:06:37 -0400,2026-07-15 05:06:37 -0400
+199,18067,18066,related,Mark Levy exercised the powers reserved in the 1947 Bach plan,2026-07-15 05:06:37 -0400,2026-07-15 05:06:37 -0400
+200,17900,18066,related,The 1987 gift to Alfred Levy restored the 1947 remainder plan,2026-07-15 05:06:37 -0400,2026-07-15 05:06:37 -0400
+201,18072,18071,related,The 1940 utility right-of-way tracks the 1892 Boone Street reservation across the Coll tract,2026-07-15 05:06:37 -0400,2026-07-15 05:06:37 -0400
+202,18073,18072,related,The 1946 mortgage takes 2601 'subject to' the 1940 Coll-City agreement,2026-07-15 05:06:37 -0400,2026-07-15 05:06:37 -0400
+203,18073,18044,related,The Aurora mortgage financed the 82-day Barnett/Burdette position released at the 1947 sale,2026-07-15 05:06:38 -0400,2026-07-15 05:06:38 -0400
+204,18076,18075,related,White's seller-financed 1991 purchase ended in the 1998 tax sale this deed forecloses,2026-07-15 05:06:38 -0400,2026-07-15 05:06:38 -0400
+205,18076,18047,related,The church's 2001 tax-deed acquisition and its 2018 donation of the same lot to the City,2026-07-15 05:06:38 -0400,2026-07-15 05:06:38 -0400
+206,18058,18059,supports,The 1915 straw pair's recital is the source for the 1908 Neuman->Stoler deed,2026-07-15 05:06:38 -0400,2026-07-15 05:06:38 -0400
+207,18058,18056,related,"Neighboring straw round-trips, 1915/1916 — the block's tenancy-rearrangement habit",2026-07-15 05:06:38 -0400,2026-07-15 05:06:38 -0400
+208,18080,18084,supports,,2026-07-15 05:51:46 -0400,2026-07-15 05:51:46 -0400
+209,18084,18080,supports,,2026-07-15 05:51:46 -0400,2026-07-15 05:51:46 -0400
+210,18078,18082,related,,2026-07-15 05:51:46 -0400,2026-07-15 05:51:46 -0400
+211,18082,18078,related,,2026-07-15 05:51:47 -0400,2026-07-15 05:51:47 -0400
+212,18085,18086,supports,,2026-07-15 06:03:17 -0400,2026-07-15 06:03:17 -0400
+213,18085,17961,supports,,2026-07-15 06:03:18 -0400,2026-07-15 06:03:18 -0400
+214,18087,18088,supports,,2026-07-15 06:03:18 -0400,2026-07-15 06:03:18 -0400
+215,18093,18094,related,,2026-07-15 06:03:18 -0400,2026-07-15 06:03:18 -0400
+216,18097,18108,related,,2026-07-15 06:38:26 -0400,2026-07-15 06:38:26 -0400
+217,18097,18115,related,,2026-07-15 06:38:27 -0400,2026-07-15 06:38:27 -0400
+218,18108,18097,related,,2026-07-15 06:38:27 -0400,2026-07-15 06:38:27 -0400
+219,18107,18108,related,,2026-07-15 06:38:27 -0400,2026-07-15 06:38:27 -0400
+220,18106,18111,supports,,2026-07-15 06:38:27 -0400,2026-07-15 06:38:27 -0400
+221,18111,18112,supports,,2026-07-15 06:38:28 -0400,2026-07-15 06:38:28 -0400
+222,18100,18101,related,,2026-07-15 06:38:28 -0400,2026-07-15 06:38:28 -0400
+223,18103,18104,supports,,2026-07-15 06:38:28 -0400,2026-07-15 06:38:28 -0400
+224,18104,18105,supports,,2026-07-15 06:38:28 -0400,2026-07-15 06:38:28 -0400
+225,18116,18106,related,,2026-07-15 06:53:07 -0400,2026-07-15 06:53:07 -0400
+226,18116,18111,related,,2026-07-15 06:53:07 -0400,2026-07-15 06:53:07 -0400
+227,18123,6589,supports,Blum 1910 bio independently corroborates Frank's Eastern League Orioles executive role in the Lefty Russell signing feature.,2026-07-15 16:48:53 -0400,2026-07-15 16:48:53 -0400
+228,18124,11153,supports,1941 dated photo corroborates the NR nomination's 'Charles Mall Hardware (1937)' occupancy at 3112.,2026-07-15 16:50:21 -0400,2026-07-15 16:50:21 -0400
+229,18810,18740,supports,"The 1923 school-property auction (Baker's $75,400 purchase) is the direct cause of PS No. 51's relocation and the site's ca.1925 redevelopment as the Baker Block.",2026-07-16 15:37:50 -0400,2026-07-16 15:37:50 -0400
+230,20981,11686,supports,The four-grade convergence reading elaborates the 1937 HOLC Residential Security Map grading (ballpark C4; adjacent D areas 30-35% Black).,2026-07-23 22:00:04 -0400,2026-07-23 22:00:04 -0400
+231,20984,20981,supports,1940 FHLBB Waverly study corroborates the four-color convergence as a defended racial seam.,2026-07-24 11:20:00 -0400,2026-07-24 11:20:00 -0400
+232,20985,20981,supports,1940 FHLBB Waverly study corroborates the four-color convergence as a defended racial seam.,2026-07-24 11:20:01 -0400,2026-07-24 11:20:01 -0400
+233,20990,20981,supports,Corroborates the redlining/boundary-maintenance seam thesis.,2026-07-24 11:30:57 -0400,2026-07-24 11:30:57 -0400
+234,20995,20981,supports,Corroborates the redlining/boundary-maintenance seam thesis.,2026-07-24 11:30:59 -0400,2026-07-24 11:30:59 -0400
+235,20996,20981,supports,Corroborates the redlining/boundary-maintenance seam thesis.,2026-07-24 11:30:59 -0400,2026-07-24 11:30:59 -0400
+236,21000,20981,supports,Corroborates the redlining/boundary-maintenance seam thesis.,2026-07-24 11:31:01 -0400,2026-07-24 11:31:01 -0400
