@@ -126,8 +126,10 @@ sale date for panel use):
 | X, Distinctiveness | mean inverse-frequency of the property's claim categories across the corridor, rescaled to [0, 1] |
 
 Also emitted per property: `source_coverage` (distinct curated sources), `curated_claims`,
-`archival_silence` (true when curated claims = 0 **and** source_coverage < protocol minimum),
-and `index_audit.parquet` mapping each property to every claim id that contributed.
+`archival_silence` (true when curated claims = 0), `silence_type` (`unsearched` when the
+property's block side has fewer than the protocol's `block_min_sources` distinct curated
+sources, else `searched`), and `index_audit.parquet` mapping each property to every claim id
+that contributed.
 
 **Stage 5a — panel.** One row per property with an arm's-length sale (protocol filter).
 Outcome `ln(last_sale_price)`. Covariates: `year_built`, `structure_sqft`, lot area (from
