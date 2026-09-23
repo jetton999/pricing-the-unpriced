@@ -429,11 +429,13 @@
       var head = el("tr", {}, [el("th", { text: "field" })]);
       bl.forEach(function (b) { head.appendChild(el("th", { text: b.captured_on })); });
       tbl.appendChild(head);
-      ["assessed_value", "avm_estimate", "owner_name", "last_sale_price", "last_sale_date", "sale_count",
+      // Omitted: avm_estimate, building_condition, vacant_notice_status (blank in every snapshot)
+      // and sale_count, public_investment_total (0 in every snapshot). See DATA_DICTIONARY.md.
+      ["assessed_value", "owner_name", "last_sale_price", "last_sale_date",
        "incident_count", "violations_12mo_count", "active_permit_count", "vacancy_indicator",
-       "vacant_notice_status", "receivership_status", "tax_certificate_active", "registered_ip_count",
-       "cdbg_investment_total", "public_investment_total", "hmda_loan_count", "hmda_median_value",
-       "hmda_denial_rate", "building_condition", "market_typology"].forEach(function (k) {
+       "receivership_status", "tax_certificate_active", "registered_ip_count",
+       "cdbg_investment_total", "hmda_loan_count", "hmda_median_value",
+       "hmda_denial_rate", "market_typology"].forEach(function (k) {
         var tr = el("tr", {}, [el("th", { text: k })]);
         bl.forEach(function (b) {
           var v = b[k];

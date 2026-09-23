@@ -1,4 +1,4 @@
-# Install once: uvx pre-commit install
+# Install once: uv run pre-commit install (after uv sync)
 # START_HERE.py (py:percent) is the source of truth; START_HERE.ipynb is the paired view.
 repos:
   - repo: https://github.com/kynan/nbstripout

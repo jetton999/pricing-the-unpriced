@@ -1,6 +1,9 @@
 # Plan: setting up the repo so students and their coding agents can work in it
 
-Written 2026-09-02. Status: proposed, not yet implemented.
+Written 2026-09-02. Status: **Phase 1 implemented** (September 2026): `AGENTS.md` + `CLAUDE.md`,
+`pyproject.toml` for `uv sync`, `bin/check`, and the jupytext pairing with nbstripout. The notebook
+stayed at the repo root as `START_HERE.py`, not under `notebooks/`, and networkx was dropped because
+the notebook no longer uses it. Phases 2 and 3 are still proposed.
 
 ## The problem
 

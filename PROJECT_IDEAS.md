@@ -3,8 +3,10 @@
 
 Two project sketches. Both run on the sponsor's Greenmount corridor knowledge base,
 exported here as CSVs. Everything students need is in this repo. The corpus
-covers 1,874 properties on Greenmount Ave, Baltimore, with ~3,600 hand-researched
-historical records back to the 1650s and ~16,700 live city feeds.
+covers 1,874 properties (1,456 on the Greenmount corridor in Baltimore, ZIP 21218, plus 418
+Baltimore Peninsula parcels in ZIP 21230), with ~3,600 hand-researched historical records back
+to the 1650s and ~16,700 rows from live city feeds. To start, run `START_HERE.ipynb` (see the
+README Quickstart).
 
 ---
 
@@ -30,8 +32,8 @@ a feature film rooted in the 1858 arson at St. John's (3009 Greenmount) and an a
 rooted in a razed home on Barclay St. Candidate uses the optimizer should be able to
 consider:
 - **Screen and audio.** A documentary, series, or podcast per block or per property. The
-  1,138 research white papers are the treatments. 115 registered trademarks and patents tied
-  to corridor addresses are story seeds.
+  1,138 research white papers are the treatments. The 101 trademarks and 11 patents in
+  `registered_ips.csv` are story seeds.
 - **Immersive experience, Meow Wolf style.** One large vacant footprint becomes a walk-through
   of the corridor's own strata: the 1688 land patents, the turnpike tollgate, Mechanics'
   Hall, the theatres, the enslavers in the chain of title. The properties with the deepest
@@ -54,7 +56,8 @@ treat the two differently.
 - Market context, per property: market typology, median sale price, days on market, and
   inventory; HUD fair market rent; median household income; walkability index and transit
   access; historic district, main street, opportunity zone, and CDBG flags. Nearby business
-  counts and walk scores are empty in this export.
+  counts and walk scores are not captured in this export: `walk_score` is blank and the
+  `nearby_*` columns are 0 in every row.
 - Assemblages: the export has no acquisition groupings. Use `block_side_id` (141 values) as
   the default unit, and let the sponsor name specific assemblages.
 - One calibration point: the sponsor can share daily sales for an operating restaurant at
@@ -75,7 +78,9 @@ defend.
 
 ---
 
-## Idea 2: Tenant-owned exit for a neighborhood REIT
+## Idea 2: From tenant to owner
+
+*A tenant-owned exit for the sponsor's neighborhood real estate trust (the REIT).*
 
 **Question.** Design a lease that starts a business as an ordinary tenant and ends with it
 owning the building, while the REIT's investors still get paid.
@@ -125,9 +130,11 @@ are now routine in Baltimore. A tenant path to owning the *building* is not.
   close in months.
 
 **What the data already holds.**
-- Property level, in the export: last sale price and date, assessed value, AVM estimate,
-  fair market rent, owner name and type, ground rent, and baseline snapshots frozen at two
-  dates in July 2026.
+- Property level, in the export: last sale price and date, assessed value, fair market
+  rent, owner name, ground rent, and baseline snapshots frozen at two dates in July 2026.
+  The `avm_estimate` column exists but is empty, and `owner_type` is blank for most rows.
+  Filter to the corridor (ZIP 21218) and drop multi-parcel portfolio sales before using
+  sale prices; notebook §5a shows how.
 - Tenant level, from the sponsor under NDA: daily sales, channel split, and P&L for the
   operating restaurant at 2731 Greenmount.
 - Deal level, from the sponsor: which properties the REIT holds, lease terms, investor

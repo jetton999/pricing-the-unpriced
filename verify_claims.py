@@ -18,7 +18,7 @@ import sys
 csv.field_size_limit(sys.maxsize)
 ROOT = os.path.dirname(os.path.abspath(__file__))
 
-# The layer split, identical to cell 3 of START_HERE.ipynb.
+# The layer split, identical to section 1 of START_HERE.ipynb and to map/app.py.
 ADMIN_PREFIXES = ("baltimore:",)
 ADMIN_EXACT = {"sdat_assessments", "sdat:owner"}
 
@@ -71,7 +71,7 @@ def main():
     check("incidents before 2000", sum(1 for y in years if y and y < 2000), 3633)
     check("incidents before 1950", sum(1 for y in years if y and y < 1950), 2259)
 
-    # Section 2: documentation depth, curated only (notebook cell 7)
+    # Section 2: documentation depth, curated only (notebook section 3)
     depth = collections.Counter(
         r["property_id"] for r in incidents
         if not is_admin(r["source"]) and (r["property_id"] or "").strip()
@@ -88,6 +88,14 @@ def main():
         check("evidence %s" % status, evidence.get(status, 0), claimed)
     check("rows with date_precision",
           sum(1 for r in incidents if (r.get("date_precision") or "").strip()), 1908)
+    graded = [r for r in incidents if (r.get("evidence_status") or "").strip()]
+    check("graded curated rows", sum(1 for r in graded if not is_admin(r["source"])), 841)
+    check("graded administrative rows", sum(1 for r in graded if is_admin(r["source"])), 487)
+    check("ungraded curated rows", sum(
+        1 for r in incidents
+        if not is_admin(r["source"]) and not (r.get("evidence_status") or "").strip()), 2761)
+    check("rows with a sensitivity flag",
+          sum(1 for r in incidents if (r.get("sensitivity") or "").strip()), 52)
 
     check("incident_links rows", len(links), 236)
     link_types = collections.Counter((r.get("link_type") or "").strip() for r in links)
@@ -97,6 +105,27 @@ def main():
 
     # Section 4: the tables
     check("properties rows", len(properties), 1874)
+    zips = collections.Counter((r.get("zip_code") or "").strip() for r in properties)
+    check("properties in ZIP 21218 (corridor)", zips.get("21218", 0), 1456)
+    check("properties in ZIP 21230 (Peninsula)", zips.get("21230", 0), 418)
+    check("properties with coordinates", sum(
+        1 for r in properties if (r.get("latitude") or "").strip() and (r.get("longitude") or "").strip()), 1791)
+    prices = [float(r["last_sale_price"]) for r in properties if (r.get("last_sale_price") or "").strip()]
+    check("properties with a last_sale_price", len(prices), 1789)
+    check("last_sale_price of $0", sum(1 for p in prices if p == 0), 419)
+    check("last_sale_price above $0", sum(1 for p in prices if p > 0), 1370)
+
+    # Columns the README says are blank, or 0, in every row of properties.csv
+    def values(column):
+        return [(r.get(column) or "").strip() for r in properties]
+    for column in ["avm_estimate", "walk_score", "transit_score", "bike_score", "building_condition",
+                   "building_quality", "num_stories", "irs_agi_per_return", "irs_homeowner_pct"]:
+        check("properties.%s blank in every row" % column, all(v == "" for v in values(column)), True)
+    for column in ["sale_count", "nearby_restaurants", "nearby_shops", "nearby_amenities_total",
+                   "public_investment_total"]:
+        check("properties.%s 0 in every row" % column,
+              all(v != "" and float(v) == 0 for v in values(column)), True)
+
     check("subjects rows", len(subjects), 3103)
     subject_types = collections.Counter((r.get("subject_type") or "").strip() for r in subjects)
     for kind, claimed in [("person", 2035), ("business", 527),
@@ -115,17 +144,31 @@ def main():
                               ("baseline_snapshots.csv", 887)]:
         check("%s rows" % filename, sum(1 for _ in rows(filename)), claimed)
 
+    registered_ips = list(rows("registered_ips.csv"))
+    ip_types = collections.Counter((r.get("ip_type") or "").strip() for r in registered_ips)
+    for ip_type, claimed in [("trademark", 101), ("patent", 11), ("entity", 3)]:
+        check("registered IP %s" % ip_type, ip_types.get(ip_type, 0), claimed)
+    check("registered IP matched to a property",
+          sum(1 for r in registered_ips if (r.get("property_id") or "").strip()), 17)
+    check("neighborhoods with bounds",
+          sum(1 for r in rows("neighborhoods.csv") if (r.get("bounds") or "").strip()), 0)
+
     # Section 4b: the t0 baseline
-    captures = collections.Counter(
-        (r.get("captured_on") or "")[:10] for r in rows("baseline_snapshots.csv"))
+    baseline = list(rows("baseline_snapshots.csv"))
+    captures = collections.Counter((r.get("captured_on") or "")[:10] for r in baseline)
     check("baseline capture 2026-07-13", captures.get("2026-07-13", 0), 351)
     check("baseline capture 2026-07-22", captures.get("2026-07-22", 0), 536)
+    keys = {"property_id", "captured_on", "captured_at"}
+    fields = [c for c in baseline[0] if c not in keys]
+    check("baseline fields per snapshot", len(fields), 28)
+    captured_empty = [c for c in fields if all((r.get(c) or "").strip() in ("", "0") for r in baseline)]
+    check("baseline fields captured empty or 0", len(captured_empty), 7)
 
     # Earliest dated curated record (the README's "back to 1658" claim)
     curated_years = [year_of(r) for r in incidents if not is_admin(r["source"])]
     check("earliest curated record year", min(y for y in curated_years if y), 1658)
 
-    # The graph, built exactly as notebook cell 11 builds it: property <-> subject,
+    # The people-place graph from the README's incident_subjects row: property <-> subject,
     # joined through the incident, parallel edges collapsed.
     incident_to_property = {r["id"]: r["property_id"] for r in incidents}
     subject_ids = {r["id"] for r in subjects}

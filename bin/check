@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+# Run every check in the repo. Exits nonzero on the first failure.
+#
+#   bin/check
+#
+# 1. Every number in README.md matches the CSVs.
+# 2. The map app loads the data and its layer split agrees.
+# 3. START_HERE.py and START_HERE.ipynb are in sync.
+# 4. The notebook runs top to bottom without an error.
+set -euo pipefail
+cd "$(dirname "$0")/.."
+
+echo "==> README claims (verify_claims.py)"
+python3 verify_claims.py
+
+echo "==> map data (map/app.py --check)"
+python3 map/app.py --check > /dev/null
+echo "check passed"
+
+echo "==> notebook pairing (jupytext --sync)"
+uv run --quiet jupytext --quiet --sync START_HERE.py
+echo "in sync"
+
+echo "==> notebook runs top to bottom (nbconvert --execute)"
+out="$(mktemp -d)"
+trap 'rm -rf "$out"' EXIT
+uv run --quiet jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 \
+  START_HERE.ipynb --output-dir "$out" --log-level WARN
+echo "notebook ran cleanly"
+
+echo "All checks passed."

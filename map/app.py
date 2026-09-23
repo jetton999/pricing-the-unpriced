@@ -27,7 +27,7 @@ EXPECTED_INCIDENTS = 20308
 EXPECTED_CURATED = 3602
 
 # ---------------------------------------------------------------------------
-# Layer rule. Identical to START_HERE.ipynb cell 3 and verify_claims.py.
+# Layer rule. Identical to START_HERE.ipynb section 1 and verify_claims.py.
 #
 # Administrative = every `baltimore:*` feed, plus the two SDAT feeds
 # (`sdat_assessments` is a bare key but is a machine-ingested assessment roll,

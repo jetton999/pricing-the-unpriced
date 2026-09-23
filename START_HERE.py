@@ -21,23 +21,27 @@
 # with a per-property starter table for each of the two project ideas in `README.md`:
 #
 # - **Idea 1.** Heritage-anchored highest and best use: what each address *was*, and what it could be.
-# - **Idea 2.** Tenant-owned exit: a lease that starts a business as a tenant and ends with it owning the building.
+# - **Idea 2.** From tenant to owner: a lease that starts a business as a tenant and ends with it owning the building.
 #
-# Sections 1–3 are the data tour everyone needs. Section 4 is for Idea 1, section 5 for Idea 2,
+# Sections 0–3 are the data tour everyone needs. Section 4 is for Idea 1, section 5 for Idea 2,
 # section 6 is the starting line for both. The `map/` app shows the same data on a map, one
 # property at a time, and is the quickest way to look at any address this notebook names.
 #
-# Put this file in the same folder as the CSVs and run top to bottom.
-# Requires: `pandas`, `matplotlib`, `networkx`.
+# **Setup:** `uv sync`, then `uv run jupyter lab START_HERE.ipynb` (see the README Quickstart).
+# Run top to bottom. It takes under a minute.
 #
 # `START_HERE.py` and `START_HERE.ipynb` are the same notebook (jupytext pairing). The `.py`
 # is the source of truth: edit it, or have your coding agent edit it, then run
-# `uvx jupytext --sync START_HERE.py` to refresh the `.ipynb`. Opening either file in
+# `uv run jupytext --sync START_HERE.py` to refresh the `.ipynb`. Opening either file in
 # VS Code, Cursor, or JupyterLab gives you the notebook view. Outputs are never committed.
 #
 
 # %%
-import pandas as pd, matplotlib.pyplot as plt, networkx as nx, collections
+import collections
+
+import matplotlib.pyplot as plt
+import pandas as pd
+
 pd.set_option("display.width", 160); pd.set_option("display.max_columns", 40)
 
 props   = pd.read_csv("properties.csv", low_memory=False)
@@ -55,6 +59,28 @@ for name, df in [("properties",props),("incidents",inc),("subjects",subj),
                  ("registered_ips",rips),("parcels",parcels),("grant_matches",grants),
                  ("baseline_snapshots",base)]:
     print(f"{name:<20} {len(df):>7,} rows   {len(df.columns):>3} cols")
+
+# %% [markdown]
+# ## 0. Two traps in `properties.csv`
+#
+# **Two geographies.** Most properties are on the Greenmount corridor (ZIP 21218). The rest are
+# Baltimore Peninsula (Port Covington) parcels in ZIP 21230, several miles south. Anything that
+# claims to describe Greenmount should filter on the `corridor` flag added below.
+#
+# **Empty and placeholder columns.** Some columns exist in the schema but hold no data in this
+# export. Some are blank. Others are filled with `0` in every row, which is the more dangerous
+# case: a 0 looks like a measurement ("no restaurants nearby", "never sold") when it is not one.
+#
+
+# %%
+props["corridor"] = props["zip_code"] == 21218
+print(f"Greenmount corridor (ZIP 21218):  {props.corridor.sum():>5,}")
+print(f"Baltimore Peninsula (ZIP 21230):  {(props.zip_code == 21230).sum():>5,}\n")
+
+empty    = [c for c in props.columns if props[c].isna().all()]
+all_zero = [c for c in props.select_dtypes("number").columns if (props[c] == 0).all()]
+print("blank in every row:        ", ", ".join(empty))
+print("0 in every row (not data): ", ", ".join(all_zero))
 
 # %% [markdown]
 # ## 1. The first thing you need to know
@@ -91,8 +117,11 @@ print(cur["source"].value_counts().head(15))
 #
 
 # %%
-print("evidence_status:\n", cur["evidence_status"].fillna("(ungraded)").value_counts(), "\n")
-print("date_precision:\n", cur["date_precision"].fillna("(unset)").value_counts(), "\n")
+# Both layers carry grades: ~490 administrative rows (mostly sdat:owner) are marked verified too.
+print("evidence_status by layer:")
+print(pd.crosstab(inc["evidence_status"].fillna("(ungraded)"), inc["layer"], margins=True), "\n")
+print("date_precision by layer:")
+print(pd.crosstab(inc["date_precision"].fillna("(unset)"), inc["layer"], margins=True), "\n")
 print("sensitivity flags:\n", inc["sensitivity"].dropna().value_counts(), "\n")
 print("incident-to-incident link types (the record already encodes disagreement):")
 print(ilink["link_type"].value_counts())
@@ -119,10 +148,14 @@ print(depth.head(12).to_string(index=False))
 d = inc[(inc.year >= 1650) & (inc.year <= 2029)].copy()
 d["decade"] = (d.year // 10 * 10).astype(int)
 piv = d.pivot_table(index="decade", columns="layer", values="id", aggfunc="count").fillna(0)
-ax = piv.plot(kind="bar", stacked=True, figsize=(14,4.5), width=.85,
-              color={"administrative":"#8a8377","curated":"#e8a82d"})
-ax.set_yscale("symlog", linthresh=10); ax.set_xlabel(""); ax.set_ylabel("incidents")
-ax.set_title("Documented incidents by decade: curated vs administrative")
+# One panel per layer, each on its own linear axis. Stacking them on a log axis would make the
+# small curated counts look as tall as the administrative ones.
+fig, axes = plt.subplots(2, 1, figsize=(14, 6), sharex=True)
+for ax, layer, color in zip(axes, ["curated", "administrative"], ["#e8a82d", "#8a8377"]):
+    piv[layer].plot(kind="bar", ax=ax, width=.85, color=color)
+    ax.set_ylabel("incidents"); ax.set_xlabel("")
+    ax.set_title(f"{layer} layer: {int(piv[layer].sum()):,} dated incidents", loc="left")
+fig.suptitle("Documented incidents by decade")
 plt.tight_layout(); plt.show()
 print("earliest dated record:", int(d.year.min()), " | pre-1950:", int((d.year < 1950).sum()))
 
@@ -144,8 +177,13 @@ uses = (isub[isub.relationship == "operated_at"]
                  left_on="property_incident_id", right_on="id")
           .merge(subj[["id", "name", "subject_type"]], left_on="subject_id", right_on="id",
                  suffixes=("", "_subj")))
-print(f"operated_at links across the corpus: {len(uses):,} "
-      f"at {uses.property_id.nunique():,} properties\n")
+print("operated_at links by subject type:")
+print(uses.subject_type.value_counts().to_string(), "\n")
+
+# operated_at also links proprietors (people), organizations, and families. Keep businesses only,
+# so the business list, the business count, and the first/last-use span all describe the same set.
+uses = uses[uses.subject_type == "business"]
+print(f"business operated_at links: {len(uses):,} at {uses.property_id.nunique():,} properties\n")
 top = int(uses.property_id.value_counts().index[0])   # most business links
 addr = props.set_index("id")["address"].to_dict()
 
@@ -167,12 +205,11 @@ print(hist.sort_values("year")[["year", "source", "summary"]].head(10).to_string
 #
 
 # %%
-biz_count = (uses[uses.subject_type == "business"]
-               .groupby("property_id")["name"].nunique().rename("distinct_businesses"))
+biz_count = uses.groupby("property_id")["name"].nunique().rename("distinct_businesses")
 use_recs = cur[cur.source.isin(USE_SOURCES)].groupby("property_id").size().rename("use_records")
 span = uses.groupby("property_id")["year"].agg(first_use="min", last_use="max")
 
-idea1 = (props[["id","address","block_side_id","zoning_code","year_built","structure_sqft",
+idea1 = (props[["id","address","corridor","block_side_id","zoning_code","year_built","structure_sqft",
                 "vacancy_indicator","has_active_business","market_typology","main_street_district"]]
            .rename(columns={"id":"property_id"})
            .merge(biz_count, left_on="property_id", right_index=True, how="left")
@@ -197,9 +234,10 @@ print(ready.sort_values("distinct_businesses", ascending=False)
 # business trading today. That is the crude baseline for the optimizer's saturation
 # constraint: three of the same thing on one block side is the failure case.
 #
-# One gap to know about: the `nearby_restaurants`, `nearby_shops`, and `walk_score` columns
-# are empty in this export. The current business mix has to come from the `operated_at`
-# links with recent years, or from an outside source such as Open Baltimore liquor licenses.
+# One gap to know about (section 0): `walk_score` is blank, and `nearby_restaurants`,
+# `nearby_shops`, and `nearby_amenities_total` are 0 in every row, a placeholder rather than a
+# count. The current business mix has to come from the `operated_at` links with recent years,
+# or from an outside source such as Open Baltimore liquor licenses.
 #
 
 # %%
@@ -242,38 +280,54 @@ for (a, b), n in pair.most_common(8):
 # the building. The export carries the property side of that: what buildings last sold for,
 # what they are assessed at, and the fair market rent in the ZIP. The tenant side (sales and
 # P&L for the operating restaurant at 2731 Greenmount) and the deal side (which buildings the
-# trust holds, investor targets) come from the sponsor under NDA.
+# sponsor's real estate trust holds, investor targets) come from the sponsor under NDA.
 #
 # ### 5a. What commercial buildings on the corridor cost
 #
+# Two filters matter here, and both are easy to miss:
+#
+# - **Corridor only.** Without it, Baltimore Peninsula (ZIP 21230) sales dominate and the
+#   median roughly quadruples.
+# - **No portfolio deals.** When several parcels sell together, every parcel carries the
+#   *whole* deal price (one $4.8M deal appears on 26 parcels). Dropping any price and date shared
+#   by more than one parcel keeps one-building sales only.
+#
+# The `> $10k` cut drops $0 and nominal transfers. It is a crude screen, not a verified
+# arm's-length test.
+#
 
 # %%
-fin = props[["id","address","block_side_id","zoning_code","structure_sqft","year_built",
+fin = props[["id","address","corridor","block_side_id","zoning_code","structure_sqft","year_built",
              "last_sale_price","last_sale_date","assessed_value","fair_market_rent_2br",
              "ground_rent","vacancy_indicator","has_active_business"]].copy()
 fin["zoning_code"] = fin["zoning_code"].str.strip()
 fin["commercial"] = fin.zoning_code.fillna("").str.match(r"^(C|PC)")
-arm = fin[fin.commercial & (fin.last_sale_price > 10_000)]   # drop nominal transfers
-arm = arm.assign(price_per_sqft=arm.last_sale_price / arm.structure_sqft)
 
-print(f"commercial-zoned properties: {int(fin.commercial.sum()):,}; "
-      f"with an arm's-length sale on record: {len(arm):,}\n")
-print("last sale price (commercial, > $10k):")
-print(arm.last_sale_price.describe(percentiles=[.25,.5,.75]).round(0).to_string(), "\n")
+sold = fin[fin.corridor & fin.commercial & (fin.last_sale_price > 10_000)]
+portfolio = sold.duplicated(["last_sale_price", "last_sale_date"], keep=False)
+sales = sold[~portfolio]
+sales = sales.assign(price_per_sqft=sales.last_sale_price / sales.structure_sqft)
+
+print(f"commercial-zoned corridor properties: {int((fin.corridor & fin.commercial).sum()):,}")
+print(f"  with a sale over $10k:              {len(sold):,}")
+print(f"  of which portfolio-deal rows:       {int(portfolio.sum()):,}  (dropped)")
+print(f"  single-building sales used below:   {len(sales):,}\n")
+print("last sale price:")
+print(sales.last_sale_price.describe(percentiles=[.25,.5,.75]).round(0).to_string(), "\n")
 print("price per structure sqft:")
-ppsf = arm.price_per_sqft[(arm.structure_sqft > 0)]
+ppsf = sales.price_per_sqft[(sales.structure_sqft > 0)]
 print(ppsf.describe(percentiles=[.25,.5,.75]).round(0).to_string(), "\n")
-assessed = arm[arm.assessed_value > 0]
+assessed = sales[sales.assessed_value > 0]
 print(f"assessed value vs last sale, {len(assessed):,} rows with an assessment on file "
       "(assessed is administrative, not a market price):")
 print((assessed.assessed_value / assessed.last_sale_price).describe(percentiles=[.25,.5,.75]).round(2).to_string())
-print("\nnote: avm_estimate is empty in this export; fair_market_rent_2br is a residential ZIP figure, "
-      "useful only as an order-of-magnitude anchor.")
+print("\nnote: avm_estimate is blank and sale_count is 0 in every row, so neither is usable. "
+      "fair_market_rent_2br is a residential ZIP figure, useful only as an order-of-magnitude anchor.")
 
 # %% [markdown]
 # ### 5b. The baseline: what was known on two days in July 2026
 #
-# `baseline_snapshots.csv` freezes each property on a capture date across 29 fields, including
+# `baseline_snapshots.csv` freezes each property on a capture date across 28 fields, including
 # `incident_count` and `registered_ip_count`, the documentation depth at that moment. A lease
 # that credits a tenant for improving a building needs a before line; this is it.
 #
@@ -281,7 +335,8 @@ print("\nnote: avm_estimate is empty in this export; fair_market_rent_2br is a r
 # %%
 print(base.captured_on.value_counts().sort_index(), "\n")
 snap = base.sort_values("captured_on").drop_duplicates("property_id", keep="last")
-print("fields frozen per property:", len(base.columns) - 3)
+KEYS = ["property_id", "captured_on", "captured_at"]   # identify the snapshot; not frozen fields
+print("fields frozen per property:", len(base.columns) - len(KEYS))
 print(snap[["property_id","captured_on","assessed_value","last_sale_price","vacancy_indicator",
             "incident_count","registered_ip_count"]].head(8).to_string(index=False))
 
@@ -302,15 +357,15 @@ def lease_to_own(price, rent_month, credit_share=0.25, ltv=0.75, rate=0.07, term
     costs per month once the option is exercised."""
     down = price * (1 - ltv)
     credit_year = rent_month * 12 * credit_share
-    years_to_option = down / credit_year
-    r = rate / 12; n = term_years * 12
-    mortgage_month = price * ltv * r / (1 - (1 + r) ** -n)
+    years_to_option = down / credit_year if credit_year else float("inf")   # no credit: never
+    loan, r, n = price * ltv, rate / 12, term_years * 12
+    mortgage_month = loan * r / (1 - (1 + r) ** -n) if r else loan / n       # rate=0: straight-line
     return dict(price=price, rent_month=rent_month, down_payment=round(down),
                 years_to_option=round(years_to_option, 1),
                 mortgage_month=round(mortgage_month),
                 rent_vs_mortgage=round(mortgage_month / rent_month, 2))
 
-example = arm.sort_values("last_sale_date", ascending=False).iloc[0]
+example = sales.sort_values("last_sale_date", ascending=False).iloc[0]
 price = float(example.last_sale_price)
 print(f"example: {example.address}  last sold {example.last_sale_date} for ${price:,.0f}\n")
 rows = [lease_to_own(price, rent) for rent in (1500, 2500, 3500, 5000)]
@@ -340,13 +395,14 @@ start = (idea1.merge(fin[["id","last_sale_price","last_sale_date","assessed_valu
               .merge(cur.groupby("property_id").size().rename("curated_incidents"),
                      left_on="property_id", right_index=True, how="left")
               .fillna({"curated_incidents":0}))
-cols = ["property_id","address","block_side_id","zoning_code","commercial","year_built","structure_sqft",
+cols = ["property_id","address","corridor","block_side_id","zoning_code","commercial","year_built","structure_sqft",
         "vacancy_indicator","has_active_business","curated_incidents","distinct_businesses",
         "use_records","first_use","last_use","last_sale_price","last_sale_date","assessed_value"]
 start = start[cols].sort_values("curated_incidents", ascending=False)
 print("Starter table, one row per property, for both ideas:")
 print(start.head(10).to_string(index=False))
-print(f"\nrows: {len(start):,} | commercial: {int(start.commercial.sum()):,} | "
+print(f"\nrows: {len(start):,} | on the corridor: {int(start.corridor.sum()):,} | "
+      f"commercial: {int(start.commercial.sum()):,} | "
       f"with a use history: {int((start.distinct_businesses > 0).sum()):,} | "
-      f"with a sale price: {start.last_sale_price.notna().sum():,}")
+      f"with a nonzero sale price: {int((start.last_sale_price > 0).sum()):,}")
 # start.to_csv("starter_table.csv", index=False)   # uncomment to keep it

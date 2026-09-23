@@ -5,6 +5,8 @@ http://localhost:8765. `python3 map/app.py --check` loads the data, prints row c
 per-source layer table, and exits 1 if properties ≠ 1,874, incidents ≠ 20,308, or curated ≠ 3,602.
 
 Markers are the 1,791 properties with coordinates, coloured by curated depth (0 / 1–9 / 10–24 / 25+).
+Most sit on the Greenmount corridor; the cluster several miles south is the 418 Baltimore Peninsula
+parcels (ZIP 21230) that share the export.
 Click one for a right-hand panel: key fields, a **History** timeline of curated incidents (oldest
 first; dashed dots mark `circa`/`decade`/`range`/unset precision), the **Administrative feed** (newest
 first, 50 at a time), people & businesses, registered IP, grant matches, and the two July 2026
