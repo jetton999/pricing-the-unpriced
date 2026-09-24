@@ -3,7 +3,7 @@ property_incidents: 10614
 subjects: 3094
 incident_subjects: 5459
 incident_links: 236
-registered_ips: 26
+registered_ips: 37
 property_parcels: 786
 neighborhoods: 5
 grant_program_matches: 5382

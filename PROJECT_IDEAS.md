@@ -32,8 +32,8 @@ a feature film rooted in the 1858 arson at St. John's (3009 Greenmount) and an a
 rooted in a razed home on Barclay St. Candidate uses the optimizer should be able to
 consider:
 - **Screen and audio.** A documentary, series, or podcast per block or per property. The
-  1,138 research white papers are the treatments. The 23 trademarks in
-  `registered_ips.csv` are story seeds.
+  1,138 research white papers are the treatments. The 23 trademarks and 11 patents
+  in `registered_ips.csv` are story seeds, the Ouija board among them.
 - **Immersive experience, Meow Wolf style.** One large vacant footprint becomes a walk-through
   of the corridor's own strata: the 1688 land patents, the turnpike tollgate, Mechanics'
   Hall, the theatres, the enslavers in the chain of title. The properties with the deepest

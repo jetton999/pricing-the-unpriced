@@ -140,14 +140,14 @@ def main():
                                   ("interred_at", 596), ("purchased", 455), ("lived_at", 280)]:
         check("relationship %s" % relationship, relationships.get(relationship, 0), claimed)
 
-    for filename, claimed in [("registered_ips.csv", 26), ("property_parcels.csv", 786),
+    for filename, claimed in [("registered_ips.csv", 37), ("property_parcels.csv", 786),
                               ("grant_program_matches.csv", 5382), ("neighborhoods.csv", 5),
                               ("baseline_snapshots.csv", 883)]:
         check("%s rows" % filename, sum(1 for _ in rows(filename)), claimed)
 
     registered_ips = list(rows("registered_ips.csv"))
     ip_types = collections.Counter((r.get("ip_type") or "").strip() for r in registered_ips)
-    for ip_type, claimed in [("trademark", 23), ("entity", 3)]:
+    for ip_type, claimed in [("trademark", 23), ("patent", 11), ("entity", 3)]:
         check("registered IP %s" % ip_type, ip_types.get(ip_type, 0), claimed)
     check("registered IP matched to a property",
           sum(1 for r in registered_ips if (r.get("property_id") or "").strip()), 16)

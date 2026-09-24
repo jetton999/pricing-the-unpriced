@@ -175,7 +175,7 @@ and validating this grading is committed capstone work.
 | `subjects.csv` | 3,094 | Graph nodes: 2,034 people, 522 businesses, 297 organizations, 138 families, plus places, teams, congregations. |
 | `incident_subjects.csv` | 5,459 | Subject↔incident edges: `owned` (924), `operated_at` (678), `sold` (660), `interred_at` (596), `purchased` (455), `lived_at` (280), and more. Joined through incidents, subjects and properties form a graph of 3,608 nodes and 3,762 edges. |
 | `incident_links.csv` | 236 | Incident↔incident edges, including contradictions. |
-| `registered_ips.csv` | 26 | 23 trademarks and 3 entity registrations with an address of record in the study area, with match confidence. 16 are matched to a specific property. |
+| `registered_ips.csv` | 37 | 23 trademarks and 3 entity registrations with an address of record in the study area, plus 11 historical patents tied to the corridor by people rather than address (the Ouija board, whose inventor is buried at Green Mount Cemetery, and 10 unconfirmed surname leads to corridor families). 16 are matched to a specific property. |
 | `property_parcels.csv` | 786 | City parcel roll for the study area's blocks: address, blocklot, owner, land use, sqft. The linkage layer. |
 | `grant_program_matches.csv` | 5,382 | Property↔program matches behind the live "Improve Your Property" tool. |
 | `neighborhoods.csv` | 5 | Neighborhood names only. The `bounds` column is empty in this export. |
@@ -190,7 +190,7 @@ coordinates take the distance of a same-street neighbour within ten house number
 "Old Waverly Village — York Road" record is kept by hand (York Road is Greenmount's historic
 name). Every other table follows its properties: incidents by `property_id`; subjects, subject
 links, and incident links through those incidents; parcels and unmatched registered IP by street
-and hundred-block. The cut dropped 5 curated records and no rows with a `sensitivity` flag. The
+and hundred-block. The 11 patents have only a city-level address and are kept whole. The cut dropped 5 curated records and no rows with a `sensitivity` flag. The
 full pre-cut export is in this repository's git history (commit `e00b32b`).
 
 **Columns that look like data but are not.** Some `properties.csv` columns are blank in every
@@ -250,7 +250,7 @@ work plan, risk register. It was written before the CSVs here were exported, so 
 underneath it. Where the proposal says "~354 documented properties, ~2,600 documented incidents,"
 this export holds 673 properties and 10,614 incidents (3,597 of them curated). The proposal's
 "~150 registered intellectual-property records" counted the whole knowledge base; the study area
-holds 26. The CSVs are authoritative.
+holds 37. The CSVs are authoritative.
 
 `verify_claims.py` checks every number in this README against the CSVs. It is standard library
 only: run `python3 verify_claims.py`. If it ever disagrees with this README, the data wins and the

@@ -168,7 +168,7 @@ Joins: `property_incidents.property_id` → `properties.id`; `incident_subjects`
 
 ## registered_ips
 
-`registered_ips.csv` · 26 rows. Trademarks, patents, and entity registrations, each with an address of record and a match confidence.
+`registered_ips.csv` · 37 rows. Trademarks, patents, and entity registrations, each with an address of record and a match confidence.
 
 | Column | Type | Filled | Notes |
 |---|---|---|---|
@@ -176,13 +176,13 @@ Joins: `property_incidents.property_id` → `properties.id`; `incident_subjects`
 | `address_of_record` | string | 100% |  |
 | `created_at` | datetime | 100% |  |
 | `data` | jsonb | 100% | JSON payload; source-specific detail. |
-| `filing_date` | date | 100% |  |
-| `grant_date` | date | 27% |  |
-| `ip_type` | string | 100% | `trademark` (23), `entity` (3). |
-| `match_confidence` | string | 100% | `high` or `medium`: how sure the address match is. |
+| `filing_date` | date | 73% |  |
+| `grant_date` | date | 49% |  |
+| `ip_type` | string | 100% | `trademark` (23), `patent` (11), `entity` (3). Patents have a city-level address only. |
+| `match_confidence` | string | 100% | `high`, `medium`, `low`, `inferred`: how sure the match is. `inferred` patents are unconfirmed surname leads. |
 | `number` | string | 100% |  |
 | `owner_name` | string | 100% |  |
-| `property_id` | bigint | 62% | → `properties.id`; set for 16 of 26 rows. |
+| `property_id` | bigint | 43% | → `properties.id`; set for 16 of 37 rows. |
 | `source` | string | 100% |  |
 | `status` | string | 100% | `registered`, `abandoned`, `expired`, `pending`, `cancelled`, `forfeited`. |
 | `title` | string | 100% |  |
