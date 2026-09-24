@@ -29,7 +29,7 @@ independently. They carry their own terms.
 
 ## A note on the sensitivity flags
 
-52 of the 20,308 incident rows carry a `sensitivity` value: `trauma`, `personal_rights`,
+52 of the 10,614 incident rows carry a `sensitivity` value: `trauma`, `personal_rights`,
 `displacement`, `commercialization`. Every one of them is sourced to published newspaper
 reporting, federal court records, land records, or a public CHAP landmark report. Nothing in
 this package is private personal data.

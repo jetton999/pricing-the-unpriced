@@ -1,6 +1,9 @@
 # Plan: setting up the repo so students and their coding agents can work in it
 
-Written 2026-09-02. Status: proposed, not yet implemented.
+Written 2026-09-02. Status: **Phase 1 implemented** (September 2026): `AGENTS.md` + `CLAUDE.md`,
+`pyproject.toml` for `uv sync`, `bin/check`, and the jupytext pairing with nbstripout. The notebook
+stayed at the repo root as `START_HERE.py`, not under `notebooks/`, and networkx was dropped because
+the notebook no longer uses it. Phases 2 and 3 are still proposed.
 
 ## The problem
 
@@ -29,25 +32,28 @@ repo works and one command that tells it whether it broke anything.
      execution command below. Say "run these before you say you are done."
    - Where things are: `DATA_DICTIONARY.md` for columns, `docs/worker-owned-exits.md` for
      idea 2 cases, `LICENSE.md` for the sensitivity rule.
-   - Rules: edit `notebooks/*.py`, never the `.ipynb`; never commit outputs; never drop
+   - Rules: edit `START_HERE.py`, never the `.ipynb`; never commit outputs; never drop
      rows with a `sensitivity` flag; assessed value is not a market price; `avm_estimate`,
-     `nearby_*`, `walk_score`, and `building_condition` are empty in this export.
+     `walk_score`, and `building_condition` are blank in this export, and `nearby_*` is a 0
+     placeholder in every row, not a count.
    - The team's disclosure policy for agent-written code, once faculty agree it.
 
-2. **`pyproject.toml` managed by `uv`.** Dependencies: pandas, matplotlib, networkx,
-   jupytext, ipykernel, nbconvert, pytest. Then `uv sync` gives every student and every
-   agent the same environment with no install instructions. Keep a one-line pip fallback
-   in the README for students without `uv`.
+2. **`pyproject.toml` managed by `uv`.** Dependencies: pandas, matplotlib, jupyterlab
+   (which brings ipykernel and nbconvert), and jupytext, plus nbstripout and pre-commit as
+   dev tools. networkx is not needed, and pytest waits for Phase 2's tests. Then `uv sync`
+   gives every student and every agent the same environment with no install instructions.
+   Keep a pip fallback in the README for students without `uv`.
 
 3. **`bin/check`**, a shell script the agent can run:
    ```
    python3 verify_claims.py
    python3 map/app.py --check
-   uv run jupytext --sync notebooks/*.py
+   <check that START_HERE.py and START_HERE.ipynb match>
    uv run jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 \
      START_HERE.ipynb --output-dir /tmp/nb-check
    ```
-   Exit nonzero on any failure. Name it in `AGENTS.md`.
+   Exit nonzero on any failure. Name it in `AGENTS.md`. The pairing check compares the two
+   files read-only rather than running `jupytext --sync`, so a check never rewrites a file.
 
 4. **Pair the notebook with a percent script.** `uv run jupytext --set-formats
    ipynb,py:percent START_HERE.ipynb` creates `START_HERE.py`. Commit both. Add
@@ -64,8 +70,8 @@ repo works and one command that tells it whether it broke anything.
    agent asked to "add a column to the starter table" then edits one function with a
    test, not a notebook cell. Keep it pandas-only; `map/app.py` stays stdlib.
 
-6. **`tests/test_greenmount.py`** with pytest: row counts, the 3,602 / 16,706 split, the
-   316 / 68 / 22 depth tiers, 678 `operated_at` links, and one use-history spot check
+6. **`tests/test_greenmount.py`** with pytest: row counts, the 3,597 / 7,017 split, the
+   312 / 68 / 22 depth tiers, 678 `operated_at` links, and one use-history spot check
    (3313 Greenmount has 15 distinct businesses). Add `uv run pytest -q` to `bin/check`.
 
 7. **Split the notebook by idea.** `notebooks/00_data_tour.py` (sections 1–3),

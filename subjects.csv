@@ -56,17 +56,13 @@ id,name,subject_type,slug,data,created_at,updated_at
 56,John T. Spellman Jr.,family,john-t-spellman-jr,"{""qualifiers"":[""Spellman family""]}",2026-07-13 14:10:40 -0400,2026-07-22 17:54:17 -0400
 57,Kang family,family,kang-family,{},2026-07-13 14:10:40 -0400,2026-07-13 14:10:40 -0400
 58,Kriger Drug Stores,business,kriger-drug-stores,{},2026-07-13 14:10:40 -0400,2026-07-13 14:10:40 -0400
-59,Mayflower Buffet,business,mayflower-buffet,{},2026-07-13 14:10:40 -0400,2026-07-13 14:10:40 -0400
 60,Mechanics' Hall,place,mechanics-hall,{},2026-07-13 14:10:40 -0400,2026-07-13 14:10:40 -0400
 61,Melvin C. Paul,person,melvin-c-paul,{},2026-07-13 14:10:40 -0400,2026-07-13 14:10:40 -0400
-62,Middlebury College,organization,middlebury-college,{},2026-07-13 14:10:40 -0400,2026-07-13 14:10:40 -0400
 63,Mildred Price hairdressing shop,business,mildred-price-hairdressing-shop,{},2026-07-13 14:10:40 -0400,2026-07-13 14:10:40 -0400
 65,Miller's Financial,business,miller-s-financial,{},2026-07-13 14:10:40 -0400,2026-07-13 14:10:40 -0400
-66,Moses Zalis Furniture,business,moses-zalis-furniture,{},2026-07-13 14:10:40 -0400,2026-07-13 14:10:40 -0400
 67,Mr. Clark,business,mr-clark,"{""qualifiers"":[""rear-lot horse \u0026 auto dealer""]}",2026-07-13 14:10:40 -0400,2026-07-22 17:54:17 -0400
 68,Oriole Park (Terrapin Park),place,oriole-park-terrapin-park,"{""qualifiers"":[""Terrapin Park""]}",2026-07-13 14:10:40 -0400,2026-08-05 22:32:48 -0400
 69,People's Free Medical Clinic / Community Health Center,organization,people-s-free-medical-clinic-community-health-center,{},2026-07-13 14:10:40 -0400,2026-07-13 14:10:40 -0400
-70,Quality Film Lab,business,quality-film-lab,{},2026-07-13 14:10:40 -0400,2026-07-13 14:10:40 -0400
 71,"Ripp-El Enterprises, Ltd.",business,ripp-el-enterprises-ltd,{},2026-07-13 14:10:40 -0400,2026-07-13 14:10:40 -0400
 72,Robert Lawson,person,robert-lawson,{},2026-07-13 14:10:40 -0400,2026-07-13 14:10:40 -0400
 73,S.F.S. Phillips,person,s-f-s-phillips,{},2026-07-13 14:10:40 -0400,2026-07-13 14:10:40 -0400
@@ -81,7 +77,6 @@ id,name,subject_type,slug,data,created_at,updated_at
 82,The Four Little Freitags,team,the-four-little-freitags,{},2026-07-13 14:10:40 -0400,2026-07-13 14:10:40 -0400
 83,The Kove Home Furnishings Center,business,the-kove-home-furnishings-center,{},2026-07-13 14:10:40 -0400,2026-07-13 14:10:40 -0400
 84,Theodore Frank,person,theodore-frank,"{""qualifiers"":[""2565 Greenmount""]}",2026-07-13 14:10:40 -0400,2026-07-22 17:54:35 -0400
-85,Tom Boy / Tom-Boy Inc.,business,tom-boy-tom-boy-inc,{},2026-07-13 14:10:40 -0400,2026-07-13 14:10:40 -0400
 86,Twila Maxine Fetter,person,twila-maxine-fetter,{},2026-07-13 14:10:40 -0400,2026-07-13 14:10:40 -0400
 87,Vinson's Animal Hospital,business,vinson-s-animal-hospital-vinson-s-kennels-inc,"{""qualifiers"":[""Vinson's Kennels Inc""]}",2026-07-13 14:10:40 -0400,2026-07-22 17:54:18 -0400
 88,W. C. Childs & Son,business,w-c-childs-son,{},2026-07-13 14:10:40 -0400,2026-07-13 14:10:40 -0400
@@ -1656,7 +1651,6 @@ id,name,subject_type,slug,data,created_at,updated_at
 1731,James H. Dashiell,person,james-h-dashiell,"{""description"":""Took title to the 415-421 East 32nd ground from Edward Lange \u0026 wife in 1924 (SCL 4254/575); the Dashiell family developed the row over the following decade.""}",2026-07-15 05:51:41 -0400,2026-07-15 05:54:13 -0400
 1732,"Boulevard Realty, Inc.",business,boulevard-realty-inc,"{""description"":""Developer that, with Ella V. W. Dashiell, replatted the newly-condemned 32nd Street frontage into building lots in 1938 (SCL 5812/312 \u0026 /316) — the subdivision that split the deep Greenmount corner between 3128 Greenmount and 415-421 East 32nd Street.""}",2026-07-15 05:51:42 -0400,2026-07-15 05:54:13 -0400
 1733,Henry I. Louis,person,henry-i-louis,"{""qualifiers"":[""attorney""],""description"":""Baltimore-area real-estate attorney (1615 York Road, Lutherville) who prepared both halves of Red Emma's 2016 Waverly assemblage — the 3128 Greenmount fee deed and the 415-421 East 32nd leasehold assignment.""}",2026-07-15 05:51:42 -0400,2026-07-22 17:54:26 -0400
-1734,Annex Construction Company,business,annex-construction-company,"{""description"":""Short-lived Baltimore spec-builder, office at '28th and Barclay' (1918 Polk City Directory), that built the East 27th Street rows including 319 E 27th ~1920 (deed recital SCL 3690/489). Absent from the 1917 and 1920-1923 directories — a one-development vehicle named for the 1918 city Annexation, active roughly 1917/18-1920.""}",2026-07-15 05:51:42 -0400,2026-07-15 05:54:13 -0400
 1735,Anna M. Thomas,person,anna-m-thomas-confectioner,"{""description"":""Proprietor of the confectionery at 2701 Greenmount in the 1950 census (own business, 90 hrs/wk) — continuing the corner candy-and-soda-store use Thomas J. Coughlin listed there in 1923.""}",2026-07-15 06:02:46 -0400,2026-07-15 06:02:46 -0400
 1736,Baur Bros.,business,baur-bros,"{""qualifiers"":[""George C. \u0026 J. Fred Baur""],""description"":""German-American family grocery at 2565 Greenmount, c. 1912-1923+; George C. Baur resided over the store. A ~40-year corner grocery opposite the B\u0026O crossing before the building emptied out by 1950.""}",2026-07-15 06:02:46 -0400,2026-07-22 17:54:26 -0400
 1737,William T. Tarman,person,william-t-tarman,"{""description"":""Marble/stone cutter who ran a memorial-stone shop at 2707 Greenmount 1913-1918, the whole Tarman family living there.""}",2026-07-15 06:02:46 -0400,2026-07-15 06:02:46 -0400
@@ -2742,9 +2736,6 @@ id,name,subject_type,slug,data,created_at,updated_at
 2862,"CHILDS SR., DAVID W",person,childs-sr-david-w,{},2026-07-22 14:24:44 -0400,2026-07-22 14:24:44 -0400
 2863,"WAREHEIM JR, GEORGE S",person,wareheim-jr-george-s,{},2026-07-22 14:24:44 -0400,2026-07-22 14:24:44 -0400
 2864,"BOWEN, GREGORY",person,bowen-gregory,{},2026-07-22 14:24:47 -0400,2026-07-22 14:24:47 -0400
-2865,LOCH RAVEN WAREHOUSE LLC,organization,loch-raven-warehouse-llc,{},2026-07-22 14:24:47 -0400,2026-07-22 14:24:47 -0400
-2866,C & H,person,c-h,{},2026-07-22 14:24:48 -0400,2026-07-22 14:24:48 -0400
-2867,"COPYCAT BUILDING LLC, THE",organization,copycat-building-llc-the,{},2026-07-22 14:24:49 -0400,2026-07-22 14:24:49 -0400
 2868,"WAH, GARY C",person,wah-gary-c,{},2026-07-22 14:24:52 -0400,2026-07-22 14:24:52 -0400
 2869,DG STRATEGIC II LLC,organization,dg-strategic-ii-llc,{},2026-07-22 14:24:54 -0400,2026-07-22 14:24:54 -0400
 2871,"FREITAS, JOAO SAMUEL",person,freitas-joao-samuel,{},2026-07-22 14:24:56 -0400,2026-07-22 14:24:56 -0400
