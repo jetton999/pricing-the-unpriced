@@ -61,22 +61,15 @@ for name, df in [("properties",props),("incidents",inc),("subjects",subj),
     print(f"{name:<20} {len(df):>7,} rows   {len(df.columns):>3} cols")
 
 # %% [markdown]
-# ## 0. Two traps in `properties.csv`
+# ## 0. Columns that look like data but are not
 #
-# **Two geographies.** Most properties are on the Greenmount corridor (ZIP 21218). The rest are
-# Baltimore Peninsula (Port Covington) parcels in ZIP 21230, several miles south. Anything that
-# claims to describe Greenmount should filter on the `corridor` flag added below.
-#
-# **Empty and placeholder columns.** Some columns exist in the schema but hold no data in this
-# export. Some are blank. Others are filled with `0` in every row, which is the more dangerous
-# case: a 0 looks like a measurement ("no restaurants nearby", "never sold") when it is not one.
+# Every property here is on Greenmount Ave or within about a block of it (README, "How the study
+# area was cut"). Some columns exist in the schema but hold no data in this export. Some are
+# blank. Others are filled with `0` in every row, which is the more dangerous case: a 0 looks like
+# a measurement ("no restaurants nearby", "never sold") when it is not one.
 #
 
 # %%
-props["corridor"] = props["zip_code"] == 21218
-print(f"Greenmount corridor (ZIP 21218):  {props.corridor.sum():>5,}")
-print(f"Baltimore Peninsula (ZIP 21230):  {(props.zip_code == 21230).sum():>5,}\n")
-
 empty    = [c for c in props.columns if props[c].isna().all()]
 all_zero = [c for c in props.select_dtypes("number").columns if (props[c] == 0).all()]
 print("blank in every row:        ", ", ".join(empty))
@@ -85,7 +78,7 @@ print("0 in every row (not data): ", ", ".join(all_zero))
 # %% [markdown]
 # ## 1. The first thing you need to know
 #
-# The incident table is **not** 20,308 pieces of curated history. Most of it is
+# The incident table is **not** 10,614 pieces of curated history. Most of it is
 # machine-ingested administrative data: 311 complaints, permits, assessments, crime.
 # The curated archival layer is much smaller and much older.
 #
@@ -209,7 +202,7 @@ biz_count = uses.groupby("property_id")["name"].nunique().rename("distinct_busin
 use_recs = cur[cur.source.isin(USE_SOURCES)].groupby("property_id").size().rename("use_records")
 span = uses.groupby("property_id")["year"].agg(first_use="min", last_use="max")
 
-idea1 = (props[["id","address","corridor","block_side_id","zoning_code","year_built","structure_sqft",
+idea1 = (props[["id","address","block_side_id","zoning_code","year_built","structure_sqft",
                 "vacancy_indicator","has_active_business","market_typology","main_street_district"]]
            .rename(columns={"id":"property_id"})
            .merge(biz_count, left_on="property_id", right_index=True, how="left")
@@ -284,31 +277,27 @@ for (a, b), n in pair.most_common(8):
 #
 # ### 5a. What commercial buildings on the corridor cost
 #
-# Two filters matter here, and both are easy to miss:
-#
-# - **Corridor only.** Without it, Baltimore Peninsula (ZIP 21230) sales dominate and the
-#   median roughly quadruples.
-# - **No portfolio deals.** When several parcels sell together, every parcel carries the
-#   *whole* deal price (one $4.8M deal appears on 26 parcels). Dropping any price and date shared
-#   by more than one parcel keeps one-building sales only.
+# One filter matters here and is easy to miss: **no portfolio deals.** When several parcels
+# sell together, every parcel carries the *whole* deal price. Dropping any price and date shared
+# by more than one parcel keeps one-building sales only.
 #
 # The `> $10k` cut drops $0 and nominal transfers. It is a crude screen, not a verified
 # arm's-length test.
 #
 
 # %%
-fin = props[["id","address","corridor","block_side_id","zoning_code","structure_sqft","year_built",
+fin = props[["id","address","block_side_id","zoning_code","structure_sqft","year_built",
              "last_sale_price","last_sale_date","assessed_value","fair_market_rent_2br",
              "ground_rent","vacancy_indicator","has_active_business"]].copy()
 fin["zoning_code"] = fin["zoning_code"].str.strip()
-fin["commercial"] = fin.zoning_code.fillna("").str.match(r"^(C|PC)")
+fin["commercial"] = fin.zoning_code.fillna("").str.startswith("C-")
 
-sold = fin[fin.corridor & fin.commercial & (fin.last_sale_price > 10_000)]
+sold = fin[fin.commercial & (fin.last_sale_price > 10_000)]
 portfolio = sold.duplicated(["last_sale_price", "last_sale_date"], keep=False)
 sales = sold[~portfolio]
 sales = sales.assign(price_per_sqft=sales.last_sale_price / sales.structure_sqft)
 
-print(f"commercial-zoned corridor properties: {int((fin.corridor & fin.commercial).sum()):,}")
+print(f"commercial-zoned properties:         {int(fin.commercial.sum()):,}")
 print(f"  with a sale over $10k:              {len(sold):,}")
 print(f"  of which portfolio-deal rows:       {int(portfolio.sum()):,}  (dropped)")
 print(f"  single-building sales used below:   {len(sales):,}\n")
@@ -395,13 +384,13 @@ start = (idea1.merge(fin[["id","last_sale_price","last_sale_date","assessed_valu
               .merge(cur.groupby("property_id").size().rename("curated_incidents"),
                      left_on="property_id", right_index=True, how="left")
               .fillna({"curated_incidents":0}))
-cols = ["property_id","address","corridor","block_side_id","zoning_code","commercial","year_built","structure_sqft",
+cols = ["property_id","address","block_side_id","zoning_code","commercial","year_built","structure_sqft",
         "vacancy_indicator","has_active_business","curated_incidents","distinct_businesses",
         "use_records","first_use","last_use","last_sale_price","last_sale_date","assessed_value"]
 start = start[cols].sort_values("curated_incidents", ascending=False)
 print("Starter table, one row per property, for both ideas:")
 print(start.head(10).to_string(index=False))
-print(f"\nrows: {len(start):,} | on the corridor: {int(start.corridor.sum()):,} | "
+print(f"\nrows: {len(start):,} | "
       f"commercial: {int(start.commercial.sum()):,} | "
       f"with a use history: {int((start.distinct_businesses > 0).sum()):,} | "
       f"with a nonzero sale price: {int((start.last_sale_price > 0).sum()):,}")

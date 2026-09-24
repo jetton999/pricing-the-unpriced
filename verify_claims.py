@@ -49,14 +49,14 @@ def main():
     incident_subjects = list(rows("incident_subjects.csv"))
 
     # Section 1: the two layers
-    check("property_incidents rows", len(incidents), 20308)
+    check("property_incidents rows", len(incidents), 10614)
     by_source = collections.Counter(r["source"] for r in incidents)
     administrative = sum(v for k, v in by_source.items() if is_admin(k))
-    check("administrative rows", administrative, 16706)
-    check("curated rows", len(incidents) - administrative, 3602)
+    check("administrative rows", administrative, 7017)
+    check("curated rows", len(incidents) - administrative, 3597)
     for source, claimed in [
-        ("baltimore:311", 6641), ("baltimore:permits", 5329),
-        ("sdat_assessments", 3064), ("baltimore:crime", 803),
+        ("baltimore:311", 3527), ("baltimore:permits", 1378),
+        ("sdat_assessments", 850), ("baltimore:crime", 546),
         ("whitepaper", 1138), ("newspapers_com", 661),
         ("stjohns_interments", 583), ("mdlandrec", 492),
         ("sanborn", 254), ("nrhp", 139),
@@ -68,7 +68,7 @@ def main():
         return int(raw[:4]) if len(raw) >= 4 and raw[:4].isdigit() else None
 
     years = [year_of(r) for r in incidents]
-    check("incidents before 2000", sum(1 for y in years if y and y < 2000), 3633)
+    check("incidents before 2000", sum(1 for y in years if y and y < 2000), 3372)
     check("incidents before 1950", sum(1 for y in years if y and y < 1950), 2259)
 
     # Section 2: documentation depth, curated only (notebook section 3)
@@ -76,24 +76,24 @@ def main():
         r["property_id"] for r in incidents
         if not is_admin(r["source"]) and (r["property_id"] or "").strip()
     )
-    check("properties with >=1 curated", sum(1 for v in depth.values() if v >= 1), 316)
+    check("properties with >=1 curated", sum(1 for v in depth.values() if v >= 1), 312)
     check("properties with >=10 curated", sum(1 for v in depth.values() if v >= 10), 68)
     check("properties with >=25 curated", sum(1 for v in depth.values() if v >= 25), 22)
 
     # Section 3: evidence grading
     evidence = collections.Counter((r.get("evidence_status") or "").strip() for r in incidents)
-    check("evidence graded total", sum(v for k, v in evidence.items() if k), 1328)
-    for status, claimed in [("verified", 1162), ("probable", 105),
+    check("evidence graded total", sum(v for k, v in evidence.items() if k), 1326)
+    for status, claimed in [("verified", 1160), ("probable", 105),
                             ("possible", 59), ("contested", 2)]:
         check("evidence %s" % status, evidence.get(status, 0), claimed)
     check("rows with date_precision",
-          sum(1 for r in incidents if (r.get("date_precision") or "").strip()), 1908)
+          sum(1 for r in incidents if (r.get("date_precision") or "").strip()), 1906)
     graded = [r for r in incidents if (r.get("evidence_status") or "").strip()]
     check("graded curated rows", sum(1 for r in graded if not is_admin(r["source"])), 841)
-    check("graded administrative rows", sum(1 for r in graded if is_admin(r["source"])), 487)
+    check("graded administrative rows", sum(1 for r in graded if is_admin(r["source"])), 485)
     check("ungraded curated rows", sum(
         1 for r in incidents
-        if not is_admin(r["source"]) and not (r.get("evidence_status") or "").strip()), 2761)
+        if not is_admin(r["source"]) and not (r.get("evidence_status") or "").strip()), 2756)
     check("rows with a sensitivity flag",
           sum(1 for r in incidents if (r.get("sensitivity") or "").strip()), 52)
 
@@ -104,21 +104,22 @@ def main():
         check("link %s" % link_type, link_types.get(link_type, 0), claimed)
 
     # Section 4: the tables
-    check("properties rows", len(properties), 1874)
+    check("properties rows", len(properties), 673)
     zips = collections.Counter((r.get("zip_code") or "").strip() for r in properties)
-    check("properties in ZIP 21218 (corridor)", zips.get("21218", 0), 1456)
-    check("properties in ZIP 21230 (Peninsula)", zips.get("21230", 0), 418)
+    check("properties in ZIP 21218", zips.get("21218", 0), 673)
     check("properties with coordinates", sum(
-        1 for r in properties if (r.get("latitude") or "").strip() and (r.get("longitude") or "").strip()), 1791)
+        1 for r in properties if (r.get("latitude") or "").strip() and (r.get("longitude") or "").strip()), 592)
     prices = [float(r["last_sale_price"]) for r in properties if (r.get("last_sale_price") or "").strip()]
-    check("properties with a last_sale_price", len(prices), 1789)
-    check("last_sale_price of $0", sum(1 for p in prices if p == 0), 419)
-    check("last_sale_price above $0", sum(1 for p in prices if p > 0), 1370)
+    check("properties with a last_sale_price", len(prices), 590)
+    check("last_sale_price of $0", sum(1 for p in prices if p == 0), 114)
+    check("last_sale_price above $0", sum(1 for p in prices if p > 0), 476)
+
+    check("block sides", len({r["block_side_id"] for r in properties if (r.get("block_side_id") or "").strip()}), 61)
 
     # Columns the README says are blank, or 0, in every row of properties.csv
     def values(column):
         return [(r.get(column) or "").strip() for r in properties]
-    for column in ["avm_estimate", "walk_score", "transit_score", "bike_score", "building_condition",
+    for column in ["avm_estimate", "flood_zone", "walk_score", "transit_score", "bike_score", "building_condition",
                    "building_quality", "num_stories", "irs_agi_per_return", "irs_homeowner_pct"]:
         check("properties.%s blank in every row" % column, all(v == "" for v in values(column)), True)
     for column in ["sale_count", "nearby_restaurants", "nearby_shops", "nearby_amenities_total",
@@ -126,38 +127,38 @@ def main():
         check("properties.%s 0 in every row" % column,
               all(v != "" and float(v) == 0 for v in values(column)), True)
 
-    check("subjects rows", len(subjects), 3103)
+    check("subjects rows", len(subjects), 3094)
     subject_types = collections.Counter((r.get("subject_type") or "").strip() for r in subjects)
-    for kind, claimed in [("person", 2035), ("business", 527),
-                          ("organization", 300), ("family", 138)]:
+    for kind, claimed in [("person", 2034), ("business", 522),
+                          ("organization", 297), ("family", 138)]:
         check("subject %s" % kind, subject_types.get(kind, 0), claimed)
 
-    check("incident_subjects rows", len(incident_subjects), 5462)
+    check("incident_subjects rows", len(incident_subjects), 5459)
     relationships = collections.Counter(
         (r.get("relationship") or "").strip() for r in incident_subjects)
-    for relationship, claimed in [("owned", 926), ("operated_at", 678), ("sold", 661),
+    for relationship, claimed in [("owned", 924), ("operated_at", 678), ("sold", 660),
                                   ("interred_at", 596), ("purchased", 455), ("lived_at", 280)]:
         check("relationship %s" % relationship, relationships.get(relationship, 0), claimed)
 
-    for filename, claimed in [("registered_ips.csv", 115), ("property_parcels.csv", 50860),
-                              ("grant_program_matches.csv", 11789), ("neighborhoods.csv", 6),
-                              ("baseline_snapshots.csv", 887)]:
+    for filename, claimed in [("registered_ips.csv", 26), ("property_parcels.csv", 786),
+                              ("grant_program_matches.csv", 5382), ("neighborhoods.csv", 5),
+                              ("baseline_snapshots.csv", 883)]:
         check("%s rows" % filename, sum(1 for _ in rows(filename)), claimed)
 
     registered_ips = list(rows("registered_ips.csv"))
     ip_types = collections.Counter((r.get("ip_type") or "").strip() for r in registered_ips)
-    for ip_type, claimed in [("trademark", 101), ("patent", 11), ("entity", 3)]:
+    for ip_type, claimed in [("trademark", 23), ("entity", 3)]:
         check("registered IP %s" % ip_type, ip_types.get(ip_type, 0), claimed)
     check("registered IP matched to a property",
-          sum(1 for r in registered_ips if (r.get("property_id") or "").strip()), 17)
+          sum(1 for r in registered_ips if (r.get("property_id") or "").strip()), 16)
     check("neighborhoods with bounds",
           sum(1 for r in rows("neighborhoods.csv") if (r.get("bounds") or "").strip()), 0)
 
     # Section 4b: the t0 baseline
     baseline = list(rows("baseline_snapshots.csv"))
     captures = collections.Counter((r.get("captured_on") or "")[:10] for r in baseline)
-    check("baseline capture 2026-07-13", captures.get("2026-07-13", 0), 351)
-    check("baseline capture 2026-07-22", captures.get("2026-07-22", 0), 536)
+    check("baseline capture 2026-07-13", captures.get("2026-07-13", 0), 349)
+    check("baseline capture 2026-07-22", captures.get("2026-07-22", 0), 534)
     keys = {"property_id", "captured_on", "captured_at"}
     fields = [c for c in baseline[0] if c not in keys]
     check("baseline fields per snapshot", len(fields), 28)
@@ -182,8 +183,8 @@ def main():
             nodes.add(property_node)
             nodes.add(subject_node)
             edges.add((property_node, subject_node))
-    check("graph nodes", len(nodes), 3613)
-    check("graph edges", len(edges), 3765)
+    check("graph nodes", len(nodes), 3608)
+    check("graph edges", len(edges), 3762)
 
     failures = [c for c in checks if not c[0]]
     for _, label, actual, claimed in failures:

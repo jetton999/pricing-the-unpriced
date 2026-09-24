@@ -29,15 +29,15 @@ executes the notebook top to bottom. `verify_claims.py` and `map/app.py` are sta
 
 - **Layer split.** In `property_incidents.csv`, a `source` is *administrative* if it starts with
   `baltimore:` or equals `sdat_assessments` or `sdat:owner`. Everything else is *curated*.
-  That gives 16,706 administrative rows and 3,602 curated. Historical analysis uses the curated layer.
-- **Two geographies.** `properties.csv` holds 1,456 Greenmount corridor properties (`zip_code`
-  21218) and 418 Baltimore Peninsula parcels (21230). Filter to 21218 for corridor statistics.
-- **Empty and zero-filled columns.** `avm_estimate`, `walk_score`, `transit_score`, `bike_score`,
+  That gives 7,017 administrative rows and 3,597 curated. Historical analysis uses the curated layer.
+- **Study area.** The export covers only Greenmount Ave and about one block either side
+  (673 properties). The cut rule is in README §4, "How the study area was cut".
+- **Empty and zero-filled columns.** `avm_estimate`, `flood_zone`, `walk_score`, `transit_score`, `bike_score`,
   `building_condition`, `building_quality`, `num_stories`, `irs_*` are blank. `sale_count`,
   `nearby_restaurants`, `nearby_shops`, `nearby_amenities_total`, `public_investment_total` are
   0 in every row: placeholders, not measurements. `neighborhoods.bounds` is empty.
   `DATA_DICTIONARY.md` marks every such column.
-- **Sale prices.** 419 `last_sale_price` values are $0. Portfolio sales repeat the whole deal
+- **Sale prices.** 114 `last_sale_price` values are $0. Portfolio sales repeat the whole deal
   price on every parcel: drop rows whose price and date are shared with another parcel.
 - **`assessed_value` is administrative**, not a market price. Never present it as one.
 - **Never drop rows with a `sensitivity` flag** (52 incidents). See `LICENSE.md`.
