@@ -125,6 +125,12 @@ def main():
     check("properties with a last_sale_price", len(prices), 590)
     check("last_sale_price of $0", sum(1 for p in prices if p == 0), 114)
     check("last_sale_price above $0", sum(1 for p in prices if p > 0), 476)
+    # 701 Exeter Hall Ave: a portfolio sale whose other parcel was cut, so its price+date is unique here
+    exeter = [r for r in properties if r["address"].startswith("701 EXETER HALL AVE")]
+    deal = [(r["last_sale_price"], r["last_sale_date"]) for r in exeter]
+    check("701 Exeter Hall Ave last sale", deal, [("19000000", "2026-03-19")])
+    check("701 Exeter Hall Ave sale shared in the export", sum(
+        1 for r in properties if (r["last_sale_price"], r["last_sale_date"]) in deal), 1)
 
     check("block sides", len({r["block_side_id"] for r in properties if (r.get("block_side_id") or "").strip()}), 61)
 

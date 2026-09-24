@@ -41,7 +41,8 @@ bash; it uses `uv run` if uv is installed, else the active environment. `verify_
   `market_inventory`). Never use them as features or read a 0 as "none". `neighborhoods.bounds`
   is empty. `DATA_DICTIONARY.md` marks every such column; notebook §0 lists them.
 - **Sale prices.** 114 `last_sale_price` values are $0. Portfolio sales repeat the whole deal
-  price on every parcel: drop rows whose price and date are shared with another parcel.
+  price on every parcel: drop rows whose price and date are shared with another parcel, and
+  701 Exeter Hall Ave, whose deal partner is outside the study area.
 - **`assessed_value` is administrative**, not a market price. Never present it as one.
 - **Never drop rows with a `sensitivity` flag** (52 incidents). See `LICENSE.md`.
 - **`operated_at` links people and organizations too.** Filter `subjects.subject_type ==
@@ -69,3 +70,4 @@ bash; it uses `uv run` if uv is installed, else the active environment. `verify_
 | Idea 2 financing cases | `docs/worker-owned-exits.md` |
 | Sensitivity and licensing rules | `LICENSE.md` |
 | Map app internals | `map/README.md` |
+| How the CSVs were cut from the full export | `bin/cut_study_area.py` |

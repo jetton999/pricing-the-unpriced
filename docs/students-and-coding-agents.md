@@ -32,25 +32,28 @@ repo works and one command that tells it whether it broke anything.
      execution command below. Say "run these before you say you are done."
    - Where things are: `DATA_DICTIONARY.md` for columns, `docs/worker-owned-exits.md` for
      idea 2 cases, `LICENSE.md` for the sensitivity rule.
-   - Rules: edit `notebooks/*.py`, never the `.ipynb`; never commit outputs; never drop
+   - Rules: edit `START_HERE.py`, never the `.ipynb`; never commit outputs; never drop
      rows with a `sensitivity` flag; assessed value is not a market price; `avm_estimate`,
-     `nearby_*`, `walk_score`, and `building_condition` are empty in this export.
+     `walk_score`, and `building_condition` are blank in this export, and `nearby_*` is a 0
+     placeholder in every row, not a count.
    - The team's disclosure policy for agent-written code, once faculty agree it.
 
-2. **`pyproject.toml` managed by `uv`.** Dependencies: pandas, matplotlib, networkx,
-   jupytext, ipykernel, nbconvert, pytest. Then `uv sync` gives every student and every
-   agent the same environment with no install instructions. Keep a one-line pip fallback
-   in the README for students without `uv`.
+2. **`pyproject.toml` managed by `uv`.** Dependencies: pandas, matplotlib, jupyterlab
+   (which brings ipykernel and nbconvert), and jupytext, plus nbstripout and pre-commit as
+   dev tools. networkx is not needed, and pytest waits for Phase 2's tests. Then `uv sync`
+   gives every student and every agent the same environment with no install instructions.
+   Keep a pip fallback in the README for students without `uv`.
 
 3. **`bin/check`**, a shell script the agent can run:
    ```
    python3 verify_claims.py
    python3 map/app.py --check
-   uv run jupytext --sync notebooks/*.py
+   <check that START_HERE.py and START_HERE.ipynb match>
    uv run jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 \
      START_HERE.ipynb --output-dir /tmp/nb-check
    ```
-   Exit nonzero on any failure. Name it in `AGENTS.md`.
+   Exit nonzero on any failure. Name it in `AGENTS.md`. The pairing check compares the two
+   files read-only rather than running `jupytext --sync`, so a check never rewrites a file.
 
 4. **Pair the notebook with a percent script.** `uv run jupytext --set-formats
    ipynb,py:percent START_HERE.ipynb` creates `START_HERE.py`. Commit both. Add

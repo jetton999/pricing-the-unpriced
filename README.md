@@ -89,6 +89,7 @@ bash script: on Windows, run it from WSL or Git Bash, or run `python3 verify_cla
 | `Pricing_the_Unpriced_CUSP_Proposal.pdf` | The original July 2026 proposal (§7). |
 | `verify_claims.py` | Checks every number in this README, and where the other docs repeat it. Standard library only. |
 | `bin/check` | Runs all the checks: doc claims, map data, `.py`/`.ipynb` pairing, notebook execution. |
+| `bin/cut_study_area.py` | Reproduces the study-area cut from the full export in git history (§4). Standard library only. |
 | `05_incidents_by_decade.png` | The corpus at a glance (§1). |
 | `row_counts.txt` | Export row counts. |
 
@@ -193,7 +194,8 @@ coordinates take the distance of a same-street neighbour within ten house number
 name). Every other table follows its properties: incidents by `property_id`; subjects, subject
 links, and incident links through those incidents; parcels and unmatched registered IP by street
 and hundred-block. The 11 patents have only a city-level address and are kept whole. The cut dropped 5 curated records and no rows with a `sensitivity` flag. The
-full pre-cut export is in this repository's git history (commit `e00b32b`).
+full pre-cut export is in this repository's git history (commit `e00b32b`), and
+`bin/cut_study_area.py` reproduces the cut from it byte for byte (usage at the top of the script).
 
 **Columns that look like data but are not.** Some `properties.csv` columns are blank in every
 row (`avm_estimate`, `flood_zone`, `walk_score`, `transit_score`, `bike_score`, `building_condition`,
@@ -247,7 +249,7 @@ and cannot be redistributed; the committed corridor work does not depend on it.
 - **Coverage is uneven by design.** Research followed interest and grant funding, not a sampling frame. Expect selection effects in which properties are deeply documented.
 - **Evidence grading is incomplete** (see §3).
 - **Some columns are empty or zero-filled** (see §4). A `0` in `nearby_restaurants` or `sale_count` means "not captured", not "none".
-- **Sale prices include portfolio deals.** When several parcels sell together, each parcel carries the whole deal price. Drop any price and date shared by more than one parcel before computing price per building or per sqft (notebook §5a).
+- **Sale prices include portfolio deals.** When several parcels sell together, each parcel carries the whole deal price. Drop any price and date shared by more than one parcel before computing price per building or per sqft (notebook §5a). One portfolio deal cannot be caught this way: 701 Exeter Hall Ave (R-6, $19,000,000 on 2026-03-19) shares its price and date with a parcel outside the study area, so in this export it looks like a single sale. Drop it too.
 - **Geocoding and parcel matching are imperfect.** `property_parcels.matched_property_id` is null for most rows.
 - **Temporal leakage is the sharpest methodological trap.** A white paper written in 2026 cannot inform a 2005 sale price. Reconstruct what was knowable *as of* the outcome date.
 - **`assessed_value` is an administrative outcome, not a market price.** Do not present it as one.

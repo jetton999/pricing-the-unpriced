@@ -30,7 +30,7 @@ Joins: `property_incidents.property_id` → `properties.id`; `incident_subjects`
 | `vacancy_indicator` | boolean | 25% |  |
 | `year_built` | integer | 88% | `0` means unknown (83 rows). |
 | `zoning_code` | string | 88% | Has trailing spaces in some rows: `.str.strip()` before matching. `C-*` codes are commercial. |
-| `last_sale_price` | integer | 88% | 114 rows are $0 transfers. Portfolio sales repeat the whole deal price on every parcel. |
+| `last_sale_price` | integer | 88% | 114 rows are $0 transfers. Portfolio sales repeat the whole deal price on every parcel. 701 Exeter Hall Ave ($19,000,000) is a portfolio sale whose other parcel is outside the study area. |
 | `last_sale_date` | date | 88% |  |
 | `lot_polygon` | jsonb | 88% |  |
 | `building_polygons` | jsonb | 84% |  |
