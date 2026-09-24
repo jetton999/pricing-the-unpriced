@@ -22,8 +22,9 @@ uv run pre-commit install   # strip notebook outputs and sync the .py/.ipynb pai
 bin/check                   # run ALL checks; run this before you say you are done
 ```
 
-`bin/check` runs `python3 verify_claims.py`, `python3 map/app.py --check`, a jupytext sync, and
-executes the notebook top to bottom. `verify_claims.py` and `map/app.py` are standard library only.
+`bin/check` runs `python3 verify_claims.py`, `python3 map/app.py --check`, a read-only check that
+`START_HERE.py` and `START_HERE.ipynb` match, and executes the notebook top to bottom. It needs
+bash; it uses `uv run` if uv is installed, else the active environment. `verify_claims.py` and `map/app.py` are standard library only.
 
 ## Data rules (these are the mistakes that produce wrong answers)
 
@@ -32,11 +33,13 @@ executes the notebook top to bottom. `verify_claims.py` and `map/app.py` are sta
   That gives 7,017 administrative rows and 3,597 curated. Historical analysis uses the curated layer.
 - **Study area.** The export covers only Greenmount Ave and about one block either side
   (673 properties). The cut rule is in README §4, "How the study area was cut".
-- **Empty and zero-filled columns.** `avm_estimate`, `flood_zone`, `walk_score`, `transit_score`, `bike_score`,
-  `building_condition`, `building_quality`, `num_stories`, `irs_*` are blank. `sale_count`,
-  `nearby_restaurants`, `nearby_shops`, `nearby_amenities_total`, `public_investment_total` are
-  0 in every row: placeholders, not measurements. `neighborhoods.bounds` is empty.
-  `DATA_DICTIONARY.md` marks every such column.
+- **Blank and single-value columns.** `avm_estimate`, `flood_zone`, `walk_score`,
+  `transit_score`, `bike_score`, `building_condition`, `building_quality`, `num_stories`, `irs_*`
+  are blank. Eighteen more hold one value in every row: the `0`/`False` placeholders
+  (`sale_count`, `nearby_*`, `public_investment_total`, `has_basement`, `has_central_ac`, and six
+  program flags) and area-wide figures (`zip_code`, `fair_market_rent_2br`, `market_median_*`,
+  `market_inventory`). Never use them as features or read a 0 as "none". `neighborhoods.bounds`
+  is empty. `DATA_DICTIONARY.md` marks every such column; notebook §0 lists them.
 - **Sale prices.** 114 `last_sale_price` values are $0. Portfolio sales repeat the whole deal
   price on every parcel: drop rows whose price and date are shared with another parcel.
 - **`assessed_value` is administrative**, not a market price. Never present it as one.
@@ -50,7 +53,7 @@ executes the notebook top to bottom. `verify_claims.py` and `map/app.py` are sta
 - **Edit `START_HERE.py`, never `START_HERE.ipynb` directly.** They are a jupytext pair; the
   `.py` is the source of truth. Run `uv run jupytext --sync START_HERE.py` after editing.
 - **Never commit notebook outputs.** The pre-commit hook strips them.
-- **If you change a number in `README.md`, update `verify_claims.py` to check it.** If the
+- **If you change a number in `README.md` or another doc, update `verify_claims.py` to check it.** If the
   script disagrees with the README, the data wins and the README is what needs fixing.
 - **Keep `map/app.py` and `verify_claims.py` standard-library only.** A student with a bare
   Python install must be able to run them.

@@ -48,7 +48,7 @@ Two more things work with no install beyond Python itself:
 
 ```bash
 python3 map/app.py            # map of every property; open http://localhost:8765
-python3 verify_claims.py      # checks every number in this README against the CSVs
+python3 verify_claims.py      # checks every number in these docs against the CSVs
 ```
 
 <details>
@@ -70,7 +70,9 @@ Debian/Ubuntu Python with `externally-managed-environment`. That is why the venv
 with [jupytext](https://jupytext.readthedocs.io/). The `.py` is the source of truth: edit it, then
 run `uv run jupytext --sync START_HERE.py`. Once `pre-commit install` has run, the sync and the
 output stripping happen automatically on every commit. Working with a coding agent? Point it at
-[`AGENTS.md`](AGENTS.md) and have it run `bin/check` before it says it is done.
+[`AGENTS.md`](AGENTS.md) and have it run `bin/check` before it says it is done. `bin/check` is a
+bash script: on Windows, run it from WSL or Git Bash, or run `python3 verify_claims.py` and
+`python3 map/app.py --check` directly. Without uv, activate your `.venv` first.
 
 ### What's where
 
@@ -85,8 +87,8 @@ output stripping happen automatically on every commit. Working with a coding age
 | `site/` | The revised proposal (September 2026) as a single HTML page, plus its PDF. |
 | `public_sources/` | Third-party files: National Register, federal DOEs, HOLC polygons (§5). |
 | `Pricing_the_Unpriced_CUSP_Proposal.pdf` | The original July 2026 proposal (§7). |
-| `verify_claims.py` | Checks every number in this README. Standard library only. |
-| `bin/check` | Runs all the checks: README claims, map data, notebook sync, notebook execution. |
+| `verify_claims.py` | Checks every number in this README, and where the other docs repeat it. Standard library only. |
+| `bin/check` | Runs all the checks: doc claims, map data, `.py`/`.ipynb` pairing, notebook execution. |
 | `05_incidents_by_decade.png` | The corpus at a glance (§1). |
 | `row_counts.txt` | Export row counts. |
 
@@ -173,7 +175,7 @@ and validating this grading is committed capstone work.
 | `properties.csv` | 673 | Properties in the study area with ~80 enrichment fields: assessment, sale history, vacancy, zoning, market, transit, HMDA, program-eligibility flags. 592 have coordinates; 61 block sides. 590 have a `last_sale_price`, but 114 of those are $0 transfers, so 476 carry a real price. |
 | `property_incidents.csv` | 10,614 | The claim layer. See §1 before using. |
 | `subjects.csv` | 3,094 | Graph nodes: 2,034 people, 522 businesses, 297 organizations, 138 families, plus places, teams, congregations. |
-| `incident_subjects.csv` | 5,459 | Subject↔incident edges: `owned` (924), `operated_at` (678), `sold` (660), `interred_at` (596), `purchased` (455), `lived_at` (280), and more. Joined through incidents, subjects and properties form a graph of 3,608 nodes and 3,762 edges. |
+| `incident_subjects.csv` | 5,459 | Subject↔incident edges: `owned` (924), `operated_at` (678, of which 415 name a business), `sold` (660), `interred_at` (596), `purchased` (455), `lived_at` (280), and more. Joined through incidents, subjects and properties form a graph of 3,608 nodes and 3,762 edges. |
 | `incident_links.csv` | 236 | Incident↔incident edges, including contradictions. |
 | `registered_ips.csv` | 37 | 23 trademarks and 3 entity registrations with an address of record in the study area, plus 11 historical patents tied to the corridor by people rather than address (the Ouija board, whose inventor is buried at Green Mount Cemetery, and 10 unconfirmed surname leads to corridor families). 16 are matched to a specific property. |
 | `property_parcels.csv` | 786 | City parcel roll for the study area's blocks: address, blocklot, owner, land use, sqft. The linkage layer. |
@@ -195,10 +197,18 @@ full pre-cut export is in this repository's git history (commit `e00b32b`).
 
 **Columns that look like data but are not.** Some `properties.csv` columns are blank in every
 row (`avm_estimate`, `flood_zone`, `walk_score`, `transit_score`, `bike_score`, `building_condition`,
-`building_quality`, `num_stories`, `irs_agi_per_return`, `irs_homeowner_pct`). Others are `0` in
-every row, which is a placeholder, not a measurement: `sale_count`, `nearby_restaurants`,
-`nearby_shops`, `nearby_amenities_total`, `public_investment_total`. `DATA_DICTIONARY.md` marks
-them all, and section 0 of the notebook finds them programmatically.
+`building_quality`, `num_stories`, `irs_agi_per_return`, `irs_homeowner_pct`). Others hold the
+same value in every row, so they cannot tell one property from another:
+
+- `0` or `False` everywhere, which is a placeholder, not a measurement: `sale_count`,
+  `nearby_restaurants`, `nearby_shops`, `nearby_amenities_total`, `public_investment_total`,
+  `has_basement`, `has_central_ac`, and the flags `opportunity_zone`, `inspire_eligible`,
+  `arts_district`, `lincs_corridor`, `hud_reo`, `difficult_development_area`.
+- Area-wide figures, identical across the study area: `zip_code` (21218),
+  `fair_market_rent_2br`, `market_median_sale_price`, `market_median_dom`, `market_inventory`.
+
+`DATA_DICTIONARY.md` marks them all, and section 0 of the notebook finds them programmatically.
+Drop them before building features.
 
 ## 4b. The t0 baseline — the "before" line already exists
 
@@ -252,7 +262,8 @@ this export holds 673 properties and 10,614 incidents (3,597 of them curated). T
 "~150 registered intellectual-property records" counted the whole knowledge base; the study area
 holds 37. The CSVs are authoritative.
 
-`verify_claims.py` checks every number in this README against the CSVs. It is standard library
+`verify_claims.py` checks every number in this README against the CSVs, along with the copies of
+those numbers in `AGENTS.md`, `PROJECT_IDEAS.md`, `LICENSE.md`, `map/`, and `site/`. It is standard library
 only: run `python3 verify_claims.py`. If it ever disagrees with this README, the data wins and the
 README is what needs fixing.
 

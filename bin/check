@@ -3,28 +3,43 @@
 #
 #   bin/check
 #
-# 1. Every number in README.md matches the CSVs.
+# 1. Every number in README.md (and the docs that repeat it) matches the CSVs.
 # 2. The map app loads the data and its layer split agrees.
-# 3. START_HERE.py and START_HERE.ipynb are in sync.
+# 3. START_HERE.py and START_HERE.ipynb hold the same code (read-only; fixes nothing).
 # 4. The notebook runs top to bottom without an error.
+#
+# Needs bash (macOS, Linux, WSL, or Git Bash on Windows). Uses `uv run` when uv is installed;
+# otherwise it expects jupytext and jupyter on PATH, e.g. from an activated .venv.
 set -euo pipefail
 cd "$(dirname "$0")/.."
+
+run=""
+if command -v uv > /dev/null; then run="uv run --quiet"; fi
 
 echo "==> README claims (verify_claims.py)"
 python3 verify_claims.py
 
 echo "==> map data (map/app.py --check)"
-python3 map/app.py --check > /dev/null
+if ! map_out="$(python3 map/app.py --check 2>&1)"; then
+  echo "$map_out"
+  exit 1
+fi
 echo "check passed"
 
-echo "==> notebook pairing (jupytext --sync)"
-uv run --quiet jupytext --quiet --sync START_HERE.py
+echo "==> notebook pairing (START_HERE.py vs START_HERE.ipynb)"
+# Compare the code without rewriting either file. The `formats:` header line only appears in the .py.
+if ! diff <($run jupytext --quiet --to py:percent -o - START_HERE.ipynb | grep -v '^#     formats:') \
+          <(grep -v '^#     formats:' START_HERE.py) > /dev/null; then
+  echo "START_HERE.py and START_HERE.ipynb differ. If you edited the .py (the source of truth), run:"
+  echo "    uv run jupytext --sync START_HERE.py"
+  exit 1
+fi
 echo "in sync"
 
 echo "==> notebook runs top to bottom (nbconvert --execute)"
 out="$(mktemp -d)"
 trap 'rm -rf "$out"' EXIT
-uv run --quiet jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 \
+$run jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=600 \
   START_HERE.ipynb --output-dir "$out" --log-level WARN
 echo "notebook ran cleanly"
 

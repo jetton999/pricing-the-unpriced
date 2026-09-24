@@ -64,16 +64,25 @@ for name, df in [("properties",props),("incidents",inc),("subjects",subj),
 # ## 0. Columns that look like data but are not
 #
 # Every property here is on Greenmount Ave or within about a block of it (README, "How the study
-# area was cut"). Some columns exist in the schema but hold no data in this export. Some are
-# blank. Others are filled with `0` in every row, which is the more dangerous case: a 0 looks like
-# a measurement ("no restaurants nearby", "never sold") when it is not one.
+# area was cut"). Some columns hold nothing you can learn from:
+#
+# - **Blank** in every row: the field was never captured.
+# - **The same value in every row.** A `0` or `False` there is usually a placeholder, and it is
+#   the dangerous case: it looks like a measurement ("no restaurants nearby", "no basement") when
+#   it is not one. The others (ZIP code, fair market rent, the `market_*` figures) are area-wide
+#   values, identical for every property, so they cannot tell one property from another.
+#
+# Drop these before building features.
 #
 
 # %%
-empty    = [c for c in props.columns if props[c].isna().all()]
-all_zero = [c for c in props.select_dtypes("number").columns if (props[c] == 0).all()]
-print("blank in every row:        ", ", ".join(empty))
-print("0 in every row (not data): ", ", ".join(all_zero))
+blank    = [c for c in props.columns if props[c].isna().all()]
+constant = {c: props[c].iat[0] for c in props.columns
+            if props[c].notna().all() and props[c].nunique() == 1}
+print("blank in every row:\n  " + ", ".join(blank) + "\n")
+print("same value in every row:")
+for c, v in constant.items():
+    print(f"  {c:<28} {v}")
 
 # %% [markdown]
 # ## 1. The first thing you need to know
@@ -292,8 +301,14 @@ fin = props[["id","address","block_side_id","zoning_code","structure_sqft","year
 fin["zoning_code"] = fin["zoning_code"].str.strip()
 fin["commercial"] = fin.zoning_code.fillna("").str.startswith("C-")
 
-sold = fin[fin.commercial & (fin.last_sale_price > 10_000)]
-portfolio = sold.duplicated(["last_sale_price", "last_sale_date"], keep=False)
+# Look for shared price+date across *every* property, not just commercial ones: a deal can
+# bundle a storefront with the house behind it.
+priced = fin.last_sale_price > 10_000
+shared = fin[priced].duplicated(["last_sale_price", "last_sale_date"], keep=False)
+fin["portfolio"] = shared.reindex(fin.index, fill_value=False)
+
+sold = fin[fin.commercial & priced]
+portfolio = sold.portfolio
 sales = sold[~portfolio]
 sales = sales.assign(price_per_sqft=sales.last_sale_price / sales.structure_sqft)
 
@@ -352,7 +367,7 @@ def lease_to_own(price, rent_month, credit_share=0.25, ltv=0.75, rate=0.07, term
     return dict(price=price, rent_month=rent_month, down_payment=round(down),
                 years_to_option=round(years_to_option, 1),
                 mortgage_month=round(mortgage_month),
-                rent_vs_mortgage=round(mortgage_month / rent_month, 2))
+                rent_vs_mortgage=round(mortgage_month / rent_month, 2) if rent_month else float("inf"))
 
 example = sales.sort_values("last_sale_date", ascending=False).iloc[0]
 price = float(example.last_sale_price)

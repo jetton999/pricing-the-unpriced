@@ -49,15 +49,16 @@ treat the two differently.
 
 **What the data already holds.**
 - Use history per address: Sanborn maps (footprint, material, use, 1915), Polk city
-  directories (business at each address by year), 661 newspaper clippings, ~680
-  `operated_at` links between businesses and properties, NRHP nomination text.
+  directories (business at each address by year), 661 newspaper clippings, 678 `operated_at` links (415 of them name a business; the rest
+  name proprietors, organizations, or families), NRHP nomination text.
 - Present state, per property: zoning, year built, sqft, dwelling units, active permits,
   vacancy, violations, tax certificates, receivership, whether a business trades there.
-- Market context, per property: market typology, median sale price, days on market, and
-  inventory; HUD fair market rent; median household income; walkability index and transit
-  access; historic district, main street, opportunity zone, and CDBG flags. Nearby business
-  counts and walk scores are not captured in this export: `walk_score` is blank and the
-  `nearby_*` columns are 0 in every row.
+- Market context, per property: market typology, median household income, walkability index
+  and transit access, historic district, main street, and CDBG flags. The market median sale
+  price, days on market, inventory, and HUD fair market rent are ZIP-level figures, the same for
+  every property in the study area, so they describe the area, not a building. Nearby business
+  counts and walk scores are not captured: `walk_score` is blank and the `nearby_*` columns
+  are 0 in every row.
 - Assemblages: the export has no acquisition groupings. Use `block_side_id` (61 values) as
   the default unit, and let the sponsor name specific assemblages.
 - One calibration point: the sponsor can share daily sales for an operating restaurant at

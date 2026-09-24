@@ -1,9 +1,10 @@
 # Data Dictionary
 
 Every column of every CSV, in file order. **Filled** is the share of rows with a value.
-**blank** means empty in every row and **all 0** means `0` in every row: a placeholder, not a
-measurement. Do not read a 0 there as "none". `python3 verify_claims.py` checks the blank and
-all-0 markers on `properties.csv` against the data.
+**blank** means empty in every row. **all 0** and **always `x`** mean one value in every row:
+either a placeholder (`0`, `false`) or an area-wide figure, identical for every property. Either
+way the column cannot tell one property from another. Do not read a 0 there as "none".
+`python3 verify_claims.py` checks these markers on `properties.csv` against the data.
 
 Joins: `property_incidents.property_id` → `properties.id`; `incident_subjects` links
 `property_incidents` to `subjects`; `incident_links` links incidents to each other;
@@ -36,7 +37,7 @@ Joins: `property_incidents.property_id` → `properties.id`; `incident_subjects`
 | `city_owned` | boolean | 100% |  |
 | `alias` | string | 3% |  |
 | `has_active_business` | boolean | 88% |  |
-| `opportunity_zone` | boolean | 100% |  |
+| `opportunity_zone` | boolean | **always `false`** |  |
 | `flood_zone` | string | **blank** |  |
 | `historic_district` | string | 25% |  |
 | `enterprise_zone` | boolean | 100% |  |
@@ -44,7 +45,7 @@ Joins: `property_incidents.property_id` → `properties.id`; `incident_subjects`
 | `violations_12mo_count` | integer | 100% |  |
 | `census_tract` | string | 88% |  |
 | `environmental_flag` | boolean | 98% |  |
-| `fair_market_rent_2br` | integer | 100% | HUD residential FMR for the ZIP; an order-of-magnitude anchor only. |
+| `fair_market_rent_2br` | integer | **always `1857`** | HUD residential FMR for the ZIP; an order-of-magnitude anchor only. |
 | `median_household_income` | integer | 65% |  |
 | `vacant_notice_status` | string | 5% |  |
 | `active_permit_count` | integer | 100% |  |
@@ -54,10 +55,10 @@ Joins: `property_incidents.property_id` → `properties.id`; `incident_subjects`
 | `market_typology` | string | 66% | Market typology category (B–G in this export). |
 | `crimes_12mo_count` | integer | 100% |  |
 | `cdbg_eligible` | boolean | 100% |  |
-| `inspire_eligible` | boolean | 100% |  |
-| `arts_district` | boolean | 100% |  |
+| `inspire_eligible` | boolean | **always `false`** |  |
+| `arts_district` | boolean | **always `false`** |  |
 | `healthy_neighborhood` | boolean | 100% |  |
-| `lincs_corridor` | boolean | 100% |  |
+| `lincs_corridor` | boolean | **always `false`** |  |
 | `main_street_district` | boolean | 100% |  |
 | `niif_area` | boolean | 100% |  |
 | `sustainable_community` | boolean | 100% |  |
@@ -67,9 +68,9 @@ Joins: `property_incidents.property_id` → `properties.id`; `incident_subjects`
 | `transit_distance_m` | integer | 65% |  |
 | `jobs_transit_45min` | integer | 65% |  |
 | `lihtc_nearby_count` | integer | 100% |  |
-| `hud_reo` | boolean | 100% |  |
+| `hud_reo` | boolean | **always `false`** |  |
 | `qualified_census_tract` | boolean | 100% |  |
-| `difficult_development_area` | boolean | 100% |  |
+| `difficult_development_area` | boolean | **always `false`** |  |
 | `cdbg_investment_total` | integer | 100% |  |
 | `hmda_loan_count` | integer | 65% |  |
 | `hmda_median_value` | integer | 65% |  |
@@ -82,11 +83,11 @@ Joins: `property_incidents.property_id` → `properties.id`; `incident_subjects`
 | `building_condition` | string | **blank** |  |
 | `building_quality` | string | **blank** |  |
 | `num_stories` | integer | **blank** |  |
-| `has_basement` | boolean | 100% |  |
-| `has_central_ac` | boolean | 100% |  |
-| `market_median_sale_price` | integer | 100% |  |
-| `market_median_dom` | integer | 100% |  |
-| `market_inventory` | integer | 100% |  |
+| `has_basement` | boolean | **always `false`** |  |
+| `has_central_ac` | boolean | **always `false`** |  |
+| `market_median_sale_price` | integer | **always `240000`** |  |
+| `market_median_dom` | integer | **always `59`** |  |
+| `market_inventory` | integer | **always `203`** |  |
 | `walk_score` | integer | **blank** |  |
 | `transit_score` | integer | **blank** |  |
 | `bike_score` | integer | **blank** |  |
@@ -97,7 +98,7 @@ Joins: `property_incidents.property_id` → `properties.id`; `incident_subjects`
 | `irs_homeowner_pct` | float | **blank** |  |
 | `avm_estimate` | integer | **blank** |  |
 | `sale_count` | integer | **all 0** |  |
-| `zip_code` | string | 100% | 21218 for every row. |
+| `zip_code` | string | **always `21218`** | 21218 for every row. |
 | `block_plat_url` | string | 88% |  |
 | `tax_certificate_status` | string | 13% |  |
 | `tax_certificate_sold_on` | date | 13% |  |
@@ -195,7 +196,7 @@ Joins: `property_incidents.property_id` → `properties.id`; `incident_subjects`
 | Column | Type | Filled | Notes |
 |---|---|---|---|
 | `id` | bigint | 100% | Primary key. |
-| `source` | string | 100% |  |
+| `source` | string | **always `baltimore:parcels`** |  |
 | `source_id` | string | 100% |  |
 | `blocklot` | string | 100% |  |
 | `address` | string | 100% |  |

@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """
-Verify every quantitative claim in README.md against the CSVs in this repository.
+Verify every quantitative claim in README.md against the CSVs in this repository, plus the
+same numbers where AGENTS.md, PROJECT_IDEAS.md, LICENSE.md, map/, and site/ repeat them.
 
 Standard library only. No pandas, no networkx, no install step.
 
@@ -41,12 +42,23 @@ def check(label, actual, claimed):
     checks.append((actual == claimed, label, actual, claimed))
 
 
+def doc_says(filename, snippet):
+    """A doc outside the README repeats a number: check the computed snippet appears in it."""
+    with open(os.path.join(ROOT, filename), encoding="utf-8") as handle:
+        check("%s says %r" % (filename, snippet), snippet in handle.read(), True)
+
+
 def main():
     incidents = list(rows("property_incidents.csv"))
     links = list(rows("incident_links.csv"))
     properties = list(rows("properties.csv"))
     subjects = list(rows("subjects.csv"))
     incident_subjects = list(rows("incident_subjects.csv"))
+    registered_ips = list(rows("registered_ips.csv"))
+    parcels = list(rows("property_parcels.csv"))
+    grant_matches = list(rows("grant_program_matches.csv"))
+    neighborhoods = list(rows("neighborhoods.csv"))
+    baseline = list(rows("baseline_snapshots.csv"))
 
     # Section 1: the two layers
     check("property_incidents rows", len(incidents), 10614)
@@ -116,16 +128,21 @@ def main():
 
     check("block sides", len({r["block_side_id"] for r in properties if (r.get("block_side_id") or "").strip()}), 61)
 
-    # Columns the README says are blank, or 0, in every row of properties.csv
+    # Columns the README says are blank, or hold one value, in every row of properties.csv
     def values(column):
-        return [(r.get(column) or "").strip() for r in properties]
+        return {(r.get(column) or "").strip() for r in properties}
     for column in ["avm_estimate", "flood_zone", "walk_score", "transit_score", "bike_score", "building_condition",
                    "building_quality", "num_stories", "irs_agi_per_return", "irs_homeowner_pct"]:
-        check("properties.%s blank in every row" % column, all(v == "" for v in values(column)), True)
-    for column in ["sale_count", "nearby_restaurants", "nearby_shops", "nearby_amenities_total",
-                   "public_investment_total"]:
-        check("properties.%s 0 in every row" % column,
-              all(v != "" and float(v) == 0 for v in values(column)), True)
+        check("properties.%s blank in every row" % column, values(column), {""})
+    for column, value in [("sale_count", "0"), ("nearby_restaurants", "0"), ("nearby_shops", "0"),
+                          ("nearby_amenities_total", "0"), ("public_investment_total", "0"),
+                          ("has_basement", "false"), ("has_central_ac", "false"),
+                          ("opportunity_zone", "false"), ("inspire_eligible", "false"),
+                          ("arts_district", "false"), ("lincs_corridor", "false"), ("hud_reo", "false"),
+                          ("difficult_development_area", "false"), ("zip_code", "21218"),
+                          ("fair_market_rent_2br", "1857"), ("market_median_sale_price", "240000"),
+                          ("market_median_dom", "59"), ("market_inventory", "203")]:
+        check("properties.%s is %s in every row" % (column, value), values(column), {value})
 
     check("subjects rows", len(subjects), 3094)
     subject_types = collections.Counter((r.get("subject_type") or "").strip() for r in subjects)
@@ -139,23 +156,27 @@ def main():
     for relationship, claimed in [("owned", 924), ("operated_at", 678), ("sold", 660),
                                   ("interred_at", 596), ("purchased", 455), ("lived_at", 280)]:
         check("relationship %s" % relationship, relationships.get(relationship, 0), claimed)
+    business_ids = {r["id"] for r in subjects if r["subject_type"] == "business"}
+    business_links = sum(1 for r in incident_subjects
+                         if r["relationship"] == "operated_at" and r["subject_id"] in business_ids)
+    check("operated_at links to a business", business_links, 415)
 
-    for filename, claimed in [("registered_ips.csv", 37), ("property_parcels.csv", 786),
-                              ("grant_program_matches.csv", 5382), ("neighborhoods.csv", 5),
-                              ("baseline_snapshots.csv", 883)]:
-        check("%s rows" % filename, sum(1 for _ in rows(filename)), claimed)
+    for filename, table, claimed in [("registered_ips.csv", registered_ips, 37),
+                                     ("property_parcels.csv", parcels, 786),
+                                     ("grant_program_matches.csv", grant_matches, 5382),
+                                     ("neighborhoods.csv", neighborhoods, 5),
+                                     ("baseline_snapshots.csv", baseline, 883)]:
+        check("%s rows" % filename, len(table), claimed)
 
-    registered_ips = list(rows("registered_ips.csv"))
     ip_types = collections.Counter((r.get("ip_type") or "").strip() for r in registered_ips)
     for ip_type, claimed in [("trademark", 23), ("patent", 11), ("entity", 3)]:
         check("registered IP %s" % ip_type, ip_types.get(ip_type, 0), claimed)
     check("registered IP matched to a property",
           sum(1 for r in registered_ips if (r.get("property_id") or "").strip()), 16)
     check("neighborhoods with bounds",
-          sum(1 for r in rows("neighborhoods.csv") if (r.get("bounds") or "").strip()), 0)
+          sum(1 for r in neighborhoods if (r.get("bounds") or "").strip()), 0)
 
     # Section 4b: the t0 baseline
-    baseline = list(rows("baseline_snapshots.csv"))
     captures = collections.Counter((r.get("captured_on") or "")[:10] for r in baseline)
     check("baseline capture 2026-07-13", captures.get("2026-07-13", 0), 349)
     check("baseline capture 2026-07-22", captures.get("2026-07-22", 0), 534)
@@ -186,10 +207,32 @@ def main():
     check("graph nodes", len(nodes), 3608)
     check("graph edges", len(edges), 3762)
 
+    # The same numbers, where other docs repeat them. Snippets are built from the data, so a
+    # data change that is not carried into these files fails here.
+    curated = len(incidents) - administrative
+    with_coords = sum(1 for r in properties if (r.get("latitude") or "").strip())
+    doc_says("AGENTS.md", "%s administrative rows and %s curated" % (f"{administrative:,}", f"{curated:,}"))
+    doc_says("AGENTS.md", "(%d properties)" % len(properties))
+    doc_says("PROJECT_IDEAS.md", "covers %d properties" % len(properties))
+    doc_says("PROJECT_IDEAS.md", "%d `operated_at` links" % relationships["operated_at"])
+    doc_says("LICENSE.md", "of the %s incident rows" % f"{len(incidents):,}")
+    doc_says("map/README.md", "properties ≠ %s, incidents ≠ %s, or curated ≠ %s"
+             % (f"{len(properties):,}", f"{len(incidents):,}", f"{curated:,}"))
+    doc_says("map/README.md", "Markers are the %d properties" % with_coords)
+    doc_says("map/app.py", "EXPECTED_PROPERTIES = %d" % len(properties))
+    doc_says("map/app.py", "EXPECTED_INCIDENTS = %d" % len(incidents))
+    doc_says("map/app.py", "EXPECTED_CURATED = %d" % curated)
+    doc_says("site/index.html", '<div class="n">%d</div>' % len(properties))
+    doc_says("site/index.html", "%s incident rows of which %s are hand-researched"
+             % (f"{len(incidents):,}", f"{curated:,}"))
+    doc_says("site/index.html", '<div class="n te">%d</div>' % business_links)
+    doc_says("site/index.html", "%d markers" % with_coords)
+    doc_says("site/index.html", "<td>registered_ips.csv</td><td>%d</td>" % len(registered_ips))
+
     failures = [c for c in checks if not c[0]]
     for _, label, actual, claimed in failures:
-        print("MISMATCH  %-34s actual=%-8s README=%s" % (label, actual, claimed))
-    print("%d/%d README claims verified against the data." % (
+        print("MISMATCH  %-34s actual=%-8s claimed=%s" % (label, actual, claimed))
+    print("%d/%d claims verified against the data." % (
         len(checks) - len(failures), len(checks)))
     return 1 if failures else 0
 
