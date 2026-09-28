@@ -60,9 +60,17 @@ treat the two differently.
   counts and walk scores are not captured: `walk_score` is blank and the `nearby_*` columns
   are 0 in every row.
 - Assemblages: the export has no acquisition groupings. Use `block_side_id` (61 values) as
-  the default unit, and let the sponsor name specific assemblages.
+  the default unit, and let the sponsor name specific assemblages. The first one is below.
 - One calibration point: the sponsor can share daily sales for an operating restaurant at
   2731 Greenmount, under NDA, to sanity-check revenue estimates.
+
+**Proposed first focus area.** Start with the stretch outlined in purple: East 32nd Street
+south to about the 2900 block, between Brentwood Avenue and Old York Road, taking in both
+sides of Greenmount. It holds a dense run of storefronts, St. John's Episcopal Church and
+cemetery (3009 Greenmount, the 1858 arson), and the Peabody Heights Brewery block. Build the
+use histories and candidate uses here first, then widen to the rest of the corridor.
+
+![Proposed first focus area: Greenmount Ave from E 32nd St south to about the 2900 block, between Brentwood Ave and Old York Rd](proposed-focus-area-phase1.png)
 
 **What students build.**
 1. A use-history timeline per property, extracted from the curated layer.

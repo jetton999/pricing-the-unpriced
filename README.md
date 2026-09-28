@@ -91,6 +91,7 @@ bash script: on Windows, run it from WSL or Git Bash, or run `python3 verify_cla
 | `bin/check` | Runs all the checks: doc claims, map data, `.py`/`.ipynb` pairing, notebook execution. |
 | `bin/cut_study_area.py` | Reproduces the study-area cut from the full export in git history (§4). Standard library only. |
 | `05_incidents_by_decade.png` | The corpus at a glance (§1). |
+| `proposed-focus-area-phase1.png` | The proposed first focus area for Idea 1, shown in `PROJECT_IDEAS.md`. |
 | `row_counts.txt` | Export row counts. |
 
 ---
