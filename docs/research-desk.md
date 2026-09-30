@@ -50,7 +50,7 @@ citations.
   than one night.
 - Nothing is invented. A search that finds nothing is reported as nothing,
   and a claim the desk cannot pin to a page is graded `possible`, not `verified`.
-- If the sponsor's computer is off, the queue waits until it is on.
+- The desk runs on the sponsor's own computer. If it is off or Claude is closed at 2am, the queue runs when it next opens, so an answer can slip a day.
 
 ## Free sources you can use directly
 
