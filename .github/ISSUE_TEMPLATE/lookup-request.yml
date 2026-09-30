@@ -1,0 +1,51 @@
+name: Lookup request
+description: Ask the sponsor's research desk to search a paid or archival source for you. Runs nightly.
+title: "Lookup: <address> / <name or business>"
+labels: ["lookup"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        The desk runs every night on the sponsor's own accounts (Newspapers.com, MyHeritage, Maryland Land Records) and the free archives, files what it finds into the knowledge base with citations, and posts a summary here. See `docs/research-desk.md`. About ten requests a night; be specific and it goes faster.
+  - type: input
+    id: address
+    attributes:
+      label: Address
+      description: One property, as it appears in properties.csv. Add the pre-1910s York Road number if you know it.
+      placeholder: "3313 Greenmount Ave"
+    validations:
+      required: true
+  - type: textarea
+    id: terms
+    attributes:
+      label: Names, businesses or terms to search
+      description: One per line. Distinctive names trace cleanly; common surnames need a hook (a first name, a trade, a decade).
+      placeholder: |
+        Esselman Motor Co
+        Boulevard Bowling Academy
+        Wagner's Food Stores
+    validations:
+      required: true
+  - type: input
+    id: years
+    attributes:
+      label: Year range
+      placeholder: "1920-1965"
+  - type: checkboxes
+    id: sources
+    attributes:
+      label: Sources
+      description: Leave all unchecked for "whatever fits".
+      options:
+        - label: Newspapers.com (Sun, Evening Sun, Afro-American; 1850s on)
+        - label: MyHeritage (census 1900-1950, vital records, directories)
+        - label: Maryland Land Records (deeds; digital 1972 on, name indexes to 1851)
+        - label: Free archives (Chronicling America, Polk directories, Sanborn, FindAGrave, Maryland Business Express)
+  - type: textarea
+    id: why
+    attributes:
+      label: What you are trying to establish
+      description: One or two sentences. It decides what gets read closely and what gets skipped.
+      placeholder: "Whether the bowling alley and the confectionery were the same operator, and when groceries took over."
+    validations:
+      required: true

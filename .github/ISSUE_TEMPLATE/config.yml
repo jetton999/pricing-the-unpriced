@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Data or notebook question
+    url: https://github.com/jetton999/pricing-the-unpriced/issues/new
+    about: Anything that is not a lookup request. Open a plain issue.
