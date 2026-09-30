@@ -287,5 +287,5 @@ drop them.
 
 ## 9. Questions
 
-Open an issue on this repository, or contact the sponsor directly. The sponsor maintains the
+Open an issue on this repository, or contact the sponsor directly. For a search on a source behind the sponsor's accounts (Newspapers.com, MyHeritage, Maryland Land Records), open a **Lookup request** issue; the sponsor's research desk runs them nightly. See `docs/research-desk.md`. The sponsor maintains the
 production system this pilot extends, so you will not be the IT department.
