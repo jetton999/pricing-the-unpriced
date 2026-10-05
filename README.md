@@ -105,10 +105,10 @@ presenting them is in **[`site/`](site/)**.
 1. **Heritage-anchored highest and best use.** Given an assemblage of buildings, what should each
    one become, what would it earn, and does the mix work as a block? It starts from what each
    address *was*. The use-history timeline it needs is exactly what the provenance layer in this
-   package produces. The proposed first focus area is E 32nd St south to about the 2900 block,
-   between Brentwood Ave and Old York Rd:
+   package produces. The proposed first focus area is E 33rd St south to E 29th St, between
+   Barclay St and Old York Rd:
 
-   <img src="proposed-focus-area-phase1.png" alt="Proposed first focus area: Greenmount Ave from E 32nd St south to about the 2900 block, between Brentwood Ave and Old York Rd" width="400">
+   <img src="proposed-focus-area-phase1.png" alt="Proposed first focus area: Greenmount Ave from E 33rd St south to E 29th St, between Barclay St and Old York Rd" width="400">
 
 2. **From tenant to owner.** A lease that starts a business as an ordinary tenant of the sponsor's
    real estate trust and ends with it owning the building. It is designed against eleven documented

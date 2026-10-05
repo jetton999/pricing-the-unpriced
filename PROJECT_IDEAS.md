@@ -64,13 +64,13 @@ treat the two differently.
 - One calibration point: the sponsor can share daily sales for an operating restaurant at
   2731 Greenmount, under NDA, to sanity-check revenue estimates.
 
-**Proposed first focus area.** Start with the stretch outlined in purple: East 32nd Street
-south to about the 2900 block, between Brentwood Avenue and Old York Road, taking in both
-sides of Greenmount. It holds a dense run of storefronts, St. John's Episcopal Church and
+**Proposed first focus area.** Start with the stretch outlined in purple: East 33rd Street
+south to East 29th Street, between Barclay Street and Old York Road, taking in both sides of
+Greenmount down to East 30th Street and the west side below it. It holds a dense run of storefronts, St. John's Episcopal Church and
 cemetery (3009 Greenmount, the 1858 arson), and the Peabody Heights Brewery block. Build the
 use histories and candidate uses here first, then widen to the rest of the corridor.
 
-![Proposed first focus area: Greenmount Ave from E 32nd St south to about the 2900 block, between Brentwood Ave and Old York Rd](proposed-focus-area-phase1.png)
+![Proposed first focus area: Greenmount Ave from E 33rd St south to E 29th St, between Barclay St and Old York Rd](proposed-focus-area-phase1.png)
 
 **What students build.**
 1. A use-history timeline per property, extracted from the curated layer.
