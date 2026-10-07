@@ -3,7 +3,7 @@
 
 Two project sketches. Both run on the sponsor's Greenmount corridor knowledge base,
 exported here as CSVs. Everything students need is in this repo. The corpus
-covers 673 properties on Greenmount Ave, Baltimore, and about one block either side, with
+covers 665 properties on Greenmount Ave, Baltimore, and about one block either side, with
 ~3,600 hand-researched historical records back to the 1650s and ~7,000 rows from live city
 feeds. To start, run `START_HERE.ipynb` (see the
 README Quickstart).
@@ -59,7 +59,7 @@ treat the two differently.
   every property in the study area, so they describe the area, not a building. Nearby business
   counts and walk scores are not captured: `walk_score` is blank and the `nearby_*` columns
   are 0 in every row.
-- Assemblages: the export has no acquisition groupings. Use `block_side_id` (61 values) as
+- Assemblages: the export has no acquisition groupings. Use `block_side_id` (59 values) as
   the default unit, and let the sponsor name specific assemblages. The first one is below.
 - One calibration point: the sponsor can share daily sales for an operating restaurant at
   2731 Greenmount, under NDA, to sanity-check revenue estimates.

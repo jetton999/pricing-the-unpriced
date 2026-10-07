@@ -30,9 +30,9 @@ bash; it uses `uv run` if uv is installed, else the active environment. `verify_
 
 - **Layer split.** In `property_incidents.csv`, a `source` is *administrative* if it starts with
   `baltimore:` or equals `sdat_assessments` or `sdat:owner`. Everything else is *curated*.
-  That gives 7,017 administrative rows and 3,597 curated. Historical analysis uses the curated layer.
+  That gives 6,979 administrative rows and 3,597 curated. Historical analysis uses the curated layer.
 - **Study area.** The export covers only Greenmount Ave and about one block either side
-  (673 properties). The cut rule is in README §4, "How the study area was cut".
+  (665 properties). The cut rule is in README §4, "How the study area was cut".
 - **Blank and single-value columns.** `avm_estimate`, `flood_zone`, `walk_score`,
   `transit_score`, `bike_score`, `building_condition`, `building_quality`, `num_stories`, `irs_*`
   are blank. Eighteen more hold one value in every row: the `0`/`False` placeholders
@@ -40,9 +40,12 @@ bash; it uses `uv run` if uv is installed, else the active environment. `verify_
   program flags) and area-wide figures (`zip_code`, `fair_market_rent_2br`, `market_median_*`,
   `market_inventory`). Never use them as features or read a 0 as "none". `neighborhoods.bounds`
   is empty. `DATA_DICTIONARY.md` marks every such column; notebook §0 lists them.
-- **Sale prices.** 114 `last_sale_price` values are $0. Portfolio sales repeat the whole deal
+- **Sale prices.** 113 `last_sale_price` values are $0. Portfolio sales repeat the whole deal
   price on every parcel: drop rows whose price and date are shared with another parcel, and
   701 Exeter Hall Ave, whose deal partner is outside the study area.
+- **Address format.** Mixed case, no ZIP, ending `, Baltimore, MD`: `701 Exeter Hall Ave, Baltimore, MD`,
+  not `701 EXETER HALL AVE, Baltimore, MD 21218`. Match on `blocklot` before address when two rows might be
+  one parcel. `bin/clean_addresses.py` produced this state.
 - **`assessed_value` is administrative**, not a market price. Never present it as one.
 - **Never drop rows with a `sensitivity` flag** (52 incidents). See `LICENSE.md`.
 - **`operated_at` links people and organizations too.** Filter `subjects.subject_type ==
@@ -70,4 +73,4 @@ bash; it uses `uv run` if uv is installed, else the active environment. `verify_
 | Idea 2 financing cases | `docs/worker-owned-exits.md` |
 | Sensitivity and licensing rules | `LICENSE.md` |
 | Map app internals | `map/README.md` |
-| How the CSVs were cut from the full export | `bin/cut_study_area.py` |
+| How the CSVs were cut from the full export | `bin/cut_study_area.py`, then `bin/clean_addresses.py` |

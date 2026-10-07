@@ -1,10 +1,10 @@
-properties: 673
-property_incidents: 10614
+properties: 665
+property_incidents: 10576
 subjects: 3094
 incident_subjects: 5459
 incident_links: 236
 registered_ips: 37
 property_parcels: 786
 neighborhoods: 5
-grant_program_matches: 5382
+grant_program_matches: 5319
 baseline_snapshots: 883
