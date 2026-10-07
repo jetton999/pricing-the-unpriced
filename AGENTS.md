@@ -46,6 +46,9 @@ bash; it uses `uv run` if uv is installed, else the active environment. `verify_
 - **Address format.** Mixed case, no ZIP, ending `, Baltimore, MD`: `701 Exeter Hall Ave, Baltimore, MD`,
   not `701 EXETER HALL AVE, Baltimore, MD 21218`. Match on `blocklot` before address when two rows might be
   one parcel. `bin/clean_addresses.py` produced this state.
+- **Archive scans.** In `archive_scans.csv` a page filed on several buildings is several rows: count
+  distinct `item` + `page`, not rows. Captions are one-line descriptions, not transcriptions. Open
+  `scan_url` before you cite a page.
 - **`assessed_value` is administrative**, not a market price. Never present it as one.
 - **Never drop rows with a `sensitivity` flag** (52 incidents). See `LICENSE.md`.
 - **`operated_at` links people and organizations too.** Filter `subjects.subject_type ==
@@ -74,3 +77,4 @@ bash; it uses `uv run` if uv is installed, else the active environment. `verify_
 | Sensitivity and licensing rules | `LICENSE.md` |
 | Map app internals | `map/README.md` |
 | How the CSVs were cut from the full export | `bin/cut_study_area.py`, then `bin/clean_addresses.py` |
+| The City Archives scans (BRG48-43-10) | `archive_scans.csv`, README §4c, `bin/fetch_archive_scans.py` |

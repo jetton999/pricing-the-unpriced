@@ -59,6 +59,8 @@ def main():
     grant_matches = list(rows("grant_program_matches.csv"))
     neighborhoods = list(rows("neighborhoods.csv"))
     baseline = list(rows("baseline_snapshots.csv"))
+    archive_folders = list(rows("archive_folders.csv"))
+    archive_scans = list(rows("archive_scans.csv"))
 
     # Section 1: the two layers
     check("property_incidents rows", len(incidents), 10576)
@@ -181,6 +183,31 @@ def main():
           sum(1 for r in registered_ips if (r.get("property_id") or "").strip()), 16)
     check("neighborhoods with bounds",
           sum(1 for r in neighborhoods if (r.get("bounds") or "").strip()), 0)
+
+    # Section 4c: the City Archives scans
+    check("archive_folders.csv rows", len(archive_folders), 31)
+    check("archive_scans.csv rows", len(archive_scans), 2260)
+    check("archive folder scan counts add up",
+          sum(int(r["scans"]) for r in archive_folders), len(archive_scans))
+    check("archive distinct pages", len({(r["item"], r["page"]) for r in archive_scans}), 1692)
+    check("archive folder page counts add up",
+          sum(int(r["pages"]) for r in archive_folders), 1692)
+    check("archive buildings", len({r["property_id"] for r in archive_scans}), 142)
+    property_ids = {r["id"] for r in properties}
+    check("archive buildings in properties.csv",
+          len({r["property_id"] for r in archive_scans if r["property_id"] in property_ids}), 140)
+    folder_items = {r["item"] for r in archive_folders}
+    check("archive scans with a folder", sum(1 for r in archive_scans if r["item"] in folder_items),
+          len(archive_scans))
+    check("archive scan ids unique", len({r["id"] for r in archive_scans}), len(archive_scans))
+    check("archive scans with a caption",
+          sum(1 for r in archive_scans if (r["caption"] or "").strip()), len(archive_scans))
+    years = [int(r["depicted_on"][:4]) for r in archive_scans if r["depicted_on"]]
+    check("archive depicted years", (min(years), max(years)), (1877, 1988))
+    doc_says("README.md", "2,260 scans, 1,692")
+    doc_says("README.md", "140 of the 142 buildings")
+    doc_says("README.md", "| `archive_scans.csv` | 2,260 |")
+    doc_says("README.md", "| `archive_folders.csv` | 31 |")
 
     # Section 4b: the t0 baseline
     captures = collections.Counter((r.get("captured_on") or "")[:10] for r in baseline)

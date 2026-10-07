@@ -16,6 +16,13 @@ Full license text: https://creativecommons.org/licenses/by/4.0/
 `Pricing_the_Unpriced_CUSP_Proposal.pdf` is the sponsor's proposal document, provided for
 reference and reproduced with permission of the author. It is not CC-licensed.
 
+## City Archives scans
+
+`archive_scans.csv` and `archive_folders.csv` hold links to, not copies of, scans of the Baltimore
+City Archives DHCD Waverly files (record group BRG48-43-10). The scans are public records of the
+City of Baltimore. The captions and the folder index are sponsor-produced and CC BY 4.0 like the
+other tables. The captions are model-written or hand-written and are not transcriptions.
+
 ## Third-party sources in `/public_sources`
 
 These files are redistributed here so the analysis in the proposal can be checked
