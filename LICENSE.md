@@ -23,6 +23,10 @@ City Archives DHCD Waverly files (record group BRG48-43-10). The scans are publi
 City of Baltimore. The captions and the folder index are sponsor-produced and CC BY 4.0 like the
 other tables. The captions are model-written or hand-written and are not transcriptions.
 
+`matterport_tours.csv` lists links to public Matterport 3D scans of the sponsor's buildings. The table is
+CC BY 4.0 like the others. The scans themselves are hosted by Matterport and are the sponsor's work; they
+are not licensed by this repository, so ask before reusing the images.
+
 ## Third-party sources in `/public_sources`
 
 These files are redistributed here so the analysis in the proposal can be checked
