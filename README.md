@@ -81,7 +81,7 @@ bash script: on Windows, run it from WSL or Git Bash, or run `python3 verify_cla
 | `START_HERE.ipynb` / `.py` | The starter notebook. Start here. |
 | `PROJECT_IDEAS.md` | The two applied project ideas, in full. |
 | `DATA_DICTIONARY.md` | Every column of every table, with the empty ones marked. |
-| `*.csv` | The twelve exported tables (§4). |
+| `*.csv` | The thirteen exported tables (§4). |
 | `map/` | Standard-library map app over the CSVs. See `map/README.md`. |
 | `docs/` | Background research: worker- and tenant-owned exit cases; the coding-agent setup plan. |
 | `site/` | The revised proposal (September 2026) as a single HTML page, plus its PDF. |
@@ -90,6 +90,7 @@ bash script: on Windows, run it from WSL or Git Bash, or run `python3 verify_cla
 | `verify_claims.py` | Checks every number in this README, and where the other docs repeat it. Standard library only. |
 | `bin/check` | Runs all the checks: doc claims, map data, `.py`/`.ipynb` pairing, notebook execution. |
 | `bin/cut_study_area.py` | Reproduces the study-area cut from the full export in git history (§4). Standard library only. |
+| `bin/export_matterport_tours.rb` | How `matterport_tours.csv` was made from Corridor. Sponsor-side; you do not run it (§4d). |
 | `bin/fetch_archive_scans.py` | Rewrites the two City Archives tables from the sponsor's public viewer (§4c). Standard library only. |
 | `bin/clean_addresses.py` | Standardizes addresses and merges the eight duplicate properties; run after the cut (§4). Standard library only. |
 | `05_incidents_by_decade.png` | The corpus at a glance (§1). |
@@ -192,6 +193,7 @@ and validating this grading is committed capstone work.
 | `baseline_snapshots.csv` | 883 | **The t0 line.** See §4b. |
 | `archive_folders.csv` | 31 | The Baltimore City Archives' 31 DHCD Waverly folders (BRG48-43-10): 1970s and 1980s planning papers. See §4c. |
 | `archive_scans.csv` | 2,260 | One row per scanned page filed on a building: 1,692 distinct pages, 142 buildings, 1877 to 1988. A one-line caption, the date the page depicts, and links to the image. See §4c. |
+| `matterport_tours.csv` | 13 | Public Matterport 3D walkthroughs of the sponsor's buildings, one row per tour. See §4d. |
 
 Notes: `data` columns are JSON payloads. Respect `sensitivity` and `rights` on incidents —
 some claims are flagged restricted or consent-dependent.
@@ -273,6 +275,19 @@ image. `archive_folders.csv` is the folder index.
   of the City of Baltimore, served by the viewer at
   https://greenmountcorridor.com/properties/gallery?gal_source=archives. `bin/fetch_archive_scans.py`
   rewrites both tables from that page, with no login.
+
+## 4d. The Matterport tours (added October 2026)
+
+The sponsor has scanned the interiors of many corridor buildings with Matterport. `matterport_tours.csv`
+lists the public, active tours: 13 tours of 12 buildings, scanned April to August 2026. Open
+`share_url` to walk the building in a browser. Seven of the twelve buildings are inside the proposed
+focus area: 3011, 3015, 3026, 3107, 3117, 3200, and 3224 Greenmount Ave.
+
+- **One tour per building is primary** (`is_primary`); 3313 also has an auxiliary-room tour.
+- **The tour for 3026 is titled "3028" inside Matterport.** It is 3026; `label` says so.
+- **Private and archived tours are not listed.** More buildings are scanned than appear here.
+- **The scans are hosted by Matterport,** not in this repository, and are the sponsor's work. Ask
+  before reusing the images. `bin/export_matterport_tours.rb` shows how the table was made.
 
 ## 5. Public sources (`/public_sources`)
 

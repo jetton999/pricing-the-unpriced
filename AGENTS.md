@@ -77,4 +77,5 @@ bash; it uses `uv run` if uv is installed, else the active environment. `verify_
 | Sensitivity and licensing rules | `LICENSE.md` |
 | Map app internals | `map/README.md` |
 | How the CSVs were cut from the full export | `bin/cut_study_area.py`, then `bin/clean_addresses.py` |
+| The Matterport walkthroughs | `matterport_tours.csv`, README §4d |
 | The City Archives scans (BRG48-43-10) | `archive_scans.csv`, README §4c, `bin/fetch_archive_scans.py` |

@@ -61,6 +61,7 @@ def main():
     baseline = list(rows("baseline_snapshots.csv"))
     archive_folders = list(rows("archive_folders.csv"))
     archive_scans = list(rows("archive_scans.csv"))
+    tours = list(rows("matterport_tours.csv"))
 
     # Section 1: the two layers
     check("property_incidents rows", len(incidents), 10576)
@@ -208,6 +209,26 @@ def main():
     doc_says("README.md", "140 of the 142 buildings")
     doc_says("README.md", "| `archive_scans.csv` | 2,260 |")
     doc_says("README.md", "| `archive_folders.csv` | 31 |")
+
+    # Section 4d: the Matterport tours
+    check("matterport_tours.csv rows", len(tours), 13)
+    check("matterport tour buildings", len({r["property_id"] for r in tours}), 12)
+    by_id = {r["id"]: r for r in properties}
+    check("matterport tours that join to properties.csv",
+          sum(1 for r in tours if r["property_id"] in by_id), len(tours))
+    check("matterport tour addresses match properties.csv",
+          sum(1 for r in tours if by_id.get(r["property_id"], {}).get("address") == r["address"]), len(tours))
+    check("matterport primary tours per building",
+          sorted(collections.Counter(r["property_id"] for r in tours if r["is_primary"] == "true").values()),
+          [1] * 12)
+    check("matterport links are public Matterport shares",
+          sum(1 for r in tours if r["share_url"] == "https://my.matterport.com/show/?m=" + r["model_id"]), len(tours))
+    check("matterport tour ids unique", len({r["id"] for r in tours}), len(tours))
+    for number in ("3011", "3015", "3026", "3107", "3117", "3200", "3224"):
+        check("matterport tour in focus area: %s" % number,
+              any(r["address"].startswith(number + " Greenmount") for r in tours), True)
+    doc_says("README.md", "13 tours of 12 buildings")
+    doc_says("README.md", "| `matterport_tours.csv` | 13 |")
 
     # Section 4b: the t0 baseline
     captures = collections.Counter((r.get("captured_on") or "")[:10] for r in baseline)

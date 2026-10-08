@@ -308,3 +308,18 @@ Joins: `property_incidents.property_id` → `properties.id`; `incident_subjects`
 | `depicted_address` | string | 7% | An address the page names, when one was read off it. |
 | `scan_url` | string | 100% | A 1,600 px JPEG of the page. Public, no login. |
 | `original_url` | string | 100% | The full-size image. Public, no login. |
+
+`matterport_tours.csv` · 13 rows. The sponsor's public, active Matterport 3D tours: 13 tours of 12 buildings, scanned April to August 2026. The scans are links, not files. See README §4d.
+
+| Column | Type | Filled | Notes |
+|---|---|---|---|
+| `id` | bigint | 100% | The tour's id in the sponsor's database. Unique. |
+| `property_id` | bigint | 100% | → `properties.id`. Every row joins. |
+| `address` | string | 100% | The building's address, house format; equal to `properties.address`. |
+| `label` | string | 31% | A note on the tour, when it needs one: `auxiliary room`, `Aug 2026 rescan`, or the Matterport title when it differs from the building. |
+| `scan_date` | date | 100% | The day the space was scanned (Baltimore time). |
+| `floors` | integer | 100% | Floors captured. |
+| `rooms` | integer | 100% | Rooms Matterport detected. |
+| `is_primary` | boolean | 100% | `true` for the building's main tour. One per building. |
+| `model_id` | string | 100% | The Matterport model id; the part after `?m=` in the link. |
+| `share_url` | string | 100% | Open it to walk the building. Public, no login. |
