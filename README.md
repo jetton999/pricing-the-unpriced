@@ -81,7 +81,7 @@ bash script: on Windows, run it from WSL or Git Bash, or run `python3 verify_cla
 | `START_HERE.ipynb` / `.py` | The starter notebook. Start here. |
 | `PROJECT_IDEAS.md` | The two applied project ideas, in full. |
 | `DATA_DICTIONARY.md` | Every column of every table, with the empty ones marked. |
-| `*.csv` | The ten exported tables (§4). |
+| `*.csv` | The twelve exported tables (§4). |
 | `map/` | Standard-library map app over the CSVs. See `map/README.md`. |
 | `docs/` | Background research: worker- and tenant-owned exit cases; the coding-agent setup plan. |
 | `site/` | The revised proposal (September 2026) as a single HTML page, plus its PDF. |
@@ -90,6 +90,7 @@ bash script: on Windows, run it from WSL or Git Bash, or run `python3 verify_cla
 | `verify_claims.py` | Checks every number in this README, and where the other docs repeat it. Standard library only. |
 | `bin/check` | Runs all the checks: doc claims, map data, `.py`/`.ipynb` pairing, notebook execution. |
 | `bin/cut_study_area.py` | Reproduces the study-area cut from the full export in git history (§4). Standard library only. |
+| `bin/fetch_archive_scans.py` | Rewrites the two City Archives tables from the sponsor's public viewer (§4c). Standard library only. |
 | `bin/clean_addresses.py` | Standardizes addresses and merges the eight duplicate properties; run after the cut (§4). Standard library only. |
 | `05_incidents_by_decade.png` | The corpus at a glance (§1). |
 | `proposed-focus-area-phase1.png` | The proposed first focus area for Idea 1, shown in `PROJECT_IDEAS.md`. |
@@ -189,6 +190,8 @@ and validating this grading is committed capstone work.
 | `grant_program_matches.csv` | 5,319 | Property↔program matches behind the live "Improve Your Property" tool. |
 | `neighborhoods.csv` | 5 | Neighborhood names only. The `bounds` column is empty in this export. |
 | `baseline_snapshots.csv` | 883 | **The t0 line.** See §4b. |
+| `archive_folders.csv` | 31 | The Baltimore City Archives' 31 DHCD Waverly folders (BRG48-43-10): 1970s and 1980s planning papers. See §4c. |
+| `archive_scans.csv` | 2,260 | One row per scanned page filed on a building: 1,692 distinct pages, 142 buildings, 1877 to 1988. A one-line caption, the date the page depicts, and links to the image. See §4c. |
 
 Notes: `data` columns are JSON payloads. Respect `sensitivity` and `rights` on incidents —
 some claims are flagged restricted or consent-dependent.
@@ -249,6 +252,27 @@ and `vacant_notice_status` are blank; `ground_rent` is blank or 0; `sale_count` 
 That last pair is what makes this a research instrument rather than a property dump. It records how
 much was *known* about each property on a fixed date, so later documentation work becomes a
 measurable treatment rather than an untracked confound. Capture continues on the sponsor's side.
+
+## 4c. The City Archives scans (added October 2026)
+
+The Baltimore City Archives holds the city's own Waverly files from the 1970s and 1980s: 31 DHCD
+folders (record group BRG48-43-10) of urban renewal planning, parking lots, facade work, design
+standards, consultants, and meeting papers. The sponsor scanned them one image per page and filed
+each page on the building it concerns; a page about several buildings is filed on each.
+`archive_scans.csv` lists every scan the public City Archives viewer shows: 2,260 scans, 1,692
+distinct pages, 142 buildings, with a one-line caption, the date the page depicts, and links to the
+image. `archive_folders.csv` is the folder index.
+
+- **Count pages, not scans.** A page filed on three buildings is three rows. Use `item` and `page`
+  to count distinct pages.
+- **Captions are not transcriptions.** Each is one line, written by a vision model or by hand. Open
+  the scan (`scan_url`) before you rely on one.
+- **Two buildings are newer than the rest of the export.** 140 of the 142 buildings are in
+  `properties.csv`; the other two (345 and 347 E 33rd St) were added after it was cut.
+- **The scans themselves are not in this repository,** only links to them. They are public records
+  of the City of Baltimore, served by the viewer at
+  https://greenmountcorridor.com/properties/gallery?gal_source=archives. `bin/fetch_archive_scans.py`
+  rewrites both tables from that page, with no login.
 
 ## 5. Public sources (`/public_sources`)
 

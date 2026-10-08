@@ -275,3 +275,36 @@ Joins: `property_incidents.property_id` → `properties.id`; `incident_subjects`
 | `vacancy_indicator` | boolean | 30% |  |
 | `vacant_notice_status` | string | **blank** |  |
 | `violations_12mo_count` | integer | 100% |  |
+
+`archive_folders.csv` · 31 rows. The index of the Baltimore City Archives DHCD Waverly files (record group BRG48-43-10), one row per folder. See README §4c.
+
+| Column | Type | Filled | Notes |
+|---|---|---|---|
+| `item` | integer | 100% | Folder number, 1 to 31. Joins to `archive_scans.item`. |
+| `reference` | string | 100% | The archive's reference, `BRG48-43-10-<item>`. |
+| `title` | string | 100% | The folder title from the archive's delivery. |
+| `scans` | integer | 100% | Rows in `archive_scans.csv` for this folder. |
+| `pages` | integer | 100% | Distinct pages. Less than `scans` when a page is filed on several buildings. |
+| `properties` | integer | 100% | Distinct buildings the folder's pages are filed on. |
+| `first_year` | integer | 100% | Earliest `depicted_on` year in the folder. |
+| `last_year` | integer | 100% | Latest `depicted_on` year in the folder. |
+
+`archive_scans.csv` · 2,260 rows. One row per scanned page filed on a building: 1,692 distinct pages on 142 buildings. Exactly what the public City Archives viewer shows; the scans are links, not files. See README §4c.
+
+| Column | Type | Filled | Notes |
+|---|---|---|---|
+| `id` | bigint | 100% | The image's id. Unique. |
+| `property_id` | bigint | 100% | → `properties.id` for 140 of 142 buildings; 345 and 347 E 33rd St are newer than the export. |
+| `address` | string | 100% | The building's address, house format. |
+| `item` | integer | 100% | Folder number. → `archive_folders.item`. |
+| `reference` | string | 100% | `BRG48-43-10-<item>`. |
+| `folder_title` | string | 100% | The folder title. |
+| `page` | integer | 100% | Page number within the folder, in the archive's order. `item` + `page` identify a page; a page can have several rows. |
+| `category` | string | 100% | `document` (1,699), `plan` (241), `sketch` (234), `photo` (49), `ephemera` (37). |
+| `subject` | string | 2% | Set for photos only: `streetscape`, `exterior`, `detail`. |
+| `caption` | string | 100% | One line, written by a vision model or by hand. Not a transcription. |
+| `depicted_on` | date | 100% | The date the page depicts, not the scan date. Read it with `depicted_precision`. |
+| `depicted_precision` | string | 100% | `year` (1,022), `day` (905), `month` (239), `decade` (94). A `year` date is the first of January. |
+| `depicted_address` | string | 7% | An address the page names, when one was read off it. |
+| `scan_url` | string | 100% | A 1,600 px JPEG of the page. Public, no login. |
+| `original_url` | string | 100% | The full-size image. Public, no login. |
