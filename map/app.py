@@ -22,8 +22,8 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
 PORT = 8765
 
-EXPECTED_PROPERTIES = 673
-EXPECTED_INCIDENTS = 10614
+EXPECTED_PROPERTIES = 665
+EXPECTED_INCIDENTS = 10576
 EXPECTED_CURATED = 3597
 
 # ---------------------------------------------------------------------------

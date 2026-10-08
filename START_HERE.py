@@ -87,7 +87,7 @@ for c, v in constant.items():
 # %% [markdown]
 # ## 1. The first thing you need to know
 #
-# The incident table is **not** 10,614 pieces of curated history. Most of it is
+# The incident table is **not** 10,576 pieces of curated history. Most of it is
 # machine-ingested administrative data: 311 complaints, permits, assessments, crime.
 # The curated archival layer is much smaller and much older.
 #

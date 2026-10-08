@@ -6,7 +6,8 @@ cut"). Standard library only.
 
     mkdir /tmp/full && git archive e00b32b '*.csv' | tar -x -C /tmp/full   # the full export
     python3 bin/cut_study_area.py /tmp/full   # writes the cut CSVs into this repo
-    git status                                # no change means the cut reproduces
+    python3 bin/clean_addresses.py            # standardizes addresses, merges the 8 duplicates
+    git status                                # no change means the pair reproduces the CSVs
 
 A property is kept if:
   - its address is on Greenmount Ave, or

@@ -12,25 +12,25 @@ Joins: `property_incidents.property_id` → `properties.id`; `incident_subjects`
 
 ## properties
 
-`properties.csv` · 673 rows. One row per property: Greenmount Ave and about one block either side (README §4, "How the study area was cut").
+`properties.csv` · 665 rows. One row per property: Greenmount Ave and about one block either side (README §4, "How the study area was cut").
 
 | Column | Type | Filled | Notes |
 |---|---|---|---|
 | `id` | bigint | 100% | Primary key. |
-| `address` | string | 100% |  |
-| `block_side_id` | bigint | 76% | One side of one block. The default assemblage unit (61 values). |
+| `address` | string | 100% | House format: mixed case, no ZIP, ending `, Baltimore, MD` (`608 E 30th St, Baltimore, MD`). Five named places have no house number and keep their own names. |
+| `block_side_id` | bigint | 77% | One side of one block. The default assemblage unit (59 values). |
 | `created_at` | datetime | 100% |  |
 | `latitude` | decimal | 88% |  |
 | `longitude` | decimal | 88% |  |
 | `owner_name` | string | 88% |  |
 | `owner_type` | string | 18% | Values: `unknown`, `city`, `private_owner`; blank in most rows. |
 | `updated_at` | datetime | 100% |  |
-| `blocklot` | string | 88% |  |
-| `assessed_value` | integer | 88% | Administrative outcome, not a market price. |
+| `blocklot` | string | 87% |  |
+| `assessed_value` | integer | 87% | Administrative outcome, not a market price. |
 | `vacancy_indicator` | boolean | 25% |  |
 | `year_built` | integer | 88% | `0` means unknown (83 rows). |
-| `zoning_code` | string | 88% | Has trailing spaces in some rows: `.str.strip()` before matching. `C-*` codes are commercial. |
-| `last_sale_price` | integer | 88% | 114 rows are $0 transfers. Portfolio sales repeat the whole deal price on every parcel. 701 Exeter Hall Ave ($19,000,000) is a portfolio sale whose other parcel is outside the study area. |
+| `zoning_code` | string | 87% | Has trailing spaces in some rows: `.str.strip()` before matching. `C-*` codes are commercial. |
+| `last_sale_price` | integer | 88% | 113 rows are $0 transfers. Portfolio sales repeat the whole deal price on every parcel. 701 Exeter Hall Ave ($19,000,000) is a portfolio sale whose other parcel is outside the study area. |
 | `last_sale_date` | date | 88% |  |
 | `lot_polygon` | jsonb | 88% |  |
 | `building_polygons` | jsonb | 84% |  |
@@ -43,16 +43,16 @@ Joins: `property_incidents.property_id` → `properties.id`; `incident_subjects`
 | `enterprise_zone` | boolean | 100% |  |
 | `incidents_12mo_count` | integer | 100% |  |
 | `violations_12mo_count` | integer | 100% |  |
-| `census_tract` | string | 88% |  |
+| `census_tract` | string | 87% |  |
 | `environmental_flag` | boolean | 98% |  |
 | `fair_market_rent_2br` | integer | **always `1857`** | HUD residential FMR for the ZIP; an order-of-magnitude anchor only. |
 | `median_household_income` | integer | 65% |  |
-| `vacant_notice_status` | string | 5% |  |
+| `vacant_notice_status` | string | 6% |  |
 | `active_permit_count` | integer | 100% |  |
 | `receivership_status` | string | 5% |  |
 | `roof_damage_risk` | float | 2% |  |
 | `tax_certificate_active` | boolean | 100% |  |
-| `market_typology` | string | 66% | Market typology category (B–G in this export). |
+| `market_typology` | string | 65% | Market typology category (B–G in this export). |
 | `crimes_12mo_count` | integer | 100% |  |
 | `cdbg_eligible` | boolean | 100% |  |
 | `inspire_eligible` | boolean | **always `false`** |  |
@@ -99,14 +99,14 @@ Joins: `property_incidents.property_id` → `properties.id`; `incident_subjects`
 | `avm_estimate` | integer | **blank** |  |
 | `sale_count` | integer | **all 0** |  |
 | `zip_code` | string | **always `21218`** | 21218 for every row. |
-| `block_plat_url` | string | 88% |  |
+| `block_plat_url` | string | 87% |  |
 | `tax_certificate_status` | string | 13% |  |
 | `tax_certificate_sold_on` | date | 13% |  |
 | `receivership_filed_on` | date | 2% |  |
 
 ## property_incidents
 
-`property_incidents.csv` · 10,614 rows. The claim layer: one dated event at one property. Split it into two layers before any analysis. A `source` starting with `baltimore:`, or equal to `sdat_assessments` or `sdat:owner`, is **administrative** (7,017 rows); everything else is **curated** (3,597). See README §1.
+`property_incidents.csv` · 10,576 rows. The claim layer: one dated event at one property. Split it into two layers before any analysis. A `source` starting with `baltimore:`, or equal to `sdat_assessments` or `sdat:owner`, is **administrative** (6,979 rows); everything else is **curated** (3,597). See README §1.
 
 | Column | Type | Filled | Notes |
 |---|---|---|---|
@@ -119,7 +119,7 @@ Joins: `property_incidents.property_id` → `properties.id`; `incident_subjects`
 | `summary` | string | 100% | Human-readable description of the claim. |
 | `data` | jsonb | 100% | JSON payload; source-specific detail. |
 | `created_at` | datetime | 100% |  |
-| `evidence_status` | string | 12% | `verified` / `probable` / `possible` / `contested`; blank = ungraded. |
+| `evidence_status` | string | 13% | `verified` / `probable` / `possible` / `contested`; blank = ungraded. |
 | `occurred_at_end` | datetime | <1% | End of a range, when `date_precision` is `range`. |
 | `date_precision` | string | 18% | `exact` / `year` / `range` / `circa` / `decade` / `unknown`; blank = unset. |
 | `sensitivity` | string | <1% | `trauma`, `personal_rights`, `displacement`, `commercialization`. Never drop these rows silently (LICENSE.md). |
@@ -211,7 +211,7 @@ Joins: `property_incidents.property_id` → `properties.id`; `incident_subjects`
 
 ## grant_program_matches
 
-`grant_program_matches.csv` · 5,382 rows. Property-to-program eligibility matches behind the live "Improve Your Property" tool.
+`grant_program_matches.csv` · 5,319 rows. Property-to-program eligibility matches behind the live "Improve Your Property" tool.
 
 | Column | Type | Filled | Notes |
 |---|---|---|---|
@@ -220,7 +220,7 @@ Joins: `property_incidents.property_id` → `properties.id`; `incident_subjects`
 | `program_key` | string | 100% |  |
 | `program_name` | string | 100% |  |
 | `category` | string | 100% |  |
-| `amount_cap` | string | 40% |  |
+| `amount_cap` | string | 39% |  |
 | `summary` | text | 100% |  |
 | `matched_reason` | string | 100% | Why the property qualified. |
 | `created_at` | datetime | 100% |  |

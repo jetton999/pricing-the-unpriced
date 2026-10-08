@@ -5,7 +5,7 @@ This repository is the sponsor data package for the NYU CUSP 2026-2027 Capstone 
 *Pricing the Unpriced*. It is an export of the sponsor's Greenmount corridor knowledge base,
 plus the public source files, so a student team can judge data readiness before committing.
 
-**Study area: Greenmount Ave and one block either side.** The export holds the 673 properties
+**Study area: Greenmount Ave and one block either side.** The export holds the 665 properties
 on Greenmount Ave (Baltimore, ZIP 21218) or within 150 m of it, about one block, and every row in
 the other tables that belongs to them. That covers 3,597 of the knowledge base's 3,602
 hand-researched records. The sponsor's full database also holds Baltimore Peninsula parcels and
@@ -90,6 +90,7 @@ bash script: on Windows, run it from WSL or Git Bash, or run `python3 verify_cla
 | `verify_claims.py` | Checks every number in this README, and where the other docs repeat it. Standard library only. |
 | `bin/check` | Runs all the checks: doc claims, map data, `.py`/`.ipynb` pairing, notebook execution. |
 | `bin/cut_study_area.py` | Reproduces the study-area cut from the full export in git history (§4). Standard library only. |
+| `bin/clean_addresses.py` | Standardizes addresses and merges the eight duplicate properties; run after the cut (§4). Standard library only. |
 | `05_incidents_by_decade.png` | The corpus at a glance (§1). |
 | `proposed-focus-area-phase1.png` | The proposed first focus area for Idea 1, shown in `PROJECT_IDEAS.md`. |
 | `row_counts.txt` | Export row counts. |
@@ -122,11 +123,11 @@ carry over unchanged.
 
 ## 1. Read this before you look at the row counts
 
-The incident table has **10,614 rows, and that number is misleading on its own.**
+The incident table has **10,576 rows, and that number is misleading on its own.**
 
 | Layer | Rows | What it is |
 |---|---|---|
-| **Administrative feeds** | ~7,000 | Machine-ingested: 311 complaints (3,527), permits (1,378), SDAT assessments (850), crime (546), tax certificates, code violations. Overwhelmingly 2020s. |
+| **Administrative feeds** | ~7,000 | Machine-ingested: 311 complaints (3,503), permits (1,377), SDAT assessments (850), crime (535), tax certificates, code violations. Overwhelmingly 2020s. |
 | **Curated historical records** | ~3,600 | Hand-researched across 40+ archival sources: research white papers (1,138), Newspapers.com (661), church interment rolls (583), MDLandRec deeds (492), Sanborn fire-insurance maps (254), NRHP nominations (139), Polk directories, Hopkins atlases, Chronicling America, census records. |
 
 The rule: a `source` is administrative if it starts with `baltimore:` or is `sdat_assessments`
@@ -156,7 +157,7 @@ See `05_incidents_by_decade.png` for the picture: one panel per layer, each on i
 curated incidents, 2332 with 260, and 742 with 150.)
 
 The deep end is the labeled spine the index gets built and validated on. The rest of the
-673 properties carry mostly administrative traces. Sparse documentation is **not**
+665 properties carry mostly administrative traces. Sparse documentation is **not**
 evidence of no history; treat it as unmeasured.
 
 ## 3. Evidence grading is real but partial
@@ -178,14 +179,14 @@ and validating this grading is committed capstone work.
 
 | File | Rows | What it is |
 |---|---|---|
-| `properties.csv` | 673 | Properties in the study area with ~80 enrichment fields: assessment, sale history, vacancy, zoning, market, transit, HMDA, program-eligibility flags. 592 have coordinates; 61 block sides. 590 have a `last_sale_price`, but 114 of those are $0 transfers, so 476 carry a real price. |
-| `property_incidents.csv` | 10,614 | The claim layer. See §1 before using. |
+| `properties.csv` | 665 | Properties in the study area with ~80 enrichment fields: assessment, sale history, vacancy, zoning, market, transit, HMDA, program-eligibility flags. 584 have coordinates; 59 block sides. 582 have a `last_sale_price`, but 113 of those are $0 transfers, so 469 carry a real price. |
+| `property_incidents.csv` | 10,576 | The claim layer. See §1 before using. |
 | `subjects.csv` | 3,094 | Graph nodes: 2,034 people, 522 businesses, 297 organizations, 138 families, plus places, teams, congregations. |
 | `incident_subjects.csv` | 5,459 | Subject↔incident edges: `owned` (924), `operated_at` (678, of which 415 name a business), `sold` (660), `interred_at` (596), `purchased` (455), `lived_at` (280), and more. Joined through incidents, subjects and properties form a graph of 3,608 nodes and 3,762 edges. |
 | `incident_links.csv` | 236 | Incident↔incident edges, including contradictions. |
 | `registered_ips.csv` | 37 | 23 trademarks and 3 entity registrations with an address of record in the study area, plus 11 historical patents tied to the corridor by people rather than address (the Ouija board, whose inventor is buried at Green Mount Cemetery, and 10 unconfirmed surname leads to corridor families). 16 are matched to a specific property. |
 | `property_parcels.csv` | 786 | City parcel roll for the study area's blocks: address, blocklot, owner, land use, sqft. The linkage layer. |
-| `grant_program_matches.csv` | 5,382 | Property↔program matches behind the live "Improve Your Property" tool. |
+| `grant_program_matches.csv` | 5,319 | Property↔program matches behind the live "Improve Your Property" tool. |
 | `neighborhoods.csv` | 5 | Neighborhood names only. The `bounds` column is empty in this export. |
 | `baseline_snapshots.csv` | 883 | **The t0 line.** See §4b. |
 
@@ -200,7 +201,17 @@ name). Every other table follows its properties: incidents by `property_id`; sub
 links, and incident links through those incidents; parcels and unmatched registered IP by street
 and hundred-block. The 11 patents have only a city-level address and are kept whole. The cut dropped 5 curated records and no rows with a `sensitivity` flag. The
 full pre-cut export is in this repository's git history (commit `e00b32b`), and
-`bin/cut_study_area.py` reproduces the cut from it byte for byte (usage at the top of the script).
+`bin/cut_study_area.py` reproduces the cut from it (usage at the top of the script).
+
+**Addresses and merged duplicates.** The cut is followed by `bin/clean_addresses.py`, and the two together
+reproduce the CSVs in this repository byte for byte. An import on 2026-04-06 had added about 140 properties with
+City-style addresses (`608 E 30TH ST, Baltimore, MD 21218`), and eight of them duplicated a property that was already
+there. Every address is now in one format: mixed case, no ZIP, ending `, Baltimore, MD` (`608 E 30th St, Baltimore, MD`).
+The five named places with no house number are left as they were. The eight duplicate pairs share an SDAT
+account (`blocklot`), so each is one parcel; the copy that was already in this format stays, takes the other copy's
+`block_side_id`, and receives its incidents, parcels, and matches. The merge dropped 38 repeated administrative
+incidents (same `source` and `source_id`) and 63 repeated program matches (same `program_key`), and no curated
+incident and no row with a `sensitivity` flag. The 673-property version is in git history (commit `3208af0`).
 
 **Columns that look like data but are not.** Some `properties.csv` columns are blank in every
 row (`avm_estimate`, `flood_zone`, `walk_score`, `transit_score`, `bike_score`, `building_condition`,
@@ -265,7 +276,7 @@ and cannot be redistributed; the committed corridor work does not depend on it.
 `Pricing_the_Unpriced_CUSP_Proposal.pdf` is the full July 2026 proposal: methods, tiered scope,
 work plan, risk register. It was written before the CSVs here were exported, so the corpus grew
 underneath it. Where the proposal says "~354 documented properties, ~2,600 documented incidents,"
-this export holds 673 properties and 10,614 incidents (3,597 of them curated). The proposal's
+this export holds 665 properties and 10,576 incidents (3,597 of them curated). The proposal's
 "~150 registered intellectual-property records" counted the whole knowledge base; the study area
 holds 37. The CSVs are authoritative.
 

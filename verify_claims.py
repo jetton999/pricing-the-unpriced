@@ -61,14 +61,14 @@ def main():
     baseline = list(rows("baseline_snapshots.csv"))
 
     # Section 1: the two layers
-    check("property_incidents rows", len(incidents), 10614)
+    check("property_incidents rows", len(incidents), 10576)
     by_source = collections.Counter(r["source"] for r in incidents)
     administrative = sum(v for k, v in by_source.items() if is_admin(k))
-    check("administrative rows", administrative, 7017)
+    check("administrative rows", administrative, 6979)
     check("curated rows", len(incidents) - administrative, 3597)
     for source, claimed in [
-        ("baltimore:311", 3527), ("baltimore:permits", 1378),
-        ("sdat_assessments", 850), ("baltimore:crime", 546),
+        ("baltimore:311", 3503), ("baltimore:permits", 1377),
+        ("sdat_assessments", 850), ("baltimore:crime", 535),
         ("whitepaper", 1138), ("newspapers_com", 661),
         ("stjohns_interments", 583), ("mdlandrec", 492),
         ("sanborn", 254), ("nrhp", 139),
@@ -116,23 +116,23 @@ def main():
         check("link %s" % link_type, link_types.get(link_type, 0), claimed)
 
     # Section 4: the tables
-    check("properties rows", len(properties), 673)
+    check("properties rows", len(properties), 665)
     zips = collections.Counter((r.get("zip_code") or "").strip() for r in properties)
-    check("properties in ZIP 21218", zips.get("21218", 0), 673)
+    check("properties in ZIP 21218", zips.get("21218", 0), 665)
     check("properties with coordinates", sum(
-        1 for r in properties if (r.get("latitude") or "").strip() and (r.get("longitude") or "").strip()), 592)
+        1 for r in properties if (r.get("latitude") or "").strip() and (r.get("longitude") or "").strip()), 584)
     prices = [float(r["last_sale_price"]) for r in properties if (r.get("last_sale_price") or "").strip()]
-    check("properties with a last_sale_price", len(prices), 590)
-    check("last_sale_price of $0", sum(1 for p in prices if p == 0), 114)
-    check("last_sale_price above $0", sum(1 for p in prices if p > 0), 476)
+    check("properties with a last_sale_price", len(prices), 582)
+    check("last_sale_price of $0", sum(1 for p in prices if p == 0), 113)
+    check("last_sale_price above $0", sum(1 for p in prices if p > 0), 469)
     # 701 Exeter Hall Ave: a portfolio sale whose other parcel was cut, so its price+date is unique here
-    exeter = [r for r in properties if r["address"].startswith("701 EXETER HALL AVE")]
+    exeter = [r for r in properties if r["address"].startswith("701 Exeter Hall Ave")]
     deal = [(r["last_sale_price"], r["last_sale_date"]) for r in exeter]
     check("701 Exeter Hall Ave last sale", deal, [("19000000", "2026-03-19")])
     check("701 Exeter Hall Ave sale shared in the export", sum(
         1 for r in properties if (r["last_sale_price"], r["last_sale_date"]) in deal), 1)
 
-    check("block sides", len({r["block_side_id"] for r in properties if (r.get("block_side_id") or "").strip()}), 61)
+    check("block sides", len({r["block_side_id"] for r in properties if (r.get("block_side_id") or "").strip()}), 59)
 
     # Columns the README says are blank, or hold one value, in every row of properties.csv
     def values(column):
@@ -169,7 +169,7 @@ def main():
 
     for filename, table, claimed in [("registered_ips.csv", registered_ips, 37),
                                      ("property_parcels.csv", parcels, 786),
-                                     ("grant_program_matches.csv", grant_matches, 5382),
+                                     ("grant_program_matches.csv", grant_matches, 5319),
                                      ("neighborhoods.csv", neighborhoods, 5),
                                      ("baseline_snapshots.csv", baseline, 883)]:
         check("%s rows" % filename, len(table), claimed)
