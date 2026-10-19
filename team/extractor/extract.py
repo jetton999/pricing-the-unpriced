@@ -47,35 +47,92 @@ def write_csv(path, rows, fields=None):
 
 
 # ------------------------------------------------------------------ properties and addresses
+def load_gaps():
+    """The sponsor's blocklot_gaps.csv: export records with no block and lot of their own.
+
+    Returns ({old property_id: row}, {street number: row}) for parcels merged into a neighbour,
+    and {street number: row} for historic addresses with no parcel today. Empty when the file is missing."""
+    path = ep('blocklot_gaps.csv')
+    if not os.path.exists(path):
+        return {}, {}
+    merged, gone = {}, {}
+    for r in read_csv(path):
+        m = re.match(r'(\d{4}) Greenmount', r['address'])
+        if r['current_property_id']:
+            merged[r['property_id']] = r
+        elif m:
+            gone[int(m.group(1))] = r
+    return merged, gone
+
+
 def load_frontage():
+    """The frontage parcels as they stand today. A record the sponsor lists as merged into a neighbour
+    is folded into that parcel: its id and street number become aliases of the current parcel."""
     rows = read_csv(rp('team', 'week1', 'out', 'focus_area_properties.csv'))
-    out = [r for r in rows if r['block_side_id'] in FRONTAGE_SIDES]
+    merged, _ = load_gaps()
+    out = [r for r in rows if r['block_side_id'] in FRONTAGE_SIDES and r['property_id'] not in merged]
+    by_id = {r['property_id']: r for r in out}
     for r in out:
         r['num'] = int(r['address'].split()[0])
+        r['aliases'] = {}          # street number -> how it reaches this parcel
+        r['merged_ids'] = []
+    for old_id, g in merged.items():
+        cur = by_id.get(g['current_property_id'])
+        if not cur:
+            continue
+        cur['merged_ids'].append(old_id)
+        n = int(g['address'].split()[0])
+        unverified = g['note'].lower().startswith('not verified')
+        cur['aliases'][n] = (f"merged parcel, not verified ({n}: {g['note']})" if unverified
+                             else f"merged parcel ({n} is now part of {cur['address'].split()[0]})")
+        rm = re.match(r'(\d{4}) to (\d{4}) are one parcel', g['note'])
+        if rm and not unverified:
+            lo, hi = int(rm.group(1)), int(rm.group(2))
+            for k in range(lo, hi + 1, 2):
+                if k != cur['num']:
+                    cur['aliases'].setdefault(k, f'merged parcel ({lo} to {hi} are one parcel)')
     return out
 
 
 class Addresser:
-    """Map a Greenmount street number (or range) to a frontage parcel."""
+    """Map a Greenmount street number (or range) to a frontage parcel as it stands today."""
 
     def __init__(self, props):
         self.by_num = {p['num']: p for p in props}
         self.nums = sorted(self.by_num)
+        self.alias = {}
+        for p in props:
+            for n, how in p.get('aliases', {}).items():
+                if n not in self.by_num:
+                    self.alias[n] = (p, how)
+        _, self.gone = load_gaps()
+
+    def _at(self, m, how):
+        """The parcel holding street number m; the method says how, including a merge."""
+        if m in self.by_num:
+            return self.by_num[m], how
+        p, merged = self.alias[m]
+        return p, f'{how}; {merged}'
 
     def assign(self, n, lo=None, hi=None):
         if n in self.by_num:
             return self.by_num[n], 'exact'
+        if n in self.alias:
+            return self.alias[n]
+        if n in self.gone:   # the building is gone and no parcel took its number: do not hand it to a neighbour
+            return None, 'historic address, no parcel today'
+        known = sorted(set(self.nums) | set(self.alias))
         if lo is not None and hi is not None:
-            inside = [m for m in self.nums if lo <= m <= hi and m % 2 == lo % 2]
+            inside = [m for m in known if lo <= m <= hi and m % 2 == lo % 2]
             if inside:
-                return self.by_num[inside[0]], 'range'
-        same = [m for m in self.nums if m % 2 == n % 2 and m // 100 == n // 100]
+                return self._at(inside[0], 'range')
+        same = [m for m in known if m % 2 == n % 2 and m // 100 == n // 100]
         lower = [m for m in same if m < n]
         if lower and n - max(lower) <= 14:
-            return self.by_num[max(lower)], f'next parcel down (+{n - max(lower)})'
+            return self._at(max(lower), f'next parcel down (+{n - max(lower)})')
         higher = [m for m in same if m > n]
         if higher and min(higher) - n <= 2:
-            return self.by_num[min(higher)], f'next parcel up (-{min(higher) - n})'
+            return self._at(min(higher), f'next parcel up (-{min(higher) - n})')
         return None, 'unassigned'
 
 
@@ -103,10 +160,22 @@ FIELDS = ['property_id', 'address', 'year', 'decade', 'source', 'source_ref', 'u
           'business', 'text', 'use_category', 'use_subcategory', 'matched_keyword', 'kind', 'basis']
 
 
+def is_stated(method):
+    """True when every step that placed the record reads the address as written (no interpolation, no
+    neighbouring number, no unverified merge)."""
+    def ok(part):
+        return (part in ('exact', 'sponsor', 'range') or part.startswith(('York crosswalk anchor', 'sponsor ('))
+                or (part.startswith('merged parcel') and 'not verified' not in part))
+    return all(ok(x) for x in method.split('; '))
+
+
 class Evidence:
     def __init__(self, props):
         self.props = props
         self.by_id = {p['property_id']: p for p in props}
+        for p in props:
+            for old_id in p.get('merged_ids', []):
+                self.by_id[old_id] = p        # records filed on a merged parcel go to the parcel that holds it
         self.addr = Addresser(props)
         self.rows, self.unassigned = [], []
 
@@ -114,7 +183,7 @@ class Evidence:
         c, s, kw = coded if coded is not None else classify(f'{text} {business}')
         if s == 'store building (generic)' and (business or '').strip():
             s = 'named store'   # a business is named, so this is a shop in use, not just a shop front
-        exact = method in ('exact', 'sponsor', 'range') or method.startswith('York crosswalk anchor')
+        exact = is_stated(method)
         self.rows.append(dict(
             property_id=p['property_id'], address=p['address'], year=year or '',
             decade=(year // 10 * 10) if year else '', source=source, source_ref=ref, url=url,
@@ -136,8 +205,11 @@ def load_sponsor(E):
         if r['sensitivity']:
             sens += 1   # never dropped; the flag travels at the front of the text so the map can hide it
             text = f"[sensitivity: {r['sensitivity']}] " + text
-        E.add(E.by_id[r['property_id']], y, 'sponsor:' + r['source'], 'incident ' + r['incident_id'],
-              text, r['businesses'], method='sponsor')
+        p = E.by_id[r['property_id']]
+        method = 'sponsor' if p['property_id'] == r['property_id'] else \
+            f"sponsor (filed on property {r['property_id']}, now part of this parcel)"
+        E.add(p, y, 'sponsor:' + r['source'], 'incident ' + r['incident_id'],
+              text, r['businesses'], method=method)
     return sens
 
 
@@ -292,8 +364,9 @@ def load_current(E):
             coded = ((r['business_type'] or '').split(' ; ')[0], '', '')
         else:
             coded = ('', '', '')
+        method = 'exact' if p['property_id'] == r['property_id'] else E.addr.assign(int(r['address'].split()[0]))[1]
         E.add(p, 2026, 'current_2026', r['source_title'] or 'tenant check', r['status'], business=r['tenant_name'],
-              kind='current', url=r['source_url'], coded=coded)
+              method=method, kind='current', url=r['source_url'], coded=coded)
 
 
 def build():

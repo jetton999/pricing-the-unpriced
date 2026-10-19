@@ -1,12 +1,10 @@
 property_id,address,use_category,first_year,last_year,n_spans,n_records,decades,n_decades,strength
-693,2900 Greenmount Ave,food & drink,1914,2026,3,10,1910 1920 1930 2020,4,proven
-693,2900 Greenmount Ave,entertainment & assembly,1913,1952,2,7,1910 1920 1950,3,proven
-693,2900 Greenmount Ave,retail goods,1928,1953,2,2,1920 1950,2,proven
+693,2900 Greenmount Ave,entertainment & assembly,1913,1952,2,12,1910 1920 1940 1950,4,proven
+693,2900 Greenmount Ave,food & drink,1914,2026,3,12,1910 1920 1930 2020,4,proven
+693,2900 Greenmount Ave,retail goods,1915,1953,2,9,1910 1920 1950,3,proven
 693,2900 Greenmount Ave,residential,1890,1890,1,1,1890,1,single mention
-2283,2902 Greenmount Ave,retail goods,1915,1953,2,7,1910 1920 1950,3,proven
-2283,2902 Greenmount Ave,food & drink,1915,1922,1,2,1910 1920,2,proven
-700,2920 Greenmount Ave,entertainment & assembly,1940,1948,1,6,1940,1,proven
-700,2920 Greenmount Ave,office,1947,1947,1,1,1940,1,single mention
+693,2900 Greenmount Ave,office,1947,1947,1,1,1940,1,single mention
+700,2920 Greenmount Ave,entertainment & assembly,1948,1948,1,1,1940,1,single mention
 700,2920 Greenmount Ave,production & light industry,2011,2011,1,1,2010,1,single mention
 701,2930 Greenmount Ave,residential,1900,1953,3,5,1900 1910 1920 1950,4,proven
 701,2930 Greenmount Ave,personal services,1899,2026,3,3,1890 2010 2020,3,proven
@@ -15,10 +13,9 @@ property_id,address,use_category,first_year,last_year,n_spans,n_records,decades,
 703,2934 Greenmount Ave,residential,1900,1953,4,6,1900 1910 1920 1950,4,proven
 703,2934 Greenmount Ave,production & light industry,1928,1928,1,1,1920,1,single mention
 704,2936 Greenmount Ave,residential,1900,1953,4,5,1900 1910 1920 1950,4,proven
-705,2938 Greenmount Ave,residential,1913,1953,3,4,1910 1920 1950,3,proven
+705,2938 Greenmount Ave,residential,1900,1953,4,9,1900 1910 1920 1950,4,proven
 705,2938 Greenmount Ave,production & light industry,1923,1923,1,1,1920,1,single mention
-2284,2940 Greenmount Ave,residential,1900,1953,4,5,1900 1910 1920 1950,4,proven
-2284,2940 Greenmount Ave,institutional & religious,2011,2011,1,1,2010,1,single mention
+705,2938 Greenmount Ave,institutional & religious,2011,2011,1,1,2010,1,single mention
 706,2942 Greenmount Ave,personal services,1918,2026,3,6,1910 1920 2010 2020,4,proven
 706,2942 Greenmount Ave,residential,1900,1915,2,2,1900 1910,2,proven
 706,2942 Greenmount Ave,retail goods,1928,1953,2,2,1920 1950,2,proven
@@ -39,11 +36,9 @@ property_id,address,use_category,first_year,last_year,n_spans,n_records,decades,
 714,2958 Greenmount Ave,office,1962,1986,2,9,1960 1980,2,proven
 714,2958 Greenmount Ave,food & drink,1923,1923,1,1,1920,1,single mention
 714,2958 Greenmount Ave,personal services,2011,2011,1,1,2010,1,single mention
-715,3000 Greenmount Ave,retail goods,1914,1953,2,5,1910 1920 1950,3,proven
-715,3000 Greenmount Ave,institutional & religious,1913,1913,1,1,1910,1,single mention
+715,3000 Greenmount Ave,retail goods,1914,2026,3,14,1910 1920 1950 2020,4,proven
+715,3000 Greenmount Ave,institutional & religious,1913,2011,3,3,1910 1950 2010,3,proven
 715,3000 Greenmount Ave,office,1954,1959,1,3,1950,1,proven
-2316,3008 Greenmount Ave,retail goods,1915,2026,3,9,1910 1920 1950 2020,4,proven
-2316,3008 Greenmount Ave,institutional & religious,1959,2011,2,2,1950 2010,2,proven
 718,3009 Greenmount Ave,institutional & religious,1914,2026,4,4,1910 1950 2010 2020,4,proven
 718,3009 Greenmount Ave,entertainment & assembly,1948,1954,1,6,1940 1950,2,proven
 718,3009 Greenmount Ave,residential,1925,1925,1,1,1920,1,single mention
@@ -54,12 +49,10 @@ property_id,address,use_category,first_year,last_year,n_spans,n_records,decades,
 719,3010 Greenmount Ave,retail goods,1919,2026,3,3,1910 1970 2020,3,proven
 719,3010 Greenmount Ave,automotive,1917,1920,1,2,1910 1920,2,proven
 719,3010 Greenmount Ave,office,1955,1958,1,3,1950,1,single mention
-720,3011 Greenmount Ave,retail goods,1919,1954,2,3,1910 1920 1950,3,proven
-720,3011 Greenmount Ave,production & light industry,1915,1928,1,7,1910 1920,2,proven
+720,3011 Greenmount Ave,retail goods,1904,1956,2,13,1900 1910 1920 1950,4,proven
+720,3011 Greenmount Ave,production & light industry,1915,1928,1,8,1910 1920,2,proven
 720,3011 Greenmount Ave,office,1901,1908,1,7,1900,1,single mention
-2313,3013 Greenmount Ave,retail goods,1904,1956,3,10,1900 1910 1920 1950,4,proven
-2313,3013 Greenmount Ave,personal services,1915,1918,1,3,1910,1,single mention
-2313,3013 Greenmount Ave,production & light industry,1922,1922,1,1,1920,1,single mention
+720,3011 Greenmount Ave,personal services,1915,1918,1,3,1910,1,single mention
 721,3015 Greenmount Ave,personal services,1899,2013,5,8,1890 1920 1930 1950 1980 2010,6,proven
 721,3015 Greenmount Ave,retail goods,1904,1953,2,14,1900 1910 1920 1950,4,proven
 721,3015 Greenmount Ave,office,1914,1928,1,22,1910 1920,2,proven
@@ -82,29 +75,25 @@ property_id,address,use_category,first_year,last_year,n_spans,n_records,decades,
 725,3026 Greenmount Ave,residential,1900,1953,4,4,1900 1910 1920 1950,4,proven
 725,3026 Greenmount Ave,production & light industry,1915,1923,1,6,1910 1920,2,proven
 725,3026 Greenmount Ave,retail goods,1937,1937,1,1,1930,1,single mention
-726,3028 Greenmount Ave,residential,1900,1928,2,4,1900 1910 1920,3,proven
-726,3028 Greenmount Ave,institutional & religious,1921,1958,3,3,1920 1940 1950,3,proven
+726,3028 Greenmount Ave,residential,1900,1928,2,8,1900 1910 1920,3,proven
+726,3028 Greenmount Ave,personal services,1914,1930,2,3,1910 1920 1930,3,proven
+726,3028 Greenmount Ave,institutional & religious,1921,1958,3,4,1920 1940 1950,3,proven
+726,3028 Greenmount Ave,office,1912,2026,2,2,1910 2020,2,proven
 726,3028 Greenmount Ave,food & drink,1914,1914,1,1,1910,1,single mention
-726,3028 Greenmount Ave,retail goods,1953,1953,1,1,1950,1,single mention
+726,3028 Greenmount Ave,retail goods,1953,1953,1,3,1950,1,single mention
 726,3028 Greenmount Ave,entertainment & assembly,2013,2013,1,1,2010,1,single mention
-726,3028 Greenmount Ave,office,2026,2026,1,1,2020,1,single mention
 727,3029 Greenmount Ave,production & light industry,1914,1928,1,5,1910 1920,2,proven
 727,3029 Greenmount Ave,residential,1915,1928,2,2,1910 1920,2,proven
 727,3029 Greenmount Ave,retail goods,1928,2011,2,2,1920 2010,2,proven
 727,3029 Greenmount Ave,entertainment & assembly,1937,2026,2,3,1930 2020,2,proven
 727,3029 Greenmount Ave,food & drink,1953,1959,1,3,1950,1,proven
-2295,3030 Greenmount Ave,residential,1915,1928,2,2,1910 1920,2,proven
-2295,3030 Greenmount Ave,personal services,1914,1914,1,1,1910,1,single mention
-2295,3030 Greenmount Ave,institutional & religious,1923,1923,1,1,1920,1,single mention
-2295,3030 Greenmount Ave,retail goods,1953,1953,1,1,1950,1,single mention
-728,3031 Greenmount Ave,retail goods,1953,2026,3,3,1950 1960 2020,3,proven
-728,3031 Greenmount Ave,food & drink,1917,2013,2,2,1910 2010,2,proven
+728,3031 Greenmount Ave,retail goods,1922,2026,3,17,1920 1930 1940 1950 1960 2020,6,proven
+728,3031 Greenmount Ave,food & drink,1917,2013,3,5,1910 1920 2010,3,proven
 728,3031 Greenmount Ave,personal services,1905,1908,1,4,1900,1,single mention
 728,3031 Greenmount Ave,office,1914,1914,1,1,1910,1,single mention
-2296,3032 Greenmount Ave,residential,1915,1928,2,2,1910 1920,2,proven
-2296,3032 Greenmount Ave,personal services,1929,1930,1,2,1920 1930,2,proven
-2296,3032 Greenmount Ave,office,1912,1912,1,1,1910,1,single mention
-2296,3032 Greenmount Ave,retail goods,1953,1953,1,1,1950,1,single mention
+728,3031 Greenmount Ave,production & light industry,1914,1914,1,1,1910,1,single mention
+728,3031 Greenmount Ave,entertainment & assembly,1930,1930,1,1,1930,1,single mention
+728,3031 Greenmount Ave,automotive,1958,1958,1,1,1950,1,single mention
 729,3034 Greenmount Ave,food & drink,1899,2011,3,20,1890 1900 1910 1920 1930 2010,6,proven
 729,3034 Greenmount Ave,retail goods,1903,2026,4,7,1900 1910 1920 1950 2020,5,proven
 729,3034 Greenmount Ave,residential,1900,1900,1,1,1900,1,single mention
@@ -140,22 +129,15 @@ property_id,address,use_category,first_year,last_year,n_spans,n_records,decades,
 735,3100 Greenmount Ave,entertainment & assembly,1912,1923,1,19,1910 1920,2,proven
 735,3100 Greenmount Ave,production & light industry,1912,1912,1,1,1910,1,single mention
 735,3100 Greenmount Ave,institutional & religious,1928,1928,1,2,1920,1,proven
-2312,3103 Greenmount Ave,retail goods,1922,1955,2,14,1920 1930 1940 1950,4,proven
-2312,3103 Greenmount Ave,production & light industry,1914,1914,1,1,1910,1,single mention
-2312,3103 Greenmount Ave,food & drink,1928,1928,1,3,1920,1,proven
-2312,3103 Greenmount Ave,entertainment & assembly,1930,1930,1,1,1930,1,single mention
-2312,3103 Greenmount Ave,automotive,1958,1958,1,1,1950,1,single mention
-736,3106 Greenmount Ave,retail goods,1917,2026,3,14,1910 1920 1930 1940 1950 2020,6,proven
+736,3106 Greenmount Ave,retail goods,1899,2026,5,23,1890 1910 1920 1930 1940 1950 2010 2020,8,proven
 736,3106 Greenmount Ave,production & light industry,1915,1915,1,1,1910,1,single mention
-736,3106 Greenmount Ave,residential,1915,1915,1,1,1910,1,single mention
+736,3106 Greenmount Ave,residential,1915,1915,1,2,1910,1,single mention
 736,3106 Greenmount Ave,food & drink,1915,1915,1,1,1910,1,single mention
 737,3107 Greenmount Ave,food & drink,1879,1937,3,4,1870 1880 1890 1930,4,proven
 737,3107 Greenmount Ave,residential,1880,2013,4,4,1880 1910 1950 2010,4,proven
 737,3107 Greenmount Ave,retail goods,1922,1953,2,8,1920 1930 1950,3,proven
 737,3107 Greenmount Ave,personal services,1928,2011,2,3,1920 1930 2010,3,proven
 737,3107 Greenmount Ave,office,1953,1958,1,2,1950,1,single mention
-2315,3110 Greenmount Ave,retail goods,1899,2011,4,9,1890 1920 1930 1950 2010,5,proven
-2315,3110 Greenmount Ave,residential,1915,1915,1,1,1910,1,single mention
 738,3111 Greenmount Ave,office,1915,1971,3,8,1910 1920 1930 1950 1970,5,proven
 738,3111 Greenmount Ave,food & drink,1924,2026,3,3,1920 2010 2020,3,proven
 738,3111 Greenmount Ave,personal services,1926,1926,1,1,1920,1,single mention
@@ -185,17 +167,14 @@ property_id,address,use_category,first_year,last_year,n_spans,n_records,decades,
 744,3120 Greenmount Ave,residential,1880,1915,2,2,1880 1910,2,proven
 744,3120 Greenmount Ave,office,1921,1928,1,8,1920,1,proven
 744,3120 Greenmount Ave,food & drink,1937,1937,1,1,1930,1,single mention
-745,3122 Greenmount Ave,retail goods,1928,2026,4,6,1920 1930 1950 2010 2020,5,proven
-745,3122 Greenmount Ave,automotive,1917,1937,1,16,1910 1920 1930,3,proven
+745,3122 Greenmount Ave,retail goods,1904,2026,5,10,1900 1920 1930 1950 2010 2020,6,proven
+745,3122 Greenmount Ave,food & drink,1901,1951,2,7,1900 1910 1950,3,proven
+745,3122 Greenmount Ave,automotive,1917,1937,1,19,1910 1920 1930,3,proven
 745,3122 Greenmount Ave,residential,1915,1915,1,1,1910,1,single mention
+745,3122 Greenmount Ave,office,1928,1928,1,1,1920,1,single mention
 745,3122 Greenmount Ave,entertainment & assembly,1940,1945,1,4,1940,1,single mention
-745,3122 Greenmount Ave,food & drink,1951,1951,1,1,1950,1,single mention
 746,3123 Greenmount Ave,institutional & religious,1901,2026,4,4,1900 1970 2010 2020,4,proven
 746,3123 Greenmount Ave,residential,1900,1900,1,1,1900,1,single mention
-2314,3124 Greenmount Ave,food & drink,1901,1915,1,6,1900 1910,2,proven
-2314,3124 Greenmount Ave,retail goods,1904,1953,2,4,1900 1950,2,proven
-2314,3124 Greenmount Ave,automotive,1920,1937,1,3,1920 1930,2,proven
-2314,3124 Greenmount Ave,office,1928,1928,1,1,1920,1,single mention
 747,3126 Greenmount Ave,food & drink,1879,2026,5,27,1870 1900 1910 1920 1930 1950 2010 2020,8,proven
 747,3126 Greenmount Ave,residential,1880,1925,2,2,1880 1920,2,proven
 747,3126 Greenmount Ave,production & light industry,1922,1922,1,1,1920,1,single mention
@@ -239,13 +218,12 @@ property_id,address,use_category,first_year,last_year,n_spans,n_records,decades,
 754,3203 Greenmount Ave,entertainment & assembly,1915,1940,2,2,1910 1940,2,proven
 754,3203 Greenmount Ave,production & light industry,1914,1915,1,2,1910,1,single mention
 754,3203 Greenmount Ave,personal services,2011,2011,1,1,2010,1,single mention
+755,3204 Greenmount Ave,food & drink,1879,2013,4,15,1870 1900 1910 1920 1930 2010,6,proven
 755,3204 Greenmount Ave,retail goods,1915,2026,5,8,1910 1920 1940 1950 1990 2020,6,proven
-755,3204 Greenmount Ave,food & drink,1903,2013,3,14,1900 1910 1920 1930 2010,5,proven
 755,3204 Greenmount Ave,residential,1880,1880,1,1,1880,1,single mention
 755,3204 Greenmount Ave,automotive,1905,1909,1,3,1900,1,single mention
 755,3204 Greenmount Ave,personal services,1920,1921,1,2,1920,1,single mention
 755,3204 Greenmount Ave,entertainment & assembly,1949,1949,1,1,1940,1,single mention
-2311,3206 Greenmount Ave,food & drink,1879,1879,1,1,1870,1,single mention
 756,3208 Greenmount Ave,food & drink,1899,2026,5,7,1890 1910 1920 1930 1940 2010 2020,7,proven
 756,3208 Greenmount Ave,retail goods,1915,1953,3,4,1910 1920 1950,3,proven
 756,3208 Greenmount Ave,residential,1900,2013,2,2,1900 2010,2,proven

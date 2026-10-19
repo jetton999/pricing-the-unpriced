@@ -1,6 +1,6 @@
 # Use-history extractor v1 (draft for review)
 
-For each of the 79 frontage properties (2900 to 3299 Greenmount, block sides 65 and 67 to 72), this script finds what
+For each of the 69 frontage parcels (2900 to 3299 Greenmount, block sides 65 and 67 to 72), this script finds what
 the building was used for, decade by decade, and names the source of every claim. It replaces
 `team/prototype_v0/` (same idea, fewer sources, no York Road crosswalk, no tests).
 
@@ -25,25 +25,33 @@ Standard library only. It needs the week-1 package (`team/week1/out/`), `team/ev
 | National Register inventory (B-5229) | `team/evidence/nr_inventory_frontage.csv` | 187 | built 1880-1930s; uses 1920s-1930s and c. 2011 |
 | 1970s DHCD revitalization files (BRG48-43-10) | `team/precedent/interventions.csv` | 11 | 1977-1980 |
 | 2026 tenant check | `team/tenants/current_tenants_2026-10.csv` | 79 | 2026 |
+| Sponsor's list of records with no block and lot of their own | `team/evidence/blocklot_gaps.csv` | 20 | merges of 25 and 30 September 2026 |
 
 512 source lines could not be placed on a frontage parcel; they are listed in `out/unassigned.csv` (mostly York Road
 numbers outside the crosswalk).
 
 ## How it works
 
-1. **Address.** An exact number goes to its parcel. A range ("3226-3240") goes to the parcel that holds it. Otherwise
+1. **Parcels.** The export has 79 frontage records, but the sponsor's `blocklot_gaps.csv` says 10 of them were merged
+   into a neighbouring parcel (for example "3028 to 3032 are one parcel"). The extractor works on the 69 parcels as
+   they stand today. A merged record's id, its street number and the numbers inside a stated merge range all point to
+   the parcel that holds them, and the sponsor's curated records filed on a merged id follow it. The one merge the
+   sponsor marks "not verified" (3103 into 3031) is used but marked inferred. Eight historic numbers on the east side
+   of the 2900 block, buildings gone with no parcel today, are never handed to a neighbour.
+2. **Address.** An exact number goes to its parcel. A range ("3226-3240") goes to the parcel that holds it. Otherwise
    the line goes to the next parcel down on the same side (up to 14 numbers) or up (2), because one parcel often holds
    several old house numbers. Every row records how it was placed in `address_method`. A York Road number is first
    turned into a Greenmount number with `team/evidence/york_crosswalk.csv`. Rows placed by a crosswalk interpolation
-   or a neighbouring number are marked `basis = inferred` (535 of 3,156).
-2. **Use.** `rules.py` is one ordered list of keyword rules for the team's ten categories; the first match wins. Two
+   or a neighbouring number, or by the unverified merge, are marked `basis = inferred` (754 of 3,156). A record counts
+   as stated only when every step that placed it read the address as written.
+3. **Use.** `rules.py` is one ordered list of keyword rules for the team's ten categories; the first match wins. Two
    guards matter: a backyard garage is residential, not automotive, and a bare "store" or "shop" is coded
    `store building (generic)`, because it says there was a shop front, not what was sold. When a business is named,
    it becomes `named store`. Sanborn labels are coded from their words first, then from the map letters (D, F, S, V).
-3. **Spans.** Records of the same use at the same property join into one span while the gap between them is 10 years
+4. **Spans.** Records of the same use at the same property join into one span while the gap between them is 10 years
    or less. Each span gets a grade: `single record`, `repeated (2+ records)` or `documented (2+ source types)`.
-4. **Proven uses.** A use is `proven` at a property when it appears in two or more decades or in a documented span.
-5. **Silence map.** For each property, the decades from 1900 to 2020 with a coded use, before (sponsor records only)
+5. **Proven uses.** A use is `proven` at a property when it appears in two or more decades or in a documented span.
+6. **Silence map.** For each property, the decades from 1900 to 2020 with a coded use, before (sponsor records only)
    and after the new sources, and which source would fill each gap.
 
 ## What comes out (`out/`)
@@ -51,14 +59,15 @@ numbers outside the crosswalk).
 | File | Rows | What |
 |---|---|---|
 | `evidence.csv` | 3,156 | One row per source line: property, year, source, reference, link, how the address was placed, text, coded use |
-| `timeline_table.csv` | 592 | One row per span: years, use, subcategories, occupants, grade, sources, the source rows behind it |
-| `proven_uses.csv` | 305 | Per property and use: first and last year, spans, records, decades, `proven` (198) or `single mention` (107) |
-| `silence_map.csv` | 79 | Decades covered before and after the new sources; status `documented` (8+ decades), `partial` (5-7), `thin` |
+| `timeline_table.csv` | 566 | One row per span: years, use, subcategories, occupants, grade, sources, the source rows behind it |
+| `proven_uses.csv` | 283 | Per parcel and use: first and last year, spans, records, decades, `proven` (186) or `single mention` (97) |
+| `silence_map.csv` | 69 | Decades covered before and after the new sources; status `documented` (8+ decades), `partial` (5-7), `thin` |
 | `unassigned.csv` | 512 | Lines that could not be placed |
 | `validation.md` | | The scores below, row by row |
 
-Mean decades with a coded use per property, 1900s to 2020s: **2.0 from the sponsor records alone, 5.5 with the new
-sources.** Status: 11 documented, 45 partial, 23 thin.
+Mean decades with a coded use per parcel, 1900s to 2020s: **2.2 from the sponsor records alone, 5.9 with the new
+sources.** Status: 13 documented, 41 partial, 15 thin. Every parcel now has at least one coded decade (5 had none
+from the sponsor records alone).
 
 ## Validation
 

@@ -1,6 +1,7 @@
 # New use evidence for the Greenmount frontage (draft for review)
 
-Sources the export holds only in part, collected for the 79 frontage properties (block sides 65 and 67 to 72).
+Sources the export holds only in part, collected for the 79 frontage records (69 parcels today; block sides 65 and
+67 to 72).
 `team/extractor/` reads all of them.
 
 | File | Rows | What |
@@ -13,6 +14,7 @@ Sources the export holds only in part, collected for the 79 frontage properties 
 | `york_crosswalk_pairs.csv` | 30 | The matched pairs and sponsor statements behind the crosswalk (week 2) |
 | `sanborn_frontage.csv` | 307 | One row per footprint on the 1915, 1928 and 1953 Sanborn sheets for the frontage (week 2) |
 | `nr_inventory_frontage.csv` | 98 | The frontage entries of the Waverly Main Street Historic District nomination (B-5229) (week 2) |
+| `blocklot_gaps.csv` | 20 | From the sponsor: export records with no block and lot of their own, merged into a neighbour or gone (week 2) |
 
 ## Permit cards, 1924 to 1961
 
@@ -79,6 +81,16 @@ Sources the export holds only in part, collected for the 79 frontage properties 
 - The historic tenant names come from the 1928 and 1937 directories, as the nomination says. "Use at nomination"
   is what the surveyors saw around 2011, not today.
 - No entry was found for 3030, 3032 or 3218.
+
+## Records with no block and lot (sponsor file, week 2)
+
+- `blocklot_gaps.csv` came from the sponsor with the data export. Twelve records were merged into a neighbouring
+  parcel on 25 or 30 September 2026; ten of them are on the frontage (2902, 2940, 3008, 3013, 3030, 3032, 3103, 3110,
+  3124 and 3206). Eight are historic addresses on the east side of the 2900 block whose buildings are gone.
+- The sponsor marks one merge "not verified": 3103 and 3031 may have been swapped, to be checked against the block
+  and lot in SDAT (by hand). The permit card filed as "3101 Greenmount Ave (range 3101-3103; also 3031)" points the
+  same way.
+- Ask the sponsor before this file goes into the public repo.
 
 ## AI use
 

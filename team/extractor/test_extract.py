@@ -52,8 +52,17 @@ class Addresses(unittest.TestCase):
         self.assertEqual(self.A.assign(3117)[1], 'exact')
         p, how = self.A.assign(3228)          # inside the 3226-3240 store row
         self.assertEqual(p['address'].split()[0], '3226')
-        p, how = self.A.assign(3101, 3101, 3103)
-        self.assertEqual((p['address'].split()[0], how), ('3103', 'range'))
+        p, how = self.A.assign(3101, 3101, 3103)     # 3103 is merged into 3031 (sponsor: not verified)
+        self.assertEqual(p['address'].split()[0], '3031')
+        self.assertTrue(how.startswith('range; merged parcel, not verified'), how)
+
+    def test_merged_parcels(self):
+        # blocklot_gaps.csv: records the sponsor lists as merged into a neighbour
+        for n, cur in {3206: '3204', 3030: '3028', 3032: '3028', 2902: '2900', 2904: '2900', 3008: '3000', 2940: '2938'}.items():
+            p, how = self.A.assign(n)
+            self.assertEqual(p['address'].split()[0], cur, n)
+            self.assertTrue(how.startswith('merged parcel'), how)
+        self.assertEqual(self.A.assign(2917)[0], None)   # historic address, building gone
 
     def test_parity_is_kept(self):
         p, _ = self.A.assign(3102)
@@ -80,7 +89,14 @@ class Pipeline(unittest.TestCase):
         cls.spans = X.spans(cls.E)
 
     def test_frontage_count(self):
-        self.assertEqual(len(self.props), 79)
+        # 79 frontage records in the export; 10 are merged into a neighbour, so 69 parcels today
+        self.assertEqual(len(self.props), 69)
+        self.assertEqual(sum(len(p['merged_ids']) for p in self.props), 10)
+
+    def test_merged_records_follow_their_parcel(self):
+        rows = [e for e in self.E.rows if e['address'].startswith('3028 ') and e['address_method'].startswith('sponsor (')]
+        self.assertTrue(rows)                              # 3030 and 3032 records now sit on 3028
+        self.assertTrue(all(e['basis'] == 'stated' for e in rows))
 
     def test_every_row_has_a_source(self):
         self.assertTrue(all(e['source'] and e['source_ref'] for e in self.E.rows))

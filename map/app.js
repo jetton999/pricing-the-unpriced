@@ -176,9 +176,10 @@
     var base = p.address + " · " + p.curated_count + " curated";
     if (!useMode) return base;
     if (!p.use_history) return p.address + " · outside the frontage the extractor covers";
-    if (useDecade === "dominant") return p.address + " · use in the most decades: " + (p.use_dominant || "none coded");
+    var part = p.use_merged_into ? " (part of " + p.use_merged_into.split(",")[0] + ")" : "";
+    if (useDecade === "dominant") return p.address + part + " · use in the most decades: " + (p.use_dominant || "none coded");
     var list = p.use_decades[useDecade];
-    return p.address + " · " + useDecade + "s: " + (list && list.length ? list.join(", ") : "no record (not the same as vacant)");
+    return p.address + part + " · " + useDecade + "s: " + (list && list.length ? list.join(", ") : "no record (not the same as vacant)");
   }
 
   function restyleMarkers() {
@@ -197,9 +198,9 @@
       var nUse = 0, nFront = 0;
       pointsLayer.eachLayer(function (m) {
         var u = useOf(m.feature.properties);
-        if (u !== null) { nFront++; if (u) nUse++; }
+        if (u !== null && !m.feature.properties.use_merged_into) { nFront++; if (u) nUse++; }
       });
-      document.getElementById("stats").textContent = nFront + " mapped frontage buildings · " + nUse + " with a recorded use " +
+      document.getElementById("stats").textContent = nFront + " mapped frontage parcels · " + nUse + " with a recorded use " +
         (useDecade === "dominant" ? "(the use found in the most decades)" : "in the " + useDecade + "s");
       return;
     }
@@ -503,7 +504,15 @@
     bodyEl.appendChild(allFields);
 
     // Use history (team extractor; frontage only)
-    if (d.use_history) {
+    if (d.use_history && d.use_history.merged_into) {
+      var mh = d.use_history;
+      section("Use history (team extractor)", null, el("p", { class: "small" }, [
+        "This address is now part of the parcel at ",
+        el("a", { href: "#", text: mh.merged_into_address, onclick: function (e) { e.preventDefault(); goTo(Number(mh.merged_into)); } }),
+        " (sponsor's blocklot_gaps.csv" + (mh.merged_on ? ", merged " + mh.merged_on : "") + (mh.note ? ": " + mh.note : "") +
+        "). Its use history is shown there."
+      ])).forEach(function (n) { bodyEl.appendChild(n); });
+    } else if (d.use_history) {
       section("Use history (team extractor)", d.use_history.spans.length + " spans · " + d.use_history.evidence.length + " records",
         renderUseHistory(d.use_history)).forEach(function (n) { bodyEl.appendChild(n); });
     }

@@ -144,7 +144,19 @@ def load_use_history(notes):
         h["evidence"].sort(key=lambda e: (e["year"] is None, e["year"] or 0, e["source"]))
         h["decades"] = decade_uses(h["spans"])
         h["dominant"] = most_decades(h["decades"])
-    return dict(by)
+    out = dict(by)
+    # Records the sponsor lists as merged into a neighbouring parcel (team/evidence/blocklot_gaps.csv):
+    # the extractor files their history on the parcel that holds them today, so point there.
+    gaps = os.path.join(ROOT, "team", "evidence", "blocklot_gaps.csv")
+    if os.path.exists(gaps):
+        for g in rows(os.path.join("team", "evidence", "blocklot_gaps.csv")):
+            cur = out.get(g["current_property_id"])
+            if g["current_property_id"] and cur and g["property_id"] not in out:
+                out[g["property_id"]] = {
+                    "merged_into": g["current_property_id"], "merged_into_address": g["current_address"],
+                    "merged_on": g["merged_on"], "note": g["note"],
+                    "decades": cur["decades"], "dominant": cur["dominant"]}
+    return out
 
 
 def point_in_ring(lon, lat, ring):
@@ -330,6 +342,7 @@ class Corpus:
                     "block_side_id": num(p["block_side_id"]),
                     "census_tract": p["census_tract"],
                     "use_history": pid in self.use_history,
+                    "use_merged_into": self.use_history.get(pid, {}).get("merged_into_address", ""),
                     "use_dominant": self.use_history.get(pid, {}).get("dominant", ""),
                     "use_decades": self.use_history.get(pid, {}).get("decades", {}),
                 },
@@ -590,8 +603,9 @@ class Corpus:
             "focus_area_mapped_properties": sum(
                 1 for f in self.points_geojson["features"] if f["properties"]["in_focus"]),
             "use_history_properties": len(self.use_history),
-            "use_history_spans": sum(len(h["spans"]) for h in self.use_history.values()),
-            "use_history_evidence": sum(len(h["evidence"]) for h in self.use_history.values()),
+            "use_history_spans": sum(len(h.get("spans", ())) for h in self.use_history.values()),
+            "use_history_evidence": sum(len(h.get("evidence", ())) for h in self.use_history.values()),
+            "use_history_merged": sum(1 for h in self.use_history.values() if "merged_into" in h),
             "layer_rule": {
                 "administrative_prefixes": list(ADMIN_PREFIXES),
                 "administrative_exact": sorted(ADMIN_EXACT),
@@ -697,8 +711,10 @@ def run_check(corpus):
         s["neighborhoods"], s["neighborhoods_with_bounds"]))
     print("focus area (approx.)  %6d  mapped properties inside the outline"
           % s["focus_area_mapped_properties"])
-    print("use history (team)    %6d  properties, %d spans, %d evidence rows (team/extractor/out)"
-          % (s["use_history_properties"], s["use_history_spans"], s["use_history_evidence"]))
+    print("use history (team)    %6d  parcels, %d spans, %d evidence rows (team/extractor/out); "
+          "%d merged records point to their parcel"
+          % (s["use_history_properties"] - s["use_history_merged"], s["use_history_spans"],
+             s["use_history_evidence"], s["use_history_merged"]))
     print()
     print("Layer rule: administrative = source starts with %s or in %s; "
           "everything else curated; curated sources ending in '%s' are labelled 'roster'."
