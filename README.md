@@ -383,6 +383,9 @@ and 2026 survey photos. 3,694 rows, 3,090 image files, 348 properties. Five fold
   downloads them into `images/`, which is gitignored. Run `python3 bin/fetch_images.py --dry-run`
   for the size before you download; narrow it with `--folder` or `--property`. Every file is a
   re-encoded JPEG with its metadata stripped.
+- **Send a `User-Agent` header if you fetch the URLs yourself.** The host answers a request without
+  one (bare Python `urllib`, for example) with `403 Forbidden`. `bin/fetch_images.py` already sends
+  one; with `requests` or `curl` you are covered by their defaults.
 - **The City Archives DHCD scans are not here.** They stay in `archive_scans.csv`, as links (§4c).
 
 ## 4f. The storefront assessments (added October 2026)
