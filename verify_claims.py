@@ -423,6 +423,14 @@ def main():
     doc_says("map/README.md", "properties ≠ %s, incidents ≠ %s, or curated ≠ %s"
              % (f"{len(properties):,}", f"{len(incidents):,}", f"{curated:,}"))
     doc_says("map/README.md", "Markers are the %d properties" % with_coords)
+    retired_ids = {r["old_id"] for r in crosswalk}
+    doc_says("map/README.md", "the %d snapshots of the %d retired parcels"
+             % (sum(1 for b in baseline if b["property_id"] in retired_ids), len(crosswalk)))
+    doc_says("map/README.md", "storefront assessments ≠ %d, image rows ≠ %s or crosswalk rows ≠ %d"
+             % (len(storefronts), f"{len(images):,}", len(crosswalk)))
+    doc_says("map/app.py", "EXPECTED_STOREFRONTS = %d" % len(storefronts))
+    doc_says("map/app.py", "EXPECTED_IMAGE_ROWS = %d" % len(images))
+    doc_says("map/app.py", "EXPECTED_CROSSWALK = %d" % len(crosswalk))
     doc_says("map/app.py", "EXPECTED_PROPERTIES = %d" % len(properties))
     doc_says("map/app.py", "EXPECTED_INCIDENTS = %d" % len(incidents))
     doc_says("map/app.py", "EXPECTED_CURATED = %d" % curated)
