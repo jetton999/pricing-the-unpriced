@@ -83,19 +83,40 @@
     style: { color: "#2e7d32", weight: 2, dashArray: "6 4", fillOpacity: 0.03 },
     onEachFeature: function (f, layer) { layer.bindTooltip(f.properties.name); }
   });
+  // Proposed first focus area: a working outline, drawn under the markers and not clickable.
+  var focusLayer = L.geoJSON(null, {
+    style: { color: "#b03fd6", weight: 3, fillOpacity: 0.04 },
+    interactive: false
+  }).addTo(map);
+  var focusOnly = false;
   var lotsLoaded = {};
   var selectedId = null;
+  var baseStats = "";
 
   function markerStyle(f, selected) {
     var t = tier(f.properties.curated_count);
+    var dim = focusOnly && !f.properties.in_focus && !selected;
     return {
       radius: selected ? 9 : (t === 0 ? 4 : 5 + t),
       fillColor: TIER_COLORS[t],
       color: selected ? "#111" : "#3a3631",
       weight: selected ? 2.5 : 0.8,
-      fillOpacity: 0.9,
-      opacity: 1
+      fillOpacity: dim ? 0.12 : 0.9,
+      opacity: dim ? 0.2 : 1
     };
+  }
+
+  function paintStats() {
+    var text = baseStats;
+    if (focusOnly && pointsLayer) {
+      var n = 0, withHistory = 0;
+      pointsLayer.eachLayer(function (m) {
+        var p = m.feature.properties;
+        if (p.in_focus) { n++; if (p.curated_count > 0) withHistory++; }
+      });
+      text = n + " mapped in the focus area · " + withHistory + " with curated history";
+    }
+    document.getElementById("stats").textContent = text;
   }
 
   fetch("/api/properties").then(function (r) { return r.json(); }).then(function (gj) {
@@ -116,9 +137,9 @@
 
     var tiers = [0, 0, 0, 0];
     gj.features.forEach(function (f) { tiers[tier(f.properties.curated_count)]++; });
-    document.getElementById("stats").textContent =
-      gj.features.length + " mapped properties · " +
+    baseStats = gj.features.length + " mapped properties · " +
       (tiers[1] + tiers[2] + tiers[3]) + " mapped with curated history";
+    paintStats();
   }).catch(function (e) {
     document.getElementById("stats").textContent = "failed to load /api/properties: " + e;
   });
@@ -128,6 +149,26 @@
   });
 
   /* ------------------------------------------------------ layer toggles */
+  fetch("/api/focus-area").then(function (r) { return r.json(); }).then(function (gj) {
+    if (gj.features.length) { focusLayer.addData(gj); focusLayer.bringToBack(); return; }
+    ["toggle-focus", "toggle-focus-only"].forEach(function (id) {
+      document.getElementById(id).disabled = true;
+    });
+  });
+  document.getElementById("toggle-focus").addEventListener("change", function (e) {
+    if (e.target.checked) { focusLayer.addTo(map); focusLayer.bringToBack(); }
+    else map.removeLayer(focusLayer);
+  });
+  document.getElementById("toggle-focus-only").addEventListener("change", function (e) {
+    focusOnly = e.target.checked;
+    if (pointsLayer) {
+      pointsLayer.eachLayer(function (m) {
+        m.setStyle(markerStyle(m.feature, m.feature.properties.id === selectedId));
+      });
+    }
+    if (focusOnly && focusLayer.getLayers().length) map.fitBounds(focusLayer.getBounds().pad(0.08));
+    paintStats();
+  });
   document.getElementById("toggle-lots").addEventListener("change", function (e) {
     if (e.target.checked) { lotsLayer.addTo(map); loadVisibleLots(); }
     else map.removeLayer(lotsLayer);

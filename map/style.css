@@ -230,3 +230,7 @@ table.baseline td.num { font-variant-numeric: tabular-nums; }
   #sidebar { width: auto; height: 45vh; border-left: 0; border-top: 1px solid var(--line); }
   #topbar { flex-wrap: wrap; }
 }
+
+/* Focus-area outline swatch in the legend. */
+#legend .legend-focus { margin-top: 4px; }
+#legend .legend-focus b { display: inline-block; width: 11px; height: 9px; margin-right: 6px; border: 2px solid #b03fd6; border-radius: 2px; vertical-align: -1px; }

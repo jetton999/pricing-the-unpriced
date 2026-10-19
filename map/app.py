@@ -58,6 +58,27 @@ def source_kind(source):
 # ---------------------------------------------------------------------------
 # Loading
 # ---------------------------------------------------------------------------
+def load_focus_area():
+    """The proposed first focus area, or None if map/focus_area.geojson is missing.
+
+    The outline is a working approximation traced from proposed-focus-area-phase1.png by
+    team/week1/focus_area.py. Replace the file when the sponsor supplies an authoritative one.
+    """
+    try:
+        with open(os.path.join(HERE, "focus_area.geojson"), encoding="utf-8") as fh:
+            return json.load(fh)
+    except (OSError, ValueError):
+        return None
+
+
+def point_in_ring(lon, lat, ring):
+    hit = False
+    for (x1, y1), (x2, y2) in zip(ring, ring[1:]):
+        if (y1 > lat) != (y2 > lat) and lon < (x2 - x1) * (lat - y1) / (y2 - y1) + x1:
+            hit = not hit
+    return hit
+
+
 def rows(filename):
     with open(os.path.join(ROOT, filename), newline="", encoding="utf-8") as fh:
         yield from csv.DictReader(fh)
@@ -141,6 +162,12 @@ class Corpus:
         self.curated_count = collections.Counter()
         self.admin_count = collections.Counter()
         self.notes = []
+        self.focus_area = load_focus_area()
+        self.focus_rings = []
+        if self.focus_area:
+            self.focus_rings = [f["geometry"]["coordinates"][0] for f in self.focus_area["features"]]
+        else:
+            self.notes.append("map/focus_area.geojson not found; the focus-area layer is empty.")
         self.load()
 
     def load(self):
@@ -189,6 +216,9 @@ class Corpus:
         self.search_index = self.build_search_index()
 
     # ------------------------------------------------------------------
+    def in_focus(self, lon, lat):
+        return any(point_in_ring(lon, lat, ring) for ring in self.focus_rings)
+
     def build_points(self):
         features = []
         for pid, p in self.properties.items():
@@ -217,6 +247,7 @@ class Corpus:
                     "last_sale_price": num(p["last_sale_price"]),
                     "last_sale_date": p["last_sale_date"],
                     "curated_count": self.curated_count.get(pid, 0),
+                    "in_focus": self.in_focus(float(p["longitude"]), float(p["latitude"])),
                     "administrative_count": self.admin_count.get(pid, 0),
                     "registered_ip_count": len(self.ips_by_property.get(pid, [])),
                     "block_side_id": num(p["block_side_id"]),
@@ -475,6 +506,8 @@ class Corpus:
             "baseline_snapshots": sum(len(v) for v in self.baselines_by_property.values()),
             "neighborhoods": len(self.neighborhoods),
             "neighborhoods_with_bounds": len(self.neighborhoods_geojson["features"]),
+            "focus_area_mapped_properties": sum(
+                1 for f in self.points_geojson["features"] if f["properties"]["in_focus"]),
             "layer_rule": {
                 "administrative_prefixes": list(ADMIN_PREFIXES),
                 "administrative_exact": sorted(ADMIN_EXACT),
@@ -547,6 +580,10 @@ def make_handler(corpus):
             if path == "/api/neighborhoods":
                 return self.send_json(corpus.neighborhoods_geojson)
 
+            if path == "/api/focus-area":
+                return self.send_json(corpus.focus_area
+                                      or {"type": "FeatureCollection", "features": []})
+
             if path == "/api/search":
                 return self.send_json({"results": corpus.search(query.get("q", [""])[0])})
 
@@ -574,6 +611,8 @@ def run_check(corpus):
     print("baseline_snapshots    %6d" % s["baseline_snapshots"])
     print("neighborhoods         %6d  (with parseable bounds: %d)" % (
         s["neighborhoods"], s["neighborhoods_with_bounds"]))
+    print("focus area (approx.)  %6d  mapped properties inside the outline"
+          % s["focus_area_mapped_properties"])
     print()
     print("Layer rule: administrative = source starts with %s or in %s; "
           "everything else curated; curated sources ending in '%s' are labelled 'roster'."

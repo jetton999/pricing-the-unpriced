@@ -8,7 +8,9 @@ Markers are the 584 properties with coordinates, coloured by curated depth (0 / 
 Click one for a right-hand panel: key fields, a **History** timeline of curated incidents (oldest
 first; dashed dots mark `circa`/`decade`/`range`/unset precision), the **Administrative feed** (newest
 first, 50 at a time), people & businesses, registered IP, grant matches, and the two July 2026
-baseline snapshots. Search matches addresses, owners, and subject names. Toggles draw lot polygons
+baseline snapshots. Search matches addresses, owners, and subject names. **Focus area** draws the proposed first focus area from `map/focus_area.geojson`, a working outline traced
+from `proposed-focus-area-phase1.png` (replace the file when the sponsor supplies an authoritative
+one); **Focus area only** dims every marker outside it and zooms to it. Other toggles draw lot polygons
 for the visible set; neighborhood bounds are empty in this export, so that layer draws nothing.
 
 **Layer rule** (same as `START_HERE.ipynb` and `verify_claims.py`): a source is *administrative*

@@ -20,6 +20,8 @@
     <ul id="results" hidden></ul>
   </div>
   <div class="layers">
+    <label><input type="checkbox" id="toggle-focus" checked> Focus area</label>
+    <label><input type="checkbox" id="toggle-focus-only"> Focus area only</label>
     <label><input type="checkbox" id="toggle-lots"> Lot polygons (visible set)</label>
     <label><input type="checkbox" id="toggle-hoods"> Neighborhood bounds</label>
   </div>
@@ -46,6 +48,7 @@
   <div><i style="background:#f3c66b"></i> 1–9</div>
   <div><i style="background:#e58a2d"></i> 10–24</div>
   <div><i style="background:#a4290f"></i> 25+</div>
+  <div class="legend-focus"><b></b> Focus area (approx.)</div>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"
