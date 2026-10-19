@@ -51,8 +51,8 @@ bash; it uses `uv run` if uv is installed, else the active environment. `verify_
   merged parcels that one building had absorbed. Re-key old ids through `property_id_crosswalk.csv`
   (`old_id` → `new_id`, 52 rows, one per retired id); `baseline_snapshots.csv` keeps the t0 ids
   and is never edited. Team files keyed on September ids need the same join.
-- **Property images.** In `property_images.csv` one scan filed on several properties is several
-  rows: count distinct `image_key`, not rows. The images are not in git; `python3 bin/fetch_images.py`
+- **Property images.** In `property_images.csv` one image filed on several properties, or listed
+  under two ids, is several rows: count distinct `image_key`, not rows. The images are not in git; `python3 bin/fetch_images.py`
   downloads them into `images/` (gitignored). Captions describe a scan; they are not transcriptions.
 - **Archive scans.** In `archive_scans.csv` a page filed on several buildings is several rows: count
   distinct `item` + `page`, not rows. Captions are one-line descriptions, not transcriptions. Open
@@ -87,6 +87,6 @@ bash; it uses `uv run` if uv is installed, else the active environment. `verify_
 | How the CSVs were cut from the full export | `bin/cut_study_area.py`, then `bin/clean_addresses.py` |
 | The Matterport walkthroughs | `matterport_tours.csv`, README §4d |
 | The City Archives scans (BRG48-43-10) | `archive_scans.csv`, README §4c, `bin/fetch_archive_scans.py` |
-| Deeds, permit cards, tax ledgers, Sanborn sheets, Passano-O'Neill cards as images | `property_images.csv`, README §4e, `bin/fetch_images.py` |
+| Deeds, permit cards, tax ledgers, Sanborn sheets, Passano-O'Neill cards, PI.KL 2026 survey photos | `property_images.csv`, README §4e, `bin/fetch_images.py` |
 | What is on each ground floor in 2026 | `storefront_assessments.csv`, README §4f |
 | Old (September) property ids | `property_id_crosswalk.csv`, README "What changed in the October 2026 refresh" |

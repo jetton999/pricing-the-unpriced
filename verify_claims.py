@@ -44,7 +44,7 @@ BASELINE_SHA256 = "a90bd854b2e681a4c261f2bf99692d7f6258f567ce307dd1afe968d8adbed
 # id, not a phone, and is skipped.
 PHONE = re.compile(r"(?<![A-Za-z0-9]-)(?<!\d)\(?\b[2-9]\d{2}\)?[-. ]?[2-9]\d{2}[-. ]\d{4}\b(?!-\w)")
 
-IMAGE_FOLDERS = {"deeds-and-title-chain", "bca-brg4-1", "loc-sanborn", "passano-oneill"}
+IMAGE_FOLDERS = {"deeds-and-title-chain", "bca-brg4-1", "loc-sanborn", "passano-oneill", "pikl-greenmount"}
 
 
 def is_admin(source):
@@ -339,27 +339,42 @@ def main():
     check("storefront evidence findings", len(findings), 1428)
 
     # property_images.csv
-    check("property_images.csv rows", len(images), 1817)
+    check("property_images.csv rows", len(images), 3694)
     check("property_images ids unique", len({r["id"] for r in images}), len(images))
     check("property_images property_ids resolve",
           sum(1 for r in images if r["property_id"] in property_ids), len(images))
     check("property_images properties", len({r["property_id"] for r in images}), 348)
-    check("property_images distinct image_key", len({r["image_key"] for r in images}), 1259)
+    check("property_images distinct image_key", len({r["image_key"] for r in images}), 3090)
     check("property_images image_key format",
           sum(1 for r in images if re.fullmatch(r"img/[0-9a-f]{64}\.jpg", r["image_key"])), len(images))
-    check("property_images folders outside the three", {r["folder"] for r in images} - IMAGE_FOLDERS, set())
+    check("property_images folders outside the five", {r["folder"] for r in images} - IMAGE_FOLDERS, set())
     for folder, claimed_rows, claimed_files in [("deeds-and-title-chain", 1054, 925),
                                                 ("bca-brg4-1", 655, 228), ("loc-sanborn", 4, 2),
-                                                ("passano-oneill", 104, 104)]:
+                                                ("passano-oneill", 104, 104),
+                                                ("pikl-greenmount", 1877, 1831)]:
         check("property_images %s rows" % folder, sum(1 for r in images if r["folder"] == folder), claimed_rows)
         check("property_images %s files" % folder,
               len({r["image_key"] for r in images if r["folder"] == folder}), claimed_files)
     passano = [int(r["depicted_on"][:4]) for r in images if r["folder"] == "passano-oneill" and r["depicted_on"]]
     check("passano-oneill depicted years", (min(passano), max(passano)), (1802, 1938))
-    check("property_images with a depicted_on", sum(1 for r in images if r["depicted_on"]), 1653)
+    pikl = [r for r in images if r["folder"] == "pikl-greenmount"]
+    check("pikl-greenmount subjects", dict(collections.Counter(r["subject"] for r in pikl if r["subject"])),
+          {"interior": 873, "detail": 415, "roof": 368, "exterior": 111, "streetscape": 61, "alley": 39, "other": 6})
+    check("pikl-greenmount photos", sum(1 for r in pikl if r["category"] == "photo"), 1873)
+    check("pikl-greenmount buildings", len({r["property_id"] for r in pikl}), 14)
+    check("pikl-greenmount rows with a depicted_address", sum(1 for r in pikl if r["depicted_address"]), 150)
+    check("property_images with a depicted_address", sum(1 for r in images if r["depicted_address"]), 150)
+    records = [r for r in images if r["folder"] != "pikl-greenmount"]
+    check("record scans without a depicted_on", sum(1 for r in records if not r["depicted_on"]), 164)
+    check("record scans depicted_source manual", {r["depicted_source"] for r in records}, {"manual"})
+    for folder, claimed_rows, claimed_files in [("deeds-and-title-chain", 1054, 925), ("bca-brg4-1", 655, 228),
+                                                ("loc-sanborn", 4, 2), ("passano-oneill", 104, 104),
+                                                ("pikl-greenmount", 1877, 1831)]:
+        doc_says("README.md", "| `%s` | %s | %s |" % (folder, f"{claimed_rows:,}", f"{claimed_files:,}"))
+    check("property_images with a depicted_on", sum(1 for r in images if r["depicted_on"]), 1654)
     years = [int(r["depicted_on"][:4]) for r in images if r["depicted_on"]]
     check("property_images depicted years", (min(years), max(years)), (1742, 2023))
-    doc_says("README.md", "| `property_images.csv` | 1,817 |")
+    doc_says("README.md", "| `property_images.csv` | 3,694 |")
     doc_says("README.md", "| `storefront_assessments.csv` | 264 |")
     doc_says("README.md", "| `property_id_crosswalk.csv` | 52 |")
     with open(os.path.join(ROOT, "images_base_url.txt"), encoding="utf-8") as handle:
@@ -446,10 +461,10 @@ def main():
     check("baseline rows that join properties.csv directly",
           sum(1 for r in baseline if r["property_id"] in property_ids), 779)
     check("property_images categories", dict(collections.Counter(r["category"] for r in images)),
-          {"document": 1804, "plan": 13})
+          {"photo": 1873, "document": 1807, "plan": 13, "ephemera": 1})
     check("property_images depicted_precision",
           dict(collections.Counter(r["depicted_precision"] for r in images if r["depicted_precision"])),
-          {"day": 885, "year": 764, "month": 4})
+          {"day": 885, "year": 765, "month": 4})
     september = set(SEPTEMBER_SENSITIVITY_IDS)
     new_flags = collections.Counter(r["source"] for r in incidents
                                     if (r.get("sensitivity") or "").strip() and r["id"] not in september)

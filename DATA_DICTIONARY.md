@@ -330,20 +330,20 @@ Joins: `property_incidents.property_id` → `properties.id`; `incident_subjects`
 | `model_id` | string | 100% | The Matterport model id; the part after `?m=` in the link. |
 | `share_url` | string | 100% | Open it to walk the building. Public, no login. |
 
-`property_images.csv` · 1,817 rows. Scans of records filed on properties: 1,259 image files on 348 properties. One scan filed on several properties is one file and several rows: count distinct `image_key`. The images are not in git; `python3 bin/fetch_images.py` downloads them. See README §4e.
+`property_images.csv` · 3,694 rows. Images filed on properties: scans of records, and PI.KL Studio's 2026 building-conditions survey photos. 3,090 image files on 348 properties. One image filed on several properties, or listed under two ids, is one file and several rows: count distinct `image_key`. The images are not in git; `python3 bin/fetch_images.py` downloads them. See README §4e.
 
 | Column | Type | Filled | Notes |
 |---|---|---|---|
 | `id` | bigint | 100% | Primary key. Unique. |
 | `property_id` | bigint | 100% | → `properties.id`. Every row joins. |
-| `category` | string | 100% | `document` (1,804) or `plan` (13). |
-| `subject` | string | **blank** |  |
-| `caption` | string | 100% | Describes the scan. Not a transcription. |
-| `depicted_on` | date | 91% | The date the record depicts, not the scan date. Read it with `depicted_precision`. 1742 to 2023. |
-| `depicted_precision` | string | 91% | `day` (885), `year` (764), `month` (4). A `year` date is the first of January. |
-| `depicted_source` | string | **always `manual`** |  |
-| `depicted_address` | string | **blank** |  |
-| `folder` | string | 100% | `deeds-and-title-chain` (1,053 rows: deeds, mortgages, leases, liens, City building-permit cards), `bca-brg4-1` (655: City tax ledgers and assessment rolls, 1896 to 1915, Baltimore City Archives), `loc-sanborn` (4: 1915 Sanborn sheets), `passano-oneill` (104: Passano-O'Neill file cards, 1802 to 1938, Maryland Center for History and Culture; reproduction cleared). |
+| `category` | string | 100% | `photo` (1,873), `document` (1,807), `plan` (13), `ephemera` (1). |
+| `subject` | string | 51% | Survey photos only: `interior` (873), `detail` (415), `roof` (368), `exterior` (111), `streetscape` (61), `alley` (39), `other` (6). |
+| `caption` | string | 100% | Describes the image. Not a transcription. |
+| `depicted_on` | date | 45% | The date the record depicts, not the scan date. Read it with `depicted_precision`. 1742 to 2023. Blank for the 2026 survey photos. |
+| `depicted_precision` | string | 45% | `day` (885), `year` (765), `month` (4). A `year` date is the first of January. |
+| `depicted_source` | string | 49% | `manual` (1,817 rows, every scan of a record) or `classifier` (1). Blank for the survey photos. |
+| `depicted_address` | string | 4% | Survey photos only: the address the photo was taken at, when recorded (150 rows). |
+| `folder` | string | 100% | `deeds-and-title-chain` (1,054 rows: deeds, mortgages, leases, liens, City building-permit cards), `bca-brg4-1` (655: City tax ledgers and assessment rolls, 1896 to 1915, Baltimore City Archives), `loc-sanborn` (4: 1915 Sanborn sheets), `passano-oneill` (104: Passano-O'Neill file cards, 1802 to 1938, Maryland Center for History and Culture; reproduction cleared), `pikl-greenmount` (1,877: PI.KL Studio's 2026 building-conditions survey for the Maryland Historical Trust; 68 photos were held back after review). |
 | `image_key` | string | 100% | `img/<sha256>.jpg`. Append it to the URL in `images_base_url.txt`. Re-encoded JPEG, metadata stripped. |
 
 `storefront_assessments.csv` · 264 rows. The sponsor's street-level assessment of what occupies each ground floor in 2026, one row per property. See README §4f.

@@ -12,5 +12,5 @@ archive_folders: 31
 archive_scans: 2260
 matterport_tours: 13
 storefront_assessments: 264
-property_images: 1817
+property_images: 3694
 property_id_crosswalk: 52

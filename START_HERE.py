@@ -285,7 +285,8 @@ for (a, b), n in pair.most_common(8):
 # `storefront_assessments.csv` (added October 2026) is the sponsor's street-level read of what
 # occupies each ground floor in 2026, with the evidence behind each call. It is the present-state
 # end of a use history: set it beside what the address *was*. `property_images.csv` lists scanned
-# deeds, permit cards, tax ledgers, Sanborn sheets, and Passano-O'Neill cards per property;
+# deeds, permit cards, tax ledgers, Sanborn sheets, and Passano-O'Neill cards per property, plus
+# PI.KL Studio's 2026 building-conditions survey photos (roofs, facades, interiors);
 # `python3 bin/fetch_images.py --property <id>` downloads one property's images.
 #
 

@@ -93,7 +93,7 @@ bash script: on Windows, run it from WSL or Git Bash, or run `python3 verify_cla
 | `bin/cut_study_area.py` | Reproduces the study-area cut from the full export in git history (§4). Standard library only. |
 | `bin/export_matterport_tours.rb` | How `matterport_tours.csv` was made from Corridor. Sponsor-side; you do not run it (§4d). |
 | `bin/fetch_archive_scans.py` | Rewrites the two City Archives tables from the sponsor's public viewer (§4c). Standard library only. |
-| `bin/fetch_images.py` | Downloads the scans listed in `property_images.csv` into `images/` (§4e). Standard library only. |
+| `bin/fetch_images.py` | Downloads the images listed in `property_images.csv` into `images/` (§4e). Standard library only. |
 | `images_base_url.txt` | Where those scans are hosted. `image_key` is appended to it. |
 | `bin/clean_addresses.py` | Standardizes addresses and merges the eight duplicate properties; run after the cut (§4). Standard library only. |
 | `05_incidents_by_decade.png` | The corpus at a glance (§1). |
@@ -240,7 +240,7 @@ and validating this grading is committed capstone work.
 | `archive_folders.csv` | 31 | The Baltimore City Archives' 31 DHCD Waverly folders (BRG48-43-10): 1970s and 1980s planning papers. See §4c. |
 | `archive_scans.csv` | 2,260 | One row per scanned page filed on a building: 1,692 distinct pages, 142 buildings, 1877 to 1988. A one-line caption, the date the page depicts, and links to the image. See §4c. |
 | `matterport_tours.csv` | 13 | Public Matterport 3D walkthroughs of the sponsor's buildings, one row per tour. See §4d. |
-| `property_images.csv` | 1,817 | Scans of records filed on properties: deeds, liens, permit cards, 1896–1915 tax ledgers, 1915 Sanborn sheets, Passano-O'Neill file cards. 1,259 image files on 348 properties. The images download separately. See §4e. |
+| `property_images.csv` | 3,694 | Images filed on properties: scans of deeds, liens, permit cards, 1896–1915 tax ledgers, 1915 Sanborn sheets, Passano-O'Neill file cards, and PI.KL Studio's 2026 building-conditions survey photos. 3,090 image files on 348 properties. The images download separately. See §4e. |
 | `storefront_assessments.csv` | 264 | What occupies each ground floor in 2026, one row per property, with its evidence. See §4f. |
 | `property_id_crosswalk.csv` | 52 | September property ids retired in October, each mapped to the parcel that absorbed it. |
 
@@ -358,24 +358,30 @@ focus area: 3011, 3015, 3026, 3107, 3117, 3200, and 3224 Greenmount Ave.
 
 ## 4e. The property images (added October 2026)
 
-`property_images.csv` lists scans of records the sponsor has filed on corridor properties:
-1,817 rows, 1,259 image files, 348 properties, depicting 1742 to 2023. Four folders:
+`property_images.csv` lists images the sponsor has filed on corridor properties: scans of records,
+and 2026 survey photos. 3,694 rows, 3,090 image files, 348 properties. Five folders:
 
 | `folder` | Rows | Files | What it is |
 |---|---|---|---|
-| `deeds-and-title-chain` | 1,053 | 925 | Recorded deeds, mortgages, leases, liens, and City building-permit cards. |
+| `deeds-and-title-chain` | 1,054 | 925 | Recorded deeds, mortgages, leases, liens, and City building-permit cards. |
 | `bca-brg4-1` | 655 | 228 | City tax ledgers and annual assessment rolls, 1896 to 1915 (Baltimore City Archives). |
 | `loc-sanborn` | 4 | 2 | 1915 Sanborn fire-insurance sheets. |
 | `passano-oneill` | 104 | 104 | Passano-O'Neill file cards on Greenmount Ave buildings, 1802 to 1938 (Maryland Center for History and Culture). Reproduction cleared. |
+| `pikl-greenmount` | 1,877 | 1,831 | PI.KL Studio's 2026 building-conditions survey photos for the Maryland Historical Trust's Waverly Main Street survey: roofs, facades, commercial interiors. The same survey as the 17 PI.KL `field_report` incidents. 14 buildings. 1,873 photos, plus three report pages and field notes and one scanned 1958 newspaper ad. |
 
-- **Count files, not rows.** One scan filed on several properties is one file and several rows.
-  Count distinct `image_key`.
-- **Captions describe a scan; they are not transcriptions.** Open the image before you cite it.
-  `depicted_on` is the date the record depicts, read with `depicted_precision`; 164 rows have none.
+- **Count files, not rows.** One image filed on several properties, or listed twice under two ids,
+  is one file and several rows. Count distinct `image_key`.
+- **Captions describe an image; they are not transcriptions.** Open the image before you cite it.
+  `depicted_on` is the date the record depicts, read with `depicted_precision`. The record scans
+  depict 1742 to 2023; 164 of them have no date. The survey photos are undated (they were taken in
+  2026) and carry a `subject` instead: `interior` (873), `detail` (415), `roof` (368), `exterior`
+  (111), `streetscape` (61), `alley` (39).
+- **The survey photos were reviewed before publication.** 68 were held back: recognizable people,
+  signs of people sheltering, security panels, and images too small to judge.
 - **The images are not in git.** `image_key` (`img/<sha256>.jpg`) is appended to the URL in
   `images_base_url.txt` (https://pricing-the-unpriced.greenmountcorridor.com). `python3 bin/fetch_images.py`
-  downloads them into `images/`, which is gitignored: about 420 MB for all of them, or narrow it
-  with `--folder` or `--property`, and list without downloading with `--dry-run`. Every file is a
+  downloads them into `images/`, which is gitignored. Run `python3 bin/fetch_images.py --dry-run`
+  for the size before you download; narrow it with `--folder` or `--property`. Every file is a
   re-encoded JPEG with its metadata stripped.
 - **The City Archives DHCD scans are not here.** They stay in `archive_scans.csv`, as links (§4c).
 
