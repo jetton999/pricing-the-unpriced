@@ -40,10 +40,17 @@ independently. They carry their own terms.
 
 ## A note on the sensitivity flags
 
-52 of the 10,576 incident rows carry a `sensitivity` value: `trauma`, `personal_rights`,
-`displacement`, `commercialization`. Every one of them is sourced to published newspaper
-reporting, federal court records, land records, or a public CHAP landmark report. Nothing in
-this package is private personal data.
+126 of the 17,387 incident rows carry a `sensitivity` value: `trauma` (84), `displacement` (27),
+`personal_rights` (10), `commercialization` (5). The October 2026 refresh kept all 52 flagged rows
+of the September package and added 74. The September 52 are sourced to published newspaper
+reporting, federal court records, land records, or a public CHAP landmark report. The 74 new ones
+come from local news (50), Newspapers.com (20), census directories (2), a public record, and a
+Maryland State Archives guide.
+
+The package does carry information about private people, all of it from published or recorded
+sources: owner names from SDAT and the land records, people named in deeds and news items, and
+defendants named in crime reporting. Phone numbers in `property_incidents.csv` are redacted.
+`storefront_assessments.csv` quotes business phone numbers from public listings and shop signs.
 
 The flags exist for a design reason, not a legal one. A naive salience score would rank a
 property higher precisely because something terrible happened there, and would then surface it

@@ -3,8 +3,8 @@
 
 Two project sketches. Both run on the sponsor's Greenmount corridor knowledge base,
 exported here as CSVs. Everything students need is in this repo. The corpus
-covers 665 properties on Greenmount Ave, Baltimore, and about one block either side, with
-~3,600 hand-researched historical records back to the 1650s and ~7,000 rows from live city
+covers 699 properties on Greenmount Ave, Baltimore, and about one block either side, with
+~7,800 hand-researched historical records back to the 1650s and ~9,500 rows from live city
 feeds. To start, run `START_HERE.ipynb` (see the
 README Quickstart).
 
@@ -32,7 +32,7 @@ a feature film rooted in the 1858 arson at St. John's (3009 Greenmount) and an a
 rooted in a razed home on Barclay St. Candidate uses the optimizer should be able to
 consider:
 - **Screen and audio.** A documentary, series, or podcast per block or per property. The
-  1,138 research white papers are the treatments. The 23 trademarks and 11 patents
+  1,126 research white papers are the treatments. The 23 trademarks and 11 patents
   in `registered_ips.csv` are story seeds, the Ouija board among them.
 - **Immersive experience, Meow Wolf style.** One large vacant footprint becomes a walk-through
   of the corridor's own strata: the 1688 land patents, the turnpike tollgate, Mechanics'
@@ -49,7 +49,7 @@ treat the two differently.
 
 **What the data already holds.**
 - Use history per address: Sanborn maps (footprint, material, use, 1915), Polk city
-  directories (business at each address by year), 661 newspaper clippings, 678 `operated_at` links (415 of them name a business; the rest
+  directories (business at each address by year), 1,658 newspaper clippings, 675 `operated_at` links (413 of them name a business; the rest
   name proprietors, organizations, or families), NRHP nomination text.
 - Present state, per property: zoning, year built, sqft, dwelling units, active permits,
   vacancy, violations, tax certificates, receivership, whether a business trades there.

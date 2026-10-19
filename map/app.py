@@ -22,9 +22,9 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
 PORT = 8765
 
-EXPECTED_PROPERTIES = 665
-EXPECTED_INCIDENTS = 10576
-EXPECTED_CURATED = 3597
+EXPECTED_PROPERTIES = 699
+EXPECTED_INCIDENTS = 17387
+EXPECTED_CURATED = 7891
 
 # ---------------------------------------------------------------------------
 # Layer rule. Identical to START_HERE.ipynb section 1 and verify_claims.py.
@@ -32,8 +32,8 @@ EXPECTED_CURATED = 3597
 # Administrative = every `baltimore:*` feed, plus the two SDAT feeds
 # (`sdat_assessments` is a bare key but is a machine-ingested assessment roll,
 # and `sdat:owner` is the namespaced owner feed). Everything else is curated.
-# This is the only rule that reproduces the README's 3,597 curated rows.
-# `hud:cdbg` (36 rows) looks namespaced but is counted as curated by the
+# This is the only rule that reproduces the README's 7,891 curated rows.
+# `hud:cdbg` (39 rows) looks namespaced but is counted as curated by the
 # sponsor; see map/README.md.
 # ---------------------------------------------------------------------------
 ADMIN_PREFIXES = ("baltimore:",)

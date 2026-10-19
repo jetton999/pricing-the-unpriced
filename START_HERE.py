@@ -53,11 +53,15 @@ rips    = pd.read_csv("registered_ips.csv", low_memory=False)
 parcels = pd.read_csv("property_parcels.csv", low_memory=False)
 grants  = pd.read_csv("grant_program_matches.csv", low_memory=False)
 base    = pd.read_csv("baseline_snapshots.csv", low_memory=False)
+xwalk   = pd.read_csv("property_id_crosswalk.csv", low_memory=False)
+store   = pd.read_csv("storefront_assessments.csv", low_memory=False)
+images  = pd.read_csv("property_images.csv", low_memory=False)
 
 for name, df in [("properties",props),("incidents",inc),("subjects",subj),
                  ("incident_subjects",isub),("incident_links",ilink),
                  ("registered_ips",rips),("parcels",parcels),("grant_matches",grants),
-                 ("baseline_snapshots",base)]:
+                 ("baseline_snapshots",base),("id_crosswalk",xwalk),
+                 ("storefront_assessments",store),("property_images",images)]:
     print(f"{name:<20} {len(df):>7,} rows   {len(df.columns):>3} cols")
 
 # %% [markdown]
@@ -87,7 +91,7 @@ for c, v in constant.items():
 # %% [markdown]
 # ## 1. The first thing you need to know
 #
-# The incident table is **not** 10,576 pieces of curated history. Most of it is
+# The incident table is **not** 17,387 pieces of curated history. Most of it is
 # machine-ingested administrative data: 311 complaints, permits, assessments, crime.
 # The curated archival layer is much smaller and much older.
 #
@@ -119,7 +123,7 @@ print(cur["source"].value_counts().head(15))
 #
 
 # %%
-# Both layers carry grades: ~490 administrative rows (mostly sdat:owner) are marked verified too.
+# Both layers carry grades: ~550 administrative rows (mostly sdat:owner) are graded too.
 print("evidence_status by layer:")
 print(pd.crosstab(inc["evidence_status"].fillna("(ungraded)"), inc["layer"], margins=True), "\n")
 print("date_precision by layer:")
@@ -276,6 +280,25 @@ for (a, b), n in pair.most_common(8):
     print(f"  {n:>3} shared subjects   {addr.get(a,a)}  <->  {addr.get(b,b)}")
 
 # %% [markdown]
+# ### 4d. What is on the ground floor today
+#
+# `storefront_assessments.csv` (added October 2026) is the sponsor's street-level read of what
+# occupies each ground floor in 2026, with the evidence behind each call. It is the present-state
+# end of a use history: set it beside what the address *was*. `property_images.csv` lists scanned
+# deeds, permit cards, tax ledgers, Sanborn sheets, and Passano-O'Neill cards per property;
+# `python3 bin/fetch_images.py --property <id>` downloads one property's images.
+#
+
+# %%
+print(store.status.value_counts().to_string(), "\n")
+now = idea1.merge(store[["property_id", "status", "confidence"]], on="property_id", how="left")
+print("2026 status vs. a documented business history (distinct_businesses > 0):")
+print(pd.crosstab(now.status.fillna("(not assessed)"), now.distinct_businesses > 0), "\n")
+print(f"property_images: {len(images):,} rows, {images.image_key.nunique():,} files, "
+      f"{images.property_id.nunique():,} properties")
+print(images.groupby("folder").agg(rows=("id", "size"), files=("image_key", "nunique")).to_string())
+
+# %% [markdown]
 # ## 5. Idea 2: the numbers a lease has to work with
 #
 # Idea 2 designs a lease that starts a business as an ordinary tenant and ends with it owning
@@ -335,11 +358,19 @@ print("\nnote: avm_estimate is blank and sale_count is 0 in every row, so neithe
 # `incident_count` and `registered_ip_count`, the documentation depth at that moment. A lease
 # that credits a tenant for improving a building needs a before line; this is it.
 #
+# The file is frozen, so it keeps the September property ids. The October 2026 refresh retired 52
+# of them (Corridor merged parcels one building had absorbed). Re-key through
+# `property_id_crosswalk.csv` before joining to `properties.csv`; after that every row joins.
+#
 
 # %%
+remap = xwalk.set_index("old_id")["new_id"]
+base["current_id"] = base.property_id.map(remap).fillna(base.property_id).astype(int)
+print("baseline rows on a retired id:", int(base.property_id.isin(remap.index).sum()))
+print("baseline rows that still do not join:", int((~base.current_id.isin(props.id)).sum()), "\n")
 print(base.captured_on.value_counts().sort_index(), "\n")
 snap = base.sort_values("captured_on").drop_duplicates("property_id", keep="last")
-KEYS = ["property_id", "captured_on", "captured_at"]   # identify the snapshot; not frozen fields
+KEYS = ["property_id", "captured_on", "captured_at", "current_id"]   # not frozen fields
 print("fields frozen per property:", len(base.columns) - len(KEYS))
 print(snap[["property_id","captured_on","assessed_value","last_sale_price","vacancy_indicator",
             "incident_count","registered_ip_count"]].head(8).to_string(index=False))
