@@ -2,13 +2,21 @@
 
 A map browser for the CSVs in this repo. No install step: `python3 map/app.py` and open
 http://localhost:8765. `python3 map/app.py --check` loads the data, prints row counts and the
-per-source layer table, and exits 1 if properties ≠ 665, incidents ≠ 10,576, or curated ≠ 3,597.
+per-source layer table, and exits 1 if properties ≠ 699, incidents ≠ 17,387, or curated ≠ 7,891,
+if storefront assessments ≠ 264, image rows ≠ 3,694 or crosswalk rows ≠ 52, or if a baseline snapshot
+has no parcel to sit on.
 
-Markers are the 584 properties with coordinates, coloured by curated depth (0 / 1–9 / 10–24 / 25+).
-Click one for a right-hand panel: key fields, a **History** timeline of curated incidents (oldest
-first; dashed dots mark `circa`/`decade`/`range`/unset precision), the **Administrative feed** (newest
-first, 50 at a time), people & businesses, registered IP, grant matches, and the two July 2026
-baseline snapshots. Search matches addresses, owners, and subject names. **Focus area** draws the proposed first focus area from `map/focus_area.geojson`, a working outline traced
+Markers are the 668 properties with coordinates, coloured by curated depth (0 / 1–9 / 10–24 / 25+).
+Click one for a right-hand panel: key fields (with tax-sale years, vacant lot and absorbed addresses),
+**Ground floor in 2026** (the parcel's row in `storefront_assessments.csv`, evidence notes behind a
+button), **Images** (thumbnails from `property_images.csv` grouped by folder, loaded from the URL in
+`images_base_url.txt`; click one to open a viewer that pages through all of the property's images
+with the arrow keys, captions and dates included, Esc to close), a **History** timeline of curated
+incidents (oldest first; dashed dots mark `circa`/`decade`/`range`/unset precision), the **Administrative
+feed** (newest first, 50 at a time), people & businesses, registered IP, grant matches, and the two July
+2026 baseline snapshots. `baseline_snapshots.csv` keeps September ids, so the map re-keys it through
+`property_id_crosswalk.csv`: the 104 snapshots of the 52 retired parcels appear, collapsed, on the parcel
+that absorbed them, labelled with their September id. Drag the panel's left edge to resize it (double-click to reset; the width is remembered). Search matches addresses, owners, and subject names. **Focus area** draws the proposed first focus area from `map/focus_area.geojson`, a working outline traced
 from `proposed-focus-area-phase1.png` (replace the file when the sponsor supplies an authoritative
 one); **Focus area only** dims every marker outside it and zooms to it. Other toggles draw lot polygons
 for the visible set; neighborhood bounds are empty in this export, so that layer draws nothing.
@@ -20,18 +28,18 @@ source has been read for yet, and the spans of use, each with its source rows an
 records link down to the matching curated incident. **Colour by use** in the top bar recolours those properties by
 the use found in a chosen decade (step with the arrows) or by the use found in the most decades; the other markers
 fade. A hollow dashed marker means no record for that decade, which is not the same as vacant; a blue ring is a shop
-front whose trade is not stated (a permit for "one store", a Sanborn "S"). Ten frontage records in the export
-were merged into a neighbouring parcel (`team/evidence/blocklot_gaps.csv`); selecting one links to the parcel that
-holds its history. Eight of them have no coordinates, so they do not appear on the map. The layer is optional: without `team/extractor/out/` the map runs as
+front whose trade is not stated (a permit for "one store", a Sanborn "S"). Ten frontage records in the September export
+were merged into a neighbouring parcel (`team/evidence/blocklot_gaps.csv`); the map points each to the parcel that
+holds its history. The October 2026 refresh retired all ten ids (`property_id_crosswalk.csv`), so none of them is a marker any more. The layer is optional: without `team/extractor/out/` the map runs as
 before and `--check` prints a note. Run `python3 team/extractor/extract.py` to rebuild it.
 
 **Layer rule** (same as `START_HERE.ipynb` and `verify_claims.py`): a source is *administrative*
 if it starts with `baltimore:` or is `sdat_assessments` / `sdat:owner`; everything else is
-*curated*. That gives 3,597 / 6,979. Two sources cut against the "namespaced = administrative"
-heuristic: `hud:cdbg` (36 rows) is namespaced but counted as curated, and `sdat_assessments`
-(850) is a bare key but is an assessment roll, so administrative. Moving `hud:cdbg` would give
-3,561. `stjohns_interments` (583) is curated but labelled **roster** in the UI.
+*curated*. That gives 7,891 / 9,496. Two sources cut against the "namespaced = administrative"
+heuristic: `hud:cdbg` (39 rows) is namespaced but counted as curated, and `sdat_assessments`
+(853) is a bare key but is an assessment roll, so administrative. Moving `hud:cdbg` would give
+7,793. `stjohns_interments` (583) is curated but labelled **roster** in the UI.
 
 Rows with a `sensitivity` flag are never dropped: they get a red badge and their summary sits
-behind a "show" button. `rights` is shown as a chip when present. Only outbound calls are OSM tiles
-and the Leaflet 1.9.4 CDN.
+behind a "show" button. `rights` is shown as a chip when present. Only outbound calls are OSM tiles,
+the Leaflet 1.9.4 CDN, and the image bucket when a property with images is opened.

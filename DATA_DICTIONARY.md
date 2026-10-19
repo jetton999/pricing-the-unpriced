@@ -8,51 +8,53 @@ way the column cannot tell one property from another. Do not read a 0 there as "
 
 Joins: `property_incidents.property_id` → `properties.id`; `incident_subjects` links
 `property_incidents` to `subjects`; `incident_links` links incidents to each other;
-`registered_ips`, `grant_program_matches`, and `baseline_snapshots` hang off `properties.id`.
+`registered_ips`, `grant_program_matches`, `storefront_assessments`, and `property_images` hang off
+`properties.id`. `baseline_snapshots` keeps the September ids: re-key it through
+`property_id_crosswalk` (`old_id` → `new_id`) first.
 
 ## properties
 
-`properties.csv` · 665 rows. One row per property: Greenmount Ave and about one block either side (README §4, "How the study area was cut").
+`properties.csv` · 699 rows. One row per property: Greenmount Ave and about one block either side (README §4, "How the study area was cut").
 
 | Column | Type | Filled | Notes |
 |---|---|---|---|
 | `id` | bigint | 100% | Primary key. |
 | `address` | string | 100% | House format: mixed case, no ZIP, ending `, Baltimore, MD` (`608 E 30th St, Baltimore, MD`). Five named places have no house number and keep their own names. |
-| `block_side_id` | bigint | 77% | One side of one block. The default assemblage unit (59 values). |
+| `block_side_id` | bigint | 66% | One side of one block. The default assemblage unit (59 values). |
 | `created_at` | datetime | 100% |  |
-| `latitude` | decimal | 88% |  |
-| `longitude` | decimal | 88% |  |
-| `owner_name` | string | 88% |  |
-| `owner_type` | string | 18% | Values: `unknown`, `city`, `private_owner`; blank in most rows. |
+| `latitude` | decimal | 96% |  |
+| `longitude` | decimal | 96% |  |
+| `owner_name` | string | 96% |  |
+| `owner_type` | string | 17% | Values: `unknown`, `city`, `private_owner`; blank in most rows. |
 | `updated_at` | datetime | 100% |  |
-| `blocklot` | string | 87% |  |
-| `assessed_value` | integer | 87% | Administrative outcome, not a market price. |
-| `vacancy_indicator` | boolean | 25% |  |
-| `year_built` | integer | 88% | `0` means unknown (83 rows). |
-| `zoning_code` | string | 87% | Has trailing spaces in some rows: `.str.strip()` before matching. `C-*` codes are commercial. |
-| `last_sale_price` | integer | 88% | 113 rows are $0 transfers. Portfolio sales repeat the whole deal price on every parcel. 701 Exeter Hall Ave ($19,000,000) is a portfolio sale whose other parcel is outside the study area. |
-| `last_sale_date` | date | 88% |  |
-| `lot_polygon` | jsonb | 88% |  |
-| `building_polygons` | jsonb | 84% |  |
+| `blocklot` | string | 95% |  |
+| `assessed_value` | integer | 95% | Administrative outcome, not a market price. |
+| `vacancy_indicator` | boolean | 28% |  |
+| `year_built` | integer | 96% | `0` means unknown (93 rows). |
+| `zoning_code` | string | 95% | `C-*` codes are commercial. Earlier exports had trailing spaces; `.str.strip()` is harmless. |
+| `last_sale_price` | integer | 96% | 140 rows are $0 transfers. Portfolio sales repeat the whole deal price on every parcel. 701 Exeter Hall Ave ($19,000,000) is a portfolio sale whose other parcel is outside the study area. |
+| `last_sale_date` | date | 96% |  |
+| `lot_polygon` | jsonb | 96% |  |
+| `building_polygons` | jsonb | 92% |  |
 | `city_owned` | boolean | 100% |  |
-| `alias` | string | 3% |  |
-| `has_active_business` | boolean | 88% |  |
+| `alias` | string | 5% |  |
+| `has_active_business` | boolean | 96% |  |
 | `opportunity_zone` | boolean | **always `false`** |  |
 | `flood_zone` | string | **blank** |  |
-| `historic_district` | string | 25% |  |
+| `historic_district` | string | 39% |  |
 | `enterprise_zone` | boolean | 100% |  |
 | `incidents_12mo_count` | integer | 100% |  |
 | `violations_12mo_count` | integer | 100% |  |
-| `census_tract` | string | 87% |  |
-| `environmental_flag` | boolean | 98% |  |
-| `fair_market_rent_2br` | integer | **always `1857`** | HUD residential FMR for the ZIP; an order-of-magnitude anchor only. |
-| `median_household_income` | integer | 65% |  |
+| `census_tract` | string | 95% |  |
+| `environmental_flag` | boolean | 100% |  |
+| `fair_market_rent_2br` | integer | **always `2006`** | HUD residential FMR for the ZIP; an order-of-magnitude anchor only. |
+| `median_household_income` | integer | 83% |  |
 | `vacant_notice_status` | string | 6% |  |
 | `active_permit_count` | integer | 100% |  |
-| `receivership_status` | string | 5% |  |
+| `receivership_status` | string | 7% |  |
 | `roof_damage_risk` | float | 2% |  |
 | `tax_certificate_active` | boolean | 100% |  |
-| `market_typology` | string | 65% | Market typology category (B–G in this export). |
+| `market_typology` | string | 96% | Market typology category (B–G in this export). |
 | `crimes_12mo_count` | integer | 100% |  |
 | `cdbg_eligible` | boolean | 100% |  |
 | `inspire_eligible` | boolean | **always `false`** |  |
@@ -64,22 +66,22 @@ Joins: `property_incidents.property_id` → `properties.id`; `incident_subjects`
 | `sustainable_community` | boolean | 100% |  |
 | `food_desert` | boolean | 100% |  |
 | `public_investment_total` | integer | **all 0** |  |
-| `walkability_index` | float | 65% |  |
-| `transit_distance_m` | integer | 65% |  |
-| `jobs_transit_45min` | integer | 65% |  |
+| `walkability_index` | float | 95% |  |
+| `transit_distance_m` | integer | 95% |  |
+| `jobs_transit_45min` | integer | 95% |  |
 | `lihtc_nearby_count` | integer | 100% |  |
 | `hud_reo` | boolean | **always `false`** |  |
 | `qualified_census_tract` | boolean | 100% |  |
 | `difficult_development_area` | boolean | **always `false`** |  |
 | `cdbg_investment_total` | integer | 100% |  |
-| `hmda_loan_count` | integer | 65% |  |
-| `hmda_median_value` | integer | 65% |  |
-| `hmda_denial_rate` | float | 65% |  |
-| `hpi_value` | float | 27% |  |
-| `hpi_yoy_change` | float | 27% |  |
-| `ground_rent` | integer | 87% |  |
-| `dwelling_units` | integer | 87% |  |
-| `structure_sqft` | integer | 87% | `0` means unknown (163 rows). |
+| `hmda_loan_count` | integer | 95% |  |
+| `hmda_median_value` | integer | 95% |  |
+| `hmda_denial_rate` | float | 95% |  |
+| `hpi_value` | float | 51% |  |
+| `hpi_yoy_change` | float | 51% |  |
+| `ground_rent` | integer | 95% |  |
+| `dwelling_units` | integer | 95% |  |
+| `structure_sqft` | integer | 95% | `0` means unknown (237 rows). |
 | `building_condition` | string | **blank** |  |
 | `building_quality` | string | **blank** |  |
 | `num_stories` | integer | **blank** |  |
@@ -99,14 +101,18 @@ Joins: `property_incidents.property_id` → `properties.id`; `incident_subjects`
 | `avm_estimate` | integer | **blank** |  |
 | `sale_count` | integer | **all 0** |  |
 | `zip_code` | string | **always `21218`** | 21218 for every row. |
-| `block_plat_url` | string | 87% |  |
-| `tax_certificate_status` | string | 13% |  |
-| `tax_certificate_sold_on` | date | 13% |  |
-| `receivership_filed_on` | date | 2% |  |
+| `block_plat_url` | string | 95% |  |
+| `tax_certificate_status` | string | 14% |  |
+| `tax_certificate_sold_on` | date | 14% |  |
+| `receivership_filed_on` | date | 3% |  |
+| `tax_sale_years` | array | 100% | Added October 2026. Years the property went to a City tax sale, as a Postgres array (`{2021,2024}`). `{}` (none) in 544 rows; 155 have at least one year. Detail is in the `baltimore:tax_sale_history` incidents. |
+| `city_since_years` | array | **always `{}`** | Added October 2026. Empty in every row. |
+| `vacant_lot` | boolean | 100% | Added October 2026. `true` for 58 rows. Corridor's parcel flag; it disagrees with `storefront_assessments.status` = `vacant_lot` for 13 properties. |
+| `absorbed_addresses` | jsonb | 100% | Added October 2026. JSON array of the addresses this parcel absorbed when Corridor merged them; `[]` in 620 rows. 79 parcels absorbed 184 addresses. The retired ids are in `property_id_crosswalk.csv`. |
 
 ## property_incidents
 
-`property_incidents.csv` · 10,576 rows. The claim layer: one dated event at one property. Split it into two layers before any analysis. A `source` starting with `baltimore:`, or equal to `sdat_assessments` or `sdat:owner`, is **administrative** (6,979 rows); everything else is **curated** (3,597). See README §1.
+`property_incidents.csv` · 17,387 rows. The claim layer: one dated event at one property. Split it into two layers before any analysis. A `source` starting with `baltimore:`, or equal to `sdat_assessments` or `sdat:owner`, is **administrative** (9,496 rows); everything else is **curated** (7,891). See README §1.
 
 | Column | Type | Filled | Notes |
 |---|---|---|---|
@@ -114,20 +120,20 @@ Joins: `property_incidents.property_id` → `properties.id`; `incident_subjects`
 | `property_id` | bigint | 100% | → `properties.id`. |
 | `source` | string | 100% | Decides the layer (see above). `stjohns_interments` is curated. |
 | `source_id` | bigint | 100% | ID of the record in its source system. |
-| `category` | string | 100% | 29 values: `complaint`, `permit`, `sale`, `crime`, `news`, `interment`, `ownership`, `civic`, … |
+| `category` | string | 100% | 52 values: `complaint`, `permit`, `sale`, `crime`, `title`, `history`, `news`, `tax`, `interment`, `ownership`, … |
 | `occurred_at` | datetime | 100% | Start of the event. Read with `date_precision`. |
 | `summary` | string | 100% | Human-readable description of the claim. |
 | `data` | jsonb | 100% | JSON payload; source-specific detail. |
 | `created_at` | datetime | 100% |  |
-| `evidence_status` | string | 13% | `verified` / `probable` / `possible` / `contested`; blank = ungraded. |
-| `occurred_at_end` | datetime | <1% | End of a range, when `date_precision` is `range`. |
-| `date_precision` | string | 18% | `exact` / `year` / `range` / `circa` / `decade` / `unknown`; blank = unset. |
+| `evidence_status` | string | 32% | `verified` / `probable` / `possible` / `contested` / `refuted`; blank = ungraded. |
+| `occurred_at_end` | datetime | 2% | End of a range, when `date_precision` is `range`. |
+| `date_precision` | string | 36% | `exact` / `year` / `range` / `circa` / `decade` / `unknown`; blank = unset. |
 | `sensitivity` | string | <1% | `trauma`, `personal_rights`, `displacement`, `commercialization`. Never drop these rows silently (LICENSE.md). |
-| `rights` | string | 7% | `public` where set. |
+| `rights` | string | 4% | `public` where set. |
 
 ## subjects
 
-`subjects.csv` · 3,094 rows. People, businesses, organizations, families, and other named entities that appear in incidents.
+`subjects.csv` · 3,093 rows. People, businesses, organizations, families, and other named entities that appear in incidents.
 
 | Column | Type | Filled | Notes |
 |---|---|---|---|
@@ -141,21 +147,21 @@ Joins: `property_incidents.property_id` → `properties.id`; `incident_subjects`
 
 ## incident_subjects
 
-`incident_subjects.csv` · 5,459 rows. Edges between a subject and an incident: who did what, where. Join `property_incident_id` → `property_incidents.id` → `property_id` to reach the property.
+`incident_subjects.csv` · 5,451 rows. Edges between a subject and an incident: who did what, where. Join `property_incident_id` → `property_incidents.id` → `property_id` to reach the property.
 
 | Column | Type | Filled | Notes |
 |---|---|---|---|
 | `id` | bigint | 100% | Primary key. |
 | `property_incident_id` | bigint | 100% | → `property_incidents.id`. |
 | `subject_id` | bigint | 100% | → `subjects.id`. |
-| `relationship` | string | 100% | 302 distinct values; the common ones are `owned`, `operated_at`, `sold`, `interred_at`, `purchased`, `lived_at`, …  `operated_at` links people and organizations too, not just businesses. |
+| `relationship` | string | 100% | 299 distinct values; the common ones are `owned`, `operated_at`, `sold`, `interred_at`, `purchased`, `lived_at`, …  `operated_at` links people and organizations too, not just businesses. |
 | `data` | jsonb | 100% | JSON payload; source-specific detail. |
 | `created_at` | datetime | 100% |  |
 | `updated_at` | datetime | 100% |  |
 
 ## incident_links
 
-`incident_links.csv` · 236 rows. Edges between two incidents, including where claims disagree.
+`incident_links.csv` · 1,868 rows. Edges between two incidents, including where claims disagree.
 
 | Column | Type | Filled | Notes |
 |---|---|---|---|
@@ -163,7 +169,7 @@ Joins: `property_incidents.property_id` → `properties.id`; `incident_subjects`
 | `property_incident_id` | bigint | 100% | → `property_incidents.id`. |
 | `related_incident_id` | bigint | 100% | → `property_incidents.id`. |
 | `link_type` | string | 100% | `related`, `supports`, `duplicates`, `contradicts`. |
-| `note` | text | 90% |  |
+| `note` | text | 11% |  |
 | `created_at` | datetime | 100% |  |
 | `updated_at` | datetime | 100% |  |
 
@@ -191,7 +197,7 @@ Joins: `property_incidents.property_id` → `properties.id`; `incident_subjects`
 
 ## property_parcels
 
-`property_parcels.csv` · 786 rows. The city parcel roll for the study area's blocks. The linkage layer, not the research set.
+`property_parcels.csv` · 850 rows. The city parcel roll for the study area's blocks. The linkage layer, not the research set.
 
 | Column | Type | Filled | Notes |
 |---|---|---|---|
@@ -204,14 +210,14 @@ Joins: `property_incidents.property_id` → `properties.id`; `incident_subjects`
 | `sqft` | integer | 99% |  |
 | `land_use` | string | 100% |  |
 | `owner` | string | 100% |  |
-| `matched_property_id` | bigint | 25% | → `properties.id`; set for 195 of 786 rows. |
+| `matched_property_id` | bigint | 25% | → `properties.id`; set for 209 of 850 rows. |
 | `created_at` | datetime | 100% |  |
 | `updated_at` | datetime | 100% |  |
 | `lot_sqft` | integer | 100% |  |
 
 ## grant_program_matches
 
-`grant_program_matches.csv` · 5,319 rows. Property-to-program eligibility matches behind the live "Improve Your Property" tool.
+`grant_program_matches.csv` · 5,319 rows. Property-to-program eligibility matches behind the live "Improve Your Property" tool. Carried forward unchanged from September; every `property_id` is a current property.
 
 | Column | Type | Filled | Notes |
 |---|---|---|---|
@@ -240,11 +246,11 @@ Joins: `property_incidents.property_id` → `properties.id`; `incident_subjects`
 
 ## baseline_snapshots
 
-`baseline_snapshots.csv` · 883 rows. The t0 line: each property frozen on a capture date (2026-07-13 or 2026-07-22). `property_id` + `captured_on` identify a row; the other 28 columns are the frozen fields. See README §4b.
+`baseline_snapshots.csv` · 883 rows. The t0 line: each property frozen on a capture date (2026-07-13 or 2026-07-22). Frozen byte for byte, so it keeps the September ids. `property_id` + `captured_on` identify a row; the other 28 columns are the frozen fields. See README §4b.
 
 | Column | Type | Filled | Notes |
 |---|---|---|---|
-| `property_id` | bigint | 100% | → `properties.id`. |
+| `property_id` | bigint | 100% | September id. → `properties.id` directly for 779 rows; the other 104 join through `property_id_crosswalk` first. |
 | `captured_on` | date | 100% | Capture date: 2026-07-13 or 2026-07-22. |
 | `active_permit_count` | integer | 100% |  |
 | `assessed_value` | integer | 81% |  |
@@ -294,7 +300,7 @@ Joins: `property_incidents.property_id` → `properties.id`; `incident_subjects`
 | Column | Type | Filled | Notes |
 |---|---|---|---|
 | `id` | bigint | 100% | The image's id. Unique. |
-| `property_id` | bigint | 100% | → `properties.id` for 140 of 142 buildings; 345 and 347 E 33rd St are newer than the export. |
+| `property_id` | bigint | 100% | → `properties.id`. All 142 buildings join. |
 | `address` | string | 100% | The building's address, house format. |
 | `item` | integer | 100% | Folder number. → `archive_folders.item`. |
 | `reference` | string | 100% | `BRG48-43-10-<item>`. |
@@ -323,3 +329,42 @@ Joins: `property_incidents.property_id` → `properties.id`; `incident_subjects`
 | `is_primary` | boolean | 100% | `true` for the building's main tour. One per building. |
 | `model_id` | string | 100% | The Matterport model id; the part after `?m=` in the link. |
 | `share_url` | string | 100% | Open it to walk the building. Public, no login. |
+
+`property_images.csv` · 3,694 rows. Images filed on properties: scans of records, and PI.KL Studio's 2026 building-conditions survey photos. 3,090 image files on 348 properties. One image filed on several properties, or listed under two ids, is one file and several rows: count distinct `image_key`. The images are not in git; `python3 bin/fetch_images.py` downloads them. See README §4e.
+
+| Column | Type | Filled | Notes |
+|---|---|---|---|
+| `id` | bigint | 100% | Primary key. Unique. |
+| `property_id` | bigint | 100% | → `properties.id`. Every row joins. |
+| `category` | string | 100% | `photo` (1,873), `document` (1,807), `plan` (13), `ephemera` (1). |
+| `subject` | string | 51% | Survey photos only: `interior` (873), `detail` (415), `roof` (368), `exterior` (111), `streetscape` (61), `alley` (39), `other` (6). |
+| `caption` | string | 100% | Describes the image. Not a transcription. |
+| `depicted_on` | date | 45% | The date the record depicts, not the scan date. Read it with `depicted_precision`. 1742 to 2023. Blank for the 2026 survey photos. |
+| `depicted_precision` | string | 45% | `day` (885), `year` (765), `month` (4). A `year` date is the first of January. |
+| `depicted_source` | string | 49% | `manual` (1,817 rows, every scan of a record) or `classifier` (1). Blank for the survey photos. |
+| `depicted_address` | string | 4% | Survey photos only: the address the photo was taken at, when recorded (150 rows). |
+| `folder` | string | 100% | `deeds-and-title-chain` (1,054 rows: deeds, mortgages, leases, liens, City building-permit cards), `bca-brg4-1` (655: City tax ledgers and assessment rolls, 1896 to 1915, Baltimore City Archives), `loc-sanborn` (4: 1915 Sanborn sheets), `passano-oneill` (104: Passano-O'Neill file cards, 1802 to 1938, Maryland Center for History and Culture; reproduction cleared), `pikl-greenmount` (1,877: PI.KL Studio's 2026 building-conditions survey for the Maryland Historical Trust; 68 photos were held back after review). |
+| `image_key` | string | 100% | `img/<sha256>.jpg`. Append it to the URL in `images_base_url.txt`. Re-encoded JPEG, metadata stripped. |
+
+`storefront_assessments.csv` · 264 rows. The sponsor's street-level assessment of what occupies each ground floor in 2026, one row per property. See README §4f.
+
+| Column | Type | Filled | Notes |
+|---|---|---|---|
+| `id` | bigint | 100% | Primary key. |
+| `property_id` | bigint | 100% | → `properties.id`. One row per property; every row joins. |
+| `status` | string | 100% | `open_active` (87), `residential` (56), `vacant_storefront` (49), `vacant_lot` (39), `institution` (19), `office_industrial` (11), `listed_likely_dead` (2), `needs_eyes` (1). |
+| `confidence` | string | 100% | `high` (142), `medium` (117), `low` (5). |
+| `summary` | text | 100% | A few sentences on what is there and why the status was chosen. |
+| `evidence` | jsonb | 100% | JSON array of findings (1,428 in all), each with `source`, `as_of`, `finding`, and usually `url`. Sources include `google`, `photos` (Street View), `zoning`, `city_vacancy`, `listing`, `news`. Findings quote business phone numbers from public listings and shop signs. |
+| `assessed_on` | date | **always `2026-10-07`** | When the assessment was made. |
+| `observed_on` | date | **blank** |  |
+
+`property_id_crosswalk.csv` · 52 rows. Every September property id the October 2026 refresh retired, each mapped to the parcel that absorbed it (24 surviving parcels).
+
+| Column | Type | Filled | Notes |
+|---|---|---|---|
+| `old_id` | bigint | 100% | The retired September id. Not in `properties.csv`; may appear in `baseline_snapshots.csv` and in team files. |
+| `new_id` | bigint | 100% | → `properties.id`. The surviving parcel. |
+| `old_address` | string | 100% | The retired property's address. |
+| `new_address` | string | 100% | The surviving parcel's address. |
+| `reason` | string | 100% | Why the id was mapped there, in prose. In every row the old address is in the survivor's `absorbed_addresses`. |

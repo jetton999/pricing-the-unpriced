@@ -35,6 +35,7 @@
 
 <div id="main">
   <div id="map"></div>
+  <div id="sidebar-resizer" title="Drag to resize the panel; double-click to reset" role="separator" aria-orientation="vertical"></div>
   <aside id="sidebar" class="empty">
     <div id="sidebar-empty">
       <h2>Pick a property</h2>
@@ -61,6 +62,21 @@
   </div>
   <div id="legend-use" hidden></div>
   <div class="legend-focus"><b></b> Focus area (approx.)</div>
+</div>
+
+<div id="viewer" hidden role="dialog" aria-label="Image viewer">
+  <div id="viewer-bar">
+    <span id="viewer-count"></span>
+    <span id="viewer-meta" class="muted"></span>
+    <a id="viewer-open" target="_blank" rel="noopener">open full size</a>
+    <button id="viewer-close" class="btn" aria-label="close">&#10005;</button>
+  </div>
+  <div id="viewer-stage">
+    <button id="viewer-prev" class="viewer-nav" aria-label="previous image">&#8249;</button>
+    <img id="viewer-img" alt="">
+    <button id="viewer-next" class="viewer-nav" aria-label="next image">&#8250;</button>
+  </div>
+  <p id="viewer-caption"></p>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"

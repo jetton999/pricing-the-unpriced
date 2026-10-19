@@ -70,8 +70,8 @@ repo works and one command that tells it whether it broke anything.
    agent asked to "add a column to the starter table" then edits one function with a
    test, not a notebook cell. Keep it pandas-only; `map/app.py` stays stdlib.
 
-6. **`tests/test_greenmount.py`** with pytest: row counts, the 3,597 / 6,979 split, the
-   312 / 68 / 22 depth tiers, 678 `operated_at` links, and one use-history spot check
+6. **`tests/test_greenmount.py`** with pytest: row counts, the 7,891 / 9,496 split, the
+   441 / 160 / 61 depth tiers, 675 `operated_at` links, and one use-history spot check
    (3313 Greenmount has 15 distinct businesses). Add `uv run pytest -q` to `bin/check`.
 
 7. **Split the notebook by idea.** `notebooks/00_data_tour.py` (sections 1–3),

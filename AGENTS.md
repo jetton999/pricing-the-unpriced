@@ -30,27 +30,35 @@ bash; it uses `uv run` if uv is installed, else the active environment. `verify_
 
 - **Layer split.** In `property_incidents.csv`, a `source` is *administrative* if it starts with
   `baltimore:` or equals `sdat_assessments` or `sdat:owner`. Everything else is *curated*.
-  That gives 6,979 administrative rows and 3,597 curated. Historical analysis uses the curated layer.
+  That gives 9,496 administrative rows and 7,891 curated. Historical analysis uses the curated layer.
 - **Study area.** The export covers only Greenmount Ave and about one block either side
-  (665 properties). The cut rule is in README §4, "How the study area was cut".
+  (699 properties). The cut rule is in README §4, "How the study area was cut".
 - **Blank and single-value columns.** `avm_estimate`, `flood_zone`, `walk_score`,
   `transit_score`, `bike_score`, `building_condition`, `building_quality`, `num_stories`, `irs_*`
   are blank. Eighteen more hold one value in every row: the `0`/`False` placeholders
   (`sale_count`, `nearby_*`, `public_investment_total`, `has_basement`, `has_central_ac`, and six
   program flags) and area-wide figures (`zip_code`, `fair_market_rent_2br`, `market_median_*`,
-  `market_inventory`). Never use them as features or read a 0 as "none". `neighborhoods.bounds`
+  `market_inventory`). `city_since_years` is `{}`, an empty list, in every row. Never use them as
+  features or read a 0 as "none". `neighborhoods.bounds`
   is empty. `DATA_DICTIONARY.md` marks every such column; notebook §0 lists them.
-- **Sale prices.** 113 `last_sale_price` values are $0. Portfolio sales repeat the whole deal
+- **Sale prices.** 140 `last_sale_price` values are $0. Portfolio sales repeat the whole deal
   price on every parcel: drop rows whose price and date are shared with another parcel, and
   701 Exeter Hall Ave, whose deal partner is outside the study area.
 - **Address format.** Mixed case, no ZIP, ending `, Baltimore, MD`: `701 Exeter Hall Ave, Baltimore, MD`,
   not `701 EXETER HALL AVE, Baltimore, MD 21218`. Match on `blocklot` before address when two rows might be
   one parcel. `bin/clean_addresses.py` produced this state.
+- **Retired property ids.** The October 2026 refresh retired 52 September property ids: Corridor
+  merged parcels that one building had absorbed. Re-key old ids through `property_id_crosswalk.csv`
+  (`old_id` → `new_id`, 52 rows, one per retired id); `baseline_snapshots.csv` keeps the t0 ids
+  and is never edited. Team files keyed on September ids need the same join.
+- **Property images.** In `property_images.csv` one image filed on several properties, or listed
+  under two ids, is several rows: count distinct `image_key`, not rows. The images are not in git; `python3 bin/fetch_images.py`
+  downloads them into `images/` (gitignored). Captions describe a scan; they are not transcriptions.
 - **Archive scans.** In `archive_scans.csv` a page filed on several buildings is several rows: count
   distinct `item` + `page`, not rows. Captions are one-line descriptions, not transcriptions. Open
   `scan_url` before you cite a page.
 - **`assessed_value` is administrative**, not a market price. Never present it as one.
-- **Never drop rows with a `sensitivity` flag** (52 incidents). See `LICENSE.md`.
+- **Never drop rows with a `sensitivity` flag** (126 incidents). See `LICENSE.md`.
 - **`operated_at` links people and organizations too.** Filter `subjects.subject_type ==
   "business"` when you mean businesses.
 - **Temporal leakage.** A record created in 2026 cannot inform a 2005 outcome.
@@ -79,3 +87,6 @@ bash; it uses `uv run` if uv is installed, else the active environment. `verify_
 | How the CSVs were cut from the full export | `bin/cut_study_area.py`, then `bin/clean_addresses.py` |
 | The Matterport walkthroughs | `matterport_tours.csv`, README §4d |
 | The City Archives scans (BRG48-43-10) | `archive_scans.csv`, README §4c, `bin/fetch_archive_scans.py` |
+| Deeds, permit cards, tax ledgers, Sanborn sheets, Passano-O'Neill cards, PI.KL 2026 survey photos | `property_images.csv`, README §4e, `bin/fetch_images.py` |
+| What is on each ground floor in 2026 | `storefront_assessments.csv`, README §4f |
+| Old (September) property ids | `property_id_crosswalk.csv`, README "What changed in the October 2026 refresh" |

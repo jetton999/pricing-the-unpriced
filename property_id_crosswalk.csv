@@ -1,0 +1,53 @@
+old_id,new_id,old_address,new_address,reason
+1100,2241,"2800 Greenmount Ave, Baltimore, MD","452 E 28th St, Baltimore, MD",2800 Greenmount Ave is in 452 E 28th St's (2241) absorbed_addresses; all 3 package rows moved there.
+1101,2241,"2802 Greenmount Ave, Baltimore, MD","452 E 28th St, Baltimore, MD",2802 Greenmount Ave is in 452 E 28th St's (2241) absorbed_addresses; all 3 package rows moved there.
+2239,1094,"2736 Greenmount Ave, Baltimore, MD","454 Whitridge Ave, Baltimore, MD",2736 Greenmount Ave is in 454 Whitridge Ave's (1094) absorbed_addresses; all 3 package rows moved there.
+2244,678,"2709 Greenmount Ave, Baltimore, MD","2707 Greenmount Ave, Baltimore, MD",2709 Greenmount Ave is in 2707 Greenmount Ave's (678) absorbed_addresses; all 12 package rows moved there.
+2246,678,"2711 Greenmount Ave, Baltimore, MD","2707 Greenmount Ave, Baltimore, MD",2711 Greenmount Ave is in 2707 Greenmount Ave's (678) absorbed_addresses; all 13 package rows moved there.
+2248,683,"2723 Greenmount Ave, Baltimore, MD","2721 Greenmount Ave, Baltimore, MD",2723 Greenmount Ave is in 2721 Greenmount Ave's (683) absorbed_addresses; all 4 package rows moved there.
+2250,683,"2725 Greenmount Ave, Baltimore, MD","2721 Greenmount Ave, Baltimore, MD",2725 Greenmount Ave is in 2721 Greenmount Ave's (683) absorbed_addresses; all 4 package rows moved there.
+2251,684,"2727 Greenmount Ave, Baltimore, MD","2731 Greenmount Ave, Baltimore, MD",2727 Greenmount Ave is in 2731 Greenmount Ave's (684) absorbed_addresses; all 4 package rows moved there.
+2252,684,"2729 Greenmount Ave, Baltimore, MD","2731 Greenmount Ave, Baltimore, MD",2729 Greenmount Ave is in 2731 Greenmount Ave's (684) absorbed_addresses; all 4 package rows moved there.
+2253,685,"2735 Greenmount Ave, Baltimore, MD","2733 Greenmount Ave, Baltimore, MD",2735 Greenmount Ave is in 2733 Greenmount Ave's (685) absorbed_addresses; all 4 package rows moved there.
+2254,686,"2741 Greenmount Ave, Baltimore, MD","2739 Greenmount Ave, Baltimore, MD",2741 Greenmount Ave is in 2739 Greenmount Ave's (686) absorbed_addresses; all 4 package rows moved there.
+2256,686,"2743 Greenmount Ave, Baltimore, MD","2739 Greenmount Ave, Baltimore, MD",2743 Greenmount Ave is in 2739 Greenmount Ave's (686) absorbed_addresses; all 5 package rows moved there.
+2257,688,"2803 Greenmount Ave, Baltimore, MD","2801 Greenmount Ave, Baltimore, MD",2803 Greenmount Ave is in 2801 Greenmount Ave's (688) absorbed_addresses; all 2 package rows moved there.
+2258,688,"2805 Greenmount Ave, Baltimore, MD","2801 Greenmount Ave, Baltimore, MD",2805 Greenmount Ave is in 2801 Greenmount Ave's (688) absorbed_addresses; its 1 package row moved there.
+2259,688,"2807 Greenmount Ave, Baltimore, MD","2801 Greenmount Ave, Baltimore, MD",2807 Greenmount Ave is in 2801 Greenmount Ave's (688) absorbed_addresses; its 1 package row moved there.
+2260,688,"2809 Greenmount Ave, Baltimore, MD","2801 Greenmount Ave, Baltimore, MD",2809 Greenmount Ave is in 2801 Greenmount Ave's (688) absorbed_addresses; its 1 package row moved there.
+2261,688,"2811 Greenmount Ave, Baltimore, MD","2801 Greenmount Ave, Baltimore, MD",2811 Greenmount Ave is in 2801 Greenmount Ave's (688) absorbed_addresses; all 2 package rows moved there.
+2262,688,"2813 Greenmount Ave, Baltimore, MD","2801 Greenmount Ave, Baltimore, MD",2813 Greenmount Ave is in 2801 Greenmount Ave's (688) absorbed_addresses; its 1 package row moved there.
+2263,688,"2815 Greenmount Ave, Baltimore, MD","2801 Greenmount Ave, Baltimore, MD",2815 Greenmount Ave is in 2801 Greenmount Ave's (688) absorbed_addresses; its 1 package row moved there.
+2264,688,"2817 Greenmount Ave, Baltimore, MD","2801 Greenmount Ave, Baltimore, MD",2817 Greenmount Ave is in 2801 Greenmount Ave's (688) absorbed_addresses; its 1 package row moved there.
+2265,688,"2819 Greenmount Ave, Baltimore, MD","2801 Greenmount Ave, Baltimore, MD",2819 Greenmount Ave is in 2801 Greenmount Ave's (688) absorbed_addresses; all 3 package rows moved there.
+2266,688,"2821 Greenmount Ave, Baltimore, MD","2801 Greenmount Ave, Baltimore, MD",2821 Greenmount Ave is in 2801 Greenmount Ave's (688) absorbed_addresses; all 2 package rows moved there.
+2267,688,"2825 Greenmount Ave, Baltimore, MD","2801 Greenmount Ave, Baltimore, MD",2825 Greenmount Ave is in 2801 Greenmount Ave's (688) absorbed_addresses; all 15 package rows moved there.
+2268,688,"2837 Greenmount Ave, Baltimore, MD","2801 Greenmount Ave, Baltimore, MD",2837 Greenmount Ave is in 2801 Greenmount Ave's (688) absorbed_addresses; all 2 package rows moved there.
+2269,688,"2841 Greenmount Ave, Baltimore, MD","2801 Greenmount Ave, Baltimore, MD",2841 Greenmount Ave is in 2801 Greenmount Ave's (688) absorbed_addresses; all 7 package rows moved there.
+2270,2513,"2843 Greenmount Ave, Baltimore, MD","500 Exeter Hall Ave, Baltimore, MD",2843 Greenmount Ave is in 500 Exeter Hall Ave's (2513) absorbed_addresses; all 2 package rows moved there.
+2271,2513,"2845 Greenmount Ave, Baltimore, MD","500 Exeter Hall Ave, Baltimore, MD",2845 Greenmount Ave is in 500 Exeter Hall Ave's (2513) absorbed_addresses; its 1 package row moved there.
+2272,2513,"2847 Greenmount Ave, Baltimore, MD","500 Exeter Hall Ave, Baltimore, MD",2847 Greenmount Ave is in 500 Exeter Hall Ave's (2513) absorbed_addresses; its 1 package row moved there.
+2273,688,"2851 Greenmount Ave, Baltimore, MD","2801 Greenmount Ave, Baltimore, MD","property_parcels: lot 4072 013 (500 Exeter Hall) is 2,844 sq ft, too small for 2843-2853, so 2801's lot 001 holds them; 2851's package row already moved to 688. 2513's absorbed_addresses look wrong in Corridor."
+2274,2513,"2853 Greenmount Ave, Baltimore, MD","500 Exeter Hall Ave, Baltimore, MD",2853 Greenmount Ave is in 500 Exeter Hall Ave's (2513) absorbed_addresses; all 2 package rows moved there.
+2275,689,"2855 Greenmount Ave, Baltimore, MD","2857 Greenmount Ave, Baltimore, MD",2855 Greenmount Ave is in 2857 Greenmount Ave's (689) absorbed_addresses; its 1 package row moved there.
+2279,2391,"2840 Greenmount Ave, Baltimore, MD","429 E 29th St, Baltimore, MD",2840 Greenmount Ave is in 429 E 29th St's (2391) absorbed_addresses; its 1 package row moved there.
+2280,2391,"2844 Greenmount Ave, Baltimore, MD","429 E 29th St, Baltimore, MD",2844 Greenmount Ave is in 429 E 29th St's (2391) absorbed_addresses; its 1 package row moved there.
+2281,2391,"2848 Greenmount Ave, Baltimore, MD","429 E 29th St, Baltimore, MD",2848 Greenmount Ave is in 429 E 29th St's (2391) absorbed_addresses; its 1 package row moved there.
+2282,2391,"2850 Greenmount Ave, Baltimore, MD","429 E 29th St, Baltimore, MD",2850 Greenmount Ave is in 429 E 29th St's (2391) absorbed_addresses; its 1 package row moved there.
+2283,693,"2902 Greenmount Ave, Baltimore, MD","2900 Greenmount Ave, Baltimore, MD",2902 Greenmount Ave is in 2900 Greenmount Ave's (693) absorbed_addresses; all 2 package rows moved there.
+2284,705,"2940 Greenmount Ave, Baltimore, MD","2938 Greenmount Ave, Baltimore, MD",2940 Greenmount Ave is in 2938 Greenmount Ave's (705) absorbed_addresses; all 3 package rows moved there.
+2285,696,"2909 Greenmount Ave, Baltimore, MD","2907 Greenmount Ave, Baltimore, MD",2909 Greenmount Ave is in 2907 Greenmount Ave's (696) absorbed_addresses; its 1 package row moved there.
+2295,726,"3030 Greenmount Ave, Baltimore, MD","3028 Greenmount Ave, Baltimore, MD","3030 is in 3028's (726) absorbed_addresses with 3032; the 1975 mortgage row moved to 726. Three 311 rows from the old parcel now sit on 3036 (730) and 3038 (731), re-geocoded by the city feed, not by the merge."
+2296,726,"3032 Greenmount Ave, Baltimore, MD","3028 Greenmount Ave, Baltimore, MD",3032 Greenmount Ave is in 3028 Greenmount Ave's (726) absorbed_addresses; all 10 package rows moved there.
+2305,792,"3412 Greenmount Ave, Baltimore, MD","3410 Greenmount Ave, Baltimore, MD",3412 Greenmount Ave is in 3410 Greenmount Ave's (792) absorbed_addresses; its 1 package row moved there.
+2306,792,"3414 Greenmount Ave, Baltimore, MD","3410 Greenmount Ave, Baltimore, MD",3414 Greenmount Ave is in 3410 Greenmount Ave's (792) absorbed_addresses; its 1 package row moved there.
+2307,792,"3416 Greenmount Ave, Baltimore, MD","3410 Greenmount Ave, Baltimore, MD",3416 Greenmount Ave is in 3410 Greenmount Ave's (792) absorbed_addresses; its 1 package row moved there.
+2308,792,"3418 Greenmount Ave, Baltimore, MD","3410 Greenmount Ave, Baltimore, MD",3418 Greenmount Ave is in 3410 Greenmount Ave's (792) absorbed_addresses; its 1 package row moved there.
+2309,776,"3332 Greenmount Ave, Baltimore, MD","3326 Greenmount Ave, Baltimore, MD",3332 is in 3326's (776) absorbed_addresses with 3328 and 3330; the old parcel had no package rows.
+2311,755,"3206 Greenmount Ave, Baltimore, MD","3204 Greenmount Ave, Baltimore, MD",3206 Greenmount Ave is in 3204 Greenmount Ave's (755) absorbed_addresses; its 1 package row moved there.
+2312,728,"3103 Greenmount Ave, Baltimore, MD","3031 Greenmount Ave, Baltimore, MD","3103 is 3031's (728) only absorbed address; its NR row moved to 728. Block 4076A runs unbroken from 3011 (lot 001) to 3107 (lot 010), so 3031 lot 008 next to 3103 fits; NR B-5229 describes 2 attached 2-story commercial buildings."
+2313,720,"3013 Greenmount Ave, Baltimore, MD","3011 Greenmount Ave, Baltimore, MD","3013 is 3011's (720) only absorbed address, same block 4076A; the old parcel had no package rows."
+2314,745,"3124 Greenmount Ave, Baltimore, MD","3122 Greenmount Ave, Baltimore, MD",3124 Greenmount Ave is in 3122 Greenmount Ave's (745) absorbed_addresses; its 1 package row moved there.
+2315,736,"3110 Greenmount Ave, Baltimore, MD","3106 Greenmount Ave, Baltimore, MD",3110 Greenmount Ave is in 3106 Greenmount Ave's (736) absorbed_addresses; its 1 package row moved there.
+2316,715,"3008 Greenmount Ave, Baltimore, MD","3000 Greenmount Ave, Baltimore, MD",3008 Greenmount Ave is in 3000 Greenmount Ave's (715) absorbed_addresses; its 1 package row moved there.
+2317,695,"2905 Greenmount Ave, Baltimore, MD","2903 Greenmount Ave, Baltimore, MD",2905 Greenmount Ave is in 2903 Greenmount Ave's (695) absorbed_addresses; its 1 package row moved there.

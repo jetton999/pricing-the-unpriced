@@ -22,9 +22,12 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
 PORT = 8765
 
-EXPECTED_PROPERTIES = 665
-EXPECTED_INCIDENTS = 10576
-EXPECTED_CURATED = 3597
+EXPECTED_PROPERTIES = 699
+EXPECTED_INCIDENTS = 17387
+EXPECTED_CURATED = 7891
+EXPECTED_STOREFRONTS = 264
+EXPECTED_IMAGE_ROWS = 3694
+EXPECTED_CROSSWALK = 52
 
 # ---------------------------------------------------------------------------
 # Layer rule. Identical to START_HERE.ipynb section 1 and verify_claims.py.
@@ -32,8 +35,8 @@ EXPECTED_CURATED = 3597
 # Administrative = every `baltimore:*` feed, plus the two SDAT feeds
 # (`sdat_assessments` is a bare key but is a machine-ingested assessment roll,
 # and `sdat:owner` is the namespaced owner feed). Everything else is curated.
-# This is the only rule that reproduces the README's 3,597 curated rows.
-# `hud:cdbg` (36 rows) looks namespaced but is counted as curated by the
+# This is the only rule that reproduces the README's 7,891 curated rows.
+# `hud:cdbg` (39 rows) looks namespaced but is counted as curated by the
 # sponsor; see map/README.md.
 # ---------------------------------------------------------------------------
 ADMIN_PREFIXES = ("baltimore:",)
@@ -245,6 +248,10 @@ class Corpus:
         self.unmatched_ips = []
         self.grants_by_property = collections.defaultdict(list)
         self.baselines_by_property = collections.defaultdict(list)
+        self.storefronts = {}
+        self.images_by_property = collections.defaultdict(list)
+        self.crosswalk = {}
+        self.images_base_url = ""
         self.neighborhoods = []
         self.source_counts = collections.Counter()
         self.curated_count = collections.Counter()
@@ -291,8 +298,24 @@ class Corpus:
         for g in rows("grant_program_matches.csv"):
             self.grants_by_property[g["property_id"]].append(g)
 
+        # September ids retired in the October refresh map to the parcel that absorbed them.
+        for c in rows("property_id_crosswalk.csv"):
+            self.crosswalk[c["old_id"]] = c
+
+        # baseline_snapshots.csv is frozen at t0 and keeps September ids: re-key through the crosswalk.
         for b in rows("baseline_snapshots.csv"):
-            self.baselines_by_property[b["property_id"]].append(b)
+            c = self.crosswalk.get(b["property_id"])
+            if c:
+                b = dict(b, retired_id=b["property_id"], retired_address=c["old_address"])
+            self.baselines_by_property[c["new_id"] if c else b["property_id"]].append(b)
+
+        for sa in rows("storefront_assessments.csv"):
+            self.storefronts[sa["property_id"]] = sa
+
+        for im in rows("property_images.csv"):
+            self.images_by_property[im["property_id"]].append(im)
+        with open(os.path.join(ROOT, "images_base_url.txt"), encoding="utf-8") as fh:
+            self.images_base_url = fh.read().strip().rstrip("/")
 
         self.neighborhoods = list(rows("neighborhoods.csv"))
 
@@ -546,7 +569,7 @@ class Corpus:
             row = {}
             for k, v in b.items():
                 row[k] = boolish(v) if v in ("true", "false") else (num(v) if k not in (
-                    "captured_on", "captured_at", "last_sale_date", "owner_name",
+                    "captured_on", "captured_at", "last_sale_date", "owner_name", "retired_address",
                     "owner_type", "building_condition", "market_typology",
                     "receivership_status", "vacant_notice_status") else v)
             baselines.append(row)
@@ -567,6 +590,19 @@ class Corpus:
             "registered_ips": ips,
             "grant_program_matches": grants,
             "baseline_snapshots": baselines,
+            "storefront": self.storefront_detail(pid),
+            "images": [{
+                "id": int(im["id"]),
+                "category": im["category"],
+                "subject": im["subject"],
+                "caption": im["caption"],
+                "depicted_on": im["depicted_on"],
+                "depicted_precision": im["depicted_precision"],
+                "folder": im["folder"],
+                "url": "%s/%s" % (self.images_base_url, im["image_key"]),
+            } for im in self.images_by_property.get(pid, [])],
+            "absorbed_ids": [{"old_id": int(c["old_id"]), "old_address": c["old_address"]}
+                             for c in self.crosswalk.values() if c["new_id"] == pid],
             "use_history": self.use_history.get(pid),
         }
 
@@ -584,6 +620,19 @@ class Corpus:
                 })
         return {"type": "FeatureCollection", "features": features}
 
+    def storefront_detail(self, pid):
+        sa = self.storefronts.get(pid)
+        if sa is None:
+            return None
+        return {
+            "status": sa["status"],
+            "confidence": sa["confidence"],
+            "summary": sa["summary"],
+            "evidence": parse_json(sa["evidence"]) or [],
+            "assessed_on": sa["assessed_on"],
+            "observed_on": sa["observed_on"],
+        }
+
     # ------------------------------------------------------------------
     def summary(self):
         total = sum(self.source_counts.values())
@@ -598,6 +647,15 @@ class Corpus:
             "registered_ips": sum(len(v) for v in self.ips_by_property.values()) + len(self.unmatched_ips),
             "grant_program_matches": sum(len(v) for v in self.grants_by_property.values()),
             "baseline_snapshots": sum(len(v) for v in self.baselines_by_property.values()),
+            "baseline_snapshots_rekeyed": sum(
+                1 for v in self.baselines_by_property.values() for b in v if "retired_id" in b),
+            "baseline_snapshots_orphaned": sum(
+                len(v) for k, v in self.baselines_by_property.items() if k not in self.properties),
+            "storefront_assessments": len(self.storefronts),
+            "property_images": sum(len(v) for v in self.images_by_property.values()),
+            "property_image_files": len({im["image_key"] for v in self.images_by_property.values() for im in v}),
+            "properties_with_images": len(self.images_by_property),
+            "crosswalk": len(self.crosswalk),
             "neighborhoods": len(self.neighborhoods),
             "neighborhoods_with_bounds": len(self.neighborhoods_geojson["features"]),
             "focus_area_mapped_properties": sum(
@@ -706,7 +764,12 @@ def run_check(corpus):
     print("subjects              %6d" % s["subjects"])
     print("registered_ips        %6d" % s["registered_ips"])
     print("grant_program_matches %6d" % s["grant_program_matches"])
-    print("baseline_snapshots    %6d" % s["baseline_snapshots"])
+    print("baseline_snapshots    %6d  (%d re-keyed from retired September ids, %d orphaned)" % (
+        s["baseline_snapshots"], s["baseline_snapshots_rekeyed"], s["baseline_snapshots_orphaned"]))
+    print("storefront_assessments %5d" % s["storefront_assessments"])
+    print("property_images       %6d  rows, %d files, on %d properties" % (
+        s["property_images"], s["property_image_files"], s["properties_with_images"]))
+    print("property_id_crosswalk %6d" % s["crosswalk"])
     print("neighborhoods         %6d  (with parseable bounds: %d)" % (
         s["neighborhoods"], s["neighborhoods_with_bounds"]))
     print("focus area (approx.)  %6d  mapped properties inside the outline"
@@ -738,6 +801,10 @@ def run_check(corpus):
         ("properties", s["properties"], EXPECTED_PROPERTIES),
         ("incidents", s["incidents"], EXPECTED_INCIDENTS),
         ("curated", s["curated"], EXPECTED_CURATED),
+        ("storefront_assessments", s["storefront_assessments"], EXPECTED_STOREFRONTS),
+        ("property_images", s["property_images"], EXPECTED_IMAGE_ROWS),
+        ("crosswalk", s["crosswalk"], EXPECTED_CROSSWALK),
+        ("orphaned baseline snapshots", s["baseline_snapshots_orphaned"], 0),
     ]:
         if actual != expected:
             print("MISMATCH %s: actual=%d expected=%d" % (label, actual, expected))

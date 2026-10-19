@@ -38,6 +38,16 @@
   }
   function fmtBool(v) { return v === true ? "yes" : v === false ? "no" : "—"; }
   function dash(v) { return (v == null || v === "") ? "—" : String(v); }
+  /* properties.csv list columns: tax_sale_years is a Postgres array ("{2019,2022}"),
+     absorbed_addresses a JSON array. Both come through as strings. */
+  function listOf(v) {
+    if (v == null || v === "") return [];
+    if (Array.isArray(v)) return v;
+    var t = String(v);
+    if (t.charAt(0) === "[") { try { return JSON.parse(t); } catch (e) { return [t]; } }
+    return t.replace(/^\{|\}$/g, "").split(",").filter(Boolean);
+  }
+  function fmtList(v) { var l = listOf(v); return l.length ? l.join(", ") : "—"; }
 
   function datePart(s) { return (s || "").slice(0, 10); }
   function yearOf(s) { return (s || "").slice(0, 4); }
@@ -449,6 +459,29 @@
     var h = el("h3", {}, [title, count != null ? el("span", { class: "count", text: count }) : null]);
     return [h, body];
   }
+  function baselineTable(snaps, label) {
+    var tbl = el("table", { class: "baseline" });
+    var head = el("tr", {}, [el("th", { text: "field" })]);
+    snaps.forEach(function (b) {
+      head.appendChild(el("th", { text: label(b), title: b.retired_address ? "captured for " + b.retired_address + ", since absorbed into this parcel" : "" }));
+    });
+    tbl.appendChild(head);
+    // Omitted: avm_estimate, building_condition, vacant_notice_status (blank in every snapshot)
+    // and sale_count, public_investment_total (0 in every snapshot). See DATA_DICTIONARY.md.
+    ["assessed_value", "owner_name", "last_sale_price", "last_sale_date",
+     "incident_count", "violations_12mo_count", "active_permit_count", "vacancy_indicator",
+     "receivership_status", "tax_certificate_active", "registered_ip_count",
+     "cdbg_investment_total", "hmda_loan_count", "hmda_median_value",
+     "hmda_denial_rate", "market_typology"].forEach(function (k) {
+      var tr = el("tr", {}, [el("th", { text: k })]);
+      snaps.forEach(function (b) {
+        var v = b[k];
+        tr.appendChild(el("td", { class: typeof v === "number" ? "num" : "", text: v === true ? "yes" : v === false ? "no" : dash(v) }));
+      });
+      tbl.appendChild(tr);
+    });
+    return tbl;
+  }
   function noneNote(what) { return el("p", { class: "none", text: "none in export" + (what ? " (" + what + ")" : "") }); }
 
   function renderDetail(d) {
@@ -476,6 +509,9 @@
       ["Assessed value", fmtMoney(f.assessed_value)],
       ["Last sale", (f.last_sale_price != null ? fmtMoney(f.last_sale_price) : "—") + (f.last_sale_date ? " on " + f.last_sale_date : "")],
       ["Vacant", fmtBool(f.vacancy_indicator) + (f.vacant_notice_status ? " · notice: " + f.vacant_notice_status : "")],
+      ["Vacant lot", fmtBool(f.vacant_lot)],
+      ["Tax sale years", fmtList(f.tax_sale_years)],
+      ["Absorbed addresses", fmtList(f.absorbed_addresses)],
       ["City owned", fmtBool(f.city_owned)],
       ["Active business", fmtBool(f.has_active_business)],
       ["Historic district", dash(f.historic_district)],
@@ -502,6 +538,87 @@
     });
     bodyEl.appendChild(el("p", {}, [allFieldsBtn]));
     bodyEl.appendChild(allFields);
+
+    if (d.absorbed_ids.length) {
+      bodyEl.appendChild(el("p", { class: "small muted", text: "Absorbs September ids " +
+        d.absorbed_ids.map(function (a) { return a.old_id + " (" + a.old_address + ")"; }).join(", ") +
+        ". Their baseline snapshots are shown below; property_id_crosswalk.csv maps them." }));
+    }
+
+    // Ground floor in 2026 (storefront_assessments.csv)
+    var sf = d.storefront;
+    var sfWrap;
+    if (!sf) sfWrap = noneNote("not assessed");
+    else {
+      sfWrap = el("div", { class: "storefront" }, [
+        el("div", {}, [chip(sf.status.replace(/_/g, " "), "sf-" + sf.status), " ",
+          el("span", { class: "muted", text: sf.confidence + " confidence · assessed " + sf.assessed_on +
+            (sf.observed_on ? " · observed " + sf.observed_on : "") })]),
+        el("p", { class: "summary", text: sf.summary })
+      ]);
+      if (sf.evidence.length) {
+        var evList = el("ul", { class: "plain small", hidden: "" });
+        sf.evidence.forEach(function (e) {
+          evList.appendChild(el("li", {}, [chip(e.source), el("span", { class: "muted", text: dash(e.as_of) + " " }),
+            e.finding, e.url ? el("a", { href: e.url, target: "_blank", rel: "noopener", text: " link" }) : null]));
+        });
+        var evBtn = el("button", { class: "btn", text: "show " + sf.evidence.length + " evidence notes" });
+        evBtn.addEventListener("click", function () {
+          evList.hidden = !evList.hidden;
+          evBtn.textContent = evList.hidden ? "show " + sf.evidence.length + " evidence notes" : "hide evidence";
+        });
+        sfWrap.appendChild(el("p", {}, [evBtn]));
+        sfWrap.appendChild(evList);
+      }
+    }
+    section("Ground floor in 2026", null, sfWrap).forEach(function (n) { bodyEl.appendChild(n); });
+
+    // Images (property_images.csv), grouped by folder
+    var imgs = d.images;
+    var imWrap;
+    if (!imgs.length) imWrap = noneNote();
+    else {
+      imWrap = el("div");
+      var byFolder = {};
+      imgs.forEach(function (im) { (byFolder[im.folder] = byFolder[im.folder] || []).push(im); });
+      // One ordered list across folders, so the viewer's arrows step through every image of the property.
+      var ordered = [];
+      Object.keys(byFolder).sort().forEach(function (folder) {
+        byFolder[folder].sort(function (a, b) {
+          return (a.depicted_on || "9999").localeCompare(b.depicted_on || "9999") || a.id - b.id;
+        });
+        ordered = ordered.concat(byFolder[folder]);
+      });
+      Object.keys(byFolder).sort().forEach(function (folder) {
+        var list = byFolder[folder];
+        var grid = el("div", { class: "thumbs" });
+        var shown = 0;
+        function more(n) {
+          list.slice(shown, shown + n).forEach(function (im) {
+            var label = [im.depicted_on, im.subject, im.caption].filter(Boolean).join(" · ");
+            grid.appendChild(el("a", { href: im.url, target: "_blank", rel: "noopener", title: label, onclick: function (ev) {
+              if (ev.metaKey || ev.ctrlKey || ev.shiftKey) return;   // let a modified click open a tab
+              ev.preventDefault();
+              openViewer(ordered, ordered.indexOf(im), d.fields.address);
+            } }, [el("img", { src: im.url, loading: "lazy", alt: im.caption || folder })]));
+          });
+          shown = Math.min(list.length, shown + n);
+        }
+        more(12);
+        imWrap.appendChild(el("h4", { text: folder + " (" + list.length + ")" }));
+        imWrap.appendChild(grid);
+        if (shown < list.length) {
+          var moreBtn = el("button", { class: "btn", text: "show " + (list.length - shown) + " more" });
+          moreBtn.addEventListener("click", function () {
+            more(list.length);
+            moreBtn.remove();
+          });
+          imWrap.appendChild(el("p", {}, [moreBtn]));
+        }
+      });
+      imWrap.appendChild(el("p", { class: "small muted", text: "Captions describe a scan; they are not transcriptions. Click one to page through them all (arrow keys, Esc to close)." }));
+    }
+    section("Images", imgs.length, imWrap).forEach(function (n) { bodyEl.appendChild(n); });
 
     // Use history (team extractor; frontage only)
     if (d.use_history && d.use_history.merged_into) {
@@ -609,32 +726,27 @@
     }
     section("Grant program matches", grants.length, gWrap).forEach(function (n) { bodyEl.appendChild(n); });
 
-    // Baseline snapshots
+    // Baseline snapshots. Snapshots of September parcels this one absorbed (re-keyed through
+    // property_id_crosswalk.csv) go in a second table, collapsed: one parcel can absorb 14.
     var bl = d.baseline_snapshots;
-    var bWrap;
-    if (!bl.length) bWrap = noneNote("this property was not in the July 2026 baseline");
+    var own = bl.filter(function (b) { return !b.retired_id; });
+    var absorbed = bl.filter(function (b) { return b.retired_id; });
+    var bWrap = el("div");
+    if (!own.length) bWrap.appendChild(noneNote("this property was not in the July 2026 baseline"));
     else {
-      bWrap = el("div");
-      bWrap.appendChild(el("p", { class: "muted", text: "captured " + bl.map(function (b) { return b.captured_on; }).join(" and ") }));
-      var tbl = el("table", { class: "baseline" });
-      var head = el("tr", {}, [el("th", { text: "field" })]);
-      bl.forEach(function (b) { head.appendChild(el("th", { text: b.captured_on })); });
-      tbl.appendChild(head);
-      // Omitted: avm_estimate, building_condition, vacant_notice_status (blank in every snapshot)
-      // and sale_count, public_investment_total (0 in every snapshot). See DATA_DICTIONARY.md.
-      ["assessed_value", "owner_name", "last_sale_price", "last_sale_date",
-       "incident_count", "violations_12mo_count", "active_permit_count", "vacancy_indicator",
-       "receivership_status", "tax_certificate_active", "registered_ip_count",
-       "cdbg_investment_total", "hmda_loan_count", "hmda_median_value",
-       "hmda_denial_rate", "market_typology"].forEach(function (k) {
-        var tr = el("tr", {}, [el("th", { text: k })]);
-        bl.forEach(function (b) {
-          var v = b[k];
-          tr.appendChild(el("td", { class: typeof v === "number" ? "num" : "", text: v === true ? "yes" : v === false ? "no" : dash(v) }));
-        });
-        tbl.appendChild(tr);
+      bWrap.appendChild(el("p", { class: "muted", text: "captured " + own.map(function (b) { return b.captured_on; }).join(" and ") }));
+      bWrap.appendChild(baselineTable(own, function (b) { return b.captured_on; }));
+    }
+    if (absorbed.length) {
+      var abTbl = baselineTable(absorbed, function (b) { return "Sept id " + b.retired_id + ", " + b.captured_on; });
+      abTbl.hidden = true;
+      var abBtn = el("button", { class: "btn", text: "show " + absorbed.length + " snapshots of absorbed September parcels" });
+      abBtn.addEventListener("click", function () {
+        abTbl.hidden = !abTbl.hidden;
+        abBtn.textContent = abTbl.hidden ? "show " + absorbed.length + " snapshots of absorbed September parcels" : "hide absorbed parcels";
       });
-      bWrap.appendChild(tbl);
+      bWrap.appendChild(el("p", {}, [abBtn]));
+      bWrap.appendChild(abTbl);
     }
     section("Baseline snapshots", bl.length, bWrap).forEach(function (n) { bodyEl.appendChild(n); });
   }
@@ -893,5 +1005,84 @@
   fromHash();
 
   // Expose for console poking.
+  /* ---------------------------------------------------------- image viewer */
+  var viewer = document.getElementById("viewer");
+  var viewerImg = document.getElementById("viewer-img");
+  var viewerState = null;
+  function openViewer(list, i, address) {
+    viewerState = { list: list, i: i, address: address };
+    viewer.hidden = false;
+    showViewer();
+  }
+  function closeViewer() { viewer.hidden = true; viewerImg.removeAttribute("src"); viewerState = null; }
+  function stepViewer(n) {
+    if (!viewerState) return;
+    var len = viewerState.list.length;
+    viewerState.i = (viewerState.i + n + len) % len;
+    showViewer();
+  }
+  function showViewer() {
+    var v = viewerState, im = v.list[v.i];
+    viewerImg.src = im.url;
+    viewerImg.alt = im.caption || im.folder;
+    document.getElementById("viewer-count").textContent = (v.i + 1) + " / " + v.list.length;
+    document.getElementById("viewer-meta").textContent = [v.address, im.folder, im.category,
+      im.depicted_on ? (im.depicted_precision === "year" ? im.depicted_on.slice(0, 4)
+        : im.depicted_precision === "month" ? im.depicted_on.slice(0, 7)
+        : im.depicted_on + (im.depicted_precision && im.depicted_precision !== "day" ? " (" + im.depicted_precision + ")" : "")) : null,
+      im.subject].filter(Boolean).join(" · ");
+    document.getElementById("viewer-caption").textContent = im.caption || "(no caption)";
+    document.getElementById("viewer-open").href = im.url;
+    var multi = v.list.length > 1;
+    document.getElementById("viewer-prev").hidden = !multi;
+    document.getElementById("viewer-next").hidden = !multi;
+    if (multi) [1, -1].forEach(function (n) { new Image().src = v.list[(v.i + n + v.list.length) % v.list.length].url; });
+  }
+  document.getElementById("viewer-prev").addEventListener("click", function () { stepViewer(-1); });
+  document.getElementById("viewer-next").addEventListener("click", function () { stepViewer(1); });
+  document.getElementById("viewer-close").addEventListener("click", closeViewer);
+  viewer.addEventListener("click", function (e) { if (e.target === viewer || e.target.id === "viewer-stage") closeViewer(); });
+  document.addEventListener("keydown", function (e) {
+    if (viewer.hidden) return;
+    if (e.key === "Escape") closeViewer();
+    else if (e.key === "ArrowLeft") stepViewer(-1);
+    else if (e.key === "ArrowRight") stepViewer(1);
+    else return;
+    e.preventDefault();
+  });
+
+  /* ---------------------------------------------------------- resizable sidebar */
+  var resizer = document.getElementById("sidebar-resizer");
+  var SIDEBAR_KEY = "corridor-map:sidebar-width";
+  function setSidebarWidth(px) {
+    var w = Math.max(280, Math.min(window.innerWidth - 240, px));
+    document.documentElement.style.setProperty("--sidebar-w", w + "px");
+    map.invalidateSize();
+    return w;
+  }
+  try {
+    var savedW = Number(localStorage.getItem(SIDEBAR_KEY));
+    if (savedW) setSidebarWidth(savedW);
+  } catch (e) { /* storage blocked: keep the default width */ }
+  resizer.addEventListener("pointerdown", function (e) {
+    e.preventDefault();
+    resizer.setPointerCapture(e.pointerId);
+    document.body.classList.add("resizing");
+    function move(ev) { setSidebarWidth(window.innerWidth - ev.clientX); }
+    function up() {
+      resizer.removeEventListener("pointermove", move);
+      resizer.removeEventListener("pointerup", up);
+      document.body.classList.remove("resizing");
+      try { localStorage.setItem(SIDEBAR_KEY, String(sidebar.getBoundingClientRect().width)); } catch (err) { /* ignore */ }
+    }
+    resizer.addEventListener("pointermove", move);
+    resizer.addEventListener("pointerup", up);
+  });
+  resizer.addEventListener("dblclick", function () {   // back to the stylesheet default
+    document.documentElement.style.removeProperty("--sidebar-w");
+    map.invalidateSize();
+    try { localStorage.removeItem(SIDEBAR_KEY); } catch (e) { /* ignore */ }
+  });
+
   window.corridorMap = { map: map, select: selectProperty, goTo: goTo };
 })();
