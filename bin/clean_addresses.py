@@ -19,6 +19,8 @@ format property: each pair shares an SDAT account (blocklot), which proves it is
    moved to the survivor, the survivor takes the retired copy's block side, and the retired
    property is dropped. incident_subjects and incident_links hang off incident ids, so they follow
    their incident and need no change.
+   A blank value on the survivor is filled from the retired copy (the first run, PR #5, dropped
+   them); identity and location columns stay the survivor's.
 3. Drop exact repeats on the survivors: incidents with the same source and source_id, and grant
    matches with the same program_key. The survivor's own row wins. A curated incident or one with
    a sensitivity flag is never dropped (the script stops if one would be).
@@ -50,6 +52,8 @@ PAIRS = {
     "2326": ("1771", "189"),   # 601 Homestead St
 }
 RETIRED = {retired: survivor for survivor, (retired, _) in PAIRS.items()}
+# Identity and location columns stay the survivor's own.
+COALESCE_SKIP = {"id", "address", "blocklot", "block_side_id", "latitude", "longitude"}
 
 SUFFIX = {"AVE": "Ave", "AVENUE": "Ave", "ST": "St", "STREET": "St", "RD": "Road", "ROAD": "Road",
           "LN": "Lane", "LANE": "Lane", "PL": "Pl", "PLACE": "Pl"}
@@ -129,6 +133,7 @@ def main():
     head, props, newline = read("properties.csv")
     by_id = {p["id"]: p for p in props}
     present = {r for r in RETIRED if r in by_id}
+    coalesced = 0
     if present and len(present) != len(RETIRED):
         sys.exit("only some of the 8 retired properties are present; the CSVs are in an unknown state")
 
@@ -142,6 +147,12 @@ def main():
             if by_id[retired]["block_side_id"] != side:
                 sys.exit(f"{retired} carries block side {by_id[retired]['block_side_id']}, expected {side}")
             by_id[survivor]["block_side_id"] = side
+            # The survivor keeps its own values; a blank one takes the retired copy's (the first
+            # merge, PR #5, dropped those).
+            for column in head:
+                if column not in COALESCE_SKIP and not by_id[survivor][column] and by_id[retired][column]:
+                    by_id[survivor][column] = by_id[retired][column]
+                    coalesced += 1
         props = [p for p in props if p["id"] not in RETIRED]
 
     renamed = []
@@ -155,7 +166,7 @@ def main():
         sys.exit(f"addresses collide after standardizing: {collisions}")
     out["properties.csv"] = (head, props, newline)
     report.append(f"properties: {len(by_id)} -> {len(props)} ({len(present)} retired, "
-                  f"{len(renamed)} renamed)")
+                  f"{len(renamed)} renamed, {coalesced} blank values filled from the retired copy)")
 
     # ---- property_incidents --------------------------------------------------------------------
     head, incidents, newline = read("property_incidents.csv")
@@ -219,6 +230,17 @@ def main():
         p["property_id"] = RETIRED.get(p["property_id"], p["property_id"])
     out["registered_ips.csv"] = (head, ips, newline)
     report.append(f"registered_ips: {n} re-pointed")
+
+    # ---- tables added in the October 2026 refresh -----------------------------------------------
+    for name in ("storefront_assessments.csv", "property_images.csv"):
+        if not os.path.exists(os.path.join(ROOT, name)):
+            continue
+        head, rows, newline = read(name)
+        n = sum(1 for r in rows if r["property_id"] in RETIRED)
+        for r in rows:
+            r["property_id"] = RETIRED.get(r["property_id"], r["property_id"])
+        out[name] = (head, rows, newline)
+        report.append(f"{name[:-4]}: {n} re-pointed")
 
     # ---- row_counts.txt ------------------------------------------------------------------------
     counts_path = os.path.join(ROOT, "row_counts.txt")

@@ -1,5 +1,5 @@
-properties: 665
-property_incidents: 10576
+properties: 699
+property_incidents: 17328
 subjects: 3094
 incident_subjects: 5459
 incident_links: 236

@@ -17,7 +17,8 @@ A property is kept if:
   - it is the Old Waverly Village / York Road record (York Road is Greenmount's historic name).
 
 Every other table keeps the rows for those properties: incidents, then the incident_subjects,
-incident_links, and subjects they reach, then the property-keyed tables. Parcels and registered
+incident_links, and subjects they reach, then the property-keyed tables (including the October 2026
+additions: storefront_assessments, property_images and property_id_crosswalk). Parcels and registered
 IP with no property match are kept when their address is in the hundred-block of a kept
 property's street. Patents are all kept: they carry only a city-level address and tie to the
 corridor through people.
@@ -67,7 +68,13 @@ def read(source, name):
 
 
 def cut(source, out, name, keep):
-    """Write the rows of `name` that pass `keep`, preserving the column order and line endings."""
+    """Write the rows of `name` that pass `keep`, preserving the column order and line endings.
+
+    A table the source doesn't have is left as it is in `out` (baseline_snapshots.csv is frozen at
+    t0, and a refresh from Corridor doesn't carry it)."""
+    if not os.path.exists(os.path.join(source, name)):
+        print("%-28s %17s" % (name, "kept as is"))
+        return None
     head, rows, newline = read(source, name)
     kept = [r for r in rows if keep(r)]
     buffer = io.StringIO()
@@ -163,6 +170,10 @@ def main():
     cut(args.source, args.out, "property_parcels.csv",
         lambda r: r["matched_property_id"] in keep or in_blocks(r["normalized_address"] or r["address"]))
     cut(args.source, args.out, "neighborhoods.csv", lambda r: r["name"] not in DROP_NEIGHBORHOODS)
+    # Added in the October 2026 refresh.
+    cut(args.source, args.out, "storefront_assessments.csv", lambda r: r["property_id"] in keep)
+    cut(args.source, args.out, "property_images.csv", lambda r: r["property_id"] in keep)
+    cut(args.source, args.out, "property_id_crosswalk.csv", lambda r: r["new_id"] in keep)
 
     print("\nPortfolio deals split by the cut (they now look like single-building sales):")
     split_portfolio_deals(properties, keep)
