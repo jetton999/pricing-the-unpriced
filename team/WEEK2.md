@@ -79,20 +79,23 @@ a proposal for the team to review. Nothing is merged until one other person has 
 | Desk-request priority | Sponsor decision | Project manager, with the sponsor |
 | Reflections and peer assessments | Written without AI | Everyone |
 
-## How this fits with the week-2 progress report on the team Drive
+## How this is merged with the week-2 progress report on the team Drive
 
-The week-2 progress report and data on the Drive (`Week02_2026-10-19`) were built in parallel and overlap with this
-branch. They should be reconciled before the report goes to the sponsor.
+The week-2 progress report and its data on the Drive (`Week02_2026-10-19`) were built in parallel with this branch.
+Its data are now merged in; its code (`team/week2/`, not yet on the Drive) still needs its own pull request.
 
-| Piece | Drive report | This branch | Suggestion |
+| Piece | Week-2 report | This branch | Merged |
 |---|---|---|---|
-| York Road crosswalk | 23 pairs from sponsor records, block offsets; 1027 and 3217 open | 42 anchors, most printed on the Sanborn sheets | The Sanborn anchors settle the open pairs: 1027 is 3117, 1111 is 3217, 1113 is 3219, 1112 is 3220 |
-| Extractor | v0, linked occupants, 49 of 80 properties; scored on occupants | v1, eight sources, all 69 parcels; scored on uses | Keep the occupant score as a second test of v1 |
-| Interventions | 14 entries | 79 entries | Merge, keeping the page checks from the report |
-| Map | Use history from linked businesses | Use history from all sources, decade grid, colour by use | One map change; both edit `map/app.py` and `map/app.js` |
-| Next week's tasks | Extractor v1 and permit cards (timelines lead); tenant list (project manager) | Already done in draft | Re-split the week |
+| York Road crosswalk | 23 pairs read from sponsor records, with block offsets; three conflicts open | 42 anchors, most printed on the Sanborn sheets | `team/evidence/york_crosswalk_reconciliation.csv`: 16 pairs agree, 3 are outside this crosswalk's range, 4 differ. The Sanborn prints settle the report's conflicts (1027 is 3117, 1112 is 3220, 1113 is 3219). 1023 is open: the report says 3107; the 1928 sheet and the report's own offset say 3111 |
+| Extractor | v0 over linked occupants, scored on 30 occupants | v1 over eight sources, scored on uses | The report's 30 occupants are now a second test of v1 (`team/extractor/reference/`): 24 of 24 frontage occupants found, 6 from the new sources alone |
+| Folder index | 31 folders, five groups, pages by type | 31 folders, document types, key pages, unread pages | One table: the report's groups and page-type counts are columns of `team/precedent/folder_index.csv`. Page counts match for all 31 |
+| Interventions | 14 entries | 79 entries | All 14 report entries map onto the 79 (`report_id`). One date corrected from the report's reading: the streetscape was finally inspected 17 June 1981 and accepted by letter of 7 August 1981 (20-8) |
+| Map | Use history from linked businesses | Use history from all sources, decade grid, colour by use | Not merged yet: both edit `map/app.py` and `map/app.js`; choose one when the report's code arrives |
+| Next week's tasks | Extractor v1 and permit cards (timelines lead); tenant list (project manager) | Already done in draft | Re-split the week (see the integrated report) |
 
-The report counts 80 frontage properties and this branch 79 records (69 parcels). The difference needs checking.
+One number still differs: the report counts 80 frontage properties; this branch has 79 export records (69 parcels).
+The A&P address is not a conflict: the captions give 609 Gorsuch Ave (24 pages) and the sponsor files the pages on
+the 601 E 33rd St parcel, the same corner.
 
 ## How to look at it
 

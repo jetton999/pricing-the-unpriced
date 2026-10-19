@@ -85,6 +85,17 @@ needed before these numbers can be reported. Five of the seven misses are at 401
 bottling plant), which is in the focus area but not on the Greenmount frontage the extractor covers. The other two
 are short "for rent" notices (3224 in 1906, 3200 in 1929).
 
+**Second test: named occupants.** The week-2 progress report's 30 reference occupants (`reference/`), 24 of them on
+frontage parcels: all 24 are named in a record at their parcel within their years (100%). 6 of the 24 (25%) are named
+in the new sources alone: five in the directories up to 1923, and Joe the Motorist's Friend in the National Register
+inventory, which takes its tenant names from the 1928 and 1937 directories. Permit cards and
+Sanborn sheets do not name occupants, so later occupants still rest on the sponsor's records.
+
+**Crosswalk check.** Against the report's 23 hand-read pairs (`team/evidence/york_crosswalk_reconciliation.csv`): 16
+agree, 3 fall outside this crosswalk's range, and 4 differ. Three of the four are the report's own open conflicts,
+settled by the Sanborn prints (1027 is 3117, 1112 is 3220, 1113 is 3219). The fourth is 1023: the report puts it at
+the 3107 corner; the 1928 Sanborn sheet and the report's own block offset give 3111. Check the sheet by eye.
+
 ## Known limits
 
 - Polk lines are raw OCR. Names are often misspelled and some digits misread.

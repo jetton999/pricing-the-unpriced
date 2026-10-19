@@ -82,6 +82,23 @@ class Crosswalk(unittest.TestCase):
             self.assertEqual(rows.get(old), new, old)
 
 
+class Reconciliation(unittest.TestCase):
+    def test_week2_report_pairs(self):
+        path = os.path.join(X.EVIDENCE, 'york_crosswalk_reconciliation.csv')
+        if not os.path.exists(path):
+            self.skipTest('no reconciliation file')
+        rows = {(r['old_york_rd'], r['report_modern']): r for r in csv.DictReader(open(path, encoding='utf-8'))}
+        # the report's agreed pairs inside this crosswalk's range agree, except 1023 (Sanborn 1928 prints 3111)
+        for (o, n), r in rows.items():
+            if r['report_status'] == 'agreed' and not r['verdict'].startswith('outside') and o != '1023':
+                self.assertEqual(r['verdict'], 'agrees', (o, n))
+        # its open conflicts are settled by the Sanborn prints
+        self.assertEqual(rows[('1027', '3117')]['verdict'], 'agrees')
+        self.assertEqual(rows[('1111', '3217')]['verdict'], 'agrees')
+        self.assertEqual(rows[('1112', '3220')]['verdict'], 'agrees')
+        self.assertEqual(rows[('1113', '3217')]['this_crosswalk'], '3219')
+
+
 class Pipeline(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -108,6 +125,13 @@ class Pipeline(unittest.TestCase):
     def test_reference_parse(self):
         refs = X.parse_reference(X.rp('team', 'week1', 'out', 'use_timelines.md'))
         self.assertEqual(len([r for r in refs if r['address'].startswith('3117')]), 10)
+
+    def test_reference_occupants(self):
+        occ = X.validate_occupants(self.E, os.path.join(HERE, 'reference', 'reference_occupants.csv'))
+        if occ is None:
+            self.skipTest('no reference occupants')
+        self.assertEqual(occ['n_scope'], 24)
+        self.assertGreaterEqual(occ['all sources']['recall'], 0.9)
 
     def test_validation_targets(self):
         refs = X.parse_reference(X.rp('team', 'week1', 'out', 'use_timelines.md'))

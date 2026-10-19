@@ -176,3 +176,35 @@ with open(os.path.join(OUT, 'york_crosswalk.csv'), 'w', newline='', encoding='ut
     w.writeheader(); w.writerows(rows)
 print('pairs', len(pairs), 'sponsor', len(sponsor), 'anchors', len(anchors), 'crosswalk rows', len(rows))
 print(collections.Counter((r['side'], r['method']) for r in rows))
+
+# reconcile with the week-2 report's pairs (team/extractor/reference/york_road_crosswalk.csv), when present
+REF = os.path.join(HERE, 'reference', 'york_road_crosswalk.csv')
+if os.path.exists(REF):
+    mine = {str(r['old_york_number']): dict(r, new_greenmount_number=str(r['new_greenmount_number'])) for r in rows}
+    out = []
+    for k in csv.DictReader(open(REF, encoding='utf-8')):
+        o, n = k['old_york_rd'], k['modern_greenmount']
+        lo = o.split('-')[0]
+        m = mine.get(lo)
+        if not m:
+            res, verdict = '', 'outside this crosswalk (old 900-1150 only)'
+        elif '-' in o:
+            hi = mine.get(o.split('-')[1])
+            res = f"{m['new_greenmount_number']}-{hi['new_greenmount_number'] if hi else '?'}"
+            verdict = 'agrees' if res == n else 'differs'
+        else:
+            res = m['new_greenmount_number']
+            if res == n:
+                verdict = 'agrees'
+            elif m['evidence'].startswith('Sanborn'):
+                verdict = f"differs: {m['evidence']}; the report's record needs a check against the sheet"
+            else:
+                verdict = 'differs'
+        out.append(dict(old_york_rd=o, report_modern=n, report_kind=k['kind'], report_status=k['status'],
+                        report_records=k['source_incident_ids'], report_offset_predicts=k['offset_predicts'],
+                        this_crosswalk=res, method=m['method'] if m else '', evidence=m['evidence'] if m else '',
+                        verdict=verdict))
+    with open(os.path.join(OUT, 'york_crosswalk_reconciliation.csv'), 'w', newline='', encoding='utf-8') as f:
+        w = csv.DictWriter(f, fieldnames=list(out[0].keys()))
+        w.writeheader(); w.writerows(out)
+    print('reconciled with the week-2 report:', collections.Counter(r['verdict'].split(':')[0] for r in out))

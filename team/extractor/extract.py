@@ -533,7 +533,33 @@ def validate(E, refs, tol=1):
     return res
 
 
-def write_validation(res, refs, path):
+def validate_occupants(E, path, tol=1):
+    """The week-2 report's reference occupants (team/extractor/reference/reference_occupants.csv): is each one
+    named in a record at its parcel within its years? Occupants on properties outside the frontage are left out."""
+    if not os.path.exists(path):
+        return None
+    refs = read_csv(path)
+    scope = [r for r in refs if r['property_id'] in E.by_id]
+    res = dict(n_refs=len(refs), n_scope=len(scope))
+    for label, filt in (('all sources', lambda e: True),
+                        ('new sources only', lambda e: not e['source'].startswith('sponsor'))):
+        rows = [e for e in E.rows if filt(e) and e['year']]
+        detail = []
+        for r in scope:
+            rx = re.compile(r['aliases'], re.I)
+            pid = E.by_id[r['property_id']]['property_id']
+            s0, s1 = int(r['start']), int(r['end'])
+            hit = [e for e in rows if e['property_id'] == pid and s0 - tol <= int(e['year']) <= s1 + tol
+                   and rx.search(f"{e['business']} {e['text']}")]
+            detail.append((r, hit))
+        found = [(r, h) for r, h in detail if h]
+        res[label] = dict(found=len(found), recall=len(found) / max(1, len(scope)),
+                          sources=collections.Counter(e['source'].split(':')[0] for _, h in found for e in h),
+                          detail=detail)
+    return res
+
+
+def write_validation(res, refs, path, occ=None):
     L = ['# Extractor v1 validation against the reference timelines', '',
          'Reference: `team/week1/out/use_timelines.md`, built by hand from the sponsor records in week 1. '
          'A reference row counts as recalled when the extractor has at least one record of the same use category '
@@ -550,6 +576,19 @@ def write_validation(res, refs, path):
           '## Reference rows and whether each was found (all sources)', '', '| Property | Period | Use | Category | Found |', '|---|---|---|---|---|']
     for r, ok, _ in res['all sources']['detail']:
         L.append(f"| {r['address']} | {r['start']}-{r['end']} | {r['use']} | {r['category']} | {'yes' if ok else 'no'} |")
+    if occ:
+        a, n = occ['all sources'], occ['new sources only']
+        L += ['', '## Second test: the reference occupants from the week-2 report', '',
+              f"`reference/reference_occupants.csv` lists {occ['n_refs']} named occupants on the four reference properties; "
+              f"{occ['n_scope']} are on frontage parcels (the others are at 401 E 30th St). An occupant counts as found when a "
+              'record at its parcel, within its years (one year either side), names it by one of its aliases.', '',
+              '| Scope | Occupants | Found | Recall |', '|---|---|---|---|',
+              f"| all sources | {occ['n_scope']} | {a['found']} | {a['recall']:.0%} |",
+              f"| new sources only | {occ['n_scope']} | {n['found']} | {n['recall']:.0%} |", '',
+              '| Property | Occupant | Years | Found (all sources) | Found in new sources |', '|---|---|---|---|---|']
+        for (r, h), (_, h2) in zip(a['detail'], n['detail']):
+            srcs = ', '.join(sorted({e['source'].split(':')[0] for e in h2}))
+            L.append(f"| {r['address']} | {r['occupant']} | {r['start']}-{r['end']} | {'yes' if h else 'no'} | {srcs or 'no'} |")
     open(path, 'w', encoding='utf-8').write('\n'.join(L) + '\n')
 
 
@@ -566,7 +605,8 @@ def main():
     write_csv(os.path.join(OUT, 'silence_map.csv'), sil)
     refs = parse_reference(rp('team', 'week1', 'out', 'use_timelines.md'))
     res = validate(E, refs)
-    write_validation(res, refs, os.path.join(OUT, 'validation.md'))
+    occ = validate_occupants(E, os.path.join(HERE, 'reference', 'reference_occupants.csv'))
+    write_validation(res, refs, os.path.join(OUT, 'validation.md'), occ)
     src = collections.Counter(e['source'].split(':')[0] for e in E.rows)
     print('evidence', len(E.rows), dict(src), 'unassigned', len(E.unassigned), 'sensitivity-flagged kept', sens)
     print('spans', len(sp), 'proven uses', sum(1 for r in pu if r['strength'] == 'proven'))
@@ -576,6 +616,9 @@ def main():
     for k, v in res.items():
         print(k, 'recall %.0f%%' % (100 * v['recall']), 'recall(covered) %.0f%%' % (100 * v['recall_where_source_covers']),
               'agreement %.0f%% of %d' % (100 * v['category_agreement'], v['rows_scored']))
+    if occ:
+        print('occupants', occ['n_scope'], 'all sources found', occ['all sources']['found'],
+              'new sources only found', occ['new sources only']['found'], dict(occ['new sources only']['sources']))
     return props, E, sp, pu, sil, res
 
 

@@ -2,7 +2,7 @@
 
 **For:** Pricing the Unpriced team and the sponsor · **Draft of:** 18 October 2026 · **Status:** first draft for review
 
-**Scope.** The sponsor set the scope for this fall in writing: "an indexed summary of the 31 folders plus the interventions table. The before and after comparison can wait." This memo goes with `folder_index.csv` (31 rows) and `interventions.csv` (79 rows).
+**Scope.** The sponsor set the scope for this fall in writing: "an indexed summary of the 31 folders plus the interventions table. The before and after comparison can wait." This memo goes with `folder_index.csv` (31 rows) and `interventions.csv` (79 rows). It merges the team's two week-2 drafts: the folder groups and page-type counts from the week-2 progress report are columns in `folder_index.csv`, and each of that report's 14 draft interventions (I1 to I14) is linked in the `report_id` column of `interventions.csv`.
 
 **Method.**
 - Counts come from `archive_scans.csv` as distinct (item, page), not rows.
@@ -21,7 +21,7 @@ The Baltimore City Code describes the programme in the City's own words. Baltimo
 - **1976-79.** Design standards are drafted (folders 5, 23). They are adopted in the Waverly Business Area Urban Renewal Plan, Council Bill 2278 (21-86). About 100 people attend the May 1979 hearing (21-53), and the bill passes by June (21-59).
 - **1976-81.** Public works follow:
   - the 33rd Street median, finished May 1979 (19-16);
-  - the streetscape, Contract 2572, accepted June 1981 (20-3, 20-8);
+  - the streetscape, Contract 2572: work completed 30 June 1980 (20-3), final inspection 17 June 1981, accepted by letter of 7 August 1981 (20-8);
   - a rebuilt municipal parking lot, Contract 2611, accepted March 1981 (12-19).
 
 **The deal.** A January 1978 letter asks owners to fix their facades within two years. In exchange the City will build a median, plazas, lights, trees, sidewalks and bus shelters (22-171). In 1979 the City tells an owner of seven properties three things (21-80):
@@ -58,6 +58,16 @@ No caption mentions a facade grant or shows a loan closing. Maryland's Article X
 - 31 folders, 2,260 scan rows, **1,692 distinct pages**, filed on 142 buildings.
 - 1,024 pages are filed only on the district record ("Greenmount Ave & E 33rd St").
 - By category: 1,251 documents, 220 sketches, 169 plans, 31 photos, 21 ephemera.
+
+**By group** (the grouping in the week-2 progress report, now a column in `folder_index.csv`):
+
+| Group | Folders | Pages | What |
+|---|---|---|---|
+| Plan and policy | 9 | 708 | Renewal plan and ordinance, design standards, rezoning, shopping survey, meeting notes |
+| Public works | 13 | 680 | Parking lot at 32nd and Barclay, Greenmount streetscape, 33rd Street median, specifications |
+| Building-specific | 6 | 217 | Harry's Liquors, Shoe World, Gorsuch House, Tugboat Ann's, the A&P, the Subway shop |
+| Branding | 2 | 61 | Waverly logo and pylon |
+| Survey | 1 | 26 | Maryland Historical Trust inventory forms and the merchants' newsletter |
 
 **Approximate types** (keyword rules applied to the captions):
 

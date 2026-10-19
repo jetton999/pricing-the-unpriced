@@ -47,3 +47,39 @@ The "all sources" row is not an independent test: the references were built from
 | 401 E 30th St | 1954-1969 | Bottling plant | production & light industry | no |
 | 401 E 30th St | 1987-1987 | Bottling | production & light industry | no |
 | 401 E 30th St | 2018-2021 | Grocery | food & drink | no |
+
+## Second test: the reference occupants from the week-2 report
+
+`reference/reference_occupants.csv` lists 30 named occupants on the four reference properties; 24 are on frontage parcels (the others are at 401 E 30th St). An occupant counts as found when a record at its parcel, within its years (one year either side), names it by one of its aliases.
+
+| Scope | Occupants | Found | Recall |
+|---|---|---|---|
+| all sources | 24 | 24 | 100% |
+| new sources only | 24 | 6 | 25% |
+
+| Property | Occupant | Years | Found (all sources) | Found in new sources |
+|---|---|---|---|---|
+| 3117 Greenmount Ave | Dentry & Zoll / Zoll livery | 1886-1908 | yes | polk_directory |
+| 3117 Greenmount Ave | W. C. Childs & Son livery | 1915-1917 | yes | polk_directory |
+| 3117 Greenmount Ave | United Garage Co. | 1926-1926 | yes | no |
+| 3117 Greenmount Ave | Miller Brothers Furniture | 1928-1932 | yes | no |
+| 3117 Greenmount Ave | Century Furniture Co. | 1933-1935 | yes | no |
+| 3117 Greenmount Ave | Hecht's Furniture House | 1935-1936 | yes | no |
+| 3117 Greenmount Ave | Joe the Motorist's Friend | 1936-1955 | yes | nr_inventory |
+| 3117 Greenmount Ave | Engelman's Kiddieland | 1957-1962 | yes | no |
+| 3117 Greenmount Ave | Moses Zalis Furniture | 1972-1989 | yes | no |
+| 3117 Greenmount Ave | New York Fashions, Inc. | 1990-1990 | yes | no |
+| 3200 Greenmount Ave | Reilley/Muller saloon | 1901-1908 | yes | polk_directory |
+| 3200 Greenmount Ave | Samstag saloon and soft drinks | 1918-1928 | yes | nr_inventory, polk_directory |
+| 3200 Greenmount Ave | White Coffee Pot | 1936-1963 | yes | no |
+| 3200 Greenmount Ave | Adolphe Beauty Salon | 1955-1955 | yes | no |
+| 3200 Greenmount Ave | Hotspot restaurant and carryout | 1978-1978 | yes | no |
+| 3200 Greenmount Ave | Shalimar | 1980-1980 | yes | no |
+| 3200 Greenmount Ave | Green's Carryout | 2015-2015 | yes | no |
+| 3224 Greenmount Ave | Sam Lee Laundry | 1901-1937 | yes | polk_directory |
+| 3224 Greenmount Ave | Wick Wo laundry | 1901-1929 | yes | no |
+| 3224 Greenmount Ave | Taubman's | 1930-1932 | yes | no |
+| 3224 Greenmount Ave | Wyman Shoe Co. | 1935-1955 | yes | no |
+| 3224 Greenmount Ave | Jason Shoes | 1955-1955 | yes | no |
+| 3224 Greenmount Ave | Anderson's Restaurant | 1967-1967 | yes | no |
+| 3224 Greenmount Ave | The Kove Home Furnishings Center | 1976-1976 | yes | no |

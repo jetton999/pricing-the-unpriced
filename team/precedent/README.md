@@ -6,8 +6,8 @@ commercial revitalization files) at the repo root.
 
 | File | Rows | What |
 |---|---|---|
-| `folder_index.csv` | 31 | One row per folder: title, years, distinct pages, document types, buildings and businesses named, the plan or work it records, key pages, and how many pages have only generic or truncated captions |
-| `interventions.csv` | 79 | One row per intervention on a building or the street: address, business, year, type (streetscape, sign, design review, facade renovation, parking, loan and others), description, funding, status, and the scan pages behind it |
+| `folder_index.csv` | 31 | One row per folder: title, group (from the week-2 progress report), years, distinct pages and pages by type, document types, buildings and businesses named, the plan or work it records, key pages, and how many pages have only generic or truncated captions |
+| `interventions.csv` | 79 | One row per intervention on a building or the street: address, business, year, type (streetscape, sign, design review, facade renovation, parking, loan and others), description, funding, status, the scan pages behind it, and `report_id`, the matching entry of the week-2 progress report's 14-row draft |
 | `precedent_memo_draft.md` | | The case write-up: what the programme was, what the folders hold, which buildings were touched, how the City worked with the merchants, gaps, and careful use for the highest-and-best-use work |
 
 ## Method
