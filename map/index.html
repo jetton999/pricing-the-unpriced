@@ -25,6 +25,12 @@
     <label><input type="checkbox" id="toggle-lots"> Lot polygons (visible set)</label>
     <label><input type="checkbox" id="toggle-hoods"> Neighborhood bounds</label>
   </div>
+  <div class="uselayer" title="Colour the 2900-3200 block frontage by the use the team extractor found in each decade">
+    <label><input type="checkbox" id="toggle-use"> Colour by use</label>
+    <button id="use-prev" class="btn" disabled aria-label="earlier decade">&#9664;</button>
+    <select id="use-decade" disabled aria-label="decade"></select>
+    <button id="use-next" class="btn" disabled aria-label="later decade">&#9654;</button>
+  </div>
 </header>
 
 <div id="main">
@@ -37,17 +43,23 @@
       <p class="muted">Marker colour is curated depth: the number of hand-researched
          records at that address. Administrative volume (311, permits, assessments) is
          deliberately not part of the colour.</p>
+      <p class="muted"><b>Colour by use</b> switches the 2900–3200 block frontage to the use the
+         team extractor found in each decade; step through the decades with the arrows. Frontage
+         properties also get a <b>Use history</b> section with a decade grid and the source rows.</p>
     </div>
     <div id="sidebar-body" hidden></div>
   </aside>
 </div>
 
 <div id="legend">
-  <div class="legend-title">Curated records</div>
-  <div><i style="background:#c8c3b8"></i> 0</div>
-  <div><i style="background:#f3c66b"></i> 1–9</div>
-  <div><i style="background:#e58a2d"></i> 10–24</div>
-  <div><i style="background:#a4290f"></i> 25+</div>
+  <div id="legend-tier">
+    <div class="legend-title">Curated records</div>
+    <div><i style="background:#c8c3b8"></i> 0</div>
+    <div><i style="background:#f3c66b"></i> 1–9</div>
+    <div><i style="background:#e58a2d"></i> 10–24</div>
+    <div><i style="background:#a4290f"></i> 25+</div>
+  </div>
+  <div id="legend-use" hidden></div>
   <div class="legend-focus"><b></b> Focus area (approx.)</div>
 </div>
 
