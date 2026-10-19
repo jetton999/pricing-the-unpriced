@@ -42,7 +42,7 @@ dates from 1928, not the 1920 in `year_built`: row 11809 documents a frame stabl
 | 1980 | Indian restaurant | Shalimar | Stated | 4657, 5203, 5204 |
 | 2015 | Carryout | Green's Carryout | Stated | 5277 |
 
-Reading: food and drink at this corner for about 115 years, in six forms. This is the cleanest
+Reading: food and drink at this corner for about 115 years, in seven forms. This is the cleanest
 example in the focus area of a use the building has already proven.
 
 ## 3224 Greenmount Ave (property 768) · 131 curated records
