@@ -1,0 +1,230 @@
+property_id,address,use_category,n_evidence,n_decades,first_year,last_year,decades,sources,strength
+693,2900 Greenmount Ave,food & drink,8,3,1914,1937,1910 1920 1930,polk_directory 7; permit_card 1,strong
+693,2900 Greenmount Ave,entertainment & assembly,7,3,1913,1952,1910 1920 1950,polk_directory 6; permit_card 1,strong
+2283,2902 Greenmount Ave,retail goods,2,2,1918,1922,1910 1920,polk_directory 2,strong
+2283,2902 Greenmount Ave,food & drink,1,1,1922,1922,1920,sponsor 1,single
+700,2920 Greenmount Ave,entertainment & assembly,7,1,1940,1948,1940,sponsor 1; permit_card 6,strong
+700,2920 Greenmount Ave,office,2,1,1947,1947,1940,permit_card 2,single
+701,2930 Greenmount Ave,residential,1,1,1919,1919,1910,sponsor 1,single
+701,2930 Greenmount Ave,personal services,1,1,1899,1899,1890,sponsor 1,single
+702,2932 Greenmount Ave,residential,2,2,1919,1924,1910 1920,sponsor 1; permit_card 1,strong
+703,2934 Greenmount Ave,residential,2,2,1913,1926,1910 1920,sponsor 1; permit_card 1,strong
+704,2936 Greenmount Ave,residential,1,1,1914,1914,1910,sponsor 1,single
+705,2938 Greenmount Ave,residential,1,1,1913,1913,1910,sponsor 1,single
+705,2938 Greenmount Ave,production & light industry,1,1,1923,1923,1920,polk_directory 1,single
+2284,2940 Greenmount Ave,residential,1,1,1913,1913,1910,sponsor 1,single
+706,2942 Greenmount Ave,personal services,3,2,1918,1921,1910 1920,polk_directory 3,strong
+706,2942 Greenmount Ave,entertainment & assembly,1,1,1917,1917,1910,sponsor 1,single
+707,2944 Greenmount Ave,residential,1,1,1913,1913,1910,sponsor 1,single
+708,2946 Greenmount Ave,residential,1,1,1913,1913,1910,sponsor 1,single
+709,2948 Greenmount Ave,personal services,5,2,1913,1921,1910 1920,sponsor 1; polk_directory 4,strong
+709,2948 Greenmount Ave,residential,2,0,,,,permit_card 2,single
+710,2950 Greenmount Ave,residential,2,2,1916,1956,1910 1950,sponsor 1; permit_card 1,strong
+710,2950 Greenmount Ave,production & light industry,1,1,1935,1935,1930,sponsor 1,single
+710,2950 Greenmount Ave,personal services,1,1,1917,1917,1910,polk_directory 1,single
+711,2952 Greenmount Ave,residential,1,1,1913,1913,1910,sponsor 1,single
+712,2954 Greenmount Ave,residential,3,3,1913,1948,1910 1920 1940,sponsor 1; permit_card 2,strong
+713,2956 Greenmount Ave,residential,1,1,1913,1913,1910,sponsor 1,single
+714,2958 Greenmount Ave,retail goods,6,2,1924,1989,1920 1980,sponsor 6,strong
+714,2958 Greenmount Ave,office,6,2,1962,1986,1960 1980,sponsor 6,strong
+714,2958 Greenmount Ave,food & drink,1,1,1923,1923,1920,sponsor 1,single
+715,3000 Greenmount Ave,retail goods,4,3,1914,1953,1910 1920 1950,sponsor 1; polk_directory 2; permit_card 1,strong
+715,3000 Greenmount Ave,office,3,1,1954,1959,1950,sponsor 1; permit_card 2,strong
+715,3000 Greenmount Ave,institutional & religious,1,1,1913,1913,1910,polk_directory 1,single
+2316,3008 Greenmount Ave,retail goods,5,2,1915,1921,1910 1920,polk_directory 5,strong
+2316,3008 Greenmount Ave,institutional & religious,1,1,1959,1959,1950,sponsor 1,single
+718,3009 Greenmount Ave,entertainment & assembly,6,2,1948,1954,1940 1950,permit_card 6,strong
+718,3009 Greenmount Ave,institutional & religious,2,2,1914,1951,1910 1950,polk_directory 1; permit_card 1,strong
+718,3009 Greenmount Ave,residential,1,1,1925,1925,1920,permit_card 1,single
+718,3009 Greenmount Ave,automotive,1,1,1958,1958,1950,permit_card 1,single
+719,3010 Greenmount Ave,personal services,5,3,1917,1953,1910 1920 1950,polk_directory 4; permit_card 1,strong
+719,3010 Greenmount Ave,office,3,1,1955,1958,1950,permit_card 3,single
+719,3010 Greenmount Ave,food & drink,2,1,1914,1915,1910,polk_directory 2,single
+719,3010 Greenmount Ave,automotive,2,2,1917,1920,1910 1920,polk_directory 2,strong
+719,3010 Greenmount Ave,retail goods,1,1,1919,1919,1910,sponsor 1,single
+720,3011 Greenmount Ave,production & light industry,6,2,1915,1923,1910 1920,polk_directory 6,strong
+720,3011 Greenmount Ave,retail goods,2,2,1919,1954,1910 1950,sponsor 1; permit_card 1,strong
+2313,3013 Greenmount Ave,personal services,3,1,1915,1918,1910,polk_directory 3,single
+2313,3013 Greenmount Ave,production & light industry,1,1,1922,1922,1920,polk_directory 1,single
+2313,3013 Greenmount Ave,retail goods,1,1,1956,1956,1950,permit_card 1,single
+721,3015 Greenmount Ave,office,20,2,1914,1923,1910 1920,polk_directory 20,strong
+721,3015 Greenmount Ave,personal services,7,6,1899,2013,1890 1920 1930 1950 1980 2010,sponsor 4; polk_directory 1; permit_card 2,strong
+721,3015 Greenmount Ave,retail goods,4,2,1915,1921,1910 1920,polk_directory 4,strong
+722,3019 Greenmount Ave,office,11,2,1914,1922,1910 1920,polk_directory 11,strong
+723,3021 Greenmount Ave,personal services,10,3,1879,1923,1870 1910 1920,sponsor 2; polk_directory 8,strong
+723,3021 Greenmount Ave,food & drink,1,1,2013,2013,2010,sponsor 1,single
+723,3021 Greenmount Ave,production & light industry,1,1,1923,1923,1920,polk_directory 1,single
+724,3023 Greenmount Ave,food & drink,5,4,1919,1961,1910 1920 1950 1960,sponsor 3; polk_directory 1; permit_card 1,strong
+724,3023 Greenmount Ave,personal services,4,2,1914,1922,1910 1920,polk_directory 4,strong
+724,3023 Greenmount Ave,office,4,1,1920,1921,1920,polk_directory 4,single
+724,3023 Greenmount Ave,residential,1,1,1934,1934,1930,permit_card 1,single
+725,3026 Greenmount Ave,production & light industry,7,2,1915,1923,1910 1920,sponsor 1; polk_directory 6,strong
+726,3028 Greenmount Ave,institutional & religious,3,3,1921,1958,1920 1940 1950,sponsor 3,strong
+726,3028 Greenmount Ave,entertainment & assembly,1,1,2013,2013,2010,sponsor 1,single
+726,3028 Greenmount Ave,food & drink,1,1,1914,1914,1910,polk_directory 1,single
+726,3028 Greenmount Ave,residential,1,1,1925,1925,1920,permit_card 1,single
+727,3029 Greenmount Ave,production & light industry,4,1,1914,1919,1910,sponsor 1; polk_directory 3,strong
+727,3029 Greenmount Ave,food & drink,2,1,1958,1959,1950,sponsor 1; permit_card 1,strong
+727,3029 Greenmount Ave,entertainment & assembly,1,1,1939,1939,1930,sponsor 1,single
+727,3029 Greenmount Ave,retail goods,1,1,1928,1928,1920,permit_card 1,single
+2295,3030 Greenmount Ave,personal services,1,1,1914,1914,1910,polk_directory 1,single
+2295,3030 Greenmount Ave,institutional & religious,1,1,1923,1923,1920,polk_directory 1,single
+728,3031 Greenmount Ave,food & drink,2,2,1917,2013,1910 2010,sponsor 1; polk_directory 1,strong
+728,3031 Greenmount Ave,retail goods,1,1,1964,1964,1960,sponsor 1,single
+728,3031 Greenmount Ave,office,1,1,1914,1914,1910,polk_directory 1,single
+2296,3032 Greenmount Ave,personal services,2,2,1929,1930,1920 1930,sponsor 1; permit_card 1,strong
+2296,3032 Greenmount Ave,office,1,1,1912,1912,1910,polk_directory 1,single
+729,3034 Greenmount Ave,food & drink,7,3,1899,1923,1890 1910 1920,sponsor 1; polk_directory 6,strong
+729,3034 Greenmount Ave,entertainment & assembly,1,1,1964,1964,1960,sponsor 1,single
+729,3034 Greenmount Ave,retail goods,1,1,1954,1954,1950,permit_card 1,single
+730,3036 Greenmount Ave,food & drink,4,3,1914,1956,1910 1920 1950,sponsor 1; polk_directory 2; permit_card 1,strong
+730,3036 Greenmount Ave,retail goods,1,1,1915,1915,1910,polk_directory 1,single
+730,3036 Greenmount Ave,production & light industry,1,1,1920,1920,1920,polk_directory 1,single
+730,3036 Greenmount Ave,personal services,1,1,1923,1923,1920,polk_directory 1,single
+730,3036 Greenmount Ave,residential,1,1,1938,1938,1930,permit_card 1,single
+731,3038 Greenmount Ave,retail goods,4,3,1899,1959,1890 1930 1950,sponsor 1; permit_card 3,strong
+731,3038 Greenmount Ave,food & drink,3,1,1917,1918,1910,polk_directory 3,single
+731,3038 Greenmount Ave,residential,1,1,1938,1938,1930,permit_card 1,single
+732,3040 Greenmount Ave,personal services,13,4,1904,1961,1900 1910 1920 1960,sponsor 3; polk_directory 10,strong
+732,3040 Greenmount Ave,automotive,9,3,1896,1922,1890 1910 1920,sponsor 3; polk_directory 6,strong
+732,3040 Greenmount Ave,retail goods,2,2,1927,1937,1920 1930,permit_card 2,strong
+732,3040 Greenmount Ave,office,1,1,1917,1917,1910,polk_directory 1,single
+733,3046 Greenmount Ave,office,12,2,1914,1923,1910 1920,polk_directory 12,strong
+733,3046 Greenmount Ave,personal services,1,1,1909,1909,1900,sponsor 1,single
+733,3046 Greenmount Ave,retail goods,1,1,1930,1930,1930,permit_card 1,single
+734,3048 Greenmount Ave,food & drink,7,3,1889,1922,1880 1910 1920,sponsor 2; polk_directory 5,strong
+734,3048 Greenmount Ave,retail goods,2,2,1930,1951,1930 1950,permit_card 2,strong
+734,3048 Greenmount Ave,office,1,1,1914,1914,1910,polk_directory 1,single
+735,3100 Greenmount Ave,entertainment & assembly,19,3,1872,1923,1870 1910 1920,sponsor 3; polk_directory 16,strong
+735,3100 Greenmount Ave,retail goods,8,3,1912,1930,1910 1920 1930,sponsor 1; polk_directory 5; permit_card 2,strong
+735,3100 Greenmount Ave,food & drink,2,2,1915,1973,1910 1970,sponsor 1; polk_directory 1,strong
+735,3100 Greenmount Ave,production & light industry,2,1,1912,1914,1910,polk_directory 2,single
+735,3100 Greenmount Ave,personal services,2,2,1921,1961,1920 1960,polk_directory 1; permit_card 1,strong
+2312,3103 Greenmount Ave,retail goods,9,4,1922,1955,1920 1930 1940 1950,polk_directory 5; permit_card 4,strong
+2312,3103 Greenmount Ave,production & light industry,1,1,1914,1914,1910,polk_directory 1,single
+2312,3103 Greenmount Ave,entertainment & assembly,1,1,1930,1930,1930,permit_card 1,single
+2312,3103 Greenmount Ave,automotive,1,1,1958,1958,1950,permit_card 1,single
+736,3106 Greenmount Ave,retail goods,10,4,1917,1941,1910 1920 1930 1940,sponsor 1; polk_directory 5; permit_card 4,strong
+736,3106 Greenmount Ave,production & light industry,1,1,1915,1915,1910,polk_directory 1,single
+737,3107 Greenmount Ave,food & drink,3,3,1879,1899,1870 1880 1890,sponsor 3,strong
+737,3107 Greenmount Ave,retail goods,3,1,1922,1923,1920,polk_directory 3,single
+737,3107 Greenmount Ave,residential,2,2,1958,2013,1950 2010,sponsor 1; permit_card 1,strong
+737,3107 Greenmount Ave,office,2,1,1953,1958,1950,permit_card 2,single
+737,3107 Greenmount Ave,personal services,1,1,1930,1930,1930,permit_card 1,single
+2315,3110 Greenmount Ave,retail goods,5,3,1899,1935,1890 1920 1930,sponsor 1; permit_card 4,strong
+738,3111 Greenmount Ave,office,5,4,1915,1971,1910 1920 1930 1970,sponsor 4; permit_card 1,strong
+738,3111 Greenmount Ave,personal services,1,1,1926,1926,1920,sponsor 1,single
+738,3111 Greenmount Ave,food & drink,1,1,1924,1924,1920,sponsor 1,single
+739,3112 Greenmount Ave,retail goods,2,2,1899,1937,1890 1930,sponsor 1; permit_card 1,strong
+739,3112 Greenmount Ave,residential,1,1,1917,1917,1910,sponsor 1,single
+740,3113 Greenmount Ave,food & drink,8,4,1917,2013,1910 1920 1980 2010,sponsor 3; polk_directory 5,strong
+740,3113 Greenmount Ave,residential,1,1,1917,1917,1910,sponsor 1,single
+740,3113 Greenmount Ave,entertainment & assembly,1,1,1914,1914,1910,polk_directory 1,single
+740,3113 Greenmount Ave,retail goods,1,1,1928,1928,1920,permit_card 1,single
+741,3114 Greenmount Ave,residential,1,1,1934,1934,1930,permit_card 1,single
+741,3114 Greenmount Ave,retail goods,1,1,1953,1953,1950,permit_card 1,single
+742,3117 Greenmount Ave,retail goods,42,8,1928,1990,1920 1930 1940 1950 1960 1970 1980 1990,sponsor 40; permit_card 2,strong
+742,3117 Greenmount Ave,automotive,12,6,1886,1940,1880 1900 1910 1920 1930 1940,sponsor 11; polk_directory 1,strong
+742,3117 Greenmount Ave,office,2,2,1941,1972,1940 1970,sponsor 2,strong
+742,3117 Greenmount Ave,institutional & religious,1,1,1957,1957,1950,sponsor 1,single
+742,3117 Greenmount Ave,personal services,1,1,1958,1958,1950,sponsor 1,single
+743,3118 Greenmount Ave,food & drink,7,3,1913,1958,1910 1920 1950,sponsor 2; polk_directory 5,strong
+743,3118 Greenmount Ave,retail goods,5,3,1923,1949,1920 1930 1940,polk_directory 1; permit_card 4,strong
+743,3118 Greenmount Ave,personal services,1,1,1889,1889,1880,sponsor 1,single
+743,3118 Greenmount Ave,residential,1,1,1924,1924,1920,permit_card 1,single
+743,3118 Greenmount Ave,automotive,1,1,1961,1961,1960,permit_card 1,single
+744,3120 Greenmount Ave,office,6,1,1921,1923,1920,polk_directory 6,single
+744,3120 Greenmount Ave,retail goods,3,2,1928,1935,1920 1930,permit_card 3,strong
+744,3120 Greenmount Ave,personal services,2,2,1919,1920,1910 1920,sponsor 1; polk_directory 1,strong
+745,3122 Greenmount Ave,automotive,13,3,1917,1937,1910 1920 1930,sponsor 2; polk_directory 8; permit_card 3,strong
+745,3122 Greenmount Ave,entertainment & assembly,5,1,1940,1945,1940,permit_card 5,single
+745,3122 Greenmount Ave,retail goods,2,2,1938,1954,1930 1950,permit_card 2,strong
+745,3122 Greenmount Ave,food & drink,1,1,1951,1951,1950,sponsor 1,single
+745,3122 Greenmount Ave,personal services,1,0,,,,permit_card 1,single
+2314,3124 Greenmount Ave,food & drink,2,1,1914,1915,1910,polk_directory 2,single
+747,3126 Greenmount Ave,food & drink,11,4,1879,1934,1870 1910 1920 1930,sponsor 2; polk_directory 5; permit_card 4,strong
+747,3126 Greenmount Ave,production & light industry,1,1,1922,1922,1920,polk_directory 1,single
+747,3126 Greenmount Ave,retail goods,1,1,1924,1924,1920,permit_card 1,single
+747,3126 Greenmount Ave,residential,1,1,1925,1925,1920,permit_card 1,single
+748,3127 Greenmount Ave,personal services,12,2,1914,1922,1910 1920,polk_directory 12,strong
+748,3127 Greenmount Ave,retail goods,9,2,1936,1948,1930 1940,permit_card 9,strong
+748,3127 Greenmount Ave,automotive,2,1,1913,1914,1910,sponsor 1; polk_directory 1,strong
+748,3127 Greenmount Ave,food & drink,2,2,1922,1934,1920 1930,polk_directory 1; permit_card 1,strong
+748,3127 Greenmount Ave,residential,1,1,1928,1928,1920,permit_card 1,single
+749,3128 Greenmount Ave,food & drink,17,5,1914,1962,1910 1930 1940 1950 1960,sponsor 4; polk_directory 6; permit_card 7,strong
+749,3128 Greenmount Ave,personal services,1,1,1920,1920,1920,polk_directory 1,single
+749,3128 Greenmount Ave,production & light industry,1,1,1922,1922,1920,polk_directory 1,single
+749,3128 Greenmount Ave,retail goods,1,1,1923,1923,1920,polk_directory 1,single
+750,3130 Greenmount Ave,personal services,12,2,1914,1923,1910 1920,polk_directory 12,strong
+750,3130 Greenmount Ave,production & light industry,9,2,1917,1923,1910 1920,polk_directory 9,strong
+750,3130 Greenmount Ave,entertainment & assembly,8,3,1918,1931,1910 1920 1930,sponsor 1; polk_directory 7,strong
+750,3130 Greenmount Ave,food & drink,7,4,1913,1979,1910 1920 1940 1970,sponsor 3; polk_directory 4,strong
+750,3130 Greenmount Ave,retail goods,5,2,1914,1924,1910 1920,polk_directory 4; permit_card 1,strong
+751,3133 Greenmount Ave,retail goods,10,3,1914,1932,1910 1920 1930,sponsor 2; polk_directory 7; permit_card 1,strong
+751,3133 Greenmount Ave,personal services,8,2,1914,1923,1910 1920,polk_directory 8,strong
+751,3133 Greenmount Ave,food & drink,3,1,1921,1923,1920,polk_directory 3,single
+751,3133 Greenmount Ave,production & light industry,1,1,1914,1914,1910,polk_directory 1,single
+752,3200 Greenmount Ave,food & drink,14,7,1914,2015,1910 1930 1950 1960 1970 1980 2010,sponsor 10; polk_directory 3; permit_card 1,strong
+752,3200 Greenmount Ave,retail goods,5,3,1926,1980,1920 1940 1980,sponsor 2; permit_card 3,strong
+752,3200 Greenmount Ave,personal services,3,3,1892,1955,1890 1910 1950,sponsor 3,strong
+752,3200 Greenmount Ave,office,1,1,1912,1912,1910,sponsor 1,single
+753,3201 Greenmount Ave,food & drink,9,3,1913,1930,1910 1920 1930,sponsor 4; polk_directory 5,strong
+753,3201 Greenmount Ave,production & light industry,4,2,1920,1930,1920 1930,polk_directory 3; permit_card 1,strong
+753,3201 Greenmount Ave,retail goods,3,2,1936,1947,1930 1940,permit_card 3,strong
+753,3201 Greenmount Ave,institutional & religious,1,1,2025,2025,2020,sponsor 1,single
+754,3203 Greenmount Ave,food & drink,12,3,1909,1923,1900 1910 1920,sponsor 2; polk_directory 10,strong
+754,3203 Greenmount Ave,retail goods,6,4,1915,1941,1910 1920 1930 1940,sponsor 2; polk_directory 4,strong
+754,3203 Greenmount Ave,entertainment & assembly,2,2,1915,1940,1910 1940,sponsor 1; polk_directory 1,strong
+754,3203 Greenmount Ave,production & light industry,2,1,1914,1915,1910,polk_directory 2,single
+755,3204 Greenmount Ave,food & drink,4,4,1907,2013,1900 1910 1930 2010,sponsor 2; polk_directory 1; permit_card 1,strong
+755,3204 Greenmount Ave,retail goods,4,4,1917,1994,1910 1920 1940 1990,sponsor 1; polk_directory 1; permit_card 2,strong
+755,3204 Greenmount Ave,personal services,2,1,1920,1921,1920,polk_directory 2,single
+755,3204 Greenmount Ave,entertainment & assembly,1,1,1949,1949,1940,permit_card 1,single
+2311,3206 Greenmount Ave,retail goods,1,1,1879,1879,1870,sponsor 1,single
+756,3208 Greenmount Ave,personal services,7,2,1913,1923,1910 1920,polk_directory 7,strong
+756,3208 Greenmount Ave,food & drink,5,5,1899,2013,1890 1910 1920 1940 2010,sponsor 3; polk_directory 1; permit_card 1,strong
+757,3210 Greenmount Ave,retail goods,8,4,1899,1935,1890 1910 1920 1930,sponsor 2; polk_directory 4; permit_card 2,strong
+758,3211 Greenmount Ave,entertainment & assembly,20,6,1909,1985,1900 1910 1920 1930 1940 1980,sponsor 9; polk_directory 5; permit_card 6,strong
+758,3211 Greenmount Ave,residential,2,2,1952,1963,1950 1960,sponsor 2,strong
+759,3212 Greenmount Ave,retail goods,6,3,1899,1952,1890 1920 1950,sponsor 1; polk_directory 3; permit_card 2,strong
+759,3212 Greenmount Ave,food & drink,2,1,1917,1918,1910,sponsor 1; polk_directory 1,strong
+759,3212 Greenmount Ave,production & light industry,1,1,1915,1915,1910,polk_directory 1,single
+759,3212 Greenmount Ave,personal services,1,1,1917,1917,1910,polk_directory 1,single
+759,3212 Greenmount Ave,residential,1,1,1926,1926,1920,permit_card 1,single
+760,3213 Greenmount Ave,food & drink,7,6,1924,2025,1920 1930 1940 1950 1970 2020,sponsor 7,strong
+760,3213 Greenmount Ave,personal services,5,2,1915,1923,1910 1920,polk_directory 5,strong
+760,3213 Greenmount Ave,entertainment & assembly,2,2,1924,2013,1920 2010,sponsor 2,strong
+760,3213 Greenmount Ave,production & light industry,1,1,1922,1922,1920,polk_directory 1,single
+760,3213 Greenmount Ave,retail goods,1,0,,,,permit_card 1,single
+761,3216 Greenmount Ave,retail goods,5,2,1913,1922,1910 1920,sponsor 1; polk_directory 4,strong
+761,3216 Greenmount Ave,institutional & religious,1,1,1899,1899,1890,sponsor 1,single
+761,3216 Greenmount Ave,production & light industry,1,1,1915,1915,1910,polk_directory 1,single
+762,3217 Greenmount Ave,retail goods,10,3,1914,1938,1910 1920 1930,sponsor 3; polk_directory 4; permit_card 3,strong
+762,3217 Greenmount Ave,food & drink,2,2,1919,1942,1910 1940,sponsor 2,strong
+762,3217 Greenmount Ave,production & light industry,1,1,1915,1915,1910,polk_directory 1,single
+763,3218 Greenmount Ave,food & drink,3,1,1921,1923,1920,sponsor 1; polk_directory 2,strong
+763,3218 Greenmount Ave,retail goods,1,1,2013,2013,2010,sponsor 1,single
+764,3220 Greenmount Ave,office,6,2,1917,1923,1910 1920,sponsor 1; polk_directory 5,strong
+764,3220 Greenmount Ave,personal services,5,4,1899,2013,1890 1930 1940 2010,sponsor 2; permit_card 3,strong
+764,3220 Greenmount Ave,retail goods,4,2,1917,1921,1910 1920,sponsor 1; polk_directory 2; permit_card 1,strong
+765,3221 Greenmount Ave,food & drink,7,2,1921,1930,1920 1930,sponsor 2; polk_directory 4; permit_card 1,strong
+765,3221 Greenmount Ave,retail goods,3,3,1930,1950,1930 1940 1950,sponsor 1; permit_card 2,strong
+765,3221 Greenmount Ave,entertainment & assembly,2,2,1929,1930,1920 1930,permit_card 2,strong
+766,3222 Greenmount Ave,retail goods,5,2,1921,1949,1920 1940,sponsor 1; polk_directory 3; permit_card 1,strong
+766,3222 Greenmount Ave,office,3,2,1923,1980,1920 1980,sponsor 1; polk_directory 2,strong
+767,3223 Greenmount Ave,production & light industry,5,2,1917,1922,1910 1920,polk_directory 5,strong
+767,3223 Greenmount Ave,food & drink,4,3,1914,1936,1910 1920 1930,sponsor 2; polk_directory 2,strong
+767,3223 Greenmount Ave,retail goods,3,3,1918,1930,1910 1920 1930,polk_directory 2; permit_card 1,strong
+767,3223 Greenmount Ave,entertainment & assembly,1,1,1969,1969,1960,sponsor 1,single
+767,3223 Greenmount Ave,automotive,1,1,1921,1921,1920,polk_directory 1,single
+767,3223 Greenmount Ave,office,1,1,1947,1947,1940,permit_card 1,single
+768,3224 Greenmount Ave,personal services,12,3,1900,1937,1900 1920 1930,sponsor 11; polk_directory 1,strong
+768,3224 Greenmount Ave,retail goods,9,3,1930,1955,1930 1940 1950,sponsor 6; permit_card 3,strong
+768,3224 Greenmount Ave,food & drink,3,2,1894,1967,1890 1960,sponsor 3,strong
+768,3224 Greenmount Ave,automotive,1,1,1930,1930,1930,sponsor 1,single
+768,3224 Greenmount Ave,residential,1,1,1906,1906,1900,sponsor 1,single
+769,3226 Greenmount Ave,food & drink,13,6,1900,1988,1900 1920 1930 1940 1970 1980,sponsor 11; permit_card 2,strong
+769,3226 Greenmount Ave,retail goods,13,5,1926,2015,1920 1930 1940 1980 2010,sponsor 3; permit_card 10,strong
+769,3226 Greenmount Ave,institutional & religious,3,3,1900,2013,1900 1920 2010,sponsor 3,strong
+769,3226 Greenmount Ave,automotive,1,0,,,,permit_card 1,single
+769,3226 Greenmount Ave,personal services,1,1,1941,1941,1940,permit_card 1,single

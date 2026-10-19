@@ -1,0 +1,14 @@
+New-source rows on the three frontage reference timelines: 12/13 agree with the hand-built reference decade categories.
+3117 Greenmount Ave | 1915 | polk_directory | automotive | AGREES | Childs) livery
+3117 Greenmount Ave | 1936 | permit_card | retail goods | AGREES | Alter interior and install store canopy
+3200 Greenmount Ave | 1914 | polk_directory | food & drink | AGREES | Samstag Fredk A saloon
+3200 Greenmount Ave | 1915 | polk_directory | food & drink | AGREES | Samstag Fredk H saloon
+3200 Greenmount Ave | 1917 | polk_directory | food & drink | AGREES | l''re<lk II saloon
+3200 Greenmount Ave | 1929 | permit_card | retail goods | AGREES | Alter store front as per plans
+3200 Greenmount Ave | 1926 | permit_card | retail goods | AGREES | Erect one 1-story brick store
+3200 Greenmount Ave | 1936 | permit_card | food & drink | AGREES | Certificate of occupancy for restaurant and alterations
+3200 Greenmount Ave | 1948 | permit_card | retail goods | differs | Store alterations [?] as per plans (interlined: [?] floors & Ceiling)
+3224 Greenmount Ave | 1922 | polk_directory | personal services | AGREES | Yoin laund [h do]
+3224 Greenmount Ave | 1930 | permit_card | retail goods | AGREES | Remove store partition
+3224 Greenmount Ave | 1941 | permit_card | retail goods | AGREES | Alter store front etc
+3224 Greenmount Ave | 1941 | permit_card | retail goods | AGREES | Erect one brick 1-story store addition and alter
