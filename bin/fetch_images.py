@@ -3,15 +3,17 @@
 Download the images listed in property_images.csv into images/ (gitignored). Standard library
 only. No login: the bucket is public, read-only, at the URL in images_base_url.txt.
 
-    python3 bin/fetch_images.py                          # everything (about 420 MB)
+    python3 bin/fetch_images.py                          # everything
     python3 bin/fetch_images.py --folder loc-sanborn     # one folder
     python3 bin/fetch_images.py --property 688           # one property's images
-    python3 bin/fetch_images.py --dry-run                # count and size nothing; just list
+    python3 bin/fetch_images.py --dry-run                # fetch nothing; list the URLs
 
-What is in it. Scans of public records the sponsor collected: recorded deeds, liens and city
+What is in it. Scans of records the sponsor collected: recorded deeds, liens and city
 building-permit cards (deeds-and-title-chain), the 1896-1915 City tax ledgers and assessment
-rolls (bca-brg4-1), and four 1915 Sanborn sheets (loc-sanborn). Every file was re-encoded as JPEG
+rolls (bca-brg4-1), 1915 Sanborn sheets (loc-sanborn) and the Passano-O'Neill file cards of the
+Maryland Center for History and Culture (passano-oneill). Every file was re-encoded as JPEG
 with all metadata removed. Documents are at most 2,048 px on the long side, photos 1,600 px.
+--dry-run prints the total size so you can decide before downloading.
 
 Each image_key is content-addressed (img/<sha256>.jpg): a key never changes meaning, so a file
 already on disk is never fetched again. One scan filed on several properties is one file and
@@ -44,8 +46,17 @@ def main():
     todo = [k for k in keys if not os.path.exists(os.path.join(OUT, k))]
     print(f"{len(rows)} rows, {len(keys)} files, {len(keys) - len(todo)} already in images/")
     if args.dry_run:
+        total = 0
         for key in todo:
             print(f"{base}/{key}")
+            request = urllib.request.Request(f"{base}/{key}", method="HEAD",
+                                             headers={"User-Agent": "pricing-the-unpriced/1.0"})
+            try:
+                with urllib.request.urlopen(request, timeout=30) as response:
+                    total += int(response.headers.get("Content-Length") or 0)
+            except OSError:
+                pass
+        print(f"{len(todo)} files to fetch, {total / 1e6:.0f} MB")
         return 0
 
     failed = 0

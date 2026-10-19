@@ -122,8 +122,6 @@ id,property_incident_id,related_incident_id,link_type,note,created_at,updated_at
 121,18008,17964,supports,"The proprietor of the 1957 water-heater shop, deceased 1965 — 'and Sons' named: John, David, Robert et al.",2026-07-15 01:30:03 -0400,2026-07-15 01:30:03 -0400
 122,18008,18006,related,"Father and son, 2601 and 2701 — the Phoebus family's two corners, three years apart in death.",2026-07-15 01:30:03 -0400,2026-07-15 01:30:03 -0400
 123,18007,5119,supports,The Blackwell siblings sold 2601 to Harry Abell Realty ten months after their father Henry's death.,2026-07-15 01:30:04 -0400,2026-07-15 01:30:04 -0400
-124,18009,5124,supports,"Ground truth for the 2024 deed: Bowen, sole owner, in residence and in business at 2601.",2026-07-15 01:30:04 -0400,2026-07-15 01:30:04 -0400
-125,18009,18001,related,The Freddy's storefront's current act: a production company — Human Being Productions — working where House of Cards shot.,2026-07-15 01:30:04 -0400,2026-07-15 01:30:04 -0400
 126,18010,6562,supports,"The tabernacle photo carries the Oriole Park sign — the ballpark block's 1915-16 streetscape, camera-verified.",2026-07-15 01:37:56 -0400,2026-07-15 01:37:56 -0400
 127,18013,6417,related,"Stolers at 2703 (shoe store, 1913-22) and Lena & Louis at 3208 (merchants, 1926) — one immigrant family's ladder up the avenue? Kinship unproven.",2026-07-15 01:37:56 -0400,2026-07-15 01:37:56 -0400
 128,18011,17818,related,The annotating hand resembles the Aull-family ledger; the schoolhouse plate belongs to the same Old Land Marks orbit.,2026-07-15 01:37:56 -0400,2026-07-15 01:37:56 -0400
@@ -262,6 +260,7 @@ id,property_incident_id,related_incident_id,link_type,note,created_at,updated_at
 288,39266,11852,contradicts,,2026-09-24 08:09:57 -0400,2026-09-24 08:09:57 -0400
 289,39267,11853,related,,2026-09-24 08:09:57 -0400,2026-09-24 08:09:57 -0400
 290,39270,11863,contradicts,,2026-09-24 08:09:58 -0400,2026-09-24 08:09:58 -0400
+291,39270,11875,contradicts,,2026-09-24 08:09:58 -0400,2026-09-24 08:09:58 -0400
 292,39194,11872,supports,,2026-09-24 08:09:58 -0400,2026-09-24 08:09:58 -0400
 293,39196,11876,duplicates,,2026-09-24 08:09:58 -0400,2026-09-24 08:09:58 -0400
 301,39279,17817,supports,,2026-09-24 08:19:52 -0400,2026-09-24 08:19:52 -0400
@@ -1786,6 +1785,8 @@ id,property_incident_id,related_incident_id,link_type,note,created_at,updated_at
 2280,42302,5205,related,,2026-10-01 00:29:02 -0400,2026-10-01 00:29:02 -0400
 2281,42302,5206,related,,2026-10-01 00:29:03 -0400,2026-10-01 00:29:03 -0400
 2282,5206,6851,related,,2026-10-01 00:29:03 -0400,2026-10-01 00:29:03 -0400
+2283,5016,6852,related,,2026-10-01 00:29:03 -0400,2026-10-01 00:29:03 -0400
+2284,5016,5207,related,,2026-10-01 00:29:04 -0400,2026-10-01 00:29:04 -0400
 2285,42305,39014,related,,2026-10-01 00:29:04 -0400,2026-10-01 00:29:04 -0400
 2286,42305,42306,related,,2026-10-01 00:29:04 -0400,2026-10-01 00:29:04 -0400
 2287,42306,42307,related,,2026-10-01 00:29:05 -0400,2026-10-01 00:29:05 -0400

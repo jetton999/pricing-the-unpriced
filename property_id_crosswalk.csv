@@ -27,6 +27,7 @@ old_id,new_id,old_address,new_address,reason
 2270,2513,"2843 Greenmount Ave, Baltimore, MD","500 Exeter Hall Ave, Baltimore, MD",2843 Greenmount Ave is in 500 Exeter Hall Ave's (2513) absorbed_addresses; all 2 package rows moved there.
 2271,2513,"2845 Greenmount Ave, Baltimore, MD","500 Exeter Hall Ave, Baltimore, MD",2845 Greenmount Ave is in 500 Exeter Hall Ave's (2513) absorbed_addresses; its 1 package row moved there.
 2272,2513,"2847 Greenmount Ave, Baltimore, MD","500 Exeter Hall Ave, Baltimore, MD",2847 Greenmount Ave is in 500 Exeter Hall Ave's (2513) absorbed_addresses; its 1 package row moved there.
+2273,688,"2851 Greenmount Ave, Baltimore, MD","2801 Greenmount Ave, Baltimore, MD","property_parcels: lot 4072 013 (500 Exeter Hall) is 2,844 sq ft, too small for 2843-2853, so 2801's lot 001 holds them; 2851's package row already moved to 688. 2513's absorbed_addresses look wrong in Corridor."
 2274,2513,"2853 Greenmount Ave, Baltimore, MD","500 Exeter Hall Ave, Baltimore, MD",2853 Greenmount Ave is in 500 Exeter Hall Ave's (2513) absorbed_addresses; all 2 package rows moved there.
 2275,689,"2855 Greenmount Ave, Baltimore, MD","2857 Greenmount Ave, Baltimore, MD",2855 Greenmount Ave is in 2857 Greenmount Ave's (689) absorbed_addresses; its 1 package row moved there.
 2279,2391,"2840 Greenmount Ave, Baltimore, MD","429 E 29th St, Baltimore, MD",2840 Greenmount Ave is in 429 E 29th St's (2391) absorbed_addresses; its 1 package row moved there.

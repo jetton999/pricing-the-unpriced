@@ -705,6 +705,7 @@ id,name,subject_type,slug,data,created_at,updated_at
 737,Harriet S. Schwartz,person,harriet-s-schwartz,{},2026-07-13 14:29:26 -0400,2026-07-13 14:29:26 -0400
 738,ANARM LLC,business,anarm-llc,{},2026-07-13 14:29:34 -0400,2026-07-13 14:29:34 -0400
 739,Jeff Jetton,person,jeff-jetton,{},2026-07-13 14:29:34 -0400,2026-07-13 14:29:34 -0400
+740,Oxcart Assembly,business,oxcart-assembly,{},2026-07-13 14:29:34 -0400,2026-07-13 14:29:34 -0400
 741,Eastwing Architects,business,eastwing-architects,{},2026-07-13 14:29:34 -0400,2026-07-13 14:29:34 -0400
 742,Ha family,family,ha-family,{},2026-07-13 14:29:41 -0400,2026-07-13 14:29:41 -0400
 743,QT Hau LLC,business,qt-hau-llc,{},2026-07-13 14:29:41 -0400,2026-07-13 14:29:41 -0400
@@ -1287,6 +1288,7 @@ id,name,subject_type,slug,data,created_at,updated_at
 1362,Auk J. Hong,person,auk-j-hong,{},2026-07-13 16:44:22 -0400,2026-07-13 16:44:22 -0400
 1363,Banking Services Corp,business,banking-services-corp,{},2026-07-13 16:44:22 -0400,2026-07-13 16:44:22 -0400
 1364,"New York Fashions, Inc.",business,new-york-fashions-inc,{},2026-07-13 16:44:22 -0400,2026-07-13 16:44:22 -0400
+1365,Sonja Rabuli,person,sonja-rabuli,{},2026-07-13 16:44:22 -0400,2026-07-13 16:44:22 -0400
 1366,Nam Seo Koo,person,nam-seo-koo,{},2026-07-13 16:44:22 -0400,2026-07-13 16:44:22 -0400
 1367,Seon Gyu Koo,person,seon-gyu-koo,{},2026-07-13 16:44:22 -0400,2026-07-13 16:44:22 -0400
 1368,"NationsBank of Maryland, N.A.",business,nationsbank-of-maryland-n-a,{},2026-07-13 16:44:22 -0400,2026-07-13 16:44:22 -0400
@@ -1450,7 +1452,6 @@ id,name,subject_type,slug,data,created_at,updated_at
 1527,St. Ann's Church,congregation,st-ann-s-church,{},2026-07-13 17:16:20 -0400,2026-07-13 17:16:20 -0400
 1528,Parkwood Cemetery,place,parkwood-cemetery,{},2026-07-13 17:16:20 -0400,2026-07-13 17:16:20 -0400
 1529,American Legion,organization,american-legion,{},2026-07-13 17:16:20 -0400,2026-07-13 17:16:20 -0400
-1530,K&K Real Estate LLC,business,k-k-real-estate-llc,{},2026-07-13 17:16:20 -0400,2026-07-13 17:16:20 -0400
 1531,William S. Brightman,person,william-s-brightman,{},2026-07-13 18:22:45 -0400,2026-07-13 18:22:45 -0400
 1532,"Brightman & Co., tailors",business,brightman-co-tailors,{},2026-07-13 18:22:45 -0400,2026-07-13 18:22:45 -0400
 1533,Mary Brightman,person,mary-brightman,{},2026-07-13 18:22:45 -0400,2026-07-13 18:22:45 -0400
@@ -1578,7 +1579,6 @@ id,name,subject_type,slug,data,created_at,updated_at
 1658,Florence L. Phoebus,person,florence-l-phoebus,"{""qualifiers"":[""nee Lutz""]}",2026-07-15 01:30:01 -0400,2026-07-22 17:54:24 -0400
 1659,Omar Ellwood Phoebus,person,omar-ellwood-phoebus,{},2026-07-15 01:30:01 -0400,2026-07-15 01:30:01 -0400
 1660,Henry C. Blackwell,person,henry-c-blackwell,{},2026-07-15 01:30:01 -0400,2026-07-15 01:30:01 -0400
-1661,Human Being Productions,business,human-being-productions,{},2026-07-15 01:30:01 -0400,2026-07-15 01:30:01 -0400
 1662,Billy Sunday,person,billy-sunday,{},2026-07-15 01:37:54 -0400,2026-07-15 01:37:54 -0400
 1663,Billy Sunday Tabernacle,place,billy-sunday-tabernacle,"{""qualifiers"":[""York Rd & 29th""]}",2026-07-15 01:37:54 -0400,2026-07-22 17:54:24 -0400
 1664,Old Waverly School,place,old-waverly-school,{},2026-07-15 01:37:54 -0400,2026-07-15 01:37:54 -0400
@@ -3016,7 +3016,6 @@ id,name,subject_type,slug,data,created_at,updated_at
 3161,Garrison Holding Corporation,business,garrison-holding-corporation,{},2026-08-05 14:51:17 -0400,2026-08-05 22:32:48 -0400
 3162,Landbank Equity Corporation,business,landbank-equity-corporation,{},2026-08-05 14:51:17 -0400,2026-08-05 15:42:36 -0400
 3163,Vertex TL LLC,business,vertex-tl-llc,{},2026-08-05 14:51:17 -0400,2026-08-05 15:42:36 -0400
-3164,2631 Greenmount Avenue LLC,business,2631-greenmount-avenue-llc,{},2026-08-05 14:51:17 -0400,2026-08-05 15:42:36 -0400
 3165,Robert H. Blatchley (fire captain),person,robert-h-blatchley-fire-captain,{},2026-08-05 14:51:17 -0400,2026-08-05 15:42:36 -0400
 3166,James Norman Blatchley,person,james-norman-blatchley,{},2026-08-05 14:51:17 -0400,2026-08-05 15:42:36 -0400
 3167,William J. Haupt Jr.,person,william-j-haupt-jr,{},2026-08-05 14:51:17 -0400,2026-08-05 15:42:36 -0400
