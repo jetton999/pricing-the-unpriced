@@ -58,6 +58,115 @@ def source_kind(source):
 # ---------------------------------------------------------------------------
 # Loading
 # ---------------------------------------------------------------------------
+def load_focus_area():
+    """The proposed first focus area, or None if map/focus_area.geojson is missing.
+
+    The outline is a working approximation traced from proposed-focus-area-phase1.png by
+    team/week1/focus_area.py. Replace the file when the sponsor supplies an authoritative one.
+    """
+    try:
+        with open(os.path.join(HERE, "focus_area.geojson"), encoding="utf-8") as fh:
+            return json.load(fh)
+    except (OSError, ValueError):
+        return None
+
+
+# ---------------------------------------------------------------------------
+# Use history (team layer). Machine-coded by team/extractor/extract.py from the
+# sponsor's curated records plus Polk directories, permit cards, Sanborn sheets,
+# the National Register inventory, the 1970s DHCD scans and a 2026 tenant check.
+# Optional: when team/extractor/out/ is missing the map works as before.
+# ---------------------------------------------------------------------------
+USE_DIR = os.path.join("team", "extractor", "out")
+USE_FILES = ("timeline_table.csv", "proven_uses.csv", "evidence.csv", "silence_map.csv")
+USE_NONCOMMERCIAL = ("residential", "vacant")
+# A permit for "one store" or a Sanborn "S" says the building had a shop front, not what it sold.
+STOREFRONT = "storefront (use not stated)"
+
+
+def map_use(span):
+    if span["use_category"] == "retail goods" and span["subcategories"] == "store building (generic)":
+        return STOREFRONT
+    return span["use_category"]
+
+
+def use_rank(cat):
+    return 2 if cat in USE_NONCOMMERCIAL else 1 if cat == STOREFRONT else 0
+
+
+def decade_uses(spans):
+    """{decade: [uses]} from the spans, best first: a stated commercial use, then a storefront
+    whose use is not stated, then residential or vacant; ties by record count. A decade with no
+    span is absent: no record, which is not the same as vacant."""
+    out = {}
+    for d in range(1870, 2030, 10):
+        score = collections.Counter()
+        for sp in spans:
+            if sp["start_year"] <= d + 9 and sp["end_year"] >= d:
+                score[map_use(sp)] += sp["n_records"]
+        if score:
+            out[str(d)] = sorted(score, key=lambda c: (use_rank(c), -score[c], c))
+    return out
+
+
+def most_decades(decades):
+    """The use shown first in the most decades (ties: the better-ranked use)."""
+    firsts = collections.Counter(v[0] for v in decades.values())
+    return min(firsts, key=lambda c: (-firsts[c], use_rank(c), c)) if firsts else ""
+
+
+def load_use_history(notes):
+    """{property_id: {...}} or {} when the extractor outputs are not there."""
+    missing = [f for f in USE_FILES if not os.path.exists(os.path.join(ROOT, USE_DIR, f))]
+    if missing:
+        notes.append("%s/ is missing %s; the use-history layer is empty "
+                     "(run python3 team/extractor/extract.py)." % (USE_DIR, ", ".join(missing)))
+        return {}
+    by = collections.defaultdict(lambda: {"spans": [], "proven": [], "evidence": [], "silence": None})
+    for i, e in enumerate(rows(os.path.join(USE_DIR, "evidence.csv"))):
+        e = dict(e, idx=i, year=num(e["year"]), decade=num(e["decade"]))
+        e["sensitive"] = e["text"].startswith("[sensitivity")
+        by[e["property_id"]]["evidence"].append(e)
+    for sp in rows(os.path.join(USE_DIR, "timeline_table.csv")):
+        sp = dict(sp, start_year=int(sp["start_year"]), end_year=int(sp["end_year"]),
+                  n_records=int(sp["n_records"]))
+        # the evidence rows behind this span: same property and use, inside its years
+        sp["evidence"] = [e["idx"] for e in by[sp["property_id"]]["evidence"]
+                          if e["use_category"] == sp["use_category"] and e["year"] is not None
+                          and sp["start_year"] <= e["year"] <= sp["end_year"]]
+        by[sp["property_id"]]["spans"].append(sp)
+    for pr in rows(os.path.join(USE_DIR, "proven_uses.csv")):
+        by[pr["property_id"]]["proven"].append(dict(pr, n_decades=int(pr["n_decades"])))
+    for si in rows(os.path.join(USE_DIR, "silence_map.csv")):
+        by[si["property_id"]]["silence"] = si
+    for pid, h in by.items():
+        h["spans"].sort(key=lambda sp: (sp["start_year"], sp["end_year"]))
+        h["evidence"].sort(key=lambda e: (e["year"] is None, e["year"] or 0, e["source"]))
+        h["decades"] = decade_uses(h["spans"])
+        h["dominant"] = most_decades(h["decades"])
+    out = dict(by)
+    # Records the sponsor lists as merged into a neighbouring parcel (team/evidence/blocklot_gaps.csv):
+    # the extractor files their history on the parcel that holds them today, so point there.
+    gaps = os.path.join(ROOT, "team", "evidence", "blocklot_gaps.csv")
+    if os.path.exists(gaps):
+        for g in rows(os.path.join("team", "evidence", "blocklot_gaps.csv")):
+            cur = out.get(g["current_property_id"])
+            if g["current_property_id"] and cur and g["property_id"] not in out:
+                out[g["property_id"]] = {
+                    "merged_into": g["current_property_id"], "merged_into_address": g["current_address"],
+                    "merged_on": g["merged_on"], "note": g["note"],
+                    "decades": cur["decades"], "dominant": cur["dominant"]}
+    return out
+
+
+def point_in_ring(lon, lat, ring):
+    hit = False
+    for (x1, y1), (x2, y2) in zip(ring, ring[1:]):
+        if (y1 > lat) != (y2 > lat) and lon < (x2 - x1) * (lat - y1) / (y2 - y1) + x1:
+            hit = not hit
+    return hit
+
+
 def rows(filename):
     with open(os.path.join(ROOT, filename), newline="", encoding="utf-8") as fh:
         yield from csv.DictReader(fh)
@@ -141,6 +250,13 @@ class Corpus:
         self.curated_count = collections.Counter()
         self.admin_count = collections.Counter()
         self.notes = []
+        self.use_history = load_use_history(self.notes)
+        self.focus_area = load_focus_area()
+        self.focus_rings = []
+        if self.focus_area:
+            self.focus_rings = [f["geometry"]["coordinates"][0] for f in self.focus_area["features"]]
+        else:
+            self.notes.append("map/focus_area.geojson not found; the focus-area layer is empty.")
         self.load()
 
     def load(self):
@@ -189,6 +305,9 @@ class Corpus:
         self.search_index = self.build_search_index()
 
     # ------------------------------------------------------------------
+    def in_focus(self, lon, lat):
+        return any(point_in_ring(lon, lat, ring) for ring in self.focus_rings)
+
     def build_points(self):
         features = []
         for pid, p in self.properties.items():
@@ -217,10 +336,15 @@ class Corpus:
                     "last_sale_price": num(p["last_sale_price"]),
                     "last_sale_date": p["last_sale_date"],
                     "curated_count": self.curated_count.get(pid, 0),
+                    "in_focus": self.in_focus(float(p["longitude"]), float(p["latitude"])),
                     "administrative_count": self.admin_count.get(pid, 0),
                     "registered_ip_count": len(self.ips_by_property.get(pid, [])),
                     "block_side_id": num(p["block_side_id"]),
                     "census_tract": p["census_tract"],
+                    "use_history": pid in self.use_history,
+                    "use_merged_into": self.use_history.get(pid, {}).get("merged_into_address", ""),
+                    "use_dominant": self.use_history.get(pid, {}).get("dominant", ""),
+                    "use_decades": self.use_history.get(pid, {}).get("decades", {}),
                 },
             })
         return {"type": "FeatureCollection", "features": features}
@@ -443,6 +567,7 @@ class Corpus:
             "registered_ips": ips,
             "grant_program_matches": grants,
             "baseline_snapshots": baselines,
+            "use_history": self.use_history.get(pid),
         }
 
     def lots(self, ids):
@@ -475,6 +600,12 @@ class Corpus:
             "baseline_snapshots": sum(len(v) for v in self.baselines_by_property.values()),
             "neighborhoods": len(self.neighborhoods),
             "neighborhoods_with_bounds": len(self.neighborhoods_geojson["features"]),
+            "focus_area_mapped_properties": sum(
+                1 for f in self.points_geojson["features"] if f["properties"]["in_focus"]),
+            "use_history_properties": len(self.use_history),
+            "use_history_spans": sum(len(h.get("spans", ())) for h in self.use_history.values()),
+            "use_history_evidence": sum(len(h.get("evidence", ())) for h in self.use_history.values()),
+            "use_history_merged": sum(1 for h in self.use_history.values() if "merged_into" in h),
             "layer_rule": {
                 "administrative_prefixes": list(ADMIN_PREFIXES),
                 "administrative_exact": sorted(ADMIN_EXACT),
@@ -547,6 +678,10 @@ def make_handler(corpus):
             if path == "/api/neighborhoods":
                 return self.send_json(corpus.neighborhoods_geojson)
 
+            if path == "/api/focus-area":
+                return self.send_json(corpus.focus_area
+                                      or {"type": "FeatureCollection", "features": []})
+
             if path == "/api/search":
                 return self.send_json({"results": corpus.search(query.get("q", [""])[0])})
 
@@ -574,6 +709,12 @@ def run_check(corpus):
     print("baseline_snapshots    %6d" % s["baseline_snapshots"])
     print("neighborhoods         %6d  (with parseable bounds: %d)" % (
         s["neighborhoods"], s["neighborhoods_with_bounds"]))
+    print("focus area (approx.)  %6d  mapped properties inside the outline"
+          % s["focus_area_mapped_properties"])
+    print("use history (team)    %6d  parcels, %d spans, %d evidence rows (team/extractor/out); "
+          "%d merged records point to their parcel"
+          % (s["use_history_properties"] - s["use_history_merged"], s["use_history_spans"],
+             s["use_history_evidence"], s["use_history_merged"]))
     print()
     print("Layer rule: administrative = source starts with %s or in %s; "
           "everything else curated; curated sources ending in '%s' are labelled 'roster'."

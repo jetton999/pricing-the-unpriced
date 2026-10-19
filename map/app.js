@@ -62,6 +62,39 @@
 
   function chip(text, cls) { return el("span", { class: "chip " + (cls || ""), text: text }); }
 
+  /* Use categories (team list) and their colours; same palette as the team explorer page. */
+  var USE_CATS = ["retail goods", "food & drink", "personal services", "automotive",
+    "entertainment & assembly", "institutional & religious", "office",
+    "production & light industry", "residential", "vacant"];
+  var USE_COLORS = {
+    "retail goods": "#2a78d6", "food & drink": "#eb6834", "personal services": "#1baf7a",
+    "automotive": "#eda100", "entertainment & assembly": "#e87ba4",
+    "institutional & religious": "#008300", "office": "#6250d6",
+    "production & light industry": "#e34948", "residential": "#b9bdb8", "vacant": "#ffffff",
+    "storefront (use not stated)": "#ffffff"
+  };
+  var STOREFRONT = "storefront (use not stated)";
+  function gridUse(e) {   // a bare "store" names a shop front, not what it sold
+    return e.use_subcategory === "store building (generic)" ? STOREFRONT : e.use_category;
+  }
+  var USE_DECADES = [];
+  for (var dd = 1870; dd <= 2020; dd += 10) USE_DECADES.push(dd);
+  var SOURCE_LABEL = {
+    polk_directory: "Polk directory", permit_card: "permit card", sanborn: "Sanborn map",
+    nr_inventory: "NR inventory", dhcd_1970s: "1970s DHCD scan", current_2026: "2026 tenant check"
+  };
+  function sourceLabel(src) {
+    if (src.indexOf("sponsor:") === 0) return "sponsor · " + src.slice(8);
+    return SOURCE_LABEL[src] || src;
+  }
+  function swatch(cat) {
+    return el("i", { class: "sw" + (cat === "vacant" ? " vac" : cat === STOREFRONT ? " ring" : ""), style: "background:" + (USE_COLORS[cat] || "#eee") });
+  }
+  function useChip(cat, text, weak) {
+    return el("span", { class: "ucat" + (weak ? " weak" : "") }, [swatch(cat), text || cat]);
+  }
+  function yearSpan(a, b) { a = String(a); b = String(b); return a === b ? a : a + "–" + b; }
+
   /* ---------------------------------------------------------------- map */
   var map = L.map("map", { preferCanvas: true }).setView([39.318, -76.609], 15);
   L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
@@ -83,19 +116,103 @@
     style: { color: "#2e7d32", weight: 2, dashArray: "6 4", fillOpacity: 0.03 },
     onEachFeature: function (f, layer) { layer.bindTooltip(f.properties.name); }
   });
+  // Proposed first focus area: a working outline, drawn under the markers and not clickable.
+  var focusLayer = L.geoJSON(null, {
+    style: { color: "#b03fd6", weight: 3, fillOpacity: 0.04 },
+    interactive: false
+  }).addTo(map);
+  var focusOnly = false;
   var lotsLoaded = {};
   var selectedId = null;
+  var baseStats = "";
+
+  var useMode = false;          // colour markers by recorded use instead of curated depth
+  var useDecade = "dominant";   // "dominant" or a decade such as "1910"
+
+  /* null = outside the frontage the extractor covers; "" = no record in that decade */
+  function useOf(p) {
+    if (!p.use_history) return null;
+    if (useDecade === "dominant") return p.use_dominant || "";
+    var list = p.use_decades[useDecade];
+    return list && list.length ? list[0] : "";
+  }
 
   function markerStyle(f, selected) {
+    if (useMode) return useMarkerStyle(f, selected);
     var t = tier(f.properties.curated_count);
+    var dim = focusOnly && !f.properties.in_focus && !selected;
     return {
       radius: selected ? 9 : (t === 0 ? 4 : 5 + t),
       fillColor: TIER_COLORS[t],
       color: selected ? "#111" : "#3a3631",
       weight: selected ? 2.5 : 0.8,
-      fillOpacity: 0.9,
-      opacity: 1
+      fillOpacity: dim ? 0.12 : 0.9,
+      opacity: dim ? 0.2 : 1,
+      dashArray: null
     };
+  }
+
+  function useMarkerStyle(f, selected) {
+    var u = useOf(f.properties);
+    if (u === null) {
+      return { radius: selected ? 8 : 3, fillColor: "#c8c3b8", color: selected ? "#111" : "#c8c3b8",
+               weight: selected ? 2.5 : 0.5, fillOpacity: 0.3, opacity: 0.4, dashArray: null };
+    }
+    if (u === "") {   // silence in the sources is not vacancy: hollow, dashed
+      return { radius: selected ? 9 : 5, fillColor: "#ffffff", color: selected ? "#111" : "#6f6a62",
+               weight: selected ? 2.5 : 1.2, fillOpacity: 0.6, opacity: 0.9, dashArray: "2 2" };
+    }
+    if (u === STOREFRONT) {
+      return { radius: selected ? 10 : 6, fillColor: "#ffffff", color: selected ? "#111" : USE_COLORS["retail goods"],
+               weight: selected ? 2.5 : 2.2, fillOpacity: 0.9, opacity: 1, dashArray: null };
+    }
+    return { radius: selected ? 10 : 7, fillColor: USE_COLORS[u],
+             color: selected ? "#111" : (u === "vacant" ? "#3a3631" : "#ffffff"),
+             weight: selected ? 2.5 : (u === "vacant" ? 1.6 : 1), fillOpacity: 0.95, opacity: 1, dashArray: null };
+  }
+
+  function tooltipText(f) {
+    var p = f.properties;
+    var base = p.address + " · " + p.curated_count + " curated";
+    if (!useMode) return base;
+    if (!p.use_history) return p.address + " · outside the frontage the extractor covers";
+    var part = p.use_merged_into ? " (part of " + p.use_merged_into.split(",")[0] + ")" : "";
+    if (useDecade === "dominant") return p.address + part + " · use in the most decades: " + (p.use_dominant || "none coded");
+    var list = p.use_decades[useDecade];
+    return p.address + part + " · " + useDecade + "s: " + (list && list.length ? list.join(", ") : "no record (not the same as vacant)");
+  }
+
+  function restyleMarkers() {
+    if (!pointsLayer) return;
+    pointsLayer.eachLayer(function (m) {
+      m.setStyle(markerStyle(m.feature, m.feature.properties.id === selectedId));
+      var u = useMode ? useOf(m.feature.properties) : null;
+      if (useMode ? u : tier(m.feature.properties.curated_count) > 0) m.bringToFront();
+    });
+    if (selectedId != null && markerById[selectedId]) markerById[selectedId].bringToFront();
+  }
+
+  function paintStats() {
+    var text = baseStats;
+    if (useMode && pointsLayer) {
+      var nUse = 0, nFront = 0;
+      pointsLayer.eachLayer(function (m) {
+        var u = useOf(m.feature.properties);
+        if (u !== null && !m.feature.properties.use_merged_into) { nFront++; if (u) nUse++; }
+      });
+      document.getElementById("stats").textContent = nFront + " mapped frontage parcels · " + nUse + " with a recorded use " +
+        (useDecade === "dominant" ? "(the use found in the most decades)" : "in the " + useDecade + "s");
+      return;
+    }
+    if (focusOnly && pointsLayer) {
+      var n = 0, withHistory = 0;
+      pointsLayer.eachLayer(function (m) {
+        var p = m.feature.properties;
+        if (p.in_focus) { n++; if (p.curated_count > 0) withHistory++; }
+      });
+      text = n + " mapped in the focus area · " + withHistory + " with curated history";
+    }
+    document.getElementById("stats").textContent = text;
   }
 
   fetch("/api/properties").then(function (r) { return r.json(); }).then(function (gj) {
@@ -107,7 +224,7 @@
         return m;
       },
       onEachFeature: function (f, layer) {
-        layer.bindTooltip(f.properties.address + " · " + f.properties.curated_count + " curated");
+        layer.bindTooltip(function () { return tooltipText(f); });
         layer.on("click", function () { selectProperty(f.properties.id); });
       }
     }).addTo(map);
@@ -116,9 +233,9 @@
 
     var tiers = [0, 0, 0, 0];
     gj.features.forEach(function (f) { tiers[tier(f.properties.curated_count)]++; });
-    document.getElementById("stats").textContent =
-      gj.features.length + " mapped properties · " +
+    baseStats = gj.features.length + " mapped properties · " +
       (tiers[1] + tiers[2] + tiers[3]) + " mapped with curated history";
+    paintStats();
   }).catch(function (e) {
     document.getElementById("stats").textContent = "failed to load /api/properties: " + e;
   });
@@ -128,6 +245,22 @@
   });
 
   /* ------------------------------------------------------ layer toggles */
+  fetch("/api/focus-area").then(function (r) { return r.json(); }).then(function (gj) {
+    if (gj.features.length) { focusLayer.addData(gj); focusLayer.bringToBack(); return; }
+    ["toggle-focus", "toggle-focus-only"].forEach(function (id) {
+      document.getElementById(id).disabled = true;
+    });
+  });
+  document.getElementById("toggle-focus").addEventListener("change", function (e) {
+    if (e.target.checked) { focusLayer.addTo(map); focusLayer.bringToBack(); }
+    else map.removeLayer(focusLayer);
+  });
+  document.getElementById("toggle-focus-only").addEventListener("change", function (e) {
+    focusOnly = e.target.checked;
+    restyleMarkers();
+    if (focusOnly && focusLayer.getLayers().length) map.fitBounds(focusLayer.getBounds().pad(0.08));
+    paintStats();
+  });
   document.getElementById("toggle-lots").addEventListener("change", function (e) {
     if (e.target.checked) { lotsLayer.addTo(map); loadVisibleLots(); }
     else map.removeLayer(lotsLayer);
@@ -165,6 +298,50 @@
       hoodsLayer.addData(gj);
     });
   });
+
+  /* Colour by use: the team extractor's spans, one decade at a time. */
+  var useToggle = document.getElementById("toggle-use");
+  var useSelect = document.getElementById("use-decade");
+  var usePrev = document.getElementById("use-prev");
+  var useNext = document.getElementById("use-next");
+  useSelect.appendChild(el("option", { value: "dominant", text: "most decades" }));
+  USE_DECADES.forEach(function (d) { useSelect.appendChild(el("option", { value: String(d), text: d + "s" })); });
+  buildUseLegend();
+  function setUseControls() {
+    [useSelect, usePrev, useNext].forEach(function (n) { n.disabled = !useMode; });
+    document.getElementById("legend-tier").hidden = useMode;
+    document.getElementById("legend-use").hidden = !useMode;
+    restyleMarkers();
+    paintStats();
+  }
+  function stepDecade(k) {
+    var i = useSelect.selectedIndex + k;
+    if (i < 0 || i >= useSelect.options.length) return;
+    useSelect.selectedIndex = i;
+    useDecade = useSelect.value;
+    setUseControls();
+  }
+  useToggle.addEventListener("change", function (e) { useMode = e.target.checked; setUseControls(); });
+  useSelect.addEventListener("change", function () { useDecade = useSelect.value; setUseControls(); });
+  usePrev.addEventListener("click", function () { stepDecade(-1); });
+  useNext.addEventListener("click", function () { stepDecade(1); });
+  fetch("/api/summary").then(function (r) { return r.json(); }).then(function (s) {
+    if (!s.use_history_properties) {
+      useToggle.disabled = true;
+      useToggle.parentNode.appendChild(el("span", { class: "muted", text: " (run team/extractor)" }));
+    }
+  });
+
+  function buildUseLegend() {
+    var box = document.getElementById("legend-use");
+    box.appendChild(el("div", { class: "legend-title", text: "Recorded use" }));
+    USE_CATS.forEach(function (c) {
+      box.appendChild(el("div", {}, [el("i", { class: c === "vacant" ? "vac" : "", style: "background:" + USE_COLORS[c] }), " " + c]));
+      if (c === "retail goods") box.appendChild(el("div", {}, [el("i", { class: "ring" }), " storefront, use not stated"]));
+    });
+    box.appendChild(el("div", {}, [el("i", { class: "hollow" }), " no record that decade"]));
+    box.appendChild(el("div", { class: "muted" }, [el("i", { style: "background:#c8c3b8;opacity:.4" }), " outside the frontage"]));
+  }
 
   /* ----------------------------------------------------------- search */
   var qInput = document.getElementById("q");
@@ -326,6 +503,20 @@
     bodyEl.appendChild(el("p", {}, [allFieldsBtn]));
     bodyEl.appendChild(allFields);
 
+    // Use history (team extractor; frontage only)
+    if (d.use_history && d.use_history.merged_into) {
+      var mh = d.use_history;
+      section("Use history (team extractor)", null, el("p", { class: "small" }, [
+        "This address is now part of the parcel at ",
+        el("a", { href: "#", text: mh.merged_into_address, onclick: function (e) { e.preventDefault(); goTo(Number(mh.merged_into)); } }),
+        " (sponsor's blocklot_gaps.csv" + (mh.merged_on ? ", merged " + mh.merged_on : "") + (mh.note ? ": " + mh.note : "") +
+        "). Its use history is shown there."
+      ])).forEach(function (n) { bodyEl.appendChild(n); });
+    } else if (d.use_history) {
+      section("Use history (team extractor)", d.use_history.spans.length + " spans · " + d.use_history.evidence.length + " records",
+        renderUseHistory(d.use_history)).forEach(function (n) { bodyEl.appendChild(n); });
+    }
+
     // History timeline (curated, oldest first)
     var cur = d.incidents.curated;
     var hist = section("History (curated)", cur.length + (d.counts.roster ? " · " + d.counts.roster + " roster" : ""),
@@ -448,6 +639,177 @@
     section("Baseline snapshots", bl.length, bWrap).forEach(function (n) { bodyEl.appendChild(n); });
   }
 
+  function evidenceItem(e) {
+    var text = e.text || "(no text)";
+    var body;
+    if (e.sensitive) {
+      body = summaryNode({ summary: text, sensitivity: "flagged in the source record" }, "summary");
+    } else {
+      body = el("div", { class: "summary", text: (e.business ? e.business + " — " : "") + text });
+    }
+    var meta = el("div", { class: "meta" }, [
+      chip(sourceLabel(e.source)),
+      e.use_category ? useChip(e.use_category, e.use_subcategory ? e.use_category + " · " + e.use_subcategory : e.use_category)
+                     : chip("not coded to a use"),
+      e.basis === "inferred" ? chip("address inferred: " + e.address_method, "ev-inferred") : null
+    ]);
+    var ref = el("div", { class: "src-ref" });
+    var inc = /^incident (\d+)$/.exec(e.source_ref || "");
+    if (inc) {   // a sponsor record: jump to it in the curated history below
+      ref.appendChild(el("a", { href: "#", text: e.source_ref, title: "show this record in History (curated)", onclick: function (ev) {
+        ev.preventDefault();
+        var target = document.getElementById("inc-" + inc[1]);
+        if (!target) return;
+        target.scrollIntoView({ behavior: "smooth", block: "center" });
+        target.classList.remove("flash"); void target.offsetWidth; target.classList.add("flash");
+      } }));
+    } else {
+      ref.appendChild(document.createTextNode(e.source_ref));
+    }
+    if (e.url) {
+      ref.appendChild(document.createTextNode(" · "));
+      ref.appendChild(el("a", { href: e.url, target: "_blank", rel: "noopener", text: "open source" }));
+    }
+    return el("li", {}, [el("span", { class: "when", text: e.year != null ? String(e.year) : "undated" }), meta, body, ref]);
+  }
+
+  function evidenceList(items, limit) {
+    var wrap = el("div");
+    var ul = el("ul", { class: "evlist" });
+    wrap.appendChild(ul);
+    var shown = 0;
+    var more = el("button", { class: "btn" });
+    function show(n) {
+      items.slice(shown, shown + n).forEach(function (e) { ul.appendChild(evidenceItem(e)); });
+      shown = Math.min(items.length, shown + n);
+      more.textContent = "show all (" + (items.length - shown) + " more)";
+      more.hidden = shown >= items.length;
+    }
+    more.addEventListener("click", function () { show(items.length); });
+    show(limit || items.length);
+    wrap.appendChild(el("p", {}, [more]));
+    return wrap;
+  }
+
+  function toggleBlock(label, build) {
+    var btn = el("button", { class: "btn small", text: label });
+    var box = el("div", { hidden: "" });
+    var built = false;
+    btn.addEventListener("click", function () {
+      if (!built) { box.appendChild(build()); built = true; }
+      box.hidden = !box.hidden;
+      btn.classList.toggle("on", !box.hidden);
+    });
+    return [btn, box];
+  }
+
+  function renderUseHistory(h) {
+    var wrap = el("div", { class: "use-history" });
+    var byIdx = {};
+    h.evidence.forEach(function (e) { byIdx[e.idx] = e; });
+
+    wrap.appendChild(el("p", { class: "muted small", text:
+      "Coded by team/extractor from the sponsor's curated records, Polk directories (1901–23), " +
+      "permit cards (1924–61), Sanborn sheets (1915, 1928, 1953), the National Register inventory, " +
+      "1970s DHCD scans and a 2026 tenant check. \u201cAddress inferred\u201d means the number came " +
+      "through the York Road renumbering or a neighbouring house number. Open the source before citing." }));
+
+    if (h.proven.length) {
+      var pv = el("div", { class: "use-proven" });
+      h.proven.forEach(function (p) {
+        pv.appendChild(useChip(p.use_category, p.use_category + " " + yearSpan(p.first_year, p.last_year) +
+          " · " + p.n_decades + (p.n_decades === 1 ? " decade" : " decades"), p.strength !== "proven"));
+      });
+      wrap.appendChild(pv);
+      wrap.appendChild(el("p", { class: "muted small", text: "Solid chips: the use appears in two or more decades. Faded: a single mention." }));
+    }
+
+    // Decade grid: one row per use, one column per decade; click a cell for its records.
+    var counts = {}, any = {};
+    h.evidence.forEach(function (e) {
+      if (e.decade == null) return;
+      any[e.decade] = (any[e.decade] || 0) + 1;
+      var g = gridUse(e);
+      if (!g) return;
+      counts[g] = counts[g] || {};
+      counts[g][e.decade] = (counts[g][e.decade] || 0) + 1;
+    });
+    var cats = USE_CATS.slice(0, 1).concat([STOREFRONT], USE_CATS.slice(1)).filter(function (c) { return counts[c]; });
+    var cellBox = el("div", { class: "cell-detail" });
+    var tbl = el("table", { class: "decgrid" });
+    var head = el("tr", {}, [el("th")]);
+    USE_DECADES.forEach(function (d) {
+      head.appendChild(el("th", { class: "dh", title: d + "s", text: String(d).slice(2) }));
+    });
+    tbl.appendChild(head);
+    var activeCell = null;
+    function addRow(label, cat, data) {
+      var tr = el("tr", {}, [el("th", { text: label === STOREFRONT ? "storefront (use?)" : label, title: label })]);
+      USE_DECADES.forEach(function (d) {
+        var n = data[d] || 0;
+        var attrs = { title: d + "s · " + label + " · " + n + (n === 1 ? " record" : " records") };
+        var td = el("td", attrs);
+        if (n) {
+          td.className = "on" + (cat === "vacant" ? " vac" : cat === STOREFRONT ? " ring" : "");
+          td.style.background = cat ? USE_COLORS[cat] : "#8a8378";
+          td.style.opacity = n >= 3 ? 1 : n === 2 ? 0.7 : 0.45;
+          td.addEventListener("click", function () {
+            if (activeCell) activeCell.classList.remove("picked");
+            activeCell = td; td.classList.add("picked");
+            var rowsHere = h.evidence.filter(function (e) {
+              return e.decade === d && (cat ? gridUse(e) === cat : true);
+            });
+            cellBox.innerHTML = "";
+            cellBox.appendChild(el("div", { class: "cell-title" }, [
+              cat ? swatch(cat) : null, d + "s · " + label + " · " + rowsHere.length + (rowsHere.length === 1 ? " record" : " records")]));
+            cellBox.appendChild(evidenceList(rowsHere, 12));
+          });
+        }
+        tr.appendChild(td);
+      });
+      tbl.appendChild(tr);
+    }
+    cats.forEach(function (c) { addRow(c, c, counts[c]); });
+    addRow("any record", "", any);
+    wrap.appendChild(tbl);
+    wrap.appendChild(el("p", { class: "muted small", text: "Darker = more records in that decade. A blank decade means no source " +
+      "has been read for it yet, not that the building stood empty. Click a cell for its records." }));
+    wrap.appendChild(cellBox);
+
+    if (h.silence) {
+      var si = h.silence;
+      wrap.appendChild(el("p", { class: "small" }, [
+        el("b", { text: "Coverage: " + si.status }), " · " + si.decades_all_sources + " decades with a coded use (sponsor records alone: " +
+        si.decades_sponsor_only + ")" + (si.gap_decades ? " · gaps: " + si.gap_decades.split(" ").map(function (g) { return g + "s"; }).join(", ") : "")
+      ]));
+      if (si.what_would_fill_it) wrap.appendChild(el("p", { class: "muted small", text: "To fill the gaps: " + si.what_would_fill_it }));
+    }
+
+    // Spans, oldest first
+    var ul = el("ul", { class: "spans" });
+    h.spans.forEach(function (sp) {
+      var li = el("li", { style: "border-left-color:" + (sp.use_category === "vacant" ? "#3a3631" : (USE_COLORS[sp.use_category] || "#ccc")) }, [
+        el("span", { class: "when", text: yearSpan(sp.start_year, sp.end_year) }),
+        " ", useChip(sp.use_category, sp.use_category + (sp.subcategories ? " · " + sp.subcategories : "")),
+        sp.occupant ? el("div", { class: "occ", text: sp.occupant }) : null,
+        el("div", { class: "meta muted small", text: [sp.evidence_grade, sp.n_records + (sp.n_records === "1" || sp.n_records === 1 ? " record" : " records"),
+          sp.sources, sp.stated_or_inferred === "inferred" ? "address inferred" : "address as written"].join(" · ") })
+      ]);
+      var ev = (sp.evidence || []).map(function (i) { return byIdx[i]; }).filter(Boolean);
+      if (ev.length) toggleBlock("sources (" + ev.length + ")", function () { return evidenceList(ev); }).forEach(function (n) { li.appendChild(n); });
+      ul.appendChild(li);
+    });
+    wrap.appendChild(el("h4", { text: "Spans of use" }));
+    wrap.appendChild(ul);
+
+    var uncoded = h.evidence.filter(function (e) { return !e.use_category; });
+    if (uncoded.length) {
+      wrap.appendChild(el("h4", { text: "Other records here (" + uncoded.length + ", not coded to a use)" }));
+      toggleBlock("show", function () { return evidenceList(uncoded, 30); }).forEach(function (n) { wrap.appendChild(n); });
+    }
+    return wrap;
+  }
+
   function goTo(pid) {
     var m = markerById[pid];
     if (m) map.flyTo(m.getLatLng(), Math.max(map.getZoom(), 17), { duration: 0.6 });
@@ -488,7 +850,7 @@
         chip(inc.evidence_status ? inc.evidence_status : "ungraded", "ev-" + (inc.evidence_status || "ungraded")),
         chip("precision: " + p)
       ].concat(flags(inc)));
-      var li = el("li", { class: "p-" + p }, [
+      var li = el("li", { class: "p-" + p, id: "inc-" + inc.id }, [
         el("span", { class: "when" + (dl.approx ? " approx" : ""), text: dl.text }),
         meta,
         summaryNode(inc, "summary")

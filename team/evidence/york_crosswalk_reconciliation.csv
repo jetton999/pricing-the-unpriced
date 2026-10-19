@@ -1,0 +1,24 @@
+old_york_rd,report_modern,report_kind,report_status,report_records,report_offset_predicts,this_crosswalk,method,evidence,verdict
+1001-1011,3001-3029,range,range,10288,,3001-3029,anchor,50 weighted Polk name match(es),agrees
+1023,3107,stated,agreed,4962,3111,3111,anchor,Sanborn 1928 sheet 735 prints 1023 beside 3111,differs: Sanborn 1928 sheet 735 prints 1023 beside 3111; the report's record needs a check against the sheet
+1027,3127,stated,conflict,10385,3115,3117,anchor,Sanborn 1928 sheet 735 prints 1027 beside 3117-3119,differs: Sanborn 1928 sheet 735 prints 1027 beside 3117-3119; the report's record needs a check against the sheet
+1027,3117,implied,conflict,11803,3115,3117,anchor,Sanborn 1928 sheet 735 prints 1027 beside 3117-3119,agrees
+1030,3118,stated,agreed,10367;10376,3118,3118,anchor,6 weighted Polk name match(es),agrees
+1032,3120,stated,agreed,10368,3120,3120,anchor,Sanborn 1915 sheet 717 prints 1032 beside 3120,agrees
+1034,3122,stated,agreed,10369,3122,3122,anchor,Sanborn 1915 sheet 717 prints 1034 beside 3122,agrees
+1038,3126,stated,agreed,10384;10376,3126,3126,anchor,Sanborn 1915 sheet 717 prints 1038 beside 3126,agrees
+1040,3128,stated,agreed,10386;10376,3128,3128,anchor,Sanborn 1915 sheet 717 prints 1040 beside 3128,agrees
+1042,3130,stated,agreed,10387,3130,3130,anchor,Sanborn 1915 sheet 717 prints 1042 beside 3130,agrees
+1045-1047,3137-3139,stated,agreed,10445,3133,3137-3139,anchor,Sanborn 1915 sheet 718 prints 1045 beside 3137,agrees
+1102,3200,stated,agreed,10424;10449;18127,3202,3200,anchor,Sanborn 1915 sheet 717 prints 1102 beside 3200,agrees
+1104,3204,stated,agreed,10446,3204,3204,anchor,Sanborn 1915 sheet 717 prints 1104 beside 3204,agrees
+1111,3217,stated,conflict,10455,3219,3217,anchor,Sanborn 1915 sheet 718 prints 1111 beside 3217,agrees
+1113,3217,stated,conflict,17760,3221,3219,anchor,Sanborn 1915 sheet 718 prints 1113 beside 3219,differs: Sanborn 1915 sheet 718 prints 1113 beside 3219; the report's record needs a check against the sheet
+1112,3220,stated,conflict,10457,3212,3220,anchor,Sanborn 1915 sheet 717 prints 1112 beside 3220,agrees
+1112,3224,implied,conflict,5212;5215,3212,3220,anchor,Sanborn 1915 sheet 717 prints 1112 beside 3220,differs: Sanborn 1915 sheet 717 prints 1112 beside 3220; the report's record needs a check against the sheet
+1114,3222,stated,agreed,10459,3214,3222,anchor,Sanborn 1915 sheet 717 prints 1114 beside 3222,agrees
+1115,3223,stated,agreed,10460,3223,3223,anchor,Sanborn 1915 sheet 718 prints 1115 beside 3223,agrees
+1116,3224,stated,conflict,10467,3216,3224,anchor,Sanborn 1915 sheet 717 prints 1116 beside 3224,agrees
+1129,3313,stated,agreed,10542;10569,3314,,,,outside this crosswalk (old 900-1150 only)
+1167,3353,stated,agreed,10819,3352,,,,outside this crosswalk (old 900-1150 only)
+1175,3401,stated,agreed,10819,3401,,,,outside this crosswalk (old 900-1150 only)

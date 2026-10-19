@@ -1,0 +1,21 @@
+property_id,address,what_happened,current_property_id,current_address,blocklot,division,section,block,lot,merged_on,note
+2283,2902 Greenmount Ave,merged into a neighbouring parcel,693,2900 Greenmount Ave,0312173855 002,12,17,3855,002,2026-09-25,2900 to 2906 are one parcel
+2317,2905 Greenmount Ave,merged into a neighbouring parcel,695,2903 Greenmount Ave,0309044072A002,09,04,4072A,002,2026-09-25,2903 to 2905 are one parcel
+2285,2909 Greenmount Ave,merged into a neighbouring parcel,696,2907 Greenmount Ave,0309044072A002A,09,04,4072A,002A,2026-09-25,
+2286,2917 Greenmount Ave,"historic address, no parcel today",,,,,,,,,East side of the 2900 block. In city directories 1914 to 1923; the building is gone. No City parcel exists at this address. Corridor's MDLandRec search found no ownership deed.
+2287,2929 Greenmount Ave,"historic address, no parcel today",,,,,,,,,East side of the 2900 block. In city directories 1914 to 1923; the building is gone. No City parcel exists at this address. Corridor's MDLandRec search found no ownership deed.
+2288,2931 Greenmount Ave,"historic address, no parcel today",,,,,,,,,East side of the 2900 block. In city directories 1914 to 1923; the building is gone. No City parcel exists at this address. Corridor's MDLandRec search found no ownership deed.
+2289,2933 Greenmount Ave,"historic address, no parcel today",,,,,,,,,East side of the 2900 block. In city directories 1914 to 1923; the building is gone. No City parcel exists at this address. Corridor's MDLandRec search found no ownership deed.
+2284,2940 Greenmount Ave,merged into a neighbouring parcel,705,2938 Greenmount Ave,0312173855 007,12,17,3855,007,2026-09-25,
+2290,2941 Greenmount Ave,"historic address, no parcel today",,,,,,,,,East side of the 2900 block. In city directories 1914 to 1923; the building is gone. No City parcel exists at this address. Corridor's MDLandRec search found no ownership deed.
+2291,2943 Greenmount Ave,"historic address, no parcel today",,,,,,,,,East side of the 2900 block. In city directories 1914 to 1923; the building is gone. No City parcel exists at this address. Corridor's MDLandRec search found no ownership deed.
+2292,2945 Greenmount Ave,"historic address, no parcel today",,,,,,,,,East side of the 2900 block. In city directories 1914 to 1923; the building is gone. No City parcel exists at this address. Corridor's MDLandRec search found no ownership deed.
+2293,2947 Greenmount Ave,"historic address, no parcel today",,,,,,,,,East side of the 2900 block. In city directories 1914 to 1923; the building is gone. No City parcel exists at this address. Corridor's MDLandRec search found no ownership deed.
+2316,3008 Greenmount Ave,merged into a neighbouring parcel,715,3000 Greenmount Ave,0312203856 001,12,20,3856,001,2026-09-25,3000 to 3008 are one parcel
+2313,3013 Greenmount Ave,merged into a neighbouring parcel,720,3011 Greenmount Ave,0309034076A001,09,03,4076A,001,2026-09-25,3011 to 3013 are one parcel
+2295,3030 Greenmount Ave,merged into a neighbouring parcel,726,3028 Greenmount Ave,0312203856 005,12,20,3856,005,2026-09-30,3028 to 3032 are one parcel
+2296,3032 Greenmount Ave,merged into a neighbouring parcel,726,3028 Greenmount Ave,0312203856 005,12,20,3856,005,2026-09-25,3028 to 3032 are one parcel
+2312,3103 Greenmount Ave,merged into a neighbouring parcel,728,3031 Greenmount Ave,0309034076A008,09,03,4076A,008,2026-09-25,Not verified: 3103 and 3031 may have been swapped. Check the block and lot in SDAT
+2315,3110 Greenmount Ave,merged into a neighbouring parcel,736,3106 Greenmount Ave,0312203881 013,12,20,3881,013,2026-09-25,3106 to 3110 are one parcel
+2314,3124 Greenmount Ave,merged into a neighbouring parcel,745,3122 Greenmount Ave,0312203881 020,12,20,3881,020,2026-09-25,3122 to 3124 are one parcel
+2311,3206 Greenmount Ave,merged into a neighbouring parcel,755,3204 Greenmount Ave,0312203882 002,12,20,3882,002,2026-09-25,3204 to 3206 are one parcel

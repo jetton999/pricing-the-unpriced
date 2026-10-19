@@ -1,0 +1,31 @@
+old_york_number,new_greenmount_number,kind,n,evidence
+900,3014,polk name match,2,"1908 ""O'Neil Michl, ^"" -> 1914 ""O'Neill Miehl F."" | 1908 ""O'Neil Michl, ^"" -> 1915 ""O'Neill Michl F,"""
+920,3014,polk name match,10,"1908 ""O'Neill Michl F, dairy,"" -> 1914 ""O'Neill Miehl F."" | 1908 ""O'Neill Michl F, dairy,"" -> 1915 ""O'Neill Michl F,"" | 1908 ""O'Neill Michl F,"" -> 1914 ""O'Neill Miehl F."" | 1908 ""O'Neill Michl F,"" -> 1915 ""O'Neill Michl F,"""
+1001,3001,polk name match,25,"1908 ""Sinclair Jas M, tinner,"" -> 1914 ""Sinclair Jas M,"" | 1908 ""Sinclair Jas M, tinner,"" -> 1914 ""Sinclair Jas M,"" | 1908 ""Sinclair Jas M, tinner,"" -> 1915 ""Sinclaire Jas M,"" | 1908 ""Sinclair Jas M, tinner,"" -> 1914 ""Sinclair Jas M,"""
+1002,3034,polk name match,8,"1909 ""Schuman Geo A, saloon,"" -> 1914 ""Schuman Geo A,"" | 1909 ""Schuman Geo A, saloon,"" -> 1915 ""Schuman Geo A,"" | 1909 ""Schuman Geo A, saloon,"" -> 1914 ""Schuman Geo A,"" | 1909 ""Schuman Geo A, saloon,"" -> 1915 ""Schuman Geo A,"""
+1004,3036,polk name match,4,"1908 ""Ferguson Hattie M, confr"" -> 1917 ""Ferguson Hattie M,"" | 1908 ""Ferguson Hattie M,"" -> 1917 ""Ferguson Hattie M,"" | 1909 ""Ferguson Hattie M, confr,"" -> 1917 ""Ferguson Hattie M,"" | 1909 ""Ferguson Hattie M."" -> 1917 ""Ferguson Hattie M,"""
+1007,3017,polk name match,24,"1908 ""Rahe Lewis W, shoes,"" -> 1915 ""Rahe Louis- W. ."" | 1908 ""Rahe Lewis W, shoes,"" -> 1915 ""Rahe Louis W,"" | 1908 ""Rahe Lewis W, shoes,"" -> 1915 ""Rahe Louis- W. ."" | 1908 ""Rahe Lewis W, shoes,"" -> 1915 ""Rahe Louis W,"""
+1009,3019,polk name match,6,"1909 ""Clemens Augustus D jr,"" -> 1914 ""Clemens A D,"" | 1909 ""Clemens Augustus D jr,"" -> 1914 ""Clemens Augustus D jr."" | 1909 ""Clemens Augustus D jr,"" -> 1915 ""Clemens Augustus L) jr,"" | 1909 ""Clemens Augustus D jr,"" -> 1914 ""Clemens A D,"""
+1013,3023,polk name match,6,"1908 ""Chilcote John O, barber,"" -> 1915 ""Chilcote John O,"" | 1908 ""Chilcote John O, barber,"" -> 1915 ""Chilcote John O,"" | 1908 ""Chilcote John O,"" -> 1915 ""Chilcote John O,"" | 1908 ""Chilcote John O,"" -> 1915 ""Chilcote John O,"""
+1030,3118,polk name match,6,"1908 ""Walker Saml T, grocer,"" -> 1914 ""Walker Saml T,"" | 1908 ""Walker Saml T, grocer,"" -> 1914 ""Walker Saml T,"" | 1908 ""Walker Saml T, grocer,"" -> 1917 ""Walker Saml T."" | 1908 ""Walker SamI T,"" -> 1914 ""Walker Saml T,"""
+1036,3124,polk name match,8,"1908 ""Huff Henry C,"" -> 1914 ""Huff Henry ■ C."" | 1908 ""Huff Henry C,"" -> 1915 ""Huff Henry C."" | 1908 ""Huff Henry C,"" -> 1914 ""Huff Henry ■ C."" | 1908 ""Huff Henry C,"" -> 1915 ""Huff Henry C."""
+1037,3129,polk name match,16,"1908 ""Lee Wm J, laund,"" -> 1914 ""Lee Win ,T."" | 1908 ""Lee Wm J, laund,"" -> 1915 ""Lee Wm J."" | 1908 ""Lee Wm J, laund,"" -> 1914 ""Lee Win ,T."" | 1908 ""Lee Wm J, laund,"" -> 1915 ""Lee Wm J."""
+1038,3126,polk name match,10,"1908 ""Chant Louis C, saloon,"" -> 1914 ""Chant Louis C saloon"" | 1908 ""Chant Louis C, saloon,"" -> 1914 ""Chant Louis C saloon"" | 1908 ""Chant Louis C,"" -> 1914 ""Chant Louis C saloon"" | 1908 ""Chant Louis C,"" -> 1914 ""Chant Louis C saloon"""
+1042,3130,polk name match,4,"1912 ""Lange Edwd jr,"" -> 1914 ""Lange Edwd jr."" | 1912 ""Lange Edwd jr,"" -> 1914 ""Lange Edwd.."" | 1912 ""Lange Edwd jr,"" -> 1914 ""Lange Edwd jr."" | 1912 ""Lange Edwd jr,"" -> 1914 ""Lange Edwd.."""
+1043,3135,polk name match,4,"1908 ""Eisinger Leonard P,"" -> 1915 ""Eisinger Leonard P,"" | 1908 ""Eisinger Leonard P,"" -> 1915 ""Eisinger Leonard P,"" | 1909 ""Eisinger Leonard P,"" -> 1915 ""Eisinger Leonard P,"" | 1909 ""Eisinger Leonard P,"" -> 1915 ""Eisinger Leonard P,"""
+1044,3134,polk name match,2,"1912 ""Piazza Salvatore."" -> 1914 ""Piazza Saml,"" | 1912 ""Piazza Salvatore."" -> 1914 ""Piazza Saml,"""
+1045,3005,polk name match,3,"1912 ""Belz John H. uphlstr."" -> 1915 ""Belz .John H. ."" | 1913 ""Belz John H. uphlstr."" -> 1915 ""Belz .John H. ."" | 1913 ""Belz John H,"" -> 1915 ""Belz .John H. ."""
+1047,3139,polk name match,6,"1912 ""Fink & Holmes."" -> 1914 ""Fink & Holmes,"" | 1912 ""Fink & Holmes."" -> 1915 ""Fink & Holmes."" | 1912 ""Fink & Holmes."" -> 1915 ""Fink & Holmes,"" | 1913 ""Fink & Holmes,"" -> 1914 ""Fink & Holmes,"""
+1047,3203,polk name match,10,"1908 ""Deal Agnes C, confr."" -> 1914 ""Deal Agnes C confr"" | 1908 ""Deal Agnes C, confr."" -> 1915 ""Deal Agnes C confr"" | 1908 ""Deal Agnes C, confr."" -> 1914 ""Deal Agnes C confr [h do]"" | 1908 ""Deal Agnes C, confr."" -> 1915 ""Deal Agnes C confr [h do]"""
+1049,3201,polk name match,2,"1913 ""Keves Wm F,"" -> 1914 ""Keves Wm F,"" | 1913 ""Keves Wm F,"" -> 1914 ""Keves Wm F,"""
+1102,3200,polk name match,1,"1912 ""Samstag Fredk H,"" -> 1917 ""Samstag Fredk H."""
+1102,3202,polk name match,6,"1912 ""Samstag Fredk H,"" -> 1914 ""Samstag Fredk A."" | 1912 ""Samstag Fredk H,"" -> 1915 ""Samstag Fredk H,"" | 1912 ""Samstag Fredk H,"" -> 1914 ""Samstag Fredk A saloon"" | 1912 ""Samstag Fredk H,"" -> 1914 ""Samstag Fredk A."""
+1103,3203,polk name match,9,"1909 ""Deal John N J,"" -> 1915 ""Deal John N J,"" | 1909 ""Deal John N J,"" -> 1915 ""Deal John N J,"" | 1909 ""Deal John N J,"" -> 1917 ""Deal John N J,"" | 1909 ""Deal John N J,"" -> 1917 ""Deal John N,"""
+1113,3225,polk name match,2,"1909 ""Dietrich Jolin H."" -> 1914 ""Dietrich John H,"" | 1909 ""Dietrich Jolin H."" -> 1914 ""Dietrich John H,"""
+1123,3225,polk name match,4,"1908 ""Dietrich John H,"" -> 1914 ""Dietrich John H,"" | 1908 ""Dietrich John H,"" -> 1914 ""Dietrich John H,"" | 1913 ""Dietrich John H,"" -> 1914 ""Dietrich John H,"" | 1913 ""Dietrich John H,"" -> 1914 ""Dietrich John H,"""
+1102,3200,sponsor statement,1,incident 10424
+1104,3204,sponsor statement,1,incident 10446
+1111,3217,sponsor statement,1,incident 10455
+1112,3220,sponsor statement,1,incident 10457
+1115,3223,sponsor statement,1,incident 10460
+1116,3224,sponsor statement,1,incident 10467

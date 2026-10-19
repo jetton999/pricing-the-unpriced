@@ -1,0 +1,24 @@
+old_york_rd,modern_greenmount,side,kind,source_incident_ids,note,block,status,block_offset_median,offset_predicts
+1001-1011,3001-3029,odd,range,10288,Sanborn plate prints old 1001-1011 beside new 3001-3029,3000,range,,
+1023,3107,odd,stated,4962,1023 York Road (the pre-renumbering address of the 3107 Greenmount corner)',3100,agreed,2088,3111
+1027,3127,odd,stated,10385,Polk 1908: Waverly Livery Stables at old 1027 = modern 3127,3100,conflict,2088,3115
+1027,3117,odd,implied,11803,"White paper ties the Zoll livery at 1027 to the 3117 parcel, and record 11809 puts the Childs livery at 3117 in 1915-17; conflicts with 10385",3100,conflict,2088,3115
+1030,3118,even,stated,10367;10376,Polk 1908: Walker grocer at old 1030 = modern 3118,3100,agreed,2088,3118
+1032,3120,even,stated,10368,,3100,agreed,2088,3120
+1034,3122,even,stated,10369,,3100,agreed,2088,3122
+1038,3126,even,stated,10384;10376,,3100,agreed,2088,3126
+1040,3128,even,stated,10386;10376,,3100,agreed,2088,3128
+1042,3130,even,stated,10387,,3100,agreed,2088,3130
+1045-1047,3137-3139,odd,stated,10445,Deal bottling business at old 1045/1047 = 3137/3139,3100,agreed,2088,3133
+1102,3200,even,stated,10424;10449;18127,Sanborn dual numbering: 3200 = old 1102,3200,agreed,2100,3202
+1104,3204,even,stated,10446,,3200,agreed,2100,3204
+1111,3217,odd,stated,10455,Polk: McClellan hardware at old 1111,3200,conflict,2108,3219
+1113,3217,odd,stated,17760,3217 Greenmount (old 1113 York Rd)'; conflicts with 10455,3200,conflict,2108,3221
+1112,3220,even,stated,10457,Venable Building & Savings Association at old 1112,3200,conflict,2100,3212
+1112,3224,even,implied,5212;5215,Sinclair at 1112 York Road filed on 3224; conflicts with 10457,3200,conflict,2100,3212
+1114,3222,even,stated,10459,,3200,agreed,2100,3214
+1115,3223,odd,stated,10460,,3200,agreed,2108,3223
+1116,3224,even,stated,10467,Sam Lee laundry at old 1116,3200,conflict,2100,3216
+1129,3313,odd,stated,10542;10569,Corrected from an earlier 3040 reading; 10569 says 'may map',3300,agreed,2185,3314
+1167,3353,odd,stated,10819,,3300,agreed,2185,3352
+1175,3401,odd,stated,10819,,3400,agreed,2226,3401

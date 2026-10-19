@@ -1,0 +1,31 @@
+property_id,address,occupant,aliases,start,end,basis,source_incident_ids
+742,3117 Greenmount Ave,Dentry & Zoll / Zoll livery,dentry|zoll,1886,1908,inferred,11799;4916;11803
+742,3117 Greenmount Ave,W. C. Childs & Son livery,childs,1915,1917,stated,11809
+742,3117 Greenmount Ave,United Garage Co.,united garage,1926,1926,stated,11811
+742,3117 Greenmount Ave,Miller Brothers Furniture,miller bro,1928,1932,stated,11818;4927;4930
+742,3117 Greenmount Ave,Century Furniture Co.,century furniture,1933,1935,stated,11830;4937
+742,3117 Greenmount Ave,Hecht's Furniture House,hecht,1935,1936,stated,11835;4945
+742,3117 Greenmount Ave,Joe the Motorist's Friend,motorist,1936,1955,stated,4950;11845
+742,3117 Greenmount Ave,Engelman's Kiddieland,kiddie|engelman,1957,1962,stated,11846;11853
+742,3117 Greenmount Ave,Moses Zalis Furniture,zalis,1972,1989,stated,11861;11863
+742,3117 Greenmount Ave,"New York Fashions, Inc.",new york fashions,1990,1990,stated,11875
+752,3200 Greenmount Ave,Reilley/Muller saloon,reill|muller,1901,1908,stated,10424
+752,3200 Greenmount Ave,Samstag saloon and soft drinks,samstag,1918,1928,stated,10424;5190
+752,3200 Greenmount Ave,White Coffee Pot,white coffee pot,1936,1963,stated,5199;18027;5201
+752,3200 Greenmount Ave,Adolphe Beauty Salon,adolphe,1955,1955,stated,5200
+752,3200 Greenmount Ave,Hotspot restaurant and carryout,hotspot,1978,1978,stated,5202
+752,3200 Greenmount Ave,Shalimar,shalimar,1980,1980,stated,4657;5203
+752,3200 Greenmount Ave,Green's Carryout,green's carryout,2015,2015,stated,5277
+768,3224 Greenmount Ave,Sam Lee Laundry,sam lee,1901,1937,stated,10467;4888;4897
+768,3224 Greenmount Ave,Wick Wo laundry,wick wo,1901,1929,stated,10467
+768,3224 Greenmount Ave,Taubman's,taubman,1930,1932,stated,4893;5221
+768,3224 Greenmount Ave,Wyman Shoe Co.,wyman,1935,1955,stated,4901;4905;5225
+768,3224 Greenmount Ave,Jason Shoes,jason,1955,1955,stated,4908;5226
+768,3224 Greenmount Ave,Anderson's Restaurant,anderson,1967,1967,stated,5227
+768,3224 Greenmount Ave,The Kove Home Furnishings Center,kove,1976,1976,stated,5229
+2332,401 E 30th St,Terrapin Park / Oriole Park,terrapin|oriole park|baltimore baseball,1915,1944,stated,11618;11634
+2332,401 E 30th St,RC Cola bottling plant,rc cola,1954,1969,stated,11756;11763
+2332,401 E 30th St,Beverage Capital Corp.,beverage capital,1987,1987,stated,11764
+2332,401 E 30th St,Peabody Heights Brewery,peabody heights,2012,2026,stated,11771;11775
+2332,401 E 30th St,DMG Foods,dmg,2018,2021,stated,11781;11783
+2332,401 E 30th St,BARCO Commissary,barco,2022,2025,stated,11784;11787

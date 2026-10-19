@@ -1,0 +1,163 @@
+old_york_number,side,new_greenmount_number,method,confidence,evidence
+918,W,3008,anchor,high,Sanborn 1928 sheet 654 prints 918 beside 3008
+920,W,3014,anchor,high,Sanborn 1915 sheet 717 prints 920 beside 3014
+922,W,3020,anchor,high,Sanborn 1915 sheet 717 prints 922 beside 3020
+924,W,3020,interpolated,low,between 922->3020 and 1002->3034
+926,W,3022,interpolated,low,between 922->3020 and 1002->3034
+928,W,3022,interpolated,low,between 922->3020 and 1002->3034
+930,W,3022,interpolated,low,between 922->3020 and 1002->3034
+932,W,3022,interpolated,low,between 922->3020 and 1002->3034
+934,W,3022,interpolated,low,between 922->3020 and 1002->3034
+936,W,3022,interpolated,low,between 922->3020 and 1002->3034
+938,W,3024,interpolated,low,between 922->3020 and 1002->3034
+940,W,3024,interpolated,low,between 922->3020 and 1002->3034
+942,W,3024,interpolated,low,between 922->3020 and 1002->3034
+944,W,3024,interpolated,low,between 922->3020 and 1002->3034
+946,W,3024,interpolated,low,between 922->3020 and 1002->3034
+948,W,3026,interpolated,low,between 922->3020 and 1002->3034
+950,W,3026,interpolated,low,between 922->3020 and 1002->3034
+952,W,3026,interpolated,low,between 922->3020 and 1002->3034
+954,W,3026,interpolated,low,between 922->3020 and 1002->3034
+956,W,3026,interpolated,low,between 922->3020 and 1002->3034
+958,W,3026,interpolated,low,between 922->3020 and 1002->3034
+960,W,3028,interpolated,low,between 922->3020 and 1002->3034
+962,W,3028,interpolated,low,between 922->3020 and 1002->3034
+964,W,3028,interpolated,low,between 922->3020 and 1002->3034
+966,W,3028,interpolated,low,between 922->3020 and 1002->3034
+968,W,3028,interpolated,low,between 922->3020 and 1002->3034
+970,W,3028,interpolated,low,between 922->3020 and 1002->3034
+972,W,3030,interpolated,low,between 922->3020 and 1002->3034
+974,W,3030,interpolated,low,between 922->3020 and 1002->3034
+976,W,3030,interpolated,low,between 922->3020 and 1002->3034
+978,W,3030,interpolated,low,between 922->3020 and 1002->3034
+980,W,3030,interpolated,low,between 922->3020 and 1002->3034
+982,W,3030,interpolated,low,between 922->3020 and 1002->3034
+984,W,3032,interpolated,low,between 922->3020 and 1002->3034
+986,W,3032,interpolated,low,between 922->3020 and 1002->3034
+988,W,3032,interpolated,low,between 922->3020 and 1002->3034
+990,W,3032,interpolated,low,between 922->3020 and 1002->3034
+992,W,3032,interpolated,low,between 922->3020 and 1002->3034
+994,W,3034,interpolated,low,between 922->3020 and 1002->3034
+996,W,3034,interpolated,low,between 922->3020 and 1002->3034
+998,W,3034,interpolated,low,between 922->3020 and 1002->3034
+1000,W,3034,interpolated,low,between 922->3020 and 1002->3034
+1002,W,3034,anchor,high,Sanborn 1915 sheet 717 prints 1002 beside 3034
+1004,W,3036,anchor,high,Sanborn 1915 sheet 717 prints 1004 beside 3036
+1006,W,3038,anchor,high,Sanborn 1915 sheet 717 prints 1006 beside 3038
+1008,W,3046,interpolated,low,between 1006->3038 and 1030->3118
+1010,W,3052,interpolated,low,between 1006->3038 and 1030->3118
+1012,W,3058,interpolated,low,between 1006->3038 and 1030->3118
+1014,W,3066,interpolated,low,between 1006->3038 and 1030->3118
+1016,W,3072,interpolated,low,between 1006->3038 and 1030->3118
+1018,W,3078,interpolated,low,between 1006->3038 and 1030->3118
+1020,W,3086,interpolated,low,between 1006->3038 and 1030->3118
+1022,W,3092,interpolated,low,between 1006->3038 and 1030->3118
+1024,W,3098,interpolated,low,between 1006->3038 and 1030->3118
+1026,W,3106,interpolated,low,between 1006->3038 and 1030->3118
+1028,W,3112,interpolated,low,between 1006->3038 and 1030->3118
+1030,W,3118,anchor,high,6 weighted Polk name match(es)
+1032,W,3120,anchor,high,Sanborn 1915 sheet 717 prints 1032 beside 3120
+1034,W,3122,anchor,high,Sanborn 1915 sheet 717 prints 1034 beside 3122
+1036,W,3124,anchor,high,Sanborn 1915 sheet 717 prints 1036 beside 3124
+1038,W,3126,anchor,high,Sanborn 1915 sheet 717 prints 1038 beside 3126
+1040,W,3128,anchor,high,Sanborn 1915 sheet 717 prints 1040 beside 3128
+1042,W,3130,anchor,high,Sanborn 1915 sheet 717 prints 1042 beside 3130
+1044,W,3132,anchor,high,Sanborn 1915 sheet 717 prints 1044 beside 3132
+1046,W,3136,anchor,high,Sanborn 1915 sheet 717 prints 1046 beside 3136
+1048,W,3138,interpolated,low,between 1046->3136 and 1102->3200
+1050,W,3142,interpolated,low,between 1046->3136 and 1102->3200
+1052,W,3144,interpolated,low,between 1046->3136 and 1102->3200
+1054,W,3146,interpolated,low,between 1046->3136 and 1102->3200
+1056,W,3148,interpolated,low,between 1046->3136 and 1102->3200
+1058,W,3150,interpolated,low,between 1046->3136 and 1102->3200
+1060,W,3152,interpolated,low,between 1046->3136 and 1102->3200
+1062,W,3154,interpolated,low,between 1046->3136 and 1102->3200
+1064,W,3158,interpolated,low,between 1046->3136 and 1102->3200
+1066,W,3160,interpolated,low,between 1046->3136 and 1102->3200
+1068,W,3162,interpolated,low,between 1046->3136 and 1102->3200
+1070,W,3164,interpolated,low,between 1046->3136 and 1102->3200
+1072,W,3166,interpolated,low,between 1046->3136 and 1102->3200
+1074,W,3168,interpolated,low,between 1046->3136 and 1102->3200
+1076,W,3170,interpolated,low,between 1046->3136 and 1102->3200
+1078,W,3174,interpolated,low,between 1046->3136 and 1102->3200
+1080,W,3176,interpolated,low,between 1046->3136 and 1102->3200
+1082,W,3178,interpolated,low,between 1046->3136 and 1102->3200
+1084,W,3180,interpolated,low,between 1046->3136 and 1102->3200
+1086,W,3182,interpolated,low,between 1046->3136 and 1102->3200
+1088,W,3184,interpolated,low,between 1046->3136 and 1102->3200
+1090,W,3186,interpolated,low,between 1046->3136 and 1102->3200
+1092,W,3190,interpolated,low,between 1046->3136 and 1102->3200
+1094,W,3192,interpolated,low,between 1046->3136 and 1102->3200
+1096,W,3194,interpolated,low,between 1046->3136 and 1102->3200
+1098,W,3196,interpolated,low,between 1046->3136 and 1102->3200
+1100,W,3198,interpolated,low,between 1046->3136 and 1102->3200
+1102,W,3200,anchor,high,Sanborn 1915 sheet 717 prints 1102 beside 3200
+1104,W,3204,anchor,high,Sanborn 1915 sheet 717 prints 1104 beside 3204
+1106,W,3208,interpolated,medium,between 1104->3204 and 1112->3220
+1108,W,3212,interpolated,medium,between 1104->3204 and 1112->3220
+1110,W,3216,interpolated,medium,between 1104->3204 and 1112->3220
+1112,W,3220,anchor,high,Sanborn 1915 sheet 717 prints 1112 beside 3220
+1114,W,3222,anchor,high,Sanborn 1915 sheet 717 prints 1114 beside 3222
+1116,W,3224,anchor,high,Sanborn 1915 sheet 717 prints 1116 beside 3224
+1001,E,3001,anchor,high,50 weighted Polk name match(es)
+1003,E,3011,anchor,high,Sanborn 1928 sheet 735 prints 1003 beside 3011
+1005,E,3013,anchor,high,Sanborn 1915 sheet 718 prints 1005 beside 3013
+1007,E,3015,anchor,high,Sanborn 1915 sheet 718 prints 1007 beside 3015
+1009,E,3019,anchor,high,12 weighted Polk name match(es)
+1011,E,3029,anchor,high,Sanborn 1915 sheet 718 prints 1011 beside 3029
+1013,E,3045,interpolated,low,between 1011->3029 and 1021->3109 ; outlier listings dropped
+1015,E,3061,interpolated,low,between 1011->3029 and 1021->3109
+1017,E,3077,interpolated,low,between 1011->3029 and 1021->3109
+1019,E,3093,interpolated,low,between 1011->3029 and 1021->3109
+1021,E,3109,anchor,high,Sanborn 1915 sheet 718 prints 1021 beside 3109
+1023,E,3111,anchor,high,Sanborn 1928 sheet 735 prints 1023 beside 3111
+1025,E,3115,interpolated,medium,between 1023->3111 and 1027->3117
+1027,E,3117,anchor,high,Sanborn 1928 sheet 735 prints 1027 beside 3117-3119
+1029,E,3123,anchor,high,Chemical Engine Co No 4 at 1029 York Rd (Polk 1901); the 1900-01 firehouse stands at 3123 (NR inventory)
+1031,E,3125,interpolated,medium,between 1029->3123 and 1037->3129
+1033,E,3127,interpolated,medium,between 1029->3123 and 1037->3129
+1035,E,3129,interpolated,medium,between 1029->3123 and 1037->3129
+1037,E,3129,anchor,high,Sanborn 1915 sheet 718 prints 1037 beside 3129
+1039,E,3131,anchor,high,Sanborn 1915 sheet 718 prints 1039 beside 3131
+1041,E,3133,interpolated,medium,between 1039->3131 and 1043->3135
+1043,E,3135,anchor,high,Sanborn 1915 sheet 718 prints 1043 beside 3135
+1045,E,3137,anchor,high,Sanborn 1915 sheet 718 prints 1045 beside 3137
+1047,E,3139,anchor,high,Sanborn 1915 sheet 718 prints 1047 beside 3139
+1049,E,3201,anchor,high,6 weighted Polk name match(es)
+1051,E,3201,interpolated,low,between 1049->3201 and 1103->3203
+1053,E,3201,interpolated,low,between 1049->3201 and 1103->3203
+1055,E,3201,interpolated,low,between 1049->3201 and 1103->3203
+1057,E,3201,interpolated,low,between 1049->3201 and 1103->3203
+1059,E,3201,interpolated,low,between 1049->3201 and 1103->3203
+1061,E,3201,interpolated,low,between 1049->3201 and 1103->3203
+1063,E,3203,interpolated,low,between 1049->3201 and 1103->3203
+1065,E,3203,interpolated,low,between 1049->3201 and 1103->3203
+1067,E,3203,interpolated,low,between 1049->3201 and 1103->3203
+1069,E,3203,interpolated,low,between 1049->3201 and 1103->3203
+1071,E,3203,interpolated,low,between 1049->3201 and 1103->3203
+1073,E,3203,interpolated,low,between 1049->3201 and 1103->3203
+1075,E,3203,interpolated,low,between 1049->3201 and 1103->3203
+1077,E,3203,interpolated,low,between 1049->3201 and 1103->3203
+1079,E,3203,interpolated,low,between 1049->3201 and 1103->3203
+1081,E,3203,interpolated,low,between 1049->3201 and 1103->3203
+1083,E,3203,interpolated,low,between 1049->3201 and 1103->3203
+1085,E,3203,interpolated,low,between 1049->3201 and 1103->3203
+1087,E,3203,interpolated,low,between 1049->3201 and 1103->3203
+1089,E,3203,interpolated,low,between 1049->3201 and 1103->3203
+1091,E,3203,interpolated,low,between 1049->3201 and 1103->3203
+1093,E,3203,interpolated,low,between 1049->3201 and 1103->3203
+1095,E,3203,interpolated,low,between 1049->3201 and 1103->3203
+1097,E,3203,interpolated,low,between 1049->3201 and 1103->3203
+1099,E,3203,interpolated,low,between 1049->3201 and 1103->3203
+1101,E,3203,interpolated,low,between 1049->3201 and 1103->3203
+1103,E,3203,anchor,high,18 weighted Polk name match(es)
+1105,E,3207,interpolated,medium,between 1103->3203 and 1109->3215
+1107,E,3211,interpolated,medium,between 1103->3203 and 1109->3215
+1109,E,3215,anchor,high,Sanborn 1915 sheet 718 prints 1109 beside 3215
+1111,E,3217,anchor,high,Sanborn 1915 sheet 718 prints 1111 beside 3217
+1113,E,3219,anchor,high,Sanborn 1915 sheet 718 prints 1113 beside 3219
+1115,E,3223,anchor,high,Sanborn 1915 sheet 718 prints 1115 beside 3223
+1117,E,3225,interpolated,medium,between 1115->3223 and 1123->3225
+1119,E,3225,interpolated,medium,between 1115->3223 and 1123->3225
+1121,E,3225,interpolated,medium,between 1115->3223 and 1123->3225
+1123,E,3225,anchor,high,8 weighted Polk name match(es)
