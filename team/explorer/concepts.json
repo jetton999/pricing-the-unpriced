@@ -1,0 +1,405 @@
+{
+ "_note": "Draft concepts for three empty buildings the sponsor has walked through, 19 Oct 2026. This public version names no businesses as possible tenants. Facts about precedents come from the public sources linked, as of the dates shown.",
+ "order": [
+  "742",
+  "737",
+  "725"
+ ],
+ "742": {
+  "tab": "3117 · the old showroom",
+  "title": "A 1928 showroom on the site of an 1886 livery stable",
+  "was": [
+   {
+    "y": "1886-1915",
+    "t": "Livery stable: Dentry & Zoll, then Henry C. Zoll's stable at 1027 York Road (the old number for 3117), then W. C. Childs & Son",
+    "src": "sponsor 4916, 11799; Polk 1903-1915"
+   },
+   {
+    "y": "1926",
+    "t": "United Garage Co. at 3117-19",
+    "src": "sponsor 11811"
+   },
+   {
+    "y": "1928",
+    "t": "Today's 2-story brick store replaces the frame stable",
+    "src": "Sanborn 1928 sheet 735 (the NR inventory says ca. 1920)"
+   },
+   {
+    "y": "1928-1936",
+    "t": "Furniture showrooms: Miller Bros. (bankrupt 1932), Century Furniture, Hecht's Furniture House",
+    "src": "sponsor 4927, 4930, 4937, 4944"
+   },
+   {
+    "y": "1936-1955",
+    "t": "Joe the Motorist's Friend, an auto-accessories chain store",
+    "src": "sponsor 4950, 11845; NR p. 19"
+   },
+   {
+    "y": "1957-1976",
+    "t": "Engelman's Kiddieland, toys",
+    "src": "sponsor 11846, 11858"
+   },
+   {
+    "y": "1989-1990",
+    "t": "Moses Zalis Furniture, then New York Fashions",
+    "src": "sponsor 11863, 11875"
+   },
+   {
+    "y": "2011-2026",
+    "t": "Vacant; now for lease",
+    "src": "NR p. 19; 2026 listing"
+   }
+  ],
+  "now": "For lease. The listing offers 3,042 sq ft of the 7,000 sq ft building free in exchange for simple cosmetic repairs, and is aimed at nonprofit, artist and community groups (January 2026). Owner of record (state assessment snapshot, July 2026): 3117 Greenmount Avenue LLC, not the sponsor's LLC.",
+  "now_url": "https://www.officespace.com/md/baltimore/2378636-3117-greenmount-ave",
+  "fit": [
+   {
+    "ok": "yes",
+    "t": "Retail goods are proven here over 7 decades: furniture 1928-36 and 1989, toys 1957-76, clothing 1990."
+   },
+   {
+    "ok": "yes",
+    "t": "Room on the block: the east side of the 3100 block has 1 retail business today."
+   },
+   {
+    "ok": "yes",
+    "t": "The urban renewal plan and C-1 zoning both allow retail (permitted, zoning Table 10-301). The plan's design rules: one projecting sign per business, soft awnings only, no new Formstone, City design review."
+   },
+   {
+    "ok": "partly",
+    "t": "The other proven use, automotive (1886-1955), cannot come back as a garage: vehicle service and repair is not permitted in C-1. A bike shop counts as retail, which is permitted."
+   }
+  ],
+  "concepts": [
+   {
+    "tag": "Lead",
+    "name": "Local makers' showroom",
+    "cat": "retail goods",
+    "t": "A shared store for Baltimore-made furniture, home goods and gifts, with a workshop and pop-up room at the back. It brings back the 1928-36 furniture showrooms in a form a nonprofit can run, and it fits the free-for-repairs offer.",
+    "fmt": [
+     "showroom"
+    ]
+   },
+   {
+    "tag": "Alternative",
+    "name": "Bike and e-bike shop with a repair bay",
+    "cat": "retail goods",
+    "t": "The modern form of the livery stable and the garage: sales at the front, repairs at the back.",
+    "fmt": [
+     "bike"
+    ]
+   }
+  ],
+  "prec": [
+   {
+    "city": "Baltimore",
+    "name": "R. House, Remington",
+    "year": "2016",
+    "t": "A historic car showroom and garage, turned into a food hall: 50,000 sq ft, 11 open kitchens and a 6,000 sq ft event room called The Garage. Developer Seawall; about $13 million; opened 8 December 2016.",
+    "lesson": "The garage shell itself is the draw, and one curator fills it with many small vendors. The Garage room is close to 3117's size.",
+    "src": [
+     {
+      "l": "QSR Magazine, 30 Nov 2016",
+      "u": "https://www.qsrmagazine.com/news/baltimore-s-food-hall-r-house-set-open-december-8/"
+     }
+    ]
+   },
+   {
+    "city": "Beijing",
+    "name": "798 Art District",
+    "year": "c. 2002",
+    "t": "Joint Factory 718, built 1954-57. A few artists came in the 1990s, and from about 2002 many rented its empty halls cheaply; galleries, shops and cafes followed, and in 2006 it became China's first state-recognised art district.",
+    "lesson": "Cheap space can start a district, but rents later rose sharply and many artists left. Write the free-rent deal with a path to a stable lease.",
+    "src": [
+     {
+      "l": "Culture Trip",
+      "u": "https://theculturetrip.com/articles/a-brief-history-of-the-798-art-district-in-beijing"
+     },
+     {
+      "l": "ELEPHANT, 25 Jul 2022",
+      "u": "https://elephant.art/industrial-dispute-the-rise-and-fall-of-beijings-798-art-complex-25072022"
+     }
+    ]
+   },
+   {
+    "city": "New York",
+    "name": "Chashama",
+    "year": "since 1995",
+    "t": "An arts charity that persuades owners to lend empty commercial space to artists: about 40 sites across the five boroughs in 2021. Its Storefront Startup programme, run with the City's small-business department, gave rent-free storefronts to small firms.",
+    "lesson": "Free-for-repairs deals work when a go-between picks the tenants and sets the terms. That is the role the sponsor would play here.",
+    "src": [
+     {
+      "l": "Art & Object, 27 Sep 2021",
+      "u": "https://www.artandobject.com/news/good-art-chashama-art-charity-transforming-vacant-spaces"
+     }
+    ]
+   }
+  ],
+  "checks": [
+   "Measure the usable floor on the Matterport walk-through.",
+   "Ask City zoning whether a bike repair bay is accessory to a bike shop (retail is permitted in C-1; vehicle repair is not)."
+  ],
+  "zoning_src": "https://codes.baltimorecity.gov/us/md/cities/baltimore/code/32/zoning-tables/10-301"
+ },
+ "737": {
+  "tab": "3107 · three little shops",
+  "title": "An 1880 house with three 1920s shops in front",
+  "was": [
+   {
+    "y": "c. 1880",
+    "t": "Built as a dwelling; three one-story shops added in front around 1920",
+    "src": "NR p. 20"
+   },
+   {
+    "y": "1899",
+    "t": "A grocery and meat stand advertised at 1023 York Road. The sponsor places this number at this corner; the 1928 Sanborn sheet suggests 3111 (open question)",
+    "src": "sponsor 4962"
+   },
+   {
+    "y": "1922-1923",
+    "t": "Shoes, then men's furnishings",
+    "src": "Polk 1922, 1923"
+   },
+   {
+    "y": "1928-1930",
+    "t": "Mildred Price's hairdressing shop; a permit for an electric barber pole",
+    "src": "NR p. 20; permit card BRG48-53 677-0899"
+   },
+   {
+    "y": "1937",
+    "t": "High's Ice Cream in the 3105 shop, beside a retail store",
+    "src": "NR p. 20"
+   },
+   {
+    "y": "1953-1958",
+    "t": "Office use",
+    "src": "permit cards BRG48-53 677-0899"
+   },
+   {
+    "y": "c. 2011",
+    "t": "Beauty supplies",
+    "src": "NR p. 20"
+   },
+   {
+    "y": "2026",
+    "t": "For lease; the last tenant was the Baltimore Rock Opera Society",
+    "src": "2026 listing"
+   }
+  ],
+  "now": "For lease. The listing offers 4,732 sq ft of the 7,003 sq ft building free in exchange for simple cosmetic repairs (January 2026). Owner of record (July 2026): 3107 Greenmount Avenue LLC, not the sponsor's LLC.",
+  "now_url": "https://www.officespace.com/md/baltimore/2378634-3107-greenmount-ave",
+  "fit": [
+   {
+    "ok": "yes",
+    "t": "Personal services are proven here: a hairdresser in 1928, a barber pole in 1930, beauty supplies in 2011."
+   },
+   {
+    "ok": "partly",
+    "t": "Food rests on one solid record, High's Ice Cream in 1937. The 1899 grocery may belong to 3111. The ledger's earlier food decades come from a building summary that the extractor dates to the build year, a coding error to fix."
+   },
+   {
+    "ok": "yes",
+    "t": "Room on the block: the east side of the 3100 block has no personal services and 1 food business today."
+   },
+   {
+    "ok": "partly",
+    "t": "A barber is permitted in C-1. A scoop shop that serves mostly to go counts as a carry-out food shop, a conditional use (Board of Municipal and Zoning Appeals). A bar is barred twice over: no new taverns under the urban renewal plan, and taverns are conditional in C-1."
+   }
+  ],
+  "concepts": [
+   {
+    "tag": "Lead",
+    "name": "Three small shops again",
+    "cat": "food & drink",
+    "t": "Lease the three 1920s shopfronts separately: a scoop shop (High's Ice Cream, 1937), a barber or beauty shop (1928-30, 2011), and a rotating pop-up for a first-time business. Three small rents spread the risk of one large lease.",
+    "fmt": [
+     "services",
+     "counter"
+    ]
+   },
+   {
+    "tag": "Alternative",
+    "name": "One tenant: rehearsal and small-performance space",
+    "cat": "entertainment & assembly",
+    "t": "What the last tenant, the Baltimore Rock Opera Society, used it for. Rehearsal and studio use is permitted (arts studio); public shows need a conditional use (indoor entertainment), and live entertainment is not permitted in C-1 except as an accessory use. This use is not in the historical record, so it is the fallback if the fronts cannot be split.",
+    "fmt": [
+     "studio",
+     "venue"
+    ]
+   }
+  ],
+  "prec": [
+   {
+    "city": "Tokyo",
+    "name": "Ueno Sakuragi Atari, Yanaka",
+    "year": "2015",
+    "t": "Three 1938 houses renovated into one complex of small shops, opened in March 2015. A bakery opened there in 2023.",
+    "lesson": "Several small tenants under one owner make a destination no single shop could.",
+    "src": [
+     {
+      "l": "Time Out Tokyo, 2023",
+      "u": "https://www.timeout.jp/tokyo/ja/news/think-open-040423"
+     }
+    ]
+   },
+   {
+    "city": "Beijing",
+    "name": "Yangmeizhu Xiejie, Dashilar",
+    "year": "2011-",
+    "t": "On a 700 m hutong lane, the Dashilar Investment Co. bought out residents from 2011. From 2012 small cafes, designers and shops moved in (Soloist Cafe, Suzuki Canteen), with pop-ups during Beijing Design Week.",
+    "lesson": "Many bought-out houses then stood empty, and residents disputed the terms. Fill the fronts one tenant at a time instead of emptying the street first.",
+    "src": [
+     {
+      "l": "People's Daily, 28 Oct 2013",
+      "u": "https://paper.people.com.cn/mszk/html/2013-10/28/content_1317282.htm"
+     },
+     {
+      "l": "Cool Hunting, 22 Oct 2012",
+      "u": "https://coolhunting.com/design/dashilab-beijing"
+     }
+    ]
+   },
+   {
+    "city": "New York",
+    "name": "Eddie's Sweet Shop, Forest Hills, Queens",
+    "year": "100+ years",
+    "t": "A century-old ice-cream parlour with its original woodwork and counter. The same family has run it since 1968, and it was still open in 2025.",
+    "lesson": "The old shopfront and fittings are the brand, so keep the 1920s fronts.",
+    "src": [
+     {
+      "l": "NY1, 12 Sep 2025",
+      "u": "https://ny1.com/nyc/all-boroughs/news/2025/09/11/ice-cream--queens--family"
+     }
+    ]
+   }
+  ],
+  "checks": [
+   "Count and measure the three shopfronts on site (the Sanborn sheets show 12 ft one-story stores).",
+   "Read 1023 York Road on the 1928 Sanborn sheet: it decides whether the 1899 grocery belongs here.",
+   "Ask the sponsor before anyone contacts a business."
+  ],
+  "zoning_src": "https://codes.baltimorecity.gov/us/md/cities/baltimore/code/32/zoning-tables/10-301"
+ },
+ "725": {
+  "tab": "3026 · the porch house",
+  "title": "A plumber's end-of-row house with a porch",
+  "was": [
+   {
+    "y": "c. 1900",
+    "t": "Built as an end-unit rowhouse with a porch, with Queen Anne touches",
+    "src": "NR p. 29"
+   },
+   {
+    "y": "1915",
+    "t": "A cabinetmaker",
+    "src": "Polk 1915"
+   },
+   {
+    "y": "1917-1937",
+    "t": "John T. Spellman Jr., plumber, home and shop",
+    "src": "Polk 1917-1923; NR p. 29"
+   },
+   {
+    "y": "later",
+    "t": "A health clinic",
+    "src": "sponsor 10304"
+   },
+   {
+    "y": "2026",
+    "t": "Vacant, with a collapsing porch and a City vacant-building notice",
+    "src": "The Banner, 5 Oct 2026"
+   }
+  ],
+  "now": "Vacant. The owner told The Banner that a cafe tenant is lined up (5 October 2026). 1,555 sq ft. Owner of record (July 2026): 3028 Greenmount Avenue LLC; not the sponsor's LLC.",
+  "now_url": "https://www.thebanner.com/economy/waverly-empty-storefronts-VIM3XERU3NDVZAQXI5QO55BYNY/",
+  "fit": [
+   {
+    "ok": "yes",
+    "t": "A trade workshop is proven here: a cabinetmaker, then a plumber, from 1915 to 1937."
+   },
+   {
+    "ok": "partly",
+    "t": "No food business is on record at this house. Food and drink is the frontage's most-proven trade, though, at 34 parcels."
+   },
+   {
+    "ok": "yes",
+    "t": "Room on the block: the west side of the 3000 block has no food business today (parcels with retail 5, personal services 2, office 1, institutional 1)."
+   },
+   {
+    "ok": "partly",
+    "t": "A cafe with seating is a restaurant, permitted in C-1. Seats on the porch are outdoor dining, which needs a conditional use in C-1 (Table 10-301, note 5). The porch and facade work also go through City design review."
+   }
+  ],
+  "concepts": [
+   {
+    "tag": "Lead",
+    "name": "Porch cafe",
+    "cat": "food & drink",
+    "t": "A small cafe with seats on the repaired porch. It matches the owner's reported plan and would be the first food business on its block side. Across the frontage, food is below its 1920s share (see the mix chart).",
+    "fmt": [
+     "cafe"
+    ]
+   },
+   {
+    "tag": "Alternative",
+    "name": "Workshop with a counter",
+    "cat": "production & light industry",
+    "t": "A repair, woodwork or ceramics studio that sells at the front, as the cabinetmaker (1915) and the plumber (1917-37) did.",
+    "fmt": [
+     "workshop"
+    ]
+   }
+  ],
+  "prec": [
+   {
+    "city": "Tokyo",
+    "name": "HAGISO, Yanaka",
+    "year": "2013",
+    "t": "A 1955 wooden apartment house with 14 rooms, turned into a cafe, gallery and salon. The cafe has been open since 2013.",
+    "lesson": "A small worn house can carry a cafe plus a cultural use that brings people in.",
+    "src": [
+     {
+      "l": "Magical Trip",
+      "u": "https://www.magical-trip.com/media/hagi-cafe-renovated-from-a-japanese-apartment-building-at-yanaka-ginza/"
+     }
+    ]
+   },
+   {
+    "city": "Beijing",
+    "name": "JM Cafe, Baitasi",
+    "year": "2024",
+    "t": "A 105 m² (about 1,130 sq ft) old-city building beside the White Pagoda Temple, renovated in 2024 into a coffee and bakery shop with a roof terrace. The area's renewal plan was launched at Beijing Design Week 2015.",
+    "lesson": "It is about the size of 3026, and the outdoor seats are the selling point. Here that is the porch.",
+    "src": [
+     {
+      "l": "mooool",
+      "u": "https://mooool.com/jm-cafe-white-pagoda-temple-in-beijing-by-b-l-u-e-architecture-studio.html"
+     },
+     {
+      "l": "China Urban Journal, 12 Sep 2016",
+      "u": "https://paper.people.com.cn/zgcsb/html/2016-09/12/content_1712557.htm"
+     }
+    ]
+   },
+   {
+    "city": "Baltimore",
+    "name": "Red Emma's, 3128 Greenmount",
+    "year": "this frontage",
+    "t": "A worker-owned cafe and bookstore. Its worker-owners paid $1.6 million for its two buildings.",
+    "lesson": "Cafe demand on this street is already proven, and a tenant can end up as the owner (Idea 2).",
+    "src": [
+     {
+      "l": "The Banner, 5 Oct 2026",
+      "u": "https://www.thebanner.com/economy/waverly-empty-storefronts-VIM3XERU3NDVZAQXI5QO55BYNY/"
+     }
+    ]
+   }
+  ],
+  "checks": [
+   "Ask the sponsor whether the reported cafe tenant is signed.",
+   "The porch repair and the vacant-building notice come before any tenant.",
+   "A woodwork or ceramics workshop is an industrial arts studio, permitted in C-1; general light industry is not."
+  ],
+  "zoning_src": "https://codes.baltimorecity.gov/us/md/cities/baltimore/code/32/zoning-tables/10-301"
+ }
+}

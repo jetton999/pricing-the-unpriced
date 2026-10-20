@@ -1,0 +1,1248 @@
+<title>Greenmount Frontage Explorer</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a municipal ledger. A long north-pointing strip map of the block faces on top,
+   then a decade-by-decade use ledger beside a property card, then the then/now mix and the full table. */
+:root {
+  --bg: #f3f5f4; --surface: #fcfcfb; --ink: #13202c; --ink-2: #4a5661; --muted: #7d8791;
+  --rule: #dde2e1; --rule-2: #c5cccb; --accent: #1c5cab; --accent-soft: #e3ecf8; --hi: #13202c;
+  --c-retail: #2a78d6; --c-food: #eb6834; --c-pers: #1baf7a; --c-auto: #eda100; --c-ent: #e87ba4;
+  --c-inst: #008300; --c-off: #6250d6; --c-prod: #e34948; --c-res: #b9bdb8; --c-none: #eef1f0;
+  --good: #0ca30c; --warn: #b77800;
+  --f-display: "Barlow Condensed", "Arial Narrow", "Roboto Condensed", sans-serif;
+  --f-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #0f1215; --surface: #171b1f; --ink: #eef1f2; --ink-2: #b7c0c7; --muted: #87909a;
+  --rule: #262c31; --rule-2: #353d43; --accent: #6da7ec; --accent-soft: #1b2a3d; --hi: #eef1f2;
+  --c-retail: #3987e5; --c-food: #d95926; --c-pers: #199e70; --c-auto: #c98500; --c-ent: #d55181;
+  --c-inst: #008300; --c-off: #9085e9; --c-prod: #e66767; --c-res: #4d5459; --c-none: #1e2327;
+  --good: #0ca30c; --warn: #e0a020; color-scheme: dark; } }
+:root[data-theme="dark"] {
+  --bg: #0f1215; --surface: #171b1f; --ink: #eef1f2; --ink-2: #b7c0c7; --muted: #87909a;
+  --rule: #262c31; --rule-2: #353d43; --accent: #6da7ec; --accent-soft: #1b2a3d; --hi: #eef1f2;
+  --c-retail: #3987e5; --c-food: #d95926; --c-pers: #199e70; --c-auto: #c98500; --c-ent: #d55181;
+  --c-inst: #008300; --c-off: #9085e9; --c-prod: #e66767; --c-res: #4d5459; --c-none: #1e2327;
+  --good: #0ca30c; --warn: #e0a020; color-scheme: dark; }
+body { background: var(--bg); color: var(--ink); font-family: var(--f-body); font-size: 15px; line-height: 1.5; }
+.wrap { max-width: 1240px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 28px 64px; display: grid; gap: 28px; }
+header { display: grid; gap: 8px; }
+.eyebrow { font-family: var(--f-mono); font-size: 12px; letter-spacing: .04em; color: var(--ink-2); text-transform: uppercase; }
+h1 { font-family: var(--f-display); font-weight: 700; font-size: clamp(34px, 5vw, 54px); line-height: 1; margin: 0; letter-spacing: .005em; text-wrap: balance; }
+h2 { font-family: var(--f-display); font-weight: 600; font-size: 26px; margin: 0; line-height: 1.1; text-wrap: balance; }
+h3 { font-family: var(--f-display); font-weight: 600; font-size: 20px; margin: 0; }
+.lede { max-width: 72ch; color: var(--ink-2); margin: 0; }
+.mono { font-family: var(--f-mono); }
+.tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+.tile { background: var(--surface); border: 1px solid var(--rule); border-radius: 6px; padding: 14px 16px; display: grid; gap: 4px; align-content: start; }
+.tile .k { font-size: 12px; color: var(--ink-2); text-transform: uppercase; letter-spacing: .05em; }
+.tile .v { font-family: var(--f-display); font-size: 34px; font-weight: 600; line-height: 1.05; }
+.tile .s { font-size: 13px; color: var(--ink-2); }
+.srcbar { display: flex; height: 8px; border-radius: 4px; overflow: hidden; gap: 2px; margin-top: 4px; }
+.srcbar span { display: block; height: 100%; background: var(--ink-2); }
+.srcbar span:nth-child(1) { background: var(--accent); } .srcbar span:nth-child(2) { background: var(--muted); }
+.srcbar span:nth-child(3) { background: var(--ink-2); } .srcbar span:nth-child(4) { background: var(--rule-2); }
+.srckey { display: flex; flex-wrap: wrap; gap: 4px 12px; font-size: 12px; color: var(--ink-2); }
+.srckey i { display: inline-block; width: 8px; height: 8px; border-radius: 2px; margin-right: 4px; vertical-align: 0; }
+section.card { background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; padding: 18px; display: grid; gap: 14px; min-width: 0; }
+section.card > *, .segc > *, .cx > * { min-width: 0; }
+.cx-col, .wbox, .prospect, .pside, .casec, .fitrow, .casel, .fitlist, .panel, .cands, .cand, .ideas, .idea, .prec, .pc { grid-template-columns: minmax(0, 1fr); }
+.tbl { max-width: 100%; }
+.bar { display: flex; flex-wrap: wrap; gap: 10px 18px; align-items: center; justify-content: space-between; }
+.seg { display: inline-flex; border: 1px solid var(--rule-2); border-radius: 6px; overflow: hidden; }
+.seg button { font: inherit; font-size: 13px; padding: 5px 10px; border: 0; background: transparent; color: var(--ink-2); cursor: pointer; }
+.seg button + button { border-left: 1px solid var(--rule-2); }
+.seg button[aria-pressed="true"] { background: var(--ink); color: var(--surface); }
+.seg button:focus-visible, .chip:focus-visible, input:focus-visible, .row:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.ctl { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; font-size: 13px; color: var(--ink-2); }
+input[type="search"] { font: inherit; font-size: 13px; padding: 5px 8px; border: 1px solid var(--rule-2); border-radius: 6px; background: var(--bg); color: var(--ink); width: 120px; }
+.legend { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { font: inherit; font-size: 12px; display: inline-flex; gap: 6px; align-items: center; padding: 3px 8px; border: 1px solid var(--rule-2); border-radius: 999px; background: var(--surface); color: var(--ink); cursor: pointer; }
+.chip[aria-pressed="true"] { border-color: var(--ink); box-shadow: inset 0 0 0 1px var(--ink); }
+.sw { width: 11px; height: 11px; border-radius: 3px; display: inline-block; flex: none; }
+.mapbox { overflow-x: auto; position: relative; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); background: var(--bg); }
+#map { display: block; min-width: 920px; width: 100%; height: auto; }
+#map .lot { stroke: var(--surface); stroke-width: 1.4; cursor: pointer; transition: opacity .15s; }
+#map .lot.sel { stroke: var(--hi); stroke-width: 2.6; }
+#map .dim { opacity: .18; }
+#map text { fill: var(--ink-2); font-family: var(--f-mono); font-size: 10px; }
+#map .street { fill: var(--muted); font-family: var(--f-display); font-size: 15px; letter-spacing: .14em; }
+#map .cross { stroke: var(--rule-2); stroke-width: 1; stroke-dasharray: 3 4; }
+.tip { position: absolute; pointer-events: none; background: var(--ink); color: var(--surface); font-size: 12px; padding: 6px 8px; border-radius: 4px; max-width: 280px; line-height: 1.35; z-index: 3; }
+.tip b { font-family: var(--f-mono); font-weight: 500; }
+.grid2 { display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr); gap: 18px; align-items: start; }
+@media (max-width: 900px) { .grid2 { grid-template-columns: minmax(0, 1fr); } }
+.ledger { overflow-x: auto; }
+.ledger table { border-collapse: separate; border-spacing: 2px; font-size: 12px; min-width: 640px; }
+.ledger th { font-family: var(--f-mono); font-weight: 400; color: var(--muted); font-size: 10.5px; text-align: center; padding: 0 0 4px; }
+.ledger th.addr { text-align: left; }
+.ledger td.addr { font-family: var(--f-mono); padding-right: 6px; white-space: nowrap; color: var(--ink); }
+.ledger td.cell { width: 30px; height: 16px; border-radius: 3px; background: var(--c-none); }
+.ledger tr.row { cursor: pointer; }
+.ledger tr.row:hover td.addr, .ledger tr.row.sel td.addr { color: var(--accent); font-weight: 500; }
+.ledger tr.row.sel td.cell { box-shadow: inset 0 0 0 1.5px var(--hi); }
+.ledger tr.grp td { font-family: var(--f-display); font-size: 14px; font-weight: 600; color: var(--ink-2); padding: 10px 0 2px; letter-spacing: .03em; }
+.ledger .now { font-family: var(--f-mono); font-size: 11px; color: var(--ink-2); padding-left: 6px; white-space: nowrap; }
+.pill { display: inline-flex; align-items: center; gap: 5px; font-size: 12px; padding: 1px 8px; border-radius: 999px; border: 1px solid var(--rule-2); color: var(--ink); white-space: nowrap; }
+.pill.ok::before, .pill.warn::before, .pill.q::before { content: ""; width: 7px; height: 7px; border-radius: 50%; display: inline-block; }
+.pill.ok::before { background: var(--good); } .pill.warn::before { background: var(--warn); } .pill.q::before { background: transparent; border: 1.5px dashed var(--muted); width: 5px; height: 5px; }
+.panel { display: grid; gap: 12px; align-content: start; }
+@media (min-width: 901px) { .panel { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 12px); max-height: calc(100vh - 24px); overflow-y: auto; } }
+.panel .addr { font-family: var(--f-display); font-size: 36px; font-weight: 700; line-height: 1; }
+.facts { display: grid; grid-template-columns: auto 1fr; gap: 3px 12px; font-size: 13px; margin: 0; }
+.facts dt { color: var(--ink-2); } .facts dd { margin: 0; min-width: 0; }
+.cands { display: grid; gap: 8px; }
+.cand { border: 1px solid var(--rule); border-radius: 6px; padding: 10px 12px; display: grid; gap: 4px; }
+.cand .u { font-weight: 600; display: flex; align-items: center; gap: 8px; }
+.cand .w { font-size: 13px; color: var(--ink-2); }
+.econ { font-size: 13px; color: var(--ink-2); background: var(--accent-soft); border-radius: 6px; padding: 10px 12px; }
+.evlist { max-height: 420px; overflow-y: auto; border-top: 1px solid var(--rule); font-size: 13px; }
+.ev { display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 2px 10px; padding: 7px 0; border-bottom: 1px solid var(--rule); }
+.ev .y { font-family: var(--f-mono); color: var(--ink); }
+.ev .src { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .04em; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.ev a { color: var(--accent); }
+.mix { display: grid; gap: 10px; }
+.mixrow { display: grid; grid-template-columns: 190px minmax(0, 1fr) 118px; gap: 10px; align-items: center; font-size: 13px; }
+@media (max-width: 560px) { .mixrow { grid-template-columns: 110px minmax(0, 1fr) 104px; } }
+.track { position: relative; height: 18px; border-left: 1px solid var(--rule-2); background: linear-gradient(to right, var(--rule) 1px, transparent 1px) 0 0 / 25% 100%; }
+.track .line { position: absolute; top: 8px; height: 2px; background: var(--rule-2); }
+.track .dot { position: absolute; top: 3px; width: 12px; height: 12px; border-radius: 50%; margin-left: -6px; border: 2px solid var(--surface); }
+.track .dot.then { background: var(--muted); } .track .dot.now { background: var(--ink); }
+.track .dot.plan { background: var(--accent); width: 8px; height: 8px; top: 5px; margin-left: -4px; border: 0; }
+.mixrow .n { font-family: var(--f-mono); font-size: 12px; color: var(--ink-2); text-align: right; font-variant-numeric: tabular-nums; }
+.axis { display: grid; grid-template-columns: 190px minmax(0, 1fr) 118px; gap: 10px; font-family: var(--f-mono); font-size: 10.5px; color: var(--muted); }
+@media (max-width: 560px) { .axis { grid-template-columns: 110px minmax(0, 1fr) 104px; } }
+.axis .ticks { display: flex; justify-content: space-between; }
+.tbl { overflow-x: auto; }
+.tbl table { border-collapse: collapse; width: 100%; font-size: 13px; min-width: 860px; }
+.tbl th, .tbl td { text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+.tbl th { font-weight: 600; font-size: 12px; color: var(--ink-2); cursor: pointer; white-space: nowrap; }
+.tbl td.num { font-family: var(--f-mono); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.tbl tr { cursor: pointer; } .tbl tr:hover td { background: var(--accent-soft); }
+details summary { cursor: pointer; font-weight: 600; }
+.notes { display: grid; gap: 10px; font-size: 14px; color: var(--ink-2); max-width: 80ch; }
+.notes p { margin: 0; }
+.notes code { font-family: var(--f-mono); font-size: 12.5px; color: var(--ink); }
+.small { font-size: 12px; color: var(--muted); }
+/* what it could become */
+.cx-tabs { display: flex; flex-wrap: wrap; gap: 6px; }
+.cx-tab { font: inherit; font-size: 13px; padding: 6px 12px; border: 1px solid var(--rule-2); border-radius: 6px; background: var(--surface); color: var(--ink-2); cursor: pointer; }
+.cx-tab[aria-selected="true"] { background: var(--ink); color: var(--surface); border-color: var(--ink); }
+.cx-tab:focus-visible, .teaser button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.cx { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 24px; align-items: start; }
+@media (max-width: 900px) { .cx { grid-template-columns: minmax(0, 1fr); } }
+.cx-col { display: grid; gap: 16px; min-width: 0; }
+.cx-col > div > h3 { margin-bottom: 6px; }
+.was { list-style: none; margin: 0 0 0 4px; padding: 0; border-left: 2px solid var(--rule-2); }
+.was li { display: grid; grid-template-columns: 78px minmax(0, 1fr); gap: 0 10px; padding: 4px 0 6px 14px; position: relative; font-size: 13px; }
+.was li::before { content: ""; position: absolute; left: -6px; top: 9px; width: 6px; height: 6px; border-radius: 50%; background: var(--surface); border: 2px solid var(--ink-2); }
+.was .y { font-family: var(--f-mono); font-size: 12px; color: var(--ink); white-space: nowrap; }
+.was .s { grid-column: 2; font-size: 11px; color: var(--muted); }
+.fit { list-style: none; margin: 0; padding: 0; display: grid; gap: 7px; font-size: 13px; }
+.fit li { display: grid; grid-template-columns: 58px minmax(0, 1fr); gap: 10px; align-items: start; }
+.tag { font-family: var(--f-mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: .05em; padding: 1px 6px; border-radius: 4px; text-align: center; border: 1px solid var(--rule-2); color: var(--ink-2); white-space: nowrap; }
+.tag.yes { border-color: var(--good); color: var(--good); }
+.tag.partly, .tag.check { border-color: var(--warn); color: var(--warn); }
+.ideas { display: grid; gap: 8px; }
+.idea { border: 1px solid var(--rule); border-radius: 6px; padding: 10px 12px; display: grid; gap: 4px; }
+.idea.lead { border-color: var(--ink-2); box-shadow: inset 3px 0 0 var(--ink); }
+.idea .n { font-weight: 600; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.idea .t { font-size: 13px; color: var(--ink-2); }
+.prospect { background: var(--accent-soft); border-radius: 8px; padding: 14px 16px; display: grid; gap: 8px; font-size: 13px; }
+.prospect .nm { font-family: var(--f-display); font-size: 26px; font-weight: 600; line-height: 1.05; }
+.prospect ul { margin: 0; padding-left: 18px; display: grid; gap: 3px; }
+.prospect p { margin: 0; }
+.srcs { font-size: 12px; display: flex; flex-wrap: wrap; gap: 2px 14px; }
+.srcs a, .cxsrc { color: var(--accent); }
+.prec { display: grid; gap: 12px; }
+.pc { border-top: 1px solid var(--rule); padding-top: 10px; display: grid; gap: 4px; font-size: 13px; }
+.pc .hd { display: flex; gap: 8px; align-items: baseline; flex-wrap: wrap; }
+.pc .city { font-family: var(--f-mono); font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: var(--accent); }
+.pc .nm { font-weight: 600; }
+.pc .yr { font-family: var(--f-mono); font-size: 11px; color: var(--muted); }
+.pc .t { color: var(--ink-2); }
+.checks { margin: 0; padding-left: 18px; font-size: 13px; color: var(--ink-2); display: grid; gap: 3px; }
+.teaser { border: 1px dashed var(--accent); border-radius: 6px; padding: 10px 12px; display: grid; gap: 3px; font-size: 13px; }
+.teaser button { font: inherit; font-size: 13px; color: var(--accent); background: none; border: 0; padding: 0; cursor: pointer; text-align: left; text-decoration: underline; justify-self: start; }
+#map .cdot { fill: var(--accent); stroke: var(--surface); stroke-width: 1.5; pointer-events: none; }
+/* method, score, plan, roadmap */
+.flow { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 8px; counter-reset: st; }
+.flow li { border: 1px solid var(--rule); border-radius: 6px; padding: 9px 10px; font-size: 12.5px; color: var(--ink-2); display: grid; gap: 3px; align-content: start; position: relative; counter-increment: st; }
+.flow li b { font-family: var(--f-display); font-size: 17px; font-weight: 600; color: var(--ink); }
+.flow li b::before { content: counter(st) " "; color: var(--muted); font-family: var(--f-mono); font-size: 12px; font-weight: 400; }
+.flow li.next { border-style: dashed; background: transparent; }
+.flow li.computed { background: var(--bg); }
+.st { font-family: var(--f-mono); font-size: 10px; text-transform: uppercase; letter-spacing: .05em; justify-self: start; padding: 0 5px; border-radius: 3px; border: 1px solid var(--rule-2); }
+.st.computed, .st.done { color: var(--good); border-color: var(--good); }
+.st.hand, .st.demo { color: var(--warn); border-color: var(--warn); }
+.st.next, .st.later { color: var(--muted); border-style: dashed; }
+.wbox { border: 1px solid var(--rule); border-radius: 8px; padding: 14px; display: grid; gap: 10px; align-content: start; min-width: 0; }
+.wrow { display: grid; grid-template-columns: 140px minmax(0, 1fr) 44px; gap: 10px; align-items: center; font-size: 13px; }
+.wrow input[type="range"] { width: 100%; accent-color: var(--accent); }
+.wbox { overflow-x: auto; }
+@media (max-width: 560px) { .wrow { grid-template-columns: 112px minmax(0, 1fr) 40px; } }
+.wrow .n { font-family: var(--f-mono); font-size: 12px; text-align: right; }
+.chk { font-size: 13px; color: var(--ink-2); display: flex; gap: 8px; align-items: flex-start; }
+.chk input { margin-top: 3px; accent-color: var(--accent); }
+.sbar { display: flex; height: 8px; border-radius: 4px; overflow: hidden; background: var(--rule); }
+.sbar span { display: block; height: 100%; }
+.sbar .bh { background: var(--accent); } .sbar .bs { background: var(--c-pers); } .sbar .bf { background: var(--muted); }
+.skey { display: flex; flex-wrap: wrap; gap: 2px 12px; font-size: 11.5px; color: var(--ink-2); }
+.skey i { display: inline-block; width: 8px; height: 8px; border-radius: 2px; margin-right: 4px; }
+.cand .u .sc { margin-left: auto; font-family: var(--f-mono); font-weight: 500; font-size: 13px; }
+.cand .w b { color: var(--ink); font-weight: 500; }
+.pol { font-family: var(--f-mono); font-size: 10.5px; padding: 0 5px; border-radius: 3px; border: 1px solid var(--rule-2); color: var(--ink-2); font-weight: 400; }
+.pol.cb { color: var(--warn); border-color: var(--warn); }
+.nogo { font-size: 13px; color: var(--ink-2); border-left: 3px solid var(--c-prod); padding: 2px 0 2px 10px; }
+.btt { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+.btt td, .btt th { padding: 4px 6px; border-bottom: 1px solid var(--rule); text-align: left; }
+.btt th { font-weight: 600; color: var(--ink-2); font-size: 11.5px; }
+.btt td.num { font-family: var(--f-mono); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.big { font-family: var(--f-display); font-size: 30px; font-weight: 600; line-height: 1; }
+.grid2.even { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+@media (max-width: 900px) { .grid2.even { grid-template-columns: minmax(0, 1fr); } }
+.plans { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(330px, 100%), 1fr)); gap: 14px; }
+.pside { border: 1px solid var(--rule); border-radius: 8px; padding: 12px 14px; display: grid; gap: 10px; align-content: start; min-width: 0; }
+.prow { display: grid; grid-template-columns: 52px minmax(0, 1fr); gap: 4px 10px; align-items: start; font-size: 13px; border-top: 1px solid var(--rule); padding-top: 8px; }
+.prow .a { font-family: var(--f-mono); color: var(--accent); cursor: pointer; background: none; border: 0; padding: 0; font-size: 13px; text-align: left; text-decoration: underline; }
+.prow select { font: inherit; font-size: 13px; width: 100%; max-width: 100%; padding: 4px 6px; border: 1px solid var(--rule-2); border-radius: 6px; background: var(--bg); color: var(--ink); }
+.prow .why { grid-column: 2; font-size: 12px; color: var(--ink-2); }
+.mixline { display: flex; flex-wrap: wrap; gap: 4px; font-size: 12px; }
+.mixline .mc { display: inline-flex; gap: 4px; align-items: center; padding: 1px 6px; border-radius: 999px; border: 1px solid var(--rule-2); }
+.mixline .mc.up { border-color: var(--accent); }
+.mixline .mc.full { border-color: var(--c-prod); color: var(--c-prod); }
+.warn { font-size: 12.5px; color: var(--c-prod); }
+.miles { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0; border-top: 2px solid var(--rule-2); margin-top: 6px; }
+.mile { padding: 12px 12px 4px 0; position: relative; display: grid; gap: 4px; align-content: start; font-size: 13px; color: var(--ink-2); }
+.mile::before { content: ""; position: absolute; top: -7px; left: 0; width: 12px; height: 12px; border-radius: 50%; background: var(--surface); border: 2px solid var(--ink-2); }
+.mile.now::before { background: var(--accent); border-color: var(--accent); }
+.mile .d { font-family: var(--f-mono); font-size: 11.5px; color: var(--ink); }
+.mile .t { font-family: var(--f-display); font-size: 18px; font-weight: 600; color: var(--ink); line-height: 1.1; }
+.end { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 8px; }
+.endc { border: 1px solid var(--rule); border-radius: 8px; padding: 10px 12px; display: grid; gap: 4px; align-content: start; font-size: 13px; color: var(--ink-2); }
+.endc .q { font-family: var(--f-display); font-size: 18px; font-weight: 600; color: var(--ink); line-height: 1.1; }
+.mcheck { font-size: 13px; color: var(--ink-2); background: var(--bg); border-radius: 6px; padding: 8px 10px; }
+.sbar .bc { background: var(--c-ent); } .sbar .ba { background: var(--c-auto); } .sbar .bk { background: var(--c-off); }
+.cfoot { display: flex; flex-wrap: wrap; gap: 6px 12px; align-items: center; }
+.fbb { display: inline-flex; gap: 4px; align-items: center; flex-wrap: wrap; }
+.fbb .vote { font: inherit; font-size: 12px; padding: 1px 8px; border: 1px solid var(--rule-2); border-radius: 999px; background: var(--surface); color: var(--ink-2); cursor: pointer; }
+.fbb .vote.on { background: var(--ink); color: var(--surface); border-color: var(--ink); }
+.fbb .vote:disabled { cursor: default; opacity: .6; }
+.fbb .why-in { font: inherit; font-size: 12px; padding: 2px 6px; border: 1px solid var(--rule-2); border-radius: 6px; background: var(--bg); color: var(--ink); width: 170px; }
+.mini { display: grid; gap: 4px; font-size: 13px; margin-top: 4px; }
+.pill.warn { border-color: var(--warn); } .pill.ok { border-color: var(--good); }
+.cmpt th { white-space: normal; } .cmpt td { min-width: 180px; }
+.cmpt td.f { color: var(--ink-2); font-weight: 600; white-space: nowrap; min-width: 0; }
+.mtx { border-collapse: collapse; font-size: 12px; min-width: 560px; }
+.mtx th, .mtx td { padding: 4px 6px; border: 1px solid var(--rule); text-align: center; }
+.mtx td.mp { background: color-mix(in srgb, var(--good) 22%, transparent); }
+.mtx td.mn { background: color-mix(in srgb, var(--c-prod) 22%, transparent); }
+.mtx sup { color: var(--muted); font-size: 9px; margin-left: 1px; }
+.segc { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 20px; align-items: start; }
+@media (max-width: 900px) { .segc { grid-template-columns: minmax(0, 1fr); } }
+.pains { margin: 0; padding-left: 20px; font-size: 13px; display: grid; gap: 6px; }
+.pains li b { color: var(--ink); }
+.fitlist { display: grid; gap: 8px; }
+.fitrow { border: 1px solid var(--rule); border-radius: 6px; padding: 8px 10px; display: grid; gap: 3px; font-size: 13px; }
+.fitrow .hd { display: flex; gap: 8px; align-items: baseline; flex-wrap: wrap; }
+.fitrow .a { font-family: var(--f-mono); color: var(--accent); cursor: pointer; background: none; border: 0; padding: 0; font-size: 13px; text-decoration: underline; }
+.guard { font-size: 12.5px; color: var(--ink-2); border-left: 3px solid var(--accent); padding: 4px 10px; background: var(--bg); }
+.casel { display: grid; gap: 10px; }
+.casec { border-top: 1px solid var(--rule); padding-top: 10px; display: grid; gap: 4px; font-size: 13px; }
+.casec .hd { display: flex; gap: 8px; align-items: baseline; flex-wrap: wrap; }
+.chips { display: flex; flex-wrap: wrap; gap: 4px; }
+.chips span { font-size: 11px; padding: 0 6px; border-radius: 999px; border: 1px solid var(--rule-2); color: var(--ink-2); }
+.chips span.y { border-color: var(--good); color: var(--ink); }
+.simv { font-family: var(--f-mono); font-size: 12px; color: var(--accent); }
+.fblog { display: grid; gap: 6px; font-size: 13px; }
+.fbrow { display: grid; grid-template-columns: 26px 120px minmax(0, 1fr); gap: 8px; align-items: start; border-bottom: 1px solid var(--rule); padding: 5px 0; }
+.fbrow img { width: 22px; height: 22px; border-radius: 50%; }
+@media (max-width: 560px) { .fbrow { grid-template-columns: 26px minmax(0, 1fr); } .fbrow .w2 { grid-column: 2; } }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Waverly, Baltimore · Greenmount Ave, E 29th to E 33rd St · extractor v1 · score v0.3 · 19 Oct 2026</div>
+    <h1>Greenmount Frontage Explorer</h1>
+    <p class="lede">Every building on the seven Greenmount block faces in the focus area: what it was, what it is now, and the uses it has already shown it can carry. Seven new sources are joined to the sponsor's curated records: Polk city directories for 1901 to 1923 (the early years read through a York Road renumbering crosswalk), the City's building-permit index cards for 1924 to 1961, Sanborn maps for 1915, 1928 and 1953, the National Register inventory, the City's 1970s revitalization files, and a current-tenant check from October 2026.</p>
+  </header>
+
+  <div class="tiles" id="tiles"></div>
+
+  <section class="card" aria-labelledby="maph">
+    <div class="bar">
+      <h2 id="maph">Block faces</h2>
+      <div class="ctl">
+        <span>Colour by</span>
+        <div class="seg" role="group" aria-label="Colour the map by">
+          <button type="button" id="m-now" aria-pressed="true">Use today</button>
+          <button type="button" id="m-best" aria-pressed="false">Best-proven use</button>
+          <button type="button" id="m-rec" aria-pressed="false">Top score</button>
+        </div>
+        <div class="seg" role="group" aria-label="Show">
+          <button type="button" id="f-all" aria-pressed="true">All</button>
+          <button type="button" id="f-avail" aria-pressed="false">Available or unconfirmed</button>
+          <button type="button" id="f-sponsor" aria-pressed="false">Sponsor walk-throughs</button>
+        </div>
+        <label for="q" class="small">Find</label><input type="search" id="q" placeholder="e.g. 3211" inputmode="numeric" autocomplete="off">
+      </div>
+    </div>
+    <div class="legend" id="legend" aria-label="Use categories. Select one to isolate it."></div>
+    <div class="mapbox" id="mapbox"><svg id="map" role="img" aria-label="Parcel map of the Greenmount Avenue frontage, north to the right"></svg><div class="tip" id="tip" hidden></div></div>
+    <p class="small">"Top score" colours each parcel by its highest-scoring permitted use, as if it were available. North is to the right. Parcel outlines come from the sponsor export; ten export records that the sponsor lists as merged into a neighbouring parcel are shown as part of that parcel. Hover for a summary, select for the full record. Blue dots mark the three buildings with a drafted concept.</p>
+  </section>
+
+  <div class="grid2">
+    <section class="card" aria-labelledby="ledh">
+      <div class="bar"><h2 id="ledh">Use ledger, 1880s to today</h2><span class="small">dominant use per decade · last column is Oct 2026</span></div>
+      <div class="ledger" id="ledger"></div>
+    </section>
+    <section class="card panel" id="panel" aria-live="polite"></section>
+  </div>
+
+  <section class="card" id="cmp" aria-labelledby="cmph">
+    <div class="bar"><h2 id="cmph">Compare uses</h2><span class="small" id="cmpfor"></span></div>
+    <p class="lede" style="font-size:14px">Pick up to three uses for the selected building and read them factor by factor. Agree or disagree with each one; the votes are shared with the team and the sponsor and, when switched on, nudge the scores.</p>
+    <div class="legend" id="cmppick" aria-label="Uses to compare"></div>
+    <div class="tbl" id="cmptab"></div>
+  </section>
+
+  <section class="card" id="fb" aria-labelledby="fbh">
+    <div class="bar"><h2 id="fbh">Team and sponsor feedback</h2><span class="small" id="fbstat"></span></div>
+    <div id="fblog"></div>
+  </section>
+
+  <section class="card" id="method" aria-labelledby="mh">
+    <div class="bar"><h2 id="mh">How the recommendation works</h2><span class="small">score v0.3 · change the weights and every view updates</span></div>
+    <p class="lede" style="font-size:14px">It is not history alone. After two rule filters, each possible use of a building is scored on six inputs: its heritage, saturation, size, what residents have asked for or objected to, its neighbours, and how similar buildings elsewhere turned out. Team and sponsor feedback then nudges the score. The block plan places uses one at a time under a saturation limit. The concepts and named businesses further down are written by hand on top of this, and they say so.</p>
+    <ol class="flow" id="flow"></ol>
+    <div class="grid2 even">
+      <div class="wbox">
+        <h3>Weights</h3>
+        <div id="wts"></div>
+        <label class="chk"><input type="checkbox" id="gf" checked> Ground-floor commercial only (leave housing out of the ranking)</label>
+        <label class="chk"><input type="checkbox" id="fbon" checked> Apply team and sponsor feedback to the scores</label>
+        <p class="small" id="formula"></p>
+      </div>
+      <div class="wbox" id="bt"></div>
+    </div>
+    <details><summary>The rules: what C-1 zoning and the urban renewal plan allow, format by format</summary><div class="tbl" id="rules" style="margin-top:10px"></div></details>
+    <details><summary>Community: what residents objected to and asked for</summary><div class="tbl" id="commtab" style="margin-top:10px"></div></details>
+    <details><summary>Neighbours: which uses help or hurt each other next door</summary><div class="tbl" id="adjtab" style="margin-top:10px"></div></details>
+    <details><summary>Known limits of this version</summary><ul class="checks" id="limits" style="margin-top:8px"></ul></details>
+  </section>
+
+  <section class="card" id="planS" aria-labelledby="ph">
+    <div class="bar"><h2 id="ph">Block plan</h2><span class="small">assemblage optimiser v0 · one use at a time, with a saturation limit</span></div>
+    <p class="lede" style="font-size:14px">Each vacant or for-lease parcel gets the use with the highest score, best parcel first. After each placement the counts on that block side and on the corridor go up, so a second cafe on the same side scores lower than the first, and the placed use becomes a neighbour of the next parcel. Change any choice to see what it does to the mix. Scores in the menus are before any placement; the line under each parcel gives the score at the moment it was placed.</p>
+    <label class="chk"><input type="checkbox" id="unk"> Also plan the parcels with no confirmed occupant (a scenario: some of them may be occupied)</label>
+    <div id="plan" class="plans"></div>
+  </section>
+
+  <section class="card" id="seg" aria-labelledby="segh">
+    <div class="bar"><h2 id="segh">Who it is for</h2><span class="small">customer groups, their obstacles, and the buildings that fit them</span></div>
+    <p class="lede" style="font-size:14px" id="seglede"></p>
+    <div class="cx-tabs" role="tablist" id="segtabs" aria-label="Customer groups"></div>
+    <div id="segbody"></div>
+  </section>
+
+  <section class="card" id="cases" aria-labelledby="caseh">
+    <div class="bar"><h2 id="caseh">Comparable cases elsewhere</h2><span class="small" id="casefor"></span></div>
+    <div class="cx-tabs" role="tablist" aria-label="Case level"><button type="button" role="tab" class="cx-tab" id="ct-b" aria-selected="true">Buildings like this one</button><button type="button" role="tab" class="cx-tab" id="ct-d" aria-selected="false">Streets like Waverly</button></div>
+    <div id="casebody"></div>
+  </section>
+
+  <section class="card" id="cx" aria-labelledby="cxh">
+    <div class="bar"><h2 id="cxh">What it could become</h2><span class="small">three empty buildings the sponsor has walked through · draft concepts · nobody has been contacted</span></div>
+    <p class="lede" style="font-size:14px" id="cxlede">For each building: what it was, what its history, the block and the rules allow, two concepts, and places that have done something like it.</p>
+    <div class="cx-tabs" role="tablist" id="cxtabs" aria-label="Concept buildings"></div>
+    <div id="cxbody" role="tabpanel"></div>
+    <p class="small" id="cxnote"></p>
+  </section>
+
+  <section class="card" aria-labelledby="mixh">
+    <div class="bar"><h2 id="mixh">The mix then and now</h2><span class="small">share of frontage buildings with each use</span></div>
+    <div class="legend"><span class="chip" style="cursor:default"><span class="sw" style="background:var(--muted)"></span>1920 to 1923, Polk directories</span><span class="chip" style="cursor:default"><span class="sw" style="background:var(--ink)"></span>October 2026, tenant check</span><span class="chip" style="cursor:default"><span class="sw" style="background:var(--accent);border-radius:50%"></span>after the block plan</span></div>
+    <div class="mix" id="mix"></div>
+    <p class="small" id="mixnote"></p>
+  </section>
+
+  <section class="card" id="road" aria-labelledby="rh">
+    <div class="bar"><h2 id="rh">Where this ends</h2><span class="small">the final deliverable, and what is done so far</span></div>
+    <div id="endstate"></div>
+    <div id="miles" class="miles"></div>
+    <div class="tbl" id="comp"></div>
+  </section>
+
+  <section class="card" aria-labelledby="tblh">
+    <details>
+      <summary id="tblh">Screening table, all 69 parcels</summary>
+      <div class="tbl" id="tbl" style="margin-top:12px"></div>
+    </details>
+  </section>
+
+  <section class="card" aria-labelledby="noteh">
+    <h2 id="noteh">How this was built, and what it is not</h2>
+    <div class="notes" id="notes"></div>
+  </section>
+</div>
+
+<script id="data" type="application/json">__DATA__</script>
+<script>
+(function () {
+  const D = JSON.parse(document.getElementById('data').textContent);
+  const P = D.props;
+  const CATS = [
+    ['retail goods', '--c-retail'], ['food & drink', '--c-food'], ['personal services', '--c-pers'],
+    ['automotive', '--c-auto'], ['entertainment & assembly', '--c-ent'], ['institutional & religious', '--c-inst'],
+    ['office', '--c-off'], ['production & light industry', '--c-prod'], ['residential', '--c-res']];
+  const CV = Object.fromEntries(CATS);
+  const DECS = []; for (let d = 1880; d <= 2020; d += 10) DECS.push(d);
+  const SIDE = { '65': 'West side, 2900 block', '67': 'West side, 3000 block', '68': 'East side, 3000 block',
+    '69': 'West side, 3100 block', '70': 'East side, 3100 block', '71': 'West side, 3200 block', '72': 'East side, 3200 block' };
+  const SIDE_ORDER = ['65', '67', '68', '69', '70', '71', '72'];
+  const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  const fmt = n => n.toLocaleString('en-US');
+  let mode = 'now', filt = 'all', iso = null, sel = '742', q = '';
+  const CX = D.concepts || {}, CXO = D.concept_order || [];
+  let cxSel = CXO[0];
+
+  // ---------------- score engine (v0.3): six factors after the rule filters
+  const L = D.lib || {};
+  const AVER = {}; (L.aversion || []).forEach(a => { if (a.format_id) AVER[a.format_id] = a; });
+  const EXTRA = [
+    { id: 'smallbox', name: 'Small-box discount store', cat: 'retail goods', her: [['retail goods', 0.8]], z: 'Retail: Small Box Establishment', zs: 'CB', size: [5000, 12000], note: 'Needs a zoning-board approval and 2,640 ft from the next small-box store (14-335.2).' },
+    { id: 'smoke', name: 'Smoke, vape or CBD shop', cat: 'retail goods', her: [['retail goods', 0.5]], z: 'Smoke shop', zs: 'CB', size: [400, 2500], note: 'Needs a zoning-board approval and 750 ft from schools, parks and other smoke shops (14-337, 2026).' },
+    { id: 'checkcash', name: 'Check-cashing counter', cat: 'personal services', her: [['personal services', 0.4], ['office', 0.4]], z: 'Check Cashing', zs: 'CO', size: [300, 1500], note: 'Needs a City Council ordinance in C-1.' },
+    { id: 'liquor', name: 'Liquor or package store', cat: 'retail goods', her: [['food & drink', 1]], bar: true, z: 'Retail Goods Establishment (with alcohol)', zs: 'CO', urp: true, size: [800, 4000], note: 'Barred by the urban renewal plan; also 300 ft from other alcohol retail (14-336) and from churches and schools (state law 12-1605).' },
+    { id: 'pawn', name: 'Pawn shop', cat: 'retail goods', her: [['retail goods', 0.5]], z: 'Pawn Shop', zs: 'NP', urp: true, size: [600, 3000], note: 'Not permitted in C-1 and barred by the urban renewal plan.' }];
+  const FMT = (D.formats || []).concat(EXTRA), FM = Object.fromEntries(FMT.map(f => [f.id, f]));
+  FMT.forEach(f => { f.av = AVER[f.id] || (f.id === 'tavern' ? AVER.tavern : null); });
+  const REQ = {}; (L.requested || []).forEach(r => (r.format_ids || []).forEach(id => { (REQ[id] = REQ[id] || []).push(r); }));
+  const MIXC = Object.fromEntries((D.mix || []).map(m => [m.cat, m]));
+  const WT = { h: 35, s: 20, f: 15, c: 10, a: 10, k: 10 };
+  const WL = [['h', 'Heritage', 'var(--accent)'], ['s', 'Room (saturation)', 'var(--c-pers)'], ['f', 'Size fit', 'var(--muted)'], ['c', 'Community', 'var(--c-ent)'], ['a', 'Neighbours', 'var(--c-auto)'], ['k', 'Precedents', 'var(--c-off)']];
+  let gfOnly = true, inclUnk = false, useFb = true, overrides = {};
+  const SIDE_CAP = [1, 0.6, 0.25, 0];
+  const POLM = { P: 1, CB: 0.75, CO: 0.75 };
+  const AVM = { strong: 0.3, moderate: 0.6, weak: 0.85 };
+  const pct0 = x => Math.round(x * 100) + '%';
+  function baseCounts() {
+    const side = {}, corr = {};
+    P.filter(p => p.occ).forEach(p => (p.now || []).forEach(c => {
+      side[p.side] = side[p.side] || {}; side[p.side][c] = (side[p.side][c] || 0) + 1; corr[c] = (corr[c] || 0) + 1;
+    }));
+    return { side, corr, base: (D.mix && D.mix[0] ? D.mix[0].now_base : 44), cat: {} };
+  }
+  const BASE = baseCounts();
+  const cloneC = C => ({ side: JSON.parse(JSON.stringify(C.side)), corr: Object.assign({}, C.corr), base: C.base, cat: Object.assign({}, C.cat) });
+  const PI = Object.fromEntries(P.map(p => [p.id, p]));
+  function hcat(p, c) {
+    const r = p.h && p.h[c]; if (!r) return 0;
+    const nd = r[0], ns = r[2], strong = nd >= 2 || ns >= 2;
+    return Math.min(1, Math.min(nd, 5) / 5 * (strong ? 1 : 0.5) + (ns >= 2 ? 0.1 : 0));
+  }
+  // the street's record: how many frontage parcels have proven each use (the neighbourhood remembers it)
+  const STREET = {};
+  P.forEach(p => Object.entries(p.h || {}).forEach(([c, r]) => { if (r[0] >= 2 || r[2] >= 2) STREET[c] = (STREET[c] || 0) + 1; }));
+  const SMAX = Math.max(1, ...Object.entries(STREET).filter(([c]) => c !== 'residential').map(([, n]) => n));
+  function her(p, f) {
+    let best = 0, via = '', from = '';
+    f.her.forEach(([c, k]) => {
+      let v = k * hcat(p, c), fr = 'building';
+      if (f.bar) v *= (p.h && p.h[c] ? p.h[c][5] : 0);
+      else { const sv = k * 0.3 * Math.min(1, (STREET[c] || 0) / SMAX); if (sv > v) { v = sv; fr = 'street'; } }
+      if (v > best) { best = v; via = c; from = fr; }
+    });
+    return [best, via, from];
+  }
+  function sat(p, f, C) {
+    if (f.cat === 'residential') return { v: 0.5, n: null };
+    const n = (C.side[p.side] || {})[f.cat] || 0, m = MIXC[f.cat];
+    const then = m ? m.then / m.then_base : 0, now = (C.corr[f.cat] || 0) / C.base;
+    const sS = SIDE_CAP[Math.min(n, 3)], sC = then > 0 ? (now <= then ? 1 : Math.max(0, then / now)) : (now > 0 ? 0.5 : 1);
+    return { v: 0.5 * sS + 0.5 * sC, n, now, then };
+  }
+  function fit1(x, r) { if (x >= r[0] && x <= r[1]) return 1; const k = x < r[0] ? r[0] / x : x / r[1]; return Math.max(0, 1 - Math.log(k) / Math.log(3)); }
+  function sizeFit(p, f) {
+    const s = +p.sqft; if (!s) return [0.5, 'size not in the export'];
+    let v = fit1(s, f.size), how = 'as one unit';
+    if (s >= 2500) { const v2 = 0.85 * fit1(s / 2, f.size); if (v2 > v) { v = v2; how = 'split in two'; } }
+    if (s >= 4000) { const v3 = 0.8 * fit1(s / 3, f.size); if (v3 > v) { v = v3; how = 'split in three'; } }
+    return [v, how];
+  }
+  // community: residents asked for it, or pushed back on it (research: community_aversion)
+  function comm(f) {
+    if (f.av && f.av.grade) return { v: { strong: 0, moderate: 0.2, weak: 0.4 }[f.av.grade] ?? 0.3, why: 'pushed back', a: f.av };
+    if (REQ[f.id]) return { v: 1, why: 'asked for', r: REQ[f.id] };
+    return { v: 0.5, why: 'no signal' };
+  }
+  // neighbours: next door (weight 1) and across the street (weight from the research), pairwise matrix
+  const ADJ = L.adjacency || { cats: [], matrix: {}, across_weight: 0.5 };
+  const ACATS = ADJ.cats || [];
+  const mcat = c => ACATS.includes(c) ? c : (c === 'automotive' ? 'production & light industry' : null);
+  function M(a, b) {
+    a = mcat(a); b = mcat(b); if (!a || !b) return null;
+    const [x, y] = ACATS.indexOf(a) <= ACATS.indexOf(b) ? [a, b] : [b, a];
+    return ADJ.matrix[x + '|' + y] || null;
+  }
+  function nbCat(q, C) {
+    if (!q) return null;
+    if (C && C.cat && C.cat[q.id]) return C.cat[q.id];
+    if (q.status === 'vacant' || q.status === 'for lease') return 'vacant';
+    if (q.occ && q.now && q.now.length) { const u = (q.uses_now || '').split(' ; ')[0]; return q.now.includes(u) ? u : q.now[0]; }
+    return null;
+  }
+  function neigh(p, f, C) {
+    const nb = p.nb || {}, list = [];
+    [['next door', nb.left, 1], ['next door', nb.right, 1]].concat((nb.across || []).map(id => ['across', id, ADJ.across_weight || 0.5])).forEach(([where, id, w]) => {
+      const q = PI[id], c = nbCat(q, C); if (!c) return;
+      const m = M(f.cat, c); if (!m) return;
+      list.push({ where, q, c, v: m.v, w, m });
+    });
+    const sw = list.reduce((a, x) => a + x.w, 0);
+    const raw = sw ? list.reduce((a, x) => a + x.w * x.v, 0) / sw : 0;
+    return { v: (raw + 1) / 2, raw, list };
+  }
+  // precedents: similar old buildings elsewhere, and what they became (research: building cases)
+  const BG = { 'garage/showroom': 'big', 'livery/stable': 'big', 'factory/warehouse': 'big', 'market hall': 'big', 'theatre': 'hall', 'church': 'hall', 'bank': 'small', 'small storefront': 'small', 'rowhouse/house': 'house', 'other': 'other' };
+  function tsim(a, b) { if (a === b) return 1; if (BG[a] && BG[a] === BG[b]) return 0.6; if ([BG[a], BG[b]].sort().join() === 'house,small') return 0.5; return 0.1; }
+  function caseSim(p, b) {
+    const t = tsim(p.btype, b.building_type);
+    const h = b.orig_cat && p.h && p.h[b.orig_cat] ? Math.min(1, hcat(p, b.orig_cat) + 0.3) : 0;
+    const sz = (+p.sqft && b.sqft) ? Math.max(0, 1 - Math.abs(Math.log(+p.sqft / b.sqft)) / Math.log(8)) : 0.4;
+    const era = (p.built && b.year_built) ? Math.max(0, 1 - Math.abs(p.built - b.year_built) / 60) : 0.4;
+    const ctx = b.context_income === 'low' || b.context_income === 'moderate' ? 1 : (b.context_income ? 0.5 : 0.6);
+    return { v: 0.35 * t + 0.25 * h + 0.2 * sz + 0.1 * era + 0.1 * ctx, t, h, sz, era, ctx };
+  }
+  const FMAP = { foodhall: ['cafe', 'foodmaker', 'counter'], lodging: ['housing'], bar: ['tavern'] };
+  const caseFormats = b => (b.new_formats || []).flatMap(x => FMAP[x] || [x]);
+  const SUCC = { operating: 1, reopened: 0.8, 'in development': 0.5, unknown: 0.6, closed: 0 };
+  const SIMS = {};
+  function simsOf(p) { if (!SIMS[p.id]) SIMS[p.id] = (L.buildings || []).map(b => ({ b, s: caseSim(p, b) })).sort((x, y) => y.s.v - x.s.v); return SIMS[p.id]; }
+  function prec(p, f) {
+    const top = simsOf(p).slice(0, 8), den = top.reduce((a, x) => a + x.s.v, 0) || 1;
+    const hits = top.filter(x => caseFormats(x.b).includes(f.id));
+    const num = hits.reduce((a, x) => a + x.s.v * (SUCC[x.b.status] ?? 0.6), 0);
+    return { v: Math.min(1, 2 * num / den), hits };
+  }
+  // team and sponsor feedback (shared db), applied as a multiplier when switched on
+  let FB = {};
+  const fbKey = (pid, fid) => pid + '|' + fid;
+  function fbMult(pid, fid) { const x = FB[fbKey(pid, fid)]; if (!useFb || !x) return 1; return 1 + Math.max(-0.4, Math.min(0.2, 0.1 * (x.up - x.down))); }
+  const blockedBy = f => f.urp ? 'urban renewal plan' : (f.zs === 'NP' ? 'not permitted in C-1' : '');
+  function scoreAll(p, C) {
+    const tot = (WT.h + WT.s + WT.f + WT.c + WT.a + WT.k) || 1;
+    return FMT.map(f => {
+      const [h, via, from] = her(p, f), s = sat(p, f, C), [fi, how] = sizeFit(p, f), cm = comm(f), nb = neigh(p, f, C), pr = prec(p, f);
+      const bl = blockedBy(f), filt = gfOnly && f.cat === 'residential', pol = POLM[f.zs] || 0;
+      const avm = f.av && f.av.grade ? AVM[f.av.grade] : 1, fbm = fbMult(p.id, f.id), mult = pol * avm * fbm;
+      const ok = !bl && !filt;
+      const raw = [WT.h * h, WT.s * s.v, WT.f * fi, WT.c * cm.v, WT.a * nb.v, WT.k * pr.v].map(x => x / tot);
+      const parts = raw.map(x => x * mult);
+      return { f, h, via, from, s, fi, how, cm, nb, pr, bl, filt, ok, pol, avm, fbm, mult, parts, score: ok ? Math.min(1, parts.reduce((a, b) => a + b, 0)) : 0 };
+    }).sort((a, b) => b.score - a.score || b.h - a.h);
+  }
+  let SC = {};
+  function rescore() { SC = {}; P.forEach(p => { SC[p.id] = scoreAll(p, BASE); }); }
+  const topOf = id => (SC[id] || []).find(r => r.ok && !r.f.av);
+  rescore();
+  const ZTXT = { P: 'permitted in C-1', CB: 'conditional use in C-1 (zoning board)', CO: 'conditional use in C-1 (by ordinance)', NP: 'not permitted in C-1' };
+  const sgn = v => v > 0 ? '+1' : v < 0 ? '−1' : '0';
+  function explain(r, p) {
+    const f = r.f, hrow = p.h && p.h[r.via];
+    const hs = r.from === 'street' ? `<b>Heritage</b> from the street: ${esc(r.via)} is proven at ${STREET[r.via]} frontage parcels, none of it on record here` : r.h > 0 && hrow ? `<b>Heritage</b> ${esc(r.via)}: ${hrow[0]} decade${hrow[0] === 1 ? '' : 's'}, ${hrow[2]} source type${hrow[2] === 1 ? '' : 's'} (${hrow[3]}-${hrow[4]})${r.via !== f.cat ? ', borrowed from a related trade' : ''}` : '<b>Heritage</b> none: no record of this use here';
+    const ss = r.s.n == null ? '<b>Saturation</b> not measured for housing' : `<b>Saturation</b> ${r.s.n} of this use on the block side today; corridor ${pct0(r.s.now)} of storefronts now vs ${pct0(r.s.then)} in 1920-23${r.s.now > r.s.then ? ', above its old share' : ''}`;
+    const fs = `<b>Size</b> ${p.sqft ? fmt(+p.sqft) + ' sq ft' : 'unknown'} against ${fmt(f.size[0])}-${fmt(f.size[1])} (${esc(r.how)})`;
+    const cs = r.cm.why === 'asked for' ? `<b>Community</b> asked for: ${esc(r.cm.r.map(x => x.type.toLowerCase()).join(', '))}` : r.cm.why === 'pushed back' ? `<b>Community</b> pushed back (${esc(r.cm.a.grade)}): ${esc(r.cm.a.waverly_evidence || '')}` : '<b>Community</b> no stated wish or objection';
+    const ns = r.nb.list.length ? `<b>Neighbours</b> ${r.nb.list.map(x => `${x.where} ${esc(x.q.address)} ${esc(x.c)} ${sgn(x.v)}`).join(', ')}` : '<b>Neighbours</b> none with a known use';
+    const ps = r.pr.hits.length ? `<b>Precedents</b> ${r.pr.hits.length} of the 8 most similar cases do this: ${r.pr.hits.slice(0, 3).map(x => esc(x.b.name) + (x.b.status === 'closed' ? ' (closed)' : '')).join('; ')}` : '<b>Precedents</b> none of the 8 most similar cases does this';
+    const zs = `<b>Zoning</b> ${esc(ZTXT[f.zs] || f.zs)}${f.note ? '. ' + esc(f.note) : ''}`;
+    const fb = FB[fbKey(p.id, f.id)];
+    const fbs = fb && (fb.up || fb.down) ? `<b>Feedback</b> ${fb.up} up, ${fb.down} down${useFb ? ` (×${r.fbm.toFixed(2)})` : ' (not applied)'}` : '';
+    return [hs, ss, fs, cs, ns, ps, zs, fbs].filter(Boolean).join(' · ');
+  }
+
+  const firstCat = s => (s || '').split(' ; ')[0].split(' - ')[0].trim();
+  function catNow(p) {
+    if (p.status === 'vacant' || p.status === 'for lease') return 'vacant';
+    if (p.status !== 'occupied') return 'unknown';
+    return firstCat(p.uses_now) || 'unknown';
+  }
+  function catBest(p) { return firstCat(p.cand1) || 'unknown'; }
+  function catRec(p) { const t = topOf(p.id); return t ? t.f.cat : 'unknown'; }
+  const catOf = p => mode === 'now' ? catNow(p) : (mode === 'rec' ? catRec(p) : catBest(p));
+  function fill(c) {
+    if (c === 'vacant') return 'url(#hatch)';
+    if (c === 'unknown') return 'var(--c-none)';
+    return CV[c] ? `var(${CV[c]})` : 'var(--c-none)';
+  }
+  const cssFill = c => c === 'vacant' ? 'repeating-linear-gradient(45deg,var(--ink-2) 0 2px,var(--surface) 2px 5px)' : fill(c);
+  function visible(p) {
+    if (filt === 'avail' && p.availability === 'occupied') return false;
+    if (filt === 'sponsor' && !p.sponsor) return false;
+    if (q && !p.address.startsWith(q)) return false;
+    return true;
+  }
+  const availPill = p => p.availability === 'available now' ? `<span class="pill ok">${esc(p.status)}</span>`
+    : p.availability === 'occupied' ? `<span class="pill warn">occupied</span>` : `<span class="pill q">not confirmed</span>`;
+
+  // ---------------- tiles
+  const T = D.totals, S = D.silence;
+  const SRCK = [['sponsor', 'sponsor', 'var(--accent)'], ['polk_directory', 'Polk', 'var(--muted)'], ['permit_card', 'permit cards', 'var(--ink-2)'],
+    ['sanborn', 'Sanborn', 'var(--c-retail)'], ['nr_inventory', 'NR inventory', 'var(--c-pers)'], ['dhcd_1970s', '1970s files', 'var(--c-auto)'], ['current_2026', '2026 check', 'var(--rule-2)']];
+  const tot = SRCK.reduce((a, [k]) => a + (T[k] || 0), 0);
+  const avail = P.filter(p => p.availability === 'available now').length, unk = P.filter(p => p.availability === 'possibly available').length;
+  const pct = n => (100 * n / tot).toFixed(1) + '%';
+  document.getElementById('tiles').innerHTML = `
+    <div class="tile"><div class="k">Frontage parcels</div><div class="v">${P.length}</div><div class="s">${P.filter(p => p.sponsor).length} have a sponsor Matterport walk-through; the sponsor's own LLC is the owner of record for ${P.filter(p => p.ready && p.ready.owner === 'sponsor-linked LLC').length}</div></div>
+    <div class="tile"><div class="k">Records joined</div><div class="v">${fmt(tot)}</div>
+      <div class="srcbar" aria-hidden="true">${SRCK.map(([k, , c]) => `<span style="width:${pct(T[k] || 0)};background:${c}"></span>`).join('')}</div>
+      <div class="srckey">${SRCK.map(([k, l, c]) => `<span><i style="background:${c}"></i>${l} ${fmt(T[k] || 0)}</span>`).join('')}</div></div>
+    <div class="tile"><div class="k">Decades documented, 1900s to 2020s</div><div class="v">${S.after} <span style="font-size:20px;color:var(--ink-2)">of 13</span></div><div class="s">average per parcel, up from ${S.before} with sponsor records alone</div></div>
+    <div class="tile"><div class="k">Space to work with</div><div class="v">${avail} <span style="font-size:20px;color:var(--ink-2)">+ ${unk}</span></div><div class="s">${avail} vacant or for lease now; ${unk} more with no confirmed occupant</div></div>`;
+
+  // ---------------- legend
+  const lg = document.getElementById('legend');
+  function drawLegend() {
+    const items = CATS.map(([c]) => [c, fill(c)]).concat([['vacant', 'url(#hatch)'], ['unknown', 'var(--c-none)']]);
+    lg.innerHTML = items.map(([c, f]) => {
+      const sw = c === 'vacant' ? `<svg width="11" height="11" aria-hidden="true"><rect width="11" height="11" rx="3" fill="url(#hatch)"/></svg>` :
+        `<span class="sw" style="background:${f};${c === 'unknown' ? 'outline:1px dashed var(--muted);outline-offset:-1px' : ''}"></span>`;
+      const label = c === 'unknown' ? 'no confirmed occupant' : c;
+      return `<button type="button" class="chip" data-c="${esc(c)}" aria-pressed="${iso === c}">${sw}${esc(label)}</button>`;
+    }).join('');
+    lg.querySelectorAll('.chip').forEach(b => b.onclick = () => { iso = iso === b.dataset.c ? null : b.dataset.c; render(); });
+  }
+
+  // ---------------- map
+  const svg = document.getElementById('map');
+  const pts = P.filter(p => p.ring);
+  let minLat = 1e9, maxLat = -1e9, minLon = 1e9, maxLon = -1e9;
+  pts.forEach(p => p.ring.forEach(([x, y]) => { minLat = Math.min(minLat, y); maxLat = Math.max(maxLat, y); minLon = Math.min(minLon, x); maxLon = Math.max(maxLon, x); }));
+  const W = 1180, padX = 30, padTop = 34, padBot = 34;
+  const kx = (W - 2 * padX) / (maxLat - minLat), ky = kx * Math.cos(39.326 * Math.PI / 180);
+  const H = padTop + (maxLon - minLon) * ky + padBot;
+  const X = lat => padX + (lat - minLat) * kx, Y = lon => padTop + (lon - minLon) * ky;
+  svg.setAttribute('viewBox', `0 0 ${W} ${H.toFixed(0)}`);
+  // place parcels without geometry by street number along their side
+  const cen = r => { let a = 0, b = 0; r.forEach(([x, y]) => { a += x; b += y; }); return [a / r.length, b / r.length]; };
+  P.forEach(p => {
+    if (p.ring) { p._c = cen(p.ring); return; }
+    const n = +p.address, same = P.filter(o => o.ring && (+o.address % 2) === (n % 2) && Math.floor(+o.address / 100) === Math.floor(n / 100));
+    const lo = same.filter(o => +o.address < n).sort((a, b) => b.address - a.address)[0], hi = same.filter(o => +o.address > n).sort((a, b) => a.address - b.address)[0];
+    const ca = lo ? cen(lo.ring) : null, cb = hi ? cen(hi.ring) : null;
+    const lon = (same.reduce((s, o) => s + cen(o.ring)[0], 0) / Math.max(1, same.length)) || (n % 2 ? maxLon - 0.0003 : minLon + 0.0003);
+    let lat = ca && cb ? ca[1] + (cb[1] - ca[1]) * (n - lo.address) / (hi.address - lo.address) : (ca || cb || [0, (minLat + maxLat) / 2])[1] + (ca ? 0.00003 : -0.00003);
+    p._c = [lon, lat]; p._est = true;
+  });
+  function drawMap() {
+    let h = `<defs><pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="6" height="6" fill="var(--surface)"/><line x1="0" y1="0" x2="0" y2="6" stroke="var(--ink-2)" stroke-width="2"/></pattern></defs>`;
+    // street centreline label
+    const westMaxY = Math.max(...P.filter(p => +p.address % 2 === 0 && p.ring).flatMap(p => p.ring.map(r => Y(r[0]))));
+    const eastMinY = Math.min(...P.filter(p => +p.address % 2 === 1 && p.ring).flatMap(p => p.ring.map(r => Y(r[0]))));
+    const midY = (westMaxY + eastMinY) / 2;
+    h += `<text class="street" x="${padX}" y="${(midY + 5).toFixed(1)}">GREENMOUNT AVENUE</text><text class="street" x="${W - padX}" y="${(midY + 5).toFixed(1)}" text-anchor="end">N →</text>`;
+    // cross streets at the boundaries between hundred blocks (approx. by gaps)
+    [[2999, 'E 30TH'], [3099, 'E 31ST'], [3199, 'E 32ND']].forEach(([b, name]) => {
+      const a = P.filter(p => +p.address <= b && +p.address > b - 100 && p.ring).map(p => Math.max(...p.ring.map(r => X(r[1]))));
+      const c = P.filter(p => +p.address > b && +p.address < b + 100 && p.ring).map(p => Math.min(...p.ring.map(r => X(r[1]))));
+      if (!a.length || !c.length) return;
+      const x = (Math.max(...a) + Math.min(...c)) / 2;
+      h += `<line class="cross" x1="${x.toFixed(1)}" y1="${padTop - 4}" x2="${x.toFixed(1)}" y2="${(H - padBot + 4).toFixed(0)}"/><text x="${(x + 5).toFixed(1)}" y="${(midY + 4).toFixed(1)}" style="font-size:11px;fill:var(--muted)">${name} ST</text>`;
+    });
+    P.forEach(p => {
+      const c = catOf(p), on = visible(p) && (!iso || iso === c);
+      const cls = `lot${p.id === sel ? ' sel' : ''}${on ? '' : ' dim'}`;
+      const st = c === 'unknown' ? ' stroke-dasharray="3 2" style="stroke:var(--muted)"' : '';
+      if (p.ring) {
+        const d = 'M' + p.ring.map(([x, y]) => X(y).toFixed(1) + ',' + Y(x).toFixed(1)).join('L') + 'Z';
+        h += `<path class="${cls}" data-id="${p.id}" d="${d}" fill="${fill(c)}"${st} tabindex="-1"/>`;
+      } else {
+        const x = X(p._c[1]), y = Y(p._c[0]);
+        h += `<rect class="${cls}" data-id="${p.id}" x="${(x - 5).toFixed(1)}" y="${(y - 9).toFixed(1)}" width="10" height="18" rx="2" fill="${fill(c)}" stroke-dasharray="3 2" style="stroke:var(--ink-2)"/>`;
+      }
+    });
+    // dots on the buildings with a drafted concept
+    CXO.forEach(id => { const p = P.find(x => x.id === id); if (p) h += `<circle class="cdot" cx="${X(p._c[1]).toFixed(1)}" cy="${Y(p._c[0]).toFixed(1)}" r="4.5"/>`; });
+    // number labels every other parcel per side to avoid collisions
+    const lab = (side) => P.filter(p => (+p.address % 2) === side).sort((a, b) => a.address - b.address);
+    [0, 1].forEach(side => {
+      let lastX = -99;
+      lab(side).forEach(p => {
+        const x = X(p._c[1]); if (x - lastX < 34) return; lastX = x;
+        const y = side === 0 ? 12 + 0 : H - 8;
+        h += `<text x="${x.toFixed(1)}" y="${(side === 0 ? padTop - 8 : H - 10).toFixed(1)}" text-anchor="middle">${p.address}</text>`;
+      });
+    });
+    svg.innerHTML = h;
+    svg.querySelectorAll('[data-id]').forEach(el => {
+      el.addEventListener('pointerenter', e => tipOn(e, el.dataset.id));
+      el.addEventListener('pointermove', e => tipMove(e));
+      el.addEventListener('pointerleave', tipOff);
+      el.addEventListener('click', () => select(el.dataset.id, true));
+    });
+  }
+  const tip = document.getElementById('tip'), box = document.getElementById('mapbox');
+  function tipOn(e, id) {
+    const p = P.find(x => x.id === id);
+    tip.innerHTML = `<b>${esc(p.address)} Greenmount</b>${p.sqft ? ' · ' + fmt(+p.sqft) + ' sq ft' : ''}<br>Today: ${esc(p.status === 'occupied' ? (p.tenant || p.uses_now) : p.status)}<br>Best-proven use: ${esc(p.cand1 || 'not enough evidence')}${topOf(id) ? '<br>Top score: ' + esc(topOf(id).f.name) + ' (' + Math.round(topOf(id).score * 100) + ')' : ''}${CX[id] ? '<br>Concept: ' + esc(CX[id].concepts[0].name) : ''}${p._est ? '<br><i>position estimated</i>' : ''}`;
+    tip.hidden = false; tipMove(e);
+  }
+  function tipMove(e) {
+    const r = box.getBoundingClientRect();
+    let x = e.clientX - r.left + box.scrollLeft + 14, y = e.clientY - r.top + 14;
+    if (x + 290 > box.scrollLeft + r.width) x -= 300;
+    tip.style.left = x + 'px'; tip.style.top = y + 'px';
+  }
+  function tipOff() { tip.hidden = true; }
+
+  // ---------------- ledger
+  function drawLedger() {
+    let h = `<table><thead><tr><th class="addr">No.</th>${DECS.map(d => `<th>${d === 2020 ? "'26" : "'" + String(d).slice(2)}</th>`).join('')}<th class="addr">today</th></tr></thead><tbody>`;
+    SIDE_ORDER.forEach(s => {
+      const rows = P.filter(p => p.side === s && visible(p)).sort((a, b) => a.address - b.address);
+      if (!rows.length) return;
+      h += `<tr class="grp"><td colspan="${DECS.length + 2}">${SIDE[s]}</td></tr>`;
+      rows.forEach(p => {
+        h += `<tr class="row${p.id === sel ? ' sel' : ''}" data-id="${p.id}" tabindex="0" aria-label="${esc(p.address)} Greenmount"><td class="addr">${esc(p.address)}${p.sponsor ? ' ◆' : ''}</td>`;
+        DECS.forEach(d => {
+          let c = d === 2020 ? catNow(p) : p.strip[String(d)];
+          if (d === 2020 && c === 'unknown') c = null;
+          const on = !iso || iso === c;
+          const bg = c ? fill(c) : 'var(--c-none)';
+          const style = c === 'vacant' ? `background:repeating-linear-gradient(45deg,var(--ink-2) 0 2px,var(--surface) 2px 5px)` : `background:${bg}`;
+          h += `<td class="cell" title="${d}s: ${esc(c || 'no use evidence')}" style="${style};${on ? '' : 'opacity:.18'}"></td>`;
+        });
+        h += `<td class="now">${esc(p.status === 'occupied' ? (p.tenant || '').split(' ; ')[0].slice(0, 24) : p.status)}</td></tr>`;
+      });
+    });
+    h += '</tbody></table><p class="small">◆ sponsor walk-through (not a statement of ownership). Grey cells: no use evidence yet for that decade. Hover a cell for its category.</p>';
+    const el = document.getElementById('ledger'); el.innerHTML = h;
+    el.querySelectorAll('tr.row').forEach(r => { r.onclick = () => select(r.dataset.id, false); r.onkeydown = e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); select(r.dataset.id, false); } }; });
+  }
+
+  // ---------------- panel
+  function sbar(parts) {
+    const cls = ['bh', 'bs', 'bf', 'bc', 'ba', 'bk'];
+    return `<div class="sbar" aria-hidden="true">${parts.map((x, i) => `<span class="${cls[i]}" style="width:${(x * 100).toFixed(1)}%"></span>`).join('')}</div>`;
+  }
+  const SKEY = () => `<div class="skey">${WL.map(([k, l, c]) => `<span><i style="background:${c}"></i>${esc(l)}</span>`).join('')}</div>`;
+  function fbBtns(pid, fid) {
+    const k = fbKey(pid, fid), x = FB[k] || { up: 0, down: 0 }, mine = MY[k] ? MY[k].v : 0;
+    if (fbState === 'none') return '';
+    const dis = fbState !== 'on' ? ' disabled title="Sign in with edit or contributor access to vote"' : '';
+    return `<span class="fbb"><button type="button" class="vote${mine === 1 ? ' on' : ''}" data-k="${esc(k)}" data-v="1" aria-pressed="${mine === 1}" aria-label="Agree with this recommendation"${dis}>▲ ${x.up}</button><button type="button" class="vote${mine === -1 ? ' on' : ''}" data-k="${esc(k)}" data-v="-1" aria-pressed="${mine === -1}" aria-label="Disagree with this recommendation"${dis}>▼ ${x.down}</button>${mine ? `<input class="why-in" data-k="${esc(k)}" placeholder="why? (optional)" value="${esc(MY[k].r || '')}" maxlength="200" aria-label="Reason for your vote">` : ''}</span>`;
+  }
+  function wireVotes(root) {
+    root.querySelectorAll('button.vote').forEach(b => b.onclick = () => vote(b.dataset.k, +b.dataset.v));
+    root.querySelectorAll('input.why-in').forEach(i => i.onchange = () => reason(i.dataset.k, i.value));
+  }
+  function readiness(p) {
+    const r = p.ready || {}, out = [];
+    if (r.vbn === 'open') out.push(['warn', 'open vacant-building notice']);
+    if (r.viol) out.push(['warn', `${r.viol} violation${r.viol > 1 ? 's' : ''} in 12 months`]);
+    if (r.receiv) out.push(['warn', `receivership: ${r.receiv}`]);
+    if (r.taxcert) out.push(['warn', 'tax certificate sold']);
+    if (r.permits) out.push(['', `${r.permits} active permit${r.permits > 1 ? 's' : ''}`]);
+    if (r.walk) out.push(['ok', 'sponsor Matterport walk-through']);
+    out.push([r.owner === 'sponsor-linked LLC' ? 'ok' : '', `owner of record: ${r.owner === 'sponsor-linked LLC' ? "the sponsor's LLC" : (r.owner || 'unknown')}`]);
+    return out.map(([c, t]) => `<span class="pill ${c}">${esc(t)}</span>`).join(' ');
+  }
+  const segsFor = (fid) => (L.segments || []).filter(s => (s.fit_formats || []).includes(fid));
+  function drawPanel() {
+    const p = P.find(x => x.id === sel); if (!p) return;
+    const proven = (p.proven || '').split(' ; ').filter(Boolean).map(s => {
+      const c = s.replace(/ \(\d+d\)$/, ''); return `<span class="pill"><span class="sw" style="background:${cssFill(c)}"></span>${esc(s.replace('d)', ' decades)').replace('(1 decades)', '(1 decade)'))}</span>`;
+    }).join(' ');
+    const ranked = SC[p.id] || [], top3 = ranked.filter(r => r.ok && !r.f.av).slice(0, 3);
+    const cand = top3.map(r => `<div class="cand"><div class="u"><span class="sw" style="background:${cssFill(r.f.cat)}"></span>${esc(r.f.name)}${r.f.zs !== 'P' ? ` <span class="pol cb">conditional</span>` : ''}<span class="sc">${Math.round(r.score * 100)}</span></div>
+      ${sbar(r.parts)}
+      <div class="w">${explain(r, p)}</div>
+      <div class="cfoot">${fbBtns(p.id, r.f.id)}<span class="small">Who runs it: ${segsFor(r.f.id).map(s => esc(s.name)).join(', ') || 'no segment matched'}</span></div></div>`).join('');
+    const nogo = ranked.filter(r => r.bl && r.from === 'building' && r.h >= 0.2).map(r => `${esc(r.f.name.toLowerCase())} (${esc(r.bl)})`);
+    const push = ranked.filter(r => r.f.av && !r.bl && r.fi >= 0.5).map(r => `${esc(r.f.name.toLowerCase())} (${esc(r.f.av.grade)} objection; ${esc(ZTXT[r.f.zs] || r.f.zs)})`);
+    const sims = simsOf(p).slice(0, 3);
+    const st = p.story || [0, 0];
+    const evs = p.ev.slice().sort((a, b) => (+a.y || 9999) - (+b.y || 9999)).map(e => `<div class="ev"><div class="y">${esc(e.y || '—')}</div><div><div class="src"><span>${esc(e.src)}</span>${e.cat ? `<span class="pill" style="font-size:11px;padding:0 6px"><span class="sw" style="width:8px;height:8px;background:${cssFill(e.cat)}"></span>${esc(e.cat)}</span>` : ''}${e.m ? `<span title="the address was inferred, not read: through the York Road renumbering or a neighbouring house number">address inferred: ${esc(e.m)}</span>` : ''}</div><div>${esc(e.t)}</div><div class="small">${e.url ? `<a href="${esc(e.url)}" target="_blank" rel="noopener">${esc(e.ref || 'source')}</a>` : esc(e.ref)}</div></div></div>`).join('');
+    const el = document.getElementById('panel');
+    el.innerHTML = `
+      <div class="eyebrow">${esc(SIDE[p.side])}${p.sponsor ? ' · sponsor walk-through' : ''}</div>
+      <div class="addr">${esc(p.address)} Greenmount</div>
+      <div>${availPill(p)} <span class="small">${esc(p.evidence)} · ${p.decades} of 13 decades (1900s to 2020s) with a coded use</span></div>
+      <dl class="facts">
+        <dt>Today</dt><dd>${esc(p.status === 'occupied' ? p.tenant : p.status)}</dd>
+        <dt>Size</dt><dd class="mono">${p.sqft ? fmt(+p.sqft) + ' sq ft' : 'not in export'}</dd>
+        <dt>Built</dt><dd>${p.built ? 'c. ' + p.built : 'unknown'}${p.form ? ' · ' + esc(p.form) : ''}</dd>
+        <dt>Zoning</dt><dd class="mono">${esc(p.zoning || '—')}</dd>
+      </dl>
+      <div style="display:flex;flex-wrap:wrap;gap:6px">${readiness(p)}</div>
+      <div><h3>Uses it has carried</h3><div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:6px">${proven || '<span class="small">No coded use evidence yet.</span>'}</div></div>
+      <div><h3>Top uses by score</h3>${SKEY()}<div class="small">Out of 100. ▲▼ records your view for the team; <a class="cxsrc" href="#cmp">compare uses side by side</a>.</div></div>
+      <div class="cands">${cand || '<span class="small">No permitted use scores above zero.</span>'}</div>
+      ${nogo.length ? `<div class="nogo"><b>Proven here but not allowed:</b> ${nogo.join('; ')}.</div>` : ''}
+      ${push.length ? `<div class="nogo" style="border-left-color:var(--c-ent)"><b>Would fit the space, but residents have pushed back:</b> ${push.join('; ')}. Scored down, not recommended.</div>` : ''}
+      <div><h3>Similar buildings elsewhere</h3><div class="mini">${sims.map(x => `<div><b>${esc(x.b.name)}</b>, ${esc(x.b.city)} <span class="small">${Math.round(x.s.v * 100)}% similar · ${esc(x.b.building_type)} → ${esc(x.b.new_use).slice(0, 90)} · ${esc(x.b.status)}</span></div>`).join('')}</div><a class="cxsrc small" href="#cases">all comparable cases</a></div>
+      <div class="small" style="color:var(--ink-2)">Story material: ${st[0]} curated records, ${st[1]} white papers. Content uses (a tour stop, a podcast, a film) draw on these and do not saturate, so they are kept out of the score.</div>
+      ${CX[p.id] ? `<div class="teaser"><div class="eyebrow" style="color:var(--accent)">Concept drafted</div><div><b>${esc(CX[p.id].concepts[0].name)}</b>, or ${esc(CX[p.id].concepts[1].name.charAt(0).toLowerCase() + CX[p.id].concepts[1].name.slice(1))}</div>${CX[p.id].prospect ? `<div style="color:var(--ink-2)">A business that could fit: ${esc(CX[p.id].prospect.name)}</div>` : ''}<button type="button" id="gocx">See what it could become</button></div>` : ''}
+      ${p.econ && top3[0] && firstCat(p.cand1) === top3[0].f.cat ? `<div class="econ"><b>Rent check.</b> ${esc(p.econ)}</div>` : ''}
+      <div><h3>Evidence (${p.ev.length})</h3></div>
+      <div class="evlist">${evs || '<p class="small">No records.</p>'}</div>`;
+    wireVotes(el);
+    const g = document.getElementById('gocx');
+    if (g) g.onclick = () => document.getElementById('cx').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function modelLine(p, ids) {
+    const ok = (SC[p.id] || []).filter(r => r.ok && !r.f.av);
+    return ids.map(id => {
+      const i = ok.findIndex(r => r.f.id === id), r = ok[i];
+      if (!r) return `${esc(FM[id] ? FM[id].name : id)}: left out of the ranking`;
+      return `${esc(r.f.name)} scores ${Math.round(r.score * 100)}, #${i + 1} of ${ok.length} here${r.f.zs !== 'P' ? ' (conditional use)' : ''}${r.from !== 'building' || r.h < 0.2 ? '. The building has no record of this use, so the concept rests on something other than its own history (see the concept text)' : ''}`;
+    }).join('. ') + '.';
+  }
+
+  // ---------------- what it could become
+  function drawConcept() {
+    if (!CXO.length) { document.getElementById('cx').hidden = true; return; }
+    const tabs = document.getElementById('cxtabs');
+    tabs.innerHTML = CXO.map(id => `<button type="button" role="tab" class="cx-tab" id="cxt-${id}" data-id="${id}" aria-selected="${id === cxSel}" aria-controls="cxbody" tabindex="${id === cxSel ? 0 : -1}">${esc(CX[id].tab)}</button>`).join('');
+    tabs.querySelectorAll('.cx-tab').forEach((b, i) => {
+      b.onclick = () => { select(b.dataset.id, false); document.getElementById('cxt-' + b.dataset.id).focus(); };
+      b.onkeydown = e => {
+        if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+        e.preventDefault();
+        const j = (i + (e.key === 'ArrowRight' ? 1 : CXO.length - 1)) % CXO.length;
+        select(CXO[j], false); document.getElementById('cxt-' + CXO[j]).focus();
+      };
+    });
+    const c = CX[cxSel], p = P.find(x => x.id === cxSel);
+    document.getElementById('cxbody').setAttribute('aria-labelledby', 'cxt-' + cxSel);
+    const srcs = a => `<div class="srcs">${a.map(s => `<a href="${esc(s.u)}" target="_blank" rel="noopener">${esc(s.l)}</a>`).join('')}</div>`;
+    const fitLabel = { yes: 'fits', partly: 'partly', check: 'check' };
+    const pr = c.prospect;
+    if (CXO.some(id => CX[id].prospect)) document.getElementById('cxlede').textContent = 'For each building: what it was, what its history, the block and the rules allow, two concepts, one real business that could fit, and places that have done something like it. Two of the three prospects are worker-owned businesses, the kind of tenant the sponsor\'s tenant-to-owner idea is built for.';
+    document.getElementById('cxbody').innerHTML = `<div class="cx">
+      <div class="cx-col">
+        <div><div class="eyebrow">${esc(SIDE[p.side])} · ${p.sqft ? fmt(+p.sqft) + ' sq ft' : ''} · zoned ${esc(p.zoning)}</div>
+          <h3 style="font-size:26px;margin-top:4px;line-height:1.1">${esc(p.address)} Greenmount: ${esc(c.title)}</h3></div>
+        <div><h3>What it was</h3><ul class="was">${c.was.map(w => `<li><span class="y">${esc(w.y)}</span><span>${esc(w.t)}</span><span class="s">${esc(w.src)}</span></li>`).join('')}</ul></div>
+        <div><h3>Today</h3><p style="margin:0;font-size:13px">${esc(c.now)} <a class="cxsrc" href="${esc(c.now_url)}" target="_blank" rel="noopener">source</a></p></div>
+        <div><h3>Why these uses</h3><ul class="fit">${c.fit.map(f => `<li><span class="tag ${esc(f.ok)}">${fitLabel[f.ok] || esc(f.ok)}</span><span>${esc(f.t)}</span></li>`).join('')}</ul></div>
+        <div><h3>Two concepts</h3><div class="ideas">${c.concepts.map((k, i) => `<div class="idea${i ? '' : ' lead'}"><div class="n"><span class="tag">${esc(k.tag)}</span><span class="sw" style="background:${cssFill(k.cat)}"></span>${esc(k.name)}</div><div class="t">${esc(k.t)}</div>${k.fmt ? `<div class="mcheck"><b>Model check.</b> ${modelLine(p, k.fmt)}</div>` : ''}</div>`).join('')}</div></div>
+      </div>
+      <div class="cx-col">
+        ${pr ? `<div class="prospect"><div class="eyebrow">A real business that could fit</div><div class="nm">${esc(pr.name)}</div><p>${esc(pr.who)}</p><ul>${pr.facts.map(f => `<li>${esc(f)}</li>`).join('')}</ul><p><b>Why it fits.</b> ${esc(pr.why)}</p><p><b>Check first.</b> ${esc(pr.check)}</p>${srcs(pr.src)}</div>` : ''}
+        <div><h3>Done elsewhere</h3><div class="prec">${c.prec.map(x => `<div class="pc"><div class="hd"><span class="city">${esc(x.city)}</span><span class="nm">${esc(x.name)}</span><span class="yr">${esc(x.year)}</span></div><div class="t">${esc(x.t)}</div><div><b>Lesson for ${esc(p.address)}.</b> ${esc(x.lesson)}</div>${srcs(x.src)}</div>`).join('')}</div></div>
+        <div><h3>Before anyone calls</h3><ul class="checks">${c.checks.map(k => `<li>${esc(k)}</li>`).join('')}</ul></div>
+      </div></div>`;
+    document.getElementById('cxnote').textContent = D.concept_note || '';
+  }
+
+  // ---------------- method: flow, weights, back-test, rules, community, neighbours, limits
+  const srcLinks = a => (a || []).filter(x => x && x.u).slice(0, 3).map(x => `<a class="cxsrc" href="${esc(x.u)}" target="_blank" rel="noopener">${esc(x.l || 'source')}</a>`).join(' · ');
+  function drawMethodOnce() {
+    const FLOW = [
+      ['computed', 'Evidence', `${fmt(tot)} records from 8 kinds of source, each placed on a parcel`],
+      ['computed', 'Rules', 'Bans in the urban renewal plan; C-1 zoning, Table 10-301: permitted, conditional or not'],
+      ['computed', 'Heritage', 'Decades a use is on record at the building and in how many kinds of source; with no record, how often the street has proven it'],
+      ['computed', 'Saturation', 'The same use on the block side today (3 = full), and whether its corridor share is above its 1920-23 share'],
+      ['computed', 'Size fit', 'Building size against the usual size of the format; a large building can be split'],
+      ['computed', 'Community', `What residents asked for (${(L.requested || []).length} wishes) or pushed back on (${(L.aversion || []).length} business types), from news, plans and testimony`],
+      ['computed', 'Neighbours', 'What is next door and across the street: conflicts and complements from law and research'],
+      ['computed', 'Precedents', `How the ${(L.buildings || []).length} most comparable reuse cases elsewhere turned out`],
+      ['computed', 'Feedback', 'Team and sponsor votes on each recommendation, applied as a bounded multiplier'],
+      ['computed', 'Block plan', 'Uses placed one at a time; each placement changes saturation and the neighbours of the next'],
+      ['hand', 'Concepts and businesses', 'Written by hand for three buildings and checked against the score'],
+      ['next', 'What it earns', 'Rent and revenue per sq ft for each format, from comparable corridors']];
+    document.getElementById('flow').innerHTML = FLOW.map(([s, t, d]) => `<li class="${s}"><b>${esc(t)}</b><span class="st ${s}">${s === 'computed' ? 'computed' : s === 'hand' ? 'by hand' : 'next'}</span><span>${esc(d)}</span></li>`).join('');
+    document.getElementById('wts').innerHTML = WL.map(([k, l, c]) => `<div class="wrow"><label for="w-${k}"><span class="sw" style="background:${c};margin-right:6px;vertical-align:-1px"></span>${l}</label><input type="range" id="w-${k}" min="0" max="100" step="5" value="${WT[k]}"><span class="n" id="wn-${k}"></span></div>`).join('');
+    WL.forEach(([k]) => document.getElementById('w-' + k).addEventListener('input', e => { WT[k] = +e.target.value; update(); }));
+    document.getElementById('gf').onchange = e => { gfOnly = e.target.checked; update(); };
+    document.getElementById('fbon').onchange = e => { useFb = e.target.checked; update(); };
+    // back-test
+    const B = D.backtest || [], b6 = B.find(b => b.cut === 1960), b4 = B.find(b => b.cut === 1940);
+    if (b6) {
+      document.getElementById('bt').innerHTML = `<h3>Does a building's past predict its present?</h3>
+        <div><span class="big">${pct0(b6.hit / b6.n)}</span> <span class="small">against ${pct0(b6.base / b6.n)} for a plain guess</span></div>
+        <p style="margin:0;font-size:13px;color:var(--ink-2)">A preliminary back-test. Using only records up to 1960, ${b6.hit} of ${b6.n} occupied parcels have a use in October 2026 that was already proven there. Guessing the corridor's most common uses instead gets ${b6.base}. With records up to 1940: ${b4 ? `${b4.hit} of ${b4.n}, against ${b4.base}` : 'n/a'}.</p>
+        <table class="btt"><thead><tr><th>Use</th><th>Proven before 1960: has it now</th><th>Not proven: has it now</th></tr></thead><tbody>${b6.percat.filter(r => r.an).map(r => `<tr><td><span class="sw" style="background:${fill(r.cat)};margin-right:6px;vertical-align:-1px"></span>${esc(r.cat)}</td><td class="num">${r.a} of ${r.an} (${pct0(r.a / r.an)})</td><td class="num">${r.b} of ${r.bn} (${pct0(r.b / Math.max(1, r.bn))})</td></tr>`).join('')}</tbody></table>
+        <p class="small" style="margin:0">History is a real signal for food and retail, a weak one for services and offices, and none for trades that left main streets (vehicles, workshops). Small sample, measured on the same data the score uses; the spring validation repeats it held out.</p>`;
+    }
+    // rules table
+    const ZS = { P: 'permitted', CB: 'conditional (zoning board)', CO: 'conditional (ordinance)', NP: 'not permitted' };
+    document.getElementById('rules').innerHTML = `<table><thead><tr><th>Format</th><th>Heritage from</th><th>Zoning row (Table 10-301)</th><th>C-1</th><th>Urban renewal plan</th><th>Community</th><th>Usual size, sq ft</th></tr></thead><tbody>${FMT.map(f => `<tr><td>${esc(f.name)}</td><td>${f.her.map(([c, k]) => esc(c) + (k < 1 ? ' ×' + k : '')).join(', ')}</td><td>${esc(f.z)}</td><td>${ZS[f.zs]}</td><td>${f.urp ? 'barred (no new ones since 1995)' : 'allowed; design rules apply'}</td><td>${f.av ? 'pushed back: ' + esc(f.av.grade || 'excluded') : REQ[f.id] ? 'asked for' : '—'}</td><td class="num">${fmt(f.size[0])}-${f.size[1] >= 100000 ? 'any' : fmt(f.size[1])}</td></tr>`).join('')}</tbody></table>
+      <p class="small">Zoning status from the <a class="cxsrc" href="${esc(D.zoning_src)}" target="_blank" rel="noopener">Baltimore zoning code, Table 10-301</a>. Bans from the <a class="cxsrc" href="${esc(D.urp_src)}" target="_blank" rel="noopener">Waverly Business Area Urban Renewal Plan</a>, as read by the team (precedent memo, section 7). Size ranges are team assumptions until the comps engine replaces them.</p>`;
+    // community: objections and wishes
+    document.getElementById('commtab').innerHTML = `<table><thead><tr><th>Business type</th><th>Strength</th><th>In Waverly</th><th>Law in C-1</th><th>Research</th><th>Sources</th></tr></thead><tbody>${(L.aversion || []).map(a => `<tr><td><b>${esc(a.type)}</b></td><td>${esc(a.grade || 'excluded')}</td><td>${esc(a.waverly_evidence || '—')}</td><td>${esc(a.law || '—')}</td><td>${esc(a.research || '—')}</td><td>${srcLinks(a.sources)}</td></tr>`).join('')}</tbody></table>
+      <h3 style="margin-top:12px">What residents have asked for</h3>
+      <table><thead><tr><th>Wish</th><th>Who, when</th><th>Formats it lifts</th><th>Sources</th></tr></thead><tbody>${(L.requested || []).map(r => `<tr><td><b>${esc(r.type)}</b></td><td>${esc(r.who || '')}${r.when ? ', ' + esc(r.when) : ''}</td><td>${(r.format_ids || []).map(id => esc(FM[id] ? FM[id].name : id)).join(', ') || '—'}</td><td>${srcLinks(r.sources)}</td></tr>`).join('')}</tbody></table>
+      <p class="small">An objection cuts a format's score twice: its community factor drops to 0 (strong), 0.2 (moderate) or 0.4 (weak), and the total is multiplied by 0.3, 0.6 or 0.85. A wish sets the community factor to 1. Uses with no signal sit at 0.5.</p>`;
+    // neighbours: the matrix
+    const AB = { 'food & drink': 'Food', 'retail goods': 'Retail', 'personal services': 'Services', 'entertainment & assembly': 'Entertain.', 'office': 'Office', 'production & light industry': 'Maker', 'institutional & religious': 'Instit.', 'residential': 'Homes', 'vacant': 'Vacant' };
+    const K = { law: 'L', research: 'R', judgement: 'J' };
+    document.getElementById('adjtab').innerHTML = `<table class="mtx"><thead><tr><th></th>${ACATS.map(c => `<th>${esc(AB[c] || c)}</th>`).join('')}</tr></thead><tbody>${ACATS.map(a => `<tr><th>${esc(AB[a] || a)}</th>${ACATS.map(b => { const m = M(a, b); if (!m) return '<td></td>'; return `<td class="m${m.v > 0 ? 'p' : m.v < 0 ? 'n' : 'z'}" title="${esc(m.basis)}">${sgn(m.v)}<sup>${K[m.kind] || ''}</sup></td>`; }).join('')}</tr>`).join('')}</tbody></table>
+      <p class="small">+1 complement, −1 conflict, 0 neutral; L law, R research, J judgement. Hover a cell for its basis. Next door counts in full, across the street at ${ADJ.across_weight || 0.5}. A vacant neighbour is −1 for everything: filling a storefront lifts the ones beside it, and the block plan uses that.</p>
+      <ul class="checks">${(ADJ.rules || []).slice(0, 8).map(r => `<li><b>${esc(r.rule)}</b> ${esc(r.applies_to || '')}${r.code ? ' (' + esc(r.code) + ')' : ''}${r.src ? ` <a class="cxsrc" href="${esc(r.src)}" target="_blank" rel="noopener">source</a>` : ''}</li>`).join('')}</ul>`;
+    document.getElementById('limits').innerHTML = [
+      'No demand data yet (households, spending, foot traffic). Planned for spring.',
+      'Rents exist for 2 of the formats only (the comps library). The comps engine is the next build.',
+      'Corridor saturation is measured against the 1920-23 mix: a use is not penalised until its share of storefronts passes its 1920s share. Being rare now earns no bonus, because the back-test shows that trades which left main streets have not come back.',
+      'The weights are team judgement. Move the sliders to see how much the ranking depends on them.',
+      'Usual sizes per format are team assumptions, not industry data.',
+      'Building condition and repair cost are not in the score; the readiness flags (vacant-building notice, violations, receivership) show what the public record says. The sponsor\'s draft condition assessments are not used.',
+      'Precedent similarity uses building type, history, size, age and income context only; most cases lack a confirmed 2025-26 status.',
+      'The community layer rests on news, testimony and plans, not a survey of residents. A short survey on the street would test it.',
+      'Feedback is a team signal, not a vote of residents, and is capped (at most +20% or −40% on a score).',
+      `${D.n_summary || 26} building summaries that the extractor dates to the year of construction are not coded here (fix goes into extractor v1.1).`
+    ].map(t => `<li>${esc(t)}</li>`).join('');
+  }
+  function drawWeights() {
+    const t = WL.reduce((a, [k]) => a + WT[k], 0) || 1, pc = k => Math.round(100 * WT[k] / t) + '%';
+    WL.forEach(([k]) => { document.getElementById('wn-' + k).textContent = pc(k); });
+    document.getElementById('formula').innerHTML = `score = heritage × ${pc('h')} + room × ${pc('s')} + size × ${pc('f')} + community × ${pc('c')} + neighbours × ${pc('a')} + precedents × ${pc('k')}, then times 0.75 for a conditional use, times 0.3 / 0.6 / 0.85 for a strong / moderate / weak community objection, and times the feedback multiplier. Uses barred by the plan or not permitted in C-1 are left out. <b>Heritage</b> = decades on record at the building ÷ 5 (capped), halved for a single record, +0.1 for two kinds of source; with no record, the street's record at a third of the weight. <b>Room</b> = 1 − saturation: half a block-side term (0 of the same use → 1, 1 → 0.6, 2 → 0.25, 3+ → 0) and half a corridor term (1 while the use's storefront share is at or below its 1920-23 share). <b>Size</b> = 1 inside the usual range, 0 at three times outside it. <b>Neighbours</b> = the weighted mean of the matrix values for next-door and across-the-street uses, scaled to 0-1. <b>Precedents</b> = among the 8 most similar reuse cases, the similarity-weighted share that went this way and are still open (closed cases count against), doubled and capped at 1. <b>Feedback</b> = 1 + 0.1 × (agree − disagree), kept between 0.6 and 1.2.`;
+  }
+
+  // ---------------- block plan (assemblage optimiser v0)
+  let PLAN = null;
+  function runPlan() {
+    const C = cloneC(BASE), out = {};
+    const avail = P.filter(p => p.availability === 'available now' || (inclUnk && p.availability === 'possibly available'));
+    const add = (p, f) => { C.cat[p.id] = f.cat; if (f.cat === 'residential') return; C.side[p.side] = C.side[p.side] || {}; C.side[p.side][f.cat] = (C.side[p.side][f.cat] || 0) + 1; C.corr[f.cat] = (C.corr[f.cat] || 0) + 1; C.base += 1; };
+    avail.filter(p => overrides[p.id] && FM[overrides[p.id]]).forEach(p => { const r = scoreAll(p, C).find(x => x.f.id === overrides[p.id]); out[p.id] = { r, fixed: true }; add(p, r.f); });
+    let left = avail.filter(p => !out[p.id]), k = 0;
+    while (left.length) {
+      let best = null;
+      left.forEach(p => { const r = scoreAll(p, C).find(x => x.ok && !x.f.av); if (r && (!best || r.score > best.r.score)) best = { p, r }; });
+      if (!best) break;
+      out[best.p.id] = { r: best.r, fixed: false, order: ++k }; add(best.p, best.r.f); left = left.filter(p => p !== best.p);
+    }
+    return { out, C, avail };
+  }
+  function chips(cnt, before) {
+    return Object.entries(cnt || {}).filter(([, n]) => n > 0).sort((a, b) => b[1] - a[1]).map(([c, n]) =>
+      `<span class="mc${before && n > ((before || {})[c] || 0) ? ' up' : ''}${n >= 3 ? ' full' : ''}"><span class="sw" style="background:${fill(c)}"></span>${esc(c)} ${n}</span>`).join('') || '<span class="small">no confirmed businesses</span>';
+  }
+  function drawPlan() {
+    PLAN = runPlan();
+    const { out, C, avail } = PLAN;
+    const placed = Object.values(out), cond = placed.filter(o => o.r.f.zs !== 'P').length;
+    const byCat = {}; placed.forEach(o => { byCat[o.r.f.cat] = (byCat[o.r.f.cat] || 0) + 1; });
+    let h = `<div style="grid-column:1/-1;display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;font-size:13px;color:var(--ink-2)"><span><b style="color:var(--ink)">${placed.length} parcels planned:</b> ${Object.entries(byCat).sort((a, b) => b[1] - a[1]).map(([c, n]) => `${n} ${esc(c)}`).join(', ')}. ${cond ? `${cond} need a conditional approval.` : ''}</span>${Object.keys(overrides).length ? '<button type="button" class="cx-tab" id="preset">Reset my choices</button>' : ''}</div>`;
+    SIDE_ORDER.forEach(s => {
+      const rows = avail.filter(p => p.side === s).sort((a, b) => a.address - b.address);
+      if (!rows.length) return;
+      const full = Object.entries(C.side[s] || {}).filter(([, n]) => n >= 3);
+      const was = full.filter(([c]) => ((BASE.side[s] || {})[c] || 0) >= 3), made = full.filter(([c]) => ((BASE.side[s] || {})[c] || 0) < 3);
+      h += `<div class="pside"><div class="eyebrow">${esc(SIDE[s])}</div>
+        <div class="mixline"><span class="small" style="width:44px">Today</span>${chips(BASE.side[s])}</div>
+        ${rows.map(p => {
+          const o = out[p.id]; if (!o) return '';
+          const opts = (SC[p.id] || []).filter(r => r.ok && !r.f.av).map(r => `<option value="${r.f.id}"${r.f.id === o.r.f.id ? ' selected' : ''}>${esc(r.f.name)} · ${Math.round(r.score * 100)}</option>`).join('');
+          return `<div class="prow"><button type="button" class="a" data-go="${p.id}">${esc(p.address)}</button><select data-pl="${p.id}" aria-label="Use for ${esc(p.address)} Greenmount">${opts}</select>
+            <div class="why">${o.fixed ? 'your choice' : 'suggested, placed ' + ordinal(o.order)} · ${Math.round(o.r.score * 100)} after saturation · ${p.sqft ? fmt(+p.sqft) + ' sq ft' : ''} · ${esc(p.status === 'unknown' ? 'occupant not confirmed' : p.status)}${o.r.f.zs !== 'P' ? ' · conditional use' : ''}</div></div>`;
+        }).join('')}
+        <div class="mixline"><span class="small" style="width:44px">After</span>${chips(C.side[s], BASE.side[s])}</div>
+        ${was.length ? `<div class="small" style="color:var(--ink-2)">Already saturated today: ${was.map(([c, n]) => `${esc(c)} (${n})`).join(', ')}, so the plan adds no more of it here unless you choose to.</div>` : ''}
+        ${made.length ? `<div class="warn">The plan brings ${made.map(([c]) => esc(c)).join(', ')} to 3 on this block side: saturated.</div>` : ''}</div>`;
+    });
+    const el = document.getElementById('plan'); el.innerHTML = h;
+    el.querySelectorAll('select[data-pl]').forEach(sel => sel.onchange = () => { overrides[sel.dataset.pl] = sel.value; drawPlan(); drawMix(); });
+    el.querySelectorAll('[data-go]').forEach(b => b.onclick = () => { select(b.dataset.go, false); document.getElementById('panel').scrollIntoView({ behavior: 'smooth', block: 'start' }); });
+    const rs = document.getElementById('preset'); if (rs) rs.onclick = () => { overrides = {}; drawPlan(); drawMix(); };
+  }
+  const ordinal = n => n + (n % 10 === 1 && n % 100 !== 11 ? 'st' : n % 10 === 2 && n % 100 !== 12 ? 'nd' : n % 10 === 3 && n % 100 !== 13 ? 'rd' : 'th');
+
+  // ---------------- roadmap: where this ends
+  function drawRoad() {
+    const E = [
+      ['done', 'What was it?', 'A sourced use timeline for every parcel.', 'Done for the 69 frontage parcels'],
+      ['demo', 'What could it become?', 'Ranked uses with reasons: heritage, rules, saturation, community, neighbours, precedents.', 'Score v0.3 on this page, with comparison and feedback'],
+      ['next', 'What would it earn?', 'Rent and revenue range for each use, from comps.', 'Next: 10 comps so far, rent for 2 formats'],
+      ['demo', 'Does the mix work as a block?', 'A use plan for a block or a sponsor assemblage, under a saturation limit.', 'Greedy plan v0 on this page'],
+      ['demo', 'Who is it for?', 'The customer groups that would use, lease or buy each building, their obstacles and the programmes that help.', 'Seven groups matched on this page'],
+      ['demo', 'How far can it be trusted?', 'Validation report and a model card that says where not to use it.', 'Reference timelines; back-test started']];
+    document.getElementById('endstate').innerHTML = `<p class="lede" style="font-size:14px">The final deliverable answers five questions for any address on the corridor, and for any block the sponsor names, with every answer traced to a source. It ships as a pilot in the sponsor's Property Dossier tool, with the code and tests, a validation report, a model card and the final report.</p>
+      <div class="end" style="margin-top:12px">${E.map(([s, q, d, n]) => `<div class="endc"><span class="st ${s}">${s === 'done' ? 'done' : s === 'demo' ? 'working draft' : 'next'}</span><div class="q">${esc(q)}</div><div>${esc(d)}</div><div class="small">${esc(n)}</div></div>`).join('')}</div>`;
+    const M = [
+      ['now', '19 Oct 2026', 'Now', 'Timelines for 69 parcels; score v0.3 with community, neighbours, precedents and feedback; block plan v0; customer groups; concepts for three buildings'],
+      ['', '4 Nov 2026', 'Midterm', 'Validation memo with four blind timelines; precedent memo; extractor v1.1; this page as the pilot'],
+      ['', 'Dec 2026', 'End of fall term', 'Comps engine v1 (rent and revenue per format); generator v1 with building-design match; the 107 focus-area parcels'],
+      ['', 'Mar 2027', 'Spring validation', 'Held-out back-test; weight sensitivity; demand data if feasible; optimiser v1 for a sponsor-named assemblage'],
+      ['', 'May 2027', 'Final', 'Pilot in the Property Dossier; model card and guardrails; data contract; report, community brief, CUSP showcase']];
+    document.getElementById('miles').innerHTML = M.map(([c, d, t, x]) => `<div class="mile ${c}"><span class="d">${esc(d)}</span><span class="t">${esc(t)}</span><span>${esc(x)}</span></div>`).join('');
+    const R = [
+      ['Use-history timelines', 'done', '69 frontage parcels, 566 spans, 8 kinds of source', 'Blind references; fix the summary rows; side streets', 'Whole corridor, with its gap map'],
+      ['Candidate-use generator', 'demo', 'Score v0.3: heritage, rules, saturation, size, community, neighbours, precedents, feedback', 'Weights agreed with the sponsor; a short resident survey to test the community layer', 'Generator v1 with documented weights'],
+      ['Customer matching', 'demo', 'Seven customer groups with ranked obstacles and programmes; buildings ranked by fit', 'Interviews with 5-10 businesses per group; an intake form for both sides', 'Matching with tracked 12, 24 and 36-month survival against the BLS benchmark (about 68% at 3 years)'],
+      ['Comps engine', 'next', '10 comps; rent for 2 formats', 'Rent and revenue per sq ft for every format, from comparable corridors', 'Comps library with sources'],
+      ['Assemblage optimiser', 'demo', 'Greedy plan v0 with a block-side limit', 'Maximise revenue under the saturation limit; content uses kept apart', 'Plan for a sponsor-named assemblage'],
+      ['Validation', 'demo', 'Four reference timelines; preliminary back-test', 'Four blind timelines; held-out back-test; precedent statuses checked for 2026', 'Validation report'],
+      ['Pilot and handoff', 'demo', 'This page', 'Sponsor feedback on the score and the plan', 'Property Dossier pilot, model card, data contract, report']];
+    document.getElementById('comp').innerHTML = `<table><thead><tr><th>Part (Idea 1)</th><th>Now</th><th>Next</th><th>Final, May 2027</th></tr></thead><tbody>${R.map(([a, s, b, c, d]) => `<tr><td><b>${esc(a)}</b><br><span class="st ${s}">${s === 'done' ? 'done' : s === 'demo' ? 'working draft' : 'next'}</span></td><td>${esc(b)}</td><td>${esc(c)}</td><td>${esc(d)}</td></tr>`).join('')}</tbody></table>`;
+  }
+
+  function wireJumps(root) {
+    root.querySelectorAll('a[href^="#"]').forEach(a => a.onclick = e => { const t = document.getElementById(a.getAttribute('href').slice(1)); if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); } });
+  }
+
+  // ---------------- compare uses side by side
+  let cmpIds = null, cmpFor = null;
+  function drawCompare() {
+    const p = PI[sel]; if (!p) return;
+    const ranked = SC[p.id] || [];
+    if (cmpFor !== p.id || !cmpIds) { cmpIds = ranked.filter(r => r.ok && !r.f.av).slice(0, 3).map(r => r.f.id); cmpFor = p.id; }
+    document.getElementById('cmpfor').textContent = `${p.address} Greenmount · select another building on the map or ledger`;
+    const pick = ranked.filter(r => !r.filt);
+    const pk = document.getElementById('cmppick');
+    pk.innerHTML = pick.map(r => `<button type="button" class="chip" data-f="${r.f.id}" aria-pressed="${cmpIds.includes(r.f.id)}"><span class="sw" style="background:${cssFill(r.f.cat)}"></span>${esc(r.f.name)} <span class="mono">${r.ok ? Math.round(r.score * 100) : '×'}</span></button>`).join('');
+    pk.querySelectorAll('.chip').forEach(b => b.onclick = () => {
+      const id = b.dataset.f;
+      cmpIds = cmpIds.includes(id) ? cmpIds.filter(x => x !== id) : cmpIds.concat(id).slice(-3);
+      drawCompare();
+    });
+    const rows = cmpIds.map(id => ranked.find(r => r.f.id === id)).filter(Boolean);
+    if (!rows.length) { document.getElementById('cmptab').innerHTML = '<p class="small">Pick a use above.</p>'; return; }
+    const tr = (label, fn) => `<tr><td class="f">${label}</td>${rows.map(r => `<td>${fn(r)}</td>`).join('')}</tr>`;
+    const n100 = x => `<span class="mono">${Math.round(x * 100)}</span>`;
+    const hrow = r => { const x = p.h && p.h[r.via]; return r.from === 'street' ? `from the street (${STREET[r.via]} parcels proved ${esc(r.via)})` : x ? `${esc(r.via)}: ${x[0]} decade${x[0] === 1 ? '' : 's'}, ${x[2]} kind${x[2] === 1 ? '' : 's'} of source` : 'no record here'; };
+    const seg1 = r => { const s = segsFor(r.f.id); return s.length ? s.map(x => esc(x.name)).join(', ') : '—'; };
+    const pain1 = r => { const s = segsFor(r.f.id)[0]; const pn = s && (s.pains || []).slice().sort((a, b) => a.rank - b.rank)[0]; return pn ? `${esc(pn.pain)}: ${esc(pn.evidence)}` : '—'; };
+    const best = r => { const hs = r.pr.hits.slice().sort((a, b) => b.s.v * (SUCC[b.b.status] ?? 0.6) - a.s.v * (SUCC[a.b.status] ?? 0.6)); const h = hs[0], c = hs.find(x => x.b.status === 'closed'); return h ? `${esc(h.b.name)}, ${esc(h.b.city)} (${esc(h.b.status)})${c && c !== h ? `; closed: ${esc(c.b.name)}` : ''}` : 'none among the 8 most similar'; };
+    document.getElementById('cmptab').innerHTML = `<table class="cmpt"><thead><tr><th></th>${rows.map(r => `<th><span class="sw" style="background:${cssFill(r.f.cat)};margin-right:6px;vertical-align:-1px"></span>${esc(r.f.name)}</th>`).join('')}</tr></thead><tbody>
+      ${tr('Score', r => r.ok ? `<span class="big" style="font-size:24px">${Math.round(r.score * 100)}</span>${sbar(r.parts)}` : `<b>not allowed</b>: ${esc(r.bl || 'filtered out')}`)}
+      ${tr('Heritage', r => `${n100(r.h)} ${hrow(r)}`)}
+      ${tr('Room (saturation)', r => r.s.n == null ? `${n100(r.s.v)} not measured` : `${n100(r.s.v)} ${r.s.n} on the block side; corridor ${pct0(r.s.now)} vs ${pct0(r.s.then)} in 1920-23`)}
+      ${tr('Size fit', r => `${n100(r.fi)} ${esc(r.how)}, usual ${fmt(r.f.size[0])}-${r.f.size[1] >= 100000 ? 'any' : fmt(r.f.size[1])} sq ft`)}
+      ${tr('Community', r => `${n100(r.cm.v)} ${r.cm.why === 'asked for' ? 'asked for: ' + esc(r.cm.r.map(x => x.type).join(', ')) : r.cm.why === 'pushed back' ? 'pushed back (' + esc(r.cm.a.grade) + ')' : 'no signal'}`)}
+      ${tr('Neighbours', r => `${n100(r.nb.v)} ${r.nb.list.map(x => `${esc(x.q.address)} ${esc(x.c)} ${sgn(x.v)}`).join(', ') || 'none known'}`)}
+      ${tr('Precedents', r => `${n100(r.pr.v)} ${r.pr.hits.length} of 8 similar cases`)}
+      ${tr('Best matching case', best)}
+      ${tr('Zoning', r => esc(ZTXT[r.f.zs] || r.f.zs) + (r.f.urp ? '; barred by the urban renewal plan' : ''))}
+      ${tr('Multipliers', r => [r.pol < 1 ? `conditional ×${r.pol}` : '', r.avm < 1 ? `objection ×${r.avm}` : '', r.fbm !== 1 ? `feedback ×${r.fbm.toFixed(2)}` : ''].filter(Boolean).join(', ') || 'none')}
+      ${tr('Who runs it', seg1)}
+      ${tr('Their first obstacle', pain1)}
+      ${tr('Your view', r => fbBtns(p.id, r.f.id) || '<span class="small">voting works on the claude.ai page</span>')}
+    </tbody></table>`;
+    wireVotes(document.getElementById('cmptab'));
+  }
+
+  // ---------------- feedback: shared votes in the artifact's db (one document per person)
+  let fbState = 'none', DBX = null, ME = null, USR = null, MY = {}, FBDOCS = [], pendingUpd = false;
+  function tally() {
+    FB = {};
+    FBDOCS.forEach(x => { const a = FB[x.k] = FB[x.k] || { up: 0, down: 0 }; x.v === 1 ? a.up++ : a.down++; });
+  }
+  function aggregate(docs) {
+    FBDOCS = [];
+    docs.forEach(d => {
+      const v = (d.data() || {}).votes || {};
+      Object.entries(v).forEach(([k, x]) => { if (x && (x.v === 1 || x.v === -1) && typeof k === 'string') FBDOCS.push({ uid: d.id, k, v: x.v, r: String(x.r || '').slice(0, 200), t: String(x.t || '') }); });
+      if (d.id === ME) MY = JSON.parse(JSON.stringify(v));
+    });
+    tally();
+  }
+  function safeUpdate() {
+    const a = document.activeElement;
+    if (a && a.classList && a.classList.contains('why-in')) { pendingUpd = true; return; }
+    update();
+  }
+  document.addEventListener('focusout', e => { if (pendingUpd && e.target.classList && e.target.classList.contains('why-in')) { pendingUpd = false; setTimeout(update, 0); } });
+  let wq = Promise.resolve();
+  function save() {
+    if (!DBX || !ME) return;
+    const body = { votes: JSON.parse(JSON.stringify(MY)) };
+    wq = wq.then(() => DBX.doc('feedback/' + ME).set(body)).catch(e => { fbState = 'read'; drawFbLog(); });
+  }
+  function localApply() {
+    FBDOCS = FBDOCS.filter(x => x.uid !== ME).concat(Object.entries(MY).map(([k, x]) => ({ uid: ME, k, v: x.v, r: x.r || '', t: x.t })));
+    tally(); update(); drawFbLog();
+  }
+  function vote(k, v) {
+    if (fbState !== 'on') return;
+    if (MY[k] && MY[k].v === v) delete MY[k]; else MY[k] = { v, r: MY[k] ? MY[k].r || '' : '', t: new Date().toISOString() };
+    localApply(); save();
+  }
+  function reason(k, txt) { if (!MY[k]) return; MY[k].r = String(txt).slice(0, 200); MY[k].t = new Date().toISOString(); save(); FBDOCS.forEach(x => { if (x.uid === ME && x.k === k) x.r = MY[k].r; }); drawFbLog(); }
+  async function drawFbLog() {
+    const st = document.getElementById('fbstat'), el = document.getElementById('fblog');
+    if (fbState === 'none') {
+      st.textContent = 'not available in this copy';
+      el.innerHTML = '<p class="small">Voting works on the published page on claude.ai, for people the owner has shared it with as Contributor or Editor. A downloaded copy shows the scores without feedback.</p>';
+      return;
+    }
+    const rows = FBDOCS.slice().sort((a, b) => b.t.localeCompare(a.t));
+    const people = [...new Set(rows.map(r => r.uid))];
+    st.textContent = `${rows.length} vote${rows.length === 1 ? '' : 's'} from ${people.length} ${people.length === 1 ? 'person' : 'people'}${fbState === 'read' ? ' · you can read the votes but not vote' : ''}`;
+    const keys = Object.entries(FB).sort((a, b) => (b[1].up + b[1].down) - (a[1].up + a[1].down)).slice(0, 8);
+    const lab = k => { const [pid, fid] = k.split('|'); return `${PI[pid] ? PI[pid].address : pid} · ${FM[fid] ? FM[fid].name : fid}`; };
+    el.innerHTML = rows.length ? `<p class="lede" style="font-size:14px">Each person's latest view of each recommendation. With feedback switched on (under How the recommendation works), each net agree adds 10% to that use's score at that building and each net disagree takes 10% off, within +20% and −40%.</p>
+      <div class="chips" style="margin:6px 0 10px">${keys.map(([k, x]) => `<span>${esc(lab(k))}: ▲${x.up} ▼${x.down}</span>`).join('')}</div>
+      <div class="fblog">${rows.slice(0, 60).map((r, i) => { const [pid, fid] = r.k.split('|'); return `<div class="fbrow"><img alt="" data-av="${i}"><span class="w2"><b data-nm="${i}"></b><br><span class="small">${esc(r.t.slice(0, 10))}</span></span><span class="w2">${r.v === 1 ? '▲ agrees with' : '▼ disagrees with'} <b>${esc(FM[fid] ? FM[fid].name : fid)}</b> at <button type="button" class="a prow-a" data-go="${esc(pid)}" style="font-family:var(--f-mono);color:var(--accent);background:none;border:0;padding:0;text-decoration:underline;cursor:pointer">${esc(PI[pid] ? PI[pid].address : pid)}</button><br><span class="small" data-rs="${i}"></span></span></div>`; }).join('')}</div>`
+      : `<p class="small">No votes yet. Use ▲ or ▼ under any recommendation in the building panel or the comparison above${fbState === 'read' ? '; your access lets you read votes but not add them' : ''}.</p>`;
+    const ps = USR && people.length ? await USR.profiles(people) : {};
+    rows.slice(0, 60).forEach((r, i) => {
+      const pr = ps[r.uid] || {}, nm = el.querySelector(`[data-nm="${i}"]`), av = el.querySelector(`[data-av="${i}"]`), rs = el.querySelector(`[data-rs="${i}"]`);
+      if (nm) nm.textContent = (r.uid === ME ? 'You' : (pr.name || 'Someone'));
+      if (av && pr.avatarUrl) av.src = pr.avatarUrl; else if (av) av.remove();
+      if (rs) rs.textContent = r.r ? '“' + r.r + '”' : '';
+    });
+    el.querySelectorAll('[data-go]').forEach(b => b.onclick = () => { select(b.dataset.go, false); document.getElementById('panel').scrollIntoView({ behavior: 'smooth', block: 'start' }); });
+  }
+  (async () => {
+    const c = window.claude;
+    if (!c || typeof c.use !== 'function') { fbState = 'none'; drawFbLog(); return; }
+    let db = null, user = null;
+    try { [db, user] = await Promise.all([c.use('db'), c.use('user')]); } catch (e) { db = null; }
+    if (!db) { fbState = 'none'; drawFbLog(); return; }
+    DBX = db; USR = user; ME = user ? await user.id() : null;
+    const canW = user ? await user.can('data.write') : null;
+    fbState = ME && canW !== false ? 'on' : 'read';
+    db.collection('feedback').onSnapshot(snap => { aggregate(snap.docs); safeUpdate(); drawFbLog(); }, () => { if (fbState === 'on') fbState = 'read'; drawFbLog(); });
+    safeUpdate(); drawFbLog();
+  })();
+
+  // ---------------- who it is for: customer segments matched to buildings
+  let segSel = ((L.segments || [])[0] || {}).id, segUnk = false;
+  function drawSeg() {
+    const S = L.segments || []; if (!S.length) { document.getElementById('seg').hidden = true; return; }
+    const sp = L.sponsor || {};
+    document.getElementById('seglede').textContent = 'The sponsor works as an owner-operator developer on the corridor, with a nonprofit programme arm and a planned neighbourhood trust that would let successful tenants buy their buildings. Its customers are therefore businesses that will lease and later buy, the groups that finance them, and investors in the trust. This section matches each building to the groups that would use, lease or buy it, and shows what stands in their way.';
+    const tabs = document.getElementById('segtabs');
+    tabs.innerHTML = S.map(s => `<button type="button" role="tab" class="cx-tab" data-s="${esc(s.id)}" aria-selected="${s.id === segSel}">${esc(s.name)}</button>`).join('');
+    tabs.querySelectorAll('.cx-tab').forEach(b => b.onclick = () => { segSel = b.dataset.s; drawSeg(); });
+    const s = S.find(x => x.id === segSel) || S[0];
+    const pool = P.filter(p => p.availability === 'available now' || (segUnk && p.availability === 'possibly available'));
+    const fits = pool.map(p => {
+      const r = (SC[p.id] || []).find(x => x.ok && !x.f.av && (s.fit_formats || []).includes(x.f.id));
+      const sz = s.size_need && +p.sqft ? Math.max(fit1(+p.sqft, s.size_need), 0.85 * fit1(+p.sqft / 2, s.size_need), 0.8 * fit1(+p.sqft / 3, s.size_need)) : 0.7;
+      return r ? { p, r, sz, v: r.score * (0.5 + 0.5 * sz) } : null;
+    }).filter(Boolean).sort((a, b) => b.v - a.v);
+    const pains = (s.pains || []).slice().sort((a, b) => a.rank - b.rank);
+    document.getElementById('segbody').innerHTML = `<div class="segc">
+      <div class="cx-col">
+        <div><div class="eyebrow">Who</div><p style="margin:4px 0 0;font-size:14px">${esc(s.who || '')}</p></div>
+        <div><h3>What they need from a building</h3><p style="margin:0;font-size:13px;color:var(--ink-2)">${esc(s.needs || '')}${s.size_need ? ` Typical size ${fmt(s.size_need[0])}-${fmt(s.size_need[1])} sq ft.` : ''}</p>${s.rent_or_price ? `<p class="small" style="margin:6px 0 0">Deal sizes on record (context, not a valuation): ${esc(s.rent_or_price)}</p>` : ''}</div>
+        <div><h3>What stops them, strongest first</h3><ol class="pains">${pains.map(x => `<li><b>${esc(x.pain)}.</b> ${esc(x.evidence)}${x.src ? ` <a class="cxsrc" href="${esc(x.src)}" target="_blank" rel="noopener">source</a>` : ''}</li>`).join('')}</ol></div>
+        <div><h3>What the tool should show them</h3><ul class="checks">${(s.tool_should_show || []).map(t => `<li>${esc(t)}</li>`).join('')}</ul></div>
+        <div><h3>Programmes that can help</h3><div class="tbl"><table><thead><tr><th>Programme</th><th>Amount</th><th>Who qualifies</th></tr></thead><tbody>${(s.programs || []).map(g => `<tr><td>${g.src ? `<a class="cxsrc" href="${esc(g.src)}" target="_blank" rel="noopener">${esc(g.name)}</a>` : esc(g.name)}</td><td>${esc(g.amount || '')}</td><td>${esc(g.eligibility || '')}</td></tr>`).join('')}</tbody></table></div></div>
+        ${(s.deal_structures || []).length ? `<div><h3>Deal structures that have worked</h3><ul class="checks">${s.deal_structures.map(t => `<li>${esc(t)}</li>`).join('')}</ul></div>` : ''}
+      </div>
+      <div class="cx-col">
+        <div><h3>Buildings that fit this group</h3><label class="chk"><input type="checkbox" id="segunk"${segUnk ? ' checked' : ''}> Include parcels with no confirmed occupant</label></div>
+        <div class="fitlist">${fits.length ? fits.slice(0, 10).map((x, i) => `<div class="fitrow"><div class="hd"><span class="mono">${i + 1}</span><button type="button" class="a" data-go="${x.p.id}">${esc(x.p.address)}</button><b>${esc(x.r.f.name)}</b><span class="mono" style="margin-left:auto">${Math.round(x.v * 100)}</span></div>
+          <div class="small" style="color:var(--ink-2)">${x.p.sqft ? fmt(+x.p.sqft) + ' sq ft' : ''} · ${esc(x.p.status === 'unknown' ? 'occupant not confirmed' : x.p.status)} · use score ${Math.round(x.r.score * 100)} · size fit for this group ${Math.round(x.sz * 100)}%${x.p.ready && x.p.ready.vbn === 'open' ? ' · <b>open vacant-building notice</b>' : ''}</div>
+          <div class="small">${x.p.ready && x.p.ready.owner === 'sponsor-linked LLC' ? "Owner of record is the sponsor's LLC: lease-to-own terms can be modelled here." : 'Another owner of record: use fit only, no financial scenario (sponsor rule).'}</div></div>`).join('') : '<p class="small">No available building fits this group\'s formats.</p>'}</div>
+        <div class="guard"><b>Ground rules, from the sponsor's proposal.</b> ${(sp.guardrails || []).slice(0, 4).map(esc).join(' ')} <b>Ownership.</b> Of the buildings the sponsor has walked through, the state assessment snapshot (July 2026) titles only 3200 and 3224 to the sponsor's LLC; the rest belong to other owners, so the page never presents them as the sponsor's.</div>
+      </div></div>`;
+    const cb = document.getElementById('segunk'); if (cb) cb.onchange = e => { segUnk = e.target.checked; drawSeg(); };
+    document.getElementById('segbody').querySelectorAll('[data-go]').forEach(b => b.onclick = () => { select(b.dataset.go, false); document.getElementById('panel').scrollIntoView({ behavior: 'smooth', block: 'start' }); });
+  }
+
+  // ---------------- comparable cases: buildings like the selected one, streets like Waverly
+  let caseTab = 'b', caseRegion = 'all';
+  function dsim(d) {
+    const inc = d.income === 'low' || d.income === 'moderate' ? 1 : d.income === 'mixed' ? 0.6 : d.income === 'high' ? 0 : 0.5;
+    const blk = d.majority_black === true ? 1 : d.majority_black === false ? 0 : 0.5;
+    const anc = d.anchor_institution ? 1 : 0.3, own = d.concentrated_ownership === true ? 1 : d.concentrated_ownership === false ? 0.3 : 0.5;
+    const his = d.historic ? 1 : 0.5, len = d.length_mi ? Math.max(0, 1 - Math.abs(Math.log(d.length_mi / 0.4)) / Math.log(6)) : 0.5;
+    const us = ['Baltimore', 'US'].includes(d.region) ? 1 : 0.5;
+    return { v: 0.2 * inc + 0.15 * blk + 0.15 * anc + 0.15 * own + 0.1 * his + 0.1 * len + 0.15 * us, inc, blk, anc, own, his, len, us };
+  }
+  function drawCases() {
+    const p = PI[sel]; if (!p) return;
+    ['b', 'd'].forEach(t => document.getElementById('ct-' + t).setAttribute('aria-selected', caseTab === t));
+    document.getElementById('ct-b').onclick = () => { caseTab = 'b'; drawCases(); };
+    document.getElementById('ct-d').onclick = () => { caseTab = 'd'; drawCases(); };
+    const body = document.getElementById('casebody'), src = a => srcLinks(a);
+    if (caseTab === 'b') {
+      document.getElementById('casefor').textContent = `matched to ${p.address} Greenmount (${p.btype}, ${p.sqft ? fmt(+p.sqft) + ' sq ft' : 'size unknown'}${p.built ? ', c. ' + p.built : ''})`;
+      const regions = ['all', ...new Set((L.buildings || []).map(b => b.region))];
+      const list = simsOf(p).filter(x => caseRegion === 'all' || x.b.region === caseRegion).slice(0, 12);
+      body.innerHTML = `<div class="ctl" style="margin-bottom:8px"><label for="creg">Region</label><select id="creg" style="font:inherit;font-size:13px;padding:3px 6px;border:1px solid var(--rule-2);border-radius:6px;background:var(--bg);color:var(--ink)">${regions.map(r => `<option value="${esc(r)}"${r === caseRegion ? ' selected' : ''}>${esc(r === 'all' ? 'All regions' : r)}</option>`).join('')}</select><span class="small">Similarity: building type 35%, history 25%, size 20%, age 10%, income context 10%.</span></div>
+        <div class="casel">${list.map(x => { const b = x.b, s = x.s; return `<div class="casec"><div class="hd"><span class="simv">${Math.round(s.v * 100)}%</span><b>${esc(b.name)}</b><span class="small">${esc(b.city)}, ${esc(b.country)} · ${esc(b.region)}</span><span class="pill${b.status === 'closed' ? ' warn' : b.status === 'operating' ? ' ok' : ''}" style="margin-left:auto">${esc(b.status)}${b.status_year ? ' (' + b.status_year + ')' : ''}</span></div>
+          <div class="chips"><span class="${s.t === 1 ? 'y' : ''}">${esc(b.building_type)}</span><span class="${s.h > 0 ? 'y' : ''}">was ${esc(b.orig_cat || 'unknown')}</span><span class="${s.sz > 0.6 ? 'y' : ''}">${b.sqft ? fmt(b.sqft) + ' sq ft' : 'size unknown'}</span><span class="${s.era > 0.6 ? 'y' : ''}">${b.year_built ? 'built ' + b.year_built : 'age unknown'}</span><span class="${s.ctx === 1 ? 'y' : ''}">${esc(b.context_income ? b.context_income + ' income' : 'income unknown')}</span><span>${esc(b.operator_model || '')}</span></div>
+          <div>${esc(b.orig_use || '')} → <b>${esc(b.new_use || '')}</b>${b.year_opened ? ' (' + b.year_opened + ')' : ''}</div>
+          ${b.financing ? `<div class="small" style="color:var(--ink-2)">Money: ${esc(b.financing)}</div>` : ''}
+          <div class="small" style="color:var(--ink-2)">${esc(b.outcome || '')}</div>
+          <div><b>Lesson.</b> ${esc(b.lesson || '')}</div><div class="srcs">${src(b.sources)}</div></div>`; }).join('')}</div>`;
+      const cr = document.getElementById('creg'); cr.onchange = e => { caseRegion = e.target.value; drawCases(); };
+    } else {
+      const W0 = L.waverly || {};
+      document.getElementById('casefor').textContent = 'similarity to Waverly: income 20%, majority-Black 15%, anchor institution 15%, concentrated ownership 15%, historic 10%, length 10%, US 15%';
+      const ds = (L.districts || []).map(d => ({ d, s: dsim(d) })).sort((a, b) => b.s.v - a.s.v);
+      const top5 = ds.slice(0, 5), tags = {};
+      top5.forEach(x => (x.d.interventions || []).forEach(t => { tags[t] = (tags[t] || 0) + 1; }));
+      body.innerHTML = `<div class="segc"><div class="wbox"><div class="eyebrow">Waverly, Greenmount Ave E 29th-E 33rd St</div>
+          <div style="font-size:13px;display:grid;gap:4px"><div>${W0.length_mi || 0.4} miles · ${W0.parcels || 69} parcels · ${esc(W0.historic || '')}</div><div>${esc(W0.vacancy_note || '')}</div><div>${esc(W0.income_note || '')}</div><div>${esc(W0.anchor_institution || '')}</div><div>${esc(W0.ownership_note || '')}</div></div></div>
+        <div class="wbox"><h3>What the five closest streets did</h3><div class="chips">${Object.entries(tags).sort((a, b) => b[1] - a[1]).map(([t, n]) => `<span class="${n >= 3 ? 'y' : ''}">${esc(t.replace(/_/g, ' '))} ${n}/5</span>`).join('')}</div>
+          <p class="small" style="margin:0">Displacement on those five: ${top5.map(x => `${esc(x.d.name)} ${esc(x.d.displacement)}`).join('; ')}.</p></div></div>
+        <div class="casel" style="margin-top:12px">${ds.map(x => { const d = x.d, s = x.s; return `<div class="casec"><div class="hd"><span class="simv">${Math.round(s.v * 100)}%</span><b>${esc(d.name)}</b><span class="small">${esc(d.city)}, ${esc(d.country)}${d.length_mi ? ' · ' + d.length_mi + ' mi' : ''}${d.start_year ? ' · from ' + d.start_year : ''}</span><span class="pill${d.displacement === 'high' ? ' warn' : d.displacement === 'low' ? ' ok' : ''}" style="margin-left:auto">displacement: ${esc(d.displacement)}</span></div>
+          <div class="chips"><span class="${s.inc === 1 ? 'y' : ''}">${esc(d.income ? d.income + ' income' : 'income unknown')}</span><span class="${s.blk === 1 ? 'y' : ''}">${d.majority_black === true ? 'majority-Black' : d.majority_black === false ? 'not majority-Black' : 'race unknown'}</span><span class="${d.anchor_institution ? 'y' : ''}">${d.anchor_institution ? 'anchor: ' + esc(String(d.anchor_institution).slice(0, 40)) : 'no anchor'}</span><span class="${d.concentrated_ownership ? 'y' : ''}">${d.concentrated_ownership === true ? 'concentrated ownership' : 'ownership spread'}</span><span class="${d.historic ? 'y' : ''}">${d.historic ? 'historic' : 'not listed'}</span></div>
+          <div class="chips">${(d.interventions || []).map(t => `<span>${esc(t.replace(/_/g, ' '))}</span>`).join('')}</div>
+          <div class="small" style="color:var(--ink-2)">${esc(d.lead || '')}. ${esc(d.outcomes || '')}${d.vacancy_change ? ' Vacancy: ' + esc(d.vacancy_change) + '.' : ''}</div>
+          ${d.displacement_note ? `<div class="small" style="color:var(--ink-2)">${esc(d.displacement_note)}</div>` : ''}
+          <div><b>Lesson.</b> ${esc(d.lesson || '')}</div><div class="srcs">${src(d.sources)}</div></div>`; }).join('')}</div>`;
+    }
+  }
+
+  // ---------------- mix (dumbbell)
+  function drawMix() {
+    const PC = PLAN ? PLAN.C : BASE;
+    const rows = D.mix.map(m => ({ c: m.cat, t: m.then / m.then_base, n: m.now / m.now_base, pl: (PC.corr[m.cat] || 0) / PC.base, tc: m.then, tb: m.then_base, nc: m.now, nb: m.now_base }));
+    const max = 0.6;
+    let h = `<div class="axis"><span></span><div class="ticks"><span>0%</span><span>15%</span><span>30%</span><span>45%</span><span>60%</span></div><span></span></div>`;
+    rows.forEach(r => {
+      const a = Math.min(r.t, r.n) / max * 100, b = Math.max(r.t, r.n) / max * 100;
+      h += `<div class="mixrow" title="${esc(r.c)}: ${r.tc} of ${r.tb} buildings in 1920-23, ${r.nc} of ${r.nb} occupied buildings in 2026"><span><span class="sw" style="background:${fill(r.c)};margin-right:6px;vertical-align:-1px"></span>${esc(r.c)}</span>
+        <div class="track"><div class="line" style="left:${a}%;width:${b - a}%"></div><div class="dot then" style="left:${r.t / max * 100}%"></div><div class="dot now" style="left:${r.n / max * 100}%"></div><div class="dot plan" style="left:${Math.min(r.pl, max) / max * 100}%"></div></div>
+        <span class="n">${Math.round(r.t * 100)} → ${Math.round(r.n * 100)} → <b style="color:var(--accent)">${Math.round(r.pl * 100)}</b>%</span></div>`;
+    });
+    document.getElementById('mix').innerHTML = h;
+    const f = D.mix.find(m => m.cat === 'food & drink'), pr = D.mix.find(m => m.cat === 'production & light industry'), rg = D.mix.find(m => m.cat === 'retail goods');
+    document.getElementById('mixnote').textContent = `In 1920 to 1923, ${f.then} of ${f.then_base} frontage buildings with a listed business had food or drink and ${pr.then} had a trade shop (plumber, tinner, printer). In October 2026, ${f.now} of ${f.now_base} occupied buildings have food or drink, none has a trade shop, and ${rg.now} sell retail goods. Food is below its 1920s share, so a new cafe adds back a historic use rather than crowding a saturated one. A building can count in more than one row.`;
+  }
+
+  // ---------------- table
+  let sortK = 'address', sortDir = 1;
+  function drawTable() {
+    P.forEach(p => { const t = topOf(p.id); p.top = t ? t.f.name : ''; p.topScore = t ? t.score : 0; });
+    const cols = [['address', 'No.'], ['sqft', 'Sq ft'], ['status', 'Today'], ['proven', 'Uses it has carried'], ['cand1', 'Best-proven use'], ['topScore', 'Top score'], ['decades', 'Decades'], ['availability', 'Availability']];
+    const rows = P.filter(visible).slice().sort((a, b) => { const x = a[sortK], y = b[sortK]; return (typeof x === 'number' || sortK === 'address' || sortK === 'sqft' ? (+x || 0) - (+y || 0) : String(x).localeCompare(String(y))) * sortDir; });
+    let h = `<table><thead><tr>${cols.map(([k, l]) => `<th data-k="${k}" aria-sort="${sortK === k ? (sortDir > 0 ? 'ascending' : 'descending') : 'none'}">${l}${sortK === k ? (sortDir > 0 ? ' ▲' : ' ▼') : ''}</th>`).join('')}</tr></thead><tbody>`;
+    rows.forEach(p => { h += `<tr data-id="${p.id}"><td class="num">${esc(p.address)}${p.sponsor ? ' ◆' : ''}</td><td class="num">${p.sqft ? fmt(+p.sqft) : '—'}</td><td>${esc(p.status === 'occupied' ? p.tenant : p.status)}</td><td>${esc(p.proven)}</td><td>${esc(p.cand1)}</td><td>${esc(p.top)} <span class="mono">${Math.round(p.topScore * 100)}</span></td><td class="num">${p.decades}</td><td>${esc(p.availability)}</td></tr>`; });
+    h += '</tbody></table>';
+    const el = document.getElementById('tbl'); el.innerHTML = h;
+    el.querySelectorAll('th').forEach(th => th.onclick = () => { const k = th.dataset.k; sortDir = sortK === k ? -sortDir : 1; sortK = k; drawTable(); });
+    el.querySelectorAll('tbody tr').forEach(r => r.onclick = () => select(r.dataset.id, true));
+  }
+
+  // ---------------- notes
+  document.getElementById('notes').innerHTML = `
+    <p><b>Sources.</b> Sponsor records are the class-A rows (records that state a use) from the team's week-1 classification of the curated layer. Polk lines come from the archive.org text of the Baltimore city directories, 1901 to 1923. Before about 1914 these blocks were numbered as York Road, so the early lines reach a parcel through a crosswalk built from Sanborn sheets that print both numbers, statements in the sponsor's records, and people listed at both addresses. Permit lines are a transcription of 108 cards from the City Archives' Master Index Cards, Building Permits (BRG48-53), 1924 to 1961. Sanborn rows are one per footprint on the 1915, 1928 and 1953 sheets at the Library of Congress. The National Register rows come from the 2013 Waverly Main Street nomination. The 1970s rows come from the team's index of the City's revitalization files (BRG48-43-10). The 2026 column is the October tenant check. Every record links to its source where one is online.</p>
+    <p><b>Coding.</b> A keyword rule assigns each line to one of the team's use categories, so a few lines will be coded wrong, and most permit lines (signs, repairs, awnings) carry no use at all. A bare "store" on a permit or a Sanborn "S" says there was a shop front, not what it sold, so those records are listed but not coloured. Numbers that are not a parcel in the export go to the next parcel down the same side, and the record says the address was inferred. ${esc(D.validation)}</p>
+    <p><b>A rule that still binds.</b> The Waverly Business Area Urban Renewal Plan (1979, amended to 2012) still covers the frontage. Since 1995 it bars new taverns, liquor stores and pawnshops, and it sets facade, sign and awning standards for every commercial building. Where a building's food-and-drink history is mostly a saloon, the best-proven use says so.</p>
+    <p><b>The concepts.</b> The three concepts are written by hand from each building's records, its block side today, the urban renewal plan and the comps. The named businesses are examples drawn from public reporting, chosen because they fit the building and appear to need space or to have no street-front shop yet. Nobody has been contacted, and the sponsor decides whether anyone is. Every outside fact links to its source; check it again before any outreach.</p>
+    <p><b>What it is not.</b> This is a screening draft for the team, not the final optimiser and not an agreed recommendation. It ranks uses for a building, never buildings by price: no valuation, no appraisal language and no acquisition targeting, following the sponsor's own rules. A sponsor walk-through is not a statement of ownership; the owner of record comes from the state assessment snapshot. The score and the block plan are drafts; their limits are listed under How the recommendation works. "Best-proven use" ranks the uses a building has carried by how many decades of evidence it has, minus a penalty where the same use is already common on its block side today. The rent figures are indicative ranges from the comps library and are not an appraisal. Every row should be checked against its source before it is used.</p>
+    <p><b>Next sources.</b> The 1960s to 1990s are the gap: Polk 1930s to 1960s and newspapers through the research desk, the 1931 Building Survey, and a Street View check of the 28 buildings with no confirmed occupant.</p>`;
+
+  // ---------------- interactions
+  function select(id, scroll) { sel = id; if (CX[id]) cxSel = id; render(); if (scroll && window.matchMedia('(max-width: 900px)').matches) document.getElementById('panel').scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+  function setSeg(ids, on) { ids.forEach(i => document.getElementById(i).setAttribute('aria-pressed', i === on)); }
+  const MB = ['m-now', 'm-best', 'm-rec'];
+  document.getElementById('m-now').onclick = () => { mode = 'now'; setSeg(MB, 'm-now'); render(); };
+  document.getElementById('m-best').onclick = () => { mode = 'best'; setSeg(MB, 'm-best'); render(); };
+  document.getElementById('m-rec').onclick = () => { mode = 'rec'; setSeg(MB, 'm-rec'); render(); };
+  document.getElementById('unk').onchange = e => { inclUnk = e.target.checked; drawPlan(); drawMix(); };
+  function update() { rescore(); drawWeights(); render(); drawPlan(); drawMix(); drawSeg(); }
+  [['f-all', 'all'], ['f-avail', 'avail'], ['f-sponsor', 'sponsor']].forEach(([i, v]) => document.getElementById(i).onclick = () => { filt = v; setSeg(['f-all', 'f-avail', 'f-sponsor'], i); render(); });
+  document.getElementById('q').addEventListener('input', e => { q = e.target.value.replace(/\D/g, ''); const hit = P.filter(p => p.address.startsWith(q)); if (q.length >= 4 && hit.length) sel = hit[0].id; render(); });
+  function render() { drawLegend(); drawMap(); drawLedger(); drawPanel(); wireJumps(document.getElementById('panel')); drawCompare(); drawCases(); drawConcept(); drawTable(); }
+  drawMethodOnce(); drawWeights(); render(); drawPlan(); drawMix(); drawRoad(); drawSeg(); drawFbLog();
+})();
+</script>
