@@ -62,7 +62,7 @@ BENCH = {
     'food & drink': dict(small=(25.0, 37.5), large=(15.0, 25.0),
                          note='Rent: fitted 800 SF cafe suites in Hampden ask $30-37.50/SF NNN (CAFE-01, CAFE-02); the 3226 rent roll implies at least $25.23/SF gross (CAFE-04). Sales: an owner-run Baltimore tea cafe reported $250k-285k a year (CAFE-03).'),
     'retail goods': dict(small=(20.0, 30.0), large=(10.9, 20.0),
-                         note='Rent: large-format space asks $17-20/SF NNN in Hampden (SHOW-03, SHOW-04); a fully leased 14,000 SF 1920s building earns about $10.91/SF incl. CAM (SHOW-05). Sales: $167-185 per SF of showroom (SHOW-08, Havertys 10-K).'),
+                         note='Rent: large-format space asks $17-20/SF NNN in Hampden (SHOW-03, SHOW-04); a fully leased 14,000 SF 1920s building earns about $10.91/SF incl. CAM (SHOW-05). Sales: $167-185 per SF of showroom (SHOW-08, a furniture chain 10-K).'),
 }
 NOT_CAND = {'residential', 'institutional & religious', 'vacant'}
 
@@ -326,6 +326,15 @@ C = json.load(open(os.path.join(HERE, 'concepts.json'), encoding='utf-8'))
 data['concepts'] = {k: C[k] for k in C['order']}
 data['concept_order'] = C['order']
 data['concept_note'] = C['_note']
+COMPS_DIR = os.path.join(REPO, 'team', 'comps')
+# comps engine v1 (team/comps): rent and revenue ranges; only the library rows the page cites are kept
+_cp = os.path.join(COMPS_DIR, 'comps_ranges.json')
+if os.path.exists(_cp):
+    _comps = json.load(open(_cp, encoding='utf-8'))
+    _srcs = _comps.pop('sources')
+    _cited = set(re.findall(r'\b[RBO]-\d{3}\b', json.dumps(_comps)))
+    _comps['sources'] = {k: v for k, v in _srcs.items() if k in _cited}
+    data['comps'] = _comps
 page = open(os.path.join(HERE, 'template.html'), encoding='utf-8').read()
 blob = json.dumps(data, separators=(',', ':'), ensure_ascii=False).replace('</', '<\\/')
 assert page.count('__DATA__') == 1

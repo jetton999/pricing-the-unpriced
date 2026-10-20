@@ -1,0 +1,175 @@
+{
+  "about": "Every assumption the comps engine uses, with its source or the words 'team judgement'. Change a number here, rerun comps_engine.py, and every range on the explorer moves. Figures in source-year dollars; the engine converts them to 2025 dollars with the CPI table below.",
+  "target_dollar_year": 2025,
+  "interval": {
+    "alpha": 0.2,
+    "label": "P10 to P90: an 80% range",
+    "why": "An 80% range is wide enough to be honest with 56-odd rows and narrow enough to compare uses; 95% ranges would span almost the whole market."
+  },
+  "lease_basis_loads": {
+    "about": "Dollars per sq ft per year taken off an asking rent to make it triple-net equivalent (the tenant pays taxes, insurance and common charges on top). Team assumption: no public Baltimore source for insurance or common charges. The engine reruns with the two alternatives and reports the change.",
+    "NNN": 0.0,
+    "modified gross": 2.0,
+    "gross": 4.0,
+    "unknown": 1.0,
+    "sensitivity": [{"modified gross": 0.0, "gross": 0.0, "unknown": 0.0}, {"modified gross": 3.0, "gross": 6.0, "unknown": 1.5}]
+  },
+  "rent_rows": {
+    "about": "Which rows of library/rents.csv enter the rent model.",
+    "drop_formats": ["housing"],
+    "min_sqft": 300,
+    "max_sqft_workshop": 6000,
+    "why": "Housing is a different market. Spaces under 300 sq ft are desks or kiosks. Workshops over 6,000 sq ft are industrial warehouses, not storefronts."
+  },
+  "corridors": {
+    "about": "Rows are pooled by corridor. The first rule whose text appears in the row's corridor field wins. district_id links to the case library (library.json) where the street is a documented case.",
+    "rules": [
+      ["waverly", "waverly"], ["charles village", "charles_village"], ["harford rd, 3500", "charles_village"],
+      ["station north", "midtown"], ["mount vernon", "midtown"], ["greenmount ave, 1800", "midtown"],
+      ["hampden", "hampden"], ["hamilton", "hamilton"], ["highlandtown", "eastern"], ["eastern ave", "eastern"],
+      ["pigtown", "pigtown"], ["wicomico", "pigtown"], ["fells point", "fells"], ["butcher", "fells"],
+      ["belair", "belair"], ["livernois", "det_livernois"], ["butler", "pgh_butler"], ["penn ave", "pgh_penn"],
+      ["h street", "dc_hst"], ["anacostia", "dc_anacostia"], ["bronzeville", "chi_bronzeville"],
+      ["germantown", "phl_germantown"], ["haley", "nola_ochaley"]
+    ],
+    "groups": {
+      "waverly": {"name": "Waverly (Greenmount Ave, Loch Raven Rd)", "city": "Baltimore", "metro": "baltimore"},
+      "charles_village": {"name": "Charles Village and Harford Rd (21218)", "city": "Baltimore", "metro": "baltimore"},
+      "midtown": {"name": "Station North and Mount Vernon", "city": "Baltimore", "metro": "baltimore", "district_id": "station-north"},
+      "hampden": {"name": "Hampden (W 36th St)", "city": "Baltimore", "metro": "baltimore", "district_id": "hampden-36th"},
+      "hamilton": {"name": "Hamilton-Lauraville (Harford Rd)", "city": "Baltimore", "metro": "baltimore", "district_id": "hamilton-lauraville-harford"},
+      "eastern": {"name": "Highlandtown (Eastern Ave)", "city": "Baltimore", "metro": "baltimore", "district_id": "highlandtown-eastern"},
+      "pigtown": {"name": "Pigtown (Washington Blvd)", "city": "Baltimore", "metro": "baltimore", "district_id": "pigtown-washington-blvd"},
+      "fells": {"name": "Fells Point and Butcher's Hill", "city": "Baltimore", "metro": "baltimore"},
+      "belair": {"name": "Belair Rd", "city": "Baltimore", "metro": "baltimore", "district_id": "belair-edison"},
+      "det_livernois": {"name": "Livernois Ave (Avenue of Fashion)", "city": "Detroit", "metro": "detroit", "district_id": "livernois-live6"},
+      "pgh_butler": {"name": "Butler St (Lawrenceville)", "city": "Pittsburgh", "metro": "pittsburgh"},
+      "pgh_penn": {"name": "Penn Ave (Garfield, East Liberty)", "city": "Pittsburgh", "metro": "pittsburgh", "district_id": "east-liberty-penn"},
+      "dc_hst": {"name": "H Street NE", "city": "Washington, DC", "metro": "washington", "district_id": "h-street-ne"},
+      "dc_anacostia": {"name": "Anacostia (MLK Jr Ave and Marion Barry Ave SE)", "city": "Washington, DC", "metro": "washington"},
+      "chi_bronzeville": {"name": "Bronzeville (47th St, S Michigan Ave)", "city": "Chicago", "metro": "chicago"},
+      "phl_germantown": {"name": "Germantown Ave", "city": "Philadelphia", "metro": "philadelphia"},
+      "nola_ochaley": {"name": "O.C. Haley Blvd", "city": "New Orleans", "metro": "new_orleans", "district_id": "oc-haley"}
+    }
+  },
+  "format_families": {
+    "about": "Used only to list the nearest listings for a format (distance counts a different family as 0.5).",
+    "food": ["cafe", "counter", "foodmaker", "tavern"], "retail": ["shop", "showroom", "bike"], "services": ["services"],
+    "assembly": ["fitness", "studio", "venue"], "work": ["office", "workshop", "community"]
+  },
+  "combine": {
+    "prior_rows": 3,
+    "about": "The listing route gets weight n/(n+3), n = the format's number of listings; the affordability route gets the rest. The 3 is team judgement: the affordability route counts as three listings' worth of evidence. The engine reruns with 1 and 10."
+  },
+  "sigma_default": {
+    "about": "When a format's sales benchmark is a single figure, its spread is borrowed from the cafe benchmark (P10 to P90 in logs, divided by 2 × 1.2816). Team judgement; the engine reruns with 0.3 and 0.6.",
+    "borrow_from": "cafe"
+  },
+  "pass_through": {
+    "other_per_sqft": 1.0,
+    "about": "Taxes and insurance a tenant pays on top of triple-net rent: the parcel's own city tax per sq ft (parcel_tax.csv) plus $1.00 for insurance and minor common charges (team assumption). Parcels missing from the tax file use the corridor median.",
+    "tax_source": {"title": "Baltimore City Real Property layer (CITY_TAX ÷ STRUCTAREA), queried 2026-10-20 for Greenmount Ave 2900-3299", "url": "https://baltegis.baltimorecity.gov/mapping/rest/services/CityView/RealProperty_OB/FeatureServer/0"},
+    "rate_source": {"title": "Baltimore BBMR, City Tax Rates: FY2027 real property $2.248 per $100 of assessed value", "url": "https://www.baltimorecity.gov/bbmr/city-tax-rates"}
+  },
+  "approval": {
+    "about": "Chance a conditional use gets its approval, applied to earnings. Team judgement, the same 0.75 the fit score used in v0.3 (the fit score no longer applies it when money is combined, so it is not counted twice).",
+    "P": 1.0, "CB": 0.75, "CO": 0.75
+  },
+  "cpi": {
+    "about": "CPI-U, U.S. city average, all items, annual average = mean of FRED's two semiannual values for the year (series CUUS0000SA0).",
+    "source": {"title": "FRED, Consumer Price Index for All Urban Consumers: All Items in U.S. City Average (CUUS0000SA0), semiannual", "url": "https://fred.stlouisfed.org/data/CUUS0000SA0"},
+    "annual": {"2001": 177.05, "2004": 188.9, "2013": 232.957, "2014": 236.736, "2015": 237.017, "2016": 240.0075, "2017": 245.1195, "2018": 251.107, "2019": 255.6575, "2020": 258.811, "2021": 270.9695, "2022": 292.655, "2023": 304.702, "2024": 313.689, "2025": 322.1145}
+  },
+  "local_demand": {
+    "food": {
+      "factor": 0.91,
+      "applies_to": ["cafe", "counter", "foodmaker", "tavern"],
+      "how": "Spending on food away from home per household in ZIP 21218 ÷ the US mean: 18,703 households (ACS 2020-2024, B19001) placed in CE 2024 income quintiles and multiplied by each quintile's spending ($1,655 / $2,448 / $3,277 / $4,682 / $7,652) gives $3,607 per household, against $3,945 nationally.",
+      "sources": [
+        {"title": "ACS 5-year 2020-2024, table B19001, ZCTA 21218", "url": "https://data.census.gov/api/access/data/table?id=ACSDT5Y2024.B19001&g=860XX00US21218"},
+        {"title": "FRED, CE food away from home, lowest quintile (CXUFOODAWAYLB0102M)", "url": "https://fred.stlouisfed.org/series/CXUFOODAWAYLB0102M"},
+        {"title": "BLS, Consumer Expenditures in 2024", "url": "https://www.bls.gov/news.release/archives/cesan_12192025.pdf"}
+      ]
+    },
+    "other": {"factor": 1.0, "how": "No local spending index computed yet for non-food formats (needs a Census API key and the CE category tables). Treated as 1.0."}
+  },
+  "route_b": {
+    "about": "The affordability route: rent a use could pay = sales per sq ft × the share of sales such businesses usually spend on rent − taxes and insurance. Each sales point names its benchmark row (library/benchmarks.csv) and year. 'applies': false for uses whose rent is paid from grants, dues or salaries rather than sales.",
+    "cafe": {
+      "sales": {"p10": {"v": 200, "year": 2021, "rows": ["B-019"], "how": "the floor below which a full-service restaurant has 'little chance of generating profit'"},
+                "p50": {"v": 350, "year": 2021, "rows": ["B-019"], "how": "middle of the $300-400 tier that nets 5-10%"},
+                "p90": {"v": 650, "year": 2019, "rows": ["B-015"], "how": "half of Boulder's food-service respondents exceed $650 (a high side)"}},
+      "share": {"mid": 0.06, "low": 0.057, "high": 0.10, "rows": ["B-008", "B-007", "B-013"], "how": "NRA 2024 median for urban full-service restaurants; national median 5.7%; 10% is a ceiling"}
+    },
+    "counter": {
+      "sales": {"p10": {"v": 200, "year": 2021, "rows": ["B-039"], "how": "below $200 a limited-service unit has 'little chance of avoiding a loss'"},
+                "p50": {"v": 350, "year": 2021, "rows": ["B-039"], "how": "middle of the $300-400 tier that nets 5-10%"},
+                "p90": {"v": 500, "year": 2021, "rows": ["B-039"], "how": "top of the $400-500 tier that nets 10-15%"}},
+      "share": {"mid": 0.06, "low": 0.052, "high": 0.10, "rows": ["B-035", "B-034", "B-018"], "how": "NRA 2024 median for urban limited-service; national 5.2%; 10% ceiling"}
+    },
+    "tavern": {"borrow": "cafe", "why": "No bar benchmarks yet; a bar is treated like a sit-down restaurant."},
+    "foodmaker": {"applies": false, "why": "No sales-per-sq-ft benchmark for a bakery or roaster with a shop; the only share (4%, B-051) is dominated by grocery stores."},
+    "shop": {
+      "sales": {"p10": {"v": 50, "year": 2001, "rows": ["B-076", "B-075"], "how": "$100,000, the low end of the band most gift retailers sit in, ÷ 2,000 sq ft"},
+                "p50": {"v": 325, "year": 2022, "rows": ["B-057", "B-075"], "how": "$650,440 per Baltimore gift retailer (2022 Economic Census) ÷ 2,000 sq ft"},
+                "p90": {"v": 649, "year": 2019, "rows": ["B-078"], "how": "top of the median band of Boulder's independent retailers"}},
+      "share": {"mid": 0.09, "low": 0.06, "high": 0.12, "rows": ["B-068", "B-069"], "how": "about 9% for apparel, home and hobby stores; 6-12% for successful retailers in a Southwest Baltimore strategy"}
+    },
+    "showroom": {
+      "sales": {"single": {"v": 167, "year": 2025, "rows": ["B-090"], "how": "a furniture chain's sales per retail sq ft (a chain ceiling)"}},
+      "share": {"mid": 0.09, "rows": ["B-089"], "how": "about 9% for home-furnishing stores"}
+    },
+    "bike": {
+      "sales": {"single": {"v": 179, "year": 2013, "rows": ["B-097"], "how": "specialty bicycle dealers' revenue per sq ft (NBDA study, 2013 data)"}},
+      "share": {"mid": 0.09, "rows": ["B-100"], "how": "about 9% for sporting-goods and hobby stores"}
+    },
+    "services": {
+      "sales": {"single": {"v": 212.2, "year": 2022, "rows": ["B-104", "B-123"], "how": "$265,284 per Baltimore beauty salon (2022 Economic Census) ÷ 1,250 sq ft, the middle of a typical 1,000-1,500 sq ft salon"}},
+      "share": {"mid": 0.115, "low": 0.08, "high": 0.15, "rows": ["B-120"], "how": "8-15% of revenue on rent (a software vendor's guidance; midpoint used)"}
+    },
+    "fitness": {
+      "sales": {"p10": {"v": 77, "year": 2015, "rows": ["B-136"], "how": "industry average revenue per sq ft"},
+                "p50": {"v": 104, "year": 2015, "rows": ["B-135"], "how": "studios under 2,000 sq ft"},
+                "p90": {"v": 189, "year": 2015, "rows": ["B-136"], "how": "top-quartile operators"}},
+      "share": {"mid": 0.21, "low": 0.13, "rows": ["B-137"], "how": "the average studio spends 21% of revenue on rent; top quartile 13%"}
+    },
+    "studio": {"applies": false, "why": "Arts studios and galleries pay rent from grants, classes and memberships; earned revenue is a minority of their income (operators O-010, O-024, O-039)."},
+    "venue": {"applies": false, "why": "Venues' earned revenue covers 21-36% of their income (O-009, O-022); rent is paid from grants and rentals."},
+    "community": {"applies": false, "why": "Community and nonprofit spaces pay rent from contributions, not sales."},
+    "office": {"applies": false, "why": "Offices pay rent from salaries, not sales."},
+    "workshop": {"applies": false, "why": "No sales-per-sq-ft benchmark for a maker workshop with a counter."}
+  },
+  "not_estimated": {"garage": "No vehicle-repair rents or benchmarks collected.", "housing": "Upper-floor housing is a different market (rents per unit); not in this engine."},
+  "transfer": {
+    "about": "Used to compare other cities' corridors with Waverly and to bring operators' figures to Baltimore's price level. BEA regional price parities (all items, 2024; US = 100). The housing parity is not used: it would turn Penn Ave's $16.50 into $27.09, above every Greenmount listing.",
+    "rpp_2024": {
+      "baltimore": {"v": 104.487, "url": "https://fred.stlouisfed.org/series/RPPALL12580"},
+      "washington": {"v": 108.884, "url": "https://fred.stlouisfed.org/series/RPPALL47900"},
+      "philadelphia": {"v": 102.554, "url": "https://fred.stlouisfed.org/series/RPPALL37980"},
+      "pittsburgh": {"v": 94.671, "url": "https://fred.stlouisfed.org/series/RPPALL38300"},
+      "detroit": {"v": 100.298, "url": "https://fred.stlouisfed.org/series/RPPALL19820"},
+      "richmond": {"v": 97.858, "url": "https://fred.stlouisfed.org/series/RPPALL40060"},
+      "new_orleans": {"v": 92.597, "url": "https://fred.stlouisfed.org/series/RPPALL35380"},
+      "chicago": {"v": 103.595, "url": "https://fred.stlouisfed.org/series/RPPALL16980"}
+    },
+    "operator_metro": {"Baltimore, MD": "baltimore", "Washington, DC": "washington", "Pittsburgh, PA": "pittsburgh", "Philadelphia, PA": "philadelphia", "Detroit, MI": "detroit", "Chicago, IL": "chicago", "New Orleans, LA": "new_orleans"}
+  },
+  "plan": {
+    "about": "Block-plan earnings. All team judgement drawn from the literature in the methods report; the page lets you move the first three.",
+    "caution": 0.5,
+    "same_use_haircut": 0.15,
+    "same_use_free": {"default": 1, "food & drink": 2, "retail goods": 2},
+    "neighbour_uplift": 0.04,
+    "neighbour_clamp": 2,
+    "shared_shock": 0.5,
+    "draws": 2000,
+    "money_weight": [0.2, 0.5],
+    "weight_concentration": 75
+  },
+  "private_calibration": {
+    "about": "How one private operator's figure would move the public sales benchmark for its format, if the team runs the private step. Weight = tau^2 / (tau^2 + sigma^2). Nothing from this step is ever written into the public outputs.",
+    "tau": "from_rent_pooling",
+    "sigma": "sigma_default",
+    "sensitivity": [{"tau": 0.30}, {"sigma": 0.335}]
+  }
+}

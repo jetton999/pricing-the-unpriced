@@ -262,12 +262,20 @@ details summary { cursor: pointer; font-weight: 600; }
 .fbrow { display: grid; grid-template-columns: 26px 120px minmax(0, 1fr); gap: 8px; align-items: start; border-bottom: 1px solid var(--rule); padding: 5px 0; }
 .fbrow img { width: 22px; height: 22px; border-radius: 50%; }
 @media (max-width: 560px) { .fbrow { grid-template-columns: 26px minmax(0, 1fr); } .fbrow .w2 { grid-column: 2; } }
+.money { display: grid; gap: 6px; }
+.money .mt td, .money .mt th { padding: 4px 5px; }
+.btt tr.cur td { background: var(--accent-soft); }
+.planrank { display: grid; gap: 10px; }
+.btt.wide { min-width: 820px; }
+#earn .cxsrc, .money .cxsrc { white-space: nowrap; }
+.sel { font: inherit; font-size: 12px; padding: 2px 6px; border: 1px solid var(--rule-2); border-radius: 6px; background: var(--bg); color: var(--ink); }
+#earn .btt td { vertical-align: top; }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
 </style>
 
 <div class="wrap">
   <header>
-    <div class="eyebrow">Waverly, Baltimore · Greenmount Ave, E 29th to E 33rd St · extractor v1 · score v0.3 · 19 Oct 2026</div>
+    <div class="eyebrow">Waverly, Baltimore · Greenmount Ave, E 29th to E 33rd St · extractor v1 · score v0.3 · comps engine v1 · 20 Oct 2026</div>
     <h1>Greenmount Frontage Explorer</h1>
     <p class="lede">Every building on the seven Greenmount block faces in the focus area: what it was, what it is now, and the uses it has already shown it can carry. Seven new sources are joined to the sponsor's curated records: Polk city directories for 1901 to 1923 (the early years read through a York Road renumbering crosswalk), the City's building-permit index cards for 1924 to 1961, Sanborn maps for 1915, 1928 and 1953, the National Register inventory, the City's 1970s revitalization files, and a current-tenant check from October 2026.</p>
   </header>
@@ -319,7 +327,7 @@ details summary { cursor: pointer; font-weight: 600; }
 
   <section class="card" id="method" aria-labelledby="mh">
     <div class="bar"><h2 id="mh">How the recommendation works</h2><span class="small">score v0.3 · change the weights and every view updates</span></div>
-    <p class="lede" style="font-size:14px">It is not history alone. After two rule filters, each possible use of a building is scored on six inputs: its heritage, saturation, size, what residents have asked for or objected to, its neighbours, and how similar buildings elsewhere turned out. Team and sponsor feedback then nudges the score. The block plan places uses one at a time under a saturation limit. The concepts and named businesses further down are written by hand on top of this, and they say so.</p>
+    <p class="lede" style="font-size:14px">It is not history alone. After two rule filters, each possible use of a building is scored on six inputs: its heritage, saturation, size, what residents have asked for or objected to, its neighbours, and how similar buildings elsewhere turned out. Team and sponsor feedback then nudges the score. The block plan places uses one at a time under a saturation limit, and the comps engine below adds what each use could pay and earn. The concepts and named businesses further down are written by hand on top of this, and they say so.</p>
     <ol class="flow" id="flow"></ol>
     <div class="grid2 even">
       <div class="wbox">
@@ -337,11 +345,25 @@ details summary { cursor: pointer; font-weight: 600; }
     <details><summary>Known limits of this version</summary><ul class="checks" id="limits" style="margin-top:8px"></ul></details>
   </section>
 
+  <section class="card" id="earn" aria-labelledby="eh">
+    <div class="bar"><h2 id="eh">What each use could pay and earn</h2><span class="small">comps engine v1 · 2025 dollars · rents triple-net (tenant pays taxes and insurance on top)</span></div>
+    <p class="lede" style="font-size:14px" id="earnlede"></p>
+    <div class="tiles" id="earntiles"></div>
+    <div class="tbl" id="earntab"></div>
+    <h3>Follow one number back to its sources</h3>
+    <div class="legend" id="earnpick" aria-label="Use to trace"></div>
+    <div id="earntrail" class="grid2 even"></div>
+    <details><summary>Other cities' corridors next to Waverly</summary><div id="earncity" style="margin-top:10px"></div></details>
+    <details><summary>Checks: held-out listings, operators' own figures, what moves the numbers</summary><div id="earnchk" style="margin-top:10px"></div></details>
+    <details><summary>Why these methods, and what was rejected</summary><div class="tbl" id="earnwhy" style="margin-top:10px"></div></details>
+  </section>
+
   <section class="card" id="planS" aria-labelledby="ph">
-    <div class="bar"><h2 id="ph">Block plan</h2><span class="small">assemblage optimiser v0 · one use at a time, with a saturation limit</span></div>
+    <div class="bar"><h2 id="ph">Block plan</h2><span class="small">assemblage optimiser v1 · one use at a time under a saturation limit, then plans ranked by the rent they could support</span></div>
     <p class="lede" style="font-size:14px">Each vacant or for-lease parcel gets the use with the highest score, best parcel first. After each placement the counts on that block side and on the corridor go up, so a second cafe on the same side scores lower than the first, and the placed use becomes a neighbour of the next parcel. Change any choice to see what it does to the mix. Scores in the menus are before any placement; the line under each parcel gives the score at the moment it was placed.</p>
     <label class="chk"><input type="checkbox" id="unk"> Also plan the parcels with no confirmed occupant (a scenario: some of them may be occupied)</label>
     <div id="plan" class="plans"></div>
+    <div id="planrank" class="planrank"></div>
   </section>
 
   <section class="card" id="seg" aria-labelledby="segh">
@@ -568,6 +590,147 @@ details summary { cursor: pointer; font-weight: 600; }
     return [hs, ss, fs, cs, ns, ps, zs, fbs].filter(Boolean).join(' · ');
   }
 
+  // ---------------- comps engine v1 (team/comps): rent, revenue and the rent a use could support
+  // Mirrors team/comps/comps_engine.py: listing route A (lognormal), affordability route B (two-piece lognormal
+  // sales x share - taxes), typical rent = mixture, supportable rent = max(0, min(A, B)).
+  const CO = D.comps || null;
+  const ZQ = CO ? CO.interval.z : 1.2816, AQ = CO ? CO.interval.alpha / 2 : 0.1;
+  const PLN = (CO && CO.plan) || {};
+  let CAUTION = PLN.caution ?? 0.5, HAIR = PLN.same_use_haircut ?? 0.15, UPLIFT = PLN.neighbour_uplift ?? 0.04;
+  function erfc(x) { const z = Math.abs(x), t = 1 / (1 + 0.5 * z); const r = t * Math.exp(-z * z - 1.26551223 + t * (1.00002368 + t * (0.37409196 + t * (0.09678418 + t * (-0.18628806 + t * (0.27886807 + t * (-1.13520398 + t * (1.48851587 + t * (-0.82215223 + t * 0.17087277))))))))); return x >= 0 ? r : 2 - r; }
+  const Phi = x => 0.5 * erfc(-x / Math.SQRT2);
+  function PhiInv(p) {
+    const a = [-3.969683028665376e+01, 2.209460984245205e+02, -2.759285104469687e+02, 1.383577518672690e+02, -3.066479806614716e+01, 2.506628277459239e+00];
+    const b = [-5.447609879822406e+01, 1.615858368580409e+02, -1.556989798598866e+02, 6.680131188771972e+01, -1.328068155288572e+01];
+    const c = [-7.784894002430293e-03, -3.223964580411365e-01, -2.400758277161838e+00, -2.549732539343734e+00, 4.374664141464968e+00, 2.938163982698783e+00];
+    const d = [7.784695709041462e-03, 3.224671290700398e-01, 2.445134137142996e+00, 3.754408661907416e+00];
+    const pl = 0.02425;
+    if (p < pl) { const q = Math.sqrt(-2 * Math.log(p)); return (((((c[0] * q + c[1]) * q + c[2]) * q + c[3]) * q + c[4]) * q + c[5]) / ((((d[0] * q + d[1]) * q + d[2]) * q + d[3]) * q + 1); }
+    if (p > 1 - pl) { const q = Math.sqrt(-2 * Math.log(1 - p)); return -(((((c[0] * q + c[1]) * q + c[2]) * q + c[3]) * q + c[4]) * q + c[5]) / ((((d[0] * q + d[1]) * q + d[2]) * q + d[3]) * q + 1); }
+    const q = p - 0.5, r = q * q; return (((((a[0] * r + a[1]) * r + a[2]) * r + a[3]) * r + a[4]) * r + a[5]) * q / (((((b[0] * r + b[1]) * r + b[2]) * r + b[3]) * r + b[4]) * r + 1);
+  }
+  const cdfLn = (x, A) => x <= 0 ? 0 : Phi((Math.log(x) - A[0]) / A[1]);
+  const qLn = (p, A) => Math.exp(A[0] + A[1] * PhiInv(p));
+  const cdfTp = (y, B) => { if (y <= 0) return 0; const t = Math.log(y) - B.mu; return Phi(t / (t < 0 ? B.slo : B.shi)); };
+  const qTp = (p, B) => { const e = PhiInv(p); return Math.exp(B.mu + (e < 0 ? B.slo : B.shi) * e); };
+  function bisect(F, p, hi) { let lo = 0; while (F(hi) < p) hi *= 2; for (let i = 0; i < 60; i++) { const m = (lo + hi) / 2; if (F(m) < p) lo = m; else hi = m; } return (lo + hi) / 2; }
+  const cfOf = fid => CO && CO.formats[fid] && !CO.formats[fid].not_estimated ? CO.formats[fid] : null;
+  function cdist(p, fid, mult) {
+    const cf = cfOf(fid); if (!cf) return null;
+    const pa = CO.parcels[p.address] || {}, m = Math.log(mult || 1);
+    let A = cf.A ? [cf.A.loc, cf.A.sd] : null;
+    if (A && pa.A && pa.A[fid]) A = pa.A[fid].slice();
+    if (A) A = [A[0] + m, A[1]];
+    const B = cf.B ? { mu: cf.B.mu + m, slo: cf.B.slo, shi: cf.B.shi, share: cf.B.share } : null;
+    const eti = pa.eti ?? CO.model.eti_median;
+    return { A, B, eti, wA: cf.wA, own: pa.own_listings || null, taxFrom: pa.tax != null ? 'parcel' : 'median' };
+  }
+  const cdfB = (d, x) => cdfTp((x + d.eti) / d.B.share, d.B);
+  const qB = (d, p) => d.B.share * qTp(p, d.B) - d.eti;
+  function qTypical(d, p) {
+    if (d.A && !d.B) return qLn(p, d.A);
+    if (d.B && !d.A) return Math.max(0, qB(d, p));
+    return bisect(x => d.wA * cdfLn(x, d.A) + (1 - d.wA) * cdfB(d, x), p, 50);
+  }
+  function qSupport(d, p) {
+    if (d.A && !d.B) return qLn(p, d.A);
+    if (d.B && !d.A) return Math.max(0, qB(d, p));
+    const F = x => 1 - (1 - cdfLn(x, d.A)) * (1 - cdfB(d, x));
+    return F(0) >= p ? 0 : bisect(F, p, 50);
+  }
+  function canPay(d, n = 400) { if (!(d.A && d.B)) return null; let s = 0; for (let j = 0; j < n; j++) s += 1 - cdfB(d, qLn((j + 0.5) / n, d.A)); return s / n; }
+  const unitsOf = (p, f) => p.sqft ? Math.max(1, Math.min(3, Math.ceil(+p.sqft / f.size[1]))) : 1;
+  const usableOf = (p, f) => p.sqft ? Math.min(+p.sqft, unitsOf(p, f) * f.size[1]) : null;
+  const rankable = fid => { const c = cfOf(fid); return !!(c && c.rankable); };
+  const apprOf = f => (CO && CO.approval && CO.approval[f.zs]) ?? 1;
+  const ECACHE = {};
+  // everything the page shows about money for one use in one building (mult: neighbour and saturation effects)
+  function earn(p, f, mult) {
+    const key = p.id + '|' + f.id + '|' + (mult || 1).toFixed(4);
+    if (ECACHE[key] !== undefined) return ECACHE[key];
+    const d = cdist(p, f.id, mult), u = usableOf(p, f);
+    if (!d || !u) return (ECACHE[key] = null);
+    const qs = fn => [AQ, 0.5, 1 - AQ].map(fn);
+    const ap = apprOf(f);
+    const sup = qs(x => qSupport(d, x));
+    const r = { d, u, ap, units: unitsOf(p, f), rankable: rankable(f.id), typ: qs(x => qTypical(d, x)), sup, ann: sup.map(x => x * u * ap), pay: canPay(d),
+      A: d.A ? qs(x => qLn(x, d.A)) : null, Bq: d.B ? qs(x => Math.max(0, qB(d, x))) : null,
+      sales: d.B ? qs(x => qTp(x, d.B)) : null, rev: d.B ? qs(x => qTp(x, d.B) * u) : null };
+    r.el = (1 - CAUTION) * r.ann[1] + CAUTION * r.ann[0];
+    return (ECACHE[key] = r);
+  }
+  const clearEarn = () => { for (const k in ECACHE) delete ECACHE[k]; };
+  const usd = x => x == null ? '—' : '$' + (x >= 100 ? Math.round(x).toLocaleString('en-US') : x.toFixed(2));
+  const kusd = x => x == null ? '—' : x >= 1e6 ? '$' + (x / 1e6).toFixed(2) + 'M' : '$' + Math.round(x / 1000).toLocaleString('en-US') + 'k';
+  const rng = (q, f = usd) => q ? `${f(q[1])} <span class="small">(${f(q[0])}–${f(q[2])})</span>` : '—';
+  // seeded random numbers so the scenario shares do not flicker between renders
+  function rngOf(seed) { let a = seed >>> 0; return () => { a = (a + 0x6D2B79F5) >>> 0; let t = a; t = Math.imul(t ^ (t >>> 15), t | 1); t ^= t + Math.imul(t ^ (t >>> 7), t | 61); return ((t ^ (t >>> 14)) >>> 0) / 4294967296; }; }
+  function gauss(R) { let u = 0, v = 0; while (u === 0) u = R(); v = R(); return Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v); }
+  function gammaR(k, R) { if (k < 1) return gammaR(k + 1, R) * Math.pow(R(), 1 / k); const d = k - 1 / 3, c = 1 / Math.sqrt(9 * d); for (;;) { let x, v; do { x = gauss(R); v = 1 + c * x; } while (v <= 0); v = v * v * v; const u = R(); if (u < 1 - 0.0331 * x ** 4 || Math.log(u) < 0.5 * x * x + d * (1 - v + Math.log(v))) return d * v; } }
+  const hashId = s => { let h = 2166136261; for (const ch of String(s)) { h ^= ch.charCodeAt(0); h = Math.imul(h, 16777619); } return h >>> 0; };
+  // one draw of supportable rent per sq ft, given shared (zA, zS) and own (eA, eS) normal draws
+  function drawX(d, zA, zS) {
+    const M = d.A ? Math.exp(d.A[0] + d.A[1] * zA) : null;
+    const Bv = d.B ? d.B.share * Math.exp(d.B.mu + (zS < 0 ? d.B.slo : d.B.shi) * zS) - d.eti : null;
+    return Math.max(0, M == null ? Bv : Bv == null ? M : Math.min(M, Bv));
+  }
+  // rank acceptability for one building (SMAA): weights drawn around the sliders, money weight 20-50%
+  const SMAA = {};
+  function smaaOf(p) {
+    if (!CO) return null;
+    const ranked = (SC[p.id] || []).filter(r => r.ok && !r.f.av && r.fi > 0 && rankable(r.f.id) && earn(p, r.f));
+    const key = p.id + '|' + ranked.map(r => r.f.id + ':' + r.score.toFixed(3)).join(',') + '|' + CAUTION;
+    if (SMAA[p.id] && SMAA[p.id].key === key) return SMAA[p.id];
+    if (ranked.length < 2) return (SMAA[p.id] = { key, rows: [] });
+    const R = rngOf(hashId(p.id)), N = 1000, rho = PLN.shared_shock ?? 0.5, conc = PLN.weight_concentration ?? 75;
+    const om = PLN.money_weight || [0.2, 0.5], ks = ['h', 's', 'f', 'c', 'a', 'k'], tot = ks.reduce((a, k) => a + WT[k], 0) || 1;
+    const w0 = ks.map(k => Math.max(0.02, WT[k] / tot)), Eref = (CO.model.baltimore_p90 || 34) * (+p.sqft || 1500);
+    const first = ranked.map(() => 0), top3 = ranked.map(() => 0), cw = ranked.map(() => ks.map(() => 0).concat([0]));
+    for (let s = 0; s < N; s++) {
+      const g = w0.map(w => gammaR(conc * w, R)), gs = g.reduce((a, b) => a + b, 0), w = g.map(x => x / gs);
+      const o = om[0] + (om[1] - om[0]) * R();
+      const ZA = gauss(R), ZS = gauss(R);
+      const U = ranked.map(r => {
+        const e = earn(p, r.f), x = [r.h, r.s.v, r.fi, r.cm.v, r.nb.v, r.pr.v];
+        const fitv = Math.min(1, r.avm * r.fbm * x.reduce((a, v, i) => a + w[i] * v, 0));
+        const zA = Math.sqrt(rho) * ZA + Math.sqrt(1 - rho) * gauss(R), zS = Math.sqrt(rho) * ZS + Math.sqrt(1 - rho) * gauss(R);
+        const E = drawX(e.d, zA, zS) * e.u * e.ap;
+        return (1 - o) * fitv + o * Math.min(1, E / Eref);
+      });
+      const order = U.map((u, i) => [u, i]).sort((a, b) => b[0] - a[0]);
+      first[order[0][1]]++; order.slice(0, 3).forEach(([, i]) => top3[i]++);
+      w.forEach((v, j) => { cw[order[0][1]][j] += v; }); cw[order[0][1]][6] += o;
+    }
+    const rows = ranked.map((r, i) => ({ r, b1: first[i] / N, b3: top3[i] / N, cw: first[i] ? cw[i].map(v => v / first[i]) : null }))
+      .sort((a, b) => b.b1 - a.b1 || b.b3 - a.b3);
+    const lead = rows[0], second = rows[1];
+    const label = lead.b1 >= 0.6 ? 'Robust first choice' : (second && lead.b1 - second.b1 < 0.15 ? 'Contested' : 'Depends on priorities');
+    let when = '';
+    if (lead.cw) {
+      const names = ['heritage', 'room', 'size', 'community', 'neighbours', 'precedents'];
+      const diff = lead.cw.slice(0, 6).map((v, j) => [v - w0[j], names[j]]).sort((a, b) => b[0] - a[0])[0];
+      const mo = lead.cw[6], mid = (om[0] + om[1]) / 2;
+      when = Math.abs(mo - mid) > 0.015 ? `wins more often when money counts ${mo > mid ? 'more' : 'less'}` : (diff[0] > 0.005 ? `wins more often when ${diff[1]} counts more` : '');
+    }
+    return (SMAA[p.id] = { key, rows, label, when, N });
+  }
+  const pctR = x => Math.round(x * 20) * 5 + '%';
+  const payWord = x => x >= 0.6 ? 'can usually pay the asking rent' : x >= 0.4 ? 'about even against the asking rent' : 'often cannot pay the asking rent';
+  // test hook: compare these functions with the Python engine's worked examples (team/comps/comps_ranges.json)
+  window.__compsProbe = () => {
+    if (!CO || !CO.examples) return null;
+    let worst = 0, n = 0;
+    const bad = [];
+    CO.examples.forEach(x => {
+      const p = P.find(q => q.address === x.address) || { address: x.address };
+      const d = cdist(p, x.fmt); if (!d) return;
+      const js = { typical: [AQ, 0.5, 1 - AQ].map(q => qTypical(d, q)), supportable: [AQ, 0.5, 1 - AQ].map(q => qSupport(d, q)), can_pay: canPay(d) };
+      ['typical', 'supportable'].forEach(k => js[k].forEach((v, i) => { const py = x[k][i]; const e = Math.abs(v - py) / Math.max(1, py); n++; if (e > worst) worst = e; if (e > 0.005) bad.push([x.address, x.fmt, k, i, v, py]); }));
+      if (x.can_pay != null) { const e = Math.abs(js.can_pay - x.can_pay); n++; if (e > worst) worst = e; if (e > 0.005) bad.push([x.address, x.fmt, 'can_pay', js.can_pay, x.can_pay]); }
+    });
+    return { compared: n, worst_rel_err: worst, bad: bad.slice(0, 5) };
+  };
+
   const firstCat = s => (s || '').split(' ; ')[0].split(' - ')[0].trim();
   function catNow(p) {
     if (p.status === 'vacant' || p.status === 'for lease') return 'vacant';
@@ -790,12 +953,32 @@ details summary { cursor: pointer; font-weight: 600; }
       <div><h3>Similar buildings elsewhere</h3><div class="mini">${sims.map(x => `<div><b>${esc(x.b.name)}</b>, ${esc(x.b.city)} <span class="small">${Math.round(x.s.v * 100)}% similar · ${esc(x.b.building_type)} → ${esc(x.b.new_use).slice(0, 90)} · ${esc(x.b.status)}</span></div>`).join('')}</div><a class="cxsrc small" href="#cases">all comparable cases</a></div>
       <div class="small" style="color:var(--ink-2)">Story material: ${st[0]} curated records, ${st[1]} white papers. Content uses (a tour stop, a podcast, a film) draw on these and do not saturate, so they are kept out of the score.</div>
       ${CX[p.id] ? `<div class="teaser"><div class="eyebrow" style="color:var(--accent)">Concept drafted</div><div><b>${esc(CX[p.id].concepts[0].name)}</b>, or ${esc(CX[p.id].concepts[1].name.charAt(0).toLowerCase() + CX[p.id].concepts[1].name.slice(1))}</div>${CX[p.id].prospect ? `<div style="color:var(--ink-2)">A business that could fit: ${esc(CX[p.id].prospect.name)}</div>` : ''}<button type="button" id="gocx">See what it could become</button></div>` : ''}
-      ${p.econ && top3[0] && firstCat(p.cand1) === top3[0].f.cat ? `<div class="econ"><b>Rent check.</b> ${esc(p.econ)}</div>` : ''}
+      ${moneyBlock(p, top3)}
+      ${!CO && p.econ && top3[0] && firstCat(p.cand1) === top3[0].f.cat ? `<div class="econ"><b>Rent check.</b> ${esc(p.econ)}</div>` : ''}
       <div><h3>Evidence (${p.ev.length})</h3></div>
       <div class="evlist">${evs || '<p class="small">No records.</p>'}</div>`;
     wireVotes(el);
     const g = document.getElementById('gocx');
     if (g) g.onclick = () => document.getElementById('cx').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  // the money lines in the building panel: three top uses, ranges, and how often each comes first
+  function moneyBlock(p, top3) {
+    if (!CO || !top3.length) return '';
+    const rows = top3.map(r => ({ r, e: earn(p, r.f) })).filter(x => x.e);
+    if (!rows.length) return `<div class="money"><h3>What it could pay and earn</h3><p class="small">No rent estimate for these uses yet (${top3.map(r => esc(r.f.name.toLowerCase())).join(', ')}).</p></div>`;
+    const sm = smaaOf(p), b1 = id => { const x = sm && sm.rows.find(y => y.r.f.id === id); return x ? x.b1 : null; };
+    const lead = sm && sm.rows[0];
+    return `<div class="money"><h3>What it could pay and earn</h3>
+      <div class="small">Per year, 2025 dollars, triple-net. The middle figure is the median; the range is P10–P90. <a class="cxsrc" href="#earn">How these are made</a>.</div>
+      <div class="tbl"><table class="btt mt"><thead><tr><th>Use</th><th>Typical asking rent /sq ft</th><th>Revenue /yr</th><th>Rent it could support /yr</th><th>Comes first</th></tr></thead><tbody>
+      ${rows.map(({ r, e }) => `<tr><td><span class="sw" style="background:${cssFill(r.f.cat)};margin-right:6px;vertical-align:-1px"></span>${esc(r.f.name)}<div class="small">${e.units > 1 ? `${e.units} units, ` : ''}${fmt(e.u)} of ${fmt(+p.sqft)} sq ft${e.ap < 1 ? ` · ×${e.ap} approval risk` : ''}${e.rankable ? '' : ' · too little evidence to rank by money'}</div></td>
+        <td class="num">${rng(e.typ)}</td><td class="num">${e.rev ? rng(e.rev, kusd) : '<span class="small">no sales benchmark</span>'}</td>
+        <td class="num">${rng(e.ann, kusd)}${e.pay != null ? `<div class="small">${payWord(e.pay)} (${pctR(e.pay)})</div>` : ''}</td>
+        <td class="num">${b1(r.f.id) == null ? '—' : pctR(b1(r.f.id))}</td></tr>`).join('')}
+      </tbody></table></div>
+      ${lead ? `<div class="small" style="color:var(--ink-2)"><b>${esc(sm.label)}:</b> ${esc(lead.r.f.name.toLowerCase())} comes first in ${pctR(lead.b1)} of ${fmt(sm.N)} scenarios that vary the weights (±5 points), the weight on money (20–50%) and the rents${sm.when ? '; it ' + esc(sm.when) : ''}. Rent it could support = the lower of the asking rent and what the business could afford from its sales.</div>` : ''}
+    </div>`;
   }
 
   function modelLine(p, ids) {
@@ -859,7 +1042,7 @@ details summary { cursor: pointer; font-weight: 600; }
       ['computed', 'Feedback', 'Team and sponsor votes on each recommendation, applied as a bounded multiplier'],
       ['computed', 'Block plan', 'Uses placed one at a time; each placement changes saturation and the neighbours of the next'],
       ['hand', 'Concepts and businesses', 'Written by hand for three buildings and checked against the score'],
-      ['next', 'What it earns', 'Rent and revenue per sq ft for each format, from comparable corridors']];
+      [CO ? 'computed' : 'next', 'What it earns', 'Rent and revenue ranges for each use from listings in 17 corridors and industry benchmarks; plans ranked by the rent the uses could support']];
     document.getElementById('flow').innerHTML = FLOW.map(([s, t, d]) => `<li class="${s}"><b>${esc(t)}</b><span class="st ${s}">${s === 'computed' ? 'computed' : s === 'hand' ? 'by hand' : 'next'}</span><span>${esc(d)}</span></li>`).join('');
     document.getElementById('wts').innerHTML = WL.map(([k, l, c]) => `<div class="wrow"><label for="w-${k}"><span class="sw" style="background:${c};margin-right:6px;vertical-align:-1px"></span>${l}</label><input type="range" id="w-${k}" min="0" max="100" step="5" value="${WT[k]}"><span class="n" id="wn-${k}"></span></div>`).join('');
     WL.forEach(([k]) => document.getElementById('w-' + k).addEventListener('input', e => { WT[k] = +e.target.value; update(); }));
@@ -891,7 +1074,7 @@ details summary { cursor: pointer; font-weight: 600; }
       <ul class="checks">${(ADJ.rules || []).slice(0, 8).map(r => `<li><b>${esc(r.rule)}</b> ${esc(r.applies_to || '')}${r.code ? ' (' + esc(r.code) + ')' : ''}${r.src ? ` <a class="cxsrc" href="${esc(r.src)}" target="_blank" rel="noopener">source</a>` : ''}</li>`).join('')}</ul>`;
     document.getElementById('limits').innerHTML = [
       'No demand data yet (households, spending, foot traffic). Planned for spring.',
-      'Rents exist for 2 of the formats only (the comps library). The comps engine is the next build.',
+      'Rent ranges rest on asking rents (5 of them in Waverly, none for a bike shop) and on national sales benchmarks; revenue ranges cannot yet be checked against local operators.',
       'Corridor saturation is measured against the 1920-23 mix: a use is not penalised until its share of storefronts passes its 1920s share. Being rare now earns no bonus, because the back-test shows that trades which left main streets have not come back.',
       'The weights are team judgement. Move the sliders to see how much the ranking depends on them.',
       'Usual sizes per format are team assumptions, not industry data.',
@@ -955,24 +1138,269 @@ details summary { cursor: pointer; font-weight: 600; }
     el.querySelectorAll('select[data-pl]').forEach(sel => sel.onchange = () => { overrides[sel.dataset.pl] = sel.value; drawPlan(); drawMix(); });
     el.querySelectorAll('[data-go]').forEach(b => b.onclick = () => { select(b.dataset.go, false); document.getElementById('panel').scrollIntoView({ behavior: 'smooth', block: 'start' }); });
     const rs = document.getElementById('preset'); if (rs) rs.onclick = () => { overrides = {}; drawPlan(); drawMix(); };
+    clearTimeout(drawPlan.t); drawPlan.t = setTimeout(drawPlanRank, 120);
   }
   const ordinal = n => n + (n % 10 === 1 && n % 100 !== 11 ? 'st' : n % 10 === 2 && n % 100 !== 12 ? 'nd' : n % 10 === 3 && n % 100 !== 13 ? 'rd' : 'th');
+
+
+  // ---------------- what each use could pay and earn: the engine's tables and trails
+  const srcA = id => { const x = CO && CO.sources && CO.sources[id]; return x ? `<a class="cxsrc" href="${esc(x.u)}" target="_blank" rel="noopener" title="${esc(x.t + (x.q ? ' — ' + x.q : ''))}">${esc(id)}</a>` : esc(id); };
+  const FNAME = id => FM[id] ? FM[id].name : id;
+  const GRPN = id => { const c = (CO.corridors || []).find(x => x.id === id); return c ? c.name : id; };
+  let earnSel = 'cafe';
+  function drawEarnOnce() {
+    if (!CO) { document.getElementById('earn').hidden = true; return; }
+    const m = CO.model, h = CO.holdout, bf = CO.built_from, w = m.waverly;
+    document.getElementById('earnlede').innerHTML = `Two independent routes to the rent a use could pay, then the lower of the two is what the ranking uses. <b>Listings:</b> ${bf.rows_used} asking rents from ${bf.corridors} corridors (Waverly, ten other Baltimore main streets and seven comparable corridors in six other cities), made triple-net equivalent and pooled so that thin corridors borrow strength from their city. <b>Affordability:</b> what businesses of the kind usually take in per sq ft (industry and Census benchmarks, in 2025 dollars) × the share of sales they usually spend on rent − the parcel's own taxes. Every figure links to the row it came from. These are planning ranges with stated assumptions: what a use could pay, not what a building is worth.`;
+    document.getElementById('earntiles').innerHTML = `
+      <div class="tile"><span class="k">Waverly corridor, asking rent</span><span class="v">${usd(w.pooled)}</span><span class="s">per sq ft, triple-net, format-adjusted. ${w.n} local listings carry ${Math.round(w.own_share * 100)}% of it; the Baltimore mean (${usd(m.city_means.baltimore)}) carries the rest.</span></div>
+      <div class="tile"><span class="k">Held-out check</span><span class="v">${Math.round(h.nominal_cover * 100)}% → ${Math.round(h.honest_cover * 100)}%</span><span class="s">An 80% range should hold 80% of listings it has not seen. It held ${h.nominal_hits} of ${h.n}, so every range is widened ×${CO.interval.widen.toFixed(2)}; checked again without each row, the widened range holds ${h.honest_hits} of ${h.n}.</span></div>
+      <div class="tile"><span class="k">Against a plain range</span><span class="v">${Math.round(h.skill * 100)}% better</span><span class="s">Interval score (width plus a penalty for misses) of the engine's range, against the P10–P90 of all listings with no pooling.</span></div>
+      <div class="tile"><span class="k">Between corridors</span><span class="v">±${Math.round((Math.exp(m.between_corridor_sd) - 1) * 100)}%</span><span class="s">Typical spread of corridor rent levels, after format; within a corridor listings spread ±${Math.round((Math.exp(m.within_sd) - 1) * 100)}%. Location matters more than the kind of use.</span></div>`;
+    const ids = Object.keys(CO.formats).filter(id => FM[id]);
+    document.getElementById('earntab').innerHTML = `<table class="btt wide"><thead><tr><th>Use</th><th>Listings</th><th>Listing route /sq ft</th><th>Affordability route /sq ft</th><th>Typical asking rent /sq ft</th><th>Sales /sq ft</th><th>Can pay the asking rent</th><th>Notes</th></tr></thead><tbody>
+      ${ids.map(id => { const f = CO.formats[id]; if (f.not_estimated) return `<tr><td>${esc(FNAME(id))}</td><td colspan="7" class="small">${esc(f.not_estimated)}</td></tr>`;
+        return `<tr><td><span class="sw" style="background:${cssFill(FM[id].cat)};margin-right:6px;vertical-align:-1px"></span>${esc(FNAME(id))}</td><td class="num">${f.n_listings}${f.borrowed_from ? ' <span class="small">(cafe)</span>' : ''}</td>
+          <td class="num">${f.A ? rng(f.A.q) : '—'}</td><td class="num">${f.B ? rng(f.B.q) : `<span class="small">${esc(f.B_na ? 'not sales-based' : '—')}</span>`}</td>
+          <td class="num"><b>${rng(f.typical)}</b>${f.A && f.B ? `<div class="small">${Math.round(f.wA * 100)}% listings, ${100 - Math.round(f.wA * 100)}% affordability</div>` : ''}</td>
+          <td class="num">${f.B ? rng(f.B.sales_q, usd) : '—'}</td><td class="num">${f.can_pay == null ? '—' : pctR(f.can_pay)}</td><td class="small">${esc((f.flags || []).join('; '))}</td></tr>`; }).join('')}
+      </tbody></table><p class="small">At Waverly, for a parcel with the corridor's median taxes (${usd(m.tax_median)}/sq ft city tax + ${usd(m.pass_through_other)} assumed insurance). The building panel uses each parcel's own taxes and leaves out a building's own listing (3117, 3028-3030 and 3217 are in the library). Can pay: the chance that what the business could afford from its sales covers the asking rent.</p>`;
+    const pk = document.getElementById('earnpick');
+    pk.innerHTML = ids.filter(id => !CO.formats[id].not_estimated).map(id => `<button type="button" class="chip" data-e="${id}" aria-pressed="${id === earnSel}"><span class="sw" style="background:${cssFill(FM[id].cat)}"></span>${esc(FNAME(id))}</button>`).join('');
+    pk.querySelectorAll('.chip').forEach(b => b.onclick = () => { earnSel = b.dataset.e; pk.querySelectorAll('.chip').forEach(x => x.setAttribute('aria-pressed', x.dataset.e === earnSel)); drawEarnTrail(); });
+    drawEarnTrail();
+    // other cities
+    const LD = Object.fromEntries((L.districts || []).map(d => [d.id, d]));
+    const tt = CO.transfer_test;
+    document.getElementById('earncity').innerHTML = `<div class="tbl"><table class="btt wide"><thead><tr><th>Corridor</th><th>Listings</th><th>Uses listed</th><th>Corridor mean, own listings</th><th>After pooling</th><th>Pulled toward its city</th><th>Price level vs Baltimore</th><th>At Baltimore prices</th><th>Similarity to Waverly</th></tr></thead><tbody>
+      ${CO.corridors.map(c => { const d = c.district_id && LD[c.district_id]; return `<tr${c.id === 'waverly' ? ' class="cur"' : ''}><td><b>${esc(c.name)}</b><div class="small">${esc(c.city)} · ${c.rows.map(srcA).join(' ')}</div></td><td class="num">${c.n}</td><td class="small">${c.formats.map(x => esc(x)).join(', ')}</td>
+        <td class="num">${usd(c.raw)}</td><td class="num">${usd(c.pooled)}</td><td class="num">${Math.round(c.B * 100)}%</td>
+        <td class="num">${c.city === 'Baltimore' ? '—' : `×${c.ratio.toFixed(3)} <a class="cxsrc" href="${esc(c.rpp_url)}" target="_blank" rel="noopener">BEA</a>`}</td><td class="num">${c.city === 'Baltimore' ? '—' : usd(c.at_baltimore_prices)}</td>
+        <td>${d ? `<span class="simv">${Math.round(dsim(d).v * 100)}%</span> <span class="small">${esc(d.name)}</span>` : '<span class="small">not in the case library</span>'}</td></tr>`; }).join('')}
+      </tbody></table></div>
+      <p class="small">Means are triple-net equivalent and adjusted for the mix of uses listed. Pooling pulls each corridor toward its city's mean: a corridor with one listing moves most of the way, Station North with 11 barely moves. The price factor is BEA's all-items regional price parity (2024): Baltimore ÷ the other metro. Does it help? Predicting each of the ${tt.n} other-city corridors from Baltimore's mean, the median error is ${Math.round(tt.median_err_without * 100)}% without the factor and ${Math.round(tt.median_err_with * 100)}% with it, so it ${tt.helps ? 'helps a little and is kept for comparisons' : 'does not help and is dropped'}. The housing price index is not used: it would turn Penn Ave's $16.50 into $27.09, above every Greenmount listing. Other cities' listings enter Waverly's range only through the pooled model, never by direct conversion. Similarity uses the case library's street-level index (income, majority-Black, anchor, ownership, history, length, US).</p>
+      <h3 style="margin-top:10px">Operators' own figures against the ranges</h3>
+      <div class="tbl"><table class="btt wide"><thead><tr><th>Operator</th><th>Use</th><th>Revenue /sq ft as filed</th><th>× CPI to 2025</th><th>× price level</th><th>Baltimore 2025 equivalent</th><th>Benchmark P10–P90</th><th>Inside?</th></tr></thead><tbody>
+      ${CO.operators.map(o => `<tr><td>${esc(o.name)} <span class="small">${esc(o.city)}</span> ${srcA(o.id)}</td><td>${esc(FNAME(o.fmt))}</td><td class="num">${usd(o.v)} <span class="small">${o.year}${o.lower_bound ? ', at least' : ''}</span></td><td class="num">×${o.cpi.toFixed(3)}</td><td class="num">×${o.ratio.toFixed(3)}</td><td class="num">${usd(o.out)}</td>
+        <td class="num">${o.range ? usd(o.range[0]) + '–' + usd(o.range[1]) : '<span class="small">no sales route</span>'}</td><td>${o.inside == null ? '—' : o.inside ? 'yes' : '<b>no</b>'}</td></tr>`).join('')}
+      </tbody></table></div><p class="small">Only six operators publish both revenue and floor area, so the revenue ranges cannot be checked statistically here; these are spot checks. Nonprofit figures are earned revenue from IRS Form 990; the rest are SEC Form C filings certified by the owner. Catchment spending around each operator is not measured yet, so no income factor is applied.</p>`;
+    // checks
+    const jk = h.jackknife_plus_waverly_shop;
+    document.getElementById('earnchk').innerHTML = `<ul class="checks">
+      <li><b>Held-out coverage.</b> Each source was left out in turn (two listings from the same page leave together) and predicted from the rest. The nominal 80% range held ${h.nominal_hits} of ${h.n} (${Math.round(h.nominal_cover * 100)}%; 95% interval ${Math.round(h.nominal_ci95[0] * 100)}–${Math.round(h.nominal_ci95[1] * 100)}%), with ${h.below} below and ${h.above} above, so the misses are balanced. All ranges are widened ×${CO.interval.widen.toFixed(2)}. Recomputing the widening without each held-out row, the widened range holds ${h.honest_hits} of ${h.n} (${Math.round(h.honest_ci95[0] * 100)}–${Math.round(h.honest_ci95[1] * 100)}%).</li>
+      <li><b>Baltimore only.</b> Of ${h.baltimore_n} Baltimore listings, ${h.baltimore_nominal} fall inside the nominal range and ${h.baltimore_widened} inside the widened one.</li>
+      <li><b>A second way to the same range.</b> The jackknife+ method (no lognormal assumption) gives ${usd(jk[0])}–${usd(jk[1])} for a Waverly shop, against ${usd(CO.formats.shop.A.q[0])}–${usd(CO.formats.shop.A.q[2])} from the model.</li>
+      <li><b>Sample size.</b> With about 57 held-out listings, a coverage check can only catch a range that is badly off; it cannot tell 75% from 85%.</li>
+      <li><b>Asking is not paid.</b> Listings are asking rents; signed rents are often lower. Only one listing (3217) is a rent being paid.</li></ul>
+      <h3 style="margin-top:10px">What moves the numbers</h3>
+      <div class="tbl"><table class="btt"><thead><tr><th>Assumption</th><th>Setting</th><th>Result</th></tr></thead><tbody>${CO.sensitivity.map(x => `<tr><td>${esc(x.what)}</td><td class="num">${esc(x.setting)}</td><td class="num">${esc(x.result)}</td></tr>`).join('')}</tbody></table></div>
+      <p class="small">The lease-basis allowance barely matters; the one rent actually being paid (3217) matters most for Waverly. The weight on listings and the borrowed spread move the edges of the range more than the middle.</p>`;
+    // why
+    const WHY = [
+      ['Asking rents to triple-net', 'Subtract a stated allowance for taxes, insurance and common charges ($2 for modified gross, $4 for gross)', 'Listings mix lease bases; without this a gross $20 and a triple-net $20 look the same', 'Leaving bases mixed; a full adjustment grid (no paired listings to calibrate it)', 'The allowance is an assumption; reruns at $0 and $3/$6 move the Waverly median by under 2%', 'Sensitivity table'],
+      ['Rent level by corridor', 'Empirical Bayes partial pooling of log rents by corridor, toward a city mean (closed form, DerSimonian-Laird)', `${bf.rows_used} rows in ${bf.corridors} corridors is the textbook case for shrinkage: each corridor's weight on its own rows is set by its sample size, and every estimate is a visible weighted sum of listings`, 'Hedonic regression (about 28 parameters for 58 rows); quantile regression and random forests (too few rows in the tails, no transparency); pooling by three tiers (the between-tier spread comes out zero); full Bayesian sampling (needs libraries the repo does not use)', 'Asking rents, not signed; Waverly has 5 listings and none of them is a shop', 'Held-out coverage by source'],
+      ['Use multipliers', 'Each use\'s average gap from its city mean, shrunk toward 1 by its number of listings', 'Uses with 1 or 2 listings should not swing the estimate', 'Raw averages (one cafe listing would set the cafe rent)', 'Uses and corridors overlap (Hampden lists mostly small shops)', 'Shrink factor shown per use'],
+      ['Range width', 'Lognormal range widened by a factor taken from held-out residuals (the normalised conformal idea)', `The plain range covered ${Math.round(h.nominal_cover * 100)}% of unseen listings when it should cover 80%`, 'Split conformal (wastes half of 58 rows); trusting the model\'s own width', 'Coverage holds on average, not for every corridor', 'Honest re-check without each row'],
+      ['Affordability route', 'Sales per sq ft (two-piece lognormal through the benchmark P10, P50, P90) × the usual rent share − parcel taxes', 'Independent of local listings, and the only route for uses with no listings (bike shops)', 'Census receipts per business as the median (chains included, no floor area); wages-based revenue (no floor-area data per worker)', 'Shares are national medians or vendor guidance; benchmarks from other years and places', 'Implied sales at the listing median checked against the benchmark range'],
+      ['Combining the routes', 'A mixture, weight n/(n+3) on listings', 'Forecast-combination research: simple combinations rarely lose to clever ones; more listings, more weight', 'Picking one route; a fixed 50/50', 'The 3 is a judgement; reruns at 1 and 10', 'Sensitivity table'],
+      ['Rent a use could support', 'The lower of the asking rent and what the business can afford, per scenario', 'A tenant who cannot pay the asking rent does not stay; this is what the plan ranks with', 'Ranking by asking rent alone (rewards uses that would fail)', 'Treats rent and sales as independent within one building', 'Survival of matched tenants, tracked from the first lease'],
+      ['Comes first', 'Rank acceptability (SMAA): 1,000 scenarios drawing the weights (±5 points), the weight on money (20–50%) and the rents', 'Shows whether a recommendation survives disagreement about priorities, without forcing one weight on money', 'AHP and TOPSIS (rank reversal when a use is added); one money weight fixed in advance', 'Scenario ranges are team judgement', 'Shown for every building'],
+      ['Block plans', 'One parcel at a time with swaps, then every combination of each parcel\'s top uses as a check', 'Plain one-at-a-time placement has no guarantee here (neighbour effects make the objective non-submodular), so the gap is measured each time', 'Simulated annealing (a different answer each click); an integer-programming solver in the browser (heavy, opaque)', 'The full check covers each parcel\'s top uses only', 'Gap reported under the plan table'],
+      ['Other cities', 'Listings enter only through pooling; operators\' figures move by CPI and BEA all-items price parity', 'The trail from source to Waverly-equivalent is shown factor by factor', 'Housing price index (Pittsburgh ×1.64, implausible); propensity matching or synthetic control (19 corridors, no time series)', 'Benefit-transfer studies put the median error of moved values near 39%', 'Held-out corridor test with and without the factor'],
+      ['The NDA operator', 'Kept out of every public number; an optional private step shrinks the sales benchmark toward it with weight about 0.2 and writes a private annex outside the repo', 'One business is one draw from many; and a published calibrated figure could be inverted to recover the private one', 'Using it as the anchor; publishing a calibrated range', 'The private annex needs the sponsor\'s approval before any yes/no is shared', 'A test checks the public output is identical with and without it']];
+    document.getElementById('earnwhy').innerHTML = `<table class="btt wide"><thead><tr><th>Part</th><th>What it does</th><th>Why this one</th><th>Rejected</th><th>Limits</th><th>How it is checked</th></tr></thead><tbody>${WHY.map(r => `<tr>${r.map((c, i) => `<td${i ? '' : ' style="font-weight:600"'}>${esc(c)}</td>`).join('')}</tr>`).join('')}</tbody></table>
+      <p class="small">Full method notes, sources and the model card: <span class="mono">team/comps/MODEL_CARD.md</span>. Every assumption is in <span class="mono">team/comps/engine_inputs.json</span>; change one and rerun <span class="mono">comps_engine.py</span>.</p>`;
+  }
+  function drawEarnTrail() {
+    const f = CO.formats[earnSel], m = CO.model, name = FNAME(earnSel);
+    const nearest = (CO.nearest[earnSel] || []).map(r => `<tr><td>${srcA(r.id)}</td><td>${esc(r.address)}<div class="small">${esc(r.corridor)}${r.sqft ? ' · ' + fmt(r.sqft) + ' sq ft' : ''} · ${esc(FNAME(r.fmt).toLowerCase())}</div></td><td class="num">${usd(r.rent)} <span class="small">${esc(r.basis)}</span><div>→ ${usd(r.nnn)}</div></td></tr>`).join('');
+    const wt = (m.waverly_trail || []).filter(x => x.grp === 'waverly');
+    const left = f.A ? `<div class="wbox"><h3>Listing route</h3><ol class="checks">
+      <li>Waverly's ${m.waverly.n} listings average ${usd(m.waverly.raw)} triple-net equivalent after adjusting for their uses: ${wt.map(x => `${srcA(x.id)} ${usd(x.nnn)} (${esc(FNAME(x.fmt).toLowerCase())})`).join(', ')}.</li>
+      <li>Pooling pulls that ${Math.round(m.waverly.B * 100)}% of the way toward Baltimore's mean of ${usd(m.city_means.baltimore)}: ${usd(m.waverly.pooled)}. The five local listings carry ${Math.round(m.waverly.own_share * 100)}% (about ${Math.round(m.waverly.own_share / m.waverly.n * 100)}% each); the other Baltimore corridors the rest.</li>
+      <li>${esc(name)}: ${f.borrowed_from ? `no listings of its own, so the cafe multiplier is borrowed: ` : `${f.n_listings} listing${f.n_listings === 1 ? '' : 's'} put it at `}×${f.multiplier.raw.toFixed(2)} of its city's mean; kept ${Math.round(f.multiplier.keep * 100)}% of the way from 1: ×${f.multiplier.shrunk.toFixed(2)}.</li>
+      <li>Range: listings spread ±${Math.round((Math.exp(m.within_sd) - 1) * 100)}% within a corridor, plus the uncertainty of the pooled mean, widened ×${CO.interval.widen.toFixed(2)}: <b>${rng(f.A.q)}</b> per sq ft.</li></ol>
+      <h3 style="margin-top:6px">Nearest listings</h3><div class="tbl"><table class="btt"><thead><tr><th>Row</th><th>Where</th><th>Asking → triple-net</th></tr></thead><tbody>${nearest}</tbody></table></div>
+      <p class="small">Listed by closeness (same corridor, same city, same family of use, similar size). Shown for checking; the range comes from the pooled model, not from these rows alone.</p></div>`
+      : `<div class="wbox"><h3>Listing route</h3><p class="small">No listings for this use, so this route is empty and the range rests on what such a business could afford.</p></div>`;
+    const B = f.B, cen = CO.census[earnSel] || [];
+    const right = B ? `<div class="wbox"><h3>Affordability route</h3><ol class="checks">
+      ${B.trail.map(t => `<li><b>${esc(t.point)}</b> ${usd(t.v)}/sq ft in ${t.year} (${t.rows.map(srcA).join(', ')}: ${esc(t.how)}) × ${t.cpi.toFixed(3)} for prices since then${t.local !== 1 ? ` × ${t.local} for Waverly's lower spending on eating out` : ''} = <b>${usd(t.out)}</b></li>`).join('')}
+      ${B.spread === 'borrowed' ? `<li>One figure only, so the spread is borrowed from the cafe benchmark (±${Math.round((Math.exp(m.sigma_default * ZQ) - 1) * 100)}% at P90): sales ${rng(B.sales_q)} per sq ft.</li>` : `<li>Sales per sq ft: ${rng(B.sales_q)}.</li>`}
+      <li>× ${(B.share * 100).toFixed(1)}% of sales usually spent on rent (${B.share_rows.map(srcA).join(', ')}: ${esc(B.share_how)})</li>
+      <li>− ${usd(m.eti_median)} taxes and insurance for a parcel with the median city tax: <b>${rng(B.q)}</b> per sq ft it could afford.</li>
+      ${f.implied_sales ? `<li>Check: the listing median implies ${usd(f.implied_sales)} of sales per sq ft at this share; the benchmark range is ${usd(B.sales_q[0])}–${usd(B.sales_q[2])}.</li>` : ''}</ol>
+      ${cen.length ? `<p class="small">For scale, Baltimore's employer businesses of this kind take in (2022 Economic Census, chains included, no floor area): ${cen.map(c => `${esc(c.what.replace(/^\d+\s*/, '').toLowerCase())} ${kusd(c.v)} ${srcA(c.id)}`).join('; ')}.</p>` : ''}</div>`
+      : `<div class="wbox"><h3>Affordability route</h3><p class="small">${esc(f.B_na || 'Not available.')}</p>${cen.length ? `<p class="small">Baltimore employer businesses of this kind (2022 Economic Census): ${cen.map(c => `${kusd(c.v)} ${srcA(c.id)}`).join('; ')}.</p>` : ''}</div>`;
+    document.getElementById('earntrail').innerHTML = left + right + `<div class="small" style="grid-column:1/-1">Combined: ${f.A && f.B ? `${Math.round(f.wA * 100)}% weight on listings (${f.n_listings} listings, n/(n+3)), the rest on affordability: ` : ''}<b>typical asking rent ${rng(f.typical)}</b> per sq ft; <b>rent it could support ${rng(f.supportable)}</b>${f.can_pay != null ? `; it can pay the asking rent in ${pctR(f.can_pay)} of cases` : ''}.${(f.flags || []).length ? ' ' + esc(f.flags.join('; ').replace(/^./, ch => ch.toUpperCase())) + '.' : ''}</div>`;
+  }
+
+  // ---------------- plans ranked by what they could earn (same parcels, different mixes)
+  // A block = the two facing sides between two cross streets; uses only affect each other inside a block,
+  // so each block is searched on its own and the best plans are put together.
+  const BLOCKOF = { '65': '2900', '67': '3000', '68': '3000', '69': '3100', '70': '3100', '71': '3200', '72': '3200' };
+  const FREE = PLN.same_use_free || { default: 1 };
+  const SLIM = {};
+  function el(p, f, m) {   // caution-weighted supportable rent per year, light version for the search
+    const key = p.id + '|' + f.id + '|' + m.toFixed(4) + '|' + CAUTION;
+    if (SLIM[key] !== undefined) return SLIM[key];
+    const d = cdist(p, f.id, m), u = usableOf(p, f);
+    if (!d || !u) return (SLIM[key] = null);
+    const k = u * apprOf(f);
+    return (SLIM[key] = ((1 - CAUTION) * qSupport(d, 0.5) + CAUTION * qSupport(d, AQ)) * k);
+  }
+  function multOf(p, f, assign, cnt) {
+    const free = FREE[f.cat] ?? FREE.default ?? 1;
+    const n = ((BASE.side[p.side] || {})[f.cat] || 0) + (cnt[p.side + '|' + f.cat] || 0);
+    const hair = Math.pow(1 - HAIR, Math.max(0, n - free));
+    const nb = p.nb || {}; let s = 0;
+    [[nb.left, 1], [nb.right, 1]].concat((nb.across || []).map(id => [id, ADJ.across_weight || 0.5])).forEach(([id, w]) => {
+      const q = PI[id]; if (!q) return;
+      const c = assign[id] ? FM[assign[id]].cat : nbCat(q, BASE); if (!c) return;
+      const mm = M(f.cat, c); if (mm) s += w * mm.v;
+    });
+    const cl = PLN.neighbour_clamp || 2, up = 1 + UPLIFT * Math.max(-cl, Math.min(cl, s));
+    return { m: hair * up, up };
+  }
+  function counts(assign) { const c = {}; Object.entries(assign).forEach(([pid, fid]) => { if (!fid) return; const k = PI[pid].side + '|' + FM[fid].cat; c[k] = (c[k] || 0) + 1; }); return c; }
+  const CAP = 3;   // the score's rule: three of a use on one block side is full
+  function planValue(assign, obj) {
+    const cnt = counts(assign); let t = 0;
+    for (const k in cnt) { const [sd, cat] = k.split('|'); if (((BASE.side[sd] || {})[cat] || 0) + cnt[k] > CAP && cnt[k] > 0) return -1e12; }
+    for (const [pid, fid] of Object.entries(assign)) { if (!fid) continue; const mo = multOf(PI[pid], FM[fid], assign, cnt); const v = obj(PI[pid], FM[fid], mo.m, mo.m / mo.up); t += v || 0; }
+    return t;
+  }
+  const allowedHere = p => (SC[p.id] || []).filter(r => r.ok && !r.f.av && r.fi > 0 && rankable(r.f.id) && usableOf(p, r.f));
+  function searchBlock(ps, obj) {
+    const cand = ps.map(p => allowedHere(p).map(r => r.f).sort((a, b) => (obj(p, b, 1, 1) || 0) - (obj(p, a, 1, 1) || 0)));
+    const NONE = { id: '' };
+    // greedy on marginal gain, then local search (change one parcel, or swap two), until nothing improves
+    const g = {};
+    const gain = (pid, fid) => { const a = Object.assign({}, g, { [pid]: fid }); return planValue(a, obj) - planValue(g, obj); };
+    for (let step = 0; step < ps.length; step++) {
+      let best = null;
+      ps.forEach((p, i) => { if (g[p.id]) return; cand[i].forEach(f => { const v = gain(p.id, f.id); if (!best || v > best.v) best = { p, f, v }; }); });
+      if (!best || best.v <= 0) break; g[best.p.id] = best.f.id;
+    }
+    let cur = planValue(g, obj), improved = true, guard = 0;
+    while (improved && guard++ < 50) {
+      improved = false;
+      ps.forEach((p, i) => cand[i].forEach(f => { if (g[p.id] === f.id) return; const a = Object.assign({}, g, { [p.id]: f.id }), v = planValue(a, obj); if (v > cur + 1e-6) { Object.assign(g, a); cur = v; improved = true; } }));
+      for (let i = 0; i < ps.length; i++) for (let j = i + 1; j < ps.length; j++) {
+        const a = Object.assign({}, g, { [ps[i].id]: g[ps[j].id], [ps[j].id]: g[ps[i].id] });
+        if (!a[ps[i].id] || !a[ps[j].id] || !cand[i].some(f => f.id === a[ps[i].id]) || !cand[j].some(f => f.id === a[ps[j].id])) continue;
+        const v = planValue(a, obj); if (v > cur + 1e-6) { Object.assign(g, a); cur = v; improved = true; }
+      }
+    }
+    // exhaustive search over each parcel's top K uses: the certificate for how close the greedy result is
+    let K = 5; while (K > 1 && Math.pow(K + 1, ps.length) > 60000) K--;
+    const top = []; let full = null;
+    if (K >= 2 || ps.length === 1) {
+      const lists = cand.map(c => c.slice(0, Math.max(1, K)).concat([NONE]));
+      const idx = ps.map(() => 0);
+      for (;;) {
+        const a = {}; ps.forEach((p, i) => { if (lists[i].length && lists[i][idx[i]].id) a[p.id] = lists[i][idx[i]].id; });
+        const v = planValue(a, obj);
+        top.push({ a, v }); top.sort((x, y) => y.v - x.v); if (top.length > 3) top.pop();
+        let i = 0; while (i < ps.length && ++idx[i] >= lists[i].length) { idx[i] = 0; i++; }
+        if (i >= ps.length) break;
+      }
+      full = { K, best: top[0] };
+    }
+    const gv = cur, bv = full ? Math.max(full.best.v, gv) : gv;
+    const best = full && full.best.v > gv ? full.best.a : g;
+    return { greedy: g, gv, best, bv, K: full ? full.K : null, alts: top.slice(1), n: ps.length };
+  }
+  function rankPlans(avail) {
+    if (!CO) return null;
+    const blocks = {}; avail.forEach(p => { (blocks[BLOCKOF[p.side]] = blocks[BLOCKOF[p.side]] || []).push(p); });
+    const objE = (p, f, m) => el(p, f, m);
+    const om = PLN.money_weight || [0.2, 0.5], omega = (om[0] + om[1]) / 2, Pref = CO.model.baltimore_p90 || 34;
+    const fitOf = (p, f) => { const r = (SC[p.id] || []).find(x => x.f.id === f.id); return r ? (r.pol > 0 ? r.score / r.pol : r.score) : 0; };
+    const objU = (p, f, m, hair) => { const e = el(p, f, m); return e == null ? null : (1 - omega) * fitOf(p, f) * hair + omega * Math.min(1, e / (Pref * (+p.sqft || 1500))); };
+    const res = { E: {}, U: {} }; let gap = { g: 0, b: 0, cert: true, Ks: [], big: [] };
+    Object.entries(blocks).forEach(([b, ps]) => {
+      res.E[b] = searchBlock(ps, objE); res.U[b] = searchBlock(ps, objU);
+      gap.g += res.E[b].gv; gap.b += res.E[b].bv; if (res.E[b].K == null) { gap.cert = false; gap.big.push(`the ${b} block, ${ps.length} parcels`); } else gap.Ks.push(res.E[b].K);
+    });
+    const merge = (which, key) => Object.values(res[which]).reduce((a, r) => Object.assign(a, r[key]), {});
+    const plans = [];
+    const fitPlan = {}; Object.entries(PLAN.out).forEach(([pid, o]) => { if (rankable(o.r.f.id)) fitPlan[pid] = o.r.f.id; });
+    plans.push({ name: 'This page\'s plan', why: 'the fit score, placed one parcel at a time (with your choices)', a: fitPlan, current: true });
+    plans.push({ name: 'Highest supportable rent', why: 'search for the most rent the uses could support, with neighbour and saturation effects', a: merge('E', 'best') });
+    plans.push({ name: 'Balanced', why: `fit score and money together (money weight ${Math.round(omega * 100)}%)`, a: merge('U', 'best') });
+    // next-best alternatives: swap in each block's runner-up where it costs least
+    const loss = Object.entries(res.E).filter(([, r]) => r.alts.length).map(([b, r]) => ({ b, d: r.bv - r.alts[0].v, a: r.alts[0].a })).sort((x, y) => x.d - y.d);
+    loss.slice(0, 2).forEach((x, i) => plans.push({ name: `Runner-up ${i + 1}`, why: `as the highest plan, with the ${x.b} block's next-best mix`, a: Object.assign({}, merge('E', 'best'), x.a) }));
+    // drop duplicates
+    const seen = new Set(); const uniq = plans.filter(pl => { const k = Object.keys(pl.a).sort().map(id => id + ':' + pl.a[id]).join(','); if (seen.has(k)) { const t = plans.find(x => x.key === k); if (t) t.also = (t.also || []).concat(pl.name); return false; } seen.add(k); pl.key = k; return true; });
+    simulate(uniq, avail);
+    uniq.forEach(pl => {
+      const ids = Object.keys(pl.a); pl.fit = ids.length ? ids.reduce((s, id) => s + fitOf(PI[id], FM[pl.a[id]]), 0) / ids.length : 0;
+      const cnt = counts(pl.a); let credit = 0, tot = 0, cond = 0, weak = 0;
+      ids.forEach(id => { const p = PI[id], f = FM[pl.a[id]], mo = multOf(p, f, pl.a, cnt), e = earn(p, f, mo.m), e0 = earn(p, f, mo.m / mo.up);
+        if (e && e0) { tot += e.ann[1]; credit += e.ann[1] - e0.ann[1]; if (e.pay != null && e.pay < 0.4) weak++; } if (f.zs !== 'P') cond++; });
+      pl.credit = tot ? credit / tot : 0; pl.cond = cond; pl.weak = weak; pl.n = ids.length;
+      pl.miss = avail.filter(p => !pl.a[p.id]).length;
+    });
+    uniq.forEach(pl => { pl.pareto = !uniq.some(o => o !== pl && o.fit >= pl.fit - 1e-9 && o.q[1] >= pl.q[1] - 1e-9 && (o.fit > pl.fit + 1e-9 || o.q[1] > pl.q[1] + 1e-9)); });
+    return { plans: uniq, gap, blocks: Object.keys(blocks).length };
+  }
+  function simulate(plans, avail) {
+    const N = PLN.draws || 2000, rho = PLN.shared_shock ?? 0.5, R = rngOf(20261020), sr = Math.sqrt(rho), si = Math.sqrt(1 - rho);
+    const prep = plans.map(pl => { const cnt = counts(pl.a); return Object.entries(pl.a).map(([pid, fid]) => { const p = PI[pid], f = FM[fid], m = multOf(p, f, pl.a, cnt).m; return { i: avail.indexOf(p), d: cdist(p, fid, m), k: usableOf(p, f) * apprOf(f) }; }).filter(x => x.d && x.k); });
+    const tot = plans.map(() => new Float64Array(N)), win = plans.map(() => 0);
+    for (let s = 0; s < N; s++) {
+      const ZA = gauss(R), ZS = gauss(R), eA = avail.map(() => gauss(R)), eS = avail.map(() => gauss(R));
+      let best = -1, bi = 0;
+      prep.forEach((list, j) => { let t = 0; list.forEach(x => { t += drawX(x.d, sr * ZA + si * eA[x.i], sr * ZS + si * eS[x.i]) * x.k; }); tot[j][s] = t; if (t > best) { best = t; bi = j; } });
+      win[bi]++;
+    }
+    plans.forEach((pl, j) => { const a = Array.from(tot[j]).sort((x, y) => x - y); pl.q = [a[Math.floor(AQ * (N - 1))], a[Math.floor(0.5 * (N - 1))], a[Math.floor((1 - AQ) * (N - 1))]]; pl.pbest = win[j] / N; });
+  }
+  function drawPlanRank() {
+    const el2 = document.getElementById('planrank'); if (!el2) return;
+    if (!CO) { el2.innerHTML = ''; return; }
+    const RK = rankPlans(PLAN.avail), sortBy = document.getElementById('prsort') ? document.getElementById('prsort').value : 'q';
+    const P2 = RK.plans.slice().sort((a, b) => sortBy === 'fit' ? b.fit - a.fit : sortBy === 'p' ? b.pbest - a.pbest : b.q[1] - a.q[1]);
+    const mixOf = a => { const c = {}; Object.values(a).forEach(fid => { const n = FM[fid].name; c[n] = (c[n] || 0) + 1; }); return Object.entries(c).sort((x, y) => y[1] - x[1]).map(([n, k]) => `${k} ${esc(n.toLowerCase())}`).join(', '); };
+    const g = RK.gap, pctg = g.b ? Math.round(1000 * g.g / g.b) / 10 : 100;
+    el2.innerHTML = `<div class="bar" style="margin-top:6px"><h3>Plans ranked by the rent they could support</h3>
+        <label class="small">Rank by <select id="prsort" class="sel"><option value="q"${sortBy === 'q' ? ' selected' : ''}>median rent supported</option><option value="p"${sortBy === 'p' ? ' selected' : ''}>chance of the highest</option><option value="fit"${sortBy === 'fit' ? ' selected' : ''}>fit score</option></select></label></div>
+      <div class="tbl"><table class="btt wide"><thead><tr><th>Plan</th><th>Uses</th><th>Fit score (mean)</th><th>Rent the uses could support, all ${PLAN.avail.length} parcels, per year</th><th>Highest in</th><th>Neighbour effects</th><th></th></tr></thead><tbody>
+      ${P2.map(pl => `<tr${pl.current ? ' class="cur"' : ''}><td><b>${esc(pl.name)}</b>${pl.pareto ? ' <span class="pol">best trade-off</span>' : ''}<div class="small">${esc(pl.why)}${pl.also ? '; same as ' + esc(pl.also.join(', ')) : ''}</div></td>
+        <td>${mixOf(pl.a)}${pl.miss ? `<div class="small">${pl.miss} parcel${pl.miss > 1 ? 's' : ''} left without a use the engine can rank by money</div>` : ''}${pl.cond || pl.weak ? `<div class="small">${[pl.cond ? pl.cond + ' conditional' : '', pl.weak ? pl.weak + ' that often cannot pay the asking rent' : ''].filter(Boolean).join(' · ')}</div>` : ''}</td>
+        <td class="num">${Math.round(pl.fit * 100)}</td><td class="num">${rng(pl.q, kusd)}</td><td class="num">${pctR(pl.pbest)}</td>
+        <td class="num">${pl.credit >= 0 ? '+' : '−'}${Math.abs(Math.round(pl.credit * 100))}%</td>
+        <td>${pl.current ? '<span class="small">shown above</span>' : `<button type="button" class="cx-tab" data-apply="${esc(pl.key)}" aria-label="Show ${esc(pl.name)} on the plan">Show</button>`}</td></tr>`).join('')}
+      </tbody></table></div>
+      <div class="wbox"><div class="wrow"><label for="cau">Caution</label><input type="range" id="cau" min="0" max="100" step="10" value="${Math.round(CAUTION * 100)}"><span class="n">${Math.round(CAUTION * 100)}%</span></div>
+        <div class="wrow"><label for="hair">Same use nearby</label><input type="range" id="hair" min="0" max="30" step="5" value="${Math.round(HAIR * 100)}"><span class="n">−${Math.round(HAIR * 100)}%</span></div>
+        <div class="wrow"><label for="upl">Neighbour pull</label><input type="range" id="upl" min="0" max="10" step="1" value="${Math.round(UPLIFT * 100)}"><span class="n">${Math.round(UPLIFT * 100)}%</span></div>
+        <p class="small" style="margin:0">The search ranks plans by a mix of the median and the low (P10) rent each use could support: caution 0% uses the median only, 100% the low case only. Same use nearby: each use of the same kind beyond the first on a block side (the second for food and retail, which cluster well) cuts sales and rent by this much. No block side gets more than three of one kind of use, the score's rule for full; a parcel can be left empty if every use would break that. Neighbour pull: each complementary next-door use adds this much, each conflicting or vacant one takes it away (across the street counts half; at most ±2 steps). The ranges come from ${fmt(PLN.draws || 2000)} scenarios in which the corridor's rent level and sales level move together across all buildings (half of each building's uncertainty is shared).</p></div>
+      <p class="small">Search check: one-at-a-time placement with swaps reached ${pctg}% of the best plan found by trying every combination of each parcel's top ${g.Ks.length ? Math.min(...g.Ks) + '–' + Math.max(...g.Ks) : ''} uses${g.cert ? '' : ` (${esc(g.big.join('; '))}: too many combinations to check in full)`}. "Best trade-off": no other plan here has both a higher fit score and a higher median. Neighbour effects: the share of the median that comes from neighbours (negative when vacant or conflicting neighbours pull it down).</p>
+      <div class="guard">Plans are compared for the same parcels; no parcel or block is ranked by money. Most of these parcels belong to other owners, so a shared plan needs their agreement. Figures are planning ranges with stated assumptions, not a promise of income.</div>`;
+    el2.querySelectorAll('[data-apply]').forEach(b => b.onclick = () => { const pl = RK.plans.find(x => x.key === b.dataset.apply); overrides = Object.assign({}, pl.a); drawPlan(); drawMix(); document.getElementById('planS').scrollIntoView({ behavior: 'smooth', block: 'start' }); });
+    document.getElementById('prsort').onchange = () => drawPlanRank();
+    const wire = (id, set) => { const x = document.getElementById(id); x.onchange = () => { set(+x.value / 100); clearEarn(); for (const k in SLIM) delete SLIM[k]; drawPlanRank(); }; };
+    wire('cau', v => { CAUTION = v; }); wire('hair', v => { HAIR = v; }); wire('upl', v => { UPLIFT = v; });
+  }
 
   // ---------------- roadmap: where this ends
   function drawRoad() {
     const E = [
       ['done', 'What was it?', 'A sourced use timeline for every parcel.', 'Done for the 69 frontage parcels'],
       ['demo', 'What could it become?', 'Ranked uses with reasons: heritage, rules, saturation, community, neighbours, precedents.', 'Score v0.3 on this page, with comparison and feedback'],
-      ['next', 'What would it earn?', 'Rent and revenue range for each use, from comps.', 'Next: 10 comps so far, rent for 2 formats'],
+      ['demo', 'What would it earn?', 'Rent and revenue range for each use, from comps, with the rent each use could support.', 'Comps engine v1 on this page: 58 listings, 192 benchmarks, 45 operators'],
       ['demo', 'Does the mix work as a block?', 'A use plan for a block or a sponsor assemblage, under a saturation limit.', 'Greedy plan v0 on this page'],
       ['demo', 'Who is it for?', 'The customer groups that would use, lease or buy each building, their obstacles and the programmes that help.', 'Seven groups matched on this page'],
       ['demo', 'How far can it be trusted?', 'Validation report and a model card that says where not to use it.', 'Reference timelines; back-test started']];
     document.getElementById('endstate').innerHTML = `<p class="lede" style="font-size:14px">The final deliverable answers five questions for any address on the corridor, and for any block the sponsor names, with every answer traced to a source. It ships as a pilot in the sponsor's Property Dossier tool, with the code and tests, a validation report, a model card and the final report.</p>
       <div class="end" style="margin-top:12px">${E.map(([s, q, d, n]) => `<div class="endc"><span class="st ${s}">${s === 'done' ? 'done' : s === 'demo' ? 'working draft' : 'next'}</span><div class="q">${esc(q)}</div><div>${esc(d)}</div><div class="small">${esc(n)}</div></div>`).join('')}</div>`;
     const M = [
-      ['now', '19 Oct 2026', 'Now', 'Timelines for 69 parcels; score v0.3 with community, neighbours, precedents and feedback; block plan v0; customer groups; concepts for three buildings'],
+      ['now', '20 Oct 2026', 'Now', 'Timelines for 69 parcels; score v0.3 with community, neighbours, precedents and feedback; comps engine v1; plans ranked by supportable rent; customer groups; concepts for three buildings'],
       ['', '4 Nov 2026', 'Midterm', 'Validation memo with four blind timelines; precedent memo; extractor v1.1; this page as the pilot'],
-      ['', 'Dec 2026', 'End of fall term', 'Comps engine v1 (rent and revenue per format); generator v1 with building-design match; the 107 focus-area parcels'],
+      ['', 'Dec 2026', 'End of fall term', 'Comps engine v1.1 (calls for the unlisted Greenmount rents, private calibration if approved); generator v1 with building-design match; the 107 focus-area parcels'],
       ['', 'Mar 2027', 'Spring validation', 'Held-out back-test; weight sensitivity; demand data if feasible; optimiser v1 for a sponsor-named assemblage'],
       ['', 'May 2027', 'Final', 'Pilot in the Property Dossier; model card and guardrails; data contract; report, community brief, CUSP showcase']];
     document.getElementById('miles').innerHTML = M.map(([c, d, t, x]) => `<div class="mile ${c}"><span class="d">${esc(d)}</span><span class="t">${esc(t)}</span><span>${esc(x)}</span></div>`).join('');
@@ -980,8 +1408,8 @@ details summary { cursor: pointer; font-weight: 600; }
       ['Use-history timelines', 'done', '69 frontage parcels, 566 spans, 8 kinds of source', 'Blind references; fix the summary rows; side streets', 'Whole corridor, with its gap map'],
       ['Candidate-use generator', 'demo', 'Score v0.3: heritage, rules, saturation, size, community, neighbours, precedents, feedback', 'Weights agreed with the sponsor; a short resident survey to test the community layer', 'Generator v1 with documented weights'],
       ['Customer matching', 'demo', 'Seven customer groups with ranked obstacles and programmes; buildings ranked by fit', 'Interviews with 5-10 businesses per group; an intake form for both sides', 'Matching with tracked 12, 24 and 36-month survival against the BLS benchmark (about 68% at 3 years)'],
-      ['Comps engine', 'next', '10 comps; rent for 2 formats', 'Rent and revenue per sq ft for every format, from comparable corridors', 'Comps library with sources'],
-      ['Assemblage optimiser', 'demo', 'Greedy plan v0 with a block-side limit', 'Maximise revenue under the saturation limit; content uses kept apart', 'Plan for a sponsor-named assemblage'],
+      ['Comps engine', 'demo', 'Engine v1: rent and revenue ranges for 14 uses, held-out check, other cities side by side', 'Calls for the Greenmount rents listed as "contact for pricing"; private check with the NDA operator if the sponsor approves; Census data for catchment spending', 'Comps library, engine and model card'],
+      ['Assemblage optimiser', 'demo', 'Plan v1: plans ranked by the rent the uses could support, with neighbour and saturation effects and a search check', 'A sponsor-named assemblage; owners who opt in; content uses kept apart', 'Plan for a sponsor-named assemblage'],
       ['Validation', 'demo', 'Four reference timelines; preliminary back-test', 'Four blind timelines; held-out back-test; precedent statuses checked for 2026', 'Validation report'],
       ['Pilot and handoff', 'demo', 'This page', 'Sponsor feedback on the score and the plan', 'Property Dossier pilot, model card, data contract, report']];
     document.getElementById('comp').innerHTML = `<table><thead><tr><th>Part (Idea 1)</th><th>Now</th><th>Next</th><th>Final, May 2027</th></tr></thead><tbody>${R.map(([a, s, b, c, d]) => `<tr><td><b>${esc(a)}</b><br><span class="st ${s}">${s === 'done' ? 'done' : s === 'demo' ? 'working draft' : 'next'}</span></td><td>${esc(b)}</td><td>${esc(c)}</td><td>${esc(d)}</td></tr>`).join('')}</tbody></table>`;
@@ -1023,6 +1451,11 @@ details summary { cursor: pointer; font-weight: 600; }
       ${tr('Neighbours', r => `${n100(r.nb.v)} ${r.nb.list.map(x => `${esc(x.q.address)} ${esc(x.c)} ${sgn(x.v)}`).join(', ') || 'none known'}`)}
       ${tr('Precedents', r => `${n100(r.pr.v)} ${r.pr.hits.length} of 8 similar cases`)}
       ${tr('Best matching case', best)}
+      ${CO ? (() => { const E = r => earn(p, r.f), sm = smaaOf(p), b1 = r => { const x = sm && sm.rows.find(y => y.r.f.id === r.f.id); return x ? pctR(x.b1) + ' of scenarios' : '—'; };
+        return tr('Typical asking rent /sq ft', r => E(r) ? rng(E(r).typ) : 'not estimated')
+          + tr('Revenue /yr', r => E(r) && E(r).rev ? rng(E(r).rev, kusd) : (E(r) ? 'no sales benchmark' : '—'))
+          + tr('Rent it could support /yr', r => E(r) ? rng(E(r).ann, kusd) + (E(r).pay != null ? `<div class="small">${payWord(E(r).pay)} (${pctR(E(r).pay)})</div>` : '') + (E(r).rankable ? '' : '<div class="small">too little evidence to rank by money</div>') : '—')
+          + tr('Comes first', b1); })() : ''}
       ${tr('Zoning', r => esc(ZTXT[r.f.zs] || r.f.zs) + (r.f.urp ? '; barred by the urban renewal plan' : ''))}
       ${tr('Multipliers', r => [r.pol < 1 ? `conditional ×${r.pol}` : '', r.avm < 1 ? `objection ×${r.avm}` : '', r.fbm !== 1 ? `feedback ×${r.fbm.toFixed(2)}` : ''].filter(Boolean).join(', ') || 'none')}
       ${tr('Who runs it', seg1)}
@@ -1243,6 +1676,6 @@ details summary { cursor: pointer; font-weight: 600; }
   [['f-all', 'all'], ['f-avail', 'avail'], ['f-sponsor', 'sponsor']].forEach(([i, v]) => document.getElementById(i).onclick = () => { filt = v; setSeg(['f-all', 'f-avail', 'f-sponsor'], i); render(); });
   document.getElementById('q').addEventListener('input', e => { q = e.target.value.replace(/\D/g, ''); const hit = P.filter(p => p.address.startsWith(q)); if (q.length >= 4 && hit.length) sel = hit[0].id; render(); });
   function render() { drawLegend(); drawMap(); drawLedger(); drawPanel(); wireJumps(document.getElementById('panel')); drawCompare(); drawCases(); drawConcept(); drawTable(); }
-  drawMethodOnce(); drawWeights(); render(); drawPlan(); drawMix(); drawRoad(); drawSeg(); drawFbLog();
+  drawMethodOnce(); drawEarnOnce(); drawWeights(); render(); drawPlan(); drawMix(); drawRoad(); drawSeg(); drawFbLog();
 })();
 </script>
