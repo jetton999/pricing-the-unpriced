@@ -7,7 +7,7 @@ and the two hand-made files beside this script (concepts.json, library.json). Ou
 
 Same schema as screen_v0.py's explorer_data.json, so the page template keeps working.
 Standard library only."""
-import csv, json, collections, re, os
+import csv, json, collections, re, os, sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.dirname(os.path.dirname(HERE))
@@ -335,6 +335,11 @@ if os.path.exists(_cp):
     _cited = set(re.findall(r'\b[RBO]-\d{3}\b', json.dumps(_comps)))
     _comps['sources'] = {k: v for k, v in _srcs.items() if k in _cited}
     data['comps'] = _comps
+
+# extra layers: the sponsor's storefront check, heritage revivals, retail broken down, survey photos (extras.py)
+sys.path.insert(0, HERE)
+import extras  # noqa: E402
+extras.apply(REPO, data)
 page = open(os.path.join(HERE, 'template.html'), encoding='utf-8').read()
 blob = json.dumps(data, separators=(',', ':'), ensure_ascii=False).replace('</', '<\\/')
 assert page.count('__DATA__') == 1

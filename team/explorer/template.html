@@ -262,6 +262,24 @@ details summary { cursor: pointer; font-weight: 600; }
 .fbrow { display: grid; grid-template-columns: 26px 120px minmax(0, 1fr); gap: 8px; align-items: start; border-bottom: 1px solid var(--rule); padding: 5px 0; }
 .fbrow img { width: 22px; height: 22px; border-radius: 50%; }
 @media (max-width: 560px) { .fbrow { grid-template-columns: 26px minmax(0, 1fr); } .fbrow .w2 { grid-column: 2; } }
+[hidden] { display: none !important; }
+.start { margin: 2px 0 0; padding-left: 20px; display: flex; flex-wrap: wrap; gap: 4px 28px; font-size: 13.5px; color: var(--ink-2); }
+.tabs { position: sticky; top: 0; z-index: 5; display: flex; gap: 4px; overflow-x: auto; background: var(--bg); padding: 8px 0; border-bottom: 1px solid var(--rule); }
+.tabs button { font: inherit; font-size: 14px; font-weight: 500; padding: 7px 14px; border: 1px solid var(--rule-2); border-radius: 999px; background: var(--surface); color: var(--ink-2); cursor: pointer; white-space: nowrap; }
+.tabs button[aria-pressed="true"] { background: var(--ink); color: var(--surface); border-color: var(--ink); }
+.tabs button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.verdict { border: 1.5px solid var(--ink); border-radius: 8px; padding: 12px 14px; display: grid; gap: 6px; }
+.vname { font-family: var(--f-display); font-size: 26px; font-weight: 600; line-height: 1.1; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.vname .sc { margin-left: auto; font-family: var(--f-mono); font-size: 18px; font-weight: 500; }
+.vwhy { font-size: 13.5px; color: var(--ink-2); }
+.vmoney { font-size: 14px; }
+.also { display: grid; gap: 4px; }
+.arow { display: grid; grid-template-columns: 11px minmax(0, 1fr) 30px; gap: 2px 8px; align-items: center; font-size: 13.5px; }
+.arow .small { grid-column: 2 / -1; }
+details.more { border-top: 1px solid var(--rule); padding-top: 8px; }
+details.more > summary { font-size: 14px; }
+.retail { display: grid; gap: 8px; }
+.rrow { border-left: 3px solid var(--c-retail); padding: 2px 0 2px 10px; display: grid; gap: 2px; }
 .money { display: grid; gap: 6px; }
 .money .mt td, .money .mt th { padding: 4px 5px; }
 .btt tr.cur td { background: var(--accent-soft); }
@@ -277,12 +295,17 @@ details summary { cursor: pointer; font-weight: 600; }
   <header>
     <div class="eyebrow">Waverly, Baltimore · Greenmount Ave, E 29th to E 33rd St · extractor v1 · score v0.3 · comps engine v1 · 20 Oct 2026</div>
     <h1>Greenmount Frontage Explorer</h1>
-    <p class="lede">Every building on the seven Greenmount block faces in the focus area: what it was, what it is now, and the uses it has already shown it can carry. Seven new sources are joined to the sponsor's curated records: Polk city directories for 1901 to 1923 (the early years read through a York Road renumbering crosswalk), the City's building-permit index cards for 1924 to 1961, Sanborn maps for 1915, 1928 and 1953, the National Register inventory, the City's 1970s revitalization files, and a current-tenant check from October 2026.</p>
+    <p class="lede">For every building on the Greenmount frontage, E 29th to E 33rd St: what it was, what it could become, what that could earn, and whether the mix works as a block. Every answer links to its sources.</p>
+    <ol class="start"><li>Pick a building on the map</li><li>Read its best fit, the money and the history on the right</li><li>Try a mix for the whole block in <b>Block plan</b></li></ol>
   </header>
 
-  <div class="tiles" id="tiles"></div>
+  <nav class="tabs" id="tabs" aria-label="Views">
+    <button type="button" data-v="b" aria-pressed="true">Buildings</button><button type="button" data-v="p" aria-pressed="false">Block plan</button><button type="button" data-v="m" aria-pressed="false">Money</button><button type="button" data-v="e" aria-pressed="false">Evidence and method</button><button type="button" data-v="r" aria-pressed="false">Roadmap</button>
+  </nav>
 
-  <section class="card" aria-labelledby="maph">
+  <div class="tiles" id="tiles" data-view="e"></div>
+
+  <section data-view="b" class="card" aria-labelledby="maph">
     <div class="bar">
       <h2 id="maph">Block faces</h2>
       <div class="ctl">
@@ -305,7 +328,7 @@ details summary { cursor: pointer; font-weight: 600; }
     <p class="small">"Top score" colours each parcel by its highest-scoring permitted use, as if it were available. North is to the right. Parcel outlines come from the sponsor export; ten export records that the sponsor lists as merged into a neighbouring parcel are shown as part of that parcel. Hover for a summary, select for the full record. Blue dots mark the three buildings with a drafted concept.</p>
   </section>
 
-  <div class="grid2">
+  <div class="grid2" data-view="b">
     <section class="card" aria-labelledby="ledh">
       <div class="bar"><h2 id="ledh">Use ledger, 1880s to today</h2><span class="small">dominant use per decade · last column is Oct 2026</span></div>
       <div class="ledger" id="ledger"></div>
@@ -313,19 +336,14 @@ details summary { cursor: pointer; font-weight: 600; }
     <section class="card panel" id="panel" aria-live="polite"></section>
   </div>
 
-  <section class="card" id="cmp" aria-labelledby="cmph">
+  <section data-view="b" class="card" id="cmp" aria-labelledby="cmph">
     <div class="bar"><h2 id="cmph">Compare uses</h2><span class="small" id="cmpfor"></span></div>
     <p class="lede" style="font-size:14px">Pick up to three uses for the selected building and read them factor by factor. Agree or disagree with each one; the votes are shared with the team and the sponsor and, when switched on, nudge the scores.</p>
     <div class="legend" id="cmppick" aria-label="Uses to compare"></div>
     <div class="tbl" id="cmptab"></div>
   </section>
 
-  <section class="card" id="fb" aria-labelledby="fbh">
-    <div class="bar"><h2 id="fbh">Team and sponsor feedback</h2><span class="small" id="fbstat"></span></div>
-    <div id="fblog"></div>
-  </section>
-
-  <section class="card" id="method" aria-labelledby="mh">
+  <section data-view="e" class="card" id="method" aria-labelledby="mh">
     <div class="bar"><h2 id="mh">How the recommendation works</h2><span class="small">score v0.3 · change the weights and every view updates</span></div>
     <p class="lede" style="font-size:14px">It is not history alone. After two rule filters, each possible use of a building is scored on six inputs: its heritage, saturation, size, what residents have asked for or objected to, its neighbours, and how similar buildings elsewhere turned out. Team and sponsor feedback then nudges the score. The block plan places uses one at a time under a saturation limit, and the comps engine below adds what each use could pay and earn. The concepts and named businesses further down are written by hand on top of this, and they say so.</p>
     <ol class="flow" id="flow"></ol>
@@ -345,7 +363,13 @@ details summary { cursor: pointer; font-weight: 600; }
     <details><summary>Known limits of this version</summary><ul class="checks" id="limits" style="margin-top:8px"></ul></details>
   </section>
 
-  <section class="card" id="earn" aria-labelledby="eh">
+  <section data-view="e" class="card" id="retailS" aria-labelledby="rth">
+    <div class="bar"><h2 id="rth">Retail, broken down</h2><span class="small">seven trades · what the frontage has carried · the modern version · reference brands</span></div>
+    <p class="lede" style="font-size:14px">Brands are reference points for what the modern format looks like, not prospects; nobody has been contacted. Counts come from the use records on this page; descriptions and brands from the sources linked.</p>
+    <div class="tbl" id="retailtab"></div>
+  </section>
+
+  <section data-view="m" class="card" id="earn" aria-labelledby="eh">
     <div class="bar"><h2 id="eh">What each use could pay and earn</h2><span class="small">comps engine v1 · 2025 dollars · rents triple-net (tenant pays taxes and insurance on top)</span></div>
     <p class="lede" style="font-size:14px" id="earnlede"></p>
     <div class="tiles" id="earntiles"></div>
@@ -358,7 +382,7 @@ details summary { cursor: pointer; font-weight: 600; }
     <details><summary>Why these methods, and what was rejected</summary><div class="tbl" id="earnwhy" style="margin-top:10px"></div></details>
   </section>
 
-  <section class="card" id="planS" aria-labelledby="ph">
+  <section data-view="p" class="card" id="planS" aria-labelledby="ph">
     <div class="bar"><h2 id="ph">Block plan</h2><span class="small">assemblage optimiser v1 · one use at a time under a saturation limit, then plans ranked by the rent they could support</span></div>
     <p class="lede" style="font-size:14px">Each vacant or for-lease parcel gets the use with the highest score, best parcel first. After each placement the counts on that block side and on the corridor go up, so a second cafe on the same side scores lower than the first, and the placed use becomes a neighbour of the next parcel. Change any choice to see what it does to the mix. Scores in the menus are before any placement; the line under each parcel gives the score at the moment it was placed.</p>
     <label class="chk"><input type="checkbox" id="unk"> Also plan the parcels with no confirmed occupant (a scenario: some of them may be occupied)</label>
@@ -366,20 +390,20 @@ details summary { cursor: pointer; font-weight: 600; }
     <div id="planrank" class="planrank"></div>
   </section>
 
-  <section class="card" id="seg" aria-labelledby="segh">
+  <section data-view="e" class="card" id="seg" aria-labelledby="segh">
     <div class="bar"><h2 id="segh">Who it is for</h2><span class="small">customer groups, their obstacles, and the buildings that fit them</span></div>
     <p class="lede" style="font-size:14px" id="seglede"></p>
     <div class="cx-tabs" role="tablist" id="segtabs" aria-label="Customer groups"></div>
     <div id="segbody"></div>
   </section>
 
-  <section class="card" id="cases" aria-labelledby="caseh">
+  <section data-view="e" class="card" id="cases" aria-labelledby="caseh">
     <div class="bar"><h2 id="caseh">Comparable cases elsewhere</h2><span class="small" id="casefor"></span></div>
     <div class="cx-tabs" role="tablist" aria-label="Case level"><button type="button" role="tab" class="cx-tab" id="ct-b" aria-selected="true">Buildings like this one</button><button type="button" role="tab" class="cx-tab" id="ct-d" aria-selected="false">Streets like Waverly</button></div>
     <div id="casebody"></div>
   </section>
 
-  <section class="card" id="cx" aria-labelledby="cxh">
+  <section data-view="b" class="card" id="cx" aria-labelledby="cxh">
     <div class="bar"><h2 id="cxh">What it could become</h2><span class="small">three empty buildings the sponsor has walked through · draft concepts · nobody has been contacted</span></div>
     <p class="lede" style="font-size:14px" id="cxlede">For each building: what it was, what its history, the block and the rules allow, two concepts, and places that have done something like it.</p>
     <div class="cx-tabs" role="tablist" id="cxtabs" aria-label="Concept buildings"></div>
@@ -387,28 +411,33 @@ details summary { cursor: pointer; font-weight: 600; }
     <p class="small" id="cxnote"></p>
   </section>
 
-  <section class="card" aria-labelledby="mixh">
+  <section data-view="p" class="card" aria-labelledby="mixh">
     <div class="bar"><h2 id="mixh">The mix then and now</h2><span class="small">share of frontage buildings with each use</span></div>
     <div class="legend"><span class="chip" style="cursor:default"><span class="sw" style="background:var(--muted)"></span>1920 to 1923, Polk directories</span><span class="chip" style="cursor:default"><span class="sw" style="background:var(--ink)"></span>October 2026, tenant check</span><span class="chip" style="cursor:default"><span class="sw" style="background:var(--accent);border-radius:50%"></span>after the block plan</span></div>
     <div class="mix" id="mix"></div>
     <p class="small" id="mixnote"></p>
   </section>
 
-  <section class="card" id="road" aria-labelledby="rh">
+  <section data-view="r" class="card" id="road" aria-labelledby="rh">
     <div class="bar"><h2 id="rh">Where this ends</h2><span class="small">the final deliverable, and what is done so far</span></div>
     <div id="endstate"></div>
     <div id="miles" class="miles"></div>
     <div class="tbl" id="comp"></div>
   </section>
 
-  <section class="card" aria-labelledby="tblh">
+  <section data-view="e" class="card" id="fb" aria-labelledby="fbh">
+    <div class="bar"><h2 id="fbh">Team and sponsor feedback</h2><span class="small" id="fbstat"></span></div>
+    <div id="fblog"></div>
+  </section>
+
+  <section data-view="e" class="card" aria-labelledby="tblh">
     <details>
       <summary id="tblh">Screening table, all 69 parcels</summary>
       <div class="tbl" id="tbl" style="margin-top:12px"></div>
     </details>
   </section>
 
-  <section class="card" aria-labelledby="noteh">
+  <section data-view="e" class="card" aria-labelledby="noteh">
     <h2 id="noteh">How this was built, and what it is not</h2>
     <div class="notes" id="notes"></div>
   </section>
@@ -753,7 +782,7 @@ details summary { cursor: pointer; font-weight: 600; }
     return true;
   }
   const availPill = p => p.availability === 'available now' ? `<span class="pill ok">${esc(p.status)}</span>`
-    : p.availability === 'occupied' ? `<span class="pill warn">occupied</span>` : `<span class="pill q">not confirmed</span>`;
+    : p.availability === 'occupied' ? `<span class="pill warn">occupied</span>` : p.availability === 'house' ? `<span class="pill">house, no shop front</span>` : `<span class="pill q">not confirmed</span>`;
 
   // ---------------- tiles
   const T = D.totals, S = D.silence;
@@ -918,67 +947,88 @@ details summary { cursor: pointer; font-weight: 600; }
     return out.map(([c, t]) => `<span class="pill ${c}">${esc(t)}</span>`).join(' ');
   }
   const segsFor = (fid) => (L.segments || []).filter(s => (s.fit_formats || []).includes(fid));
+  // one plain line on why a use scores well: its three strongest factors
+  function whyLine(r, p) {
+    const out = [], hrow = p.h && p.h[r.via];
+    const items = [
+      [r.parts[0], r.from === 'street' ? `the street has proven ${r.via}` : r.h > 0 && hrow ? `${hrow[0]} decade${hrow[0] === 1 ? '' : 's'} of ${r.via} here` : ''],
+      [r.parts[1], r.s.n == null ? '' : r.s.n === 0 ? 'none on this block side yet' : r.s.v >= 0.5 ? 'room for one more here' : ''],
+      [r.parts[2], r.fi >= 0.9 ? `fits ${p.sqft ? fmt(+p.sqft) + ' sq ft' : 'the space'}${r.how !== 'as one unit' ? ' (' + r.how + ')' : ''}` : ''],
+      [r.parts[3], r.cm.why === 'asked for' ? 'residents have asked for it' : ''],
+      [r.parts[4], r.nb.raw > 0.2 ? 'good neighbours' : ''],
+      [r.parts[5], r.pr.hits.length ? `${r.pr.hits.length} similar building${r.pr.hits.length > 1 ? 's' : ''} elsewhere did this` : '']];
+    items.filter(x => x[1]).sort((a, b) => b[0] - a[0]).slice(0, 3).forEach(x => out.push(x[1]));
+    return out.join(' · ');
+  }
+  const SA_CLS = { open_active: 'warn', institution: 'warn', office_industrial: 'warn', residential: 'warn', vacant_storefront: 'ok', vacant_lot: 'ok', listed_likely_dead: 'ok' };
+  function todayLine(p) {
+    const ours = p.status === 'occupied' ? (p.tenant || 'occupied') : p.status;
+    const sa = p.sa ? `<div class="small">Sponsor's check (Oct 2026): <b>${esc(p.sa.label)}</b>, ${esc(p.sa.conf)} confidence${p.sa.sv ? `; latest Street View ${esc(p.sa.sv)}` : ''}. ${esc(p.sa.summary)}</div>` : '';
+    return `<dt>Today</dt><dd>${esc(ours)}${p.status_note ? `<div class="small">${esc(p.status_note)}</div>` : ''}${sa}</dd>`;
+  }
+  // retail broken down: which trades this building and the street have carried, the modern version, reference brands
+  const RT = (D.retail && D.retail.types) || [];
+  function retailBlock(p, show) {
+    if (!RT.length || !show) return '';
+    const rt = p.rt || {}, sq = +p.sqft || 0;
+    const rows = RT.map(t => ({ t, here: rt[t.id] || null })).sort((a, b) => ((b.here ? b.here[0] : 0) - (a.here ? a.here[0] : 0)) || (b.t.street - a.t.street)).slice(0, 3);
+    return `<div class="retail"><h3>What kind of shop</h3><div class="small">Retail broken down. The brands are reference points for the modern format, not prospects; nobody has been contacted.</div>
+      ${rows.map(({ t, here }) => { const fits = !sq || (sq >= t.size.low * 0.8 && sq <= t.size.high * 3); return `<div class="rrow"><div><b>${esc(t.name)}</b> <span class="small">${here ? `on record here ${here[1] || ''}${here[2] && here[2] !== here[1] ? '–' + here[2] : ''} (${here[0]} record${here[0] > 1 ? 's' : ''}${here[3] ? ', e.g. ' + esc(here[3]) : ''})` : `on ${t.street} building${t.street === 1 ? '' : 's'} on this frontage, not here`} · usual ${fmt(t.size.low)}–${fmt(t.size.high)} sq ft${fits ? '' : ' (size is a stretch here)'}</span></div>
+        <div class="small" style="color:var(--ink-2)">${esc(t.modern_version.split(/(?<=\.)\s/)[0])}</div>
+        <div class="small">Like: ${t.brands.slice(0, 3).map(b => `<a class="cxsrc" href="${esc(b.u)}" target="_blank" rel="noopener" title="${esc(b.why)}">${esc(b.name)}</a> <span>(${esc(b.city.split('(')[0].trim())})</span>`).join(', ')}</div></div>`; }).join('')}
+      <a class="cxsrc small" href="#retailS">all seven retail trades</a></div>`;
+  }
   function drawPanel() {
     const p = P.find(x => x.id === sel); if (!p) return;
     const proven = (p.proven || '').split(' ; ').filter(Boolean).map(s => {
       const c = s.replace(/ \(\d+d\)$/, ''); return `<span class="pill"><span class="sw" style="background:${cssFill(c)}"></span>${esc(s.replace('d)', ' decades)').replace('(1 decades)', '(1 decade)'))}</span>`;
     }).join(' ');
-    const ranked = SC[p.id] || [], top3 = ranked.filter(r => r.ok && !r.f.av).slice(0, 3);
+    const ranked = SC[p.id] || [], top3 = ranked.filter(r => r.ok && !r.f.av).slice(0, 3), best = top3[0];
     const cand = top3.map(r => `<div class="cand"><div class="u"><span class="sw" style="background:${cssFill(r.f.cat)}"></span>${esc(r.f.name)}${r.f.zs !== 'P' ? ` <span class="pol cb">conditional</span>` : ''}<span class="sc">${Math.round(r.score * 100)}</span></div>
-      ${sbar(r.parts)}
-      <div class="w">${explain(r, p)}</div>
+      ${sbar(r.parts)}<div class="w">${explain(r, p)}</div>
       <div class="cfoot">${fbBtns(p.id, r.f.id)}<span class="small">Who runs it: ${segsFor(r.f.id).map(s => esc(s.name)).join(', ') || 'no segment matched'}</span></div></div>`).join('');
     const nogo = ranked.filter(r => r.bl && r.from === 'building' && r.h >= 0.2).map(r => `${esc(r.f.name.toLowerCase())} (${esc(r.bl)})`);
-    const push = ranked.filter(r => r.f.av && !r.bl && r.fi >= 0.5).map(r => `${esc(r.f.name.toLowerCase())} (${esc(r.f.av.grade)} objection; ${esc(ZTXT[r.f.zs] || r.f.zs)})`);
-    const sims = simsOf(p).slice(0, 3);
-    const st = p.story || [0, 0];
+    const push = ranked.filter(r => r.f.av && !r.bl && r.fi >= 0.5).map(r => `${esc(r.f.name.toLowerCase())} (${esc(r.f.av.grade)} objection)`);
+    const sims = simsOf(p).slice(0, 3), st = p.story || [0, 0];
+    const sm = smaaOf(p), b1 = id => { const x = sm && sm.rows.find(y => y.r.f.id === id); return x ? x.b1 : null; };
+    const money = r => { const e = CO && earn(p, r.f); if (!e) return ''; return `could support <b>${kusd(e.ann[1])}</b>/yr <span class="small">(${kusd(e.ann[0])}–${kusd(e.ann[2])})</span>`; };
+    const rv = (p.rv || [])[0];
+    const isRetail = top3.some(r => r.f.cat === 'retail goods');
     const evs = p.ev.slice().sort((a, b) => (+a.y || 9999) - (+b.y || 9999)).map(e => `<div class="ev"><div class="y">${esc(e.y || '—')}</div><div><div class="src"><span>${esc(e.src)}</span>${e.cat ? `<span class="pill" style="font-size:11px;padding:0 6px"><span class="sw" style="width:8px;height:8px;background:${cssFill(e.cat)}"></span>${esc(e.cat)}</span>` : ''}${e.m ? `<span title="the address was inferred, not read: through the York Road renumbering or a neighbouring house number">address inferred: ${esc(e.m)}</span>` : ''}</div><div>${esc(e.t)}</div><div class="small">${e.url ? `<a href="${esc(e.url)}" target="_blank" rel="noopener">${esc(e.ref || 'source')}</a>` : esc(e.ref)}</div></div></div>`).join('');
+    const verdict = best ? `<div class="verdict">
+        <div class="eyebrow">Best fit${p.availability === 'occupied' ? ' if it came free' : ''}</div>
+        <div class="vname"><span class="sw" style="background:${cssFill(best.f.cat)}"></span>${esc(best.f.name)}${best.f.zs !== 'P' ? ` <span class="pol cb">conditional</span>` : ''}<span class="sc">${Math.round(best.score * 100)}<span class="small">/100</span></span></div>
+        <div class="vwhy">${esc(whyLine(best, p))}</div>
+        ${CO && earn(p, best.f) ? `<div class="vmoney">${money(best)}${b1(best.f.id) != null ? ` · first in ${pctR(b1(best.f.id))} of scenarios` : ''}</div>` : ''}
+        ${rv ? `<div class="small"><b>Heritage revival:</b> ${esc(rv.name)}, here ${rv.first}${rv.last !== rv.first ? '–' + rv.last : ''} (${rv.n} records). A revival reopens under a documented name and look; the trademark check comes first.</div>` : ''}
+        <div class="cfoot">${fbBtns(p.id, best.f.id)}<a class="cxsrc small" href="#cmp">compare uses</a></div>
+      </div>
+      ${top3.length > 1 ? `<div class="also"><div class="eyebrow">Also strong</div>${top3.slice(1).map(r => `<div class="arow"><span class="sw" style="background:${cssFill(r.f.cat)}"></span><span>${esc(r.f.name)}${r.f.zs !== 'P' ? ' <span class="pol cb">conditional</span>' : ''}</span><span class="mono">${Math.round(r.score * 100)}</span><span class="small">${money(r) || esc(whyLine(r, p))}</span></div>`).join('')}</div>` : ''}` : '<p class="small">No permitted use scores above zero.</p>';
     const el = document.getElementById('panel');
     el.innerHTML = `
       <div class="eyebrow">${esc(SIDE[p.side])}${p.sponsor ? ' · sponsor walk-through' : ''}</div>
       <div class="addr">${esc(p.address)} Greenmount</div>
-      <div>${availPill(p)} <span class="small">${esc(p.evidence)} · ${p.decades} of 13 decades (1900s to 2020s) with a coded use</span></div>
+      <div>${availPill(p)} <span class="small">${p.decades} of 13 decades on record (1900s to 2020s)</span></div>
       <dl class="facts">
-        <dt>Today</dt><dd>${esc(p.status === 'occupied' ? p.tenant : p.status)}</dd>
+        ${todayLine(p)}
         <dt>Size</dt><dd class="mono">${p.sqft ? fmt(+p.sqft) + ' sq ft' : 'not in export'}</dd>
         <dt>Built</dt><dd>${p.built ? 'c. ' + p.built : 'unknown'}${p.form ? ' · ' + esc(p.form) : ''}</dd>
-        <dt>Zoning</dt><dd class="mono">${esc(p.zoning || '—')}</dd>
+        <dt>Rules</dt><dd>${esc(p.zoning || '—')}; urban renewal plan (1979, in force): no new taverns, liquor stores or pawnshops; facade and sign standards</dd>
       </dl>
-      <div style="display:flex;flex-wrap:wrap;gap:6px">${readiness(p)}</div>
+      ${verdict}
+      ${nogo.length || push.length ? `<div class="nogo">${nogo.length ? `<b>Proven here but not allowed:</b> ${nogo.join('; ')}. ` : ''}${push.length ? `<b>Fits, but residents have pushed back:</b> ${push.join('; ')}.` : ''}</div>` : ''}
+      <details class="more"><summary>Why these scores</summary>${SKEY()}<div class="cands" style="margin-top:6px">${cand}</div></details>
+      ${retailBlock(p, isRetail)}
       <div><h3>Uses it has carried</h3><div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:6px">${proven || '<span class="small">No coded use evidence yet.</span>'}</div></div>
-      <div><h3>Top uses by score</h3>${SKEY()}<div class="small">Out of 100. ▲▼ records your view for the team; <a class="cxsrc" href="#cmp">compare uses side by side</a>.</div></div>
-      <div class="cands">${cand || '<span class="small">No permitted use scores above zero.</span>'}</div>
-      ${nogo.length ? `<div class="nogo"><b>Proven here but not allowed:</b> ${nogo.join('; ')}.</div>` : ''}
-      ${push.length ? `<div class="nogo" style="border-left-color:var(--c-ent)"><b>Would fit the space, but residents have pushed back:</b> ${push.join('; ')}. Scored down, not recommended.</div>` : ''}
-      <div><h3>Similar buildings elsewhere</h3><div class="mini">${sims.map(x => `<div><b>${esc(x.b.name)}</b>, ${esc(x.b.city)} <span class="small">${Math.round(x.s.v * 100)}% similar · ${esc(x.b.building_type)} → ${esc(x.b.new_use).slice(0, 90)} · ${esc(x.b.status)}</span></div>`).join('')}</div><a class="cxsrc small" href="#cases">all comparable cases</a></div>
-      <div class="small" style="color:var(--ink-2)">Story material: ${st[0]} curated records, ${st[1]} white papers. Content uses (a tour stop, a podcast, a film) draw on these and do not saturate, so they are kept out of the score.</div>
       ${CX[p.id] ? `<div class="teaser"><div class="eyebrow" style="color:var(--accent)">Concept drafted</div><div><b>${esc(CX[p.id].concepts[0].name)}</b>, or ${esc(CX[p.id].concepts[1].name.charAt(0).toLowerCase() + CX[p.id].concepts[1].name.slice(1))}</div>${CX[p.id].prospect ? `<div style="color:var(--ink-2)">A business that could fit: ${esc(CX[p.id].prospect.name)}</div>` : ''}<button type="button" id="gocx">See what it could become</button></div>` : ''}
-      ${moneyBlock(p, top3)}
-      ${!CO && p.econ && top3[0] && firstCat(p.cand1) === top3[0].f.cat ? `<div class="econ"><b>Rent check.</b> ${esc(p.econ)}</div>` : ''}
-      <div><h3>Evidence (${p.ev.length})</h3></div>
-      <div class="evlist">${evs || '<p class="small">No records.</p>'}</div>`;
-    wireVotes(el);
+      <details class="more"><summary>Similar buildings elsewhere, readiness, story material</summary>
+        <div class="mini">${sims.map(x => `<div><b>${esc(x.b.name)}</b>, ${esc(x.b.city)} <span class="small">${Math.round(x.s.v * 100)}% similar · ${esc(x.b.building_type)} → ${esc(x.b.new_use).slice(0, 90)} · ${esc(x.b.status)}</span></div>`).join('')}</div>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:8px">${readiness(p)}${p.ph ? `<span class="pill">${p.ph} survey photos (2026), in the sponsor's image viewer</span>` : ''}</div>
+        <p class="small" style="margin:8px 0 0">Story material: ${st[0]} curated records, ${st[1]} white papers. Content uses (a tour stop, a podcast, a film) draw on these and do not saturate, so they are kept out of the score.</p></details>
+      <details class="more"><summary>Evidence (${p.ev.length} records)</summary><div class="evlist">${evs || '<p class="small">No records.</p>'}</div></details>`;
+    wireVotes(el); wireJumps(el);
     const g = document.getElementById('gocx');
-    if (g) g.onclick = () => document.getElementById('cx').scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }
-
-  // the money lines in the building panel: three top uses, ranges, and how often each comes first
-  function moneyBlock(p, top3) {
-    if (!CO || !top3.length) return '';
-    const rows = top3.map(r => ({ r, e: earn(p, r.f) })).filter(x => x.e);
-    if (!rows.length) return `<div class="money"><h3>What it could pay and earn</h3><p class="small">No rent estimate for these uses yet (${top3.map(r => esc(r.f.name.toLowerCase())).join(', ')}).</p></div>`;
-    const sm = smaaOf(p), b1 = id => { const x = sm && sm.rows.find(y => y.r.f.id === id); return x ? x.b1 : null; };
-    const lead = sm && sm.rows[0];
-    return `<div class="money"><h3>What it could pay and earn</h3>
-      <div class="small">Per year, 2025 dollars, triple-net. The middle figure is the median; the range is P10–P90. <a class="cxsrc" href="#earn">How these are made</a>.</div>
-      <div class="tbl"><table class="btt mt"><thead><tr><th>Use</th><th>Typical asking rent /sq ft</th><th>Revenue /yr</th><th>Rent it could support /yr</th><th>Comes first</th></tr></thead><tbody>
-      ${rows.map(({ r, e }) => `<tr><td><span class="sw" style="background:${cssFill(r.f.cat)};margin-right:6px;vertical-align:-1px"></span>${esc(r.f.name)}<div class="small">${e.units > 1 ? `${e.units} units, ` : ''}${fmt(e.u)} of ${fmt(+p.sqft)} sq ft${e.ap < 1 ? ` · ×${e.ap} approval risk` : ''}${e.rankable ? '' : ' · too little evidence to rank by money'}</div></td>
-        <td class="num">${rng(e.typ)}</td><td class="num">${e.rev ? rng(e.rev, kusd) : '<span class="small">no sales benchmark</span>'}</td>
-        <td class="num">${rng(e.ann, kusd)}${e.pay != null ? `<div class="small">${payWord(e.pay)} (${pctR(e.pay)})</div>` : ''}</td>
-        <td class="num">${b1(r.f.id) == null ? '—' : pctR(b1(r.f.id))}</td></tr>`).join('')}
-      </tbody></table></div>
-      ${lead ? `<div class="small" style="color:var(--ink-2)"><b>${esc(sm.label)}:</b> ${esc(lead.r.f.name.toLowerCase())} comes first in ${pctR(lead.b1)} of ${fmt(sm.N)} scenarios that vary the weights (±5 points), the weight on money (20–50%) and the rents${sm.when ? '; it ' + esc(sm.when) : ''}. Rent it could support = the lower of the asking rent and what the business could afford from its sales.</div>` : ''}
-    </div>`;
+    if (g) g.onclick = () => jumpTo('cx');
   }
 
   function modelLine(p, ids) {
@@ -1415,8 +1465,36 @@ details summary { cursor: pointer; font-weight: 600; }
     document.getElementById('comp').innerHTML = `<table><thead><tr><th>Part (Idea 1)</th><th>Now</th><th>Next</th><th>Final, May 2027</th></tr></thead><tbody>${R.map(([a, s, b, c, d]) => `<tr><td><b>${esc(a)}</b><br><span class="st ${s}">${s === 'done' ? 'done' : s === 'demo' ? 'working draft' : 'next'}</span></td><td>${esc(b)}</td><td>${esc(c)}</td><td>${esc(d)}</td></tr>`).join('')}</tbody></table>`;
   }
 
+  // ---------------- views: one tab at a time, so the page reads as five short pages
+  let VIEW = 'b';
+  function showView(v) {
+    VIEW = v;
+    document.querySelectorAll('[data-view]').forEach(el => { el.hidden = el.dataset.view !== v; });
+    document.querySelectorAll('#tabs button').forEach(b => b.setAttribute('aria-pressed', b.dataset.v === v));
+  }
+  function jumpTo(id) {
+    const t = document.getElementById(id); if (!t) return;
+    const host = t.closest('[data-view]'); if (host && host.hidden) showView(host.dataset.view);
+    t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
   function wireJumps(root) {
-    root.querySelectorAll('a[href^="#"]').forEach(a => a.onclick = e => { const t = document.getElementById(a.getAttribute('href').slice(1)); if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); } });
+    root.querySelectorAll('a[href^="#"]').forEach(a => a.onclick = e => { const id = a.getAttribute('href').slice(1); if (document.getElementById(id)) { e.preventDefault(); jumpTo(id); } });
+  }
+  document.querySelectorAll('#tabs button').forEach(b => b.onclick = () => { showView(b.dataset.v); document.getElementById('tabs').scrollIntoView({ block: 'start' }); });
+  showView('b');
+
+  // ---------------- retail broken down (evidence view)
+  function drawRetailOnce() {
+    const el = document.getElementById('retailtab'); if (!el) return;
+    if (!RT.length) { document.getElementById('retailS').hidden = true; return; }
+    const ctx = (D.retail.context || []).map(c => `<li>${esc(c.t)} <a class="cxsrc" href="${esc(c.u)}" target="_blank" rel="noopener">source</a></li>`).join('');
+    el.innerHTML = `<table class="btt wide"><thead><tr><th>Trade</th><th>On this frontage</th><th>The modern version</th><th>Usual size</th><th>Reference brands</th><th>Watch out for</th></tr></thead><tbody>
+      ${RT.map(t => `<tr><td><b>${esc(t.name)}</b><div class="small">money: see ${esc(FM[t.fmt] ? FM[t.fmt].name.toLowerCase() : t.fmt)}</div></td><td class="num">${t.street} building${t.street === 1 ? '' : 's'}</td><td>${esc(t.modern_version.split(/(?<=\.)\s/).slice(0, 2).join(' '))}</td>
+        <td class="num">${fmt(t.size.low)}–${fmt(t.size.high)} sq ft${t.size.source ? ` <a class="cxsrc" href="${esc(t.size.source.u)}" target="_blank" rel="noopener">source</a>` : ''}</td>
+        <td>${t.brands.map(b => `<div><a class="cxsrc" href="${esc(b.u)}" target="_blank" rel="noopener" title="${esc(b.why)}">${esc(b.name)}</a> <span class="small">${esc(b.city.split('(')[0].trim())}</span></div>`).join('')}<div class="small">hover a name for why it is a reference</div></td>
+        <td class="small">${esc(t.caution.t)}${t.caution.u ? ` <a class="cxsrc" href="${esc(t.caution.u)}" target="_blank" rel="noopener">source</a>` : ''}</td></tr>`).join('')}
+      </tbody></table>${ctx ? `<h3 style="margin-top:10px">Already nearby</h3><ul class="checks">${ctx}</ul>` : ''}
+      <p class="small">"On this frontage" counts the buildings with at least one use record naming the trade (shoes and jewelry count under clothing). Researched ${esc(D.retail.accessed_on || '')}; brands not confirmed open in 2025-26 are left out.</p>`;
   }
 
   // ---------------- compare uses side by side
@@ -1676,6 +1754,6 @@ details summary { cursor: pointer; font-weight: 600; }
   [['f-all', 'all'], ['f-avail', 'avail'], ['f-sponsor', 'sponsor']].forEach(([i, v]) => document.getElementById(i).onclick = () => { filt = v; setSeg(['f-all', 'f-avail', 'f-sponsor'], i); render(); });
   document.getElementById('q').addEventListener('input', e => { q = e.target.value.replace(/\D/g, ''); const hit = P.filter(p => p.address.startsWith(q)); if (q.length >= 4 && hit.length) sel = hit[0].id; render(); });
   function render() { drawLegend(); drawMap(); drawLedger(); drawPanel(); wireJumps(document.getElementById('panel')); drawCompare(); drawCases(); drawConcept(); drawTable(); }
-  drawMethodOnce(); drawEarnOnce(); drawWeights(); render(); drawPlan(); drawMix(); drawRoad(); drawSeg(); drawFbLog();
+  drawMethodOnce(); drawEarnOnce(); drawRetailOnce(); drawWeights(); render(); drawPlan(); drawMix(); drawRoad(); drawSeg(); drawFbLog();
 })();
 </script>
