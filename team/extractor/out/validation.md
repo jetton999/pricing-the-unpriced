@@ -6,7 +6,7 @@ Targets from the research plan: recall 90% or more, category agreement 85% or mo
 
 | Scope | Reference rows | Recalled | Recall | Recall where the source covers those years | Records scored | Category agreement |
 |---|---|---|---|---|---|---|
-| all sources | 32 | 25 | 78% | 96% | 117 | 91% |
+| all sources | 32 | 25 | 78% | 96% | 135 | 88% |
 | new sources only (not used to build the references) | 32 | 9 | 28% | 82% | 28 | 89% |
 
 The "all sources" row is not an independent test: the references were built from the sponsor records the extractor also reads. The "new sources only" row is the independent one. The four blind reference timelines in the research plan, built by a team member without looking at this output, are still needed.
