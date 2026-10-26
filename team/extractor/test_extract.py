@@ -111,7 +111,9 @@ class Pipeline(unittest.TestCase):
         self.assertEqual(sum(len(p['merged_ids']) for p in self.props), 10)
 
     def test_merged_records_follow_their_parcel(self):
-        rows = [e for e in self.E.rows if e['address'].startswith('3028 ') and e['address_method'].startswith('sponsor (')]
+        # Since the October 2026 refresh the sponsor's own export files the 3030 and 3032 rows on 3028 (726),
+        # so they arrive as plain sponsor rows; before it, the extractor moved them ('sponsor (merged ...)').
+        rows = [e for e in self.E.rows if e['address'].startswith('3028 ') and e['address_method'].startswith('sponsor')]
         self.assertTrue(rows)                              # 3030 and 3032 records now sit on 3028
         self.assertTrue(all(e['basis'] == 'stated' for e in rows))
 

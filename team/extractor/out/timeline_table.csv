@@ -1,7 +1,7 @@
 property_id,address,start_year,end_year,use_category,subcategories,occupant,stated_or_inferred,evidence_grade,n_records,sources,source_rows
 693,2900 Greenmount Ave,1890,1890,residential,dwelling (stated),,stated,single record,1,nr_inventory 1,NR nomination B-5229 p. 33
 693,2900 Greenmount Ave,1913,1922,entertainment & assembly,hall / lodge; recreation,,stated,repeated (2+ records),6,polk_directory 6,Polk 1913: 2900 Greenmount av | Polk 1917: 2900 Greenmount av | Polk 1918: 2900 Greenmount av | Polk 1920: 2900 Greenmount av | Polk 1921: 2900 Greenmount av | Polk 1922: 2900 Greenmount av
-693,2900 Greenmount Ave,1914,1923,food & drink,bar / tavern; food retail; restaurant / lunch,Tompkins Supply Co.,stated,documented (2+ source types),10,polk_directory 7; sanborn 2; sponsor 1,Polk 1914: 2900 Greenmount av | Sanborn 1915 sheet 710 | Sanborn 1915 sheet 710 | Polk 1917: 2900 Greenmount av | Polk 1918: 2900 Greenmount av | Polk 1921: 2900 Greenmount av | incident 6576 | Polk 1922: 2900 Greenmount av | ...
+693,2900 Greenmount Ave,1914,1923,food & drink,bar / tavern; food retail; restaurant / lunch,Tompkins Supply Co.,stated,documented (2+ source types),10,polk_directory 7; sanborn 2; sponsor 1,Polk 1914: 2900 Greenmount av | Sanborn 1915 sheet 710 | Sanborn 1915 sheet 710 | Polk 1917: 2900 Greenmount av | Polk 1918: 2900 Greenmount av | Polk 1921: 2900 Greenmount av | Polk 1922: 2900 Greenmount av | Polk 1922: 2900 Greenmount av | ...
 693,2900 Greenmount Ave,1915,1928,retail goods,store building (generic),,stated,documented (2+ source types),6,sanborn 4; polk_directory 2,Sanborn 1915 sheet 710 | Polk 1918: 2904 Greenmount av | Polk 1922: 2904 Greenmount av | Sanborn 1928 sheet 648 | Sanborn 1928 sheet 648 | Sanborn 1928 sheet 648
 693,2900 Greenmount Ave,1937,1937,food & drink,bar / tavern,,stated,single record,1,permit_card 1,BRG48-53 image 674-3863 line 9
 693,2900 Greenmount Ave,1940,1952,entertainment & assembly,recreation,,stated,repeated (2+ records),6,permit_card 6,BRG48-53 image 674-3861 line 14 | BRG48-53 image 674-3861 line 16 | BRG48-53 image 674-3861 line 17 | BRG48-53 image 674-3861 line 18 | BRG48-53 image 674-3861 line 20 | BRG48-53 image 674-3864 line 3
@@ -10,8 +10,8 @@ property_id,address,start_year,end_year,use_category,subcategories,occupant,stat
 693,2900 Greenmount Ave,2026,2026,food & drink,,Greenmount deli $ grocery,stated,single record,1,current_2026 1,Google Maps place listing
 700,2920 Greenmount Ave,1948,1948,entertainment & assembly,recreation,Gabby's Carry Out Shop,stated,single record,1,sponsor 1,incident 17998
 700,2920 Greenmount Ave,2011,2011,production & light industry,,,stated,single record,1,nr_inventory 1,"NR nomination B-5229 p. 33 (use at fieldwork, c. 2011)"
-701,2930 Greenmount Ave,1899,1899,personal services,,Blackwell's Barber Shop,stated,single record,1,sponsor 1,incident 11021
 701,2930 Greenmount Ave,1900,1900,residential,dwelling (stated),,stated,single record,1,nr_inventory 1,NR nomination B-5229 p. 33
+701,2930 Greenmount Ave,1900,1900,personal services,,Blackwell's Barber Shop,stated,single record,1,sponsor 1,incident 11021
 701,2930 Greenmount Ave,1915,1928,residential,dwelling (stated),,stated,documented (2+ source types),3,sanborn 2; sponsor 1,Sanborn 1915 sheet 710 | incident 6563 | Sanborn 1928 sheet 648
 701,2930 Greenmount Ave,1953,1953,residential,,,stated,single record,1,sanborn 1,Sanborn 1953 sheet 648
 701,2930 Greenmount Ave,2011,2011,personal services,,,stated,single record,1,nr_inventory 1,"NR nomination B-5229 p. 33 (use at fieldwork, c. 2011)"
@@ -21,74 +21,78 @@ property_id,address,start_year,end_year,use_category,subcategories,occupant,stat
 702,2932 Greenmount Ave,1953,1953,residential,,,stated,single record,1,sanborn 1,Sanborn 1953 sheet 648
 702,2932 Greenmount Ave,2011,2011,retail goods,store building (generic),,stated,single record,1,nr_inventory 1,"NR nomination B-5229 p. 33 (use at fieldwork, c. 2011)"
 703,2934 Greenmount Ave,1900,1900,residential,dwelling (stated),,stated,single record,1,nr_inventory 1,NR nomination B-5229 p. 32
-703,2934 Greenmount Ave,1913,1915,residential,dwelling (stated),,stated,documented (2+ source types),2,sponsor 1; sanborn 1,incident 6565 | Sanborn 1915 sheet 710
+703,2934 Greenmount Ave,1914,1915,residential,dwelling (stated),,stated,documented (2+ source types),2,sponsor 1; sanborn 1,incident 6565 | Sanborn 1915 sheet 710
 703,2934 Greenmount Ave,1926,1928,residential,private garage,,stated,documented (2+ source types),2,permit_card 1; sanborn 1,BRG48-53 image 674-3868 line 1 | Sanborn 1928 sheet 648
 703,2934 Greenmount Ave,1928,1928,production & light industry,,,stated,single record,1,nr_inventory 1,NR nomination B-5229 p. 32
 703,2934 Greenmount Ave,1953,1953,residential,,,stated,single record,1,sanborn 1,Sanborn 1953 sheet 648
 704,2936 Greenmount Ave,1900,1900,residential,dwelling (stated),,stated,single record,1,nr_inventory 1,NR nomination B-5229 p. 32
-704,2936 Greenmount Ave,1914,1915,residential,dwelling (stated),,stated,documented (2+ source types),2,sponsor 1; sanborn 1,incident 6566 | Sanborn 1915 sheet 710
+704,2936 Greenmount Ave,1915,1915,residential,dwelling (stated),,stated,documented (2+ source types),2,sponsor 1; sanborn 1,incident 6566 | Sanborn 1915 sheet 710
 704,2936 Greenmount Ave,1928,1928,residential,,,stated,single record,1,sanborn 1,Sanborn 1928 sheet 648
 704,2936 Greenmount Ave,1953,1953,residential,,,stated,single record,1,sanborn 1,Sanborn 1953 sheet 648
 705,2938 Greenmount Ave,1900,1900,residential,dwelling (stated),,stated,single record,1,nr_inventory 1,NR nomination B-5229 p. 32
-705,2938 Greenmount Ave,1913,1915,residential,dwelling (stated),,stated,documented (2+ source types),4,sponsor 2; sanborn 2,incident 6567 | incident 6577 | Sanborn 1915 sheet 710 | Sanborn 1915 sheet 710
+705,2938 Greenmount Ave,1914,1915,residential,dwelling (stated),,stated,documented (2+ source types),4,sponsor 2; sanborn 2,incident 6567 | incident 6577 | Sanborn 1915 sheet 710 | Sanborn 1915 sheet 710
 705,2938 Greenmount Ave,1923,1923,production & light industry,,,stated,single record,1,polk_directory 1,Polk 1923: 2938 Greenmount av
 705,2938 Greenmount Ave,1928,1928,residential,,,stated,repeated (2+ records),2,sanborn 2,Sanborn 1928 sheet 648 | Sanborn 1928 sheet 648
 705,2938 Greenmount Ave,1953,1953,residential,,,stated,repeated (2+ records),2,sanborn 2,Sanborn 1953 sheet 648 | Sanborn 1953 sheet 648
 705,2938 Greenmount Ave,2011,2011,institutional & religious,,,stated,single record,1,nr_inventory 1,"NR nomination B-5229 p. 32 (use at fieldwork, c. 2011)"
 706,2942 Greenmount Ave,1900,1900,residential,dwelling (stated),,stated,single record,1,nr_inventory 1,NR nomination B-5229 p. 32
 706,2942 Greenmount Ave,1915,1915,residential,,,stated,single record,1,sanborn 1,Sanborn 1915 sheet 710
-706,2942 Greenmount Ave,1917,1917,entertainment & assembly,hall / lodge,,stated,single record,1,sponsor 1,incident 6568
+706,2942 Greenmount Ave,1918,1918,entertainment & assembly,hall / lodge,,stated,single record,1,sponsor 1,incident 6568
 706,2942 Greenmount Ave,1918,1928,personal services,,,stated,documented (2+ source types),4,polk_directory 3; nr_inventory 1,Polk 1918: 2942 Greenmount av | Polk 1920: 2942 Greenmount av | Polk 1921: 2942 Greenmount av | NR nomination B-5229 p. 32
 706,2942 Greenmount Ave,1928,1928,retail goods,store building (generic),,stated,single record,1,sanborn 1,Sanborn 1928 sheet 648
 706,2942 Greenmount Ave,1953,1953,retail goods,store building (generic),,stated,single record,1,sanborn 1,Sanborn 1953 sheet 648
 706,2942 Greenmount Ave,2011,2011,personal services,,,stated,single record,1,nr_inventory 1,"NR nomination B-5229 p. 32 (use at fieldwork, c. 2011)"
 706,2942 Greenmount Ave,2026,2026,personal services,,Dominican Hair Creations,stated,single record,1,current_2026 1,Dominican Hair Creations - Reviews (Birdeye)
 707,2944 Greenmount Ave,1900,1900,residential,dwelling (stated),,stated,single record,1,nr_inventory 1,NR nomination B-5229 p. 31
-707,2944 Greenmount Ave,1913,1915,residential,dwelling (stated),,stated,documented (2+ source types),2,sponsor 1; sanborn 1,incident 6569 | Sanborn 1915 sheet 710
+707,2944 Greenmount Ave,1914,1915,residential,dwelling (stated),,stated,documented (2+ source types),2,sponsor 1; sanborn 1,incident 6569 | Sanborn 1915 sheet 710
 707,2944 Greenmount Ave,1928,1928,residential,,,stated,single record,1,sanborn 1,Sanborn 1928 sheet 648
 707,2944 Greenmount Ave,1953,1953,residential,,,stated,single record,1,sanborn 1,Sanborn 1953 sheet 648
 708,2946 Greenmount Ave,1900,1900,residential,dwelling (stated),,stated,single record,1,nr_inventory 1,NR nomination B-5229 p. 31
-708,2946 Greenmount Ave,1913,1915,residential,dwelling (stated),,stated,documented (2+ source types),2,sponsor 1; sanborn 1,incident 6570 | Sanborn 1915 sheet 710
+708,2946 Greenmount Ave,1914,1915,residential,dwelling (stated),,stated,documented (2+ source types),2,sponsor 1; sanborn 1,incident 6570 | Sanborn 1915 sheet 710
 708,2946 Greenmount Ave,1928,1928,residential,,,stated,single record,1,sanborn 1,Sanborn 1928 sheet 648
 708,2946 Greenmount Ave,1953,1953,residential,,,stated,single record,1,sanborn 1,Sanborn 1953 sheet 648
 708,2946 Greenmount Ave,2011,2011,retail goods,store building (generic),,stated,single record,1,nr_inventory 1,"NR nomination B-5229 p. 31 (use at fieldwork, c. 2011)"
 709,2948 Greenmount Ave,1900,1900,residential,dwelling (stated),,stated,single record,1,nr_inventory 1,NR nomination B-5229 p. 31
-709,2948 Greenmount Ave,1913,1921,personal services,,,stated,documented (2+ source types),5,polk_directory 4; sponsor 1,incident 6571 | Polk 1914: 2948 Greenmount av | Polk 1915: 2948 Greenmount av | Polk 1920: 2948 Greenmount av | Polk 1921: 2948 Greenmount av
+709,2948 Greenmount Ave,1914,1921,personal services,,,stated,documented (2+ source types),5,polk_directory 4; sponsor 1,incident 6571 | Polk 1914: 2948 Greenmount av | Polk 1915: 2948 Greenmount av | Polk 1920: 2948 Greenmount av | Polk 1921: 2948 Greenmount av
 709,2948 Greenmount Ave,1915,1915,residential,,,stated,single record,1,sanborn 1,Sanborn 1915 sheet 710
 709,2948 Greenmount Ave,1928,1928,residential,,,stated,single record,1,sanborn 1,Sanborn 1928 sheet 648
 709,2948 Greenmount Ave,1953,1953,residential,,,stated,single record,1,sanborn 1,Sanborn 1953 sheet 648
 710,2950 Greenmount Ave,1900,1900,residential,dwelling (stated),,stated,single record,1,nr_inventory 1,NR nomination B-5229 p. 31
-710,2950 Greenmount Ave,1915,1916,residential,dwelling (stated),,stated,documented (2+ source types),2,sanborn 1; sponsor 1,Sanborn 1915 sheet 710 | incident 6572
+710,2950 Greenmount Ave,1915,1917,residential,dwelling (stated),,stated,documented (2+ source types),2,sanborn 1; sponsor 1,Sanborn 1915 sheet 710 | incident 6572
 710,2950 Greenmount Ave,1917,1917,personal services,,,stated,single record,1,polk_directory 1,Polk 1917: 2950 Greenmount av
 710,2950 Greenmount Ave,1928,1928,residential,,,stated,single record,1,sanborn 1,Sanborn 1928 sheet 648
 710,2950 Greenmount Ave,1935,1935,production & light industry,,Ridgewood Coal Company,stated,single record,1,sponsor 1,incident 18014
 710,2950 Greenmount Ave,1953,1956,residential,,,stated,documented (2+ source types),2,sanborn 1; permit_card 1,Sanborn 1953 sheet 648 | BRG48-53 image 674-3876 line 1
 711,2952 Greenmount Ave,1900,1900,residential,dwelling (stated),,stated,single record,1,nr_inventory 1,NR nomination B-5229 p. 30
-711,2952 Greenmount Ave,1913,1915,residential,dwelling (stated),,stated,documented (2+ source types),2,sponsor 1; sanborn 1,incident 6573 | Sanborn 1915 sheet 710
+711,2952 Greenmount Ave,1914,1915,residential,dwelling (stated),,stated,documented (2+ source types),2,sponsor 1; sanborn 1,incident 6573 | Sanborn 1915 sheet 710
 711,2952 Greenmount Ave,1928,1928,residential,,,stated,single record,1,sanborn 1,Sanborn 1928 sheet 648
 711,2952 Greenmount Ave,1953,1953,residential,,,stated,single record,1,sanborn 1,Sanborn 1953 sheet 648
+711,2952 Greenmount Ave,1965,1965,office,,,stated,single record,1,sponsor 1,incident 39475
 712,2954 Greenmount Ave,1900,1900,residential,dwelling (stated),,stated,single record,1,nr_inventory 1,NR nomination B-5229 p. 30
-712,2954 Greenmount Ave,1913,1915,residential,dwelling (stated),,stated,documented (2+ source types),2,sponsor 1; sanborn 1,incident 6574 | Sanborn 1915 sheet 710
+712,2954 Greenmount Ave,1914,1915,residential,dwelling (stated),,stated,documented (2+ source types),2,sponsor 1; sanborn 1,incident 6574 | Sanborn 1915 sheet 710
 712,2954 Greenmount Ave,1928,1928,residential,private garage,,stated,documented (2+ source types),2,permit_card 1; sanborn 1,BRG48-53 image 674-3878 line 1 | Sanborn 1928 sheet 648
 712,2954 Greenmount Ave,1948,1953,residential,,,stated,documented (2+ source types),2,permit_card 1; sanborn 1,BRG48-53 image 674-3878 line 4 | Sanborn 1953 sheet 648
 713,2956 Greenmount Ave,1900,1900,residential,dwelling (stated),,stated,single record,1,nr_inventory 1,NR nomination B-5229 p. 30
-713,2956 Greenmount Ave,1913,1915,residential,dwelling (stated),,stated,documented (2+ source types),2,sponsor 1; sanborn 1,incident 6575 | Sanborn 1915 sheet 710
+713,2956 Greenmount Ave,1914,1915,residential,dwelling (stated),,stated,documented (2+ source types),2,sponsor 1; sanborn 1,incident 6575 | Sanborn 1915 sheet 710
 713,2956 Greenmount Ave,1928,1928,residential,,,stated,single record,1,sanborn 1,Sanborn 1928 sheet 648
 713,2956 Greenmount Ave,1953,1953,residential,,,stated,single record,1,sanborn 1,Sanborn 1953 sheet 648
 714,2958 Greenmount Ave,1900,1900,residential,dwelling (stated),,stated,single record,1,nr_inventory 1,NR nomination B-5229 p. 30
-714,2958 Greenmount Ave,1923,1923,food & drink,food retail,,stated,single record,1,sponsor 1,incident 5169
 714,2958 Greenmount Ave,1924,1928,residential,dwelling (stated),,stated,documented (2+ source types),4,sponsor 3; sanborn 1,incident 4799 | incident 4800 | incident 4801 | Sanborn 1928 sheet 648
-714,2958 Greenmount Ave,1927,1928,retail goods,store building (generic),,stated,documented (2+ source types),2,sponsor 1; nr_inventory 1,incident 5170 | NR nomination B-5229 p. 30
+714,2958 Greenmount Ave,1924,1924,food & drink,food retail,,stated,single record,1,sponsor 1,incident 5169
+714,2958 Greenmount Ave,1928,1928,retail goods,store building (generic),,stated,documented (2+ source types),2,sponsor 1; nr_inventory 1,incident 5170 | NR nomination B-5229 p. 30
 714,2958 Greenmount Ave,1953,1953,residential,,,stated,single record,1,sanborn 1,Sanborn 1953 sheet 648
-714,2958 Greenmount Ave,1962,1969,office,,Fait Realty,stated,repeated (2+ records),8,sponsor 8,incident 5175 | incident 4810 | incident 4811 | incident 4812 | incident 4813 | incident 4814 | incident 4815 | incident 5178
-714,2958 Greenmount Ave,1986,1986,office,,,stated,single record,1,sponsor 1,incident 4819
-714,2958 Greenmount Ave,1988,1989,retail goods,store building (generic),,stated,repeated (2+ records),2,sponsor 2,incident 5182 | incident 4820
+714,2958 Greenmount Ave,1963,1970,office,,Fait Realty,stated,repeated (2+ records),4,sponsor 4,incident 5175 | incident 4812 | incident 4814 | incident 5178
+714,2958 Greenmount Ave,1965,1969,personal services,,Fait Realty,stated,repeated (2+ records),2,sponsor 2,incident 4811 | incident 4815
+714,2958 Greenmount Ave,1965,1965,production & light industry,,,stated,single record,1,sponsor 1,incident 39478
+714,2958 Greenmount Ave,1966,1966,entertainment & assembly,hall / lodge,Fait Realty,stated,single record,1,sponsor 1,incident 4813
+714,2958 Greenmount Ave,1989,1989,retail goods,,,stated,repeated (2+ records),2,sponsor 2,incident 4820 | incident 5182
 714,2958 Greenmount Ave,2011,2011,personal services,,,stated,single record,1,nr_inventory 1,"NR nomination B-5229 p. 30 (use at fieldwork, c. 2011)"
 715,3000 Greenmount Ave,1913,1913,institutional & religious,,,stated,single record,1,polk_directory 1,Polk 1913: 3000 Greenmount av
 715,3000 Greenmount Ave,1914,1928,retail goods,store building (generic),,stated,documented (2+ source types),10,polk_directory 7; sponsor 1; sanborn 1; nr_inventory 1,Polk 1914: 3000 Greenmount av | Polk 1915: 3008 Greenmount av | Polk 1917: 3008 Greenmount av | Polk 1918: 3008 Greenmount av | incident 10286 | Polk 1920: 3008 Greenmount av | Polk 1921: 3008 Greenmount av | Polk 1922: 3000 Greenmount av | ...
 715,3000 Greenmount Ave,1953,1953,retail goods,store building (generic),,stated,documented (2+ source types),3,sanborn 2; permit_card 1,BRG48-53 image 675-0007 line 6 | Sanborn 1953 sheet 654 | Sanborn 1953 sheet 654
-715,3000 Greenmount Ave,1954,1959,office,,,stated,documented (2+ source types),3,permit_card 2; sponsor 1,BRG48-53 image 675-0006 line 1 | BRG48-53 image 675-0007 line 7 | incident 10287
-715,3000 Greenmount Ave,1959,1959,institutional & religious,,Wolfe's Florist,stated,single record,1,sponsor 1,incident 11523
+715,3000 Greenmount Ave,1954,1960,office,,,stated,documented (2+ source types),3,permit_card 2; sponsor 1,BRG48-53 image 675-0006 line 1 | BRG48-53 image 675-0007 line 7 | incident 10287
+715,3000 Greenmount Ave,1955,1955,food & drink,bar / tavern,,stated,single record,1,sponsor 1,incident 42025
+715,3000 Greenmount Ave,1960,1960,institutional & religious,,Wolfe's Florist,stated,single record,1,sponsor 1,incident 11523
 715,3000 Greenmount Ave,2011,2011,institutional & religious,,,stated,single record,1,nr_inventory 1,"NR nomination B-5229 p. 29 (use at fieldwork, c. 2011)"
 715,3000 Greenmount Ave,2026,2026,retail goods,,Urban Reads Bookstore,stated,single record,1,current_2026 1,Book Signing with Antonia Hylton - Urban Reads Bookstore (event page)
 718,3009 Greenmount Ave,1914,1914,institutional & religious,,,stated,single record,1,polk_directory 1,Polk 1914: 3009 Greenmount av
@@ -98,32 +102,52 @@ property_id,address,start_year,end_year,use_category,subcategories,occupant,stat
 718,3009 Greenmount Ave,1958,1958,automotive,,,inferred,single record,1,permit_card 1,BRG48-53 image 677-0687 line 4
 718,3009 Greenmount Ave,2011,2011,institutional & religious,,,stated,single record,1,nr_inventory 1,"NR nomination B-5229 p. 26 (use at fieldwork, c. 2011)"
 718,3009 Greenmount Ave,2026,2026,institutional & religious,,The Bit Center (BIT Community Center Inc.) / The Forge,stated,single record,1,current_2026 1,About Us - The Bit Center
-719,3010 Greenmount Ave,1903,1915,food & drink,food retail,,inferred,repeated (2+ records),8,polk_directory 8,Polk 1903: 920 York rd (now 3014 Greenmount) | Polk 1905: 920 York rd (now 3014 Greenmount) | Polk 1906: 920 York rd (now 3014 Greenmount) | Polk 1907: 920 York rd (now 3014 Greenmount) | Polk 1908: 920 York rd (now 3014 Greenmount) | Polk 1909: 920 York rd (now 3014 Greenmount) | Polk 1914: 3014 Greenmount av | Polk 1915: 3014 Greenmount av
-719,3010 Greenmount Ave,1915,1915,residential,,,inferred,single record,1,sanborn 1,Sanborn 1915 sheet 717
-719,3010 Greenmount Ave,1917,1920,automotive,,,inferred,repeated (2+ records),2,polk_directory 2,Polk 1917: 3014 Greenmount av | Polk 1920: 3014 Greenmount av
+719,3010 Greenmount Ave,1872,1872,food & drink,food retail,,stated,single record,1,sponsor 1,incident 41869
+719,3010 Greenmount Ave,1883,1915,food & drink,food retail,,stated,documented (2+ source types),12,polk_directory 8; sponsor 4,incident 41878 | incident 41873 | incident 41904 | Polk 1903: 920 York rd (now 3014 Greenmount) | Polk 1905: 920 York rd (now 3014 Greenmount) | Polk 1906: 920 York rd (now 3014 Greenmount) | Polk 1907: 920 York rd (now 3014 Greenmount) | Polk 1908: 920 York rd (now 3014 Greenmount) | ...
+719,3010 Greenmount Ave,1887,1887,retail goods,,,stated,single record,1,sponsor 1,incident 41870
+719,3010 Greenmount Ave,1901,1901,retail goods,,,stated,single record,1,sponsor 1,incident 41874
+719,3010 Greenmount Ave,1903,1903,entertainment & assembly,hall / lodge,,stated,single record,1,sponsor 1,incident 41879
+719,3010 Greenmount Ave,1915,1916,residential,dwelling (stated),,stated,documented (2+ source types),2,sanborn 1; sponsor 1,Sanborn 1915 sheet 717 | incident 41921
+719,3010 Greenmount Ave,1917,1917,entertainment & assembly,hall / lodge,,stated,single record,1,sponsor 1,incident 41881
+719,3010 Greenmount Ave,1917,1926,automotive,,,stated,documented (2+ source types),3,polk_directory 2; sponsor 1,Polk 1917: 3014 Greenmount av | Polk 1920: 3014 Greenmount av | incident 41938
 719,3010 Greenmount Ave,1917,1921,personal services,,,inferred,repeated (2+ records),4,polk_directory 4,Polk 1917: 3014 Greenmount av | Polk 1918: 3014 Greenmount av | Polk 1920: 3014 Greenmount av | Polk 1921: 3014 Greenmount av
-719,3010 Greenmount Ave,1919,1919,retail goods,,,stated,single record,1,sponsor 1,incident 10292
+719,3010 Greenmount Ave,1920,1920,retail goods,,,stated,single record,1,sponsor 1,incident 10292
+719,3010 Greenmount Ave,1920,1920,institutional & religious,,,stated,single record,1,sponsor 1,incident 41882
+719,3010 Greenmount Ave,1928,1928,food & drink,food retail,,stated,single record,1,sponsor 1,incident 41924
 719,3010 Greenmount Ave,1928,1928,residential,,,stated,documented (2+ source types),2,sanborn 1; nr_inventory 1,Sanborn 1928 sheet 654 | NR nomination B-5229 p. 29
+719,3010 Greenmount Ave,1950,1953,residential,dwelling (stated),,stated,documented (2+ source types),3,sponsor 2; sanborn 1,incident 41875 | incident 41876 | Sanborn 1953 sheet 654
 719,3010 Greenmount Ave,1953,1953,personal services,,,stated,single record,1,permit_card 1,BRG48-53 image 675-0008 line 3
-719,3010 Greenmount Ave,1953,1953,residential,,,inferred,single record,1,sanborn 1,Sanborn 1953 sheet 654
-719,3010 Greenmount Ave,1955,1958,office,,,stated,repeated (2+ records),3,permit_card 3,BRG48-53 image 675-0008 line 4 | BRG48-53 image 675-0008 line 8 | BRG48-53 image 675-0008 line 9
-719,3010 Greenmount Ave,1977,1977,retail goods,named store,Laura's Budget Shop,stated,single record,1,dhcd_1970s 1,BRG48-43-10 W004: BRG48-43-10-2 p.3 (scan id 3968)
+719,3010 Greenmount Ave,1955,1958,office,,,stated,documented (2+ source types),5,permit_card 3; sponsor 2,BRG48-53 image 675-0008 line 4 | BRG48-53 image 675-0008 line 8 | incident 41959 | incident 41930 | BRG48-53 image 675-0008 line 9
+719,3010 Greenmount Ave,1955,1955,production & light industry,,,stated,single record,1,sponsor 1,incident 41934
+719,3010 Greenmount Ave,1956,1956,retail goods,store building (generic),,stated,repeated (2+ records),2,sponsor 2,incident 41929 | incident 41962
+719,3010 Greenmount Ave,1972,1977,retail goods,named store; store building (generic),Laura's Budget Shop,stated,documented (2+ source types),2,sponsor 1; dhcd_1970s 1,incident 41927 | BRG48-43-10 W004: BRG48-43-10-2 p.3 (scan id 3968)
+719,3010 Greenmount Ave,1984,1984,production & light industry,,,stated,single record,1,sponsor 1,incident 41955
 719,3010 Greenmount Ave,2011,2011,food & drink,restaurant / lunch,,stated,single record,1,nr_inventory 1,"NR nomination B-5229 p. 29 (use at fieldwork, c. 2011)"
 719,3010 Greenmount Ave,2026,2026,retail goods,,convenience store (Greenmount Convenience Store) ; day care center ; church,stated,single record,1,current_2026 1,"3010 Greenmount Ave: Price Reduced on 8,700 sq.ft. Retail Center (Ben Frederick)"
+720,3011 Greenmount Ave,1879,1887,retail goods,store building (generic),,stated,repeated (2+ records),2,sponsor 2,incident 42088 | incident 42350
+720,3011 Greenmount Ave,1887,1888,personal services,,,stated,repeated (2+ records),2,sponsor 2,incident 42348 | incident 42087
+720,3011 Greenmount Ave,1888,1888,office,,,stated,single record,1,sponsor 1,incident 42347
+720,3011 Greenmount Ave,1889,1889,institutional & religious,,,stated,single record,1,sponsor 1,incident 42346
+720,3011 Greenmount Ave,1901,1901,personal services,,,stated,single record,1,sponsor 1,incident 42351
 720,3011 Greenmount Ave,1901,1908,office,,,stated,repeated (2+ records),7,polk_directory 7,Polk 1901: 1003 York rd (now 3011 Greenmount) | Polk 1903: 1003 York rd (now 3011 Greenmount) | Polk 1904: 1003 York rd (now 3011 Greenmount) | Polk 1905: 1003 York rd (now 3011 Greenmount) | Polk 1906: 1003 York rd (now 3011 Greenmount) | Polk 1907: 1003 York rd (now 3011 Greenmount) | Polk 1908: 1003 York rd (now 3011 Greenmount)
-720,3011 Greenmount Ave,1904,1928,retail goods,store building (generic),,stated,documented (2+ source types),10,polk_directory 6; sanborn 3; sponsor 1,Polk 1904: 1005 York rd (now 3013 Greenmount) | Polk 1905: 1005 York rd (now 3013 Greenmount) | Polk 1906: 1005 York rd (now 3013 Greenmount) | Polk 1907: 1005 York rd (now 3013 Greenmount) | Polk 1908: 1005 York rd (now 3013 Greenmount) | Polk 1909: 1005 York rd (now 3013 Greenmount) | Sanborn 1915 sheet 718 | incident 10293 | ...
-720,3011 Greenmount Ave,1915,1918,personal services,,,stated,repeated (2+ records),3,polk_directory 3,Polk 1915: 3013 Greenmount av | Polk 1917: 3013 Greenmount av | Polk 1918: 3013 Greenmount av
+720,3011 Greenmount Ave,1904,1915,retail goods,store building (generic),,stated,documented (2+ source types),7,polk_directory 6; sanborn 1,Polk 1904: 1005 York rd (now 3013 Greenmount) | Polk 1905: 1005 York rd (now 3013 Greenmount) | Polk 1906: 1005 York rd (now 3013 Greenmount) | Polk 1907: 1005 York rd (now 3013 Greenmount) | Polk 1908: 1005 York rd (now 3013 Greenmount) | Polk 1909: 1005 York rd (now 3013 Greenmount) | Sanborn 1915 sheet 718
+720,3011 Greenmount Ave,1905,1905,food & drink,food retail,,stated,single record,1,sponsor 1,incident 42349
+720,3011 Greenmount Ave,1913,1918,personal services,,,stated,documented (2+ source types),4,polk_directory 3; sponsor 1,incident 42353 | Polk 1915: 3013 Greenmount av | Polk 1917: 3013 Greenmount av | Polk 1918: 3013 Greenmount av
 720,3011 Greenmount Ave,1915,1928,production & light industry,,,stated,documented (2+ source types),8,polk_directory 7; nr_inventory 1,Polk 1915: 3011 Greenmount av | Polk 1918: 3011 Greenmount av | Polk 1920: 3011 Greenmount av | Polk 1921: 3011 Greenmount av | Polk 1922: 3013 Greenmount av | Polk 1923: 3011 Greenmount av | Polk 1923: 3011 Greenmount av | NR nomination B-5229 p. 22
+720,3011 Greenmount Ave,1923,1923,food & drink,food retail,,stated,single record,1,sponsor 1,incident 42354
+720,3011 Greenmount Ave,1928,1928,retail goods,store building (generic),,stated,documented (2+ source types),3,sanborn 2; sponsor 1,incident 42356 | Sanborn 1928 sheet 735 | Sanborn 1928 sheet 735
 720,3011 Greenmount Ave,1953,1956,retail goods,store building (generic),,stated,documented (2+ source types),3,permit_card 2; sanborn 1,Sanborn 1953 sheet 735 | BRG48-53 image 677-0890 line 3 | BRG48-53 image 677-0891 line 2
-721,3015 Greenmount Ave,1899,1899,personal services,,Vinson's Animal Hospital,stated,single record,1,sponsor 1,incident 11082
-721,3015 Greenmount Ave,1904,1928,retail goods,store building (generic),,stated,documented (2+ source types),13,polk_directory 11; sanborn 2,Polk 1904: 1007 York rd (now 3015 Greenmount) | Polk 1905: 1007 York rd (now 3015 Greenmount) | Polk 1906: 1007 York rd (now 3015 Greenmount) | Polk 1907: 1007 York rd (now 3015 Greenmount) | Polk 1908: 1007 York rd (now 3015 Greenmount) | Polk 1909: 1007 York rd (now 3015 Greenmount) | Polk 1912: 1007 York rd (now 3015 Greenmount) | Polk 1915: 3015 Greenmount av | ...
-721,3015 Greenmount Ave,1907,1907,food & drink,food retail,,stated,single record,1,polk_directory 1,Polk 1907: 1007 York rd (now 3015 Greenmount)
+720,3011 Greenmount Ave,1960,1960,personal services,,,stated,single record,1,sponsor 1,incident 42358
+721,3015 Greenmount Ave,1900,1900,personal services,,Vinson's Animal Hospital,stated,single record,1,sponsor 1,incident 11082
+721,3015 Greenmount Ave,1903,1912,food & drink,bar / tavern; food retail,,stated,documented (2+ source types),3,sponsor 2; polk_directory 1,incident 42037 | Polk 1907: 1007 York rd (now 3015 Greenmount) | incident 42051
+721,3015 Greenmount Ave,1904,1928,retail goods,store building (generic),,stated,documented (2+ source types),20,polk_directory 11; sponsor 7; sanborn 2,Polk 1904: 1007 York rd (now 3015 Greenmount) | Polk 1905: 1007 York rd (now 3015 Greenmount) | Polk 1906: 1007 York rd (now 3015 Greenmount) | Polk 1907: 1007 York rd (now 3015 Greenmount) | incident 42046 | Polk 1908: 1007 York rd (now 3015 Greenmount) | incident 42047 | Polk 1909: 1007 York rd (now 3015 Greenmount) | ...
 721,3015 Greenmount Ave,1907,1908,production & light industry,,,stated,repeated (2+ records),3,polk_directory 3,Polk 1907: 1007 York rd (now 3015 Greenmount) | Polk 1908: 1007 York rd (now 3015 Greenmount) | Polk 1908: 1007 York rd (now 3015 Greenmount)
+721,3015 Greenmount Ave,1911,1934,personal services,,,stated,documented (2+ source types),7,sponsor 4; polk_directory 1; nr_inventory 1; permit_card 1,incident 42048 | incident 42039 | Polk 1922: 3017 Greenmount av | incident 42065 | incident 42066 | NR nomination B-5229 p. 22 | BRG48-53 image 677-0892 line 1
+721,3015 Greenmount Ave,1914,1914,institutional & religious,,,stated,single record,1,sponsor 1,incident 42054
 721,3015 Greenmount Ave,1914,1928,office,,,stated,documented (2+ source types),22,polk_directory 20; sanborn 2,Polk 1914: 3017 Greenmount av | Sanborn 1915 sheet 718 | Polk 1920: 3015 Greenmount av | Polk 1921: 3015 Greenmount av | Polk 1921: 3015 Greenmount av | Polk 1921: 3015 Greenmount av | Polk 1921: 3015 Greenmount av | Polk 1922: 3015 Greenmount av | ...
-721,3015 Greenmount Ave,1922,1934,personal services,,,stated,documented (2+ source types),3,polk_directory 1; nr_inventory 1; permit_card 1,Polk 1922: 3017 Greenmount av | NR nomination B-5229 p. 22 | BRG48-53 image 677-0892 line 1
 721,3015 Greenmount Ave,1950,1958,personal services,,Vinson's Animal Hospital,stated,documented (2+ source types),2,permit_card 1; sponsor 1,BRG48-53 image 677-0892 line 2 | incident 18025
 721,3015 Greenmount Ave,1953,1953,retail goods,store building (generic),,inferred,single record,1,sanborn 1,Sanborn 1953 sheet 735
-721,3015 Greenmount Ave,1985,1985,personal services,,Vinson's Animal Hospital,stated,single record,1,sponsor 1,incident 10344
+721,3015 Greenmount Ave,1986,1986,personal services,,Vinson's Animal Hospital,stated,single record,1,sponsor 1,incident 10344
 721,3015 Greenmount Ave,2013,2013,personal services,,Vinson's veterinary clinic,stated,single record,1,sponsor 1,incident 20689
 722,3019 Greenmount Ave,1903,1909,personal services,,,stated,repeated (2+ records),2,polk_directory 2,Polk 1903: 1009 York rd (now 3019 Greenmount) | Polk 1909: 1009 York rd (now 3019 Greenmount)
 722,3019 Greenmount Ave,1905,1908,food & drink,bar / tavern; food retail,,stated,repeated (2+ records),3,polk_directory 3,Polk 1905: 1009 York rd (now 3019 Greenmount) | Polk 1906: 1009 York rd (now 3019 Greenmount) | Polk 1908: 1009 York rd (now 3019 Greenmount)
@@ -131,47 +155,62 @@ property_id,address,start_year,end_year,use_category,subcategories,occupant,stat
 722,3019 Greenmount Ave,1928,1928,retail goods,store building (generic),,stated,single record,1,sanborn 1,Sanborn 1928 sheet 735
 722,3019 Greenmount Ave,1953,1953,retail goods,store building (generic),,stated,single record,1,sanborn 1,Sanborn 1953 sheet 735
 722,3019 Greenmount Ave,2026,2026,retail goods,,Waverly Main Street Hats (Main Street Hats),stated,single record,1,current_2026 1,WAVERLY MAIN STREET HATS - Updated July 2026 - 3019 Greenmount Ave - Yelp (search result title)
-723,3021 Greenmount Ave,1879,1879,personal services,,Main Street Hats,stated,single record,1,sponsor 1,incident 11085
+723,3021 Greenmount Ave,1880,1880,personal services,,Main Street Hats,stated,single record,1,sponsor 1,incident 11085
 723,3021 Greenmount Ave,1880,1880,residential,dwelling (stated),,stated,single record,1,nr_inventory 1,NR nomination B-5229 p. 21
-723,3021 Greenmount Ave,1912,1928,personal services,,,stated,documented (2+ source types),10,polk_directory 8; sponsor 1; nr_inventory 1,Polk 1912: 3021 Greenmount av | Polk 1914: 3021 Greenmount av | Polk 1915: 3021 Greenmount av | incident 10296 | Polk 1920: 3021 Greenmount av | Polk 1921: 3021 Greenmount av | Polk 1922: 3021 Greenmount av | Polk 1923: 3021 Greenmount av | ...
+723,3021 Greenmount Ave,1912,1928,personal services,,,stated,documented (2+ source types),11,polk_directory 8; sponsor 2; nr_inventory 1,Polk 1912: 3021 Greenmount av | Polk 1914: 3021 Greenmount av | Polk 1915: 3021 Greenmount av | incident 10296 | Polk 1920: 3021 Greenmount av | Polk 1921: 3021 Greenmount av | Polk 1922: 3021 Greenmount av | incident 41323 | ...
+723,3021 Greenmount Ave,1912,1912,food & drink,food retail,,stated,single record,1,sponsor 1,incident 41321
 723,3021 Greenmount Ave,1915,1915,office,,,stated,single record,1,sanborn 1,Sanborn 1915 sheet 718
-723,3021 Greenmount Ave,1928,1928,food & drink,food retail,,stated,single record,1,nr_inventory 1,NR nomination B-5229 p. 21
+723,3021 Greenmount Ave,1923,1928,food & drink,food retail,,stated,documented (2+ source types),2,sponsor 1; nr_inventory 1,incident 41322 | NR nomination B-5229 p. 21
 723,3021 Greenmount Ave,1928,1928,retail goods,store building (generic),,stated,single record,1,sanborn 1,Sanborn 1928 sheet 735
 723,3021 Greenmount Ave,1953,1953,retail goods,store building (generic),,stated,single record,1,sanborn 1,Sanborn 1953 sheet 735
+723,3021 Greenmount Ave,1977,1977,residential,dwelling (stated),,stated,single record,1,sponsor 1,incident 38982
 723,3021 Greenmount Ave,2013,2013,food & drink,food retail,Main Street Hats,stated,single record,1,sponsor 1,incident 20690
 723,3021 Greenmount Ave,2026,2026,retail goods,,Supreme Impressions,stated,single record,1,current_2026 1,SUPREME IMPRESSIONS - Updated January 2026 - 3021 Greenmount Ave - Yelp (search result title)
 724,3023 Greenmount Ave,1900,1900,residential,dwelling (stated),,stated,single record,1,nr_inventory 1,NR nomination B-5229 p. 21
 724,3023 Greenmount Ave,1914,1928,personal services,,,stated,documented (2+ source types),5,polk_directory 4; nr_inventory 1,Polk 1914: 3023 Greenmount av | Polk 1915: 3023 Greenmount av | Polk 1921: 3023 Greenmount av | Polk 1922: 3023 Greenmount av | NR nomination B-5229 p. 21
 724,3023 Greenmount Ave,1915,1915,retail goods,store building (generic),,stated,single record,1,sanborn 1,Sanborn 1915 sheet 718
-724,3023 Greenmount Ave,1919,1920,food & drink,restaurant / lunch,,stated,documented (2+ source types),2,sponsor 1; polk_directory 1,incident 10297 | Polk 1920: 3023 Greenmount av
+724,3023 Greenmount Ave,1920,1920,food & drink,restaurant / lunch,,stated,documented (2+ source types),2,sponsor 1; polk_directory 1,incident 10297 | Polk 1920: 3023 Greenmount av
 724,3023 Greenmount Ave,1920,1921,office,,,stated,repeated (2+ records),4,polk_directory 4,Polk 1920: 3023 Greenmount av | Polk 1920: 3023 Greenmount av | Polk 1921: 3023 Greenmount av | Polk 1921: 3023 Greenmount av
 724,3023 Greenmount Ave,1928,1928,retail goods,store building (generic),,stated,repeated (2+ records),2,sanborn 2,Sanborn 1928 sheet 735 | Sanborn 1928 sheet 735
 724,3023 Greenmount Ave,1934,1934,residential,,,stated,single record,1,permit_card 1,BRG48-53 image 677-0895 line 2
 724,3023 Greenmount Ave,1953,1961,food & drink,bar / tavern; restaurant / lunch,,stated,documented (2+ source types),5,sanborn 2; sponsor 2; permit_card 1,Sanborn 1953 sheet 735 | Sanborn 1953 sheet 735 | incident 5145 | BRG48-53 image 677-0895 line 6 | incident 5146
+724,3023 Greenmount Ave,1977,1977,food & drink,bar / tavern,,stated,single record,1,sponsor 1,incident 38983
+725,3026 Greenmount Ave,1878,1878,retail goods,store building (generic),,stated,single record,1,sponsor 1,incident 42223
 725,3026 Greenmount Ave,1900,1900,residential,dwelling (stated),,stated,single record,1,nr_inventory 1,NR nomination B-5229 p. 29
-725,3026 Greenmount Ave,1915,1923,production & light industry,,,stated,documented (2+ source types),6,polk_directory 5; sponsor 1,Polk 1915: 3026 Greenmount av | Polk 1917: 3026 Greenmount av | incident 10304 | Polk 1920: 3026 Greenmount av | Polk 1921: 3026 Greenmount av | Polk 1923: 3026 Greenmount av
+725,3026 Greenmount Ave,1915,1915,automotive,,,stated,single record,1,sponsor 1,incident 41920
+725,3026 Greenmount Ave,1915,1923,production & light industry,,,stated,repeated (2+ records),5,polk_directory 5,Polk 1915: 3026 Greenmount av | Polk 1917: 3026 Greenmount av | Polk 1920: 3026 Greenmount av | Polk 1921: 3026 Greenmount av | Polk 1923: 3026 Greenmount av
+725,3026 Greenmount Ave,1915,1915,personal services,,,stated,single record,1,sponsor 1,incident 42232
 725,3026 Greenmount Ave,1915,1915,residential,,,stated,single record,1,sanborn 1,Sanborn 1915 sheet 717
+725,3026 Greenmount Ave,1917,1917,retail goods,store building (generic),,stated,single record,1,sponsor 1,incident 10304
 725,3026 Greenmount Ave,1928,1928,residential,,,stated,single record,1,sanborn 1,Sanborn 1928 sheet 654
 725,3026 Greenmount Ave,1937,1937,retail goods,store building (generic),,stated,single record,1,nr_inventory 1,NR nomination B-5229 p. 29
+725,3026 Greenmount Ave,1950,1950,production & light industry,,,stated,single record,1,sponsor 1,incident 42219
 725,3026 Greenmount Ave,1953,1953,residential,,,stated,single record,1,sanborn 1,Sanborn 1953 sheet 654
-726,3028 Greenmount Ave,1900,1900,residential,dwelling (stated),,stated,single record,1,nr_inventory 1,NR nomination B-5229 p. 28
-726,3028 Greenmount Ave,1912,1912,office,,,stated,single record,1,polk_directory 1,Polk 1912: 3032 Greenmount av
-726,3028 Greenmount Ave,1914,1914,personal services,,,stated,single record,1,polk_directory 1,Polk 1914: 3030 Greenmount av
-726,3028 Greenmount Ave,1914,1914,food & drink,bar / tavern,,stated,single record,1,polk_directory 1,Polk 1914: 3028 Greenmount av
-726,3028 Greenmount Ave,1915,1928,residential,,,stated,documented (2+ source types),7,sanborn 6; permit_card 1,Sanborn 1915 sheet 717 | Sanborn 1915 sheet 717 | Sanborn 1915 sheet 717 | BRG48-53 image 675-0009 line 1 | Sanborn 1928 sheet 654 | Sanborn 1928 sheet 654 | Sanborn 1928 sheet 654
-726,3028 Greenmount Ave,1921,1923,institutional & religious,,,stated,documented (2+ source types),2,sponsor 1; polk_directory 1,incident 10309 | Polk 1923: 3030 Greenmount av
-726,3028 Greenmount Ave,1929,1930,personal services,,,stated,documented (2+ source types),2,sponsor 1; permit_card 1,incident 10335 | BRG48-53 image 675-0011 line 1
-726,3028 Greenmount Ave,1943,1943,institutional & religious,,Freitag School of Music,stated,single record,1,sponsor 1,incident 10492
+726,3028 Greenmount Ave,1871,1871,institutional & religious,,,stated,single record,1,sponsor 1,incident 41975
+726,3028 Greenmount Ave,1878,1878,residential,dwelling (stated),,stated,single record,1,sponsor 1,incident 41976
+726,3028 Greenmount Ave,1888,1888,personal services,,,stated,single record,1,sponsor 1,incident 41977
+726,3028 Greenmount Ave,1900,1928,residential,dwelling (stated),,stated,documented (2+ source types),10,sanborn 6; sponsor 2; nr_inventory 1; permit_card 1,NR nomination B-5229 p. 28 | incident 41980 | incident 42002 | Sanborn 1915 sheet 717 | Sanborn 1915 sheet 717 | Sanborn 1915 sheet 717 | BRG48-53 image 675-0009 line 1 | Sanborn 1928 sheet 654 | ...
+726,3028 Greenmount Ave,1912,1917,office,,,stated,documented (2+ source types),5,sponsor 4; polk_directory 1,incident 42003 | Polk 1912: 3032 Greenmount av | incident 41991 | incident 41984 | incident 41985
+726,3028 Greenmount Ave,1914,1914,personal services,,,stated,documented (2+ source types),2,sponsor 1; polk_directory 1,incident 41983 | Polk 1914: 3030 Greenmount av
+726,3028 Greenmount Ave,1914,1922,food & drink,bar / tavern; food retail,,stated,documented (2+ source types),3,sponsor 2; polk_directory 1,incident 41990 | Polk 1914: 3028 Greenmount av | incident 41986
+726,3028 Greenmount Ave,1920,1920,production & light industry,,,stated,single record,1,sponsor 1,incident 42006
+726,3028 Greenmount Ave,1922,1923,institutional & religious,,,stated,documented (2+ source types),3,sponsor 2; polk_directory 1,incident 10309 | incident 41989 | Polk 1923: 3030 Greenmount av
+726,3028 Greenmount Ave,1923,1923,automotive,,,stated,single record,1,sponsor 1,incident 41988
+726,3028 Greenmount Ave,1930,1930,personal services,,,stated,documented (2+ source types),2,sponsor 1; permit_card 1,incident 10335 | BRG48-53 image 675-0011 line 1
+726,3028 Greenmount Ave,1941,1942,personal services,,,stated,repeated (2+ records),2,sponsor 2,incident 42009 | incident 42008
+726,3028 Greenmount Ave,1944,1944,institutional & religious,,Freitag School of Music,stated,single record,1,sponsor 1,incident 10492
+726,3028 Greenmount Ave,1950,1950,automotive,,,stated,single record,1,sponsor 1,incident 42220
 726,3028 Greenmount Ave,1953,1953,retail goods,store building (generic),,stated,repeated (2+ records),3,sanborn 3,Sanborn 1953 sheet 654 | Sanborn 1953 sheet 654 | Sanborn 1953 sheet 654
-726,3028 Greenmount Ave,1958,1958,institutional & religious,,Freitag School of Music,stated,single record,1,sponsor 1,incident 10311
+726,3028 Greenmount Ave,1959,1959,institutional & religious,,Freitag School of Music,stated,single record,1,sponsor 1,incident 10311
 726,3028 Greenmount Ave,2013,2013,entertainment & assembly,hall / lodge,Freitag School of Music,stated,single record,1,sponsor 1,incident 10503
 726,3028 Greenmount Ave,2026,2026,office,,Barrus Real Estate Group (shared office) ; furnished executive office suites (leasing agent OfficeFlex),stated,single record,1,current_2026 1,"Empty storefronts are holding back Waverly. Is one man to blame? (The Banner, 2026-10-05)"
 727,3029 Greenmount Ave,1914,1928,production & light industry,,,stated,documented (2+ source types),5,polk_directory 3; sponsor 1; nr_inventory 1,Polk 1914: 3029 Greenmount av | Polk 1915: 3029 Greenmount av | Polk 1918: 3029 Greenmount av | incident 10321 | NR nomination B-5229 p. 21
 727,3029 Greenmount Ave,1915,1915,residential,,,stated,single record,1,sanborn 1,Sanborn 1915 sheet 718
 727,3029 Greenmount Ave,1928,1928,retail goods,store building (generic),,stated,single record,1,permit_card 1,BRG48-53 image 677-0896 line 3
 727,3029 Greenmount Ave,1928,1928,residential,,,stated,single record,1,sanborn 1,Sanborn 1928 sheet 735
-727,3029 Greenmount Ave,1937,1939,entertainment & assembly,recreation,High's Ice Cream,stated,documented (2+ source types),2,nr_inventory 1; sponsor 1,NR nomination B-5229 p. 21 | incident 11120
+727,3029 Greenmount Ave,1937,1940,entertainment & assembly,recreation,High's Ice Cream,stated,documented (2+ source types),2,nr_inventory 1; sponsor 1,NR nomination B-5229 p. 21 | incident 11120
 727,3029 Greenmount Ave,1953,1959,food & drink,restaurant / lunch,,stated,documented (2+ source types),3,sanborn 1; sponsor 1; permit_card 1,Sanborn 1953 sheet 735 | incident 10322 | BRG48-53 image 677-0896 line 9
+727,3029 Greenmount Ave,1977,1977,food & drink,bar / tavern,,stated,single record,1,sponsor 1,incident 38984
 727,3029 Greenmount Ave,2011,2011,retail goods,,,stated,single record,1,nr_inventory 1,"NR nomination B-5229 p. 21 (use at fieldwork, c. 2011)"
 727,3029 Greenmount Ave,2026,2026,entertainment & assembly,,The Artisan House (creative loft / event space),stated,single record,1,current_2026 1,"'Welcome Home' -- A Sip & Paint Experience, The Artisan House, 3029 Greenmount Ave (Eventbrite)"
 728,3031 Greenmount Ave,1905,1908,personal services,,,inferred,repeated (2+ records),4,polk_directory 4,Polk 1905: 1013 York rd (now 3045 Greenmount) | Polk 1906: 1013 York rd (now 3045 Greenmount) | Polk 1907: 1013 York rd (now 3045 Greenmount) | Polk 1908: 1013 York rd (now 3045 Greenmount)
@@ -181,21 +220,22 @@ property_id,address,start_year,end_year,use_category,subcategories,occupant,stat
 728,3031 Greenmount Ave,1922,1934,retail goods,store building (generic),,inferred,documented (2+ source types),9,polk_directory 5; permit_card 2; sanborn 2,Polk 1922: 3105 Greenmount av | Polk 1922: 3105 Greenmount av | Polk 1923: 3105 Greenmount av | Polk 1923: 3105 Greenmount av | Polk 1923: 3105 Greenmount av | BRG48-53 image 677-0897 line 2 | Sanborn 1928 sheet 735 | Sanborn 1928 sheet 735 | ...
 728,3031 Greenmount Ave,1928,1928,food & drink,food retail,,inferred,documented (2+ source types),3,sanborn 2; nr_inventory 1,Sanborn 1928 sheet 735 | Sanborn 1928 sheet 735 | NR nomination B-5229 p. 20
 728,3031 Greenmount Ave,1930,1930,entertainment & assembly,recreation,,inferred,single record,1,permit_card 1,BRG48-53 image 677-0897 line 5
-728,3031 Greenmount Ave,1945,1964,retail goods,named store; store building (generic),The Progress Sample Store,stated,documented (2+ source types),7,sanborn 4; permit_card 2; sponsor 1,BRG48-53 image 677-0897 line 9 | Sanborn 1953 sheet 735 | Sanborn 1953 sheet 735 | Sanborn 1953 sheet 735 | Sanborn 1953 sheet 735 | BRG48-53 image 677-0898 line 3 | incident 10323
+728,3031 Greenmount Ave,1945,1965,retail goods,named store; store building (generic),The Progress Sample Store,stated,documented (2+ source types),7,sanborn 4; permit_card 2; sponsor 1,BRG48-53 image 677-0897 line 9 | Sanborn 1953 sheet 735 | Sanborn 1953 sheet 735 | Sanborn 1953 sheet 735 | Sanborn 1953 sheet 735 | BRG48-53 image 677-0898 line 3 | incident 10323
 728,3031 Greenmount Ave,1958,1958,automotive,,,inferred,single record,1,permit_card 1,BRG48-53 image 677-0900 line 1
+728,3031 Greenmount Ave,1977,1977,food & drink,bar / tavern,,stated,single record,1,sponsor 1,incident 38985
 728,3031 Greenmount Ave,2013,2013,food & drink,food retail,Better Maide Candy Company,stated,single record,1,sponsor 1,incident 20702
 728,3031 Greenmount Ave,2026,2026,retail goods,,Goodwill Waverly Retail Store & Donation Center,stated,single record,1,current_2026 1,Waverly Retail Store & Donation Center - Goodwill Industries of the Chesapeake
-729,3034 Greenmount Ave,1899,1923,food & drink,bar / tavern; food retail; restaurant / lunch,George Shuman's restaurant; Darker Than Blue Cafe,stated,documented (2+ source types),18,polk_directory 17; sponsor 1,incident 11124 | Polk 1901: 1002 York rd (now 3034 Greenmount) | Polk 1903: 1002 York rd (now 3034 Greenmount) | Polk 1904: 1002 York rd (now 3034 Greenmount) | Polk 1905: 1002 York rd (now 3034 Greenmount) | Polk 1905: 1000 York rd (now 3034 Greenmount) | Polk 1906: 1002 York rd (now 3034 Greenmount) | Polk 1906: 1002 York rd (now 3034 Greenmount) | ...
+729,3034 Greenmount Ave,1900,1923,food & drink,bar / tavern; food retail; restaurant / lunch,George Shuman's restaurant; Darker Than Blue Cafe; George A. Schuman soft-drink / soda stand,stated,documented (2+ source types),20,polk_directory 17; sponsor 3,incident 11124 | Polk 1901: 1002 York rd (now 3034 Greenmount) | Polk 1903: 1002 York rd (now 3034 Greenmount) | Polk 1904: 1002 York rd (now 3034 Greenmount) | Polk 1905: 1002 York rd (now 3034 Greenmount) | Polk 1905: 1000 York rd (now 3034 Greenmount) | Polk 1906: 1002 York rd (now 3034 Greenmount) | Polk 1906: 1002 York rd (now 3034 Greenmount) | ...
 729,3034 Greenmount Ave,1900,1900,residential,dwelling (stated),,stated,single record,1,nr_inventory 1,NR nomination B-5229 p. 28
 729,3034 Greenmount Ave,1903,1915,retail goods,store building (generic),,stated,documented (2+ source types),3,polk_directory 2; sanborn 1,Polk 1903: 1002 York rd (now 3034 Greenmount) | Polk 1913: 1000 York rd (now 3034 Greenmount) | Sanborn 1915 sheet 717
 729,3034 Greenmount Ave,1928,1928,retail goods,store building (generic),,stated,single record,1,sanborn 1,Sanborn 1928 sheet 654
 729,3034 Greenmount Ave,1937,1937,food & drink,restaurant / lunch,,stated,single record,1,nr_inventory 1,NR nomination B-5229 p. 28
 729,3034 Greenmount Ave,1953,1954,retail goods,store building (generic),,stated,documented (2+ source types),2,sanborn 1; permit_card 1,Sanborn 1953 sheet 654 | BRG48-53 image 675-0012 line 3
-729,3034 Greenmount Ave,1964,1964,entertainment & assembly,hall / lodge,,stated,single record,1,sponsor 1,incident 10325
+729,3034 Greenmount Ave,1965,1965,entertainment & assembly,hall / lodge,,stated,single record,1,sponsor 1,incident 10325
 729,3034 Greenmount Ave,2011,2011,food & drink,restaurant / lunch,,stated,single record,1,nr_inventory 1,"NR nomination B-5229 p. 28 (use at fieldwork, c. 2011)"
 729,3034 Greenmount Ave,2026,2026,retail goods,,Mattress Plus,stated,single record,1,current_2026 1,Google Maps place listing
 730,3036 Greenmount Ave,1900,1900,residential,dwelling (stated),,stated,single record,1,nr_inventory 1,NR nomination B-5229 p. 28
-730,3036 Greenmount Ave,1905,1922,food & drink,food retail,,stated,documented (2+ source types),7,polk_directory 6; sponsor 1,Polk 1905: 1004 York rd (now 3036 Greenmount) | Polk 1907: 1004 York rd (now 3036 Greenmount) | Polk 1908: 1004 York rd (now 3036 Greenmount) | Polk 1909: 1004 York rd (now 3036 Greenmount) | Polk 1914: 3036 Greenmount av | incident 10326 | Polk 1922: 3036 Greenmount av
+730,3036 Greenmount Ave,1905,1923,food & drink,food retail,,stated,documented (2+ source types),8,polk_directory 6; sponsor 2,Polk 1905: 1004 York rd (now 3036 Greenmount) | Polk 1907: 1004 York rd (now 3036 Greenmount) | Polk 1908: 1004 York rd (now 3036 Greenmount) | Polk 1909: 1004 York rd (now 3036 Greenmount) | incident 10326 | Polk 1914: 3036 Greenmount av | Polk 1922: 3036 Greenmount av | incident 41524
 730,3036 Greenmount Ave,1915,1915,retail goods,store building (generic),,stated,documented (2+ source types),2,polk_directory 1; sanborn 1,Polk 1915: 3036 Greenmount av | Sanborn 1915 sheet 717
 730,3036 Greenmount Ave,1920,1920,production & light industry,,,stated,single record,1,polk_directory 1,Polk 1920: 3036 Greenmount av
 730,3036 Greenmount Ave,1923,1923,personal services,,,stated,single record,1,polk_directory 1,Polk 1923: 3036 Greenmount av
@@ -204,7 +244,7 @@ property_id,address,start_year,end_year,use_category,subcategories,occupant,stat
 730,3036 Greenmount Ave,1938,1938,residential,private garage,,stated,single record,1,permit_card 1,BRG48-53 image 675-0013 line 3
 730,3036 Greenmount Ave,1953,1953,retail goods,store building (generic),,stated,single record,1,sanborn 1,Sanborn 1953 sheet 654
 730,3036 Greenmount Ave,1956,1956,food & drink,restaurant / lunch,,stated,single record,1,permit_card 1,BRG48-53 image 675-0013 line 4
-731,3038 Greenmount Ave,1899,1899,retail goods,,Suwall Brothers' Batteries,stated,single record,1,sponsor 1,incident 11129
+731,3038 Greenmount Ave,1900,1900,retail goods,,Suwall Brothers' Batteries,stated,single record,1,sponsor 1,incident 11129
 731,3038 Greenmount Ave,1900,1900,residential,dwelling (stated),,stated,single record,1,nr_inventory 1,NR nomination B-5229 p. 28
 731,3038 Greenmount Ave,1901,1905,personal services,,,stated,repeated (2+ records),2,polk_directory 2,Polk 1901: 1006 York rd (now 3038 Greenmount) | Polk 1905: 1006 York rd (now 3038 Greenmount)
 731,3038 Greenmount Ave,1905,1905,production & light industry,,,stated,single record,1,polk_directory 1,Polk 1905: 1006 York rd (now 3038 Greenmount)
@@ -217,25 +257,25 @@ property_id,address,start_year,end_year,use_category,subcategories,occupant,stat
 731,3038 Greenmount Ave,2011,2011,retail goods,,,stated,single record,1,nr_inventory 1,"NR nomination B-5229 p. 28 (use at fieldwork, c. 2011)"
 731,3038 Greenmount Ave,2026,2026,retail goods,,Forget Me Not (funeral gifts & services),stated,single record,1,current_2026 1,FORGET ME NOT - Updated April 2026 - 3038 Greenmount Ave - Yelp (search result title)
 732,3040 Greenmount Ave,1890,1890,residential,dwelling (stated),,stated,single record,1,nr_inventory 1,NR nomination B-5229 p. 27
-732,3040 Greenmount Ave,1896,1896,automotive,,,stated,single record,1,sponsor 1,incident 10541
-732,3040 Greenmount Ave,1904,1923,personal services,,Zepp Photo Supply Co,stated,documented (2+ source types),13,polk_directory 10; sponsor 2; sanborn 1,incident 10542 | incident 10543 | Polk 1914: 3044 Greenmount av | Polk 1914: 3044 Greenmount av | Sanborn 1915 sheet 717 | Polk 1917: 3044 Greenmount av | Polk 1917: 3044 Greenmount av | Polk 1918: 3044 Greenmount av | ...
-732,3040 Greenmount Ave,1915,1922,automotive,,Geo E Zepp & Co,stated,documented (2+ source types),8,polk_directory 6; sponsor 2,Polk 1915: 3040 Greenmount av | Polk 1918: 3040 Greenmount av | incident 10328 | incident 10545 | Polk 1920: 3040 Greenmount av | Polk 1921: 3040 Greenmount av | Polk 1921: 3040 Greenmount av | Polk 1922: 3040 Greenmount av
+732,3040 Greenmount Ave,1897,1897,automotive,,,stated,single record,1,sponsor 1,incident 10541
+732,3040 Greenmount Ave,1905,1923,personal services,,Zepp Photo Supply Co,stated,documented (2+ source types),15,polk_directory 10; sponsor 4; sanborn 1,incident 10542 | incident 42024 | incident 10543 | incident 42021 | Polk 1914: 3044 Greenmount av | Polk 1914: 3044 Greenmount av | Sanborn 1915 sheet 717 | Polk 1917: 3044 Greenmount av | ...
+732,3040 Greenmount Ave,1915,1922,automotive,,Geo E Zepp & Co,stated,documented (2+ source types),8,polk_directory 6; sponsor 2,Polk 1915: 3040 Greenmount av | Polk 1918: 3040 Greenmount av | incident 10328 | Polk 1920: 3040 Greenmount av | incident 10545 | Polk 1921: 3040 Greenmount av | Polk 1921: 3040 Greenmount av | Polk 1922: 3040 Greenmount av
 732,3040 Greenmount Ave,1915,1915,residential,,,inferred,single record,1,sanborn 1,Sanborn 1915 sheet 717
 732,3040 Greenmount Ave,1917,1917,office,,,stated,single record,1,polk_directory 1,Polk 1917: 3040 Greenmount av
 732,3040 Greenmount Ave,1927,1937,retail goods,store building (generic),,stated,documented (2+ source types),3,permit_card 2; sanborn 1,BRG48-53 image 675-0016 line 1 | Sanborn 1928 sheet 654 | BRG48-53 image 675-0016 line 3
 732,3040 Greenmount Ave,1928,1928,residential,,,inferred,single record,1,sanborn 1,Sanborn 1928 sheet 654
 732,3040 Greenmount Ave,1953,1953,retail goods,store building (generic),,stated,repeated (2+ records),3,sanborn 3,Sanborn 1953 sheet 654 | Sanborn 1953 sheet 654 | Sanborn 1953 sheet 654
-732,3040 Greenmount Ave,1961,1961,personal services,,,stated,single record,1,sponsor 1,incident 10329
+732,3040 Greenmount Ave,1962,1962,personal services,,,stated,single record,1,sponsor 1,incident 10329
 733,3046 Greenmount Ave,1901,1901,automotive,,,inferred,single record,1,polk_directory 1,Polk 1901: 1008 York rd (now 3046 Greenmount)
 733,3046 Greenmount Ave,1903,1903,food & drink,food retail,,inferred,single record,1,polk_directory 1,Polk 1903: 1008 York rd (now 3046 Greenmount)
 733,3046 Greenmount Ave,1904,1928,office,,,stated,documented (2+ source types),20,polk_directory 18; sanborn 2,Polk 1904: 1008 York rd (now 3046 Greenmount) | Polk 1904: 1008 York rd (now 3046 Greenmount) | Polk 1905: 1008 York rd (now 3046 Greenmount) | Polk 1905: 1008 York rd (now 3046 Greenmount) | Polk 1906: 1008 York rd (now 3046 Greenmount) | Polk 1906: 1008 York rd (now 3046 Greenmount) | Polk 1914: 3046 Greenmount av | Polk 1915: 3046 Greenmount av | ...
-733,3046 Greenmount Ave,1909,1909,personal services,,Geo E Zepp & Co,stated,single record,1,sponsor 1,incident 11138
 733,3046 Greenmount Ave,1909,1909,retail goods,,,inferred,single record,1,polk_directory 1,Polk 1909: 1008 York rd (now 3046 Greenmount)
+733,3046 Greenmount Ave,1910,1910,personal services,,Geo E Zepp & Co,stated,single record,1,sponsor 1,incident 11138
 733,3046 Greenmount Ave,1928,1928,personal services,,,stated,single record,1,nr_inventory 1,NR nomination B-5229 p. 27
 733,3046 Greenmount Ave,1930,1930,retail goods,store building (generic),,stated,single record,1,permit_card 1,BRG48-53 image 675-0017 line 1
 733,3046 Greenmount Ave,1953,1953,retail goods,store building (generic),,stated,single record,1,sanborn 1,Sanborn 1953 sheet 654
 733,3046 Greenmount Ave,2026,2026,personal services,,ACE Cash Express,stated,single record,1,current_2026 1,ACE CASH EXPRESS - Updated February 2026 - 3046 Greenmount Ave - Yelp (search result title)
-734,3048 Greenmount Ave,1889,1889,food & drink,food retail,Sam's Belly Food Cooperative; 31st Street Women's Bookstore; Gregg's Bakery; Normal's Books and Records,stated,single record,1,sponsor 1,incident 11140
+734,3048 Greenmount Ave,1890,1890,food & drink,food retail,Sam's Belly Food Cooperative; 31st Street Women's Bookstore; Gregg's Bakery; Normal's Books and Records,stated,single record,1,sponsor 1,incident 11140
 734,3048 Greenmount Ave,1890,1890,residential,dwelling (stated),,stated,single record,1,nr_inventory 1,NR nomination B-5229 p. 27
 734,3048 Greenmount Ave,1901,1901,entertainment & assembly,hall / lodge,,inferred,single record,1,polk_directory 1,Polk 1901: 1010 York rd (now 3052 Greenmount)
 734,3048 Greenmount Ave,1914,1914,office,,,inferred,single record,1,polk_directory 1,Polk 1914: 3056 Greenmount av
@@ -246,6 +286,7 @@ property_id,address,start_year,end_year,use_category,subcategories,occupant,stat
 734,3048 Greenmount Ave,1951,1953,retail goods,store building (generic),,stated,documented (2+ source types),2,permit_card 1; sanborn 1,BRG48-53 image 675-0018 line 8 | Sanborn 1953 sheet 654
 734,3048 Greenmount Ave,2011,2011,food & drink,food retail,,stated,single record,1,nr_inventory 1,"NR nomination B-5229 p. 27 (use at fieldwork, c. 2011)"
 734,3048 Greenmount Ave,2026,2026,retail goods,,No Limit Communications (mobile phones),stated,single record,1,current_2026 1,NO LIMIT COMMUNICATIONS - Updated April 2026 - 3048 Greenmount Ave - Yelp (search result title)
+735,3100 Greenmount Ave,1901,1901,entertainment & assembly,hall / lodge,,stated,single record,1,sponsor 1,incident 41871
 735,3100 Greenmount Ave,1912,1930,retail goods,store building (generic),"E.C. Livingston Co., Inc.",stated,documented (2+ source types),8,polk_directory 5; sponsor 1; sanborn 1; permit_card 1,incident 5091 | Sanborn 1915 sheet 717 | Polk 1918: 3100 Greenmount av | Polk 1920: 3100 Greenmount av | Polk 1921: 3100 Greenmount av | Polk 1922: 3100 Greenmount av | Polk 1923: 3100 Greenmount av | BRG48-53 image 675-0594 line 2
 735,3100 Greenmount Ave,1912,1923,entertainment & assembly,hall / lodge,Barrett's Drug Store,stated,documented (2+ source types),19,polk_directory 16; sponsor 2; sanborn 1,Polk 1912: 3102 Greenmount av | Polk 1912: 3102 Greenmount av | Polk 1912: 3102 Greenmount av | Polk 1912: 3102 Greenmount av | Polk 1912: 3100 Greenmount av | Polk 1914: 3100 Greenmount av | Polk 1914: 3102 Greenmount av | Polk 1914: 3102 Greenmount av | ...
 735,3100 Greenmount Ave,1912,1912,production & light industry,,,stated,single record,1,polk_directory 1,Polk 1912: 3100 Greenmount av
@@ -255,39 +296,46 @@ property_id,address,start_year,end_year,use_category,subcategories,occupant,stat
 735,3100 Greenmount Ave,1953,1953,retail goods,store building (generic),,inferred,repeated (2+ records),2,sanborn 2,Sanborn 1953 sheet 654 | Sanborn 1953 sheet 654
 735,3100 Greenmount Ave,1953,1953,food & drink,restaurant / lunch,,stated,single record,1,sanborn 1,Sanborn 1953 sheet 654
 735,3100 Greenmount Ave,1961,1961,personal services,,,stated,single record,1,permit_card 1,BRG48-53 image 675-0595 line 3
-735,3100 Greenmount Ave,1973,1973,food & drink,bar / tavern,,stated,single record,1,sponsor 1,incident 10361
+735,3100 Greenmount Ave,1974,1974,food & drink,bar / tavern,,stated,single record,1,sponsor 1,incident 10361
 735,3100 Greenmount Ave,2026,2026,food & drink,,"Jinji Chocolate (Unit B) ; Thai Restaurant (build-out finished, awaiting city inspections as of 2026-05-07)",stated,single record,1,current_2026 1,"Empty storefronts are holding back Waverly. Is one man to blame? (The Banner, 2026-10-05)"
-736,3106 Greenmount Ave,1899,1899,retail goods,,Lewis Ash Radio; Boulevard Jewelry; Herman's Discount Store,stated,single record,1,sponsor 1,incident 11522
+736,3106 Greenmount Ave,1900,1900,retail goods,,Lewis Ash Radio; Boulevard Jewelry; Herman's Discount Store,stated,single record,1,sponsor 1,incident 11522
 736,3106 Greenmount Ave,1915,1915,production & light industry,,,stated,single record,1,polk_directory 1,Polk 1915: 3106 Greenmount av
 736,3106 Greenmount Ave,1915,1915,residential,,,stated,repeated (2+ records),2,sanborn 2,Sanborn 1915 sheet 717 | Sanborn 1915 sheet 717
 736,3106 Greenmount Ave,1915,1915,food & drink,restaurant / lunch,,stated,single record,1,sanborn 1,Sanborn 1915 sheet 717
-736,3106 Greenmount Ave,1917,1941,retail goods,store building (generic),,stated,documented (2+ source types),18,permit_card 7; polk_directory 5; sanborn 3; nr_inventory 2; sponsor 1,incident 10362 | Polk 1917: 3106 Greenmount av | Polk 1918: 3106 Greenmount av | Polk 1921: 3106 Greenmount av | Polk 1922: 3106 Greenmount av | Polk 1923: 3106 Greenmount av | BRG48-53 image 675-0596 line 1 | BRG48-53 image 675-0597 line 1 | ...
+736,3106 Greenmount Ave,1917,1941,retail goods,store building (generic),,stated,documented (2+ source types),18,permit_card 7; polk_directory 5; sanborn 3; nr_inventory 2; sponsor 1,Polk 1917: 3106 Greenmount av | incident 10362 | Polk 1918: 3106 Greenmount av | Polk 1921: 3106 Greenmount av | Polk 1922: 3106 Greenmount av | Polk 1923: 3106 Greenmount av | BRG48-53 image 675-0596 line 1 | BRG48-53 image 675-0597 line 1 | ...
 736,3106 Greenmount Ave,1953,1953,retail goods,store building (generic),,stated,repeated (2+ records),2,sanborn 2,Sanborn 1953 sheet 654 | Sanborn 1953 sheet 654
 736,3106 Greenmount Ave,2011,2011,retail goods,store building (generic),,stated,single record,1,nr_inventory 1,"NR nomination B-5229 p. 25 (use at fieldwork, c. 2011)"
 736,3106 Greenmount Ave,2026,2026,retail goods,,Herman's Discount,stated,single record,1,current_2026 1,HERMAN'S DISCOUNT - Updated August 2026 - 3106 Greenmount Ave - Yelp (search result title)
-737,3107 Greenmount Ave,1879,1884,food & drink,food retail; restaurant / lunch,Mildred Price hairdressing shop; High's Ice Cream,stated,repeated (2+ records),2,sponsor 2,incident 11146 | incident 4955
+737,3107 Greenmount Ave,1874,1889,food & drink,food retail; restaurant / lunch,Mildred Price hairdressing shop; High's Ice Cream,stated,repeated (2+ records),4,sponsor 4,incident 42257 | incident 11146 | incident 4955 | incident 42259
 737,3107 Greenmount Ave,1880,1880,residential,dwelling (stated),,stated,single record,1,nr_inventory 1,NR nomination B-5229 p. 20
-737,3107 Greenmount Ave,1899,1899,food & drink,food retail,,stated,single record,1,sponsor 1,incident 4962
+737,3107 Greenmount Ave,1887,1887,institutional & religious,,,stated,single record,1,sponsor 1,incident 10813
+737,3107 Greenmount Ave,1899,1899,residential,dwelling (stated),,stated,single record,1,sponsor 1,incident 4962
 737,3107 Greenmount Ave,1915,1915,residential,,,inferred,single record,1,sanborn 1,Sanborn 1915 sheet 718
-737,3107 Greenmount Ave,1922,1937,retail goods,store building (generic),,stated,documented (2+ source types),6,polk_directory 3; sanborn 2; nr_inventory 1,Polk 1922: 3107 Greenmount av | Polk 1922: 3109 Greenmount av | Polk 1923: 3107 Greenmount av | Sanborn 1928 sheet 735 | Sanborn 1928 sheet 735 | NR nomination B-5229 p. 20
-737,3107 Greenmount Ave,1928,1930,personal services,,,stated,documented (2+ source types),2,nr_inventory 1; permit_card 1,NR nomination B-5229 p. 20 | BRG48-53 image 677-0899 line 1
-737,3107 Greenmount Ave,1937,1937,food & drink,restaurant / lunch,,stated,single record,1,nr_inventory 1,NR nomination B-5229 p. 20
-737,3107 Greenmount Ave,1953,1953,retail goods,store building (generic),,stated,repeated (2+ records),2,sanborn 2,Sanborn 1953 sheet 735 | Sanborn 1953 sheet 735
+737,3107 Greenmount Ave,1920,1920,food & drink,food retail,,stated,single record,1,sponsor 1,incident 42266
+737,3107 Greenmount Ave,1922,1953,retail goods,store building (generic),,stated,documented (2+ source types),15,sponsor 7; sanborn 4; polk_directory 3; nr_inventory 1,incident 10363 | Polk 1922: 3107 Greenmount av | Polk 1922: 3109 Greenmount av | incident 42233 | Polk 1923: 3107 Greenmount av | incident 42234 | incident 42235 | incident 42236 | ...
+737,3107 Greenmount Ave,1927,1930,personal services,,,stated,documented (2+ source types),4,sponsor 2; nr_inventory 1; permit_card 1,incident 42237 | incident 42238 | NR nomination B-5229 p. 20 | BRG48-53 image 677-0899 line 1
+737,3107 Greenmount Ave,1929,1929,institutional & religious,,,stated,single record,1,sponsor 1,incident 42240
+737,3107 Greenmount Ave,1929,1929,automotive,,,stated,single record,1,sponsor 1,incident 42239
+737,3107 Greenmount Ave,1937,1945,food & drink,food retail; restaurant / lunch,,stated,documented (2+ source types),2,nr_inventory 1; sponsor 1,NR nomination B-5229 p. 20 | incident 42243
+737,3107 Greenmount Ave,1947,1951,personal services,,,stated,repeated (2+ records),2,sponsor 2,incident 42244 | incident 42247
 737,3107 Greenmount Ave,1953,1958,office,,,stated,repeated (2+ records),2,permit_card 2,BRG48-53 image 677-0899 line 8 | BRG48-53 image 677-0899 line 9
 737,3107 Greenmount Ave,1958,1958,residential,private garage,,stated,single record,1,permit_card 1,BRG48-53 image 677-0901 line 1
+737,3107 Greenmount Ave,1965,1968,retail goods,,,stated,repeated (2+ records),2,sponsor 2,incident 42252 | incident 42253
 737,3107 Greenmount Ave,2011,2011,personal services,,,stated,single record,1,nr_inventory 1,"NR nomination B-5229 p. 20 (use at fieldwork, c. 2011)"
 737,3107 Greenmount Ave,2013,2013,residential,dwelling (stated),High's Ice Cream,stated,single record,1,sponsor 1,incident 20703
-738,3111 Greenmount Ave,1915,1936,office,,Provident Savings Bank of Baltimore,stated,documented (2+ source types),6,sponsor 3; nr_inventory 1; sanborn 1; permit_card 1,incident 10815 | incident 10364 | incident 4969 | NR nomination B-5229 p. 20 | Sanborn 1928 sheet 735 | BRG48-53 image 677-0902 line 2
-738,3111 Greenmount Ave,1924,1924,food & drink,restaurant / lunch,Provident Savings Bank of Baltimore; Waverly Grill,stated,single record,1,sponsor 1,incident 11151
+738,3111 Greenmount Ave,1904,1904,office,,,stated,single record,1,sponsor 1,incident 39237
+738,3111 Greenmount Ave,1904,1904,food & drink,food retail,,stated,single record,1,sponsor 1,incident 39236
+738,3111 Greenmount Ave,1916,1936,office,,Provident Savings Bank of Baltimore,stated,documented (2+ source types),7,sponsor 4; nr_inventory 1; sanborn 1; permit_card 1,incident 10815 | incident 10364 | incident 4969 | NR nomination B-5229 p. 20 | Sanborn 1928 sheet 735 | incident 23730 | BRG48-53 image 677-0902 line 2
+738,3111 Greenmount Ave,1925,1925,food & drink,restaurant / lunch,Provident Savings Bank of Baltimore; Waverly Grill,stated,single record,1,sponsor 1,incident 11151
 738,3111 Greenmount Ave,1926,1926,personal services,,Lady Jane Beauty Shop,stated,single record,1,sponsor 1,incident 4970
 738,3111 Greenmount Ave,1953,1953,office,,,stated,single record,1,sanborn 1,Sanborn 1953 sheet 735
-738,3111 Greenmount Ave,1971,1971,office,,Provident Savings Bank of Baltimore,stated,single record,1,sponsor 1,incident 10401
+738,3111 Greenmount Ave,1972,1972,office,,Provident Savings Bank of Baltimore,stated,single record,1,sponsor 1,incident 10401
 738,3111 Greenmount Ave,2011,2011,food & drink,restaurant / lunch,,stated,single record,1,nr_inventory 1,"NR nomination B-5229 p. 20 (use at fieldwork, c. 2011)"
 738,3111 Greenmount Ave,2026,2026,food & drink,,Dancing Fish & Rolling Wings,stated,single record,1,current_2026 1,DANCING FISH & ROLLING WINGS - Updated August 2026 - 3111 Greenmount Ave - Yelp (search result title)
-739,3112 Greenmount Ave,1899,1899,retail goods,,Charles Mall Hardware; M&J Store,stated,single record,1,sponsor 1,incident 11153
 739,3112 Greenmount Ave,1900,1900,residential,dwelling (stated),,stated,single record,1,nr_inventory 1,NR nomination B-5229 p. 25
-739,3112 Greenmount Ave,1915,1917,residential,,,stated,documented (2+ source types),2,sanborn 1; sponsor 1,Sanborn 1915 sheet 717 | incident 10365
-739,3112 Greenmount Ave,1928,1928,residential,,,stated,documented (2+ source types),2,sanborn 1; nr_inventory 1,Sanborn 1928 sheet 654 | NR nomination B-5229 p. 25
+739,3112 Greenmount Ave,1900,1900,retail goods,,Charles Mall Hardware; M&J Store,stated,single record,1,sponsor 1,incident 11153
+739,3112 Greenmount Ave,1912,1928,residential,dwelling (stated),,stated,documented (2+ source types),5,sponsor 2; sanborn 2; nr_inventory 1,incident 41325 | Sanborn 1915 sheet 717 | incident 10365 | Sanborn 1928 sheet 654 | NR nomination B-5229 p. 25
+739,3112 Greenmount Ave,1917,1917,institutional & religious,,,stated,single record,1,sponsor 1,incident 41326
 739,3112 Greenmount Ave,1937,1937,retail goods,store building (generic),,stated,documented (2+ source types),2,permit_card 1; nr_inventory 1,BRG48-53 image 675-0598 line 1 | NR nomination B-5229 p. 25
 739,3112 Greenmount Ave,1953,1953,retail goods,,,stated,single record,1,sanborn 1,Sanborn 1953 sheet 654
 739,3112 Greenmount Ave,2011,2011,retail goods,store building (generic),,stated,single record,1,nr_inventory 1,"NR nomination B-5229 p. 25 (use at fieldwork, c. 2011)"
@@ -300,11 +348,12 @@ property_id,address,start_year,end_year,use_category,subcategories,occupant,stat
 740,3113 Greenmount Ave,1908,1909,personal services,,,inferred,repeated (2+ records),4,polk_directory 4,Polk 1908: 1025 York rd (now 3115 Greenmount) | Polk 1909: 1025 York rd (now 3115 Greenmount) | Polk 1909: 1025 York rd (now 3115 Greenmount) | Polk 1909: 1025 York rd (now 3115 Greenmount)
 740,3113 Greenmount Ave,1914,1914,entertainment & assembly,recreation,,inferred,single record,1,polk_directory 1,Polk 1914: 3115 Greenmount av
 740,3113 Greenmount Ave,1915,1915,retail goods,store building (generic),,inferred,single record,1,sanborn 1,Sanborn 1915 sheet 718
-740,3113 Greenmount Ave,1917,1917,residential,,,stated,single record,1,sponsor 1,incident 10366
 740,3113 Greenmount Ave,1917,1928,food & drink,food retail,,stated,documented (2+ source types),7,polk_directory 5; sponsor 1; nr_inventory 1,incident 22770 | Polk 1921: 3115 Greenmount av | Polk 1922: 3115 Greenmount av | Polk 1922: 3115 Greenmount av | Polk 1923: 3115 Greenmount av | Polk 1923: 3115 Greenmount av | NR nomination B-5229 p. 19
+740,3113 Greenmount Ave,1918,1918,residential,,,stated,single record,1,sponsor 1,incident 10366
 740,3113 Greenmount Ave,1928,1937,retail goods,store building (generic),,stated,documented (2+ source types),5,sanborn 2; nr_inventory 2; permit_card 1,BRG48-53 image 677-0903 line 1 | Sanborn 1928 sheet 735 | Sanborn 1928 sheet 735 | NR nomination B-5229 p. 19 | NR nomination B-5229 p. 19
 740,3113 Greenmount Ave,1953,1953,retail goods,store building (generic),,stated,repeated (2+ records),2,sanborn 2,Sanborn 1953 sheet 735 | Sanborn 1953 sheet 735
-740,3113 Greenmount Ave,1982,1982,food & drink,bar / tavern,,stated,single record,1,sponsor 1,incident 22816
+740,3113 Greenmount Ave,1977,1977,food & drink,bar / tavern,,stated,single record,1,sponsor 1,incident 22816
+740,3113 Greenmount Ave,1977,1977,institutional & religious,,,stated,single record,1,sponsor 1,incident 38986
 740,3113 Greenmount Ave,2013,2013,food & drink,food retail,Roger's seafood store,stated,single record,1,sponsor 1,incident 20707
 740,3113 Greenmount Ave,2026,2026,retail goods,,Harry's Liquors (Harry's Liquor Store),stated,single record,1,current_2026 1,"Baltimore City Liquor Licenses (CityView Licenses layer; Open Baltimore 'Liquor Licenses' dataset) - HARRY'S LIQUORS, Class LA, renewed 2026-05-01 to 2027-04-30"
 741,3114 Greenmount Ave,1915,1915,residential,,,inferred,single record,1,sanborn 1,Sanborn 1915 sheet 717
@@ -314,15 +363,16 @@ property_id,address,start_year,end_year,use_category,subcategories,occupant,stat
 741,3114 Greenmount Ave,2026,2026,retail goods,,Red Shed ; Men's Clothing Outlet,stated,single record,1,current_2026 1,MEN'S CLOTHING OUTLET - Updated June 2026 - 3114 Greenmount Ave - Yelp (search result title)
 742,3117 Greenmount Ave,1886,1886,automotive,,Dentry & Zoll,stated,repeated (2+ records),2,sponsor 2,incident 4916 | incident 11799
 742,3117 Greenmount Ave,1903,1955,automotive,,"Joe the Motorist's Friend; United Garage Co., Inc.",stated,documented (2+ source types),25,sponsor 16; polk_directory 8; nr_inventory 1,incident 11803 | incident 11804 | Polk 1903: 1027 York rd (now 3117 Greenmount) | Polk 1904: 1027 York rd (now 3117 Greenmount) | Polk 1905: 1027 York rd (now 3117 Greenmount) | Polk 1906: 1027 York rd (now 3117 Greenmount) | Polk 1907: 1027 York rd (now 3117 Greenmount) | incident 11806 | ...
-742,3117 Greenmount Ave,1928,1936,retail goods,named store; store building (generic),Century Furniture Co.; Miller Brothers Furniture Company; Hecht's Furniture House,stated,documented (2+ source types),30,sponsor 28; sanborn 1; permit_card 1,incident 4927 | incident 11818 | Sanborn 1928 sheet 735 | incident 4928 | incident 4929 | incident 11819 | incident 11820 | incident 11821 | ...
+742,3117 Greenmount Ave,1928,1936,retail goods,named store; store building (generic),Century Furniture Co.; Miller Brothers Furniture Company; Hecht's Furniture House,stated,documented (2+ source types),31,sponsor 29; sanborn 1; permit_card 1,incident 4927 | incident 11818 | Sanborn 1928 sheet 735 | incident 4928 | incident 4929 | incident 11819 | incident 11820 | incident 11821 | ...
 742,3117 Greenmount Ave,1941,1941,office,,Eyring Realty / E. Eyring & Sons,stated,single record,1,sponsor 1,incident 11867
 742,3117 Greenmount Ave,1953,1961,retail goods,named store; store building (generic),Engelman's Kiddieland,stated,documented (2+ source types),5,sponsor 4; sanborn 1,Sanborn 1953 sheet 735 | incident 11846 | incident 11848 | incident 11851 | incident 11852
 742,3117 Greenmount Ave,1957,1957,institutional & religious,,Engelman's Kiddieland,stated,single record,1,sponsor 1,incident 11847
 742,3117 Greenmount Ave,1958,1958,personal services,,,stated,single record,1,sponsor 1,incident 11850
 742,3117 Greenmount Ave,1972,1972,office,,,stated,single record,1,sponsor 1,incident 11857
 742,3117 Greenmount Ave,1976,1977,retail goods,,Engelman's Kiddieland; Eyring Realty / E. Eyring & Sons,stated,repeated (2+ records),2,sponsor 2,incident 11858 | incident 11868
+742,3117 Greenmount Ave,1977,1977,institutional & religious,,,stated,single record,1,sponsor 1,incident 38987
 742,3117 Greenmount Ave,1989,1990,retail goods,,"New York Fashions, Inc.",stated,repeated (2+ records),2,sponsor 2,incident 11863 | incident 11875
-743,3118 Greenmount Ave,1889,1889,personal services,,Charles Mall Hardware; Singer,stated,single record,1,sponsor 1,incident 11177
+743,3118 Greenmount Ave,1890,1890,personal services,,Charles Mall Hardware; Singer,stated,single record,1,sponsor 1,incident 11177
 743,3118 Greenmount Ave,1890,1890,residential,dwelling (stated),,stated,single record,1,nr_inventory 1,NR nomination B-5229 p. 24
 743,3118 Greenmount Ave,1903,1921,food & drink,food retail,,stated,documented (2+ source types),12,polk_directory 11; sponsor 1,Polk 1903: 1030 York rd (now 3118 Greenmount) | Polk 1904: 1030 York rd (now 3118 Greenmount) | Polk 1905: 1030 York rd (now 3118 Greenmount) | Polk 1906: 1030 York rd (now 3118 Greenmount) | Polk 1907: 1030 York rd (now 3118 Greenmount) | Polk 1908: 1030 York rd (now 3118 Greenmount) | incident 10367 | Polk 1914: 3118 Greenmount av | ...
 743,3118 Greenmount Ave,1915,1928,retail goods,store building (generic),,stated,documented (2+ source types),6,sanborn 3; polk_directory 1; permit_card 1; nr_inventory 1,Sanborn 1915 sheet 717 | Polk 1923: 3118 Greenmount av | BRG48-53 image 675-0600 line 1 | Sanborn 1928 sheet 654 | Sanborn 1928 sheet 654 | NR nomination B-5229 p. 24
@@ -335,44 +385,46 @@ property_id,address,start_year,end_year,use_category,subcategories,occupant,stat
 743,3118 Greenmount Ave,2026,2026,retail goods,,Greenmount Loan and Jewelry (pawn & jewelry),stated,single record,1,current_2026 1,GREENMOUNT LOAN AND JEWELRY - Updated April 2026 - 3118 Greenmount Ave - Yelp (search result title)
 744,3120 Greenmount Ave,1880,1880,residential,dwelling (stated),,stated,single record,1,nr_inventory 1,NR nomination B-5229 p. 24
 744,3120 Greenmount Ave,1915,1915,residential,,,stated,single record,1,sanborn 1,Sanborn 1915 sheet 717
-744,3120 Greenmount Ave,1919,1920,personal services,,,stated,documented (2+ source types),2,sponsor 1; polk_directory 1,incident 10368 | Polk 1920: 3120 Greenmount av
+744,3120 Greenmount Ave,1920,1920,personal services,,,stated,documented (2+ source types),2,sponsor 1; polk_directory 1,incident 10368 | Polk 1920: 3120 Greenmount av
 744,3120 Greenmount Ave,1921,1928,office,,,stated,documented (2+ source types),8,polk_directory 6; sanborn 1; nr_inventory 1,Polk 1921: 3120 Greenmount av | Polk 1921: 3120 Greenmount av | Polk 1922: 3120 Greenmount av | Polk 1922: 3120 Greenmount av | Polk 1923: 3120 Greenmount av | Polk 1923: 3120 Greenmount av | Sanborn 1928 sheet 654 | NR nomination B-5229 p. 24
 744,3120 Greenmount Ave,1928,1935,retail goods,store building (generic),,stated,repeated (2+ records),3,permit_card 3,BRG48-53 image 675-0602 line 1 | BRG48-53 image 675-0602 line 2 | BRG48-53 image 675-0602 line 4
 744,3120 Greenmount Ave,1937,1937,food & drink,restaurant / lunch,,stated,single record,1,nr_inventory 1,NR nomination B-5229 p. 24
 744,3120 Greenmount Ave,1953,1953,retail goods,store building (generic),,stated,single record,1,sanborn 1,Sanborn 1953 sheet 654
 744,3120 Greenmount Ave,2026,2026,personal services,,DNS Technology Group (IT services & computer repair),stated,single record,1,current_2026 1,DNS TECHNOLOGY GROUP - Updated May 2025 - 3120 Greenmount Ave - Yelp (search result title)
-745,3122 Greenmount Ave,1901,1915,food & drink,food retail,,stated,repeated (2+ records),6,polk_directory 6,Polk 1901: 1036 York rd (now 3124 Greenmount) | Polk 1903: 1036 York rd (now 3124 Greenmount) | Polk 1907: 1036 York rd (now 3124 Greenmount) | Polk 1909: 1036 York rd (now 3124 Greenmount) | Polk 1914: 3124 Greenmount av | Polk 1915: 3124 Greenmount av
+745,3122 Greenmount Ave,1901,1918,food & drink,food retail,,stated,documented (2+ source types),8,polk_directory 6; sponsor 2,Polk 1901: 1036 York rd (now 3124 Greenmount) | Polk 1903: 1036 York rd (now 3124 Greenmount) | Polk 1907: 1036 York rd (now 3124 Greenmount) | Polk 1909: 1036 York rd (now 3124 Greenmount) | incident 41545 | Polk 1914: 3124 Greenmount av | Polk 1915: 3124 Greenmount av | incident 41547
 745,3122 Greenmount Ave,1904,1906,retail goods,,,stated,repeated (2+ records),3,polk_directory 3,Polk 1904: 1036 York rd (now 3124 Greenmount) | Polk 1905: 1036 York rd (now 3124 Greenmount) | Polk 1906: 1036 York rd (now 3124 Greenmount)
 745,3122 Greenmount Ave,1915,1915,residential,,,stated,single record,1,sanborn 1,Sanborn 1915 sheet 717
-745,3122 Greenmount Ave,1917,1937,automotive,,Harris Garage; Goldstone Jewelry,stated,documented (2+ source types),19,polk_directory 8; nr_inventory 6; permit_card 3; sponsor 2,incident 10369 | Polk 1918: 3122 Greenmount av | Polk 1918: 3122 Greenmount av | incident 11182 | NR nomination B-5229 p. 23 | NR nomination B-5229 p. 24 | NR nomination B-5229 p. 24 | Polk 1921: 3122 Greenmount av | ...
+745,3122 Greenmount Ave,1918,1937,automotive,,Harris Garage; Goldstone Jewelry,stated,documented (2+ source types),19,polk_directory 8; nr_inventory 6; permit_card 3; sponsor 2,incident 10369 | Polk 1918: 3122 Greenmount av | Polk 1918: 3122 Greenmount av | incident 11182 | NR nomination B-5229 p. 23 | NR nomination B-5229 p. 24 | NR nomination B-5229 p. 24 | Polk 1921: 3122 Greenmount av | ...
 745,3122 Greenmount Ave,1928,1938,retail goods,store building (generic),,stated,documented (2+ source types),2,sanborn 1; permit_card 1,Sanborn 1928 sheet 654 | BRG48-53 image 675-0603 line 8
 745,3122 Greenmount Ave,1928,1928,office,,,stated,single record,1,sanborn 1,Sanborn 1928 sheet 654
 745,3122 Greenmount Ave,1940,1945,entertainment & assembly,recreation; theatre / pictures,,stated,repeated (2+ records),4,permit_card 4,BRG48-53 image 675-0603 line 9 | BRG48-53 image 675-0604 line 1 | BRG48-53 image 675-0603 line 1 | BRG48-53 image 675-0604 line 4
-745,3122 Greenmount Ave,1951,1951,food & drink,restaurant / lunch,,stated,single record,1,sponsor 1,incident 10370
+745,3122 Greenmount Ave,1952,1958,food & drink,food retail; restaurant / lunch,,stated,repeated (2+ records),2,sponsor 2,incident 10370 | incident 41549
 745,3122 Greenmount Ave,1953,1954,retail goods,store building (generic),,stated,documented (2+ source types),3,sanborn 2; permit_card 1,Sanborn 1953 sheet 654 | Sanborn 1953 sheet 654 | BRG48-53 image 675-0604 line 8
 745,3122 Greenmount Ave,2011,2011,retail goods,,,stated,single record,1,nr_inventory 1,"NR nomination B-5229 p. 24 (use at fieldwork, c. 2011)"
 745,3122 Greenmount Ave,2026,2026,retail goods,,Chil's Jewelry,stated,single record,1,current_2026 1,CHIL'S JEWELRY - Updated March 2026 - 3122 Greenmount Ave - Yelp (search result title)
-746,3123 Greenmount Ave,1900,1900,residential,dwelling (stated),,stated,single record,1,nr_inventory 1,NR nomination B-5229 p. 19
+746,3123 Greenmount Ave,1882,1882,production & light industry,,,stated,single record,1,sponsor 1,incident 39219
+746,3123 Greenmount Ave,1890,1900,residential,dwelling (stated),,stated,documented (2+ source types),2,sponsor 1; nr_inventory 1,incident 39220 | NR nomination B-5229 p. 19
 746,3123 Greenmount Ave,1901,1901,institutional & religious,,,stated,single record,1,polk_directory 1,Polk 1901: 1029 York rd (now 3123 Greenmount)
-746,3123 Greenmount Ave,1979,1979,institutional & religious,,Waverly firehouse,stated,single record,1,dhcd_1970s 1,BRG48-43-10 W054: BRG48-43-10-20 p.98 (scan id 4977); BRG48-43-10-20 p.109 (sc
+746,3123 Greenmount Ave,1979,1979,institutional & religious,,Waverly firehouse,stated,documented (2+ source types),2,sponsor 1; dhcd_1970s 1,incident 39144 | BRG48-43-10 W054: BRG48-43-10-20 p.98 (scan id 4977); BRG48-43-10-20 p.109 (sc
 746,3123 Greenmount Ave,2011,2011,institutional & religious,,,stated,single record,1,nr_inventory 1,"NR nomination B-5229 p. 19 (use at fieldwork, c. 2011)"
 746,3123 Greenmount Ave,2026,2026,institutional & religious,,"Baltimore City Fire Department - Waverly Firehouse (Engine Company 31, Medic 3)",stated,single record,1,current_2026 1,Second Battalion Stations - Baltimore City Fire Department
-747,3126 Greenmount Ave,1879,1879,food & drink,restaurant / lunch,Melba's Place,stated,single record,1,sponsor 1,incident 11198
+747,3126 Greenmount Ave,1880,1880,food & drink,restaurant / lunch,Melba's Place,stated,single record,1,sponsor 1,incident 11198
 747,3126 Greenmount Ave,1880,1880,residential,dwelling (stated),,stated,single record,1,nr_inventory 1,NR nomination B-5229 p. 23
-747,3126 Greenmount Ave,1901,1934,food & drink,bar / tavern; food retail; restaurant / lunch,Chant / Channor saloon,stated,documented (2+ source types),23,polk_directory 17; permit_card 4; sponsor 1; sanborn 1,Polk 1901: 1038 York rd (now 3126 Greenmount) | Polk 1903: 1038 York rd (now 3126 Greenmount) | Polk 1904: 1038 York rd (now 3126 Greenmount) | Polk 1905: 1038 York rd (now 3126 Greenmount) | Polk 1906: 1038 York rd (now 3126 Greenmount) | Polk 1907: 1038 York rd (now 3126 Greenmount) | Polk 1907: 1038 York rd (now 3126 Greenmount) | Polk 1908: 1038 York rd (now 3126 Greenmount) | ...
+747,3126 Greenmount Ave,1901,1934,food & drink,bar / tavern; food retail; restaurant / lunch,Chant / Channor saloon,stated,documented (2+ source types),25,polk_directory 17; permit_card 4; sponsor 3; sanborn 1,Polk 1901: 1038 York rd (now 3126 Greenmount) | Polk 1903: 1038 York rd (now 3126 Greenmount) | Polk 1904: 1038 York rd (now 3126 Greenmount) | Polk 1905: 1038 York rd (now 3126 Greenmount) | Polk 1906: 1038 York rd (now 3126 Greenmount) | Polk 1907: 1038 York rd (now 3126 Greenmount) | Polk 1907: 1038 York rd (now 3126 Greenmount) | Polk 1908: 1038 York rd (now 3126 Greenmount) | ...
 747,3126 Greenmount Ave,1922,1922,production & light industry,,,stated,single record,1,polk_directory 1,Polk 1922: 3126 Greenmount av
 747,3126 Greenmount Ave,1924,1928,retail goods,store building (generic),,stated,documented (2+ source types),2,permit_card 1; sanborn 1,BRG48-53 image 675-0605 line 2 | Sanborn 1928 sheet 654
 747,3126 Greenmount Ave,1925,1925,residential,private garage,,stated,single record,1,permit_card 1,BRG48-53 image 675-0605 line 4
 747,3126 Greenmount Ave,1953,1953,food & drink,restaurant / lunch,,stated,single record,1,sanborn 1,Sanborn 1953 sheet 654
+747,3126 Greenmount Ave,1965,1965,food & drink,restaurant / lunch,,stated,single record,1,sponsor 1,incident 39480
 747,3126 Greenmount Ave,2011,2011,food & drink,restaurant / lunch,,stated,single record,1,nr_inventory 1,"NR nomination B-5229 p. 23 (use at fieldwork, c. 2011)"
 747,3126 Greenmount Ave,2026,2026,food & drink,,Melba's Place,stated,single record,1,current_2026 1,"Baltimore City Liquor Licenses (CityView Licenses layer; Open Baltimore 'Liquor Licenses' dataset) - MELBA'S PLACE, Class LBD7, renewed 2026-05-01 to 2027-04-30"
 748,3127 Greenmount Ave,1901,1903,food & drink,food retail,,inferred,repeated (2+ records),2,polk_directory 2,Polk 1901: 1039 York rd (now 3131 Greenmount) | Polk 1903: 1039 York rd (now 3131 Greenmount)
+748,3127 Greenmount Ave,1904,1922,personal services,,,stated,documented (2+ source types),18,polk_directory 16; sanborn 1; sponsor 1,Polk 1904: 1039 York rd (now 3131 Greenmount) | Polk 1907: 1037 York rd (now 3129 Greenmount) | Polk 1908: 1037 York rd (now 3129 Greenmount) | Polk 1909: 1037 York rd (now 3129 Greenmount) | Polk 1914: 3131 Greenmount av | Polk 1914: 3129 Greenmount av | Polk 1915: 3131 Greenmount av | Polk 1915: 3129 Greenmount av | ...
 748,3127 Greenmount Ave,1904,1915,retail goods,store building (generic),,inferred,documented (2+ source types),10,polk_directory 9; sanborn 1,Polk 1904: 1039 York rd (now 3131 Greenmount) | Polk 1905: 1039 York rd (now 3131 Greenmount) | Polk 1905: 1039 York rd (now 3131 Greenmount) | Polk 1906: 1039 York rd (now 3131 Greenmount) | Polk 1906: 1039 York rd (now 3131 Greenmount) | Polk 1907: 1039 York rd (now 3131 Greenmount) | Polk 1908: 1039 York rd (now 3131 Greenmount) | Polk 1909: 1039 York rd (now 3131 Greenmount) | ...
-748,3127 Greenmount Ave,1904,1922,personal services,,,inferred,documented (2+ source types),17,polk_directory 16; sanborn 1,Polk 1904: 1039 York rd (now 3131 Greenmount) | Polk 1907: 1037 York rd (now 3129 Greenmount) | Polk 1908: 1037 York rd (now 3129 Greenmount) | Polk 1909: 1037 York rd (now 3129 Greenmount) | Polk 1914: 3131 Greenmount av | Polk 1914: 3129 Greenmount av | Polk 1915: 3131 Greenmount av | Polk 1915: 3129 Greenmount av | ...
 748,3127 Greenmount Ave,1905,1905,office,,,inferred,repeated (2+ records),2,polk_directory 2,Polk 1905: 1039 York rd (now 3131 Greenmount) | Polk 1905: 1037 York rd (now 3129 Greenmount)
 748,3127 Greenmount Ave,1906,1906,production & light industry,,,inferred,single record,1,polk_directory 1,Polk 1906: 1039 York rd (now 3131 Greenmount)
-748,3127 Greenmount Ave,1913,1914,automotive,,W. C. Childs & Son,stated,documented (2+ source types),2,sponsor 1; polk_directory 1,incident 10385 | Polk 1914: 3127 Greenmount av
-748,3127 Greenmount Ave,1922,1922,food & drink,food retail,,inferred,single record,1,polk_directory 1,Polk 1922: 3131 Greenmount av
+748,3127 Greenmount Ave,1914,1914,automotive,,W. C. Childs & Son,stated,documented (2+ source types),2,sponsor 1; polk_directory 1,incident 10385 | Polk 1914: 3127 Greenmount av
+748,3127 Greenmount Ave,1914,1922,food & drink,food retail,,stated,documented (2+ source types),2,sponsor 1; polk_directory 1,incident 41562 | Polk 1922: 3131 Greenmount av
 748,3127 Greenmount Ave,1928,1953,retail goods,store building (generic),,stated,documented (2+ source types),9,permit_card 7; sanborn 2,Sanborn 1928 sheet 735 | BRG48-53 image 677-0905 line 6 | BRG48-53 image 677-0905 line 7 | BRG48-53 image 677-0905 line 9 | BRG48-53 image 677-0905 line 1 | BRG48-53 image 677-0905 line 10 | BRG48-53 image 677-0905 line 2 | BRG48-53 image 677-0905 line 11 | ...
 748,3127 Greenmount Ave,1928,1928,residential,dwelling (Sanborn); private garage,,stated,documented (2+ source types),2,permit_card 1; sanborn 1,BRG48-53 image 677-0905 line 3 | Sanborn 1928 sheet 735
 748,3127 Greenmount Ave,1934,1934,food & drink,food retail,,stated,single record,1,permit_card 1,BRG48-53 image 677-0905 line 5
@@ -383,16 +435,16 @@ property_id,address,start_year,end_year,use_category,subcategories,occupant,stat
 749,3128 Greenmount Ave,1915,1928,retail goods,store building (generic),,stated,documented (2+ source types),4,sanborn 2; polk_directory 1; nr_inventory 1,Sanborn 1915 sheet 717 | Polk 1923: 3128 Greenmount av | Sanborn 1928 sheet 654 | NR nomination B-5229 p. 23
 749,3128 Greenmount Ave,1920,1920,personal services,,,stated,single record,1,polk_directory 1,Polk 1920: 3128 Greenmount av
 749,3128 Greenmount Ave,1922,1922,production & light industry,,,stated,single record,1,polk_directory 1,Polk 1922: 3128 Greenmount av
-749,3128 Greenmount Ave,1930,1962,food & drink,bar / tavern; restaurant / lunch,Sweeney's Cafe,stated,documented (2+ source types),11,permit_card 6; sponsor 3; nr_inventory 1; sanborn 1,NR nomination B-5229 p. 23 | incident 18018 | incident 18019 | BRG48-53 image 675-0607 line 9 | BRG48-53 image 675-0608 line 3 | BRG48-53 image 675-0608 line 4 | Sanborn 1953 sheet 654 | BRG48-53 image 675-0608 line 5 | ...
+749,3128 Greenmount Ave,1930,1965,food & drink,bar / tavern; restaurant / lunch,Sweeney's Cafe,stated,documented (2+ source types),12,permit_card 6; sponsor 4; nr_inventory 1; sanborn 1,NR nomination B-5229 p. 23 | incident 18018 | incident 18019 | BRG48-53 image 675-0607 line 9 | BRG48-53 image 675-0608 line 3 | BRG48-53 image 675-0608 line 4 | Sanborn 1953 sheet 654 | BRG48-53 image 675-0608 line 5 | ...
 749,3128 Greenmount Ave,2026,2026,food & drink,,Red Emma's Bookstore Coffeehouse,stated,single record,1,current_2026 1,"Empty storefronts are holding back Waverly. Is one man to blame? (The Banner, 2026-10-05)"
 750,3130 Greenmount Ave,1901,1924,retail goods,store building (generic),,stated,documented (2+ source types),11,polk_directory 6; sanborn 4; permit_card 1,Polk 1901: 1042 York rd (now 3130 Greenmount) | Polk 1909: 1042 York rd (now 3130 Greenmount) | Polk 1914: 3130 Greenmount av | Polk 1915: 3130 Greenmount av | Sanborn 1915 sheet 717 | Sanborn 1915 sheet 717 | Sanborn 1915 sheet 717 | Sanborn 1915 sheet 717 | ...
 750,3130 Greenmount Ave,1903,1923,production & light industry,,,stated,repeated (2+ records),13,polk_directory 13,Polk 1903: 1048 York rd (now 3138 Greenmount) | Polk 1904: 1042 York rd (now 3130 Greenmount) | Polk 1905: 1042 York rd (now 3130 Greenmount) | Polk 1907: 1048 York rd (now 3138 Greenmount) | Polk 1907: 1042 York rd (now 3130 Greenmount) | Polk 1908: 1048 York rd (now 3138 Greenmount) | Polk 1917: 3138 Greenmount av | Polk 1918: 3138 Greenmount av | ...
 750,3130 Greenmount Ave,1904,1923,personal services,,,inferred,repeated (2+ records),17,polk_directory 17,Polk 1904: 1044 York rd (now 3132 Greenmount) | Polk 1905: 1044 York rd (now 3132 Greenmount) | Polk 1907: 1044 York rd (now 3132 Greenmount) | Polk 1908: 1044 York rd (now 3132 Greenmount) | Polk 1909: 1044 York rd (now 3132 Greenmount) | Polk 1914: 3132 Greenmount av | Polk 1915: 3134 Greenmount av | Polk 1918: 3134 Greenmount av | ...
 750,3130 Greenmount Ave,1906,1923,food & drink,food retail,Simpson bakery,stated,documented (2+ source types),9,polk_directory 8; sponsor 1,Polk 1906: 1046 York rd (now 3136 Greenmount) | Polk 1907: 1046 York rd (now 3136 Greenmount) | Polk 1908: 1046 York rd (now 3136 Greenmount) | Polk 1909: 1046 York rd (now 3136 Greenmount) | incident 10387 | Polk 1914: 3136 Greenmount av | Polk 1915: 3136 Greenmount av | Polk 1921: 3130 Greenmount av | ...
-750,3130 Greenmount Ave,1918,1931,entertainment & assembly,hall / lodge; recreation,,stated,documented (2+ source types),8,polk_directory 7; sponsor 1,Polk 1918: 3138 Greenmount av | Polk 1920: 3138 Greenmount av | Polk 1920: 3138 Greenmount av | Polk 1921: 3138 Greenmount av | Polk 1921: 3138 Greenmount av | Polk 1922: 3138 Greenmount av | Polk 1922: 3138 Greenmount av | incident 5667
+750,3130 Greenmount Ave,1918,1932,entertainment & assembly,hall / lodge; recreation,,stated,documented (2+ source types),8,polk_directory 7; sponsor 1,Polk 1918: 3138 Greenmount av | Polk 1920: 3138 Greenmount av | Polk 1920: 3138 Greenmount av | Polk 1921: 3138 Greenmount av | Polk 1921: 3138 Greenmount av | Polk 1922: 3138 Greenmount av | Polk 1922: 3138 Greenmount av | incident 5667
 750,3130 Greenmount Ave,1928,1928,office,,,stated,single record,1,sanborn 1,Sanborn 1928 sheet 654
 750,3130 Greenmount Ave,1948,1953,food & drink,restaurant / lunch,Hooper's Restaurants,stated,documented (2+ source types),2,sponsor 1; sanborn 1,incident 17999 | Sanborn 1953 sheet 654
-750,3130 Greenmount Ave,1979,1979,food & drink,restaurant / lunch,Pete's Grille,stated,single record,1,sponsor 1,incident 10843
+750,3130 Greenmount Ave,1980,1980,food & drink,restaurant / lunch,Pete's Grille,stated,single record,1,sponsor 1,incident 10843
 750,3130 Greenmount Ave,2011,2011,food & drink,restaurant / lunch,,stated,single record,1,nr_inventory 1,"NR nomination B-5229 p. 23 (use at fieldwork, c. 2011)"
 750,3130 Greenmount Ave,2026,2026,food & drink,,Pete's Grille,stated,single record,1,current_2026 1,"Empty storefronts are holding back Waverly. Is one man to blame? (The Banner, 2026-10-05)"
 751,3133 Greenmount Ave,1901,1932,retail goods,store building (generic),Hofferbert Bros.,stated,documented (2+ source types),18,polk_directory 10; sanborn 4; sponsor 2; nr_inventory 1; permit_card 1,Polk 1901: 1045 York rd (now 3137 Greenmount) | Polk 1905: 1045 York rd (now 3137 Greenmount) | Polk 1912: 1047 York rd (now 3139 Greenmount) | Polk 1914: 3139 Greenmount av | incident 5096 | Polk 1915: 3139 Greenmount av | Sanborn 1915 sheet 718 | Sanborn 1915 sheet 718 | ...
@@ -403,30 +455,31 @@ property_id,address,start_year,end_year,use_category,subcategories,occupant,stat
 751,3133 Greenmount Ave,1937,1937,food & drink,food retail,,stated,single record,1,nr_inventory 1,NR nomination B-5229 p. 18
 751,3133 Greenmount Ave,1953,1953,retail goods,store building (generic),,stated,single record,1,sanborn 1,Sanborn 1953 sheet 735
 751,3133 Greenmount Ave,2011,2011,retail goods,store building (generic),,stated,single record,1,nr_inventory 1,"NR nomination B-5229 p. 18 (use at fieldwork, c. 2011)"
+752,3200 Greenmount Ave,1870,1870,institutional & religious,,,stated,single record,1,sponsor 1,incident 39014
 752,3200 Greenmount Ave,1892,1892,personal services,,,stated,single record,1,sponsor 1,incident 5186
+752,3200 Greenmount Ave,1902,1917,food & drink,bar / tavern,,stated,documented (2+ source types),13,polk_directory 8; sponsor 4; sanborn 1,incident 42313 | incident 42315 | incident 42318 | Polk 1905: 1102 York rd (now 3200 Greenmount) | Polk 1906: 1102 York rd (now 3200 Greenmount) | Polk 1907: 1102 York rd (now 3200 Greenmount) | Polk 1908: 1102 York rd (now 3200 Greenmount) | Polk 1909: 1102 York rd (now 3200 Greenmount) | ...
 752,3200 Greenmount Ave,1903,1903,retail goods,,,stated,single record,1,polk_directory 1,Polk 1903: 1102 York rd (now 3200 Greenmount)
+752,3200 Greenmount Ave,1903,1904,entertainment & assembly,recreation,,stated,documented (2+ source types),3,sponsor 2; polk_directory 1,incident 42316 | incident 42317 | Polk 1904: 1102 York rd (now 3200 Greenmount)
 752,3200 Greenmount Ave,1904,1904,personal services,,,stated,single record,1,polk_directory 1,Polk 1904: 1102 York rd (now 3200 Greenmount)
-752,3200 Greenmount Ave,1904,1904,entertainment & assembly,recreation,,stated,single record,1,polk_directory 1,Polk 1904: 1102 York rd (now 3200 Greenmount)
-752,3200 Greenmount Ave,1905,1937,food & drink,bar / tavern; food retail; restaurant / lunch,,stated,documented (2+ source types),15,polk_directory 8; sponsor 4; sanborn 1; nr_inventory 1; permit_card 1,Polk 1905: 1102 York rd (now 3200 Greenmount) | Polk 1906: 1102 York rd (now 3200 Greenmount) | Polk 1907: 1102 York rd (now 3200 Greenmount) | Polk 1908: 1102 York rd (now 3200 Greenmount) | Polk 1909: 1102 York rd (now 3200 Greenmount) | Polk 1914: 3202 Greenmount av | Polk 1915: 3202 Greenmount av | Sanborn 1915 sheet 717 | ...
 752,3200 Greenmount Ave,1912,1912,residential,dwelling (stated),,stated,single record,1,sponsor 1,incident 4654
-752,3200 Greenmount Ave,1915,1915,personal services,,,stated,single record,1,sponsor 1,incident 4655
 752,3200 Greenmount Ave,1926,1929,retail goods,store building (generic),,stated,documented (2+ source types),3,permit_card 2; sanborn 1,BRG48-53 image 675-0647 line 2 | Sanborn 1928 sheet 654 | BRG48-53 image 675-0647 line 1
+752,3200 Greenmount Ave,1928,1966,food & drink,food retail; restaurant / lunch,White Coffee Pot,stated,documented (2+ source types),12,sponsor 9; nr_inventory 1; permit_card 1; sanborn 1,incident 5190 | NR nomination B-5229 p. 18 | incident 5196 | BRG48-53 image 675-0647 line 4 | incident 5198 | incident 42328 | incident 42330 | Sanborn 1953 sheet 654 | ...
 752,3200 Greenmount Ave,1948,1948,retail goods,store building (generic),,stated,single record,1,permit_card 1,BRG48-53 image 675-0647 line 7
-752,3200 Greenmount Ave,1953,1963,food & drink,restaurant / lunch,White Coffee Pot,stated,documented (2+ source types),4,sponsor 3; sanborn 1,Sanborn 1953 sheet 654 | incident 5199 | incident 18027 | incident 5201
 752,3200 Greenmount Ave,1955,1955,personal services,,Adolphe Beauty Salon,stated,single record,1,sponsor 1,incident 5200
-752,3200 Greenmount Ave,1978,1980,food & drink,restaurant / lunch,Hotspot Family Restaurant Inc; Hotspot Carryout Inc; Shalimar; White Coffee Pot; Shalimar,stated,repeated (2+ records),3,sponsor 3,incident 5202 | incident 4657 | incident 5204
+752,3200 Greenmount Ave,1979,1980,food & drink,restaurant / lunch,Hotspot Family Restaurant Inc; Hotspot Carryout Inc; Shalimar; White Coffee Pot; Shalimar,stated,repeated (2+ records),3,sponsor 3,incident 5202 | incident 4657 | incident 5204
 752,3200 Greenmount Ave,1980,1980,retail goods,,Shalimar,stated,single record,1,sponsor 1,incident 5203
 752,3200 Greenmount Ave,2011,2015,food & drink,restaurant / lunch,Green's Carryout,stated,documented (2+ source types),2,nr_inventory 1; sponsor 1,"NR nomination B-5229 p. 18 (use at fieldwork, c. 2011) | incident 5277"
 752,3200 Greenmount Ave,2026,2026,food & drink,,Green's Carryout,stated,single record,1,current_2026 1,GREEN'S CARRYOUT - Updated December 2025 - 3200 Greenmount Ave - Yelp (search result title)
 753,3201 Greenmount Ave,1890,1890,residential,dwelling (stated),,stated,single record,1,nr_inventory 1,NR nomination B-5229 p. 15
-753,3201 Greenmount Ave,1913,1930,food & drink,food retail,American Stores Company,stated,documented (2+ source types),9,polk_directory 5; sponsor 4,incident 10444 | Polk 1914: 3201 Greenmount av | Polk 1915: 3201 Greenmount av | Polk 1917: 3201 Greenmount av | incident 17739 | Polk 1920: 3201 Greenmount av | Polk 1923: 3201 Greenmount av | incident 17740 | ...
+753,3201 Greenmount Ave,1914,1930,food & drink,food retail,American Stores Company,stated,documented (2+ source types),9,polk_directory 5; sponsor 4,incident 10444 | Polk 1914: 3201 Greenmount av | Polk 1915: 3201 Greenmount av | Polk 1917: 3201 Greenmount av | incident 17739 | Polk 1920: 3201 Greenmount av | Polk 1923: 3201 Greenmount av | incident 17740 | ...
 753,3201 Greenmount Ave,1915,1915,retail goods,store building (generic),,stated,single record,1,sanborn 1,Sanborn 1915 sheet 718
 753,3201 Greenmount Ave,1921,1930,production & light industry,,,stated,documented (2+ source types),2,polk_directory 1; permit_card 1,Polk 1921: 3201 Greenmount av | BRG48-53 image 677-0862 line 5
 753,3201 Greenmount Ave,1928,1953,retail goods,store building (generic),,stated,documented (2+ source types),5,permit_card 3; sanborn 2,Sanborn 1928 sheet 739 | BRG48-53 image 677-0862 line 11 | BRG48-53 image 677-0862 line 12 | BRG48-53 image 677-0863 line 3 | Sanborn 1953 sheet 739
-753,3201 Greenmount Ave,2025,2025,institutional & religious,,,stated,single record,1,sponsor 1,incident 17743
+753,3201 Greenmount Ave,2026,2026,institutional & religious,,,stated,single record,1,sponsor 1,incident 17743
 753,3201 Greenmount Ave,2026,2026,retail goods,,GM Tobacco Outlet,stated,single record,1,current_2026 1,GM TOBACCO OUTLET - Updated December 2025 - 3201 Greenmount Ave - Yelp (search result title)
-754,3203 Greenmount Ave,1909,1923,food & drink,food retail,Waverly Bottling Works,stated,documented (2+ source types),13,polk_directory 10; sponsor 2; nr_inventory 1,incident 10866 | incident 10445 | Polk 1914: 3203 Greenmount av | Polk 1915: 3203 Greenmount av | Polk 1918: 3203 Greenmount av | Polk 1920: 3203 Greenmount av | NR nomination B-5229 p. 15 | Polk 1921: 3203 Greenmount av | ...
+754,3203 Greenmount Ave,1910,1923,food & drink,food retail,Waverly Bottling Works,stated,documented (2+ source types),13,polk_directory 10; sponsor 2; nr_inventory 1,incident 10866 | incident 10445 | Polk 1914: 3203 Greenmount av | Polk 1915: 3203 Greenmount av | Polk 1918: 3203 Greenmount av | Polk 1920: 3203 Greenmount av | NR nomination B-5229 p. 15 | Polk 1921: 3203 Greenmount av | ...
 754,3203 Greenmount Ave,1914,1915,production & light industry,,,stated,repeated (2+ records),2,polk_directory 2,Polk 1914: 3203 Greenmount av | Polk 1915: 3205 Greenmount av
+754,3203 Greenmount Ave,1915,1915,personal services,,,stated,single record,1,sponsor 1,incident 4655
 754,3203 Greenmount Ave,1915,1915,entertainment & assembly,recreation,,inferred,single record,1,polk_directory 1,Polk 1915: 3209 Greenmount av
 754,3203 Greenmount Ave,1915,1930,retail goods,store building (generic),,stated,documented (2+ source types),10,sanborn 5; polk_directory 4; sponsor 1,Polk 1915: 3205 Greenmount av | Sanborn 1915 sheet 718 | Sanborn 1915 sheet 718 | Polk 1917: 3205 Greenmount av | Polk 1921: 3205 Greenmount av | Polk 1922: 3205 Greenmount av | Sanborn 1928 sheet 739 | Sanborn 1928 sheet 739 | ...
 754,3203 Greenmount Ave,1940,1940,entertainment & assembly,theatre / pictures,,stated,single record,1,sponsor 1,incident 17796
@@ -434,23 +487,22 @@ property_id,address,start_year,end_year,use_category,subcategories,occupant,stat
 754,3203 Greenmount Ave,1953,1953,retail goods,store building (generic),,stated,repeated (2+ records),2,sanborn 2,Sanborn 1953 sheet 739 | Sanborn 1953 sheet 739
 754,3203 Greenmount Ave,2011,2011,personal services,,,stated,single record,1,nr_inventory 1,"NR nomination B-5229 p. 15 (use at fieldwork, c. 2011)"
 754,3203 Greenmount Ave,2026,2026,retail goods,,Beauty Lane (beauty supply),stated,single record,1,current_2026 1,BEAUTY LANE - Updated March 2026 - 3203 Greenmount Ave - Yelp (search result title)
-755,3204 Greenmount Ave,1879,1879,food & drink,food retail,John Brandau's Men's Furnishings; Magic Menswear,stated,single record,1,sponsor 1,incident 11518
+755,3204 Greenmount Ave,1880,1880,food & drink,food retail,John Brandau's Men's Furnishings; Magic Menswear,stated,single record,1,sponsor 1,incident 11518
 755,3204 Greenmount Ave,1880,1880,residential,dwelling (stated),,stated,single record,1,nr_inventory 1,NR nomination B-5229 p. 17
-755,3204 Greenmount Ave,1903,1914,food & drink,food retail,,stated,documented (2+ source types),10,polk_directory 9; sponsor 1,Polk 1903: 1104 York rd (now 3204 Greenmount) | Polk 1905: 1104 York rd (now 3204 Greenmount) | Polk 1906: 1104 York rd (now 3204 Greenmount) | Polk 1906: 1104 York rd (now 3204 Greenmount) | incident 10446 | Polk 1907: 1104 York rd (now 3204 Greenmount) | Polk 1907: 1104 York rd (now 3204 Greenmount) | Polk 1908: 1104 York rd (now 3204 Greenmount) | ...
+755,3204 Greenmount Ave,1903,1933,food & drink,bar / tavern; food retail; restaurant / lunch,,stated,documented (2+ source types),17,polk_directory 9; sponsor 5; nr_inventory 2; permit_card 1,Polk 1903: 1104 York rd (now 3204 Greenmount) | Polk 1905: 1104 York rd (now 3204 Greenmount) | Polk 1906: 1104 York rd (now 3204 Greenmount) | Polk 1906: 1104 York rd (now 3204 Greenmount) | Polk 1907: 1104 York rd (now 3204 Greenmount) | Polk 1907: 1104 York rd (now 3204 Greenmount) | incident 10446 | Polk 1908: 1104 York rd (now 3204 Greenmount) | ...
 755,3204 Greenmount Ave,1905,1909,automotive,,,stated,repeated (2+ records),3,polk_directory 3,Polk 1905: 1104 York rd (now 3204 Greenmount) | Polk 1906: 1104 York rd (now 3204 Greenmount) | Polk 1909: 1104 York rd (now 3204 Greenmount)
 755,3204 Greenmount Ave,1915,1917,retail goods,store building (generic),,stated,documented (2+ source types),2,sanborn 1; polk_directory 1,Sanborn 1915 sheet 717 | Polk 1917: 3204 Greenmount av
-755,3204 Greenmount Ave,1920,1921,personal services,,,stated,repeated (2+ records),2,polk_directory 2,Polk 1920: 3204 Greenmount av | Polk 1921: 3204 Greenmount av
-755,3204 Greenmount Ave,1928,1933,food & drink,bar / tavern; food retail; restaurant / lunch,,stated,documented (2+ source types),3,nr_inventory 2; permit_card 1,NR nomination B-5229 p. 17 | NR nomination B-5229 p. 17 | BRG48-53 image 675-0648 line 5
+755,3204 Greenmount Ave,1920,1922,personal services,,,stated,documented (2+ source types),3,polk_directory 2; sponsor 1,Polk 1920: 3204 Greenmount av | Polk 1921: 3204 Greenmount av | incident 41572
 755,3204 Greenmount Ave,1928,1928,retail goods,store building (generic),,stated,documented (2+ source types),2,permit_card 1; sanborn 1,BRG48-53 image 675-0648 line 3 | Sanborn 1928 sheet 654
-755,3204 Greenmount Ave,1947,1953,retail goods,store building (generic),,stated,documented (2+ source types),2,permit_card 1; sanborn 1,BRG48-53 image 675-0648 line 9 | Sanborn 1953 sheet 654
+755,3204 Greenmount Ave,1939,1953,retail goods,store building (generic),,stated,documented (2+ source types),3,sponsor 1; permit_card 1; sanborn 1,incident 23958 | BRG48-53 image 675-0648 line 9 | Sanborn 1953 sheet 654
 755,3204 Greenmount Ave,1949,1949,entertainment & assembly,theatre / pictures,,stated,single record,1,permit_card 1,BRG48-53 image 675-0648 line 11
 755,3204 Greenmount Ave,1994,1994,retail goods,,Magic Men's Wear,stated,single record,1,sponsor 1,incident 18746
 755,3204 Greenmount Ave,2013,2013,food & drink,bar / tavern,Better Maide Candy Company; John Brandau's Men's Furnishings,stated,single record,1,sponsor 1,incident 20725
 755,3204 Greenmount Ave,2026,2026,retail goods,,Magic Mens Wear,stated,single record,1,current_2026 1,MAGIC MENS WEAR - Updated August 2026 - 3204 Greenmount Ave - Yelp (search result title)
-756,3208 Greenmount Ave,1899,1899,food & drink,bar / tavern,Kitty's Lounge,stated,single record,1,sponsor 1,incident 11249
+756,3208 Greenmount Ave,1900,1900,food & drink,bar / tavern,Kitty's Lounge,stated,single record,1,sponsor 1,incident 11249
 756,3208 Greenmount Ave,1900,1900,residential,dwelling (stated),,stated,single record,1,nr_inventory 1,NR nomination B-5229 p. 17
-756,3208 Greenmount Ave,1913,1920,food & drink,food retail,,stated,documented (2+ source types),2,sponsor 1; polk_directory 1,incident 10447 | Polk 1920: 3208 Greenmount av
 756,3208 Greenmount Ave,1913,1923,personal services,,,stated,repeated (2+ records),7,polk_directory 7,Polk 1913: 3208 Greenmount av | Polk 1914: 3208 Greenmount av | Polk 1915: 3208 Greenmount av | Polk 1918: 3208 Greenmount av | Polk 1920: 3208 Greenmount av | Polk 1921: 3208 Greenmount av | Polk 1923: 3208 Greenmount av
+756,3208 Greenmount Ave,1914,1920,food & drink,food retail,,stated,documented (2+ source types),2,sponsor 1; polk_directory 1,incident 10447 | Polk 1920: 3208 Greenmount av
 756,3208 Greenmount Ave,1915,1915,retail goods,store building (generic),,stated,single record,1,sanborn 1,Sanborn 1915 sheet 717
 756,3208 Greenmount Ave,1928,1928,retail goods,store building (generic),,stated,documented (2+ source types),2,sanborn 1; nr_inventory 1,Sanborn 1928 sheet 654 | NR nomination B-5229 p. 17
 756,3208 Greenmount Ave,1937,1946,food & drink,bar / tavern; restaurant / lunch,,stated,documented (2+ source types),2,nr_inventory 1; permit_card 1,NR nomination B-5229 p. 17 | BRG48-53 image 675-0650 line 4
@@ -458,101 +510,102 @@ property_id,address,start_year,end_year,use_category,subcategories,occupant,stat
 756,3208 Greenmount Ave,2011,2011,food & drink,bar / tavern,,stated,single record,1,nr_inventory 1,"NR nomination B-5229 p. 17 (use at fieldwork, c. 2011)"
 756,3208 Greenmount Ave,2013,2013,residential,dwelling (stated),Kitty's Lounge,stated,single record,1,sponsor 1,incident 20726
 756,3208 Greenmount Ave,2026,2026,food & drink,,Kitty's Lounge,stated,single record,1,current_2026 1,"Baltimore City Liquor Licenses (CityView Licenses layer; Open Baltimore 'Liquor Licenses' dataset) - KITTY'S LOUNGE, Class BD7, renewed 2026-05-01 to 2027-04-30"
-757,3210 Greenmount Ave,1899,1899,retail goods,named store,Blackstone Clothes,stated,single record,1,sponsor 1,incident 11251
+757,3210 Greenmount Ave,1900,1900,retail goods,named store,Blackstone Clothes,stated,single record,1,sponsor 1,incident 11251
 757,3210 Greenmount Ave,1900,1900,residential,dwelling (stated),,stated,single record,1,nr_inventory 1,NR nomination B-5229 p. 17
 757,3210 Greenmount Ave,1915,1915,residential,,,stated,single record,1,sanborn 1,Sanborn 1915 sheet 717
-757,3210 Greenmount Ave,1917,1935,retail goods,store building (generic),,stated,documented (2+ source types),10,polk_directory 4; permit_card 2; nr_inventory 2; sponsor 1; sanborn 1,incident 10448 | Polk 1918: 3210 Greenmount av | Polk 1920: 3210 Greenmount av | Polk 1921: 3210 Greenmount av | Polk 1922: 3210 Greenmount av | BRG48-53 image 675-0651 line 2 | Sanborn 1928 sheet 654 | NR nomination B-5229 p. 17 | ...
+757,3210 Greenmount Ave,1917,1917,food & drink,food retail,,stated,single record,1,sponsor 1,incident 41578
+757,3210 Greenmount Ave,1918,1935,retail goods,store building (generic),,stated,documented (2+ source types),10,polk_directory 4; permit_card 2; nr_inventory 2; sponsor 1; sanborn 1,incident 10448 | Polk 1918: 3210 Greenmount av | Polk 1920: 3210 Greenmount av | Polk 1921: 3210 Greenmount av | Polk 1922: 3210 Greenmount av | BRG48-53 image 675-0651 line 2 | Sanborn 1928 sheet 654 | NR nomination B-5229 p. 17 | ...
 757,3210 Greenmount Ave,1953,1953,retail goods,store building (generic),,stated,single record,1,sanborn 1,Sanborn 1953 sheet 654
 757,3210 Greenmount Ave,2026,2026,retail goods,,Blackstone Menswear,stated,single record,1,current_2026 1,BLACKSTONE MENSWEAR - Updated October 2026 - 3210 Greenmount Ave - Yelp (yelp.com.au search result title)
 758,3211 Greenmount Ave,1909,1953,entertainment & assembly,theatre / pictures,F.H. Durkee Enterprises; Waverly Amusement Co,stated,documented (2+ source types),20,sponsor 8; polk_directory 5; permit_card 4; sanborn 2; nr_inventory 1,incident 18739 | NR nomination B-5229 p. 14 | Polk 1915: 3211 Greenmount av | incident 10450 | Polk 1918: 3211 Greenmount av | incident 17792 | Polk 1920: 3211 Greenmount av | incident 17793 | ...
-758,3211 Greenmount Ave,1952,1952,residential,dwelling (stated),,stated,single record,1,sponsor 1,incident 10451
-758,3211 Greenmount Ave,1963,1963,residential,dwelling (stated),,stated,single record,1,sponsor 1,incident 17777
+758,3211 Greenmount Ave,1953,1963,residential,dwelling (stated),,stated,repeated (2+ records),2,sponsor 2,incident 10451 | incident 17777
 758,3211 Greenmount Ave,1985,1985,entertainment & assembly,theatre / pictures,,stated,single record,1,sponsor 1,incident 17778
-759,3212 Greenmount Ave,1899,1899,retail goods,,Blackstone Clothes,stated,single record,1,sponsor 1,incident 11257
+759,3212 Greenmount Ave,1900,1900,retail goods,,Blackstone Clothes,stated,single record,1,sponsor 1,incident 11257
 759,3212 Greenmount Ave,1915,1915,production & light industry,,,stated,single record,1,polk_directory 1,Polk 1915: 3212 Greenmount av
 759,3212 Greenmount Ave,1915,1915,residential,,,stated,repeated (2+ records),2,sanborn 2,Sanborn 1915 sheet 717 | Sanborn 1915 sheet 717
-759,3212 Greenmount Ave,1917,1918,food & drink,food retail,,stated,documented (2+ source types),2,sponsor 1; polk_directory 1,incident 10452 | Polk 1918: 3212 Greenmount av
 759,3212 Greenmount Ave,1917,1917,personal services,,,inferred,single record,1,polk_directory 1,Polk 1917: 3214 Greenmount av
-759,3212 Greenmount Ave,1921,1929,retail goods,store building (generic),,stated,documented (2+ source types),5,polk_directory 3; sanborn 1; permit_card 1,Polk 1921: 3214 Greenmount av | Polk 1922: 3214 Greenmount av | Polk 1923: 3214 Greenmount av | Sanborn 1928 sheet 654 | BRG48-53 image 675-0652 line 3
+759,3212 Greenmount Ave,1918,1918,food & drink,food retail,,stated,documented (2+ source types),2,sponsor 1; polk_directory 1,incident 10452 | Polk 1918: 3212 Greenmount av
+759,3212 Greenmount Ave,1921,1929,retail goods,store building (generic),,stated,documented (2+ source types),6,polk_directory 3; sponsor 1; sanborn 1; permit_card 1,Polk 1921: 3214 Greenmount av | Polk 1922: 3214 Greenmount av | Polk 1923: 3214 Greenmount av | incident 23934 | Sanborn 1928 sheet 654 | BRG48-53 image 675-0652 line 3
 759,3212 Greenmount Ave,1926,1926,residential,private garage,,stated,single record,1,permit_card 1,BRG48-53 image 675-0652 line 2
-759,3212 Greenmount Ave,1952,1953,retail goods,store building (generic),,stated,documented (2+ source types),2,permit_card 1; sanborn 1,BRG48-53 image 675-0652 line 11 | Sanborn 1953 sheet 654
+759,3212 Greenmount Ave,1947,1953,retail goods,store building (generic),,stated,documented (2+ source types),3,sponsor 1; permit_card 1; sanborn 1,incident 23960 | BRG48-53 image 675-0652 line 11 | Sanborn 1953 sheet 654
 760,3213 Greenmount Ave,1915,1923,personal services,,,stated,repeated (2+ records),5,polk_directory 5,Polk 1915: 3215 Greenmount av | Polk 1920: 3213 Greenmount av | Polk 1921: 3213 Greenmount av | Polk 1922: 3213 Greenmount av | Polk 1923: 3213 Greenmount av
 760,3213 Greenmount Ave,1915,1915,residential,,,inferred,single record,1,sanborn 1,Sanborn 1915 sheet 718
-760,3213 Greenmount Ave,1924,1924,entertainment & assembly,theatre / pictures,Knockblock Brother's,stated,single record,1,sponsor 1,incident 11260
 760,3213 Greenmount Ave,1924,1924,food & drink,food retail,Great Atlantic & Pacific Tea Company,stated,single record,1,sponsor 1,incident 18735
+760,3213 Greenmount Ave,1925,1925,entertainment & assembly,theatre / pictures,Knockblock Brother's,stated,single record,1,sponsor 1,incident 11260
 760,3213 Greenmount Ave,1928,1928,retail goods,store building (generic),,inferred,single record,1,sanborn 1,Sanborn 1928 sheet 739
-760,3213 Greenmount Ave,1936,1944,food & drink,food retail,,stated,documented (2+ source types),3,sponsor 2; nr_inventory 1,incident 17799 | NR nomination B-5229 p. 14 | incident 12326
+760,3213 Greenmount Ave,1936,1945,food & drink,food retail,,stated,documented (2+ source types),3,sponsor 2; nr_inventory 1,incident 17799 | NR nomination B-5229 p. 14 | incident 12326
 760,3213 Greenmount Ave,1953,1953,retail goods,store building (generic),,inferred,single record,1,sanborn 1,Sanborn 1953 sheet 739
-760,3213 Greenmount Ave,1955,1955,food & drink,food retail,,stated,single record,1,sponsor 1,incident 12328
+760,3213 Greenmount Ave,1956,1956,food & drink,food retail,,stated,single record,1,sponsor 1,incident 12328
 760,3213 Greenmount Ave,1977,1978,food & drink,food retail,,stated,repeated (2+ records),2,sponsor 2,incident 12329 | incident 17735
 760,3213 Greenmount Ave,2011,2011,food & drink,food retail,,stated,single record,1,nr_inventory 1,"NR nomination B-5229 p. 14 (use at fieldwork, c. 2011)"
 760,3213 Greenmount Ave,2013,2013,entertainment & assembly,theatre / pictures,Knockblock Brother's,stated,single record,1,sponsor 1,incident 20729
-760,3213 Greenmount Ave,2025,2025,food & drink,food retail,,stated,single record,1,sponsor 1,incident 12332
+760,3213 Greenmount Ave,2026,2026,food & drink,food retail,,stated,single record,1,sponsor 1,incident 12332
 760,3213 Greenmount Ave,2026,2026,retail goods,,Raven Grocery & Dollar Mart (listed at 3215),stated,single record,1,current_2026 1,RAVEN GROCERY & DOLLAR MART - Updated September 2026 - 3215 Greenmount Ave - Yelp (search result title)
-761,3216 Greenmount Ave,1899,1899,institutional & religious,,Homewood Music Shop; X-Top Hip Hop Clothing,stated,single record,1,sponsor 1,incident 11261
+761,3216 Greenmount Ave,1900,1900,institutional & religious,,Homewood Music Shop; X-Top Hip Hop Clothing,stated,single record,1,sponsor 1,incident 11261
 761,3216 Greenmount Ave,1900,1900,residential,dwelling (stated),,stated,single record,1,nr_inventory 1,NR nomination B-5229 p. 16
-761,3216 Greenmount Ave,1913,1937,retail goods,store building (generic),Christie florist,stated,documented (2+ source types),8,polk_directory 4; nr_inventory 2; sponsor 1; sanborn 1,incident 10454 | Polk 1918: 3216 Greenmount av | Polk 1920: 3216 Greenmount av | Polk 1921: 3216 Greenmount av | Polk 1922: 3216 Greenmount av | Sanborn 1928 sheet 654 | NR nomination B-5229 p. 16 | NR nomination B-5229 p. 16
+761,3216 Greenmount Ave,1914,1937,retail goods,store building (generic),Christie florist,stated,documented (2+ source types),8,polk_directory 4; nr_inventory 2; sponsor 1; sanborn 1,incident 10454 | Polk 1918: 3216 Greenmount av | Polk 1920: 3216 Greenmount av | Polk 1921: 3216 Greenmount av | Polk 1922: 3216 Greenmount av | Sanborn 1928 sheet 654 | NR nomination B-5229 p. 16 | NR nomination B-5229 p. 16
 761,3216 Greenmount Ave,1915,1915,residential,,,stated,single record,1,sanborn 1,Sanborn 1915 sheet 717
+761,3216 Greenmount Ave,1928,1928,institutional & religious,,,stated,single record,1,sponsor 1,incident 23935
 761,3216 Greenmount Ave,1953,1953,retail goods,store building (generic),,stated,single record,1,sanborn 1,Sanborn 1953 sheet 654
 761,3216 Greenmount Ave,2011,2011,retail goods,,,stated,single record,1,nr_inventory 1,"NR nomination B-5229 p. 16 (use at fieldwork, c. 2011)"
+761,3216 Greenmount Ave,2013,2013,residential,dwelling (stated),Homewood Music Shop,stated,single record,1,sponsor 1,incident 20730
 761,3216 Greenmount Ave,2026,2026,office,,Agate Integrated & Behavioral Healthcare Services,stated,single record,1,current_2026 1,Google Maps place listing
-762,3217 Greenmount Ave,1914,1915,residential,dwelling (stated),,stated,documented (2+ source types),3,sanborn 2; sponsor 1,incident 17761 | Sanborn 1915 sheet 718 | Sanborn 1915 sheet 718
+762,3217 Greenmount Ave,1915,1915,residential,dwelling (stated),,stated,documented (2+ source types),3,sanborn 2; sponsor 1,incident 17761 | Sanborn 1915 sheet 718 | Sanborn 1915 sheet 718
 762,3217 Greenmount Ave,1915,1915,production & light industry,,,stated,single record,1,polk_directory 1,Polk 1915: 3217 Greenmount av
-762,3217 Greenmount Ave,1917,1938,retail goods,store building (generic),,stated,documented (2+ source types),12,polk_directory 4; permit_card 3; sponsor 2; sanborn 2; nr_inventory 1,incident 10455 | incident 17763 | Polk 1917: 3217 Greenmount av | Polk 1920: 3219 Greenmount av | Polk 1921: 3219 Greenmount av | Polk 1922: 3217 Greenmount av | Sanborn 1928 sheet 739 | Sanborn 1928 sheet 739 | ...
-762,3217 Greenmount Ave,1919,1919,food & drink,food retail,Boulevard Hardware; Wagner's Groceries and Meats,stated,single record,1,sponsor 1,incident 11264
+762,3217 Greenmount Ave,1917,1938,retail goods,store building (generic),,stated,documented (2+ source types),12,polk_directory 4; permit_card 3; sponsor 2; sanborn 2; nr_inventory 1,Polk 1917: 3217 Greenmount av | incident 10455 | incident 17763 | Polk 1920: 3219 Greenmount av | Polk 1921: 3219 Greenmount av | Polk 1922: 3217 Greenmount av | Sanborn 1928 sheet 739 | Sanborn 1928 sheet 739 | ...
+762,3217 Greenmount Ave,1920,1920,food & drink,food retail,Boulevard Hardware; Wagner's Groceries and Meats,stated,single record,1,sponsor 1,incident 11264
 762,3217 Greenmount Ave,1937,1942,food & drink,food retail,Wagner's Grocery,stated,documented (2+ source types),3,nr_inventory 2; sponsor 1,NR nomination B-5229 p. 14 | NR nomination B-5229 p. 14 | incident 18736
 762,3217 Greenmount Ave,1953,1953,retail goods,store building (generic),,stated,repeated (2+ records),2,sanborn 2,Sanborn 1953 sheet 739 | Sanborn 1953 sheet 739
+762,3217 Greenmount Ave,1968,1968,food & drink,food retail,,stated,single record,1,sponsor 1,incident 41583
 762,3217 Greenmount Ave,2011,2011,retail goods,store building (generic),,stated,single record,1,nr_inventory 1,"NR nomination B-5229 p. 14 (use at fieldwork, c. 2011)"
 762,3217 Greenmount Ave,2026,2026,personal services,,#1 Nails and Spa,stated,single record,1,current_2026 1,Google Maps place listing
 763,3218 Greenmount Ave,1915,1915,residential,,,stated,single record,1,sanborn 1,Sanborn 1915 sheet 717
-763,3218 Greenmount Ave,1921,1923,food & drink,restaurant / lunch,,stated,documented (2+ source types),3,polk_directory 2; sponsor 1,incident 10456 | Polk 1922: 3218 Greenmount av | Polk 1923: 3218 Greenmount av
+763,3218 Greenmount Ave,1922,1923,food & drink,restaurant / lunch,,stated,documented (2+ source types),3,polk_directory 2; sponsor 1,incident 10456 | Polk 1922: 3218 Greenmount av | Polk 1923: 3218 Greenmount av
 763,3218 Greenmount Ave,1928,1928,retail goods,store building (generic),,stated,single record,1,sanborn 1,Sanborn 1928 sheet 654
 763,3218 Greenmount Ave,1953,1953,retail goods,store building (generic),,stated,single record,1,sanborn 1,Sanborn 1953 sheet 654
-763,3218 Greenmount Ave,2013,2013,residential,dwelling (stated),Homewood Music Shop,stated,single record,1,sponsor 1,incident 20730
 763,3218 Greenmount Ave,2026,2026,office,,Agate Integrated and Behavioral Healthcare Services,stated,single record,1,current_2026 1,AGATE INTEGRATED AND BEHAVIORAL HEALTHCARE SERVICES - NPI 1871245811 (npiprofile.com)
-764,3220 Greenmount Ave,1899,1899,personal services,,Fesler Brothers; Venable Building & Savings Assn,stated,single record,1,sponsor 1,incident 11266
+764,3220 Greenmount Ave,1900,1900,personal services,,Fesler Brothers; Venable Building & Savings Assn,stated,single record,1,sponsor 1,incident 11266
 764,3220 Greenmount Ave,1900,1900,residential,dwelling (stated),,stated,single record,1,nr_inventory 1,NR nomination B-5229 p. 16
-764,3220 Greenmount Ave,1901,1901,production & light industry,,,stated,single record,1,polk_directory 1,Polk 1901: 1112 York rd (now 3220 Greenmount)
+764,3220 Greenmount Ave,1901,1901,production & light industry,,,stated,documented (2+ source types),2,sponsor 1; polk_directory 1,incident 42352 | Polk 1901: 1112 York rd (now 3220 Greenmount)
 764,3220 Greenmount Ave,1915,1915,residential,,,stated,single record,1,sanborn 1,Sanborn 1915 sheet 717
-764,3220 Greenmount Ave,1917,1921,retail goods,,Venable Building & Savings Assn; Christie florist,stated,documented (2+ source types),3,polk_directory 2; sponsor 1,incident 10457 | Polk 1920: 3220 Greenmount av | Polk 1921: 3220 Greenmount av
 764,3220 Greenmount Ave,1917,1937,office,,Mercantile Savings Co.,stated,documented (2+ source types),8,polk_directory 5; sponsor 1; sanborn 1; nr_inventory 1,Polk 1917: 3220 Greenmount av | Polk 1918: 3220 Greenmount av | Polk 1921: 3220 Greenmount av | Polk 1922: 3220 Greenmount av | incident 18742 | Polk 1923: 3220 Greenmount av | Sanborn 1928 sheet 654 | NR nomination B-5229 p. 16
+764,3220 Greenmount Ave,1918,1921,retail goods,,Venable Building & Savings Assn; Christie florist,stated,documented (2+ source types),3,polk_directory 2; sponsor 1,incident 10457 | Polk 1920: 3220 Greenmount av | Polk 1921: 3220 Greenmount av
 764,3220 Greenmount Ave,1928,1941,personal services,,,stated,documented (2+ source types),4,permit_card 3; nr_inventory 1,NR nomination B-5229 p. 16 | BRG48-53 image 675-0657 line 5 | BRG48-53 image 675-0657 line 7 | BRG48-53 image 675-0657 line 8
 764,3220 Greenmount Ave,1953,1953,retail goods,store building (generic),,stated,single record,1,sanborn 1,Sanborn 1953 sheet 654
 764,3220 Greenmount Ave,2013,2013,personal services,,Fesler Brothers,stated,single record,1,sponsor 1,incident 20732
 764,3220 Greenmount Ave,2026,2026,office,,ATPAC Service (tax/accounting),stated,single record,1,current_2026 1,ATPAC SERVICE - Updated September 2025 - 3220 Greenmount Ave - Yelp (search result title)
-765,3221 Greenmount Ave,1921,1937,food & drink,food retail; restaurant / lunch,Greenmount Grocery Co; Garonzik Bros; Virginia Dare Confections; Friendly Fired Chicken,stated,documented (2+ source types),8,polk_directory 4; sponsor 2; permit_card 1; nr_inventory 1,incident 10458 | Polk 1921: 3221 Greenmount av | Polk 1922: 3221 Greenmount av | Polk 1922: 3221 Greenmount av | Polk 1923: 3221 Greenmount av | incident 11269 | BRG48-53 image 677-0872 line 1 | NR nomination B-5229 p. 14
+765,3221 Greenmount Ave,1921,1937,food & drink,food retail; restaurant / lunch,Greenmount Grocery Co; Garonzik Bros; Virginia Dare Confections; Friendly Fired Chicken,stated,documented (2+ source types),8,polk_directory 4; sponsor 2; permit_card 1; nr_inventory 1,Polk 1921: 3221 Greenmount av | incident 10458 | Polk 1922: 3221 Greenmount av | Polk 1922: 3221 Greenmount av | Polk 1923: 3221 Greenmount av | incident 11269 | BRG48-53 image 677-0872 line 1 | NR nomination B-5229 p. 14
 765,3221 Greenmount Ave,1928,1953,retail goods,store building (generic),Lakein's Jewelers,stated,documented (2+ source types),5,sanborn 2; permit_card 2; sponsor 1,Sanborn 1928 sheet 739 | BRG48-53 image 677-0872 line 3 | BRG48-53 image 677-0872 line 7 | incident 18738 | Sanborn 1953 sheet 739
 765,3221 Greenmount Ave,1929,1930,entertainment & assembly,recreation; theatre / pictures,,stated,repeated (2+ records),2,permit_card 2,BRG48-53 image 677-0872 line 2 | BRG48-53 image 677-0872 line 4
 765,3221 Greenmount Ave,2011,2011,food & drink,restaurant / lunch,,stated,single record,1,nr_inventory 1,"NR nomination B-5229 p. 14 (use at fieldwork, c. 2011)"
 765,3221 Greenmount Ave,2026,2026,food & drink,,Friendly Fried Chicken,stated,single record,1,current_2026 1,FRIENDLY FRIED CHICKEN - Updated September 2026 - 3221 Greenmount Ave - Yelp (search result title)
 766,3222 Greenmount Ave,1915,1915,residential,,,stated,single record,1,sanborn 1,Sanborn 1915 sheet 717
-766,3222 Greenmount Ave,1921,1937,retail goods,store building (generic),Christie florist,stated,documented (2+ source types),7,polk_directory 3; nr_inventory 2; sponsor 1; sanborn 1,incident 10459 | Polk 1921: 3222 Greenmount av | Polk 1922: 3222 Greenmount av | Polk 1922: 3222 Greenmount av | Sanborn 1928 sheet 654 | NR nomination B-5229 p. 16 | NR nomination B-5229 p. 16
+766,3222 Greenmount Ave,1921,1937,retail goods,store building (generic),Christie florist,stated,documented (2+ source types),8,polk_directory 3; sponsor 2; nr_inventory 2; sanborn 1,Polk 1921: 3222 Greenmount av | incident 10459 | Polk 1922: 3222 Greenmount av | Polk 1922: 3222 Greenmount av | incident 23937 | Sanborn 1928 sheet 654 | NR nomination B-5229 p. 16 | NR nomination B-5229 p. 16
 766,3222 Greenmount Ave,1923,1923,office,,,stated,repeated (2+ records),2,polk_directory 2,Polk 1923: 3222 Greenmount av | Polk 1923: 3222 Greenmount av
 766,3222 Greenmount Ave,1949,1953,retail goods,store building (generic),,stated,documented (2+ source types),2,permit_card 1; sanborn 1,BRG48-53 image 675-0659 line 5 | Sanborn 1953 sheet 654
 766,3222 Greenmount Ave,1980,1980,office,,,stated,single record,1,sponsor 1,incident 18781
 766,3222 Greenmount Ave,2011,2011,retail goods,store building (generic),,stated,single record,1,nr_inventory 1,"NR nomination B-5229 p. 16 (use at fieldwork, c. 2011)"
 766,3222 Greenmount Ave,2026,2026,retail goods,,Metro by T-Mobile,stated,single record,1,current_2026 1,Metro by T-Mobile 3222 Greenmount Ave (official store locator)
-767,3223 Greenmount Ave,1901,1922,food & drink,food retail,Garonzik Bros,stated,documented (2+ source types),9,polk_directory 8; sponsor 1,Polk 1901: 1117 York rd (now 3225 Greenmount) | Polk 1905: 1117 York rd (now 3225 Greenmount) | Polk 1907: 1117 York rd (now 3225 Greenmount) | Polk 1908: 1117 York rd (now 3225 Greenmount) | Polk 1909: 1117 York rd (now 3225 Greenmount) | Polk 1913: 1117 York rd (now 3225 Greenmount) | Polk 1914: 3223 Greenmount av | incident 10460 | ...
+767,3223 Greenmount Ave,1901,1936,food & drink,food retail,Garonzik Bros; Sanitary Grocery Company,stated,documented (2+ source types),11,polk_directory 8; sponsor 3,Polk 1901: 1117 York rd (now 3225 Greenmount) | Polk 1905: 1117 York rd (now 3225 Greenmount) | Polk 1907: 1117 York rd (now 3225 Greenmount) | Polk 1908: 1117 York rd (now 3225 Greenmount) | Polk 1909: 1117 York rd (now 3225 Greenmount) | Polk 1913: 1117 York rd (now 3225 Greenmount) | Polk 1914: 3223 Greenmount av | incident 10460 | ...
 767,3223 Greenmount Ave,1904,1906,automotive,,,inferred,repeated (2+ records),3,polk_directory 3,Polk 1904: 1117 York rd (now 3225 Greenmount) | Polk 1905: 1117 York rd (now 3225 Greenmount) | Polk 1906: 1123 York rd (now 3225 Greenmount)
 767,3223 Greenmount Ave,1904,1904,retail goods,,,inferred,single record,1,polk_directory 1,Polk 1904: 1117 York rd (now 3225 Greenmount)
 767,3223 Greenmount Ave,1907,1922,production & light industry,,,inferred,repeated (2+ records),9,polk_directory 9,Polk 1907: 1117 York rd (now 3225 Greenmount) | Polk 1907: 1117 York rd (now 3225 Greenmount) | Polk 1909: 1117 York rd (now 3225 Greenmount) | Polk 1912: 1117 York rd (now 3225 Greenmount) | Polk 1917: 3229 Greenmount av | Polk 1918: 3229 Greenmount av | Polk 1920: 3225 Greenmount av | Polk 1920: 3225 Greenmount av | ...
 767,3223 Greenmount Ave,1915,1930,retail goods,store building (generic),,stated,documented (2+ source types),5,sanborn 2; polk_directory 2; permit_card 1,Sanborn 1915 sheet 718 | Polk 1918: 3223 Greenmount av | Polk 1920: 3223 Greenmount av | Sanborn 1928 sheet 739 | BRG48-53 image 677-0874 line 2
 767,3223 Greenmount Ave,1915,1915,residential,,,inferred,single record,1,sanborn 1,Sanborn 1915 sheet 718
 767,3223 Greenmount Ave,1921,1921,automotive,,,inferred,single record,1,polk_directory 1,Polk 1921: 3225 Greenmount av
-767,3223 Greenmount Ave,1936,1936,food & drink,food retail,Sanitary Grocery Company,stated,single record,1,sponsor 1,incident 18737
 767,3223 Greenmount Ave,1947,1953,office,,,stated,documented (2+ source types),2,permit_card 1; sanborn 1,BRG48-53 image 677-0874 line 6 | Sanborn 1953 sheet 739
 767,3223 Greenmount Ave,1953,1953,retail goods,,,stated,single record,1,sanborn 1,Sanborn 1953 sheet 739
-767,3223 Greenmount Ave,1969,1969,entertainment & assembly,theatre / pictures,,stated,single record,1,sponsor 1,incident 10557
+767,3223 Greenmount Ave,1970,1970,entertainment & assembly,theatre / pictures,,stated,single record,1,sponsor 1,incident 10557
 767,3223 Greenmount Ave,2026,2026,personal services,,Nifty Cleaners (Mr. Nifty Cleaners),stated,single record,1,current_2026 1,NIFTY CLEANERS - Updated May 2026 - 3223 Greenmount Ave - Yelp (search result title)
-768,3224 Greenmount Ave,1894,1898,food & drink,food retail,,stated,repeated (2+ records),2,sponsor 2,incident 4843 | incident 4849
-768,3224 Greenmount Ave,1900,1903,personal services,,Sam Lee Laundry; Wick Wo,stated,documented (2+ source types),3,polk_directory 2; sponsor 1,incident 10467 | Polk 1903: 1116 York rd (now 3224 Greenmount) | Polk 1903: 1116 York rd (now 3224 Greenmount)
-768,3224 Greenmount Ave,1915,1937,personal services,,Sam Lee Laundry,stated,documented (2+ source types),12,sponsor 10; sanborn 1; polk_directory 1,Sanborn 1915 sheet 717 | incident 4888 | incident 4889 | incident 4890 | incident 5219 | Polk 1922: 3224 Greenmount av | incident 4896 | incident 4897 | ...
-768,3224 Greenmount Ave,1928,1955,retail goods,named store; store building (generic),Wyman Shoe Co.; Jason Shoes; Taubman's,stated,documented (2+ source types),10,sponsor 5; permit_card 3; sanborn 2,Sanborn 1928 sheet 654 | BRG48-53 image 675-0660 line 1 | incident 4894 | incident 4901 | BRG48-53 image 675-0660 line 3 | BRG48-53 image 675-0660 line 4 | incident 4905 | Sanborn 1953 sheet 654 | ...
+768,3224 Greenmount Ave,1893,1898,food & drink,bar / tavern; food retail,,stated,repeated (2+ records),3,sponsor 3,incident 23704 | incident 4843 | incident 4849
+768,3224 Greenmount Ave,1901,1937,personal services,,Sam Lee Laundry; Sam Lee Laundry; Wick Wo,stated,documented (2+ source types),22,sponsor 18; polk_directory 3; sanborn 1,incident 10467 | Polk 1903: 1116 York rd (now 3224 Greenmount) | Polk 1903: 1116 York rd (now 3224 Greenmount) | incident 23651 | incident 23654 | incident 23655 | Sanborn 1915 sheet 717 | incident 23656 | ...
+768,3224 Greenmount Ave,1920,1955,retail goods,named store; store building (generic),Wyman Shoe Co.; Jason Shoes; Taubman's,stated,documented (2+ source types),12,sponsor 7; permit_card 3; sanborn 2,incident 23677 | Sanborn 1928 sheet 654 | BRG48-53 image 675-0660 line 1 | incident 4894 | incident 4901 | incident 23676 | BRG48-53 image 675-0660 line 3 | BRG48-53 image 675-0660 line 4 | ...
+768,3224 Greenmount Ave,1926,1926,food & drink,food retail,,stated,single record,1,sponsor 1,incident 23698
 768,3224 Greenmount Ave,1930,1930,automotive,,Taubman's,stated,single record,1,sponsor 1,incident 4893
-768,3224 Greenmount Ave,1967,1967,food & drink,restaurant / lunch,Anderson's Restaurant,stated,single record,1,sponsor 1,incident 5227
+768,3224 Greenmount Ave,1958,1967,food & drink,restaurant / lunch,Anderson's Restaurant,stated,repeated (2+ records),2,sponsor 2,incident 23671 | incident 5227
 768,3224 Greenmount Ave,2011,2011,retail goods,store building (generic),,stated,single record,1,nr_inventory 1,"NR nomination B-5229 p. 16 (use at fieldwork, c. 2011)"
 768,3224 Greenmount Ave,2026,2026,retail goods,,Tomboy (clothing/accessories),stated,single record,1,current_2026 1,TOMBOY - Updated April 2026 - 3224 Greenmount Ave - Yelp (search result title)
-769,3226 Greenmount Ave,1900,1900,institutional & religious,,,stated,single record,1,sponsor 1,incident 18740
+769,3226 Greenmount Ave,1900,1900,institutional & religious,,,stated,repeated (2+ records),2,sponsor 2,incident 18740 | incident 39013
 769,3226 Greenmount Ave,1900,1900,food & drink,food retail,,stated,single record,1,sponsor 1,incident 18806
 769,3226 Greenmount Ave,1925,1926,institutional & religious,,,stated,documented (2+ source types),2,nr_inventory 1; sponsor 1,NR nomination B-5229 p. 15 | incident 18812
 769,3226 Greenmount Ave,1926,1953,retail goods,store building (generic),,stated,documented (2+ source types),23,permit_card 10; sanborn 10; nr_inventory 2; sponsor 1,BRG48-53 image 675-0662 line 3 | BRG48-53 image 675-0662 line 4 | BRG48-53 image 675-0662 line 6 | Sanborn 1928 sheet 654 | Sanborn 1928 sheet 654 | Sanborn 1928 sheet 654 | Sanborn 1928 sheet 654 | Sanborn 1928 sheet 654 | ...

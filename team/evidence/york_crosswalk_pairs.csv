@@ -23,6 +23,8 @@ old_york_number,new_greenmount_number,kind,n,evidence
 1103,3203,polk name match,9,"1909 ""Deal John N J,"" -> 1915 ""Deal John N J,"" | 1909 ""Deal John N J,"" -> 1915 ""Deal John N J,"" | 1909 ""Deal John N J,"" -> 1917 ""Deal John N J,"" | 1909 ""Deal John N J,"" -> 1917 ""Deal John N,"""
 1113,3225,polk name match,2,"1909 ""Dietrich Jolin H."" -> 1914 ""Dietrich John H,"" | 1909 ""Dietrich Jolin H."" -> 1914 ""Dietrich John H,"""
 1123,3225,polk name match,4,"1908 ""Dietrich John H,"" -> 1914 ""Dietrich John H,"" | 1908 ""Dietrich John H,"" -> 1914 ""Dietrich John H,"" | 1913 ""Dietrich John H,"" -> 1914 ""Dietrich John H,"" | 1913 ""Dietrich John H,"" -> 1914 ""Dietrich John H,"""
+920,3010,sponsor statement,2,incident 41868 | incident 47592
+922,3010,sponsor statement,4,incident 11079 | incident 20686 | incident 41867 | incident 41912
 1102,3200,sponsor statement,1,incident 10424
 1104,3204,sponsor statement,1,incident 10446
 1111,3217,sponsor statement,1,incident 10455
