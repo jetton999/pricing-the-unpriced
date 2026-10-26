@@ -10,7 +10,7 @@ Five tabs, so each reads as a short page:
 
 | Tab | What it does |
 |---|---|
-| Buildings | Map of the frontage, the use ledger (dominant use per decade, 1880s to today) and a panel per building: best fit and why in one line, what it could support per year, a heritage-revival name where one is documented, the rules that apply, and, for retail, which trade and its modern version. Detail (factor scores, evidence, similar buildings) is folded away. Compare up to three uses side by side; three hand-written concepts |
+| Buildings | Map of the frontage, the use ledger (dominant use per decade, 1880s to today) and a panel per building: best fit and why in one line, what it could support per year, a heritage-revival name where one is documented, the rules that apply, and, for retail, which trade and its modern version. Detail (factor scores, evidence, similar buildings) is folded away. Compare up to three uses side by side; three concepts drafted with AI assistance |
 | Block plan | Places uses on the vacant parcels under a saturation limit, then ranks alternative plans for the same parcels by the rent the uses could support |
 | Money | The comps engine (`team/comps`): ranges per use, the trail from each figure to its source rows, other cities' corridors side by side, held-out checks |
 | Evidence and method | How the score works (adjustable weights, rules, community, neighbours, back-test), retail broken into seven trades with reference brands, customer groups, comparable cases, the screening table |
@@ -31,7 +31,7 @@ python3 team/explorer/build_explorer.py      # standard library only; writes ind
 |---|---|
 | `build_explorer.py` | Reads the extractor outputs, the evidence and tenant files, `properties.csv` and `team/comps/comps_ranges.json`, computes the per-parcel inputs and writes `index.html` |
 | `template.html` | The page: layout, score engine and views |
-| `concepts.json` | The three hand-written concepts, every fact with its source |
+| `concepts.json` | The three drafted concepts (written with AI assistance), every fact with its source |
 | `library.json` | The case library and evidence behind the community, neighbour and customer layers, every entry with its sources |
 | `extras.py` | The sponsor's storefront check, heritage-revival names, retail trades and survey-photo counts per parcel |
 | `retail_types.json` | Seven retail trades: the modern version, usual size, reference brands and cautions, every claim with its source |
