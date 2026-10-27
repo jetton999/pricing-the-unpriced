@@ -44,7 +44,7 @@ BENCH = {
     'food & drink': dict(small=(25.0, 37.5), large=(15.0, 25.0),
                          note='Rent: fitted 800 SF cafe suites in Hampden ask $30-37.50/SF NNN (CAFE-01, CAFE-02); the 3226 rent roll implies at least $25.23/SF gross (CAFE-04). Sales: an owner-run Baltimore tea cafe reported $250k-285k a year (CAFE-03).'),
     'retail goods': dict(small=(20.0, 30.0), large=(10.9, 20.0),
-                         note='Rent: large-format space asks $17-20/SF NNN in Hampden (SHOW-03, SHOW-04); a fully leased 14,000 SF 1920s building earns about $10.91/SF incl. CAM (SHOW-05). Sales: $167-185 per SF of showroom (SHOW-08, Havertys 10-K).'),
+                         note='Rent: large-format space asks $17-20/SF NNN in Hampden (SHOW-03, SHOW-04); a fully leased 14,000 SF 1920s building earns about $10.91/SF incl. CAM (SHOW-05). Sales: $167-185 per SF of showroom (SHOW-08, a furniture chain 10-K).'),
 }
 NOT_CAND = {'residential', 'institutional & religious', 'vacant'}
 

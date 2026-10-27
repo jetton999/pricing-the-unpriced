@@ -113,13 +113,23 @@ def _norm_tokens(text):
     return re.sub(r'[^a-z0-9]+', ' ', text.lower()).split()
 
 
-def _brand_hits(text):
+# National chains whose filings and listings back comps figures: cited by link and labelled by kind (names in the
+# team report). The first hash is a canary.
+CHAIN_HASHES = set("""
+    108badd1f00d1f11 13993bc4b1b18663 2cc12a196dfaa40f 3a21cc8e502bb764 6691d6dc31e38c8e 7199addfc3f7f8ba
+    959e8f889e4d2ff5 b21492b15d85500e ba674e79a2d94c8f cf9f15a8d3e9519f d2c6cd122a082066 d4d752d613b694dc
+    ea2af3599da66020
+""".split())
+
+
+def _brand_hits(text, hashes=None):
     import hashlib
+    hashes = BRAND_HASHES if hashes is None else hashes
     toks, hits = _norm_tokens(text), []
     for n in range(1, 5):
         for i in range(len(toks) - n + 1):
             g = ' '.join(toks[i:i + n])
-            if hashlib.sha256(g.encode()).hexdigest()[:16] in BRAND_HASHES:
+            if hashlib.sha256(g.encode()).hexdigest()[:16] in hashes:
                 hits.append(g)
     return hits
 
@@ -164,6 +174,17 @@ class TestPublicNames(unittest.TestCase):
             self.assertEqual([h for t in _strings(d[key]) for h in _brand_hits(t)], [], key)
         with open(os.path.join(HERE, 'template.html'), encoding='utf-8') as fh:
             self.assertEqual(_brand_hits(re.sub(r'https?://\S+', ' ', fh.read())), [])
+
+    def test_comps_files_name_no_national_chain(self):
+        self.assertEqual(_brand_hits('A canary chain check.', CHAIN_HASHES), ['canary chain check'])
+        comps = os.path.join(REPO, 'team', 'comps')
+        paths = [os.path.join(comps, 'library', f) for f in sorted(os.listdir(os.path.join(comps, 'library')))]
+        paths += [os.path.join(comps, f) for f in ('comps_ranges.json', 'README.md', 'MODEL_CARD.md', 'comps.csv')]
+        for path in paths:
+            with open(path, encoding='utf-8') as fh:
+                text = re.sub(r'https?://[^\s",)]+', ' ', fh.read())
+            self.assertEqual(_brand_hits(text, CHAIN_HASHES), [], os.path.basename(path))
+        self.assertEqual([h for t in _strings(_page_data()['comps']) for h in _brand_hits(t, CHAIN_HASHES)], [])
 
 
 class TestNeighbourhoods(unittest.TestCase):
