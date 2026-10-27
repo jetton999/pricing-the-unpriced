@@ -68,9 +68,11 @@ python3 -m unittest team/explorer/test_explorer_data.py team/validation/test_bac
   businesses already trading, and long-standing businesses are named. `DISPLACEMENT.md` explains the rating.
 - **Named businesses.** This public version names no business as a possible tenant. Brand names go in reports
   only, not the public repo (the sponsor's rule, 26 Oct 2026): the reference brands are kept in the team report, and
-  a test checks the public files and the built page for them by hash. The page still names businesses already
-  trading on or next to the frontage (as the sponsor's storefront data does), the reuse projects and corridors in
-  the case library, and the filings and listings the figures come from. No NDA data is used.
+  a test checks the public files and the built page for them by hash. National chains whose filings, sites or
+  listings back a size or a benchmark are cited by link and labelled by kind ("a drive-thru coffee chain's 10-K").
+  The page still names businesses already trading on or next to the frontage (as the sponsor's storefront data
+  does), the reuse projects and corridors in the case library, and the local operators whose own figures are
+  checked against the ranges. No NDA data is used.
 - **Sources.** Every outside fact links to its source. The pipeline never drops the export's 126
   sensitivity-flagged records, as the repo requires. None of them is among the frontage records, and none is quoted
   on the page.
