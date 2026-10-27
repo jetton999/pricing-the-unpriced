@@ -11,6 +11,7 @@
   --rule: #dde2e1; --rule-2: #c5cccb; --accent: #1c5cab; --accent-soft: #e3ecf8; --hi: #13202c;
   --c-retail: #2a78d6; --c-food: #eb6834; --c-pers: #1baf7a; --c-auto: #eda100; --c-ent: #e87ba4;
   --c-inst: #008300; --c-off: #6250d6; --c-prod: #e34948; --c-res: #b9bdb8; --c-none: #eef1f0;
+  --w-h: #2a78d6; --w-s: #eb6834; --w-f: #1baf7a; --w-c: #eda100; --w-a: #e87ba4; --w-k: #008300;
   --good: #0ca30c; --warn: #b77800;
   --f-display: "Barlow Condensed", "Arial Narrow", "Roboto Condensed", sans-serif;
   --f-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -21,12 +22,14 @@
   --rule: #262c31; --rule-2: #353d43; --accent: #6da7ec; --accent-soft: #1b2a3d; --hi: #eef1f2;
   --c-retail: #3987e5; --c-food: #d95926; --c-pers: #199e70; --c-auto: #c98500; --c-ent: #d55181;
   --c-inst: #008300; --c-off: #9085e9; --c-prod: #e66767; --c-res: #4d5459; --c-none: #1e2327;
+  --w-h: #3987e5; --w-s: #d95926; --w-f: #199e70; --w-c: #c98500; --w-a: #d55181; --w-k: #008300;
   --good: #0ca30c; --warn: #e0a020; color-scheme: dark; } }
 :root[data-theme="dark"] {
   --bg: #0f1215; --surface: #171b1f; --ink: #eef1f2; --ink-2: #b7c0c7; --muted: #87909a;
   --rule: #262c31; --rule-2: #353d43; --accent: #6da7ec; --accent-soft: #1b2a3d; --hi: #eef1f2;
   --c-retail: #3987e5; --c-food: #d95926; --c-pers: #199e70; --c-auto: #c98500; --c-ent: #d55181;
   --c-inst: #008300; --c-off: #9085e9; --c-prod: #e66767; --c-res: #4d5459; --c-none: #1e2327;
+  --w-h: #3987e5; --w-s: #d95926; --w-f: #199e70; --w-c: #c98500; --w-a: #d55181; --w-k: #008300;
   --good: #0ca30c; --warn: #e0a020; color-scheme: dark; }
 body { background: var(--bg); color: var(--ink); font-family: var(--f-body); font-size: 15px; line-height: 1.5; }
 .wrap { max-width: 1240px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 28px 64px; display: grid; gap: 28px; }
@@ -191,7 +194,7 @@ details summary { cursor: pointer; font-weight: 600; }
 .chk input { margin-top: 3px; accent-color: var(--accent); }
 .sbar { display: flex; height: 8px; border-radius: 4px; overflow: hidden; background: var(--rule); }
 .sbar span { display: block; height: 100%; }
-.sbar .bh { background: var(--accent); } .sbar .bs { background: var(--c-pers); } .sbar .bf { background: var(--muted); }
+.sbar .bh { background: var(--w-h); } .sbar .bs { background: var(--w-s); } .sbar .bf { background: var(--w-f); }
 .skey { display: flex; flex-wrap: wrap; gap: 2px 12px; font-size: 11.5px; color: var(--ink-2); }
 .skey i { display: inline-block; width: 8px; height: 8px; border-radius: 2px; margin-right: 4px; }
 .cand .u .sc { margin-left: auto; font-family: var(--f-mono); font-weight: 500; font-size: 13px; }
@@ -227,7 +230,20 @@ details summary { cursor: pointer; font-weight: 600; }
 .endc { border: 1px solid var(--rule); border-radius: 8px; padding: 10px 12px; display: grid; gap: 4px; align-content: start; font-size: 13px; color: var(--ink-2); }
 .endc .q { font-family: var(--f-display); font-size: 18px; font-weight: 600; color: var(--ink); line-height: 1.1; }
 .mcheck { font-size: 13px; color: var(--ink-2); background: var(--bg); border-radius: 6px; padding: 8px 10px; }
-.sbar .bc { background: var(--c-ent); } .sbar .ba { background: var(--c-auto); } .sbar .bk { background: var(--c-off); }
+.sbar .bc { background: var(--w-c); } .sbar .ba { background: var(--w-a); } .sbar .bk { background: var(--w-k); }
+.sbar span + span { box-shadow: inset 2px 0 0 var(--surface); }
+.wpie { display: grid; grid-template-columns: 176px minmax(0, 1fr); gap: 14px; align-items: center; }
+@media (max-width: 560px) { .wpie { grid-template-columns: 1fr; justify-items: center; } .wpie .wlist { width: 100%; } }
+.wpie svg { width: 176px; height: 176px; overflow: visible; }
+.wpie svg path { stroke: var(--surface); stroke-width: 2; cursor: pointer; transition: opacity .12s; }
+.wpie svg path.dim { opacity: .35; }
+.wpie .ctr1 { font-size: 26px; font-weight: 600; fill: var(--ink); }
+.wpie .ctr2 { font-size: 11px; fill: var(--ink-2); }
+.wlist { display: grid; gap: 6px; }
+.wlist .wrow { grid-template-columns: 128px minmax(0, 1fr) 40px; }
+.wlist .wrow label { display: flex; align-items: center; gap: 6px; }
+.wlist .sw2 { width: 10px; height: 10px; border-radius: 2px; flex: none; }
+.wlist .wrow.hot label { font-weight: 600; }
 .cfoot { display: flex; flex-wrap: wrap; gap: 6px 12px; align-items: center; }
 .fbb { display: inline-flex; gap: 4px; align-items: center; flex-wrap: wrap; }
 .fbb .vote { font: inherit; font-size: 12px; padding: 1px 8px; border: 1px solid var(--rule-2); border-radius: 999px; background: var(--surface); color: var(--ink-2); cursor: pointer; }
@@ -494,7 +510,16 @@ details.more > summary { font-size: 14px; }
     neigh: { name: 'Neighbourhood first', w: { h: 20, s: 20, f: 10, c: 25, a: 15, k: 10 }, note: 'What residents asked for and how a use fits its neighbours lead; history counts less.' },
     prec: { name: 'Proven elsewhere', w: { h: 20, s: 15, f: 15, c: 10, a: 10, k: 30 }, note: 'How similar buildings elsewhere turned out leads: uses that worked in comparable reuses score higher.' } };
   let wpre = 'team';
-  const WL = [['h', 'Heritage', 'var(--accent)'], ['s', 'Room (saturation)', 'var(--c-pers)'], ['f', 'Size fit', 'var(--muted)'], ['c', 'Community', 'var(--c-ent)'], ['a', 'Neighbours', 'var(--c-auto)'], ['k', 'Precedents', 'var(--c-off)']];
+  const WL = [['h', 'Heritage', 'var(--w-h)'], ['s', 'Room (saturation)', 'var(--w-s)'], ['f', 'Size fit', 'var(--w-f)'], ['c', 'Community', 'var(--w-c)'], ['a', 'Neighbours', 'var(--w-a)'], ['k', 'Precedents', 'var(--w-k)']];
+  // weights are shares of one pie: they always add to 100, and moving one makes the others give way in proportion
+  function setWeight(k, v) {
+    v = Math.max(0, Math.min(100, Math.round(v)));
+    const others = WL.map(x => x[0]).filter(x => x !== k), rest = others.reduce((a, x) => a + WT[x], 0), R = 100 - v;
+    const raw = others.map(x => rest > 0 ? WT[x] * R / rest : R / others.length), fl = raw.map(Math.floor);
+    let left = R - fl.reduce((a, b) => a + b, 0);
+    raw.map((x, i) => [x - Math.floor(x), i]).sort((a, b) => b[0] - a[0]).forEach(([, i]) => { if (left > 0) { fl[i]++; left--; } });
+    WT[k] = v; others.forEach((x, i) => { WT[x] = fl[i]; });
+  }
   let gfOnly = true, inclUnk = false, useFb = false, overrides = {};
   const SIDE_CAP = [1, 0.6, 0.25, 0];
   const POLM = { P: 1, CB: 0.75, CO: 0.75 };
@@ -1125,13 +1150,22 @@ details.more > summary { font-size: 14px; }
     document.getElementById('flow').innerHTML = FLOW.map(([s, t, d]) => `<li class="${s}"><b>${esc(t)}</b><span class="st ${s}">${s === 'computed' ? 'computed' : s === 'hand' ? 'written' : 'next'}</span><span>${esc(d)}</span></li>`).join('');
     document.getElementById('wts').innerHTML = `<div class="seg" role="group" aria-label="Weight presets">${Object.entries(WPRE).map(([k, v]) => `<button type="button" data-wp="${k}" aria-pressed="${k === wpre}">${esc(v.name)}</button>`).join('')}</div>
       <p class="small" id="wpnote" style="margin:0"></p>
-      <details><summary class="small">Set the weights by hand</summary><div style="display:grid;gap:6px;margin-top:6px">${WL.map(([k, l, c]) => `<div class="wrow"><label for="w-${k}"><span class="sw" style="background:${c};margin-right:6px;vertical-align:-1px"></span>${l}</label><input type="range" id="w-${k}" min="0" max="100" step="5" value="${WT[k]}"><span class="n" id="wn-${k}"></span></div>`).join('')}</div></details>`;
+      <div class="wpie"><svg id="wpie" viewBox="-88 -88 176 176" role="img" aria-label="How the score is split between its six inputs"></svg>
+        <div class="wlist">${WL.map(([k, l, c]) => `<div class="wrow" id="wr-${k}"><label for="w-${k}"><span class="sw2" style="background:${c}"></span>${l}</label><input type="range" id="w-${k}" min="0" max="100" step="1" value="${WT[k]}" aria-describedby="wpiehelp"><span class="n" id="wn-${k}"></span></div>`).join('')}</div></div>
+      <p class="small" id="wpiehelp" style="margin:0">The six inputs share one score, so the weights always add to 100%. Move one slider and the others give way in proportion to their size; a weight set to zero stays at zero until you raise it.</p>`;
     const setPre = k => { wpre = k; if (WPRE[k]) Object.assign(WT, WPRE[k].w); WL.forEach(([kk]) => { document.getElementById('w-' + kk).value = WT[kk]; });
       document.querySelectorAll('[data-wp]').forEach(b => b.setAttribute('aria-pressed', b.dataset.wp === wpre));
       document.getElementById('wpnote').textContent = WPRE[wpre] ? WPRE[wpre].note : 'Your own weights. The presets are starting points; the sponsor has not yet agreed a set.'; update(); };
     document.querySelectorAll('[data-wp]').forEach(b => b.onclick = () => setPre(b.dataset.wp));
     document.getElementById('wpnote').textContent = WPRE[wpre].note;
-    WL.forEach(([k]) => document.getElementById('w-' + k).addEventListener('input', e => { WT[k] = +e.target.value; wpre = 'custom'; document.querySelectorAll('[data-wp]').forEach(b => b.setAttribute('aria-pressed', 'false')); document.getElementById('wpnote').textContent = 'Your own weights. The presets are starting points; the sponsor has not yet agreed a set.'; update(); }));
+    let wT = null;
+    WL.forEach(([k]) => document.getElementById('w-' + k).addEventListener('input', e => {
+      setWeight(k, +e.target.value); wpre = 'custom';
+      document.querySelectorAll('[data-wp]').forEach(b => b.setAttribute('aria-pressed', 'false'));
+      document.getElementById('wpnote').textContent = 'Your own weights. The presets are starting points; the sponsor has not yet agreed a set.';
+      WL.forEach(([kk]) => { if (kk !== k) document.getElementById('w-' + kk).value = WT[kk]; });
+      drawWeights(k); clearTimeout(wT); wT = setTimeout(update, 90);
+    }));
     document.getElementById('gf').onchange = e => { gfOnly = e.target.checked; update(); };
     document.getElementById('fbon').onchange = e => { useFb = e.target.checked; update(); };
     // back-test: v2 (parcel by use, tested on Greenmount blocks the model had not seen); v1 kept for the record
@@ -1187,9 +1221,35 @@ details.more > summary { font-size: 14px; }
       `${D.n_summary || 26} building summaries that the extractor dates to the year of construction are not coded here (fix goes into extractor v1.1).`
     ].map(t => `<li>${esc(t)}</li>`).join('');
   }
-  function drawWeights() {
+  function drawPie(hot) {
+    const svg = document.getElementById('wpie'); if (!svg) return;
+    const t = WL.reduce((a, [k]) => a + WT[k], 0) || 1, R0 = 84, R1 = 52;
+    let a0 = -Math.PI / 2, h = '';
+    const pt = (r, a) => `${(r * Math.cos(a)).toFixed(2)} ${(r * Math.sin(a)).toFixed(2)}`;
+    WL.forEach(([k, l, c]) => {
+      const w = WT[k] / t; if (w <= 0) return;
+      const a1 = a0 + w * 2 * Math.PI, big = a1 - a0 > Math.PI ? 1 : 0;
+      const d = w >= 0.9999 ? `M ${pt(R0, -Math.PI / 2)} A ${R0} ${R0} 0 1 1 ${pt(R0, Math.PI * 1.5 - 0.0001)} L ${pt(R1, Math.PI * 1.5 - 0.0001)} A ${R1} ${R1} 0 1 0 ${pt(R1, -Math.PI / 2)} Z`
+        : `M ${pt(R0, a0)} A ${R0} ${R0} 0 ${big} 1 ${pt(R0, a1)} L ${pt(R1, a1)} A ${R1} ${R1} 0 ${big} 0 ${pt(R1, a0)} Z`;
+      h += `<path d="${d}" style="fill:${c}" data-k="${k}" class="${hot && hot !== k ? 'dim' : ''}" tabindex="0"><title>${esc(l)}: ${WT[k]}%</title></path>`;
+      a0 = a1;
+    });
+    h += `<text class="ctr1" text-anchor="middle" y="4">${WL.reduce((a, [k]) => a + WT[k], 0)}%</text><text class="ctr2" text-anchor="middle" y="22">of the score</text>`;
+    svg.innerHTML = h;
+    svg.querySelectorAll('path').forEach(pth => {
+      const k = pth.dataset.k, on = () => { drawPieHot(k); }, off = () => { drawPieHot(null); };
+      pth.onmouseenter = on; pth.onfocus = on; pth.onmouseleave = off; pth.onblur = off;
+      pth.onclick = () => document.getElementById('w-' + k).focus();
+    });
+  }
+  function drawPieHot(k) {
+    document.querySelectorAll('#wpie path').forEach(pth => pth.classList.toggle('dim', !!k && pth.dataset.k !== k));
+    WL.forEach(([kk]) => { const r = document.getElementById('wr-' + kk); if (r) r.classList.toggle('hot', kk === k); });
+  }
+  function drawWeights(hot) {
     const t = WL.reduce((a, [k]) => a + WT[k], 0) || 1, pc = k => Math.round(100 * WT[k] / t) + '%';
     WL.forEach(([k]) => { document.getElementById('wn-' + k).textContent = pc(k); });
+    drawPie(hot);
     document.getElementById('formula').innerHTML = `score = heritage × ${pc('h')} + room × ${pc('s')} + size × ${pc('f')} + community × ${pc('c')} + neighbours × ${pc('a')} + precedents × ${pc('k')}, then times 0.75 for a conditional use, times 0.3 / 0.6 / 0.85 for a strong / moderate / weak community objection, and, only when switched on, times the feedback multiplier. Uses barred by the plan or not permitted in C-1 are left out. <b>Heritage</b> = decades on record at the building ÷ 5 (capped), halved for a single record, +0.1 for two kinds of source; with no record, the street's record at a third of the weight. <b>Room</b> = 1 − saturation: half a block-side term (0 of the same use → 1, 1 → 0.6, 2 → 0.25, 3+ → 0) and half a corridor term (1 while the use's storefront share is at or below its 1920-23 share). <b>Size</b> = 1 inside the usual range, 0 at three times outside it. <b>Neighbours</b> = the weighted mean of the matrix values for next-door and across-the-street uses, scaled to 0-1. <b>Precedents</b> = among the 8 most similar reuse cases, the similarity-weighted share that went this way and are still open (closed cases count against), doubled and capped at 1. <b>Feedback</b> = 1 + 0.1 × (agree − disagree), kept between 0.6 and 1.2.`;
   }
 
