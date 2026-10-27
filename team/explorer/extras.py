@@ -256,6 +256,20 @@ def _nnn(r, loads):
     return round(v - loads.get(r.get('lease_type') or 'unknown', loads['unknown']), 2)
 
 
+def _vkind(d):
+    """A short name for how a vacancy figure was measured, so different measures are never read as one."""
+    d = d.lower()
+    for key, name in (('storefronts counted on foot', 'storefronts counted on foot'),
+                      ('counted from the desk', "storefronts counted from the desk (sponsor)"),
+                      ('corridor survey', 'city corridor survey'), ('live xyz', 'storefront index (small businesses)'),
+                      ('broker availability', 'broker availability'), ('costar', 'broker vacancy rate'),
+                      ('broker vacancy', 'broker vacancy rate'), ('broker survey', 'broker survey'),
+                      ('stated', 'stated by a local nonprofit'), ('buildings that appear', 'news count of empty buildings')):
+        if key in d:
+            return name
+    return 'other'
+
+
 def _first_last(rows):
     """Earliest and latest year of a resident indicator; several tracts in one year give their median."""
     by = collections.defaultdict(list)
@@ -301,14 +315,16 @@ def neighbourhoods(repo, frontage_ids, typical_shop_sqft):
                     lease_type=r['rent_basis'], kind='listing' if r['figure_type'] == 'asking' else 'rent being paid',
                     area=r['address'], sqft=int(r['space_sqft']) if r['space_sqft'] else None, date=r['figure_year'],
                     source_url=r['source_url'], source_title=r['source_title'], accessed_on=r['accessed_on'], row=rid))
-            for key, label in (('frontage', 'Greenmount Ave, E 29th to E 33rd St (this frontage)'),
-                               ('greenmount', 'Greenmount Ave, all blocks the sponsor assessed (2300 to 3700)')):
+            for i, (key, label) in enumerate((('frontage', 'Greenmount Ave, E 29th to E 33rd St (this frontage)'),
+                                              ('greenmount', 'Greenmount Ave, all blocks the sponsor assessed (2300 to 3700)'))):
                 x = sv[key]
-                n['retail_vacancy'].insert(0, dict(
+                n['retail_vacancy'].insert(i, dict(
                     value_pct=x['pct'], definition="storefront parcels counted from the desk (the sponsor's storefront assessment)",
                     area=label, date=x['assessed_on'][:7], count_note=f"{x['vacant']} of {x['storefronts']} storefront parcels vacant",
                     source_url='storefront_assessments.csv', source_title="Sponsor's storefront assessments (data package, Oct 2026)",
                     accessed_on=x['assessed_on']))
+        for v in n['retail_vacancy']:
+            v['kind'] = _vkind(v['definition'])
         used, ctx = [], []
         for r in n['retail_asking_rents']:
             v = _nnn(r, loads) if r.get('kind') in ('listing', 'rent being paid') else None
@@ -317,6 +333,7 @@ def neighbourhoods(repo, frontage_ids, typical_shop_sqft):
         vals = [r['nnn_equiv'] for r in used]
         med = _median(vals)
         res = {k: _first_last(v) for k, v in (n.get('residents') or {}).items()}
+        n['short'] = SHORT.get(n['id'], n['name'])
         n['calc'] = dict(rent_median=round(med, 2) if med is not None else None, rent_n=len(vals),
                          rent_min=min(vals) if vals else None, rent_max=max(vals) if vals else None,
                          shop_year=round(med * typical_shop_sqft) if med is not None else None, residents=res)
@@ -328,4 +345,94 @@ def neighbourhoods(repo, frontage_ids, typical_shop_sqft):
         inc = (c['residents'].get('median_household_income') or {}).get('v1')
         c['rent_per_10k_income'] = round(c['rent_median'] / (inc / 10000), 2) if c['rent_median'] and inc else None
     return dict(about=src['about'], accessed_on=src['accessed_on'], loads=loads, range_max=RANGE_MAX,
-                typical_shop_sqft=typical_shop_sqft, storefront_vacancy=sv, rows=out)
+                typical_shop_sqft=typical_shop_sqft, storefront_vacancy=sv, rows=out, compare=compare(out, sv, typical_shop_sqft))
+
+
+SHORT = {'waverly-greenmount': 'Greenmount', 'pigtown-washington-blvd': 'Pigtown', 'hampden-36th': 'Hampden',
+         'ohio-city-cleveland': 'Ohio City', 'fishtown-philadelphia': 'Fishtown', 'u-street-dc': 'U Street',
+         'melrose-hill-la': 'Melrose Hill', 'bedford-stuyvesant': 'Bed-Stuy'}
+
+
+def _usd(x):
+    if x >= 10000:
+        return f"${round(x, -2):,.0f}"
+    return f"${x:,.0f}" if x >= 100 else f"${x:,.2f}".replace('.00', '')
+
+
+def _and(xs):
+    xs = list(xs)
+    return xs[0] if len(xs) == 1 else ', '.join(xs[:-1]) + ' and ' + xs[-1]
+
+
+def _day(iso):
+    y, m, d = iso.split('-')
+    return f"{int(d)} {['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'][int(m) - 1]} {y}"
+
+
+def compare(rows, sv, shop):
+    """How Greenmount compares, in sentences built from the rows (so every number traces to a row)."""
+    W, others = rows[0], rows[1:]
+    w = W['calc']
+    nm = lambda n: SHORT[n['id']]
+    idx = lambda n: f"${n['calc']['rent_per_10k_income']:.2f}"
+    rated = sorted((n for n in others if n['calc']['rent_median']), key=lambda n: n['calc']['rent_median'])
+    cheap = all(w['rent_median'] < n['calc']['rent_median'] for n in rated)
+    lo, hi = rated[0], rated[-1]
+    thin = [n for n in rated if n['calc']['rent_n'] <= 2]
+    out = [dict(k='Rent', t=(
+        f"Ground-floor space on Greenmount asks about {_usd(w['rent_median'])} per sq ft a year, triple-net equivalent "
+        f"({w['rent_n']} rows from the comps library). {'That is the lowest of the eight' if cheap else 'Some ask less'}: "
+        f"the others ask {lo['calc']['rent_x_waverly']:.1f} to {hi['calc']['rent_x_waverly']:.1f} times as much "
+        f"({', '.join(nm(n) + ' ' + format(n['calc']['rent_x_waverly'], '.1f') for n in rated)}). "
+        f"A typical {shop:,} sq ft shop would pay about {_usd(w['shop_year'])} a year here, {_usd(lo['calc']['shop_year'])} "
+        f"in {nm(lo)} and {_usd(hi['calc']['shop_year'])} in {nm(hi)}."
+        + (f" {_and(nm(n) for n in thin)} rest on one or two rows, so read those as rough." if thin else '')))]
+    ri = sorted((n for n in rows if n['calc']['rent_per_10k_income']), key=lambda n: n['calc']['rent_per_10k_income'])
+    near = [n for n in ri if n is not W and n['calc']['rent_per_10k_income'] <= 1.15 * w['rent_per_10k_income']]
+    far = [n for n in ri if n['calc']['rent_per_10k_income'] >= 1.6 * w['rent_per_10k_income']]
+    out.append(dict(k='Rent against local incomes', t=(
+        f"Set against what households nearby earn, the gap narrows: Greenmount asks {idx(W)} per sq ft for every $10,000 "
+        f"of median household income"
+        + (f", close to {_and(nm(n) + ' (' + idx(n) + ')' for n in near)}" if near else '')
+        + (f"; {_and(nm(n) for n in far)} ask 1.6 times or more as much per dollar of local income" if far else '')
+        + ". Low rent here partly reflects lower spending power nearby. Visitors and workers shop too, so this is a rough "
+          "check, not a demand model.")))
+    f, g = sv['frontage'], sv['greenmount']
+    counted = lambda n: n['retail_vacancy'] and (n['retail_vacancy'][0]['definition'].startswith('storefronts counted')
+                                                 or 'corridor survey' in n['retail_vacancy'][0]['definition'])
+    counts = [f"{nm(n)}'s {'on-foot count' if n['retail_vacancy'][0]['definition'].startswith('storefronts') else 'city survey'} "
+              f"found {n['retail_vacancy'][0]['value_pct']:.0f}% ({n['retail_vacancy'][0]['date'][:4]})"
+              for n in others if counted(n)]
+    none = [nm(n) for n in others if not n['retail_vacancy']]
+    out.append(dict(k='Vacancy', t=(
+        f"{f['vacant']} of {f['storefronts']} storefront parcels on this stretch are empty ({f['pct']:.0f}%, the sponsor's "
+        f"assessment of {_day(f['assessed_on'])}), and {g['pct']:.0f}% along all of Greenmount ({g['vacant']} of {g['storefronts']}). "
+        + (f"{_and(counts)}. " if counts else '')
+        + "Broker availability rates (DC and Hollywood, 7 to 9%) measure something else and run lower"
+        + (f"; {_and(none)} have no published count." if none else '.'))))
+    inc = lambda n: (n['calc']['residents'].get('median_household_income') or {}).get('v1')
+    blk = lambda n: (n['calc']['residents'].get('black_share_pct') or {}).get('v1')
+    by_inc = sorted((n for n in rows if inc(n)), key=inc)
+    top_black = max((n for n in rows if blk(n) is not None), key=blk)
+    low3 = by_inc[:3]
+    y1 = W['calc']['residents']['black_share_pct']['y1']
+    fish = next(n for n in rows if n['id'] == 'fishtown-philadelphia')
+    out.append(dict(k='Residents', t=(
+        f"{'Waverly has the highest Black share of the eight' if top_black is W else 'Waverly is majority-Black'} "
+        f"({blk(W):.0f}%, {str(y1 - 4) + '-' + str(y1)[2:] if y1 == 2023 else y1} estimate) and "
+        f"{'one of the three lowest' if W in low3 else 'a middle'} median household incomes ({_usd(inc(W))}), "
+        f"with {_and(nm(n) + ' (' + _usd(inc(n)) + ')' for n in low3 if n is not W)}. Fishtown's is {_usd(inc(fish))}.")))
+    high = [n for n in rows if n['displacement_rating'] == 'high']
+    rest = {n['displacement_rating'] for n in rows if n not in high}
+    out.append(dict(k='Displacement', t=(
+        f"Waverly rates {W['displacement_rating']}: prices and rents are up and the Black share fell "
+        f"{W['calc']['residents']['black_share_pct']['v0'] - blk(W):.1f} points since 2010. "
+        f"The places rated high, {_and(nm(n) for n in high)}, lost a large share of their Black residents, and their asking "
+        f"rents today are {min(n['calc']['rent_x_waverly'] for n in high):.1f} to {max(n['calc']['rent_x_waverly'] for n in high):.1f} "
+        f"times Greenmount's. The rest of the set rates {_and(sorted(rest))}.")))
+    out.append(dict(k='What it means', t=(
+        "In dollars Greenmount is the cheapest place in the set to open a shop, near Pigtown and well under the corridors "
+        "it is compared with. The discount comes with the highest vacancy and among the lowest incomes nearby, so a plan "
+        "has to bring customers as well as tenants. For a single use, the rent it could support (Money tab) is a better "
+        "guide than asking rents elsewhere.")))
+    return out

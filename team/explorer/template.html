@@ -244,6 +244,19 @@ details summary { cursor: pointer; font-weight: 600; }
 .wlist .wrow label { display: flex; align-items: center; gap: 6px; }
 .wlist .sw2 { width: 10px; height: 10px; border-radius: 2px; flex: none; }
 .wlist .wrow.hot label { font-weight: 600; }
+.nbc { position: relative; }
+.nbc { overflow-x: auto; } .nbc svg { width: 100%; min-width: 540px; height: auto; display: block; }
+.nbc .lab { font-size: 12.5px; fill: var(--ink); } .nbc .lab2 { font-size: 11px; fill: var(--ink-2); }
+.nbc .val { font-size: 12px; fill: var(--ink); font-weight: 600; } .nbc .tick { font-size: 11px; fill: var(--muted); }
+.nbc .grid { stroke: var(--rule); stroke-width: 1; } .nbc .bar0 { fill: var(--c-res); } .nbc .bar1 { fill: var(--accent); }
+.nbc .wh { stroke: var(--ink-2); stroke-width: 1.5; } .nbc g.r:focus { outline: none; } .nbc g.r:focus .hit, .nbc g.r:hover .hit { fill: var(--accent-soft); }
+.nbc .hit { fill: transparent; }
+.nbc .ntip { position: absolute; pointer-events: none; background: var(--ink); color: var(--surface); font-size: 12px; padding: 6px 8px; border-radius: 4px; max-width: 300px; line-height: 1.4; z-index: 3; }
+.nbc .ntip b { font-size: 13px; }
+.cmpbox { display: grid; gap: 8px; }
+.cmpbox p { margin: 0; font-size: 13.5px; line-height: 1.5; } .cmpbox p b { color: var(--ink); }
+.nbt td:nth-child(2), .nbt td:nth-child(3) { white-space: nowrap; } .nbt td:first-child { min-width: 140px; }
+.nbcard .mt { width: 100%; } .nbcard .mt td, .nbcard .mt th { padding: 3px 6px; font-size: 12.5px; vertical-align: top; }
 .cfoot { display: flex; flex-wrap: wrap; gap: 6px 12px; align-items: center; }
 .fbb { display: inline-flex; gap: 4px; align-items: center; flex-wrap: wrap; }
 .fbb .vote { font: inherit; font-size: 12px; padding: 1px 8px; border: 1px solid var(--rule-2); border-radius: 999px; background: var(--surface); color: var(--ink-2); cursor: pointer; }
@@ -319,14 +332,14 @@ details.more > summary { font-size: 14px; }
 
 <div class="wrap">
   <header>
-    <div class="eyebrow">Waverly, Baltimore · Greenmount Ave, E 29th to E 33rd St · extractor v1 · score v0.3 · comps engine v1 · back-test v2 · 26 Oct 2026</div>
+    <div class="eyebrow">Waverly, Baltimore · Greenmount Ave, E 29th to E 33rd St · extractor v1 · score v0.3 · comps engine v1 · back-test v2 · comps at three levels · 26 Oct 2026</div>
     <h1>Greenmount Frontage Explorer</h1>
     <p class="lede">For every building on the Greenmount frontage, E 29th to E 33rd St: what it was, what it could become, what that could earn, and whether the mix works as a block. Every answer links to its sources.</p>
-    <ol class="start"><li>Pick a building on the map</li><li>Read its best fit, the money and the history on the right</li><li>Try a mix for the whole block in <b>Block plan</b></li></ol>
+    <ol class="start"><li>Pick a building on the map</li><li>Read its best fit, the money and the history on the right</li><li>Try a mix for the whole block in <b>Block plan</b></li><li>See how it compares in <b>Comps</b></li></ol>
   </header>
 
   <nav class="tabs" id="tabs" aria-label="Views">
-    <button type="button" data-v="b" aria-pressed="true">Buildings</button><button type="button" data-v="p" aria-pressed="false">Block plan</button><button type="button" data-v="m" aria-pressed="false">Money</button><button type="button" data-v="e" aria-pressed="false">Evidence and method</button><button type="button" data-v="r" aria-pressed="false">Roadmap</button>
+    <button type="button" data-v="b" aria-pressed="true">Buildings</button><button type="button" data-v="p" aria-pressed="false">Block plan</button><button type="button" data-v="m" aria-pressed="false">Money</button><button type="button" data-v="c" aria-pressed="false">Comps</button><button type="button" data-v="e" aria-pressed="false">Evidence and method</button><button type="button" data-v="r" aria-pressed="false">Roadmap</button>
   </nav>
 
   <div class="tiles" id="tiles" data-view="e"></div>
@@ -424,9 +437,10 @@ details.more > summary { font-size: 14px; }
     <div id="segbody"></div>
   </section>
 
-  <section data-view="e" class="card" id="cases" aria-labelledby="caseh">
-    <div class="bar"><h2 id="caseh">Comparable cases elsewhere</h2><span class="small" id="casefor"></span></div>
-    <div class="cx-tabs" role="tablist" aria-label="Case level"><button type="button" role="tab" class="cx-tab" id="ct-b" aria-selected="true">Buildings like this one</button><button type="button" role="tab" class="cx-tab" id="ct-d" aria-selected="false">Streets like Waverly</button></div>
+  <section data-view="c" class="card" id="cases" aria-labelledby="caseh">
+    <div class="bar"><h2 id="caseh">Comps: buildings, streets and neighbourhoods like these</h2><span class="small" id="casefor"></span></div>
+    <p class="lede" style="font-size:14px">Three levels, from the building out: buildings like the one selected on the map, streets like Greenmount, and neighbourhoods like Waverly. Every figure links to its source; public data only, no CoStar.</p>
+    <div class="cx-tabs" role="tablist" aria-label="Comparison level"><button type="button" role="tab" class="cx-tab" id="ct-b" aria-selected="true">Buildings like this one</button><button type="button" role="tab" class="cx-tab" id="ct-d" aria-selected="false">Streets like Greenmount</button><button type="button" role="tab" class="cx-tab" id="ct-n" aria-selected="false">Neighbourhoods like Waverly</button></div>
     <div id="casebody"></div>
   </section>
 
@@ -1601,14 +1615,14 @@ details.more > summary { font-size: 14px; }
     const E = [
       ['done', 'What was it?', 'A sourced use timeline for every parcel.', 'Done for the 69 frontage parcels'],
       ['demo', 'What could it become?', 'Ranked uses with reasons: heritage, rules, saturation, community, neighbours, precedents.', 'Score v0.3 on this page, with comparison and feedback'],
-      ['demo', 'What would it earn?', 'Rent and revenue range for each use, from comps, with the rent each use could support.', 'Comps engine v1 on this page: 58 listings, 192 benchmarks, 45 operators'],
+      ['demo', 'What would it earn?', 'Rent and revenue range for each use, from comps, with the rent each use could support.', 'Comps engine v1 on this page: 58 listings, 192 benchmarks, 45 operators; a sourced typical unit and total rent a year for each use; eight benchmark neighbourhoods'],
       ['demo', 'Does the mix work as a block?', 'A use plan for a block or a sponsor assemblage, under a saturation limit.', 'Plan v1 on this page: plans ranked by the rent the uses could support, with saturation, neighbour and rent-pressure checks'],
       ['demo', 'Who is it for?', 'The customer groups that would use, lease or buy each building, their obstacles and the programmes that help.', 'Seven groups matched on this page'],
       ['demo', 'How far can it be trusted?', 'Validation report and a model card that says where not to use it.', 'Back-test v2 passes on Greenmount blocks the model had not seen (p = 0.023, plan written first); four blind reference timelines next']];
     document.getElementById('endstate').innerHTML = `<p class="lede" style="font-size:14px">The final deliverable answers five questions for any address on the corridor, and for any block the sponsor names, with every answer traced to a source. It ships as a pilot in the sponsor's Property Dossier tool, with the code and tests, a validation report, a model card and the final report.</p>
       <div class="end" style="margin-top:12px">${E.map(([s, q, d, n]) => `<div class="endc"><span class="st ${s}">${s === 'done' ? 'done' : s === 'demo' ? 'working draft' : 'next'}</span><div class="q">${esc(q)}</div><div>${esc(d)}</div><div class="small">${esc(n)}</div></div>`).join('')}</div>`;
     const M = [
-      ['now', '26 Oct 2026', 'Now', 'Timelines for 69 parcels; score v0.3 with weight presets and a robustness label; comps engine v1; plans ranked by supportable rent with a rent-pressure check; back-test v2 on blocks not seen; comparable cases with costs, timelines and a displacement rubric; concepts for three buildings'],
+      ['now', '26 Oct 2026', 'Now', 'Timelines for 69 parcels; score v0.3 with weights that add to 100% and a robustness label; comps engine v1 with typical units and total rents; plans ranked by supportable rent with a rent-pressure check; back-test v2 on blocks not seen; comps at three levels (buildings, streets, neighbourhoods) with a displacement rubric; concepts for three buildings'],
       ['', '4 Nov 2026', 'Midterm', 'Validation memo with four blind timelines; precedent memo; extractor v1.1; this page as the pilot'],
       ['', 'Dec 2026', 'End of fall term', 'Comps engine v1.1 (calls for the unlisted Greenmount rents, private calibration if approved); generator v1 with building-design match; the 97 focus-area parcels'],
       ['', 'Mar 2027', 'Spring validation', 'Back-test repeated on four blind reference timelines; weight sensitivity; demand data if feasible; optimiser v1 for a sponsor-named assemblage'],
@@ -1618,14 +1632,14 @@ details.more > summary { font-size: 14px; }
       ['Use-history timelines', 'done', '69 frontage parcels, 566 spans, 8 kinds of source', 'Blind references; fix the summary rows; side streets', 'Whole corridor, with its gap map'],
       ['Candidate-use generator', 'demo', 'Score v0.3: heritage, rules, saturation, size, community, neighbours, precedents, feedback; four weight presets and a label for how firm each verdict is', 'Weights agreed with the sponsor; a short resident survey to test the community layer', 'Generator v1 with documented weights'],
       ['Customer matching', 'demo', 'Seven customer groups with ranked obstacles and programmes; buildings ranked by fit', 'Interviews with 5-10 businesses per group; an intake form for both sides', 'Matching with tracked 12, 24 and 36-month survival against the BLS benchmark (about 68% at 3 years)'],
-      ['Comps engine', 'demo', 'Engine v1: rent and revenue ranges for 14 uses, held-out check, other cities side by side', 'Calls for the Greenmount rents listed as "contact for pricing"; private check with the NDA operator if the sponsor approves; Census data for catchment spending', 'Comps library, engine and model card'],
+      ['Comps engine', 'demo', 'Engine v1: rent and revenue ranges for 14 uses, held-out check, other cities side by side; typical units and total rents; eight benchmark neighbourhoods on public rents and vacancy', 'Calls for the Greenmount rents listed as "contact for pricing"; private check with the NDA operator if the sponsor approves; Census data for catchment spending; size fit on the sourced ranges (score v0.4) if the sponsor agrees', 'Comps library, engine and model card'],
       ['Assemblage optimiser', 'demo', 'Plan v1: plans ranked by the rent the uses could support, with neighbour and saturation effects, a search check and a rent-pressure flag for businesses already trading', 'A sponsor-named assemblage; owners who opt in; content uses kept apart', 'Plan for a sponsor-named assemblage'],
       ['Validation', 'demo', 'Back-test v2: plan committed first, then run on 52 Greenmount parcels outside the frontage (p = 0.023); case statuses checked against 2025-26 sources', 'Four blind timelines; the sponsor signs off the test rule', 'Validation report'],
       ['Pilot and handoff', 'demo', 'This page', 'Sponsor feedback on the score and the plan', 'Property Dossier pilot, model card, data contract, report']];
     document.getElementById('comp').innerHTML = `<table><thead><tr><th>Part (Idea 1)</th><th>Now</th><th>Next</th><th>Final, May 2027</th></tr></thead><tbody>${R.map(([a, s, b, c, d]) => `<tr><td><b>${esc(a)}</b><br><span class="st ${s}">${s === 'done' ? 'done' : s === 'demo' ? 'working draft' : 'next'}</span></td><td>${esc(b)}</td><td>${esc(c)}</td><td>${esc(d)}</td></tr>`).join('')}</tbody></table>`;
   }
 
-  // ---------------- views: one tab at a time, so the page reads as five short pages
+  // ---------------- views: one tab at a time, so the page reads as six short pages
   let VIEW = 'b';
   function showView(v) {
     VIEW = v;
@@ -1857,11 +1871,92 @@ details.more > summary { font-size: 14px; }
     if (a && o) return `${a} to ${o} <span class="small">(${Math.max(0, o - a)} yr${o - a === 1 ? '' : 's'})</span>`;
     return o ? `opened ${o}` : '<span class="small">not found</span>';
   }
+  // what the displacement rating measures, and how it could be used (team/explorer/DISPLACEMENT.md)
+  function dispNote() {
+    return `<details class="more" style="margin-top:10px"><summary>What the displacement rating measures, and how to use it in planning</summary>
+      <div style="display:grid;gap:8px;margin-top:8px;font-size:13px">
+      <p style="margin:0">The rating answers one question: according to published sources, did the revival there cost the residents and businesses who were already there? It is not a forecast for Greenmount and not an income index. Rising incomes alone never make a place high, because newcomers can raise them without anyone leaving.</p>
+      <table class="btt"><tbody>${['high', 'moderate', 'low', 'unknown'].map(k => `<tr><td style="width:96px">${dpill(k)}</td><td>${esc(RUB[k] || '')}</td></tr>`).join('')}</tbody></table>
+      <p style="margin:0"><b>On Greenmount itself</b> the page marks long-standing businesses (15 years or more at the address), flags rent pressure in every block plan (businesses already trading whose kind of business typically supports at least 20% less rent than the plan's new uses), and never plans an occupied building.</p>
+      <p style="margin:0"><b>How it could be used.</b> Treat high as the line not to cross: no double-digit fall in Waverly's long-standing population share, and no long-standing business forced out. Before agreeing a lease mix, read the block plan's rent-pressure flags, and pair any flagged block side with a measure that worked in the low-rated places: stepped rents, a first right of renewal, buying shop units only, or the tenant-to-owner path. Re-rate Waverly once a year with the same rule, from the baseline in the neighbourhood cards.</p>
+      <p class="small" style="margin:0">Ratings follow the evidence on each card, read on 26 Oct 2026 from the sources linked. A rating that changed when the rubric was written down shows its earlier value. Unknown does not mean none. Full note: team/explorer/DISPLACEMENT.md.</p></div></details>`;
+  }
+  // neighbourhoods like Waverly: the sponsor's benchmark set (extras.neighbourhoods; the comparison sentences come from the build)
+  const pct1 = x => x == null ? '—' : (Math.round(x * 10) / 10) + '%';
+  const yrs = o => o.y0 === o.y1 ? `(${o.y1})` : `(${o.y0} → ${o.y1})`;
+  function resCell(o, f) {
+    if (!o) return '<span class="small">not found</span>';
+    if (o.y0 === o.y1) return `${f(o.v1)} <span class="small">(${o.y1})</span>`;
+    return `${f(o.v0)} → <b>${f(o.v1)}</b><div class="small">${o.y0} → ${o.y1}${o.n_areas > 1 ? `, median of ${o.n_areas} tracts` : ''}</div>`;
+  }
+  function nbChart(R) {
+    const rows = R.filter(n => n.calc.rent_median != null).slice().sort((a, b) => a.calc.rent_median - b.calc.rent_median);
+    const W0 = 660, LX = 150, RW = 70, top = 6, rh = 38, H = top + rows.length * rh + 24;
+    const max = Math.ceil(Math.max(...rows.map(n => Math.max(n.calc.rent_max || 0, n.calc.rent_median))) / 10) * 10;
+    const x = v => LX + (W0 - LX - RW) * v / max;
+    let g = '';
+    for (let t = 0; t <= max; t += 10) g += `<line class="grid" x1="${x(t)}" x2="${x(t)}" y1="${top}" y2="${top + rows.length * rh}"/><text class="tick" x="${x(t)}" y="${top + rows.length * rh + 16}" text-anchor="middle">$${t}</text>`;
+    rows.forEach((n, i) => {
+      const c = n.calc, y = top + i * rh, cy = y + rh / 2, bh = 16, x0 = x(0), x1 = x(c.rent_median), r = Math.min(4, x1 - x0);
+      const bar = `M ${x0} ${cy - bh / 2} H ${x1 - r} Q ${x1} ${cy - bh / 2} ${x1} ${cy - bh / 2 + r} V ${cy + bh / 2 - r} Q ${x1} ${cy + bh / 2} ${x1 - r} ${cy + bh / 2} H ${x0} Z`;
+      const wh = c.rent_n > 1 && c.rent_max > c.rent_min ? `<line class="wh" x1="${x(c.rent_min)}" x2="${x(c.rent_max)}" y1="${cy}" y2="${cy}"/><line class="wh" x1="${x(c.rent_min)}" x2="${x(c.rent_min)}" y1="${cy - 5}" y2="${cy + 5}"/><line class="wh" x1="${x(c.rent_max)}" x2="${x(c.rent_max)}" y1="${cy - 5}" y2="${cy + 5}"/>` : '';
+      g += `<g class="r" tabindex="0" data-i="${R.indexOf(n)}" aria-label="${esc(n.short)}: ${usd(c.rent_median)} per sq ft"><rect class="hit" x="0" y="${y + 1}" width="${W0}" height="${rh - 2}" rx="4"/>
+        <text class="lab" x="4" y="${cy - 2}">${esc(n.short)}</text><text class="lab2" x="4" y="${cy + 12}">${esc(n.city.split('(')[0].trim())} · ${c.rent_n} row${c.rent_n === 1 ? '' : 's'}</text>
+        <path class="${n === R[0] ? 'bar1' : 'bar0'}" d="${bar}"/>${wh}<text class="val" x="${x(Math.max(c.rent_median, c.rent_max || 0)) + 8}" y="${cy + 4}">${usd(c.rent_median)}</text></g>`;
+    });
+    return `<div class="nbc"><svg viewBox="0 0 ${W0} ${H}" role="img" aria-label="Median asking rent per sq ft a year, triple-net equivalent, by neighbourhood; whiskers show the lowest and highest row">${g}</svg><div class="ntip" hidden></div></div>`;
+  }
+  function wireNbChart(root, R) {
+    const box = root.querySelector('.nbc'); if (!box) return;
+    const tip = box.querySelector('.ntip');
+    const show = (gEl) => {
+      const n = R[+gEl.dataset.i], c = n.calc, rows = (n.retail_asking_rents || []).filter(r => r.nnn_equiv != null);
+      tip.innerHTML = `<b>${esc(n.name)}</b><br>${usd(c.rent_median)} per sq ft a year, triple-net equivalent (median of ${c.rent_n})${c.rent_n > 1 ? `<br>rows from ${usd(c.rent_min)} to ${usd(c.rent_max)}` : ''}<br>${c.rent_x_waverly ? `${c.rent_x_waverly.toFixed(1)}× Greenmount · ` : ''}a ${fmt(D.nbhd.typical_shop_sqft)} sq ft shop ${kusd(c.shop_year)} a year<br><span style="opacity:.8">lease types as stated: ${esc(rows.map(r => r.lease_type).filter((v, i, a) => a.indexOf(v) === i).join(', '))}</span>`;
+      tip.hidden = false;
+      const b = box.getBoundingClientRect(), r = gEl.getBoundingClientRect();
+      tip.style.left = Math.min(b.width - 300, Math.max(0, r.left - b.left + 160)) + 'px'; tip.style.top = (r.bottom - b.top + 4) + 'px';
+    };
+    box.querySelectorAll('g.r').forEach(gEl => { gEl.onpointerenter = () => show(gEl); gEl.onfocus = () => show(gEl); gEl.onpointerleave = () => { tip.hidden = true; }; gEl.onblur = () => { tip.hidden = true; }; });
+  }
+  function drawNbhd(body) {
+    const NB = D.nbhd;
+    if (!NB) { body.innerHTML = '<p class="small">Not in this build.</p>'; return; }
+    document.getElementById('casefor').textContent = `the sponsor's benchmark set · public asking rents and vacancy, no CoStar · read ${NB.accessed_on}`;
+    const R = NB.rows, money = x => x == null ? '—' : '$' + fmt(Math.round(x)), sh = NB.typical_shop_sqft;
+    const vac = n => { const v = (n.retail_vacancy || [])[0]; if (!v) return '<span class="small">no published count</span>'; return `<span title="${esc(v.definition.replace(/^other: /, '') + '. ' + v.area + (v.count_note ? '. ' + v.count_note : ''))}"><b>${pct1(v.value_pct)}</b> <span class="small">${esc(String(v.date).slice(0, 4))}</span><div class="small">${esc(v.kind)}</div></span>`; };
+    const homeKind = n => (((n.residents || {}).median_home_value_or_sale_price || [])[0] || {}).kind || '';
+    const table = `<div class="tbl"><table class="btt wide nbt"><thead><tr><th>Neighbourhood</th><th>Asking rent /sq ft a year, triple-net equiv.</th><th>A ${fmt(sh)} sq ft shop, a year</th><th>Storefront vacancy</th><th>Median household income</th><th>Black share of residents</th><th>Median gross rent, homes</th><th>Home value or sale price</th><th>Displacement</th></tr></thead><tbody>
+      ${R.map((n, i) => { const c = n.calc, rs = c.residents; return `<tr${i === 0 ? ' class="cur"' : ''}><td><b>${esc(n.name)}</b><div class="small">${esc(n.city)}, ${esc(n.state)}</div></td>
+        <td class="num">${c.rent_median != null ? `<b>${usd(c.rent_median)}</b><div class="small">${c.rent_n} row${c.rent_n === 1 ? '' : 's'}${c.rent_n > 1 ? `, ${usd(c.rent_min)}–${usd(c.rent_max)}` : ''}${i ? ` · ${c.rent_x_waverly.toFixed(1)}×` : ''}</div>` : '—'}</td>
+        <td class="num">${c.shop_year ? kusd(c.shop_year) : '—'}</td><td>${vac(n)}</td>
+        <td class="num">${resCell(rs.median_household_income, money)}</td><td class="num">${resCell(rs.black_share_pct, pct1)}</td>
+        <td class="num">${resCell(rs.median_gross_rent, money)}</td><td class="num">${resCell(rs.median_home_value_or_sale_price, money)}${homeKind(n) ? `<div class="small">${esc(homeKind(n))}</div>` : ''}</td>
+        <td>${dpill(n.displacement_rating)}</td></tr>`; }).join('')}
+      </tbody></table></div>`;
+    const card = n => { const c = n.calc, rr = (n.retail_asking_rents || []), vv = (n.retail_vacancy || []), ctx = n.context || {};
+      const link = (u, t) => u && /^https?:/.test(u) ? `<a class="cxsrc" href="${esc(u)}" target="_blank" rel="noopener">${esc(t || 'source')}</a>` : esc(t || '');
+      return `<div class="casec nbcard"><div class="hd"><b>${esc(n.name)}</b><span class="small">${esc(n.city)}, ${esc(n.state)}</span><span style="margin-left:auto">displacement ${dpill(n.displacement_rating)}</span></div>
+        <div class="small" style="color:var(--ink-2)">${esc((n.main_corridors || []).join('; '))}. ${esc(n.geography_note || '')}</div>
+        <div style="font-size:13px"><b>Fair comparison?</b> ${esc(n.why_comparable)}</div>
+        <div class="small"><b>Displacement:</b> ${esc(n.rating_reason)}</div>
+        ${n.choice_reason ? `<div class="small"><b>Why this one:</b> ${esc(n.choice_reason)}</div>` : ''}
+        <details><summary class="small">Asking rents (${rr.length})</summary><div class="tbl"><table class="mt"><thead><tr><th>Where</th><th>Sq ft</th><th>As stated</th><th>Triple-net equiv.</th><th>Date</th><th>Kind</th></tr></thead><tbody>${rr.map(r => `<tr><td>${link(r.source_url, r.area)}</td><td class="num">${r.sqft ? fmt(r.sqft) : '—'}</td><td class="num">${r.value != null ? usd(r.value) : r.value_low != null ? usd(r.value_low) + '–' + usd(r.value_high) : '—'} <span class="small">${esc(r.lease_type || '')}</span></td><td class="num">${r.nnn_equiv != null ? usd(r.nnn_equiv) : '<span class="small">context only</span>'}</td><td>${esc(String(r.date || ''))}</td><td class="small">${esc(r.kind || '')}</td></tr>`).join('')}</tbody></table></div></details>
+        <details><summary class="small">Vacancy (${vv.length})</summary><ul class="dev">${vv.map(v => `<li><b>${pct1(v.value_pct)}</b> ${esc(v.area)}, ${esc(String(v.date))}: ${esc(v.definition.replace(/^other: /, ''))}${v.count_note ? ` (${esc(v.count_note)})` : ''} ${link(v.source_url, 'source')}</li>`).join('') || '<li>No published count found.</li>'}</ul></details>
+        <details><summary class="small">Displacement evidence (${(n.displacement_evidence || []).length})</summary><ul class="dev">${(n.displacement_evidence || []).map(e => `<li><b>${esc(e.indicator)}</b>: ${esc(e.value)}${e.period ? ` <span class="small">(${esc(e.period)})</span>` : ''} ${link(e.source_url, 'source')}</li>`).join('')}</ul><div class="small">Rating: ${esc(n.rating_reason)}</div></details>
+        <div class="chips">${[['historic', ctx.historic_district], ['anchor', ctx.anchor_institution], ['transit', ctx.transit], ['storefronts', ctx.storefronts_or_length]].filter(([, v]) => v).map(([k, v]) => `<span>${esc(k)}: ${esc(short(v, 120))}</span>`).join('')}</div>
+        <div class="srcs">${(n.sources || []).map(s2 => `<a href="${esc(s2.u)}" target="_blank" rel="noopener">${esc(s2.l)}</a>`).join('')}</div></div>`; };
+    body.innerHTML = `<div class="segc"><div class="wbox cmpbox"><h3 style="margin:0">How Greenmount compares</h3>${(NB.compare || []).map(x => `<p><b>${esc(x.k)}.</b> ${esc(x.t)}</p>`).join('')}</div>
+        <div class="wbox"><h3 style="margin:0">Asking rent per sq ft a year, triple-net equivalent</h3>${nbChart(R)}
+          <p class="small" style="margin:0">Median of each neighbourhood's ground-floor rows; whiskers run from the lowest to the highest row. Greenmount in blue. Hover or focus a bar for its rows.</p></div></div>
+      ${table}
+      <p class="small" style="margin:4px 0 0"><b>How the rents are made comparable.</b> Every asking rent is turned into a triple-net equivalent with the comps engine's allowances: ${Object.entries(NB.loads).map(([k, v]) => `${esc(k)} −$${v}`).join(', ')}. A listing that gives a range wider than ${NB.range_max}× (several spaces at different rates) and broker or news figures for a wider area are shown on the cards but left out of the median. Monthly rents in the sources were multiplied by 12. Greenmount's rows are the comps library's three on Greenmount (two asking, one rent being paid). Dollars are nominal and not adjusted for local price levels. <b>Vacancy</b> definitions differ (counted storefronts, city surveys, broker availability, a figure stated by a nonprofit), so read the definition beside each number. <b>Residents</b> come from different geographies (census tracts, Baltimore's community statistical areas, ZIP codes, planning areas), given on each card.</p>
+      ${dispNote()}
+      <details class="more" style="margin-top:10px"><summary>Neighbourhood cards: rents, vacancy, displacement evidence and sources (${R.length})</summary><div class="casel" style="margin-top:8px">${R.map(card).join('')}</div></details>`;
+    wireNbChart(body, R);
+  }
   function drawCases() {
     const p = PI[sel]; if (!p) return;
-    ['b', 'd'].forEach(t => document.getElementById('ct-' + t).setAttribute('aria-selected', caseTab === t));
-    document.getElementById('ct-b').onclick = () => { caseTab = 'b'; drawCases(); };
-    document.getElementById('ct-d').onclick = () => { caseTab = 'd'; drawCases(); };
+    ['b', 'd', 'n'].forEach(t => { const el = document.getElementById('ct-' + t); el.setAttribute('aria-selected', caseTab === t); el.onclick = () => { caseTab = t; drawCases(); }; });
     const body = document.getElementById('casebody'), src = a => srcLinks(a);
     if (caseTab === 'b') {
       document.getElementById('casefor').textContent = `matched to ${p.address} Greenmount (${p.btype}, ${p.sqft ? fmt(+p.sqft) + ' sq ft' : 'size unknown'}${p.built ? ', c. ' + p.built : ''})`;
@@ -1903,8 +1998,12 @@ details.more > summary { font-size: 14px; }
           <div><b>Lesson.</b> ${esc(b.lesson || '')}</div><div class="srcs">${src(b.sources)}</div></div>`; }).join('')}</div></details>`;
       document.getElementById('creg').onchange = e => { caseRegion = e.target.value; drawCases(); };
       body.querySelectorAll('[data-cf]').forEach(b => b.onclick = () => { caseF[b.dataset.cf] = !caseF[b.dataset.cf]; drawCases(); });
+    } else if (caseTab === 'n') {
+      drawNbhd(body);
     } else {
       const W0 = L.waverly || {};
+      const CR = Object.fromEntries(((CO && CO.corridors) || []).filter(c => c.district_id).map(c => [c.district_id, c])), CW = ((CO && CO.corridors) || []).find(c => c.id === 'waverly');
+      const rentCell = c => c ? `${usd(c.pooled)}<div class="small">${c.n} listing${c.n === 1 ? '' : 's'}, comps engine</div>` : '<span class="small">not in the comps library</span>';
       document.getElementById('casefor').textContent = 'similarity to Waverly: income 20%, majority-Black 15%, anchor institution 15%, concentrated ownership 15%, historic 10%, length 10%, US 15%';
       const ds = (L.districts || []).map(d => ({ d, s: dsim(d) })).sort((a, b) => b.s.v - a.s.v);
       const top5 = ds.slice(0, 5), tags = {};
@@ -1915,15 +2014,15 @@ details.more > summary { font-size: 14px; }
       (L.districts || []).forEach(d => { cnt[d.displacement || 'unknown'] = (cnt[d.displacement || 'unknown'] || 0) + 1; });
       const startCell = d => d.start_vacancy_pct != null ? `${d.start_vacancy_pct}% vacant${d.start && d.start.start_year && d.start.start_year !== d.start_year ? ' (' + d.start.start_year + ')' : ''}` : (d.start && d.start.start_income_note ? `<span class="small">${esc(short(d.start.start_income_note, 90))}</span>` : '<span class="small">not found</span>');
       const anchorCell = d => hasAnchor(d) ? esc(short(d.anchor_institution, 48)) : 'none';
-      const wv = `<tr class="cur"><td class="num">—</td><td><b>Waverly today</b><div class="small">Greenmount Ave, E 29th-E 33rd St</div></td><td>${esc((W0.interventions_past || []).length ? 'c. 2005' : '—')}</td><td>${esc(short(W0.vacancy_note || '', 80))}</td><td>${W0.majority_black ? 'yes' : '—'}</td><td>${esc(short(W0.anchor_institution || 'none', 48))}</td><td>main street, city shopping-district grants, master plan (2013)</td><td>—</td><td>—</td><td class="small">${esc(short(W0.ownership_note || '', 90))}</td></tr>`;
-      const tbl = `<div class="tbl"><table class="btt wide"><thead><tr><th>Similarity</th><th>Street</th><th>Began</th><th>At the start</th><th>Majority-Black</th><th>Anchor institution</th><th>Main levers</th><th>Vacancy change</th><th>Displacement</th><th>2025-26</th></tr></thead><tbody>${wv}${shown.map(x => { const d = x.d; return `<tr><td class="num">${Math.round(x.s.v * 100)}%</td><td><b>${esc(short(d.name, 60))}</b><div class="small">${esc(d.city)}</div></td><td class="num">${d.start_year || '—'}</td><td>${startCell(d)}</td><td>${d.majority_black === true ? 'yes' : d.majority_black === false ? 'no' : '—'}</td><td>${anchorCell(d)}</td><td>${esc((d.interventions || []).slice(0, 4).map(t => t.replace(/_/g, ' ')).join(', ') || '—')}</td><td>${esc(d.vacancy_change || '—')}</td><td>${dpill(d.displacement)}</td><td class="small">${d.status_now && d.status_now.text ? `${esc(short(d.status_now.text, 110))}${d.status_now.source_url ? ` <a class="cxsrc" href="${esc(d.status_now.source_url)}" target="_blank" rel="noopener">source</a>` : ''}` : 'no 2025-26 source found'}</td></tr>`; }).join('')}</tbody></table></div>`;
+      const wv = `<tr class="cur"><td class="num">—</td><td><b>Waverly today</b><div class="small">Greenmount Ave, E 29th-E 33rd St</div></td><td>${esc((W0.interventions_past || []).length ? 'c. 2005' : '—')}</td><td>${esc(short(W0.vacancy_note || '', 80))}</td><td>${W0.majority_black ? 'yes' : '—'}</td><td>${esc(short(W0.anchor_institution || 'none', 48))}</td><td>main street, city shopping-district grants, master plan (2013)</td><td>—</td><td class="num">${rentCell(CW)}</td><td>${dpill((((D.nbhd || {}).rows || [])[0] || {}).displacement_rating || 'unknown')}</td><td class="small">${esc(short(W0.ownership_note || '', 90))}</td></tr>`;
+      const tbl = `<div class="tbl"><table class="btt wide"><thead><tr><th>Similarity</th><th>Street</th><th>Began</th><th>At the start</th><th>Majority-Black</th><th>Anchor institution</th><th>Main levers</th><th>Vacancy change</th><th>Asking rent /sq ft, triple-net equiv.</th><th>Displacement</th><th>2025-26</th></tr></thead><tbody>${wv}${shown.map(x => { const d = x.d; return `<tr><td class="num">${Math.round(x.s.v * 100)}%</td><td><b>${esc(short(d.name, 60))}</b><div class="small">${esc(d.city)}</div></td><td class="num">${d.start_year || '—'}</td><td>${startCell(d)}</td><td>${d.majority_black === true ? 'yes' : d.majority_black === false ? 'no' : '—'}</td><td>${anchorCell(d)}</td><td>${esc((d.interventions || []).slice(0, 4).map(t => t.replace(/_/g, ' ')).join(', ') || '—')}</td><td>${esc(d.vacancy_change || '—')}</td><td class="num">${rentCell(CR[d.id])}</td><td>${dpill(d.displacement)}</td><td class="small">${d.status_now && d.status_now.text ? `${esc(short(d.status_now.text, 110))}${d.status_now.source_url ? ` <a class="cxsrc" href="${esc(d.status_now.source_url)}" target="_blank" rel="noopener">source</a>` : ''}` : 'no 2025-26 source found'}</td></tr>`; }).join('')}</tbody></table></div>
+        <p class="small" style="margin:4px 0 0">Asking rents: the comps engine's corridor means (triple-net equivalent, adjusted for the mix of uses listed, pooled toward the city mean; Money tab, other cities' corridors). Streets with no listings in the library show none.</p>`;
       body.innerHTML = `<div class="segc"><div class="wbox"><div class="eyebrow">Waverly, Greenmount Ave E 29th-E 33rd St</div>
           <div style="font-size:13px;display:grid;gap:4px"><div>${W0.length_mi || 0.4} miles · ${W0.parcels || 69} parcels · ${esc(W0.historic || '')}</div><div>${esc(W0.vacancy_note || '')}</div><div>${esc(W0.income_note || '')}</div><div>${esc(W0.anchor_institution || '')}</div><div>${esc(W0.ownership_note || '')}</div></div></div>
         <div class="wbox"><h3>What the five closest streets did</h3><div class="chips">${Object.entries(tags).sort((a, b) => b[1] - a[1]).map(([t, n]) => `<span class="${n >= 3 ? 'y' : ''}">${esc(t.replace(/_/g, ' '))} ${n}/5</span>`).join('')}</div>
           <p class="small" style="margin:0">Displacement on those five: ${top5.map(x => `${esc(x.d.name)} ${esc(x.d.displacement)}`).join('; ')}.</p>
           <p class="small" style="margin:0">Across all ${(L.districts || []).length} streets: ${['high', 'moderate', 'low', 'unknown'].filter(k => cnt[k]).map(k => `${cnt[k]} ${k}`).join(', ')}.</p></div></div>
-        <details class="more" style="margin-top:10px"><summary>How displacement is rated</summary><table class="btt" style="margin-top:6px"><tbody>${['high', 'moderate', 'low', 'unknown'].map(k => `<tr><td style="width:96px">${dpill(k)}</td><td>${esc(RUB[k] || '')}</td></tr>`).join('')}</tbody></table>
-          <p class="small" style="margin:6px 0 0">Ratings follow the evidence on each card, read on 26 Oct 2026 from the sources linked. A rating that changed when the rubric was written down shows its earlier value.</p></details>
+        ${dispNote()}
         <div class="ctl" style="margin:10px 0 8px;flex-wrap:wrap">${fchip('us', distF.us, 'US only')}${fchip('low', distF.low, 'Low or moderate displacement')}${fchip('noanchor', distF.noanchor, 'No anchor institution')}${fchip('black', distF.black, 'Majority-Black')}<span class="small">${shown.length} of ${ds.length} streets</span></div>
         ${tbl}
         <details class="more" style="margin-top:10px"><summary>Street cards: who led it, what happened, timeline and evidence (${shown.length})</summary><div class="casel" style="margin-top:8px">${shown.map(x => { const d = x.d, s = x.s; return `<div class="casec"><div class="hd"><span class="simv">${Math.round(s.v * 100)}%</span><b>${esc(d.name)}</b><span class="small">${esc(d.city)}, ${esc(d.country)}${d.length_mi ? ' · ' + d.length_mi + ' mi' : ''}${d.start_year ? ' · from ' + d.start_year : ''}</span><span style="margin-left:auto">displacement ${dpill(d.displacement)}${d.displacement_v1 ? ` <span class="small">(was ${esc(d.displacement_v1)})</span>` : ''}</span></div>

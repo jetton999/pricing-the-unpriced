@@ -166,5 +166,50 @@ class TestPublicNames(unittest.TestCase):
             self.assertEqual(_brand_hits(re.sub(r'https?://\S+', ' ', fh.read())), [])
 
 
+class TestNeighbourhoods(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.d = _page_data()['nbhd']
+
+    def test_set_and_ratings(self):
+        rub = set(L['meta']['displacement_rubric'])
+        ids = [n['id'] for n in self.d['rows']]
+        self.assertEqual(ids[0], 'waverly-greenmount')
+        self.assertEqual(len(ids), 8)
+        for n in self.d['rows']:
+            self.assertIn(n['displacement_rating'], rub, n['id'])
+            for e in n['displacement_evidence']:
+                self.assertTrue(e['source_url'].startswith('http'), n['id'])
+
+    def test_triple_net_equivalent(self):
+        loads = self.d['loads']
+        for n in self.d['rows']:
+            used = [r for r in n['retail_asking_rents'] if r['nnn_equiv'] is not None]
+            self.assertEqual(len(used), n['calc']['rent_n'], n['id'])
+            for r in used:
+                v = r['value'] if r['value'] is not None else (r['value_low'] + r['value_high']) / 2
+                self.assertAlmostEqual(r['nnn_equiv'], v - loads[r['lease_type']], places=2, msg=n['id'])
+                self.assertIn(r['kind'], ('listing', 'rent being paid'), n['id'])
+
+    def test_waverly_vacancy_is_the_sponsors_count(self):
+        import csv
+        with open(os.path.join(REPO, 'storefront_assessments.csv'), encoding='utf-8-sig') as fh:
+            rows = list(csv.DictReader(fh))
+        ids = {p['id'] for p in _page_data()['props']}
+        fr = [r for r in rows if r['property_id'] in ids]
+        vac = sum(r['status'] in ('vacant_storefront', 'listed_likely_dead') for r in fr)
+        occ = sum(r['status'] in ('open_active', 'office_industrial', 'institution') for r in fr)
+        v = self.d['rows'][0]['retail_vacancy'][0]
+        self.assertEqual(v['count_note'], f"{vac} of {vac + occ} storefront parcels vacant")
+        self.assertAlmostEqual(v['value_pct'], round(100 * vac / (vac + occ), 1))
+
+    def test_comparison_quotes_the_rows(self):
+        c = {x['k']: x['t'] for x in self.d['compare']}
+        w = self.d['rows'][0]['calc']
+        self.assertIn(f"${w['rent_median']:,.0f} per sq ft", c['Rent'])
+        for n in self.d['rows'][1:]:
+            self.assertIn(f"{n['short']} {n['calc']['rent_x_waverly']:.1f}", c['Rent'])
+
+
 if __name__ == '__main__':
     unittest.main()
