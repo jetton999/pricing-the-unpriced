@@ -409,6 +409,7 @@ details.more > summary { font-size: 14px; }
     <div id="earntrail" class="grid2 even"></div>
     <details><summary>Other cities' corridors next to Waverly</summary><div id="earncity" style="margin-top:10px"></div></details>
     <details><summary>Checks: held-out listings, operators' own figures, what moves the numbers</summary><div id="earnchk" style="margin-top:10px"></div></details>
+    <details id="sizesD"><summary>How big each use usually is: the typical unit behind each total rent (20 uses, sourced)</summary><div id="earnsize" style="margin-top:10px"></div></details>
     <details><summary>Why these methods, and what was rejected</summary><div class="tbl" id="earnwhy" style="margin-top:10px"></div></details>
   </section>
 
@@ -790,6 +791,18 @@ details.more > summary { font-size: 14px; }
     return (SMAA[p.id] = { key, rows, label, when, N });
   }
   const pctR = x => Math.round(x * 20) * 5 + '%';
+  const SZ = (D.sizes && D.sizes.formats) || {};
+  function drawSizesOnce() {
+    const el = document.getElementById('earnsize'); if (!el) return;
+    const ids = Object.keys(SZ); if (!ids.length) { document.getElementById('sizesD').hidden = true; return; }
+    el.innerHTML = `<p class="small" style="margin:0 0 8px">${esc(D.sizes.about)} ${esc(D.sizes.brands)}</p>
+      <div class="tbl"><table class="btt wide"><thead><tr><th>Use</th><th>Typical, sq ft</th><th>Range, sq ft</th><th>Range used for size fit (team)</th><th>Basis</th><th>Sources</th></tr></thead><tbody>
+      ${ids.map(id => { const z = SZ[id], f = FM[id]; return `<tr><td>${f ? `<span class="sw" style="background:${cssFill(f.cat)};margin-right:6px;vertical-align:-1px"></span>` : ''}${esc(f ? f.name : z.name)}</td><td class="num"><b>${fmt(z.typical)}</b></td><td class="num">${fmt(z.low)}–${fmt(z.high)}</td>
+        <td class="num">${f ? `${fmt(f.size[0])}–${f.size[1] >= 100000 ? 'any' : fmt(f.size[1])}` : '—'}</td><td class="small">${esc(z.basis)}${z.note ? `<div style="color:var(--ink-2)">${esc(z.note)}</div>` : ''}</td>
+        <td class="small">${z.sources.map(x => `<div><a class="cxsrc" href="${esc(x.u)}" target="_blank" rel="noopener" title="${esc(x.q)}">${esc(x.t)}</a></div>`).join('')}</td></tr>`; }).join('')}
+      </tbody></table></div>
+      <p class="small">Hover a source for the quote it supports. Read on ${esc(D.sizes.accessed_on)}. The size fit in the score keeps the team's wider ranges for now: moving it to these sourced ranges changes rankings, so it is left for the sponsor to agree (score v0.4).</p>`;
+  }
   // how firm the verdict is: the share of 1,000 priority mixes (factor weights and how much money counts) in which it comes first
   function robust(p, best) {
     const sm = smaaOf(p); if (!sm || !sm.rows || !sm.rows.length || !best) return '';
@@ -1049,6 +1062,7 @@ details.more > summary { font-size: 14px; }
     const sims = simsOf(p).slice(0, 3), st = p.story || [0, 0];
     const sm = smaaOf(p), b1 = id => { const x = sm && sm.rows.find(y => y.r.f.id === id); return x ? x.b1 : null; };
     const money = r => { const e = CO && earn(p, r.f); if (!e) return ''; return `could support <b>${kusd(e.ann[1])}</b>/yr <span class="small">(${kusd(e.ann[0])}–${kusd(e.ann[2])})</span>`; };
+    const unitLine = r => { const e = CO && earn(p, r.f), z = SZ[r.f.id]; if (!e) return ''; return `<div class="small">For ${fmt(Math.round(e.u))} sq ft${e.units > 1 ? ` in ${e.units} units` : ''}; a typical unit of this use is about ${z ? `${fmt(z.typical)} sq ft (${fmt(z.low)}–${fmt(z.high)})` : 'not sourced yet'}.</div>`; };
     const rv = (p.rv || [])[0];
     const isRetail = top3.some(r => r.f.cat === 'retail goods');
     const evs = p.ev.slice().sort((a, b) => (+a.y || 9999) - (+b.y || 9999)).map(e => `<div class="ev"><div class="y">${esc(e.y || '—')}</div><div><div class="src"><span>${esc(e.src)}</span>${e.cat ? `<span class="pill" style="font-size:11px;padding:0 6px"><span class="sw" style="width:8px;height:8px;background:${cssFill(e.cat)}"></span>${esc(e.cat)}</span>` : ''}${e.m ? `<span title="the address was inferred, not read: through the York Road renumbering or a neighbouring house number">address inferred: ${esc(e.m)}</span>` : ''}</div><div>${esc(e.t)}</div><div class="small">${e.url ? `<a href="${esc(e.url)}" target="_blank" rel="noopener">${esc(e.ref || 'source')}</a>` : esc(e.ref)}</div></div></div>`).join('');
@@ -1057,7 +1071,7 @@ details.more > summary { font-size: 14px; }
         <div class="vname"><span class="sw" style="background:${cssFill(best.f.cat)}"></span>${esc(best.f.name)}${best.f.zs !== 'P' ? ` <span class="pol cb">conditional</span>` : ''}<span class="sc">${Math.round(best.score * 100)}<span class="small">/100</span></span></div>
         <div class="vwhy">${esc(whyLine(best, p))}</div>
         ${p.availability === 'occupied' ? `<div class="small">A business trades here today${p.since && p.since.legacy ? ` and has for ${p.since.years} years` : ''}. This is for planning if the space comes free, not a suggestion to replace it.</div>` : ''}
-        ${CO && earn(p, best.f) ? `<div class="vmoney">${money(best)}</div>` : ''}${robust(p, best) ? `<div class="vrob">${robust(p, best)}</div>` : ''}
+        ${CO && earn(p, best.f) ? `<div class="vmoney">${money(best)}${unitLine(best)}</div>` : ''}${robust(p, best) ? `<div class="vrob">${robust(p, best)}</div>` : ''}
         ${rv ? `<div class="small"><b>Heritage revival:</b> ${esc(rv.name)}, here ${rv.first}${rv.last !== rv.first ? '–' + rv.last : ''} (${rv.n} records). A revival reopens under a documented name and look; the trademark check comes first.</div>` : ''}
         <div class="cfoot">${fbBtns(p.id, best.f.id)}<a class="cxsrc small" href="#cmp">compare uses</a></div>
       </div>
@@ -1346,13 +1360,17 @@ details.more > summary { font-size: 14px; }
       <div class="tile"><span class="k">Against a plain range</span><span class="v">${Math.round(h.skill * 100)}% better</span><span class="s">Interval score (width plus a penalty for misses) of the engine's range, against the P10–P90 of all listings with no pooling.</span></div>
       <div class="tile"><span class="k">Between corridors</span><span class="v">±${Math.round((Math.exp(m.between_corridor_sd) - 1) * 100)}%</span><span class="s">Typical spread of corridor rent levels, after format; within a corridor listings spread ±${Math.round((Math.exp(m.within_sd) - 1) * 100)}%. Location matters more than the kind of use.</span></div>`;
     const ids = Object.keys(CO.formats).filter(id => FM[id]);
-    document.getElementById('earntab').innerHTML = `<table class="btt wide"><thead><tr><th>Use</th><th>Listings</th><th>Listing route /sq ft</th><th>Affordability route /sq ft</th><th>Typical asking rent /sq ft</th><th>Sales /sq ft</th><th>Can pay the asking rent</th><th>Notes</th></tr></thead><tbody>
-      ${ids.map(id => { const f = CO.formats[id]; if (f.not_estimated) return `<tr><td>${esc(FNAME(id))}</td><td colspan="7" class="small">${esc(f.not_estimated)}</td></tr>`;
+    document.getElementById('earntab').innerHTML = `<table class="btt wide"><thead><tr><th>Use</th><th>Listings</th><th>Listing route /sq ft</th><th>Affordability route /sq ft</th><th>Typical asking rent /sq ft</th><th>Typical unit</th><th>Total rent a year, typical unit</th><th>Sales /sq ft</th><th>Can pay the asking rent</th><th>Notes</th></tr></thead><tbody>
+      ${ids.map(id => { const f = CO.formats[id], z = SZ[id]; if (f.not_estimated) return `<tr><td>${esc(FNAME(id))}</td><td colspan="9" class="small">${esc(f.not_estimated)}</td></tr>`;
+        const tot = z ? f.typical.map(x => x * z.typical) : null, sup = z && f.supportable ? f.supportable[1] * z.typical : null;
         return `<tr><td><span class="sw" style="background:${cssFill(FM[id].cat)};margin-right:6px;vertical-align:-1px"></span>${esc(FNAME(id))}</td><td class="num">${f.n_listings}${f.borrowed_from ? ' <span class="small">(cafe)</span>' : ''}</td>
           <td class="num">${f.A ? rng(f.A.q) : '—'}</td><td class="num">${f.B ? rng(f.B.q) : `<span class="small">${esc(f.B_na ? 'not sales-based' : '—')}</span>`}</td>
           <td class="num"><b>${rng(f.typical)}</b>${f.A && f.B ? `<div class="small">${Math.round(f.wA * 100)}% listings, ${100 - Math.round(f.wA * 100)}% affordability</div>` : ''}</td>
+          <td class="num">${z ? `${fmt(z.typical)} sq ft<div class="small">${fmt(z.low)}–${fmt(z.high)}</div>` : '<span class="small">—</span>'}</td>
+          <td class="num">${tot ? `<b>${rng(tot, kusd)}</b>${sup != null ? `<div class="small">supports about ${kusd(sup)}</div>` : ''}` : '—'}</td>
           <td class="num">${f.B ? rng(f.B.sales_q, usd) : '—'}</td><td class="num">${f.can_pay == null ? '—' : pctR(f.can_pay)}</td><td class="small">${esc((f.flags || []).join('; '))}</td></tr>`; }).join('')}
-      </tbody></table><p class="small">At Waverly, for a parcel with the corridor's median taxes (${usd(m.tax_median)}/sq ft city tax + ${usd(m.pass_through_other)} assumed insurance). The building panel uses each parcel's own taxes and leaves out a building's own listing (3117, 3028-3030 and 3217 are in the library). Can pay: the chance that what the business could afford from its sales covers the asking rent.</p>`;
+      </tbody></table><p class="small">At Waverly, for a parcel with the corridor's median taxes (${usd(m.tax_median)}/sq ft city tax + ${usd(m.pass_through_other)} assumed insurance). The building panel uses each parcel's own taxes and floor area, and leaves out a building's own listing (3117, 3028-3030 and 3217 are in the library). Can pay: the chance that what the business could afford from its sales covers the asking rent. <b>Total rent a year</b> = the typical asking rent per sq ft × the typical unit for the use (sourced, below); "supports" uses the rent the use could support instead. The range is the rent range only: units vary in size too.</p>`;
+    drawSizesOnce();
     const pk = document.getElementById('earnpick');
     pk.innerHTML = ids.filter(id => !CO.formats[id].not_estimated).map(id => `<button type="button" class="chip" data-e="${id}" aria-pressed="${id === earnSel}"><span class="sw" style="background:${cssFill(FM[id].cat)}"></span>${esc(FNAME(id))}</button>`).join('');
     pk.querySelectorAll('.chip').forEach(b => b.onclick = () => { earnSel = b.dataset.e; pk.querySelectorAll('.chip').forEach(x => x.setAttribute('aria-pressed', x.dataset.e === earnSel)); drawEarnTrail(); });
