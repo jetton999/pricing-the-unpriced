@@ -1,0 +1,6171 @@
+{
+ "version": "comps engine v1",
+ "built_from": {
+  "rents": 79,
+  "rows_used": 58,
+  "sources": 48,
+  "corridors": 17,
+  "benchmarks": 192,
+  "operators": 45
+ },
+ "interval": {
+  "alpha": 0.2,
+  "z": 1.2816,
+  "widen": 1.2977
+ },
+ "dollars": 2025,
+ "model": {
+  "within_sd": 0.3241,
+  "between_corridor_sd": 0.2311,
+  "between_format_sd": 0.5209,
+  "city_means": {
+   "baltimore": 18.03,
+   "other": 20.38
+  },
+  "waverly": {
+   "n": 5,
+   "raw": 15.69,
+   "pooled": 16.31,
+   "B": 0.2823,
+   "own_share": 0.7177
+  },
+  "waverly_trail": [
+   {
+    "id": "R-001",
+    "w": 0.1509,
+    "nnn": 15.0,
+    "fmt": "showroom",
+    "grp": "waverly"
+   },
+   {
+    "id": "R-002",
+    "w": 0.1509,
+    "nnn": 15.0,
+    "fmt": "office",
+    "grp": "waverly"
+   },
+   {
+    "id": "R-004",
+    "w": 0.1509,
+    "nnn": 31.07,
+    "fmt": "services",
+    "grp": "waverly"
+   },
+   {
+    "id": "R-007",
+    "w": 0.1509,
+    "nnn": 11.0,
+    "fmt": "office",
+    "grp": "waverly"
+   },
+   {
+    "id": "R-022",
+    "w": 0.1509,
+    "nnn": 16.74,
+    "fmt": "services",
+    "grp": "waverly"
+   },
+   {
+    "id": "R-041",
+    "w": 0.0172,
+    "nnn": 10.0,
+    "fmt": "shop",
+    "grp": "hamilton"
+   },
+   {
+    "id": "R-054",
+    "w": 0.0172,
+    "nnn": 18.0,
+    "fmt": "services",
+    "grp": "belair"
+   },
+   {
+    "id": "R-042",
+    "w": 0.0129,
+    "nnn": 22.8,
+    "fmt": "office",
+    "grp": "eastern"
+   },
+   {
+    "id": "R-043",
+    "w": 0.0129,
+    "nnn": 15.04,
+    "fmt": "shop",
+    "grp": "eastern"
+   },
+   {
+    "id": "R-016",
+    "w": 0.0086,
+    "nnn": 15.0,
+    "fmt": "shop",
+    "grp": "charles_village"
+   },
+   {
+    "id": "R-017",
+    "w": 0.0086,
+    "nnn": 14.0,
+    "fmt": "office",
+    "grp": "charles_village"
+   },
+   {
+    "id": "R-018",
+    "w": 0.0086,
+    "nnn": 15.0,
+    "fmt": "office",
+    "grp": "charles_village"
+   },
+   {
+    "id": "R-020",
+    "w": 0.0086,
+    "nnn": 32.0,
+    "fmt": "community",
+    "grp": "charles_village"
+   },
+   {
+    "id": "R-044",
+    "w": 0.0086,
+    "nnn": 23.2,
+    "fmt": "services",
+    "grp": "pigtown"
+   },
+   {
+    "id": "R-045",
+    "w": 0.0086,
+    "nnn": 17.4,
+    "fmt": "cafe",
+    "grp": "pigtown"
+   },
+   {
+    "id": "R-046",
+    "w": 0.0086,
+    "nnn": 4.5,
+    "fmt": "workshop",
+    "grp": "pigtown"
+   },
+   {
+    "id": "R-047",
+    "w": 0.0086,
+    "nnn": 8.0,
+    "fmt": "venue",
+    "grp": "pigtown"
+   },
+   {
+    "id": "R-034",
+    "w": 0.0073,
+    "nnn": 45.61,
+    "fmt": "showroom",
+    "grp": "hampden"
+   },
+   {
+    "id": "R-035",
+    "w": 0.0073,
+    "nnn": 27.27,
+    "fmt": "shop",
+    "grp": "hampden"
+   },
+   {
+    "id": "R-036",
+    "w": 0.0073,
+    "nnn": 39.0,
+    "fmt": "counter",
+    "grp": "hampden"
+   },
+   {
+    "id": "R-037",
+    "w": 0.0073,
+    "nnn": 39.0,
+    "fmt": "shop",
+    "grp": "hampden"
+   },
+   {
+    "id": "R-039",
+    "w": 0.0073,
+    "nnn": 28.5,
+    "fmt": "office",
+    "grp": "hampden"
+   },
+   {
+    "id": "R-049",
+    "w": 0.0073,
+    "nnn": 27.0,
+    "fmt": "shop",
+    "grp": "fells"
+   },
+   {
+    "id": "R-050",
+    "w": 0.0073,
+    "nnn": 14.69,
+    "fmt": "shop",
+    "grp": "fells"
+   },
+   {
+    "id": "R-051",
+    "w": 0.0073,
+    "nnn": 28.0,
+    "fmt": "shop",
+    "grp": "fells"
+   },
+   {
+    "id": "R-052",
+    "w": 0.0073,
+    "nnn": 40.0,
+    "fmt": "cafe",
+    "grp": "fells"
+   },
+   {
+    "id": "R-053",
+    "w": 0.0073,
+    "nnn": 16.5,
+    "fmt": "cafe",
+    "grp": "fells"
+   },
+   {
+    "id": "R-023",
+    "w": 0.0039,
+    "nnn": 22.0,
+    "fmt": "studio",
+    "grp": "midtown"
+   },
+   {
+    "id": "R-024",
+    "w": 0.0039,
+    "nnn": 12.7,
+    "fmt": "fitness",
+    "grp": "midtown"
+   },
+   {
+    "id": "R-025",
+    "w": 0.0039,
+    "nnn": 20.0,
+    "fmt": "counter",
+    "grp": "midtown"
+   },
+   {
+    "id": "R-026",
+    "w": 0.0039,
+    "nnn": 20.0,
+    "fmt": "services",
+    "grp": "midtown"
+   },
+   {
+    "id": "R-027",
+    "w": 0.0039,
+    "nnn": 13.0,
+    "fmt": "studio",
+    "grp": "midtown"
+   },
+   {
+    "id": "R-028",
+    "w": 0.0039,
+    "nnn": 23.0,
+    "fmt": "shop",
+    "grp": "midtown"
+   },
+   {
+    "id": "R-029",
+    "w": 0.0039,
+    "nnn": 15.09,
+    "fmt": "fitness",
+    "grp": "midtown"
+   },
+   {
+    "id": "R-030",
+    "w": 0.0039,
+    "nnn": 24.0,
+    "fmt": "counter",
+    "grp": "midtown"
+   },
+   {
+    "id": "R-031",
+    "w": 0.0039,
+    "nnn": 14.0,
+    "fmt": "community",
+    "grp": "midtown"
+   },
+   {
+    "id": "R-032",
+    "w": 0.0039,
+    "nnn": 24.0,
+    "fmt": "office",
+    "grp": "midtown"
+   },
+   {
+    "id": "R-033",
+    "w": 0.0039,
+    "nnn": 21.0,
+    "fmt": "office",
+    "grp": "midtown"
+   }
+  ],
+  "sigma_default": 0.4825,
+  "prior_rows": 3,
+  "eti_median": 2.1911,
+  "tax_median": 1.1911,
+  "pass_through_other": 1.0,
+  "baltimore_p90": 34.1
+ },
+ "formats": {
+  "cafe": {
+   "n_listings": 6,
+   "wA": 0.6667,
+   "A": {
+    "loc": 3.027,
+    "sd": 0.4512,
+    "q": [
+     11.57,
+     20.63,
+     36.79
+    ]
+   },
+   "B": {
+    "mu": 5.9365,
+    "slo": 0.4367,
+    "shi": 0.5284,
+    "share": 0.06,
+    "share_low": 0.057,
+    "share_high": 0.1,
+    "share_rows": [
+     "B-008",
+     "B-007",
+     "B-013"
+    ],
+    "share_how": "NRA 2024 median for urban full-service restaurants; national median 5.7%; 10% is a ceiling",
+    "spread": "own",
+    "local": 0.91,
+    "sales_q": [
+     216.35,
+     378.62,
+     745.26
+    ],
+    "q": [
+     10.79,
+     20.53,
+     42.52
+    ],
+    "trail": [
+     {
+      "point": "P10",
+      "v": 200,
+      "year": 2021,
+      "cpi": 1.1887,
+      "local": 0.91,
+      "out": 216.35,
+      "rows": [
+       "B-019"
+      ],
+      "how": "the floor below which a full-service restaurant has 'little chance of generating profit'"
+     },
+     {
+      "point": "P50",
+      "v": 350,
+      "year": 2021,
+      "cpi": 1.1887,
+      "local": 0.91,
+      "out": 378.62,
+      "rows": [
+       "B-019"
+      ],
+      "how": "middle of the $300-400 tier that nets 5-10%"
+     },
+     {
+      "point": "P90",
+      "v": 650,
+      "year": 2019,
+      "cpi": 1.2599,
+      "local": 0.91,
+      "out": 745.26,
+      "rows": [
+       "B-015"
+      ],
+      "how": "half of Boulder's food-service respondents exceed $650 (a high side)"
+     }
+    ]
+   },
+   "B_na": null,
+   "typical": [
+    11.32,
+    20.6,
+    38.57
+   ],
+   "supportable": [
+    9.4,
+    15.93,
+    26.22
+   ],
+   "can_pay": 0.5086,
+   "borrowed_from": null,
+   "multiplier": {
+    "raw": 1.32,
+    "shrunk": 1.2648,
+    "keep": 0.8463
+   },
+   "implied_sales": 380.43,
+   "rankable": true,
+   "flags": []
+  },
+  "counter": {
+   "n_listings": 4,
+   "wA": 0.5714,
+   "A": {
+    "loc": 3.0972,
+    "sd": 0.4512,
+    "q": [
+     12.42,
+     22.13,
+     39.46
+    ]
+   },
+   "B": {
+    "mu": 5.9365,
+    "slo": 0.4367,
+    "shi": 0.2783,
+    "share": 0.06,
+    "share_low": 0.052,
+    "share_high": 0.1,
+    "share_rows": [
+     "B-035",
+     "B-034",
+     "B-018"
+    ],
+    "share_how": "NRA 2024 median for urban limited-service; national 5.2%; 10% ceiling",
+    "spread": "own",
+    "local": 0.91,
+    "sales_q": [
+     216.35,
+     378.62,
+     540.88
+    ],
+    "q": [
+     10.79,
+     20.53,
+     30.26
+    ],
+    "trail": [
+     {
+      "point": "P10",
+      "v": 200,
+      "year": 2021,
+      "cpi": 1.1887,
+      "local": 0.91,
+      "out": 216.35,
+      "rows": [
+       "B-039"
+      ],
+      "how": "below $200 a limited-service unit has 'little chance of avoiding a loss'"
+     },
+     {
+      "point": "P50",
+      "v": 350,
+      "year": 2021,
+      "cpi": 1.1887,
+      "local": 0.91,
+      "out": 378.62,
+      "rows": [
+       "B-039"
+      ],
+      "how": "middle of the $300-400 tier that nets 5-10%"
+     },
+     {
+      "point": "P90",
+      "v": 500,
+      "year": 2021,
+      "cpi": 1.1887,
+      "local": 0.91,
+      "out": 540.88,
+      "rows": [
+       "B-039"
+      ],
+      "how": "top of the $400-500 tier that nets 10-15%"
+     }
+    ]
+   },
+   "B_na": null,
+   "typical": [
+    11.68,
+    21.28,
+    35.42
+   ],
+   "supportable": [
+    9.69,
+    16.49,
+    25.08
+   ],
+   "can_pay": 0.4121,
+   "borrowed_from": null,
+   "multiplier": {
+    "raw": 1.4744,
+    "shrunk": 1.3568,
+    "keep": 0.7858
+   },
+   "implied_sales": 405.43,
+   "rankable": true,
+   "flags": []
+  },
+  "foodmaker": {
+   "n_listings": 1,
+   "wA": 1.0,
+   "A": {
+    "loc": 3.2362,
+    "sd": 0.4512,
+    "q": [
+     14.27,
+     25.44,
+     45.35
+    ]
+   },
+   "B": null,
+   "B_na": "No sales-per-sq-ft benchmark for a bakery or roaster with a shop; the only share (4%, B-051) is dominated by grocery stores.",
+   "typical": [
+    14.27,
+    25.44,
+    45.35
+   ],
+   "supportable": [
+    14.27,
+    25.44,
+    45.35
+   ],
+   "can_pay": null,
+   "borrowed_from": null,
+   "multiplier": {
+    "raw": 2.5303,
+    "shrunk": 1.5592,
+    "keep": 0.4784
+   },
+   "rankable": false,
+   "flags": [
+    "only 1 listing: the multiplier is mostly pulled back to 1",
+    "not enough evidence to rank it by money (no sales benchmark and fewer than 3 listings)"
+   ]
+  },
+  "tavern": {
+   "n_listings": 6,
+   "wA": 0.6667,
+   "A": {
+    "loc": 3.027,
+    "sd": 0.4512,
+    "q": [
+     11.57,
+     20.63,
+     36.79
+    ]
+   },
+   "B": {
+    "mu": 5.9365,
+    "slo": 0.4367,
+    "shi": 0.5284,
+    "share": 0.06,
+    "share_low": 0.057,
+    "share_high": 0.1,
+    "share_rows": [
+     "B-008",
+     "B-007",
+     "B-013"
+    ],
+    "share_how": "NRA 2024 median for urban full-service restaurants; national median 5.7%; 10% is a ceiling",
+    "spread": "own",
+    "local": 0.91,
+    "sales_q": [
+     216.35,
+     378.62,
+     745.26
+    ],
+    "q": [
+     10.79,
+     20.53,
+     42.52
+    ],
+    "trail": [
+     {
+      "point": "P10",
+      "v": 200,
+      "year": 2021,
+      "cpi": 1.1887,
+      "local": 0.91,
+      "out": 216.35,
+      "rows": [
+       "B-019"
+      ],
+      "how": "the floor below which a full-service restaurant has 'little chance of generating profit'"
+     },
+     {
+      "point": "P50",
+      "v": 350,
+      "year": 2021,
+      "cpi": 1.1887,
+      "local": 0.91,
+      "out": 378.62,
+      "rows": [
+       "B-019"
+      ],
+      "how": "middle of the $300-400 tier that nets 5-10%"
+     },
+     {
+      "point": "P90",
+      "v": 650,
+      "year": 2019,
+      "cpi": 1.2599,
+      "local": 0.91,
+      "out": 745.26,
+      "rows": [
+       "B-015"
+      ],
+      "how": "half of Boulder's food-service respondents exceed $650 (a high side)"
+     }
+    ]
+   },
+   "B_na": null,
+   "typical": [
+    11.32,
+    20.6,
+    38.57
+   ],
+   "supportable": [
+    9.4,
+    15.93,
+    26.22
+   ],
+   "can_pay": 0.5086,
+   "borrowed_from": "cafe",
+   "multiplier": {
+    "raw": 1.32,
+    "shrunk": 1.2648,
+    "keep": 0.8463
+   },
+   "implied_sales": 380.43,
+   "rankable": true,
+   "flags": [
+    "borrowed from cafe"
+   ]
+  },
+  "shop": {
+   "n_listings": 12,
+   "wA": 0.8,
+   "A": {
+    "loc": 2.8443,
+    "sd": 0.4512,
+    "q": [
+     9.64,
+     17.19,
+     30.65
+    ]
+   },
+   "B": {
+    "mu": 5.8797,
+    "slo": 1.0684,
+    "shi": 0.6451,
+    "share": 0.09,
+    "share_low": 0.06,
+    "share_high": 0.12,
+    "share_rows": [
+     "B-068",
+     "B-069"
+    ],
+    "share_how": "about 9% for apparel, home and hobby stores; 6-12% for successful retailers in a Southwest Baltimore strategy",
+    "spread": "own",
+    "local": 1.0,
+    "sales_q": [
+     90.97,
+     357.72,
+     817.7
+    ],
+    "q": [
+     6.0,
+     30.0,
+     71.4
+    ],
+    "trail": [
+     {
+      "point": "P10",
+      "v": 50,
+      "year": 2001,
+      "cpi": 1.8193,
+      "local": 1.0,
+      "out": 90.97,
+      "rows": [
+       "B-076",
+       "B-075"
+      ],
+      "how": "$100,000, the low end of the band most gift retailers sit in, ÷ 2,000 sq ft"
+     },
+     {
+      "point": "P50",
+      "v": 325,
+      "year": 2022,
+      "cpi": 1.1007,
+      "local": 1.0,
+      "out": 357.72,
+      "rows": [
+       "B-057",
+       "B-075"
+      ],
+      "how": "$650,440 per Baltimore gift retailer (2022 Economic Census) ÷ 2,000 sq ft"
+     },
+     {
+      "point": "P90",
+      "v": 649,
+      "year": 2019,
+      "cpi": 1.2599,
+      "local": 1.0,
+      "out": 817.7,
+      "rows": [
+       "B-078"
+      ],
+      "how": "top of the median band of Boulder's independent retailers"
+     }
+    ]
+   },
+   "B_na": null,
+   "typical": [
+    9.22,
+    18.03,
+    38.69
+   ],
+   "supportable": [
+    5.68,
+    14.0,
+    25.91
+   ],
+   "can_pay": 0.6642,
+   "borrowed_from": null,
+   "multiplier": {
+    "raw": 1.0586,
+    "shrunk": 1.0536,
+    "keep": 0.9167
+   },
+   "implied_sales": 215.33,
+   "rankable": true,
+   "flags": []
+  },
+  "showroom": {
+   "n_listings": 5,
+   "wA": 0.625,
+   "A": {
+    "loc": 2.9158,
+    "sd": 0.4512,
+    "q": [
+     10.36,
+     18.46,
+     32.92
+    ]
+   },
+   "B": {
+    "mu": 5.118,
+    "slo": 0.4825,
+    "shi": 0.4825,
+    "share": 0.09,
+    "share_low": null,
+    "share_high": null,
+    "share_rows": [
+     "B-089"
+    ],
+    "share_how": "about 9% for home-furnishing stores",
+    "spread": "borrowed",
+    "local": 1.0,
+    "sales_q": [
+     89.98,
+     167.0,
+     309.95
+    ],
+    "q": [
+     5.91,
+     12.84,
+     25.7
+    ],
+    "trail": [
+     {
+      "point": "P50",
+      "v": 167,
+      "year": 2025,
+      "cpi": 1.0,
+      "local": 1.0,
+      "out": 167.0,
+      "rows": [
+       "B-090"
+      ],
+      "how": "a furniture chain's sales per retail sq ft (a chain ceiling)"
+     }
+    ]
+   },
+   "B_na": null,
+   "typical": [
+    8.03,
+    16.42,
+    30.76
+   ],
+   "supportable": [
+    5.8,
+    11.39,
+    19.54
+   ],
+   "can_pay": 0.3024,
+   "borrowed_from": null,
+   "multiplier": {
+    "raw": 1.1626,
+    "shrunk": 1.1317,
+    "keep": 0.821
+   },
+   "implied_sales": 229.49,
+   "rankable": true,
+   "flags": [
+    "one sales figure: its spread is borrowed from the cafe benchmark"
+   ]
+  },
+  "bike": {
+   "n_listings": 0,
+   "wA": 0.0,
+   "A": null,
+   "B": {
+    "mu": 5.5114,
+    "slo": 0.4825,
+    "shi": 0.4825,
+    "share": 0.09,
+    "share_low": null,
+    "share_high": null,
+    "share_rows": [
+     "B-100"
+    ],
+    "share_how": "about 9% for sporting-goods and hobby stores",
+    "spread": "borrowed",
+    "local": 1.0,
+    "sales_q": [
+     133.36,
+     247.51,
+     459.37
+    ],
+    "q": [
+     9.81,
+     20.08,
+     39.15
+    ],
+    "trail": [
+     {
+      "point": "P50",
+      "v": 179,
+      "year": 2013,
+      "cpi": 1.3827,
+      "local": 1.0,
+      "out": 247.51,
+      "rows": [
+       "B-097"
+      ],
+      "how": "specialty bicycle dealers' revenue per sq ft (NBDA study, 2013 data)"
+     }
+    ]
+   },
+   "B_na": null,
+   "typical": [
+    9.81,
+    20.08,
+    39.15
+   ],
+   "supportable": [
+    9.81,
+    20.08,
+    39.15
+   ],
+   "can_pay": null,
+   "borrowed_from": null,
+   "multiplier": null,
+   "rankable": true,
+   "flags": [
+    "no listings: the range comes from the affordability route only",
+    "one sales figure: its spread is borrowed from the cafe benchmark"
+   ]
+  },
+  "services": {
+   "n_listings": 5,
+   "wA": 0.625,
+   "A": {
+    "loc": 2.8843,
+    "sd": 0.4512,
+    "q": [
+     10.03,
+     17.89,
+     31.9
+    ]
+   },
+   "B": {
+    "mu": 5.4534,
+    "slo": 0.4825,
+    "shi": 0.4825,
+    "share": 0.115,
+    "share_low": 0.08,
+    "share_high": 0.15,
+    "share_rows": [
+     "B-120"
+    ],
+    "share_how": "8-15% of revenue on rent (a software vendor's guidance; midpoint used)",
+    "spread": "borrowed",
+    "local": 1.0,
+    "sales_q": [
+     125.84,
+     233.56,
+     433.48
+    ],
+    "q": [
+     12.28,
+     24.67,
+     47.66
+    ],
+    "trail": [
+     {
+      "point": "P50",
+      "v": 212.2,
+      "year": 2022,
+      "cpi": 1.1007,
+      "local": 1.0,
+      "out": 233.56,
+      "rows": [
+       "B-104",
+       "B-123"
+      ],
+      "how": "$265,284 per Baltimore beauty salon (2022 Economic Census) ÷ 1,250 sq ft, the middle of a typical 1,000-1,500 sq ft salon"
+     }
+    ]
+   },
+   "B_na": null,
+   "typical": [
+    10.6,
+    19.92,
+    38.61
+   ],
+   "supportable": [
+    9.08,
+    15.56,
+    25.64
+   ],
+   "can_pay": 0.6748,
+   "borrowed_from": null,
+   "multiplier": {
+    "raw": 1.1189,
+    "shrunk": 1.0966,
+    "keep": 0.821
+   },
+   "implied_sales": 174.62,
+   "rankable": true,
+   "flags": [
+    "one sales figure: its spread is borrowed from the cafe benchmark"
+   ]
+  },
+  "fitness": {
+   "n_listings": 3,
+   "wA": 0.5,
+   "A": {
+    "loc": 2.6353,
+    "sd": 0.4512,
+    "q": [
+     7.82,
+     13.95,
+     24.87
+    ]
+   },
+   "B": {
+    "mu": 4.9512,
+    "slo": 0.2345,
+    "shi": 0.4661,
+    "share": 0.21,
+    "share_low": 0.13,
+    "share_high": null,
+    "share_rows": [
+     "B-137"
+    ],
+    "share_how": "the average studio spends 21% of revenue on rent; top quartile 13%",
+    "spread": "own",
+    "local": 1.0,
+    "sales_q": [
+     104.65,
+     141.34,
+     256.86
+    ],
+    "q": [
+     19.78,
+     27.49,
+     51.75
+    ],
+    "trail": [
+     {
+      "point": "P10",
+      "v": 77,
+      "year": 2015,
+      "cpi": 1.359,
+      "local": 1.0,
+      "out": 104.65,
+      "rows": [
+       "B-136"
+      ],
+      "how": "industry average revenue per sq ft"
+     },
+     {
+      "point": "P50",
+      "v": 104,
+      "year": 2015,
+      "cpi": 1.359,
+      "local": 1.0,
+      "out": 141.34,
+      "rows": [
+       "B-135"
+      ],
+      "how": "studios under 2,000 sq ft"
+     },
+     {
+      "point": "P90",
+      "v": 189,
+      "year": 2015,
+      "cpi": 1.359,
+      "local": 1.0,
+      "out": 256.86,
+      "rows": [
+       "B-136"
+      ],
+      "how": "top-quartile operators"
+     }
+    ]
+   },
+   "B_na": null,
+   "typical": [
+    9.54,
+    21.51,
+    42.27
+   ],
+   "supportable": [
+    7.82,
+    13.91,
+    23.06
+   ],
+   "can_pay": 0.9103,
+   "borrowed_from": null,
+   "multiplier": {
+    "raw": 0.8076,
+    "shrunk": 0.8549,
+    "keep": 0.7335
+   },
+   "implied_sales": 76.85,
+   "rankable": true,
+   "flags": [
+    "the listing median implies $77/sq ft of sales, outside the benchmark range"
+   ]
+  },
+  "studio": {
+   "n_listings": 3,
+   "wA": 1.0,
+   "A": {
+    "loc": 2.5814,
+    "sd": 0.4512,
+    "q": [
+     7.41,
+     13.22,
+     23.56
+    ]
+   },
+   "B": null,
+   "B_na": "Arts studios and galleries pay rent from grants, classes and memberships; earned revenue is a minority of their income (operators O-010, O-024, O-039).",
+   "typical": [
+    7.41,
+    13.22,
+    23.56
+   ],
+   "supportable": [
+    7.41,
+    13.22,
+    23.56
+   ],
+   "can_pay": null,
+   "borrowed_from": null,
+   "multiplier": {
+    "raw": 0.7504,
+    "shrunk": 0.81,
+    "keep": 0.7335
+   },
+   "rankable": true,
+   "flags": []
+  },
+  "venue": {
+   "n_listings": 3,
+   "wA": 1.0,
+   "A": {
+    "loc": 2.1575,
+    "sd": 0.4512,
+    "q": [
+     4.85,
+     8.65,
+     15.42
+    ]
+   },
+   "B": null,
+   "B_na": "Venues' earned revenue covers 21-36% of their income (O-009, O-022); rent is paid from grants and rentals.",
+   "typical": [
+    4.85,
+    8.65,
+    15.42
+   ],
+   "supportable": [
+    4.85,
+    8.65,
+    15.42
+   ],
+   "can_pay": null,
+   "borrowed_from": null,
+   "multiplier": {
+    "raw": 0.421,
+    "shrunk": 0.5302,
+    "keep": 0.7335
+   },
+   "rankable": true,
+   "flags": []
+  },
+  "office": {
+   "n_listings": 10,
+   "wA": 1.0,
+   "A": {
+    "loc": 2.79,
+    "sd": 0.4512,
+    "q": [
+     9.13,
+     16.28,
+     29.03
+    ]
+   },
+   "B": null,
+   "B_na": "Offices pay rent from salaries, not sales.",
+   "typical": [
+    9.13,
+    16.28,
+    29.03
+   ],
+   "supportable": [
+    9.13,
+    16.28,
+    29.03
+   ],
+   "can_pay": null,
+   "borrowed_from": null,
+   "multiplier": {
+    "raw": 0.9977,
+    "shrunk": 0.9979,
+    "keep": 0.9017
+   },
+   "rankable": true,
+   "flags": []
+  },
+  "workshop": {
+   "n_listings": 2,
+   "wA": 1.0,
+   "A": {
+    "loc": 1.8025,
+    "sd": 0.4512,
+    "q": [
+     3.4,
+     6.07,
+     10.81
+    ]
+   },
+   "B": null,
+   "B_na": "No sales-per-sq-ft benchmark for a maker workshop with a counter.",
+   "typical": [
+    3.4,
+    6.07,
+    10.81
+   ],
+   "supportable": [
+    3.4,
+    6.07,
+    10.81
+   ],
+   "can_pay": null,
+   "borrowed_from": null,
+   "multiplier": {
+    "raw": 0.2168,
+    "shrunk": 0.3718,
+    "keep": 0.6472
+   },
+   "rankable": false,
+   "flags": [
+    "only 2 listings: the multiplier is mostly pulled back to 1",
+    "not enough evidence to rank it by money (no sales benchmark and fewer than 3 listings)"
+   ]
+  },
+  "community": {
+   "n_listings": 4,
+   "wA": 1.0,
+   "A": {
+    "loc": 2.995,
+    "sd": 0.4512,
+    "q": [
+     11.21,
+     19.99,
+     35.63
+    ]
+   },
+   "B": null,
+   "B_na": "Community and nonprofit spaces pay rent from contributions, not sales.",
+   "typical": [
+    11.21,
+    19.99,
+    35.63
+   ],
+   "supportable": [
+    11.21,
+    19.99,
+    35.63
+   ],
+   "can_pay": null,
+   "borrowed_from": null,
+   "multiplier": {
+    "raw": 1.2947,
+    "shrunk": 1.225,
+    "keep": 0.7858
+   },
+   "rankable": true,
+   "flags": []
+  },
+  "garage": {
+   "not_estimated": "No vehicle-repair rents or benchmarks collected."
+  },
+  "housing": {
+   "not_estimated": "Upper-floor housing is a different market (rents per unit); not in this engine."
+  }
+ },
+ "parcels": {
+  "3100": {
+   "tax": 4.7034,
+   "eti": 5.7034
+  },
+  "3106": {
+   "tax": 1.0775,
+   "eti": 2.0775
+  },
+  "3112": {
+   "tax": 1.5785,
+   "eti": 2.5785
+  },
+  "3114": {
+   "tax": 2.5869,
+   "eti": 3.5869
+  },
+  "3118": {
+   "tax": 1.9144,
+   "eti": 2.9144
+  },
+  "3120": {
+   "tax": 2.0537,
+   "eti": 3.0537
+  },
+  "3122": {
+   "tax": 1.0124,
+   "eti": 2.0124
+  },
+  "3126": {
+   "tax": 1.5178,
+   "eti": 2.5178
+  },
+  "3128": {
+   "tax": 3.2153,
+   "eti": 4.2153
+  },
+  "3130": {
+   "tax": 2.32,
+   "eti": 3.32
+  },
+  "3200": {
+   "tax": 2.7775,
+   "eti": 3.7775
+  },
+  "3204": {
+   "tax": 1.3186,
+   "eti": 2.3186
+  },
+  "3208": {
+   "tax": 2.6859,
+   "eti": 3.6859
+  },
+  "3210": {
+   "tax": 2.0827,
+   "eti": 3.0827
+  },
+  "3212": {
+   "tax": 1.3577,
+   "eti": 2.3577
+  },
+  "3216": {
+   "tax": 2.3814,
+   "eti": 3.3814
+  },
+  "3218": {
+   "tax": 2.7877,
+   "eti": 3.7877
+  },
+  "3220": {
+   "tax": 1.9422,
+   "eti": 2.9422
+  },
+  "3222": {
+   "tax": 3.7415,
+   "eti": 4.7415
+  },
+  "3224": {
+   "tax": 1.7412,
+   "eti": 2.7412
+  },
+  "3226": {
+   "tax": 3.9322,
+   "eti": 4.9322
+  },
+  "3201": {
+   "tax": 0.9162,
+   "eti": 1.9162
+  },
+  "3203": {
+   "tax": 0.8704,
+   "eti": 1.8704
+  },
+  "3211": {
+   "tax": 0.3603,
+   "eti": 1.3603
+  },
+  "3213": {
+   "tax": 0.733,
+   "eti": 1.733
+  },
+  "3217": {
+   "tax": 1.9356,
+   "eti": 2.9356,
+   "own_listings": [
+    "R-004"
+   ],
+   "A": {
+    "cafe": [
+     2.9317,
+     0.445
+    ],
+    "counter": [
+     3.0036,
+     0.445
+    ],
+    "foodmaker": [
+     3.1319,
+     0.445
+    ],
+    "tavern": [
+     2.9317,
+     0.445
+    ],
+    "shop": [
+     2.7531,
+     0.445
+    ],
+    "showroom": [
+     2.8195,
+     0.445
+    ],
+    "services": [
+     2.7159,
+     0.445
+    ],
+    "fitness": [
+     2.5423,
+     0.445
+    ],
+    "studio": [
+     2.4886,
+     0.445
+    ],
+    "venue": [
+     2.0635,
+     0.445
+    ],
+    "office": [
+     2.6993,
+     0.445
+    ],
+    "workshop": [
+     1.7129,
+     0.445
+    ],
+    "community": [
+     2.8992,
+     0.445
+    ]
+   }
+  },
+  "3221": {
+   "tax": 0.8725,
+   "eti": 1.8725
+  },
+  "3223": {
+   "tax": 1.1911,
+   "eti": 2.1911
+  },
+  "2901": {
+   "tax": 0.7743,
+   "eti": 1.7743
+  },
+  "2903": {
+   "tax": 1.1498,
+   "eti": 2.1498
+  },
+  "2907": {
+   "tax": 0.8992,
+   "eti": 1.8992
+  },
+  "2911": {
+   "tax": 0.731,
+   "eti": 1.731
+  },
+  "2913": {
+   "tax": 0.7635,
+   "eti": 1.7635
+  },
+  "2915": {
+   "tax": 0.3273,
+   "eti": 1.3273
+  },
+  "3001": {
+   "tax": 0.5435,
+   "eti": 1.5435
+  },
+  "3005": {
+   "tax": 1.141,
+   "eti": 2.141
+  },
+  "3011": {
+   "tax": 0.3272,
+   "eti": 1.3272
+  },
+  "3015": {
+   "tax": 0.3552,
+   "eti": 1.3552
+  },
+  "3019": {
+   "tax": 0.8527,
+   "eti": 1.8527
+  },
+  "3021": {
+   "tax": 0.6529,
+   "eti": 1.6529
+  },
+  "3023": {
+   "tax": 0.4151,
+   "eti": 1.4151
+  },
+  "3029": {
+   "tax": 0.7565,
+   "eti": 1.7565
+  },
+  "3107": {
+   "tax": 0.7252,
+   "eti": 1.7252
+  },
+  "3111": {
+   "tax": 1.7625,
+   "eti": 2.7625
+  },
+  "3113": {
+   "tax": 1.1169,
+   "eti": 2.1169
+  },
+  "3117": {
+   "tax": 0.7004,
+   "eti": 1.7004,
+   "own_listings": [
+    "R-001"
+   ],
+   "A": {
+    "cafe": [
+     3.0665,
+     0.4597
+    ],
+    "counter": [
+     3.1355,
+     0.4597
+    ],
+    "foodmaker": [
+     3.2771,
+     0.4597
+    ],
+    "tavern": [
+     3.0665,
+     0.4597
+    ],
+    "shop": [
+     2.8824,
+     0.4597
+    ],
+    "showroom": [
+     3.0275,
+     0.4597
+    ],
+    "services": [
+     2.9214,
+     0.4597
+    ],
+    "fitness": [
+     2.675,
+     0.4597
+    ],
+    "studio": [
+     2.6212,
+     0.4597
+    ],
+    "venue": [
+     2.1997,
+     0.4597
+    ],
+    "office": [
+     2.8279,
+     0.4597
+    ],
+    "workshop": [
+     1.8456,
+     0.4597
+    ],
+    "community": [
+     3.0347,
+     0.4597
+    ]
+   }
+  },
+  "3127": {
+   "tax": 3.3074,
+   "eti": 4.3074
+  },
+  "3133": {
+   "tax": 3.0888,
+   "eti": 4.0888
+  },
+  "3040": {
+   "tax": 1.2079,
+   "eti": 2.2079
+  },
+  "3046": {
+   "tax": 4.8493,
+   "eti": 5.8493
+  },
+  "3048": {
+   "tax": 0.827,
+   "eti": 1.827
+  },
+  "2900": {
+   "tax": 1.1021,
+   "eti": 2.1021
+  },
+  "2920": {
+   "tax": 1.0588,
+   "eti": 2.0588
+  },
+  "2958": {
+   "tax": 0.8767,
+   "eti": 1.8767
+  },
+  "3000": {
+   "tax": 0.9682,
+   "eti": 1.9682
+  },
+  "3010": {
+   "tax": 1.6577,
+   "eti": 2.6577
+  },
+  "3028": {
+   "tax": 1.4501,
+   "eti": 2.4501,
+   "own_listings": [
+    "R-002"
+   ],
+   "A": {
+    "cafe": [
+     3.0385,
+     0.4621
+    ],
+    "counter": [
+     3.1071,
+     0.4621
+    ],
+    "foodmaker": [
+     3.2469,
+     0.4621
+    ],
+    "tavern": [
+     3.0385,
+     0.4621
+    ],
+    "shop": [
+     2.8546,
+     0.4621
+    ],
+    "showroom": [
+     2.9281,
+     0.4621
+    ],
+    "services": [
+     2.8936,
+     0.4621
+    ],
+    "fitness": [
+     2.6478,
+     0.4621
+    ],
+    "studio": [
+     2.5941,
+     0.4621
+    ],
+    "venue": [
+     2.1738,
+     0.4621
+    ],
+    "office": [
+     2.8236,
+     0.4621
+    ],
+    "workshop": [
+     1.8216,
+     0.4621
+    ],
+    "community": [
+     3.0066,
+     0.4621
+    ]
+   }
+  },
+  "3034": {
+   "tax": 2.1277,
+   "eti": 3.1277
+  },
+  "3036": {
+   "tax": 1.629,
+   "eti": 2.629
+  },
+  "3038": {
+   "tax": 1.4975,
+   "eti": 2.4975
+  },
+  "1812": {
+   "tax": null,
+   "eti": 2.1911,
+   "own_listings": [
+    "R-031"
+   ],
+   "A": {
+    "cafe": [
+     3.0287,
+     0.4402
+    ],
+    "counter": [
+     3.0982,
+     0.4402
+    ],
+    "foodmaker": [
+     3.2461,
+     0.4402
+    ],
+    "tavern": [
+     3.0287,
+     0.4402
+    ],
+    "shop": [
+     2.843,
+     0.4402
+    ],
+    "showroom": [
+     2.9179,
+     0.4402
+    ],
+    "services": [
+     2.8822,
+     0.4402
+    ],
+    "fitness": [
+     2.6346,
+     0.4402
+    ],
+    "studio": [
+     2.5803,
+     0.4402
+    ],
+    "venue": [
+     2.1558,
+     0.4402
+    ],
+    "office": [
+     2.7883,
+     0.4402
+    ],
+    "workshop": [
+     1.7958,
+     0.4402
+    ],
+    "community": [
+     3.1237,
+     0.4402
+    ]
+   }
+  },
+  "3030": {
+   "tax": null,
+   "eti": 2.1911,
+   "own_listings": [
+    "R-002"
+   ],
+   "A": {
+    "cafe": [
+     3.0385,
+     0.4621
+    ],
+    "counter": [
+     3.1071,
+     0.4621
+    ],
+    "foodmaker": [
+     3.2469,
+     0.4621
+    ],
+    "tavern": [
+     3.0385,
+     0.4621
+    ],
+    "shop": [
+     2.8546,
+     0.4621
+    ],
+    "showroom": [
+     2.9281,
+     0.4621
+    ],
+    "services": [
+     2.8936,
+     0.4621
+    ],
+    "fitness": [
+     2.6478,
+     0.4621
+    ],
+    "studio": [
+     2.5941,
+     0.4621
+    ],
+    "venue": [
+     2.1738,
+     0.4621
+    ],
+    "office": [
+     2.8236,
+     0.4621
+    ],
+    "workshop": [
+     1.8216,
+     0.4621
+    ],
+    "community": [
+     3.0066,
+     0.4621
+    ]
+   }
+  }
+ },
+ "examples": [
+  {
+   "address": "2932",
+   "fmt": "cafe",
+   "typical": [
+    11.32,
+    20.6,
+    38.57
+   ],
+   "supportable": [
+    9.4,
+    15.93,
+    26.22
+   ],
+   "can_pay": 0.5086
+  },
+  {
+   "address": "2932",
+   "fmt": "shop",
+   "typical": [
+    9.22,
+    18.03,
+    38.69
+   ],
+   "supportable": [
+    5.68,
+    14.0,
+    25.91
+   ],
+   "can_pay": 0.6642
+  },
+  {
+   "address": "2932",
+   "fmt": "fitness",
+   "typical": [
+    9.54,
+    21.51,
+    42.27
+   ],
+   "supportable": [
+    7.82,
+    13.91,
+    23.06
+   ],
+   "can_pay": 0.9103
+  },
+  {
+   "address": "2932",
+   "fmt": "bike",
+   "typical": [
+    9.81,
+    20.08,
+    39.15
+   ],
+   "supportable": [
+    9.81,
+    20.08,
+    39.15
+   ],
+   "can_pay": null
+  },
+  {
+   "address": "2932",
+   "fmt": "venue",
+   "typical": [
+    4.85,
+    8.65,
+    15.42
+   ],
+   "supportable": [
+    4.85,
+    8.65,
+    15.42
+   ],
+   "can_pay": null
+  },
+  {
+   "address": "3026",
+   "fmt": "cafe",
+   "typical": [
+    11.32,
+    20.6,
+    38.57
+   ],
+   "supportable": [
+    9.4,
+    15.93,
+    26.22
+   ],
+   "can_pay": 0.5086
+  },
+  {
+   "address": "3026",
+   "fmt": "shop",
+   "typical": [
+    9.22,
+    18.03,
+    38.69
+   ],
+   "supportable": [
+    5.68,
+    14.0,
+    25.91
+   ],
+   "can_pay": 0.6642
+  },
+  {
+   "address": "3026",
+   "fmt": "fitness",
+   "typical": [
+    9.54,
+    21.51,
+    42.27
+   ],
+   "supportable": [
+    7.82,
+    13.91,
+    23.06
+   ],
+   "can_pay": 0.9103
+  },
+  {
+   "address": "3026",
+   "fmt": "bike",
+   "typical": [
+    9.81,
+    20.08,
+    39.15
+   ],
+   "supportable": [
+    9.81,
+    20.08,
+    39.15
+   ],
+   "can_pay": null
+  },
+  {
+   "address": "3026",
+   "fmt": "venue",
+   "typical": [
+    4.85,
+    8.65,
+    15.42
+   ],
+   "supportable": [
+    4.85,
+    8.65,
+    15.42
+   ],
+   "can_pay": null
+  },
+  {
+   "address": "3036",
+   "fmt": "cafe",
+   "typical": [
+    11.16,
+    20.48,
+    38.41
+   ],
+   "supportable": [
+    9.16,
+    15.72,
+    26.04
+   ],
+   "can_pay": 0.4958
+  },
+  {
+   "address": "3036",
+   "fmt": "shop",
+   "typical": [
+    9.16,
+    17.99,
+    38.5
+   ],
+   "supportable": [
+    5.34,
+    13.89,
+    25.84
+   ],
+   "can_pay": 0.6567
+  },
+  {
+   "address": "3036",
+   "fmt": "fitness",
+   "typical": [
+    9.54,
+    21.23,
+    41.86
+   ],
+   "supportable": [
+    7.82,
+    13.9,
+    22.92
+   ],
+   "can_pay": 0.9042
+  },
+  {
+   "address": "3036",
+   "fmt": "bike",
+   "typical": [
+    9.37,
+    19.65,
+    38.71
+   ],
+   "supportable": [
+    9.37,
+    19.65,
+    38.71
+   ],
+   "can_pay": null
+  },
+  {
+   "address": "3036",
+   "fmt": "venue",
+   "typical": [
+    4.85,
+    8.65,
+    15.42
+   ],
+   "supportable": [
+    4.85,
+    8.65,
+    15.42
+   ],
+   "can_pay": null
+  },
+  {
+   "address": "3107",
+   "fmt": "cafe",
+   "typical": [
+    11.47,
+    20.75,
+    38.74
+   ],
+   "supportable": [
+    9.65,
+    16.16,
+    26.42
+   ],
+   "can_pay": 0.5224
+  },
+  {
+   "address": "3107",
+   "fmt": "shop",
+   "typical": [
+    9.27,
+    18.07,
+    38.89
+   ],
+   "supportable": [
+    6.01,
+    14.1,
+    25.98
+   ],
+   "can_pay": 0.6721
+  },
+  {
+   "address": "3107",
+   "fmt": "fitness",
+   "typical": [
+    9.54,
+    21.8,
+    42.7
+   ],
+   "supportable": [
+    7.82,
+    13.92,
+    23.2
+   ],
+   "can_pay": 0.9164
+  },
+  {
+   "address": "3107",
+   "fmt": "bike",
+   "typical": [
+    10.28,
+    20.55,
+    39.62
+   ],
+   "supportable": [
+    10.28,
+    20.55,
+    39.62
+   ],
+   "can_pay": null
+  },
+  {
+   "address": "3107",
+   "fmt": "venue",
+   "typical": [
+    4.85,
+    8.65,
+    15.42
+   ],
+   "supportable": [
+    4.85,
+    8.65,
+    15.42
+   ],
+   "can_pay": null
+  },
+  {
+   "address": "3117",
+   "fmt": "cafe",
+   "typical": [
+    11.7,
+    21.34,
+    40.04
+   ],
+   "supportable": [
+    9.78,
+    16.46,
+    27.1
+   ],
+   "can_pay": 0.5003
+  },
+  {
+   "address": "3117",
+   "fmt": "shop",
+   "typical": [
+    9.49,
+    18.73,
+    40.09
+   ],
+   "supportable": [
+    6.06,
+    14.48,
+    27.0
+   ],
+   "can_pay": 0.66
+  },
+  {
+   "address": "3117",
+   "fmt": "fitness",
+   "typical": [
+    9.86,
+    22.2,
+    42.92
+   ],
+   "supportable": [
+    8.05,
+    14.47,
+    24.0
+   ],
+   "can_pay": 0.902
+  },
+  {
+   "address": "3117",
+   "fmt": "bike",
+   "typical": [
+    10.3,
+    20.58,
+    39.64
+   ],
+   "supportable": [
+    10.3,
+    20.58,
+    39.64
+   ],
+   "can_pay": null
+  },
+  {
+   "address": "3117",
+   "fmt": "venue",
+   "typical": [
+    5.01,
+    9.02,
+    16.26
+   ],
+   "supportable": [
+    5.01,
+    9.02,
+    16.26
+   ],
+   "can_pay": null
+  },
+  {
+   "address": "3211",
+   "fmt": "cafe",
+   "typical": [
+    11.59,
+    20.87,
+    38.88
+   ],
+   "supportable": [
+    9.83,
+    16.33,
+    26.57
+   ],
+   "can_pay": 0.5331
+  },
+  {
+   "address": "3211",
+   "fmt": "shop",
+   "typical": [
+    9.32,
+    18.1,
+    39.06
+   ],
+   "supportable": [
+    6.25,
+    14.19,
+    26.04
+   ],
+   "can_pay": 0.6784
+  },
+  {
+   "address": "3211",
+   "fmt": "fitness",
+   "typical": [
+    9.54,
+    22.04,
+    43.04
+   ],
+   "supportable": [
+    7.82,
+    13.93,
+    23.31
+   ],
+   "can_pay": 0.9209
+  },
+  {
+   "address": "3211",
+   "fmt": "bike",
+   "typical": [
+    10.64,
+    20.92,
+    39.98
+   ],
+   "supportable": [
+    10.64,
+    20.92,
+    39.98
+   ],
+   "can_pay": null
+  },
+  {
+   "address": "3211",
+   "fmt": "venue",
+   "typical": [
+    4.85,
+    8.65,
+    15.42
+   ],
+   "supportable": [
+    4.85,
+    8.65,
+    15.42
+   ],
+   "can_pay": null
+  }
+ ],
+ "nearest": {
+  "cafe": [
+   {
+    "id": "R-004",
+    "d": 0.61,
+    "address": "3217 Greenmount Ave (No. 1 Nails)",
+    "corridor": "Greenmount Ave, Waverly (3200 block)",
+    "fmt": "services",
+    "rent": 31.07,
+    "basis": "NNN",
+    "nnn": 31.07,
+    "sqft": 2016.0,
+    "year": "2026",
+    "url": "https://www.loopnet.fr/annonce/3217-greenmount-ave-baltimore-md/37686911"
+   },
+   {
+    "id": "R-002",
+    "d": 0.65,
+    "address": "3028-3030 Greenmount Ave",
+    "corridor": "Greenmount Ave, Waverly (3000 block)",
+    "fmt": "office",
+    "rent": 15.0,
+    "basis": "NNN",
+    "nnn": 15.0,
+    "sqft": 1555.0,
+    "year": "2026",
+    "url": "https://www.showcase.com/3028-3030-greenmount-ave-baltimore-md-21218/39655559/"
+   },
+   {
+    "id": "R-022",
+    "d": 0.83,
+    "address": "3500-3510 Harford Rd (Ste 3508-3510)",
+    "corridor": "Harford Rd, 3500 block (21218, east of Waverly)",
+    "fmt": "services",
+    "rent": 16.74,
+    "basis": "NNN",
+    "nnn": 16.74,
+    "sqft": 1290.0,
+    "year": "2026",
+    "url": "https://www.cityfeet.com/cont/listing/3500-3510-harford-rd-baltimore-md-21218/cs37321785"
+   },
+   {
+    "id": "R-045",
+    "d": 1.11,
+    "address": "803-807 Washington Blvd",
+    "corridor": "Pigtown (Washington Blvd, Washington Village)",
+    "fmt": "cafe",
+    "rent": 17.4,
+    "basis": "NNN",
+    "nnn": 17.4,
+    "sqft": 2000.0,
+    "year": "2026",
+    "url": "https://www.cityfeet.com/cont/listing/803-807-washington-blvd-baltimore-md-21230/cs40246566"
+   },
+   {
+    "id": "R-052",
+    "d": 1.26,
+    "address": "814 S Broadway #C1 (William Fell Tavern)",
+    "corridor": "Fells Point (S Broadway)",
+    "fmt": "cafe",
+    "rent": 40.0,
+    "basis": "NNN",
+    "nnn": 40.0,
+    "sqft": 2325.0,
+    "year": "2026",
+    "url": "https://www.commercialsearch.com/commercial-property/us/md/baltimore/william-fell-tavern/"
+   },
+   {
+    "id": "R-047",
+    "d": 1.5,
+    "address": "1100 Wicomico St 7th Floor (Baltimore Innovation Center)",
+    "corridor": "Wicomico St, 21230 (Pigtown edge; neighbourhood not stated)",
+    "fmt": "venue",
+    "rent": 10.0,
+    "basis": "modified gross",
+    "nnn": 8.0,
+    "sqft": 1800.0,
+    "year": "2026",
+    "url": "https://www.cityfeet.com/cont/listing/1100-wicomico-st-baltimore-md-21230/cs36898502"
+   }
+  ],
+  "counter": [
+   {
+    "id": "R-030",
+    "d": 1.08,
+    "address": "808 Guilford Ave (650 SF restaurant space)",
+    "corridor": "Mount Vernon (Guilford Ave)",
+    "fmt": "counter",
+    "rent": 24.0,
+    "basis": "NNN",
+    "nnn": 24.0,
+    "sqft": 650.0,
+    "year": "2026",
+    "url": "https://www.commercialsearch.com/commercial-property/us/md/baltimore/mt-vernon-market-center/"
+   },
+   {
+    "id": "R-036",
+    "d": 1.22,
+    "address": "1125 W 36th St",
+    "corridor": "Hampden (W 36th St, 'The Avenue')",
+    "fmt": "counter",
+    "rent": 39.0,
+    "basis": "NNN",
+    "nnn": 39.0,
+    "sqft": 481.0,
+    "year": "2026",
+    "url": "https://www.commercialsearch.com/commercial-property/us/md/baltimore/1125-1131-w-36th-street/"
+   },
+   {
+    "id": "R-022",
+    "d": 1.27,
+    "address": "3500-3510 Harford Rd (Ste 3508-3510)",
+    "corridor": "Harford Rd, 3500 block (21218, east of Waverly)",
+    "fmt": "services",
+    "rent": 16.74,
+    "basis": "NNN",
+    "nnn": 16.74,
+    "sqft": 1290.0,
+    "year": "2026",
+    "url": "https://www.cityfeet.com/cont/listing/3500-3510-harford-rd-baltimore-md-21218/cs37321785"
+   },
+   {
+    "id": "R-025",
+    "d": 1.41,
+    "address": "1214 N Charles St Ste 1216",
+    "corridor": "Mount Vernon (N Charles St)",
+    "fmt": "counter",
+    "rent": 24.0,
+    "basis": "gross",
+    "nnn": 20.0,
+    "sqft": 900.0,
+    "year": "2026",
+    "url": "https://www.cityfeet.com/cont/listing/1214-n-charles-st-baltimore-md-21201/cs41075056"
+   },
+   {
+    "id": "R-002",
+    "d": 1.45,
+    "address": "3028-3030 Greenmount Ave",
+    "corridor": "Greenmount Ave, Waverly (3000 block)",
+    "fmt": "office",
+    "rent": 15.0,
+    "basis": "NNN",
+    "nnn": 15.0,
+    "sqft": 1555.0,
+    "year": "2026",
+    "url": "https://www.showcase.com/3028-3030-greenmount-ave-baltimore-md-21218/39655559/"
+   },
+   {
+    "id": "R-054",
+    "d": 1.5,
+    "address": "6124 Belair Rd",
+    "corridor": "Belair Rd, 6100 block (21206; north of the Belair-Edison main street)",
+    "fmt": "services",
+    "rent": 18.0,
+    "basis": "NNN",
+    "nnn": 18.0,
+    "sqft": 600.0,
+    "year": "2026",
+    "url": "https://www.cityfeet.com/cont/listing/6124-belair-rd-baltimore-md-21206/cs42397006"
+   }
+  ],
+  "foodmaker": [
+   {
+    "id": "R-004",
+    "d": 0.67,
+    "address": "3217 Greenmount Ave (No. 1 Nails)",
+    "corridor": "Greenmount Ave, Waverly (3200 block)",
+    "fmt": "services",
+    "rent": 31.07,
+    "basis": "NNN",
+    "nnn": 31.07,
+    "sqft": 2016.0,
+    "year": "2026",
+    "url": "https://www.loopnet.fr/annonce/3217-greenmount-ave-baltimore-md/37686911"
+   },
+   {
+    "id": "R-002",
+    "d": 0.93,
+    "address": "3028-3030 Greenmount Ave",
+    "corridor": "Greenmount Ave, Waverly (3000 block)",
+    "fmt": "office",
+    "rent": 15.0,
+    "basis": "NNN",
+    "nnn": 15.0,
+    "sqft": 1555.0,
+    "year": "2026",
+    "url": "https://www.showcase.com/3028-3030-greenmount-ave-baltimore-md-21218/39655559/"
+   },
+   {
+    "id": "R-052",
+    "d": 1.03,
+    "address": "814 S Broadway #C1 (William Fell Tavern)",
+    "corridor": "Fells Point (S Broadway)",
+    "fmt": "cafe",
+    "rent": 40.0,
+    "basis": "NNN",
+    "nnn": 40.0,
+    "sqft": 2325.0,
+    "year": "2026",
+    "url": "https://www.commercialsearch.com/commercial-property/us/md/baltimore/william-fell-tavern/"
+   },
+   {
+    "id": "R-022",
+    "d": 1.12,
+    "address": "3500-3510 Harford Rd (Ste 3508-3510)",
+    "corridor": "Harford Rd, 3500 block (21218, east of Waverly)",
+    "fmt": "services",
+    "rent": 16.74,
+    "basis": "NNN",
+    "nnn": 16.74,
+    "sqft": 1290.0,
+    "year": "2026",
+    "url": "https://www.cityfeet.com/cont/listing/3500-3510-harford-rd-baltimore-md-21218/cs37321785"
+   },
+   {
+    "id": "R-045",
+    "d": 1.18,
+    "address": "803-807 Washington Blvd",
+    "corridor": "Pigtown (Washington Blvd, Washington Village)",
+    "fmt": "cafe",
+    "rent": 17.4,
+    "basis": "NNN",
+    "nnn": 17.4,
+    "sqft": 2000.0,
+    "year": "2026",
+    "url": "https://www.cityfeet.com/cont/listing/803-807-washington-blvd-baltimore-md-21230/cs40246566"
+   },
+   {
+    "id": "R-053",
+    "d": 1.51,
+    "address": "2031 E Fairmount Ave",
+    "corridor": "Butcher's Hill (E Fairmount Ave)",
+    "fmt": "cafe",
+    "rent": 16.5,
+    "basis": "NNN",
+    "nnn": 16.5,
+    "sqft": 4000.0,
+    "year": "2026",
+    "url": "https://www.commercialsearch.com/commercial-property/us/md/baltimore/2031-e-fairmount-1/"
+   }
+  ],
+  "tavern": [
+   {
+    "id": "R-004",
+    "d": 0.51,
+    "address": "3217 Greenmount Ave (No. 1 Nails)",
+    "corridor": "Greenmount Ave, Waverly (3200 block)",
+    "fmt": "services",
+    "rent": 31.07,
+    "basis": "NNN",
+    "nnn": 31.07,
+    "sqft": 2016.0,
+    "year": "2026",
+    "url": "https://www.loopnet.fr/annonce/3217-greenmount-ave-baltimore-md/37686911"
+   },
+   {
+    "id": "R-002",
+    "d": 0.75,
+    "address": "3028-3030 Greenmount Ave",
+    "corridor": "Greenmount Ave, Waverly (3000 block)",
+    "fmt": "office",
+    "rent": 15.0,
+    "basis": "NNN",
+    "nnn": 15.0,
+    "sqft": 1555.0,
+    "year": "2026",
+    "url": "https://www.showcase.com/3028-3030-greenmount-ave-baltimore-md-21218/39655559/"
+   },
+   {
+    "id": "R-022",
+    "d": 0.94,
+    "address": "3500-3510 Harford Rd (Ste 3508-3510)",
+    "corridor": "Harford Rd, 3500 block (21218, east of Waverly)",
+    "fmt": "services",
+    "rent": 16.74,
+    "basis": "NNN",
+    "nnn": 16.74,
+    "sqft": 1290.0,
+    "year": "2026",
+    "url": "https://www.cityfeet.com/cont/listing/3500-3510-harford-rd-baltimore-md-21218/cs37321785"
+   },
+   {
+    "id": "R-045",
+    "d": 1.0,
+    "address": "803-807 Washington Blvd",
+    "corridor": "Pigtown (Washington Blvd, Washington Village)",
+    "fmt": "cafe",
+    "rent": 17.4,
+    "basis": "NNN",
+    "nnn": 17.4,
+    "sqft": 2000.0,
+    "year": "2026",
+    "url": "https://www.cityfeet.com/cont/listing/803-807-washington-blvd-baltimore-md-21230/cs40246566"
+   },
+   {
+    "id": "R-052",
+    "d": 1.15,
+    "address": "814 S Broadway #C1 (William Fell Tavern)",
+    "corridor": "Fells Point (S Broadway)",
+    "fmt": "cafe",
+    "rent": 40.0,
+    "basis": "NNN",
+    "nnn": 40.0,
+    "sqft": 2325.0,
+    "year": "2026",
+    "url": "https://www.commercialsearch.com/commercial-property/us/md/baltimore/william-fell-tavern/"
+   },
+   {
+    "id": "R-049",
+    "d": 1.5,
+    "address": "508 S Broadway (1st floor)",
+    "corridor": "Fells Point (S Broadway)",
+    "fmt": "shop",
+    "rent": 27.0,
+    "basis": "NNN",
+    "nnn": 27.0,
+    "sqft": 2004.0,
+    "year": "2026",
+    "url": "https://www.cityfeet.com/cont/listing/508-s-broadway-baltimore-md-21231/cs41716981"
+   }
+  ],
+  "shop": [
+   {
+    "id": "R-022",
+    "d": 0.75,
+    "address": "3500-3510 Harford Rd (Ste 3508-3510)",
+    "corridor": "Harford Rd, 3500 block (21218, east of Waverly)",
+    "fmt": "services",
+    "rent": 16.74,
+    "basis": "NNN",
+    "nnn": 16.74,
+    "sqft": 1290.0,
+    "year": "2026",
+    "url": "https://www.cityfeet.com/cont/listing/3500-3510-harford-rd-baltimore-md-21218/cs37321785"
+   },
+   {
+    "id": "R-002",
+    "d": 0.94,
+    "address": "3028-3030 Greenmount Ave",
+    "corridor": "Greenmount Ave, Waverly (3000 block)",
+    "fmt": "office",
+    "rent": 15.0,
+    "basis": "NNN",
+    "nnn": 15.0,
+    "sqft": 1555.0,
+    "year": "2026",
+    "url": "https://www.showcase.com/3028-3030-greenmount-ave-baltimore-md-21218/39655559/"
+   },
+   {
+    "id": "R-043",
+    "d": 1.03,
+    "address": "4813 Eastern Ave (2nd floor)",
+    "corridor": "Eastern Ave, 4800 block (east of the Highlandtown main street)",
+    "fmt": "shop",
+    "rent": 16.04,
+    "basis": "unknown",
+    "nnn": 15.04,
+    "sqft": 972.0,
+    "year": "2026",
+    "url": "https://www.cityfeet.com/cont/listing/4813-eastern-ave-baltimore-md-21224/cs39238511"
+   },
+   {
+    "id": "R-037",
+    "d": 1.03,
+    "address": "1129-1131 W 36th St",
+    "corridor": "Hampden (W 36th St, 'The Avenue')",
+    "fmt": "shop",
+    "rent": 39.0,
+    "basis": "NNN",
+    "nnn": 39.0,
+    "sqft": 1034.0,
+    "year": "2026",
+    "url": "https://www.commercialsearch.com/commercial-property/us/md/baltimore/1125-1131-w-36th-street/"
+   },
+   {
+    "id": "R-035",
+    "d": 1.1,
+    "address": "823 W 36th St",
+    "corridor": "Hampden (W 36th St, 'The Avenue')",
+    "fmt": "shop",
+    "rent": 27.27,
+    "basis": "NNN",
+    "nnn": 27.27,
+    "sqft": 1100.0,
+    "year": "2026",
+    "url": "https://www.commercialsearch.com/commercial-property/us/md/baltimore/823-w-36th-st-1/"
+   },
+   {
+    "id": "R-028",
+    "d": 1.14,
+    "address": "10 W Eager St Ste 101",
+    "corridor": "Mount Vernon (W Eager St)",
+    "fmt": "shop",
+    "rent": 25.0,
+    "basis": "modified gross",
+    "nnn": 23.0,
+    "sqft": 1150.0,
+    "year": "2026",
+    "url": "https://www.cityfeet.com/cont/listing/10-w-eager-st-baltimore-md-21201/cs13527444"
+   }
+  ],
+  "showroom": [
+   {
+    "id": "R-001",
+    "d": 0.24,
+    "address": "3117 Greenmount Ave",
+    "corridor": "Greenmount Ave, Waverly (3100 block)",
+    "fmt": "showroom",
+    "rent": 15.0,
+    "basis": "NNN",
+    "nnn": 15.0,
+    "sqft": 7000.0,
+    "year": "2026",
+    "url": "https://www.showcase.com/3117-greenmount-ave-baltimore-md-21218/39808173/"
+   },
+   {
+    "id": "R-007",
+    "d": 0.78,
+    "address": "2700 Loch Raven Rd (office building, 1st floor)",
+    "corridor": "Loch Raven Rd, Better Waverly",
+    "fmt": "office",
+    "rent": 11.0,
+    "basis": "NNN",
+    "nnn": 11.0,
+    "sqft": 7313.0,
+    "year": "2026",
+    "url": "https://www.cityfeet.com/cont/listing/2700-loch-raven-rd-baltimore-md-21218/cs32998565"
+   },
+   {
+    "id": "R-004",
+    "d": 1.5,
+    "address": "3217 Greenmount Ave (No. 1 Nails)",
+    "corridor": "Greenmount Ave, Waverly (3200 block)",
+    "fmt": "services",
+    "rent": 31.07,
+    "basis": "NNN",
+    "nnn": 31.07,
+    "sqft": 2016.0,
+    "year": "2026",
+    "url": "https://www.loopnet.fr/annonce/3217-greenmount-ave-baltimore-md/37686911"
+   },
+   {
+    "id": "R-057",
+    "d": 1.57,
+    "address": "18900 Livernois Ave",
+    "corridor": "Detroit Livernois Ave (Avenue of Fashion)",
+    "fmt": "showroom",
+    "rent": 20.0,
+    "basis": "NNN",
+    "nnn": 20.0,
+    "sqft": 5891.0,
+    "year": "2026",
+    "url": "https://www.cityfeet.com/cont/listing/18900-livernois-ave-detroit-mi-48221/cs41566548"
+   },
+   {
+    "id": "R-034",
+    "d": 1.66,
+    "address": "902-906 W 36th St",
+    "corridor": "Hampden (W 36th St, 'The Avenue')",
+    "fmt": "showroom",
+    "rent": 45.61,
+    "basis": "NNN",
+    "nnn": 45.61,
+    "sqft": 2850.0,
+    "year": "2026",
+    "url": "https://www.cityfeet.com/cont/listing/902-906-w-36th-st-baltimore-md-21211/cs28155768"
+   },
+   {
+    "id": "R-068",
+    "d": 1.74,
+    "address": "118-126 E 47th St Ste 126",
+    "corridor": "Chicago Bronzeville (E 47th St)",
+    "fmt": "showroom",
+    "rent": 18.0,
+    "basis": "NNN",
+    "nnn": 18.0,
+    "sqft": 4335.0,
+    "year": "2026",
+    "url": "https://www.cityfeet.com/cont/listing/118-126-e-47th-st-chicago-il-60653/cs41733895"
+   }
+  ],
+  "bike": [
+   {
+    "id": "R-004",
+    "d": 0.61,
+    "address": "3217 Greenmount Ave (No. 1 Nails)",
+    "corridor": "Greenmount Ave, Waverly (3200 block)",
+    "fmt": "services",
+    "rent": 31.07,
+    "basis": "NNN",
+    "nnn": 31.07,
+    "sqft": 2016.0,
+    "year": "2026",
+    "url": "https://www.loopnet.fr/annonce/3217-greenmount-ave-baltimore-md/37686911"
+   },
+   {
+    "id": "R-002",
+    "d": 0.65,
+    "address": "3028-3030 Greenmount Ave",
+    "corridor": "Greenmount Ave, Waverly (3000 block)",
+    "fmt": "office",
+    "rent": 15.0,
+    "basis": "NNN",
+    "nnn": 15.0,
+    "sqft": 1555.0,
+    "year": "2026",
+    "url": "https://www.showcase.com/3028-3030-greenmount-ave-baltimore-md-21218/39655559/"
+   },
+   {
+    "id": "R-022",
+    "d": 0.83,
+    "address": "3500-3510 Harford Rd (Ste 3508-3510)",
+    "corridor": "Harford Rd, 3500 block (21218, east of Waverly)",
+    "fmt": "services",
+    "rent": 16.74,
+    "basis": "NNN",
+    "nnn": 16.74,
+    "sqft": 1290.0,
+    "year": "2026",
+    "url": "https://www.cityfeet.com/cont/listing/3500-3510-harford-rd-baltimore-md-21218/cs37321785"
+   },
+   {
+    "id": "R-049",
+    "d": 1.11,
+    "address": "508 S Broadway (1st floor)",
+    "corridor": "Fells Point (S Broadway)",
+    "fmt": "shop",
+    "rent": 27.0,
+    "basis": "NNN",
+    "nnn": 27.0,
+    "sqft": 2004.0,
+    "year": "2026",
+    "url": "https://www.cityfeet.com/cont/listing/508-s-broadway-baltimore-md-21231/cs41716981"
+   },
+   {
+    "id": "R-016",
+    "d": 1.13,
+    "address": "2125-2129 Maryland Ave (Ste 2129, 1st floor + lower level)",
+    "corridor": "Charles Village (Maryland Ave, Old Goucher / Charles North)",
+    "fmt": "shop",
+    "rent": 15.0,
+    "basis": "NNN",
+    "nnn": 15.0,
+    "sqft": 1580.0,
+    "year": "2026",
+    "url": "https://www.cityfeet.com/cont/listing/2125-2129-maryland-ave-baltimore-md-21218/cs34159109"
+   },
+   {
+    "id": "R-041",
+    "d": 1.18,
+    "address": "6110 Harford Rd",
+    "corridor": "Hamilton-Lauraville (Harford Rd, Hamilton)",
+    "fmt": "shop",
+    "rent": 12.0,
+    "basis": "modified gross",
+    "nnn": 10.0,
+    "sqft": 1500.0,
+    "year": "2026",
+    "url": "https://www.cityfeet.com/cont/listing/6110-harford-rd-baltimore-md-21214/cs41582660"
+   }
+  ],
+  "services": [
+   {
+    "id": "R-022",
+    "d": 0.36,
+    "address": "3500-3510 Harford Rd (Ste 3508-3510)",
+    "corridor": "Harford Rd, 3500 block (21218, east of Waverly)",
+    "fmt": "services",
+    "rent": 16.74,
+    "basis": "NNN",
+    "nnn": 16.74,
+    "sqft": 1290.0,
+    "year": "2026",
+    "url": "https://www.cityfeet.com/cont/listing/3500-3510-harford-rd-baltimore-md-21218/cs37321785"
+   },
+   {
+    "id": "R-004",
+    "d": 0.81,
+    "address": "3217 Greenmount Ave (No. 1 Nails)",
+    "corridor": "Greenmount Ave, Waverly (3200 block)",
+    "fmt": "services",
+    "rent": 31.07,
+    "basis": "NNN",
+    "nnn": 31.07,
+    "sqft": 2016.0,
+    "year": "2026",
+    "url": "https://www.loopnet.fr/annonce/3217-greenmount-ave-baltimore-md/37686911"
+   },
+   {
+    "id": "R-044",
+    "d": 1.01,
+    "address": "773 Washington Blvd",
+    "corridor": "Pigtown (Washington Blvd)",
+    "fmt": "services",
+    "rent": 25.2,
+    "basis": "modified gross",
+    "nnn": 23.2,
+    "sqft": 912.0,
+    "year": "2026",
+    "url": "https://www.cityfeet.com/cont/listing/773-washington-blvd-baltimore-md-21230/cs42277728"
+   },
+   {
+    "id": "R-002",
+    "d": 1.05,
+    "address": "3028-3030 Greenmount Ave",
+    "corridor": "Greenmount Ave, Waverly (3000 block)",
+    "fmt": "office",
+    "rent": 15.0,
+    "basis": "NNN",
+    "nnn": 15.0,
+    "sqft": 1555.0,
+    "year": "2026",
+    "url": "https://www.showcase.com/3028-3030-greenmount-ave-baltimore-md-21218/39655559/"
+   },
+   {
+    "id": "R-026",
+    "d": 1.29,
+    "address": "1214 N Charles St Ste 1212",
+    "corridor": "Mount Vernon (N Charles St)",
+    "fmt": "services",
+    "rent": 24.0,
+    "basis": "gross",
+    "nnn": 20.0,
+    "sqft": 1200.0,
+    "year": "2026",
+    "url": "https://www.cityfeet.com/cont/listing/1214-n-charles-st-baltimore-md-21201/cs41075056"
+   },
+   {
+    "id": "R-054",
+    "d": 1.41,
+    "address": "6124 Belair Rd",
+    "corridor": "Belair Rd, 6100 block (21206; north of the Belair-Edison main street)",
+    "fmt": "services",
+    "rent": 18.0,
+    "basis": "NNN",
+    "nnn": 18.0,
+    "sqft": 600.0,
+    "year": "2026",
+    "url": "https://www.cityfeet.com/cont/listing/6124-belair-rd-baltimore-md-21206/cs42397006"
+   }
+  ],
+  "fitness": [
+   {
+    "id": "R-004",
+    "d": 0.9,
+    "address": "3217 Greenmount Ave (No. 1 Nails)",
+    "corridor": "Greenmount Ave, Waverly (3200 block)",
+    "fmt": "services",
+    "rent": 31.07,
+    "basis": "NNN",
+    "nnn": 31.07,
+    "sqft": 2016.0,
+    "year": "2026",
+    "url": "https://www.loopnet.fr/annonce/3217-greenmount-ave-baltimore-md/37686911"
+   },
+   {
+    "id": "R-029",
+    "d": 1.05,
+    "address": "808 Guilford Ave (Mt. Vernon Market Center, 2nd level)",
+    "corridor": "Mount Vernon (Guilford Ave)",
+    "fmt": "fitness",
+    "rent": 17.09,
+    "basis": "modified gross",
+    "nnn": 15.09,
+    "sqft": 3160.0,
+    "year": "2026",
+    "url": "https://www.commercialsearch.com/commercial-property/us/md/baltimore/mt-vernon-market-center/"
+   },
+   {
+    "id": "R-002",
+    "d": 1.16,
+    "address": "3028-3030 Greenmount Ave",
+    "corridor": "Greenmount Ave, Waverly (3000 block)",
+    "fmt": "office",
+    "rent": 15.0,
+    "basis": "NNN",
+    "nnn": 15.0,
+    "sqft": 1555.0,
+    "year": "2026",
+    "url": "https://www.showcase.com/3028-3030-greenmount-ave-baltimore-md-21218/39655559/"
+   },
+   {
+    "id": "R-024",
+    "d": 1.27,
+    "address": "1733-1735 Maryland Ave (3rd floor)",
+    "corridor": "Station North / Mount Vernon (Maryland Ave)",
+    "fmt": "fitness",
+    "rent": 12.7,
+    "basis": "NNN",
+    "nnn": 12.7,
+    "sqft": 2300.0,
+    "year": "2026",
+    "url": "https://www.cityfeet.com/cont/listing/1733-1735-maryland-ave-baltimore-md-21201/cs37522571"
+   },
+   {
+    "id": "R-027",
+    "d": 1.28,
+    "address": "10 W Eager St Ste 102",
+    "corridor": "Mount Vernon (W Eager St)",
+    "fmt": "studio",
+    "rent": 15.0,
+    "basis": "modified gross",
+    "nnn": 13.0,
+    "sqft": 2275.0,
+    "year": "2026",
+    "url": "https://www.cityfeet.com/cont/listing/10-w-eager-st-baltimore-md-21201/cs13527444"
+   },
+   {
+    "id": "R-022",
+    "d": 1.34,
+    "address": "3500-3510 Harford Rd (Ste 3508-3510)",
+    "corridor": "Harford Rd, 3500 block (21218, east of Waverly)",
+    "fmt": "services",
+    "rent": 16.74,
+    "basis": "NNN",
+    "nnn": 16.74,
+    "sqft": 1290.0,
+    "year": "2026",
+    "url": "https://www.cityfeet.com/cont/listing/3500-3510-harford-rd-baltimore-md-21218/cs37321785"
+   }
+  ],
+  "studio": [
+   {
+    "id": "R-004",
+    "d": 0.61,
+    "address": "3217 Greenmount Ave (No. 1 Nails)",
+    "corridor": "Greenmount Ave, Waverly (3200 block)",
+    "fmt": "services",
+    "rent": 31.07,
+    "basis": "NNN",
+    "nnn": 31.07,
+    "sqft": 2016.0,
+    "year": "2026",
+    "url": "https://www.loopnet.fr/annonce/3217-greenmount-ave-baltimore-md/37686911"
+   },
+   {
+    "id": "R-002",
+    "d": 0.65,
+    "address": "3028-3030 Greenmount Ave",
+    "corridor": "Greenmount Ave, Waverly (3000 block)",
+    "fmt": "office",
+    "rent": 15.0,
+    "basis": "NNN",
+    "nnn": 15.0,
+    "sqft": 1555.0,
+    "year": "2026",
+    "url": "https://www.showcase.com/3028-3030-greenmount-ave-baltimore-md-21218/39655559/"
+   },
+   {
+    "id": "R-022",
+    "d": 0.83,
+    "address": "3500-3510 Harford Rd (Ste 3508-3510)",
+    "corridor": "Harford Rd, 3500 block (21218, east of Waverly)",
+    "fmt": "services",
+    "rent": 16.74,
+    "basis": "NNN",
+    "nnn": 16.74,
+    "sqft": 1290.0,
+    "year": "2026",
+    "url": "https://www.cityfeet.com/cont/listing/3500-3510-harford-rd-baltimore-md-21218/cs37321785"
+   },
+   {
+    "id": "R-047",
+    "d": 1.0,
+    "address": "1100 Wicomico St 7th Floor (Baltimore Innovation Center)",
+    "corridor": "Wicomico St, 21230 (Pigtown edge; neighbourhood not stated)",
+    "fmt": "venue",
+    "rent": 10.0,
+    "basis": "modified gross",
+    "nnn": 8.0,
+    "sqft": 1800.0,
+    "year": "2026",
+    "url": "https://www.cityfeet.com/cont/listing/1100-wicomico-st-baltimore-md-21230/cs36898502"
+   },
+   {
+    "id": "R-027",
+    "d": 1.23,
+    "address": "10 W Eager St Ste 102",
+    "corridor": "Mount Vernon (W Eager St)",
+    "fmt": "studio",
+    "rent": 15.0,
+    "basis": "modified gross",
+    "nnn": 13.0,
+    "sqft": 2275.0,
+    "year": "2026",
+    "url": "https://www.cityfeet.com/cont/listing/10-w-eager-st-baltimore-md-21201/cs13527444"
+   },
+   {
+    "id": "R-024",
+    "d": 1.25,
+    "address": "1733-1735 Maryland Ave (3rd floor)",
+    "corridor": "Station North / Mount Vernon (Maryland Ave)",
+    "fmt": "fitness",
+    "rent": 12.7,
+    "basis": "NNN",
+    "nnn": 12.7,
+    "sqft": 2300.0,
+    "year": "2026",
+    "url": "https://www.cityfeet.com/cont/listing/1733-1735-maryland-ave-baltimore-md-21201/cs37522571"
+   }
+  ],
+  "venue": [
+   {
+    "id": "R-001",
+    "d": 0.74,
+    "address": "3117 Greenmount Ave",
+    "corridor": "Greenmount Ave, Waverly (3100 block)",
+    "fmt": "showroom",
+    "rent": 15.0,
+    "basis": "NNN",
+    "nnn": 15.0,
+    "sqft": 7000.0,
+    "year": "2026",
+    "url": "https://www.showcase.com/3117-greenmount-ave-baltimore-md-21218/39808173/"
+   },
+   {
+    "id": "R-007",
+    "d": 0.78,
+    "address": "2700 Loch Raven Rd (office building, 1st floor)",
+    "corridor": "Loch Raven Rd, Better Waverly",
+    "fmt": "office",
+    "rent": 11.0,
+    "basis": "NNN",
+    "nnn": 11.0,
+    "sqft": 7313.0,
+    "year": "2026",
+    "url": "https://www.cityfeet.com/cont/listing/2700-loch-raven-rd-baltimore-md-21218/cs32998565"
+   },
+   {
+    "id": "R-004",
+    "d": 1.5,
+    "address": "3217 Greenmount Ave (No. 1 Nails)",
+    "corridor": "Greenmount Ave, Waverly (3200 block)",
+    "fmt": "services",
+    "rent": 31.07,
+    "basis": "NNN",
+    "nnn": 31.07,
+    "sqft": 2016.0,
+    "year": "2026",
+    "url": "https://www.loopnet.fr/annonce/3217-greenmount-ave-baltimore-md/37686911"
+   },
+   {
+    "id": "R-029",
+    "d": 1.55,
+    "address": "808 Guilford Ave (Mt. Vernon Market Center, 2nd level)",
+    "corridor": "Mount Vernon (Guilford Ave)",
+    "fmt": "fitness",
+    "rent": 17.09,
+    "basis": "modified gross",
+    "nnn": 15.09,
+    "sqft": 3160.0,
+    "year": "2026",
+    "url": "https://www.commercialsearch.com/commercial-property/us/md/baltimore/mt-vernon-market-center/"
+   },
+   {
+    "id": "R-018",
+    "d": 1.75,
+    "address": "2229 N Charles St (2nd floor)",
+    "corridor": "Charles Village (N Charles St, Old Goucher)",
+    "fmt": "office",
+    "rent": 15.0,
+    "basis": "NNN",
+    "nnn": 15.0,
+    "sqft": 4268.0,
+    "year": "2026",
+    "url": "https://www.cityfeet.com/cont/listing/2229-n-charles-st-baltimore-md-21218/cs39626971"
+   },
+   {
+    "id": "R-002",
+    "d": 1.76,
+    "address": "3028-3030 Greenmount Ave",
+    "corridor": "Greenmount Ave, Waverly (3000 block)",
+    "fmt": "office",
+    "rent": 15.0,
+    "basis": "NNN",
+    "nnn": 15.0,
+    "sqft": 1555.0,
+    "year": "2026",
+    "url": "https://www.showcase.com/3028-3030-greenmount-ave-baltimore-md-21218/39655559/"
+   }
+  ],
+  "office": [
+   {
+    "id": "R-002",
+    "d": 0.09,
+    "address": "3028-3030 Greenmount Ave",
+    "corridor": "Greenmount Ave, Waverly (3000 block)",
+    "fmt": "office",
+    "rent": 15.0,
+    "basis": "NNN",
+    "nnn": 15.0,
+    "sqft": 1555.0,
+    "year": "2026",
+    "url": "https://www.showcase.com/3028-3030-greenmount-ave-baltimore-md-21218/39655559/"
+   },
+   {
+    "id": "R-004",
+    "d": 0.67,
+    "address": "3217 Greenmount Ave (No. 1 Nails)",
+    "corridor": "Greenmount Ave, Waverly (3200 block)",
+    "fmt": "services",
+    "rent": 31.07,
+    "basis": "NNN",
+    "nnn": 31.07,
+    "sqft": 2016.0,
+    "year": "2026",
+    "url": "https://www.loopnet.fr/annonce/3217-greenmount-ave-baltimore-md/37686911"
+   },
+   {
+    "id": "R-022",
+    "d": 0.78,
+    "address": "3500-3510 Harford Rd (Ste 3508-3510)",
+    "corridor": "Harford Rd, 3500 block (21218, east of Waverly)",
+    "fmt": "services",
+    "rent": 16.74,
+    "basis": "NNN",
+    "nnn": 16.74,
+    "sqft": 1290.0,
+    "year": "2026",
+    "url": "https://www.cityfeet.com/cont/listing/3500-3510-harford-rd-baltimore-md-21218/cs37321785"
+   },
+   {
+    "id": "R-032",
+    "d": 1.05,
+    "address": "11 E Mt Royal Ave",
+    "corridor": "Station North / Mid-Town Belvedere (E Mt Royal Ave)",
+    "fmt": "office",
+    "rent": 24.0,
+    "basis": "NNN",
+    "nnn": 24.0,
+    "sqft": 1786.0,
+    "year": "2026",
+    "url": "https://www.commercialsearch.com/commercial-property/us/md/baltimore/11-e-mt-royal-avenue/"
+   },
+   {
+    "id": "R-033",
+    "d": 1.06,
+    "address": "1501 St Paul St #113",
+    "corridor": "Station North (St Paul St, Charles North)",
+    "fmt": "office",
+    "rent": 23.0,
+    "basis": "modified gross",
+    "nnn": 21.0,
+    "sqft": 1808.0,
+    "year": "2026",
+    "url": "https://www.commercialsearch.com/commercial-property/us/md/baltimore/1501-st-paul-street/"
+   },
+   {
+    "id": "R-039",
+    "d": 1.13,
+    "address": "711 W 40th St Ste 300 (The Rotunda)",
+    "corridor": "Hampden / Medfield (W 40th St, The Rotunda)",
+    "fmt": "office",
+    "rent": 32.5,
+    "basis": "gross",
+    "nnn": 28.5,
+    "sqft": 1493.0,
+    "year": "2026",
+    "url": "https://www.cityfeet.com/cont/listing/711-w-40th-st-baltimore-md-21211/cs13326286"
+   }
+  ],
+  "workshop": [
+   {
+    "id": "R-002",
+    "d": 0.09,
+    "address": "3028-3030 Greenmount Ave",
+    "corridor": "Greenmount Ave, Waverly (3000 block)",
+    "fmt": "office",
+    "rent": 15.0,
+    "basis": "NNN",
+    "nnn": 15.0,
+    "sqft": 1555.0,
+    "year": "2026",
+    "url": "https://www.showcase.com/3028-3030-greenmount-ave-baltimore-md-21218/39655559/"
+   },
+   {
+    "id": "R-004",
+    "d": 0.67,
+    "address": "3217 Greenmount Ave (No. 1 Nails)",
+    "corridor": "Greenmount Ave, Waverly (3200 block)",
+    "fmt": "services",
+    "rent": 31.07,
+    "basis": "NNN",
+    "nnn": 31.07,
+    "sqft": 2016.0,
+    "year": "2026",
+    "url": "https://www.loopnet.fr/annonce/3217-greenmount-ave-baltimore-md/37686911"
+   },
+   {
+    "id": "R-022",
+    "d": 0.78,
+    "address": "3500-3510 Harford Rd (Ste 3508-3510)",
+    "corridor": "Harford Rd, 3500 block (21218, east of Waverly)",
+    "fmt": "services",
+    "rent": 16.74,
+    "basis": "NNN",
+    "nnn": 16.74,
+    "sqft": 1290.0,
+    "year": "2026",
+    "url": "https://www.cityfeet.com/cont/listing/3500-3510-harford-rd-baltimore-md-21218/cs37321785"
+   },
+   {
+    "id": "R-032",
+    "d": 1.05,
+    "address": "11 E Mt Royal Ave",
+    "corridor": "Station North / Mid-Town Belvedere (E Mt Royal Ave)",
+    "fmt": "office",
+    "rent": 24.0,
+    "basis": "NNN",
+    "nnn": 24.0,
+    "sqft": 1786.0,
+    "year": "2026",
+    "url": "https://www.commercialsearch.com/commercial-property/us/md/baltimore/11-e-mt-royal-avenue/"
+   },
+   {
+    "id": "R-033",
+    "d": 1.06,
+    "address": "1501 St Paul St #113",
+    "corridor": "Station North (St Paul St, Charles North)",
+    "fmt": "office",
+    "rent": 23.0,
+    "basis": "modified gross",
+    "nnn": 21.0,
+    "sqft": 1808.0,
+    "year": "2026",
+    "url": "https://www.commercialsearch.com/commercial-property/us/md/baltimore/1501-st-paul-street/"
+   },
+   {
+    "id": "R-039",
+    "d": 1.13,
+    "address": "711 W 40th St Ste 300 (The Rotunda)",
+    "corridor": "Hampden / Medfield (W 40th St, The Rotunda)",
+    "fmt": "office",
+    "rent": 32.5,
+    "basis": "gross",
+    "nnn": 28.5,
+    "sqft": 1493.0,
+    "year": "2026",
+    "url": "https://www.cityfeet.com/cont/listing/711-w-40th-st-baltimore-md-21211/cs13326286"
+   }
+  ],
+  "community": [
+   {
+    "id": "R-002",
+    "d": 0.72,
+    "address": "3028-3030 Greenmount Ave",
+    "corridor": "Greenmount Ave, Waverly (3000 block)",
+    "fmt": "office",
+    "rent": 15.0,
+    "basis": "NNN",
+    "nnn": 15.0,
+    "sqft": 1555.0,
+    "year": "2026",
+    "url": "https://www.showcase.com/3028-3030-greenmount-ave-baltimore-md-21218/39655559/"
+   },
+   {
+    "id": "R-007",
+    "d": 0.83,
+    "address": "2700 Loch Raven Rd (office building, 1st floor)",
+    "corridor": "Loch Raven Rd, Better Waverly",
+    "fmt": "office",
+    "rent": 11.0,
+    "basis": "NNN",
+    "nnn": 11.0,
+    "sqft": 7313.0,
+    "year": "2026",
+    "url": "https://www.cityfeet.com/cont/listing/2700-loch-raven-rd-baltimore-md-21218/cs32998565"
+   },
+   {
+    "id": "R-004",
+    "d": 0.96,
+    "address": "3217 Greenmount Ave (No. 1 Nails)",
+    "corridor": "Greenmount Ave, Waverly (3200 block)",
+    "fmt": "services",
+    "rent": 31.07,
+    "basis": "NNN",
+    "nnn": 31.07,
+    "sqft": 2016.0,
+    "year": "2026",
+    "url": "https://www.loopnet.fr/annonce/3217-greenmount-ave-baltimore-md/37686911"
+   },
+   {
+    "id": "R-001",
+    "d": 1.28,
+    "address": "3117 Greenmount Ave",
+    "corridor": "Greenmount Ave, Waverly (3100 block)",
+    "fmt": "showroom",
+    "rent": 15.0,
+    "basis": "NNN",
+    "nnn": 15.0,
+    "sqft": 7000.0,
+    "year": "2026",
+    "url": "https://www.showcase.com/3117-greenmount-ave-baltimore-md-21218/39808173/"
+   },
+   {
+    "id": "R-018",
+    "d": 1.29,
+    "address": "2229 N Charles St (2nd floor)",
+    "corridor": "Charles Village (N Charles St, Old Goucher)",
+    "fmt": "office",
+    "rent": 15.0,
+    "basis": "NNN",
+    "nnn": 15.0,
+    "sqft": 4268.0,
+    "year": "2026",
+    "url": "https://www.cityfeet.com/cont/listing/2229-n-charles-st-baltimore-md-21218/cs39626971"
+   },
+   {
+    "id": "R-022",
+    "d": 1.41,
+    "address": "3500-3510 Harford Rd (Ste 3508-3510)",
+    "corridor": "Harford Rd, 3500 block (21218, east of Waverly)",
+    "fmt": "services",
+    "rent": 16.74,
+    "basis": "NNN",
+    "nnn": 16.74,
+    "sqft": 1290.0,
+    "year": "2026",
+    "url": "https://www.cityfeet.com/cont/listing/3500-3510-harford-rd-baltimore-md-21218/cs37321785"
+   }
+  ]
+ },
+ "corridors": [
+  {
+   "id": "midtown",
+   "name": "Station North and Mount Vernon",
+   "city": "Baltimore",
+   "district_id": "station-north",
+   "n": 11,
+   "formats": [
+    "community",
+    "counter",
+    "fitness",
+    "office",
+    "services",
+    "shop",
+    "studio"
+   ],
+   "raw": 18.11,
+   "pooled": 18.1,
+   "B": 0.1517,
+   "rpp": 104.487,
+   "rpp_url": "https://fred.stlouisfed.org/series/RPPALL12580",
+   "ratio": 1.0,
+   "at_baltimore_prices": 18.1,
+   "rows": [
+    "R-023",
+    "R-024",
+    "R-025",
+    "R-026",
+    "R-027",
+    "R-028",
+    "R-029",
+    "R-030",
+    "R-031",
+    "R-032",
+    "R-033"
+   ]
+  },
+  {
+   "id": "fells",
+   "name": "Fells Point and Butcher's Hill",
+   "city": "Baltimore",
+   "district_id": null,
+   "n": 5,
+   "formats": [
+    "cafe",
+    "shop"
+   ],
+   "raw": 20.83,
+   "pooled": 19.99,
+   "B": 0.2823,
+   "rpp": 104.487,
+   "rpp_url": "https://fred.stlouisfed.org/series/RPPALL12580",
+   "ratio": 1.0,
+   "at_baltimore_prices": 19.99,
+   "rows": [
+    "R-049",
+    "R-050",
+    "R-051",
+    "R-052",
+    "R-053"
+   ]
+  },
+  {
+   "id": "hampden",
+   "name": "Hampden (W 36th St)",
+   "city": "Baltimore",
+   "district_id": "hampden-36th",
+   "n": 5,
+   "formats": [
+    "counter",
+    "office",
+    "shop",
+    "showroom"
+   ],
+   "raw": 31.64,
+   "pooled": 26.99,
+   "B": 0.2823,
+   "rpp": 104.487,
+   "rpp_url": "https://fred.stlouisfed.org/series/RPPALL12580",
+   "ratio": 1.0,
+   "at_baltimore_prices": 26.99,
+   "rows": [
+    "R-034",
+    "R-035",
+    "R-036",
+    "R-037",
+    "R-039"
+   ]
+  },
+  {
+   "id": "waverly",
+   "name": "Waverly (Greenmount Ave, Loch Raven Rd)",
+   "city": "Baltimore",
+   "district_id": null,
+   "n": 5,
+   "formats": [
+    "office",
+    "services",
+    "showroom"
+   ],
+   "raw": 15.69,
+   "pooled": 16.31,
+   "B": 0.2823,
+   "rpp": 104.487,
+   "rpp_url": "https://fred.stlouisfed.org/series/RPPALL12580",
+   "ratio": 1.0,
+   "at_baltimore_prices": 16.31,
+   "rows": [
+    "R-001",
+    "R-002",
+    "R-004",
+    "R-007",
+    "R-022"
+   ]
+  },
+  {
+   "id": "charles_village",
+   "name": "Charles Village and Harford Rd (21218)",
+   "city": "Baltimore",
+   "district_id": null,
+   "n": 4,
+   "formats": [
+    "community",
+    "office",
+    "shop"
+   ],
+   "raw": 16.73,
+   "pooled": 17.15,
+   "B": 0.3297,
+   "rpp": 104.487,
+   "rpp_url": "https://fred.stlouisfed.org/series/RPPALL12580",
+   "ratio": 1.0,
+   "at_baltimore_prices": 17.15,
+   "rows": [
+    "R-016",
+    "R-017",
+    "R-018",
+    "R-020"
+   ]
+  },
+  {
+   "id": "pigtown",
+   "name": "Pigtown (Washington Blvd)",
+   "city": "Baltimore",
+   "district_id": "pigtown-washington-blvd",
+   "n": 4,
+   "formats": [
+    "cafe",
+    "services",
+    "venue",
+    "workshop"
+   ],
+   "raw": 15.18,
+   "pooled": 16.07,
+   "B": 0.3297,
+   "rpp": 104.487,
+   "rpp_url": "https://fred.stlouisfed.org/series/RPPALL12580",
+   "ratio": 1.0,
+   "at_baltimore_prices": 16.07,
+   "rows": [
+    "R-044",
+    "R-045",
+    "R-046",
+    "R-047"
+   ]
+  },
+  {
+   "id": "eastern",
+   "name": "Highlandtown (Eastern Ave)",
+   "city": "Baltimore",
+   "district_id": "highlandtown-eastern",
+   "n": 2,
+   "formats": [
+    "office",
+    "shop"
+   ],
+   "raw": 18.06,
+   "pooled": 18.04,
+   "B": 0.4958,
+   "rpp": 104.487,
+   "rpp_url": "https://fred.stlouisfed.org/series/RPPALL12580",
+   "ratio": 1.0,
+   "at_baltimore_prices": 18.04,
+   "rows": [
+    "R-042",
+    "R-043"
+   ]
+  },
+  {
+   "id": "belair",
+   "name": "Belair Rd",
+   "city": "Baltimore",
+   "district_id": "belair-edison",
+   "n": 1,
+   "formats": [
+    "services"
+   ],
+   "raw": 16.41,
+   "pooled": 17.47,
+   "B": 0.663,
+   "rpp": 104.487,
+   "rpp_url": "https://fred.stlouisfed.org/series/RPPALL12580",
+   "ratio": 1.0,
+   "at_baltimore_prices": 17.47,
+   "rows": [
+    "R-054"
+   ]
+  },
+  {
+   "id": "hamilton",
+   "name": "Hamilton-Lauraville (Harford Rd)",
+   "city": "Baltimore",
+   "district_id": "hamilton-lauraville-harford",
+   "n": 1,
+   "formats": [
+    "shop"
+   ],
+   "raw": 9.49,
+   "pooled": 14.52,
+   "B": 0.663,
+   "rpp": 104.487,
+   "rpp_url": "https://fred.stlouisfed.org/series/RPPALL12580",
+   "ratio": 1.0,
+   "at_baltimore_prices": 14.52,
+   "rows": [
+    "R-041"
+   ]
+  },
+  {
+   "id": "chi_bronzeville",
+   "name": "Bronzeville (47th St, S Michigan Ave)",
+   "city": "Chicago",
+   "district_id": null,
+   "n": 4,
+   "formats": [
+    "community",
+    "foodmaker",
+    "shop",
+    "showroom"
+   ],
+   "raw": 19.52,
+   "pooled": 19.8,
+   "B": 0.3297,
+   "rpp": 103.595,
+   "rpp_url": "https://fred.stlouisfed.org/series/RPPALL16980",
+   "ratio": 1.0086,
+   "at_baltimore_prices": 19.97,
+   "rows": [
+    "R-067",
+    "R-068",
+    "R-069",
+    "R-070"
+   ]
+  },
+  {
+   "id": "dc_anacostia",
+   "name": "Anacostia (MLK Jr Ave and Marion Barry Ave SE)",
+   "city": "Washington, DC",
+   "district_id": null,
+   "n": 4,
+   "formats": [
+    "cafe",
+    "community",
+    "office"
+   ],
+   "raw": 32.97,
+   "pooled": 28.13,
+   "B": 0.3297,
+   "rpp": 108.884,
+   "rpp_url": "https://fred.stlouisfed.org/series/RPPALL47900",
+   "ratio": 0.9596,
+   "at_baltimore_prices": 27.0,
+   "rows": [
+    "R-063",
+    "R-064",
+    "R-065",
+    "R-066"
+   ]
+  },
+  {
+   "id": "phl_germantown",
+   "name": "Germantown Ave",
+   "city": "Philadelphia",
+   "district_id": null,
+   "n": 4,
+   "formats": [
+    "cafe",
+    "counter",
+    "venue",
+    "workshop"
+   ],
+   "raw": 13.67,
+   "pooled": 15.59,
+   "B": 0.3297,
+   "rpp": 102.554,
+   "rpp_url": "https://fred.stlouisfed.org/series/RPPALL37980",
+   "ratio": 1.0188,
+   "at_baltimore_prices": 15.88,
+   "rows": [
+    "R-071",
+    "R-072",
+    "R-073",
+    "R-074"
+   ]
+  },
+  {
+   "id": "det_livernois",
+   "name": "Livernois Ave (Avenue of Fashion)",
+   "city": "Detroit",
+   "district_id": "livernois-live6",
+   "n": 3,
+   "formats": [
+    "shop",
+    "showroom",
+    "venue"
+   ],
+   "raw": 20.89,
+   "pooled": 20.68,
+   "B": 0.396,
+   "rpp": 100.298,
+   "rpp_url": "https://fred.stlouisfed.org/series/RPPALL19820",
+   "ratio": 1.0418,
+   "at_baltimore_prices": 21.55,
+   "rows": [
+    "R-056",
+    "R-057",
+    "R-058"
+   ]
+  },
+  {
+   "id": "pgh_butler",
+   "name": "Butler St (Lawrenceville)",
+   "city": "Pittsburgh",
+   "district_id": null,
+   "n": 2,
+   "formats": [
+    "showroom",
+    "studio"
+   ],
+   "raw": 17.29,
+   "pooled": 18.76,
+   "B": 0.4958,
+   "rpp": 94.671,
+   "rpp_url": "https://fred.stlouisfed.org/series/RPPALL38300",
+   "ratio": 1.1037,
+   "at_baltimore_prices": 20.7,
+   "rows": [
+    "R-059",
+    "R-060"
+   ]
+  },
+  {
+   "id": "dc_hst",
+   "name": "H Street NE",
+   "city": "Washington, DC",
+   "district_id": "h-street-ne",
+   "n": 1,
+   "formats": [
+    "shop"
+   ],
+   "raw": 28.17,
+   "pooled": 22.73,
+   "B": 0.663,
+   "rpp": 108.884,
+   "rpp_url": "https://fred.stlouisfed.org/series/RPPALL47900",
+   "ratio": 0.9596,
+   "at_baltimore_prices": 21.81,
+   "rows": [
+    "R-062"
+   ]
+  },
+  {
+   "id": "nola_ochaley",
+   "name": "O.C. Haley Blvd",
+   "city": "New Orleans",
+   "district_id": "oc-haley",
+   "n": 1,
+   "formats": [
+    "fitness"
+   ],
+   "raw": 23.39,
+   "pooled": 21.35,
+   "B": 0.663,
+   "rpp": 92.597,
+   "rpp_url": "https://fred.stlouisfed.org/series/RPPALL35380",
+   "ratio": 1.1284,
+   "at_baltimore_prices": 24.09,
+   "rows": [
+    "R-075"
+   ]
+  },
+  {
+   "id": "pgh_penn",
+   "name": "Penn Ave (Garfield, East Liberty)",
+   "city": "Pittsburgh",
+   "district_id": "east-liberty-penn",
+   "n": 1,
+   "formats": [
+    "office"
+   ],
+   "raw": 14.53,
+   "pooled": 18.18,
+   "B": 0.663,
+   "rpp": 94.671,
+   "rpp_url": "https://fred.stlouisfed.org/series/RPPALL38300",
+   "ratio": 1.1037,
+   "at_baltimore_prices": 20.07,
+   "rows": [
+    "R-061"
+   ]
+  }
+ ],
+ "transfer_test": {
+  "n": 8,
+  "median_err_without": 0.2381,
+  "median_err_with": 0.2232,
+  "helps": true
+ },
+ "operators": [
+  {
+   "id": "O-003",
+   "name": "Red Emma's (worker co-op), 2013 expansion space",
+   "city": "Baltimore, MD",
+   "fmt": "cafe",
+   "model": "co-op",
+   "v": 200.0,
+   "year": 2014,
+   "cpi": 1.3606,
+   "ratio": 1.0,
+   "out": 272.13,
+   "lower_bound": true,
+   "range": [
+    216.35,
+    745.26
+   ],
+   "inside": true,
+   "url": "https://ofn.org/impact-stories/red-emmas-seed-commons"
+  },
+  {
+   "id": "O-006",
+   "name": "The Cube Cowork (coworking with onsite childcare)",
+   "city": "Baltimore, MD 21214",
+   "fmt": "office",
+   "model": "private",
+   "v": 25.27,
+   "year": 2022,
+   "cpi": 1.1007,
+   "ratio": 1.0,
+   "out": 27.81,
+   "lower_bound": false,
+   "range": null,
+   "inside": null,
+   "url": "https://www.sec.gov/Archives/edgar/data/1971692/000174605923000088/cube_page.pdf"
+  },
+  {
+   "id": "O-009",
+   "name": "Creative Alliance at the Patterson (Fells Point Creative Alliance Inc)",
+   "city": "Baltimore, MD 21224",
+   "fmt": "venue",
+   "model": "nonprofit",
+   "v": 48.66,
+   "year": 2023,
+   "cpi": 1.0571,
+   "ratio": 1.0,
+   "out": 51.44,
+   "lower_bound": false,
+   "range": null,
+   "inside": null,
+   "url": "https://projects.propublica.org/nonprofits/api/v2/organizations/521919988.json"
+  },
+  {
+   "id": "O-011",
+   "name": "Open Works (makerspace)",
+   "city": "Baltimore, MD 21202",
+   "fmt": "workshop",
+   "model": "nonprofit",
+   "v": 25.25,
+   "year": 2023,
+   "cpi": 1.0571,
+   "ratio": 1.0,
+   "out": 26.69,
+   "lower_bound": false,
+   "range": null,
+   "inside": null,
+   "url": "https://projects.propublica.org/nonprofits/api/v2/organizations/475535634.json"
+  },
+  {
+   "id": "O-021",
+   "name": "Maketto (restaurant, cafe, bar and retail)",
+   "city": "Washington, DC 20002",
+   "fmt": "cafe",
+   "model": "private",
+   "v": 408.68,
+   "year": 2019,
+   "cpi": 1.2599,
+   "ratio": 0.9596,
+   "out": 494.12,
+   "lower_bound": false,
+   "range": [
+    216.35,
+    745.26
+   ],
+   "inside": true,
+   "url": "https://www.sec.gov/Archives/edgar/data/1882997/000188299721000001/OfferingSummaryMKTO.pdf"
+  },
+  {
+   "id": "O-022",
+   "name": "Atlas Performing Arts Center (1938 Atlas cinema)",
+   "city": "Washington, DC 20002",
+   "fmt": "venue",
+   "model": "nonprofit",
+   "v": 16.58,
+   "year": 2023,
+   "cpi": 1.0571,
+   "ratio": 0.9596,
+   "out": 16.82,
+   "lower_bound": false,
+   "range": null,
+   "inside": null,
+   "url": "https://projects.propublica.org/nonprofits/api/v2/organizations/522358563.json"
+  }
+ ],
+ "census": {
+  "cafe": [
+   {
+    "id": "B-001",
+    "v": 1618426.0,
+    "naics": "722511",
+    "year": "2022",
+    "what": "722511 Full-Service Restaurants",
+    "url": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2272BASIC&g=050XX00US24510"
+   }
+  ],
+  "counter": [
+   {
+    "id": "B-023",
+    "v": 811651.0,
+    "naics": "722513",
+    "year": "2022",
+    "what": "722513 Limited-Service Restaurants",
+    "url": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2272BASIC&g=050XX00US24510"
+   },
+   {
+    "id": "B-029",
+    "v": 687158.0,
+    "naics": "722515",
+    "year": "2022",
+    "what": "722515 Snack and Nonalcoholic Beverage Bars",
+    "url": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2272BASIC&g=050XX00US24510"
+   }
+  ],
+  "foodmaker": [
+   {
+    "id": "B-045",
+    "v": 177125.0,
+    "naics": "445291",
+    "year": "2022",
+    "what": "445291 Baked Goods Retailers",
+    "url": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2244BASIC&g=050XX00US24510"
+   }
+  ],
+  "shop": [
+   {
+    "id": "B-052",
+    "v": 1378270.0,
+    "naics": "458110",
+    "year": "2022",
+    "what": "458110 Clothing and Clothing Accessories Retailers",
+    "url": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2244BASIC&g=050XX00US24510"
+   },
+   {
+    "id": "B-057",
+    "v": 650440.0,
+    "naics": "459420",
+    "year": "2022",
+    "what": "459420 Gift, Novelty, and Souvenir Retailers",
+    "url": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2244BASIC&g=050XX00US24510"
+   },
+   {
+    "id": "B-063",
+    "v": 1398400.0,
+    "naics": "459210",
+    "year": "2022",
+    "what": "459210 Book Retailers and News Dealers",
+    "url": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2244BASIC&g=050XX00US24510"
+   }
+  ],
+  "showroom": [
+   {
+    "id": "B-080",
+    "v": 759947.0,
+    "naics": "449110",
+    "year": "2022",
+    "what": "449110 Furniture Retailers",
+    "url": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2244BASIC&g=050XX00US24510"
+   },
+   {
+    "id": "B-085",
+    "v": 741462.0,
+    "naics": "4491",
+    "year": "2022",
+    "what": "4491 Furniture and Home Furnishings Retailers",
+    "url": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2244BASIC&g=050XX00US24510"
+   }
+  ],
+  "services": [
+   {
+    "id": "B-101",
+    "v": 338312.0,
+    "naics": "812111",
+    "year": "2022",
+    "what": "812111 Barber Shops",
+    "url": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2281BASIC&g=050XX00US24510"
+   },
+   {
+    "id": "B-104",
+    "v": 265284.0,
+    "naics": "812112",
+    "year": "2022",
+    "what": "812112 Beauty Salons",
+    "url": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2281BASIC&g=050XX00US24510"
+   },
+   {
+    "id": "B-107",
+    "v": 452517.0,
+    "naics": "812113",
+    "year": "2022",
+    "what": "812113 Nail salons",
+    "url": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2281BASIC&g=050XX00US24510"
+   },
+   {
+    "id": "B-119",
+    "v": 24033.0,
+    "naics": "81",
+    "year": "2022",
+    "what": "81 Other services (except public administration)",
+    "url": "https://data.census.gov/api/access/data/table?id=NONEMP2022.NS2200NONEMP&g=050XX00US24510"
+   }
+  ],
+  "fitness": [
+   {
+    "id": "B-128",
+    "v": 1148275.0,
+    "naics": "713940",
+    "year": "2022",
+    "what": "713940 Fitness and Recreational Sports Centers",
+    "url": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2271BASIC&g=050XX00US24510"
+   },
+   {
+    "id": "B-131",
+    "v": 937381.0,
+    "naics": "713940",
+    "year": "2022",
+    "what": "713940 Fitness and Recreational Sports Centers",
+    "url": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2271BASIC&g=050XX00US24510"
+   }
+  ],
+  "studio": [
+   {
+    "id": "B-149",
+    "v": 3784000.0,
+    "naics": "712110",
+    "year": "2022",
+    "what": "712110 Museums",
+    "url": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2271BASIC&g=050XX00US24510"
+   }
+  ],
+  "venue": [
+   {
+    "id": "B-153",
+    "v": 4032364.0,
+    "naics": "711310",
+    "year": "2022",
+    "what": "711310 Promoters of Performing Arts, Sports, and Similar Events with Facilities",
+    "url": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2271BASIC&g=050XX00US24510"
+   }
+  ],
+  "office": [
+   {
+    "id": "B-161",
+    "v": 4476047.0,
+    "naics": "54",
+    "year": "2022",
+    "what": "54 Professional, scientific, and technical services",
+    "url": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2254BASIC&g=050XX00US24510"
+   },
+   {
+    "id": "B-164",
+    "v": 4490993.0,
+    "naics": "5412",
+    "year": "2022",
+    "what": "5412 Accounting, Tax Preparation, Bookkeeping, and Payroll Services",
+    "url": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2254BASIC&g=050XX00US24510"
+   },
+   {
+    "id": "B-166",
+    "v": 1153901.0,
+    "naics": "5414",
+    "year": "2022",
+    "what": "5414 Specialized design services",
+    "url": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2254BASIC&g=050XX00US24510"
+   },
+   {
+    "id": "B-168",
+    "v": 3649854.0,
+    "naics": "5416",
+    "year": "2022",
+    "what": "5416 Management, Scientific, and Technical Consulting Services",
+    "url": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2254BASIC&g=050XX00US24510"
+   },
+   {
+    "id": "B-170",
+    "v": 48891.0,
+    "naics": "54",
+    "year": "2022",
+    "what": "54 Professional, scientific, and technical services",
+    "url": "https://data.census.gov/api/access/data/table?id=NONEMP2022.NS2200NONEMP&g=050XX00US24510"
+   }
+  ],
+  "workshop": [
+   {
+    "id": "B-173",
+    "v": 496125.0,
+    "naics": "8114",
+    "year": "2022",
+    "what": "8114 Personal and Household Goods Repair and Maintenance",
+    "url": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2281BASIC&g=050XX00US24510"
+   },
+   {
+    "id": "B-176",
+    "v": 763286.0,
+    "naics": "811420",
+    "year": "2022",
+    "what": "811420 Reupholstery and Furniture Repair",
+    "url": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2281BASIC&g=050XX00US24510"
+   }
+  ],
+  "community": [
+   {
+    "id": "B-181",
+    "v": 1166684.0,
+    "naics": "813410",
+    "year": "2022",
+    "what": "813410 Civic and Social Organizations",
+    "url": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2281BASIC&g=050XX00US24510"
+   },
+   {
+    "id": "B-184",
+    "v": 2121122.0,
+    "naics": "8133",
+    "year": "2022",
+    "what": "8133 Social Advocacy Organizations",
+    "url": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2281BASIC&g=050XX00US24510"
+   },
+   {
+    "id": "B-186",
+    "v": 1125150.0,
+    "naics": "813319",
+    "year": "2022",
+    "what": "813319 Other Social Advocacy Organizations",
+    "url": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2281BASIC&g=050XX00US24510"
+   }
+  ]
+ },
+ "holdout": {
+  "n": 57,
+  "sources": 48,
+  "nominal_hits": 39,
+  "nominal_cover": 0.6842,
+  "below": 8,
+  "above": 10,
+  "widen": 1.2977,
+  "honest_hits": 46,
+  "honest_cover": 0.807,
+  "baltimore_n": 38,
+  "baltimore_nominal": 27,
+  "baltimore_widened": 32,
+  "interval_score_model": 30.7169,
+  "interval_score_naive": 39.4689,
+  "skill": 0.2217,
+  "nominal_ci95": [
+   0.5476,
+   0.8009
+  ],
+  "honest_ci95": [
+   0.6809,
+   0.8995
+  ],
+  "jackknife_plus_waverly_shop": [
+   9.29,
+   31.36
+  ]
+ },
+ "sensitivity": [
+  {
+   "what": "Lease-basis loads (modified gross / gross)",
+   "setting": "$2 / $4 (default)",
+   "result": "Waverly shop listing median $17.19"
+  },
+  {
+   "what": "Lease-basis loads (modified gross / gross)",
+   "setting": "$0 / $0",
+   "result": "Waverly shop listing median $17.45"
+  },
+  {
+   "what": "Lease-basis loads (modified gross / gross)",
+   "setting": "$3 / $6",
+   "result": "Waverly shop listing median $17.11"
+  },
+  {
+   "what": "Drop the one in-place lease (R-004, 3217)",
+   "setting": "dropped",
+   "result": "Waverly shop listing median $15.69"
+  },
+  {
+   "what": "Weight on listings, n/(n+k), cafe",
+   "setting": "k = 1 (weight 0.86)",
+   "result": "typical rent P10/P50/P90 $11.46 / $20.62 / $37.53"
+  },
+  {
+   "what": "Weight on listings, n/(n+k), cafe",
+   "setting": "k = 3 (weight 0.67)",
+   "result": "typical rent P10/P50/P90 $11.32 / $20.60 / $38.57"
+  },
+  {
+   "what": "Weight on listings, n/(n+k), cafe",
+   "setting": "k = 10 (weight 0.38)",
+   "result": "typical rent P10/P50/P90 $11.09 / $20.57 / $40.25"
+  },
+  {
+   "what": "Borrowed sales spread (bike)",
+   "setting": "sigma = 0.3",
+   "result": "affordable rent P10/P50/P90 $12.97 / $20.08 / $30.53"
+  },
+  {
+   "what": "Borrowed sales spread (bike)",
+   "setting": "sigma = 0.6",
+   "result": "affordable rent P10/P50/P90 $8.13 / $20.08 / $45.87"
+  },
+  {
+   "what": "Borrowed sales spread (bike)",
+   "setting": "sigma = 0.483 (default, from cafe)",
+   "result": "affordable rent P10/P50/P90 $9.81 / $20.08 / $39.15"
+  },
+  {
+   "what": "Share of sales spent on rent (cafe)",
+   "setting": "5.7%",
+   "result": "affordable rent median $19.39"
+  },
+  {
+   "what": "Share of sales spent on rent (cafe)",
+   "setting": "10.0%",
+   "result": "affordable rent median $35.67"
+  },
+  {
+   "what": "Share of sales spent on rent (shop)",
+   "setting": "6.0%",
+   "result": "affordable rent median $19.27"
+  },
+  {
+   "what": "Share of sales spent on rent (shop)",
+   "setting": "12.0%",
+   "result": "affordable rent median $40.73"
+  },
+  {
+   "what": "Share of sales spent on rent (services)",
+   "setting": "8.0%",
+   "result": "affordable rent median $16.49"
+  },
+  {
+   "what": "Share of sales spent on rent (services)",
+   "setting": "15.0%",
+   "result": "affordable rent median $32.84"
+  },
+  {
+   "what": "Share of sales spent on rent (fitness)",
+   "setting": "13.0%",
+   "result": "affordable rent median $16.18"
+  }
+ ],
+ "approval": {
+  "about": "Chance a conditional use gets its approval, applied to earnings. Team judgement, the same 0.75 the fit score used in v0.3 (the fit score no longer applies it when money is combined, so it is not counted twice).",
+  "P": 1.0,
+  "CB": 0.75,
+  "CO": 0.75
+ },
+ "plan": {
+  "about": "Block-plan earnings. All team judgement drawn from the literature in the methods report; the page lets you move the first three.",
+  "caution": 0.5,
+  "same_use_haircut": 0.15,
+  "same_use_free": {
+   "default": 1,
+   "food & drink": 2,
+   "retail goods": 2
+  },
+  "neighbour_uplift": 0.04,
+  "neighbour_clamp": 2,
+  "shared_shock": 0.5,
+  "draws": 2000,
+  "money_weight": [
+   0.2,
+   0.5
+  ],
+  "weight_concentration": 75
+ },
+ "local_demand": {
+  "food": {
+   "factor": 0.91,
+   "applies_to": [
+    "cafe",
+    "counter",
+    "foodmaker",
+    "tavern"
+   ],
+   "how": "Spending on food away from home per household in ZIP 21218 ÷ the US mean: 18,703 households (ACS 2020-2024, B19001) placed in CE 2024 income quintiles and multiplied by each quintile's spending ($1,655 / $2,448 / $3,277 / $4,682 / $7,652) gives $3,607 per household, against $3,945 nationally.",
+   "sources": [
+    {
+     "title": "ACS 5-year 2020-2024, table B19001, ZCTA 21218",
+     "url": "https://data.census.gov/api/access/data/table?id=ACSDT5Y2024.B19001&g=860XX00US21218"
+    },
+    {
+     "title": "FRED, CE food away from home, lowest quintile (CXUFOODAWAYLB0102M)",
+     "url": "https://fred.stlouisfed.org/series/CXUFOODAWAYLB0102M"
+    },
+    {
+     "title": "BLS, Consumer Expenditures in 2024",
+     "url": "https://www.bls.gov/news.release/archives/cesan_12192025.pdf"
+    }
+   ]
+  },
+  "other": {
+   "factor": 1.0,
+   "how": "No local spending index computed yet for non-food formats (needs a Census API key and the CE category tables). Treated as 1.0."
+  }
+ },
+ "sources": {
+  "R-001": {
+   "t": "3117 Greenmount Ave Baltimore, MD 21218 - Retail Property for Lease (Showcase.com)",
+   "u": "https://www.showcase.com/3117-greenmount-ave-baltimore-md-21218/39808173/",
+   "y": "2026",
+   "q": "$15.00 USD /SF/yr; $8,750 USD /mo; Triple Net"
+  },
+  "R-002": {
+   "t": "3028-3030 Greenmount Ave Baltimore, MD 21218 - Office Property for Lease (Showcase.com)",
+   "u": "https://www.showcase.com/3028-3030-greenmount-ave-baltimore-md-21218/39655559/",
+   "y": "2026",
+   "q": "$15.00 USD /SF/yr; $1,944 USD /mo; Triple Net"
+  },
+  "R-003": {
+   "t": "OfficeFlex, 3030 Greenmount Avenue - Coworking (CommercialSearch)",
+   "u": "https://www.commercialsearch.com/coworking-property/us/md/baltimore/officeflex/",
+   "y": "2026",
+   "q": "Private Office: 1 desk from $651/month"
+  },
+  "R-004": {
+   "t": "3217 Greenmount Ave, Baltimore, MD - investment property for sale (LoopNet France)",
+   "u": "https://www.loopnet.fr/annonce/3217-greenmount-ave-baltimore-md/37686911",
+   "y": "2026",
+   "q": "Monthly Rent: $5,219 – $5,376; Lease Structure: Triple Net Lease (NNN) through 2033"
+  },
+  "R-005": {
+   "t": "3409 Greenmount Ave, Baltimore, MD - investment property for sale (LoopNet France)",
+   "u": "https://www.loopnet.fr/annonce/3409-greenmount-ave-baltimore-md/40259981/",
+   "y": "2026",
+   "q": "Main Level – Commercial Space ($1,800/month); Secured under a 5-year lease (Nov 2025 – Oct 2030)"
+  },
+  "R-006": {
+   "t": "2700 Loch Raven Rd, Baltimore, MD 21218 - Office/Industrial For Lease (CityFeet)",
+   "u": "https://www.cityfeet.com/cont/listing/2700-loch-raven-rd-baltimore-md-21218/cs32998565",
+   "y": "2026",
+   "q": "1st Floor Ste, Industrial, 14,903-82,585 SF, $6.75 USD/SF/YR, Triple Net"
+  },
+  "R-007": {
+   "t": "2700 Loch Raven Rd, Baltimore, MD 21218 - Office/Industrial For Lease (CityFeet)",
+   "u": "https://www.cityfeet.com/cont/listing/2700-loch-raven-rd-baltimore-md-21218/cs32998565",
+   "y": "2026",
+   "q": "1st Floor Ste, Office, 7,313 SF, $11.00, Triple Net, Built out as Professional Services"
+  },
+  "R-008": {
+   "t": "3409 Greenmount Ave, Baltimore, MD - investment property for sale (LoopNet France)",
+   "u": "https://www.loopnet.fr/annonce/3409-greenmount-ave-baltimore-md/40259981/",
+   "y": "2026",
+   "q": "Second Floor – Residential Unit ($915/month | Section 8)"
+  },
+  "R-009": {
+   "t": "600 E 37th St Unit 2, Baltimore, MD 21218 - Condo for Rent (Apartments.com)",
+   "u": "https://www.apartments.com/600-e-37th-st-baltimore-md-unit-2/44nze4l/",
+   "y": "2026",
+   "q": "$1,350 / Month; 800 sq ft"
+  },
+  "R-010": {
+   "t": "614 McKewin Ave, Baltimore, MD - Townhome for Rent (Apartments.com)",
+   "u": "https://www.apartments.com/614-mckewin-ave-baltimore-md/zmqbqty/",
+   "y": "2026",
+   "q": "$1,950 Total Monthly Price; 3 Bedrooms, 2 Full Bathrooms; 1,284 sq ft"
+  },
+  "R-011": {
+   "t": "Census Tract 903; Baltimore city; Maryland - Selected Housing Characteristics, 2020-2024 ACS 5-Year Estimates (Maryland Department of Planni",
+   "u": "https://planning.maryland.gov/MSDC/Documents/American_Community_Survey/2020-2024/TRACT_24510090300_ACS_2020-2024.pdf",
+   "y": "2024",
+   "q": "Median (dollars) $1,052 +/-$256"
+  },
+  "R-012": {
+   "t": "Census Tract 904; Baltimore city; Maryland - Selected Housing Characteristics, 2020-2024 ACS 5-Year Estimates (Maryland Department of Planni",
+   "u": "https://planning.maryland.gov/MSDC/Documents/American_Community_Survey/2020-2024/TRACT_24510090400_ACS_2020-2024.pdf",
+   "y": "2024",
+   "q": "Median (dollars) $1,220 +/-$138"
+  },
+  "R-013": {
+   "t": "Census Tract 905; Baltimore city; Maryland - Selected Housing Characteristics, 2020-2024 ACS 5-Year Estimates (Maryland Department of Planni",
+   "u": "https://planning.maryland.gov/MSDC/Documents/American_Community_Survey/2020-2024/TRACT_24510090500_ACS_2020-2024.pdf",
+   "y": "2024",
+   "q": "Median (dollars) $1,589 +/-$231"
+  },
+  "R-014": {
+   "t": "FY2026 Small Area Fair Market Rent (SAFMR), ZIP 21218 - Baltimore-Columbia-Towson, MD MSA (Fair Market Rent Map)",
+   "u": "https://fairmarketrentmap.com/zip/21218",
+   "y": "2026",
+   "q": "2 Bedroom | $1,770 (FY2026 SAFMR)"
+  },
+  "R-015": {
+   "t": "FY2026 Small Area Fair Market Rent (SAFMR), ZIP 21218 - Baltimore-Columbia-Towson, MD MSA (Fair Market Rent Map)",
+   "u": "https://fairmarketrentmap.com/zip/21218",
+   "y": "2026",
+   "q": "1 Bedroom | $1,450 (FY2026 SAFMR)"
+  },
+  "R-016": {
+   "t": "2125-2129 Maryland Ave, Baltimore, MD 21218 - Retail For Lease (CityFeet)",
+   "u": "https://www.cityfeet.com/cont/listing/2125-2129-maryland-ave-baltimore-md-21218/cs34159109",
+   "y": "2026",
+   "q": "$15.00 USD/SF/YR; $1,725 - $1,975 USD/MO; Service type: Triple Net"
+  },
+  "R-017": {
+   "t": "2125-2129 Maryland Ave, Baltimore, MD 21218 - Office For Lease (CityFeet)",
+   "u": "https://www.cityfeet.com/cont/listing/2125-2129-maryland-ave-baltimore-md-21218/cs34698824",
+   "y": "2026",
+   "q": "$1,263 USD/MO; Service type: Full Service Gross; Built out as: Standard Office"
+  },
+  "R-018": {
+   "t": "2229 N Charles St, Baltimore, MD 21218 - Office For Lease (CityFeet)",
+   "u": "https://www.cityfeet.com/cont/listing/2229-n-charles-st-baltimore-md-21218/cs39626971",
+   "y": "2026",
+   "q": "$15.00 USD/SF/YR; $5,335 USD/MO; Triple Net; Built out as: Standard Office"
+  },
+  "R-019": {
+   "t": "2115 N Charles St, Baltimore, MD 21218 - Office For Lease (CityFeet)",
+   "u": "https://www.cityfeet.com/cont/listing/2115-n-charles-st-baltimore-md-21218/cs35790747",
+   "y": "2026",
+   "q": "$36.00 USD/SF/YR; $555 - $700 USD/MO; Triple Net"
+  },
+  "R-020": {
+   "t": "Johnston Professional Building, 3333 N Calvert St - Office for Lease (CommercialSearch)",
+   "u": "https://www.commercialsearch.com/commercial-property/us/md/baltimore/johnston-professional-building-1/",
+   "y": "2026",
+   "q": "$36.00/SF/YR; Full Service; Medical Spec Suite"
+  },
+  "R-021": {
+   "t": "2220 N Charles St, Baltimore, MD 21218 - Commercial kitchen for lease (Realmo)",
+   "u": "https://realmo.com/listing/2220-n-charles-st-baltimore-md-21218/13129146",
+   "y": "2026",
+   "q": "$3,500/Mo; NNN (Triple Net); Fully equipped commercial kitchen"
+  },
+  "R-022": {
+   "t": "3500-3510 Harford Rd, Baltimore, MD 21218 - Retail For Lease (CityFeet)",
+   "u": "https://www.cityfeet.com/cont/listing/3500-3510-harford-rd-baltimore-md-21218/cs37321785",
+   "y": "2026",
+   "q": "$1,800 USD/MO; $16.74 USD/SF/YR"
+  },
+  "R-023": {
+   "t": "1733-1735 Maryland Ave, Baltimore, MD 21201 - Office/Retail For Lease (CityFeet)",
+   "u": "https://www.cityfeet.com/cont/listing/1733-1735-maryland-ave-baltimore-md-21201/cs37522571",
+   "y": "2026",
+   "q": "$22.00 USD/SF/YR; Triple Net; Creative offices, art studio. gallery"
+  },
+  "R-024": {
+   "t": "1733-1735 Maryland Ave, Baltimore, MD 21201 - Office/Retail For Lease (CityFeet)",
+   "u": "https://www.cityfeet.com/cont/listing/1733-1735-maryland-ave-baltimore-md-21201/cs37522571",
+   "y": "2026",
+   "q": "$12.70 USD/SF/YR; Triple Net; Boutique fitness, wellness, or therapy studios"
+  },
+  "R-025": {
+   "t": "1214 N Charles St, Baltimore, MD 21201 - Retail For Lease (CityFeet)",
+   "u": "https://www.cityfeet.com/cont/listing/1214-n-charles-st-baltimore-md-21201/cs41075056",
+   "y": "2026",
+   "q": "$24.00 USD/SF/YR; Full Service Gross; second-generation restaurant/café setup"
+  },
+  "R-026": {
+   "t": "1214 N Charles St, Baltimore, MD 21201 - Retail For Lease (CityFeet)",
+   "u": "https://www.cityfeet.com/cont/listing/1214-n-charles-st-baltimore-md-21201/cs41075056",
+   "y": "2026",
+   "q": "$24.00 USD/SF/YR; Full Service Gross; formerly used as a salon"
+  },
+  "R-027": {
+   "t": "10 W Eager St, Baltimore, MD 21201 - Office/Retail/Flex For Lease (CityFeet)",
+   "u": "https://www.cityfeet.com/cont/listing/10-w-eager-st-baltimore-md-21201/cs13527444",
+   "y": "2026",
+   "q": "$15.00 USD/SF/YR; Modified Gross; Flex/Studio space available with exposed brick walls and industrial vibe."
+  },
+  "R-028": {
+   "t": "10 W Eager St, Baltimore, MD 21201 - Office/Retail/Flex For Lease (CityFeet)",
+   "u": "https://www.cityfeet.com/cont/listing/10-w-eager-st-baltimore-md-21201/cs13527444",
+   "y": "2026",
+   "q": "$25.00 USD/SF/YR; Modified Gross; Built out as Standard Retail"
+  },
+  "R-029": {
+   "t": "Mt. Vernon Market Center, 808-830 Guilford Ave - Retail for Lease (CommercialSearch)",
+   "u": "https://www.commercialsearch.com/commercial-property/us/md/baltimore/mt-vernon-market-center/",
+   "y": "2026",
+   "q": "$4,500.00/MO; Modified Gross; Formerly a dance studio. Ideal for any studio, office, or retail."
+  },
+  "R-030": {
+   "t": "Mt. Vernon Market Center, 808-830 Guilford Ave - Retail for Lease (CommercialSearch)",
+   "u": "https://www.commercialsearch.com/commercial-property/us/md/baltimore/mt-vernon-market-center/",
+   "y": "2026",
+   "q": "$1,300.00/MO; NNN; Space Type Restaurant"
+  },
+  "R-031": {
+   "t": "1812 Greenmount Ave, Baltimore, MD 21202 - Office/Retail For Lease (CityFeet)",
+   "u": "https://www.cityfeet.com/cont/listing/1812-greenmount-ave-baltimore-md-21202/cs39269977",
+   "y": "2026",
+   "q": "$16.00 USD/SF/YR; $9,847 USD/MO; retail, office, or medical concepts"
+  },
+  "R-032": {
+   "t": "11 E Mt Royal Avenue - Retail for Lease (CommercialSearch)",
+   "u": "https://www.commercialsearch.com/commercial-property/us/md/baltimore/11-e-mt-royal-avenue/",
+   "y": "2026",
+   "q": "$24.00/SF/YR; NNN; perfect for an office user looking to downsize in space"
+  },
+  "R-033": {
+   "t": "1501 St. Paul Street - Office for Lease (CommercialSearch)",
+   "u": "https://www.commercialsearch.com/commercial-property/us/md/baltimore/1501-st-paul-street/",
+   "y": "2026",
+   "q": "$23.00/SF/YR; Modified Gross"
+  },
+  "R-034": {
+   "t": "902-906 W 36th St, Baltimore, MD 21211 - Retail For Lease (CityFeet)",
+   "u": "https://www.cityfeet.com/cont/listing/902-906-w-36th-st-baltimore-md-21211/cs28155768",
+   "y": "2026",
+   "q": "$45.61 USD/SF/YR; $10,832 USD/MO; Triple Net; Built out as: Bank"
+  },
+  "R-035": {
+   "t": "823 W 36th St - Retail for Lease (CommercialSearch)",
+   "u": "https://www.commercialsearch.com/commercial-property/us/md/baltimore/823-w-36th-st-1/",
+   "y": "2026",
+   "q": "$2,500.00/MO; NNN"
+  },
+  "R-036": {
+   "t": "1125-1131 W. 36th Street - Retail for Lease (CommercialSearch)",
+   "u": "https://www.commercialsearch.com/commercial-property/us/md/baltimore/1125-1131-w-36th-street/",
+   "y": "2026",
+   "q": "1125 W. 36th Street: 481 SF, $39.00/SF/YR, NNN"
+  },
+  "R-037": {
+   "t": "1125-1131 W. 36th Street - Retail for Lease (CommercialSearch)",
+   "u": "https://www.commercialsearch.com/commercial-property/us/md/baltimore/1125-1131-w-36th-street/",
+   "y": "2026",
+   "q": "1129-1131 W. 36th Street: 1,034 SF, $39.00/SF/YR, NNN"
+  },
+  "R-038": {
+   "t": "Co-Balt Workspace, 1014 West 36th Street - Coworking (CommercialSearch)",
+   "u": "https://www.commercialsearch.com/coworking-property/us/md/baltimore/1014-west-36th-street/",
+   "y": "2026",
+   "q": "Private Office: from $499/month"
+  },
+  "R-039": {
+   "t": "711 W 40th St, Baltimore, MD 21211 - Office For Lease (CityFeet)",
+   "u": "https://www.cityfeet.com/cont/listing/711-w-40th-st-baltimore-md-21211/cs13326286",
+   "y": "2026",
+   "q": "3rd Floor Ste 300, 1,493 SF, $32.50 USD/SF/YR, Full Service Gross, Standard Office"
+  },
+  "R-040": {
+   "t": "3106 Elm Ave, Baltimore, MD 21211 - Industrial For Lease (CityFeet)",
+   "u": "https://www.cityfeet.com/cont/listing/3106-elm-ave-baltimore-md-21211/cs33922688",
+   "y": "2026",
+   "q": "$6.00 USD/SF/YR; $7,115 USD/MO; Triple Net"
+  },
+  "R-041": {
+   "t": "6110 Harford Rd, Baltimore, MD 21214 - Retail For Lease (CityFeet)",
+   "u": "https://www.cityfeet.com/cont/listing/6110-harford-rd-baltimore-md-21214/cs41582660",
+   "y": "2026",
+   "q": "$12.00 USD/SF/YR; $1,500 USD/MO; Modified Gross; Built out as: Standard Retail"
+  },
+  "R-042": {
+   "t": "3237 Eastern Ave, Baltimore, MD 21224 - Office For Lease (CityFeet)",
+   "u": "https://www.cityfeet.com/cont/listing/3237-eastern-ave-baltimore-md-21224/cs40861964",
+   "y": "2026",
+   "q": "$22.80 USD/SF/YR; $1,224 USD/MO; Service type: Triple Net"
+  },
+  "R-043": {
+   "t": "4813 Eastern Ave, Baltimore, MD 21224 - Retail For Lease (CityFeet)",
+   "u": "https://www.cityfeet.com/cont/listing/4813-eastern-ave-baltimore-md-21224/cs39238511",
+   "y": "2026",
+   "q": "$16.04 USD/SF/YR; $1,299 USD/MO"
+  },
+  "R-044": {
+   "t": "773 Washington Blvd, Baltimore, MD 21230 - Retail For Lease (CityFeet)",
+   "u": "https://www.cityfeet.com/cont/listing/773-washington-blvd-baltimore-md-21230/cs42277728",
+   "y": "2026",
+   "q": "$25.20 USD/SF/YR; $1,915 USD/MO; Modified Gross; Ideal for Salon, Restaurant, Bar & More"
+  },
+  "R-045": {
+   "t": "803-807 Washington Blvd, Baltimore, MD 21230 - Retail For Lease (CityFeet)",
+   "u": "https://www.cityfeet.com/cont/listing/803-807-washington-blvd-baltimore-md-21230/cs40246566",
+   "y": "2026",
+   "q": "$17.40 USD/SF/YR; $2,900 USD/MO; Triple Net; Existing Hood and Equipment"
+  },
+  "R-046": {
+   "t": "1100 Wicomico St, Baltimore, MD 21230 - Office/Flex/Industrial For Lease (CityFeet)",
+   "u": "https://www.cityfeet.com/cont/listing/1100-wicomico-st-baltimore-md-21230/cs36898502",
+   "y": "2026",
+   "q": "2nd Floor Ste 2F, 1,000-15,000 SF, $6.50 USD/SF/YR, Modified Gross, Flex"
+  },
+  "R-047": {
+   "t": "1100 Wicomico St, Baltimore, MD 21230 - Office/Flex/Industrial For Lease (CityFeet)",
+   "u": "https://www.cityfeet.com/cont/listing/1100-wicomico-st-baltimore-md-21230/cs36898502",
+   "y": "2026",
+   "q": "7th Floor Ste, 1,800-34,200 SF, $10.00 USD/SF/YR, Modified Gross; storage and events are all available"
+  },
+  "R-048": {
+   "t": "1100 Wicomico St, Baltimore, MD 21230 - Office/Flex/Industrial For Lease (CityFeet)",
+   "u": "https://www.cityfeet.com/cont/listing/1100-wicomico-st-baltimore-md-21230/cs36898502",
+   "y": "2026",
+   "q": "3rd Floor Ste Cowork, 25-300 SF, $30.00 USD/SF/YR, Full Service Gross"
+  },
+  "R-049": {
+   "t": "508 S Broadway, Baltimore, MD 21231 - Office/Retail For Lease (CityFeet)",
+   "u": "https://www.cityfeet.com/cont/listing/508-s-broadway-baltimore-md-21231/cs41716981",
+   "y": "2026",
+   "q": "$27.00 USD/SF/YR; $4,509 USD/MO; Triple Net; Standard Retail Space"
+  },
+  "R-050": {
+   "t": "131 S Broadway, Baltimore, MD 21231 - Office/Retail For Lease (CityFeet)",
+   "u": "https://www.cityfeet.com/cont/listing/131-s-broadway-baltimore-md-21231/cs41282526",
+   "y": "2026",
+   "q": "$15.69 USD/SF/YR; $850 USD/MO"
+  },
+  "R-051": {
+   "t": "2001 Fleet Street - Retail for Lease (CommercialSearch)",
+   "u": "https://www.commercialsearch.com/commercial-property/us/md/baltimore/2001-fleet-street/",
+   "y": "2026",
+   "q": "$30.00/SF/YR; Modified Gross; Street Retail"
+  },
+  "R-052": {
+   "t": "William Fell Tavern, 814 S Broadway - Retail for Lease (CommercialSearch)",
+   "u": "https://www.commercialsearch.com/commercial-property/us/md/baltimore/william-fell-tavern/",
+   "y": "2026",
+   "q": "$40.00/SF/YR; NNN; This second-generation restaurant space boasts 3 bars"
+  },
+  "R-053": {
+   "t": "2031 E Fairmount - Restaurant for Lease (CommercialSearch)",
+   "u": "https://www.commercialsearch.com/commercial-property/us/md/baltimore/2031-e-fairmount-1/",
+   "y": "2026",
+   "q": "$16.50/SF/YR; $5,500/mo NNN; free-standing 2nd gen restaurant with a liquor license"
+  },
+  "R-054": {
+   "t": "6124 Belair Rd, Baltimore, MD 21206 - Retail For Lease (CityFeet)",
+   "u": "https://www.cityfeet.com/cont/listing/6124-belair-rd-baltimore-md-21206/cs42397006",
+   "y": "2026",
+   "q": "$18.00 USD/SF/YR; Triple Net; boutique retail and personal services"
+  },
+  "R-055": {
+   "t": "2213 Robb St, Baltimore, MD 21218 - Industrial For Lease (CityFeet)",
+   "u": "https://www.cityfeet.com/cont/listing/2213-robb-st-baltimore-md-21218/cs41892911",
+   "y": "2026",
+   "q": "$5.00 USD/SF/YR; $6,250 USD/MO"
+  },
+  "R-056": {
+   "t": "18455 Livernois Ave, Detroit, MI 48221 - Restaurant For Lease (CityFeet)",
+   "u": "https://www.cityfeet.com/cont/listing/18455-livernois-ave-detroit-mi-48221/cs42204343",
+   "y": "2026",
+   "q": "$20.00 USD/SF/YR; $5,000 USD/MO; Open floor area with high ceiling perfect for private events."
+  },
+  "R-057": {
+   "t": "18900 Livernois Ave, Detroit, MI 48221 - Retail For Lease (CityFeet)",
+   "u": "https://www.cityfeet.com/cont/listing/18900-livernois-ave-detroit-mi-48221/cs41566548",
+   "y": "2026",
+   "q": "$20.00 USD/SF/YR; $9,818 USD/MO; Triple Net; Built out as: Bank"
+  },
+  "R-058": {
+   "t": "19100-19126 Livernois Ave, Detroit, MI 48221 - Retail For Lease (CityFeet)",
+   "u": "https://www.cityfeet.com/cont/listing/19100-19126-livernois-ave-detroit-mi-48221/cs38373935",
+   "y": "2026",
+   "q": "$18.00 USD/SF/YR; $2,625 - $4,455 USD/MO; Modified Gross; New buildout available in a great location"
+  },
+  "R-059": {
+   "t": "4310-4328 Butler St, Pittsburgh, PA 15201 - Retail For Lease (CityFeet)",
+   "u": "https://www.cityfeet.com/cont/listing/4310-4328-butler-st-pittsburgh-pa-15201/cs41722425",
+   "y": "2026",
+   "q": "$12.75 USD/SF/YR; $3,294 USD/MO; Storefront, gallery, office or studio."
+  },
+  "R-060": {
+   "t": "3529 Butler St, Pittsburgh, PA 15201 - Retail For Lease (CityFeet)",
+   "u": "https://www.cityfeet.com/cont/listing/3529-butler-st-pittsburgh-pa-15201/cs22953053",
+   "y": "2026",
+   "q": "$27.50 USD/SF/YR; $8,030 USD/MO; Service type: Plus All Utilities"
+  },
+  "R-061": {
+   "t": "5515 Penn Ave, Pittsburgh, PA 15206 - Office/Retail For Lease (CityFeet)",
+   "u": "https://www.cityfeet.com/cont/listing/5515-penn-ave-pittsburgh-pa-15206/cs27432665",
+   "y": "2026",
+   "q": "$16.50 USD/SF/YR; Modified Gross; Built out as Standard Office"
+  },
+  "R-062": {
+   "t": "1421 H St NE, Washington, DC 20002 - Retail For Lease (CityFeet)",
+   "u": "https://www.cityfeet.com/cont/listing/1421-h-st-ne-washington-dc-20002/cs38579429",
+   "y": "2026",
+   "q": "$31.68 USD/SF/YR; $3,300 USD/MO; Plus All Utilities"
+  },
+  "R-063": {
+   "t": "2228 Martin Luther King Jr Ave SE, Washington, DC 20020 - Retail For Lease (CityFeet)",
+   "u": "https://www.cityfeet.com/cont/listing/2228-martin-luther-king-jr-ave-se-washington-dc-20020/cs38470896",
+   "y": "2026",
+   "q": "$35.00 USD/SF/YR; Triple Net; Stunning fully finished, turn-key restaurant space"
+  },
+  "R-064": {
+   "t": "2228 Martin Luther King Jr Ave SE, Washington, DC 20020 - Retail For Lease (CityFeet)",
+   "u": "https://www.cityfeet.com/cont/listing/2228-martin-luther-king-jr-ave-se-washington-dc-20020/cs38470896",
+   "y": "2026",
+   "q": "$35.00 USD/SF/YR; Triple Net; Former [coffee-chain] space for lease."
+  },
+  "R-065": {
+   "t": "1205 Marion Barry Ave SE, Washington, DC 20020 - Office/Retail For Lease (CityFeet)",
+   "u": "https://www.cityfeet.com/cont/listing/1205-marion-barry-ave-se-washington-dc-20020/cs37508807",
+   "y": "2026",
+   "q": "$45.00 USD/SF/YR; $5,505 USD/MO; Full Service Gross"
+  },
+  "R-066": {
+   "t": "1209 Marion Barry Ave SE, Washington, DC 20020 - Office For Lease (CityFeet)",
+   "u": "https://www.cityfeet.com/cont/listing/1209-marion-barry-ave-se-washington-dc-20020/cs37510055",
+   "y": "2026",
+   "q": "$50.00 USD/SF/YR; Full Service Gross; Ideal For: Nonprofit organization, government contractor, community health services"
+  },
+  "R-067": {
+   "t": "118-126 E 47th St, Chicago, IL 60653 - Retail For Lease (CityFeet)",
+   "u": "https://www.cityfeet.com/cont/listing/118-126-e-47th-st-chicago-il-60653/cs41733895",
+   "y": "2026",
+   "q": "1st Floor Ste 118, 1,628 SF, $18.00 USD/SF/YR, Triple Net"
+  },
+  "R-068": {
+   "t": "118-126 E 47th St, Chicago, IL 60653 - Retail For Lease (CityFeet)",
+   "u": "https://www.cityfeet.com/cont/listing/118-126-e-47th-st-chicago-il-60653/cs41733895",
+   "y": "2026",
+   "q": "1st Floor Ste 126, 4,335 SF, $18.00 USD/SF/YR, Triple Net"
+  },
+  "R-069": {
+   "t": "4600-4602 S Michigan Ave, Chicago, IL 60653 - Office/Retail/Flex For Lease (CityFeet)",
+   "u": "https://www.cityfeet.com/cont/listing/4600-4602-s-michigan-ave-chicago-il-60653/cs40421860",
+   "y": "2026",
+   "q": "5th Floor Ste 59, Flex, 455 SF, $55.00 USD/SF/YR, Full Service Gross; Full Service Commercial Kitchen for Lease"
+  },
+  "R-070": {
+   "t": "4600-4602 S Michigan Ave, Chicago, IL 60653 - Office/Retail/Flex For Lease (CityFeet)",
+   "u": "https://www.cityfeet.com/cont/listing/4600-4602-s-michigan-ave-chicago-il-60653/cs40421860",
+   "y": "2026",
+   "q": "1st Floor Ste 58, Retail, 2,900 SF, $20.00 USD/SF/YR, Triple Net; perfect for health and wellness uses"
+  },
+  "R-071": {
+   "t": "5443-5445 Germantown Ave, Philadelphia, PA 19144 - Retail (CityFeet)",
+   "u": "https://www.cityfeet.com/cont/listing/5443-5445-germantown-ave-philadelphia-pa-19144/cs41282227",
+   "y": "2026",
+   "q": "$3,200/mo NNN; Currently a cafe/coffee shop"
+  },
+  "R-072": {
+   "t": "5443-5445 Germantown Ave, Philadelphia, PA 19144 - Retail (CityFeet)",
+   "u": "https://www.cityfeet.com/cont/listing/5443-5445-germantown-ave-philadelphia-pa-19144/cs41282227",
+   "y": "2026",
+   "q": "$2,200/mo NNN; lends itself ideally for restaurant/cafe users, daycares, general retail users, and office users"
+  },
+  "R-073": {
+   "t": "5847-5851 Germantown Ave, Philadelphia, PA 19144 - Retail For Lease (CityFeet)",
+   "u": "https://www.cityfeet.com/cont/listing/5847-5851-germantown-ave-philadelphia-pa-19144/cs40061212",
+   "y": "2026",
+   "q": "$8.00/SF GROSS plus electric; $3,333 USD/MO; raw warehouse/flex space"
+  },
+  "R-074": {
+   "t": "5607 Germantown Ave, Philadelphia, PA 19144 - Retail/Flex For Lease (CityFeet)",
+   "u": "https://www.cityfeet.com/cont/listing/5607-germantown-ave-philadelphia-pa-19144/cs25253598",
+   "y": "2026",
+   "q": "2nd Floor Ste, 15,000 SF, $6.00 USD/SF/YR, Modified Gross; community centers, religious assembly, cultural exhibits"
+  },
+  "R-075": {
+   "t": "1029 OC Haley Blvd leasing flyer (Corporate Realty, 12/2024)",
+   "u": "https://corp-realty.com/wp-content/uploads/2024/12/1029-OC-Haley-Blvd-Flyer.pdf",
+   "y": "2024",
+   "q": "$20.00/rsf, NNN; ideal for uses such as retail, showroom, fitness, food service, or office"
+  },
+  "R-076": {
+   "t": "Wyman Towers, 3100 Saint Paul St, Baltimore, MD - Apartments (Zumper)",
+   "u": "https://www.zumper.com/apartment-buildings/p106231/wyman-towers-llc-charles-village-baltimore-md",
+   "y": "2026",
+   "q": "1BR/1.0BA $1,400 /mo; 900 sqft"
+  },
+  "R-077": {
+   "t": "3033 Barclay St, Baltimore, MD 21218 - House for Rent (Zumper)",
+   "u": "https://www.zumper.com/address/3033-barclay-st-baltimore-md-21218-usa",
+   "y": "2026",
+   "q": "this 3-bedrooms monthly rent price of $2,695; 1,050 sq ft"
+  },
+  "R-078": {
+   "t": "The Woodrow at 300 E 30th Street, Baltimore, MD - Apartments (Zumper)",
+   "u": "https://www.zumper.com/apartment-buildings/p52231/300-e-31st-st-abell-baltimore-md",
+   "y": "2026",
+   "q": "3BR/1.0BA $3,150 /mo"
+  },
+  "R-079": {
+   "t": "213 E 33rd St Baltimore MD 21218 - Johns Hopkins Off-Campus Housing",
+   "u": "https://offcampushousing.jhu.edu/housing/property/213-e-33rd-st-baltimore-md-21218/ocph4sksj0",
+   "y": "2026",
+   "q": "$3,300; 3,255Sq. Ft.; 4 generously sized bedrooms"
+  },
+  "B-001": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2272BASIC (Accommodation and Food Services summary statistics), Baltimore city, MD",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2272BASIC&g=050XX00US24510",
+   "y": "2022",
+   "q": "NAICS2022=722511 Full-Service Restaurants; ESTAB=406; RCPTOT=657081 ($1,000)"
+  },
+  "B-002": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2272BASIC (Accommodation and Food Services summary statistics), Baltimore city, MD",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2272BASIC&g=050XX00US24510",
+   "y": "2022",
+   "q": "NAICS2022=722511 Full-Service Restaurants; ESTAB=406; EMP=8446"
+  },
+  "B-003": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2272BASIC (Accommodation and Food Services summary statistics), Baltimore city, MD",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2272BASIC&g=050XX00US24510",
+   "y": "2022",
+   "q": "NAICS2022=722511 Full-Service Restaurants; RCPTOT=657081; PAYANN=225520 ($1,000)"
+  },
+  "B-004": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2272BASIC (Accommodation and Food Services summary statistics), United States",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2272BASIC&g=010XX00US",
+   "y": "2022",
+   "q": "NAICS2022=722511 Full-Service Restaurants; ESTAB=254201; RCPTOT=372803601 ($1,000)"
+  },
+  "B-005": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2272BASIC (Accommodation and Food Services summary statistics), United States",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2272BASIC&g=010XX00US",
+   "y": "2022",
+   "q": "NAICS2022=722511 Full-Service Restaurants; ESTAB=254201; EMP=5146760"
+  },
+  "B-006": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2272BASIC (Accommodation and Food Services summary statistics), United States",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2272BASIC&g=010XX00US",
+   "y": "2022",
+   "q": "NAICS2022=722511 Full-Service Restaurants; RCPTOT=372803601; PAYANN=128316838 ($1,000)"
+  },
+  "B-007": {
+   "t": "National Restaurant Association, 'Restaurant occupancy costs were more than 5% of sales in 2024' (Restaurant Economic Insights, 3 Sep 2025; ",
+   "u": "https://restaurant.org/research-and-media/research/restaurant-economic-insights/analysis-commentary/restaurant-occupancy-costs-were-more-than-5-of-sales-in-2024/",
+   "y": "2024",
+   "q": "occupancy costs represented a median of 5.7% of sales in 2024"
+  },
+  "B-008": {
+   "t": "National Restaurant Association, 'Restaurant occupancy costs were more than 5% of sales in 2024' (Restaurant Economic Insights, 3 Sep 2025; ",
+   "u": "https://restaurant.org/research-and-media/research/restaurant-economic-insights/analysis-commentary/restaurant-occupancy-costs-were-more-than-5-of-sales-in-2024/",
+   "y": "2024",
+   "q": "a median of 6.0% of sales in 2024"
+  },
+  "B-009": {
+   "t": "National Restaurant Association press release, 'New resource from National Restaurant Association provides insights into operational realiti",
+   "u": "https://restaurant.org/research-and-media/media/press-releases/new-resource-from-national-restaurant-association-provides-insights-into-operational-realities/",
+   "y": "2024",
+   "q": "payroll and benefits representing a median of 36.5 percent of sales in the fullservice segment"
+  },
+  "B-010": {
+   "t": "National Restaurant Association press release, 'New resource from National Restaurant Association provides insights into operational realiti",
+   "u": "https://restaurant.org/research-and-media/media/press-releases/new-resource-from-national-restaurant-association-provides-insights-into-operational-realities/",
+   "y": "2024",
+   "q": "Fullservice restaurants reported a median income before taxes of 2.8 percent of sales"
+  },
+  "B-011": {
+   "t": "Withum, 'What's on the Menu in Restaurant Valuations? A Recipe for Managing SBA Lending Risk' (4 Aug 2025)",
+   "u": "https://www.withum.com/resources/whats-on-the-menu-in-restaurant-valuations-a-recipe-for-managing-sba-lending-risk/",
+   "y": "2025",
+   "q": "rental rates should target between 6-10% of gross sales"
+  },
+  "B-012": {
+   "t": "Withum, 'What's on the Menu in Restaurant Valuations? A Recipe for Managing SBA Lending Risk' (4 Aug 2025)",
+   "u": "https://www.withum.com/resources/whats-on-the-menu-in-restaurant-valuations-a-recipe-for-managing-sba-lending-risk/",
+   "y": "2025",
+   "q": "Labor typically accounts for 25 to 35% of gross sales"
+  },
+  "B-013": {
+   "t": "Restaurant Business, Advice Guy: 'How to figure out prime cost & occupancy percentages' (undated)",
+   "u": "https://restaurantbusinessonline.com/advice-guy/how-figure-out-prime-cost-occupancy-percentages",
+   "y": "n.d.",
+   "q": "occupancy not to exceed 8-10% of sales"
+  },
+  "B-014": {
+   "t": "Gruen Gruen + Associates for City of Boulder, 'Retail Market Research and Strategic Policy Recommendations' (Dec 2019)",
+   "u": "https://bouldercolorado.gov/media/1262/download",
+   "y": "2017",
+   "q": "\"Food Services and Drinking Places\" incur occupancy costs averaging about nine percent of gross sales."
+  },
+  "B-015": {
+   "t": "Gruen Gruen + Associates for City of Boulder, 'Retail Market Research and Strategic Policy Recommendations' (Dec 2019)",
+   "u": "https://bouldercolorado.gov/media/1262/download",
+   "y": "2019",
+   "q": "One-half of food service respondents indicated annual sales performance exceeding $650 per square foot."
+  },
+  "B-016": {
+   "t": "Gruen Gruen + Associates for City of Boulder, 'Retail Market Research and Strategic Policy Recommendations' (Dec 2019)",
+   "u": "https://bouldercolorado.gov/media/1262/download",
+   "y": "2019",
+   "q": "Average Size (in Square Feet) 3,100 2,600 2,800"
+  },
+  "B-017": {
+   "t": "Community Land Use + Economics Group for Southwest Baltimore Partnership, 'Southwest Baltimore Commercial Development Strategy' (Jun 2014)",
+   "u": "https://swpbal.org/wp-content/uploads/2015/11/Southwest-Baltimore-retail-development-strategy-1.pdf",
+   "y": "2014",
+   "q": "Typical sales/SF $600 400"
+  },
+  "B-018": {
+   "t": "'2021 Restaurant Benchmarks' webinar slides (Bruce County, Ontario business webinar series, 9 Oct 2021; producer not named)",
+   "u": "https://business.brucecounty.on.ca/hubfs/Fall%202021%20Webinars/Oct%209th-%202021%20Restaurant%20Benchmarks.pdf",
+   "y": "2021",
+   "q": "Occupancy: 10% of total sales (Ideally 6-7%)"
+  },
+  "B-019": {
+   "t": "'2021 Restaurant Benchmarks' webinar slides (Bruce County, Ontario business webinar series, 9 Oct 2021; producer not named)",
+   "u": "https://business.brucecounty.on.ca/hubfs/Fall%202021%20Webinars/Oct%209th-%202021%20Restaurant%20Benchmarks.pdf",
+   "y": "2021",
+   "q": "$300 - $400/square foot USD = 5% - 10% of sales net-profit"
+  },
+  "B-020": {
+   "t": "Form 10-K of a daytime breakfast-and-lunch restaurant chain, fiscal 2025 (filed 24 Feb 2026)",
+   "u": "https://www.sec.gov/Archives/edgar/data/1789940/000178994026000014/fwrg-20251228.htm",
+   "y": "2025",
+   "q": "average unit volume of $2.3 million per restaurant in 2025"
+  },
+  "B-021": {
+   "t": "Q4/FY2025 results of a daytime breakfast-and-lunch restaurant chain, Form 8-K/A Exhibit 99.1 (24 Feb 2026)",
+   "u": "https://www.sec.gov/Archives/edgar/data/1789940/000178994026000017/exhibit991q42025corrected.htm",
+   "y": "2025",
+   "q": "Occupancy expenses 100,788; Restaurant sales 1,212,173 (fiscal 2025, $000)"
+  },
+  "B-022": {
+   "t": "Q4/FY2025 results of a daytime breakfast-and-lunch restaurant chain, Form 8-K/A Exhibit 99.1 (24 Feb 2026)",
+   "u": "https://www.sec.gov/Archives/edgar/data/1789940/000178994026000017/exhibit991q42025corrected.htm",
+   "y": "2025",
+   "q": "Labor and other related expenses 405,544; Restaurant sales 1,212,173 (fiscal 2025, $000)"
+  },
+  "B-023": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2272BASIC (Accommodation and Food Services summary statistics), Baltimore city, MD",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2272BASIC&g=050XX00US24510",
+   "y": "2022",
+   "q": "NAICS2022=722513 Limited-Service Restaurants; ESTAB=634; RCPTOT=514587 ($1,000)"
+  },
+  "B-024": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2272BASIC (Accommodation and Food Services summary statistics), Baltimore city, MD",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2272BASIC&g=050XX00US24510",
+   "y": "2022",
+   "q": "NAICS2022=722513 Limited-Service Restaurants; ESTAB=634; EMP=5735"
+  },
+  "B-025": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2272BASIC (Accommodation and Food Services summary statistics), Baltimore city, MD",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2272BASIC&g=050XX00US24510",
+   "y": "2022",
+   "q": "NAICS2022=722513 Limited-Service Restaurants; RCPTOT=514587; PAYANN=122415 ($1,000)"
+  },
+  "B-026": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2272BASIC (Accommodation and Food Services summary statistics), United States",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2272BASIC&g=010XX00US",
+   "y": "2022",
+   "q": "NAICS2022=722513 Limited-Service Restaurants; ESTAB=271243; RCPTOT=358864144 ($1,000)"
+  },
+  "B-027": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2272BASIC (Accommodation and Food Services summary statistics), United States",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2272BASIC&g=010XX00US",
+   "y": "2022",
+   "q": "NAICS2022=722513 Limited-Service Restaurants; ESTAB=271243; EMP=4807245"
+  },
+  "B-028": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2272BASIC (Accommodation and Food Services summary statistics), United States",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2272BASIC&g=010XX00US",
+   "y": "2022",
+   "q": "NAICS2022=722513 Limited-Service Restaurants; RCPTOT=358864144; PAYANN=93752819 ($1,000)"
+  },
+  "B-029": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2272BASIC (Accommodation and Food Services summary statistics), Baltimore city, MD",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2272BASIC&g=050XX00US24510",
+   "y": "2022",
+   "q": "NAICS2022=722515 Snack and Nonalcoholic Beverage Bars; ESTAB=120; RCPTOT=82459 ($1,000)"
+  },
+  "B-030": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2272BASIC (Accommodation and Food Services summary statistics), Baltimore city, MD",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2272BASIC&g=050XX00US24510",
+   "y": "2022",
+   "q": "NAICS2022=722515 Snack and Nonalcoholic Beverage Bars; ESTAB=120; EMP=1219"
+  },
+  "B-031": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2272BASIC (Accommodation and Food Services summary statistics), United States",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2272BASIC&g=010XX00US",
+   "y": "2022",
+   "q": "NAICS2022=722515 Snack and Nonalcoholic Beverage Bars; ESTAB=78110; RCPTOT=62769408 ($1,000)"
+  },
+  "B-032": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2272BASIC (Accommodation and Food Services summary statistics), United States",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2272BASIC&g=010XX00US",
+   "y": "2022",
+   "q": "NAICS2022=722515 Snack and Nonalcoholic Beverage Bars; ESTAB=78110; EMP=982117"
+  },
+  "B-033": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2272BASIC (Accommodation and Food Services summary statistics), United States",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2272BASIC&g=010XX00US",
+   "y": "2022",
+   "q": "NAICS2022=722515 Snack and Nonalcoholic Beverage Bars; RCPTOT=62769408; PAYANN=17106098 ($1,000)"
+  },
+  "B-034": {
+   "t": "National Restaurant Association, 'Restaurant occupancy costs were more than 5% of sales in 2024' (Restaurant Economic Insights, 3 Sep 2025; ",
+   "u": "https://restaurant.org/research-and-media/research/restaurant-economic-insights/analysis-commentary/restaurant-occupancy-costs-were-more-than-5-of-sales-in-2024/",
+   "y": "2024",
+   "q": "Occupancy costs represented a median of 5.2% of sales among limited-service survey respondents."
+  },
+  "B-035": {
+   "t": "National Restaurant Association, 'Restaurant occupancy costs were more than 5% of sales in 2024' (Restaurant Economic Insights, 3 Sep 2025; ",
+   "u": "https://restaurant.org/research-and-media/research/restaurant-economic-insights/analysis-commentary/restaurant-occupancy-costs-were-more-than-5-of-sales-in-2024/",
+   "y": "2024",
+   "q": "were a median of 6.0% of sales in 2024"
+  },
+  "B-036": {
+   "t": "National Restaurant Association, 'New report provides operational data on restaurants' (28 Aug 2024; 2024 Restaurant Operations Data Abstrac",
+   "u": "https://restaurant.org/research-and-media/research/restaurant-economic-insights/analysis-commentary/new-report-provides-operational-data-on-restaurants/",
+   "y": "2022",
+   "q": "represented a median of 34.0% of sales among limited-service survey respondents"
+  },
+  "B-037": {
+   "t": "National Restaurant Association press release, 'New resource from National Restaurant Association provides insights into operational realiti",
+   "u": "https://restaurant.org/research-and-media/media/press-releases/new-resource-from-national-restaurant-association-provides-insights-into-operational-realities/",
+   "y": "2024",
+   "q": "limited-service restaurants reported a median income before taxes of 4.0 percent"
+  },
+  "B-038": {
+   "t": "Coffee Shop Keys newsletter (Justin Miller), 'The 2025 Independent Coffee Shop Industry Report' (10 Jun 2025)",
+   "u": "https://coffee-shop-keys.beehiiv.com/p/the-2025-independent-coffee-shop-industry-report-subscriber-discount-inside",
+   "y": "2024",
+   "q": "The average profit margin across respondents is 13.8%, with most shops landing between 10–25%."
+  },
+  "B-039": {
+   "t": "'2021 Restaurant Benchmarks' webinar slides (Bruce County, Ontario business webinar series, 9 Oct 2021; producer not named)",
+   "u": "https://business.brucecounty.on.ca/hubfs/Fall%202021%20Webinars/Oct%209th-%202021%20Restaurant%20Benchmarks.pdf",
+   "y": "2021",
+   "q": "$400 - $500/square foot USD"
+  },
+  "B-040": {
+   "t": "Q4/FY2025 results of a drive-thru coffee chain, Form 8-K Exhibit 99.1 (12 Feb 2026)",
+   "u": "https://www.sec.gov/Archives/edgar/data/1866581/000186658126000003/a2025-q4_ex991.htm",
+   "y": "2025",
+   "q": "delivering record AUVs of $2.1 million in 2025"
+  },
+  "B-041": {
+   "t": "Form 10-K of a drive-thru coffee chain, fiscal 2025 (filed 13 Feb 2026)",
+   "u": "https://www.sec.gov/Archives/edgar/data/1866581/000186658126000006/bros-20251231.htm",
+   "y": "2025",
+   "q": "Size: ~800-1,000 square feet"
+  },
+  "B-042": {
+   "t": "Q4/FY2025 results of a drive-thru coffee chain, Form 8-K Exhibit 99.1 (12 Feb 2026)",
+   "u": "https://www.sec.gov/Archives/edgar/data/1866581/000186658126000003/a2025-q4_ex991.htm",
+   "y": "2025",
+   "q": "Systemwide AUV $2,115 ($000); prototype ~800-1,000 square feet"
+  },
+  "B-043": {
+   "t": "Q4/FY2025 results of a drive-thru coffee chain, Form 8-K Exhibit 99.1 (12 Feb 2026)",
+   "u": "https://www.sec.gov/Archives/edgar/data/1866581/000186658126000003/a2025-q4_ex991.htm",
+   "y": "2025",
+   "q": "Occupancy and other costs 251,106; Company-operated shops revenue 1,509,329 ($000, FY2025)"
+  },
+  "B-044": {
+   "t": "Q4/FY2025 results of a drive-thru coffee chain, Form 8-K Exhibit 99.1 (12 Feb 2026)",
+   "u": "https://www.sec.gov/Archives/edgar/data/1866581/000186658126000003/a2025-q4_ex991.htm",
+   "y": "2025",
+   "q": "Labor costs 405,932; Company-operated shops revenue 1,509,329 ($000, FY2025)"
+  },
+  "B-045": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2244BASIC (Retail Trade summary statistics), Baltimore city, MD",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2244BASIC&g=050XX00US24510",
+   "y": "2022",
+   "q": "NAICS2022=445291 Baked Goods Retailers; ESTAB=8; RCPTOT=1417 ($1,000)"
+  },
+  "B-046": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2244BASIC (Retail Trade summary statistics), Baltimore city, MD",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2244BASIC&g=050XX00US24510",
+   "y": "2022",
+   "q": "NAICS2022=445291 Baked Goods Retailers; ESTAB=8; EMP=16"
+  },
+  "B-047": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2244BASIC (Retail Trade summary statistics), Baltimore city, MD",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2244BASIC&g=050XX00US24510",
+   "y": "2022",
+   "q": "NAICS2022=445291 Baked Goods Retailers; RCPTOT=1417; PAYANN=479 ($1,000)"
+  },
+  "B-048": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2244BASIC (Retail Trade summary statistics), United States",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2244BASIC&g=010XX00US",
+   "y": "2022",
+   "q": "NAICS2022=445291 Baked Goods Retailers; ESTAB=2616; RCPTOT=1765000 ($1,000)"
+  },
+  "B-049": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2244BASIC (Retail Trade summary statistics), United States",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2244BASIC&g=010XX00US",
+   "y": "2022",
+   "q": "NAICS2022=445291 Baked Goods Retailers; ESTAB=2616; EMP=17312"
+  },
+  "B-050": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2244BASIC (Retail Trade summary statistics), United States",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2244BASIC&g=010XX00US",
+   "y": "2022",
+   "q": "NAICS2022=445291 Baked Goods Retailers; RCPTOT=1765000; PAYANN=412234 ($1,000)"
+  },
+  "B-051": {
+   "t": "Gruen Gruen + Associates for City of Boulder, 'Retail Market Research and Strategic Policy Recommendations' (Dec 2019)",
+   "u": "https://bouldercolorado.gov/media/1262/download",
+   "y": "2017",
+   "q": "food and beverage stores and general merchandise retailers averaged about four percent."
+  },
+  "B-052": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2244BASIC (Retail Trade summary statistics), Baltimore city, MD",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2244BASIC&g=050XX00US24510",
+   "y": "2022",
+   "q": "NAICS2022=458110 Clothing and Clothing Accessories Retailers; ESTAB=115; RCPTOT=158501 ($1,000)"
+  },
+  "B-053": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2244BASIC (Retail Trade summary statistics), Baltimore city, MD",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2244BASIC&g=050XX00US24510",
+   "y": "2022",
+   "q": "NAICS2022=458110 Clothing and Clothing Accessories Retailers; ESTAB=115; EMP=1174"
+  },
+  "B-054": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2244BASIC (Retail Trade summary statistics), Baltimore city, MD",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2244BASIC&g=050XX00US24510",
+   "y": "2022",
+   "q": "NAICS2022=458110 Clothing and Clothing Accessories Retailers; RCPTOT=158501; PAYANN=24018 ($1,000)"
+  },
+  "B-055": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2244BASIC (Retail Trade summary statistics), United States",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2244BASIC&g=010XX00US",
+   "y": "2022",
+   "q": "NAICS2022=458110 Clothing and Clothing Accessories Retailers; ESTAB=90230; RCPTOT=284788056 ($1,000)"
+  },
+  "B-056": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2244BASIC (Retail Trade summary statistics), United States",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2244BASIC&g=010XX00US",
+   "y": "2022",
+   "q": "NAICS2022=458110 Clothing and Clothing Accessories Retailers; ESTAB=90230; EMP=1226803"
+  },
+  "B-057": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2244BASIC (Retail Trade summary statistics), Baltimore city, MD",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2244BASIC&g=050XX00US24510",
+   "y": "2022",
+   "q": "NAICS2022=459420 Gift, Novelty, and Souvenir Retailers; ESTAB=25; RCPTOT=16261 ($1,000)"
+  },
+  "B-058": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2244BASIC (Retail Trade summary statistics), Baltimore city, MD",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2244BASIC&g=050XX00US24510",
+   "y": "2022",
+   "q": "NAICS2022=459420 Gift, Novelty, and Souvenir Retailers; ESTAB=25; EMP=109"
+  },
+  "B-059": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2244BASIC (Retail Trade summary statistics), Baltimore city, MD",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2244BASIC&g=050XX00US24510",
+   "y": "2022",
+   "q": "NAICS2022=459420 Gift, Novelty, and Souvenir Retailers; RCPTOT=16261; PAYANN=2058 ($1,000)"
+  },
+  "B-060": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2244BASIC (Retail Trade summary statistics), United States",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2244BASIC&g=010XX00US",
+   "y": "2022",
+   "q": "NAICS2022=459420 Gift, Novelty, and Souvenir Retailers; ESTAB=21598; RCPTOT=24452416 ($1,000)"
+  },
+  "B-061": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2244BASIC (Retail Trade summary statistics), United States",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2244BASIC&g=010XX00US",
+   "y": "2022",
+   "q": "NAICS2022=459420 Gift, Novelty, and Souvenir Retailers; ESTAB=21598; EMP=138463"
+  },
+  "B-062": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2244BASIC (Retail Trade summary statistics), United States",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2244BASIC&g=010XX00US",
+   "y": "2022",
+   "q": "NAICS2022=459420 Gift, Novelty, and Souvenir Retailers; RCPTOT=24452416; PAYANN=3631334 ($1,000)"
+  },
+  "B-063": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2244BASIC (Retail Trade summary statistics), Baltimore city, MD",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2244BASIC&g=050XX00US24510",
+   "y": "2022",
+   "q": "NAICS2022=459210 Book Retailers and News Dealers; ESTAB=20; RCPTOT=27968 ($1,000)"
+  },
+  "B-064": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2244BASIC (Retail Trade summary statistics), Baltimore city, MD",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2244BASIC&g=050XX00US24510",
+   "y": "2022",
+   "q": "NAICS2022=459210 Book Retailers and News Dealers; ESTAB=20; EMP=175"
+  },
+  "B-065": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2244BASIC (Retail Trade summary statistics), Baltimore city, MD",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2244BASIC&g=050XX00US24510",
+   "y": "2022",
+   "q": "NAICS2022=459210 Book Retailers and News Dealers; RCPTOT=27968; PAYANN=3833 ($1,000)"
+  },
+  "B-066": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2244BASIC (Retail Trade summary statistics), United States",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2244BASIC&g=010XX00US",
+   "y": "2022",
+   "q": "NAICS2022=459210 Book Retailers and News Dealers; ESTAB=7301; RCPTOT=15385017 ($1,000)"
+  },
+  "B-067": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2244BASIC (Retail Trade summary statistics), United States",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2244BASIC&g=010XX00US",
+   "y": "2022",
+   "q": "NAICS2022=459210 Book Retailers and News Dealers; ESTAB=7301; EMP=64060"
+  },
+  "B-068": {
+   "t": "Gruen Gruen + Associates for City of Boulder, 'Retail Market Research and Strategic Policy Recommendations' (Dec 2019)",
+   "u": "https://bouldercolorado.gov/media/1262/download",
+   "y": "2017",
+   "q": "clothing and accessories, home furnishing, and sporting goods/hobby stores was closer to nine percent."
+  },
+  "B-069": {
+   "t": "Community Land Use + Economics Group for Southwest Baltimore Partnership, 'Southwest Baltimore Commercial Development Strategy' (Jun 2014)",
+   "u": "https://swpbal.org/wp-content/uploads/2015/11/Southwest-Baltimore-retail-development-strategy-1.pdf",
+   "y": "2014",
+   "q": "Successful retail businesses typically spend between 6-12 percent of their gross sales on rent."
+  },
+  "B-070": {
+   "t": "American Booksellers Association (Bookweb), '2005 ABACUS Report Offers Insight Into Independent Bookstore Operations'",
+   "u": "https://bookweb.org/node/20527",
+   "y": "2004",
+   "q": "Occupancy expense table, 2005 column: 8.95%"
+  },
+  "B-071": {
+   "t": "American Booksellers Association (Bookweb), '2005 ABACUS Report Offers Insight Into Independent Bookstore Operations'",
+   "u": "https://bookweb.org/node/20527",
+   "y": "2004",
+   "q": "Payroll expense table, 2005 column: 21.40%"
+  },
+  "B-072": {
+   "t": "American Booksellers Association (Bookweb), '2005 ABACUS Report Offers Insight Into Independent Bookstore Operations'",
+   "u": "https://bookweb.org/node/20527",
+   "y": "2004",
+   "q": "Gross profit margin, 2005 column: 41.45%"
+  },
+  "B-073": {
+   "t": "American Booksellers Association (Bookweb), '2005 ABACUS Report Offers Insight Into Independent Bookstore Operations'",
+   "u": "https://bookweb.org/node/20527",
+   "y": "2004",
+   "q": "Net income, entire survey group, 2005 column: -0.72%"
+  },
+  "B-074": {
+   "t": "Gifts & Decorative Accessories, 'Today's Gift Retailer' (GDA Staff, 1 Jun 2002)",
+   "u": "https://www.giftsanddec.com/business-news/todays-gift-retailer",
+   "y": "2001",
+   "q": "allocate a median of 16 percent of annual gross sales to payroll"
+  },
+  "B-075": {
+   "t": "Gifts & Decorative Accessories, 'Today's Gift Retailer' (GDA Staff, 1 Jun 2002)",
+   "u": "https://www.giftsanddec.com/business-news/todays-gift-retailer",
+   "y": "2001",
+   "q": "2,000 square feet or smaller"
+  },
+  "B-076": {
+   "t": "Gifts & Decorative Accessories, 'Today's Gift Retailer' (GDA Staff, 1 Jun 2002)",
+   "u": "https://www.giftsanddec.com/business-news/todays-gift-retailer",
+   "y": "2001",
+   "q": "between $100,000 and $1 million"
+  },
+  "B-077": {
+   "t": "Gifts & Decorative Accessories, 'Today's Gift Retailer' (GDA Staff, 1 Jun 2002)",
+   "u": "https://www.giftsanddec.com/business-news/todays-gift-retailer",
+   "y": "2001",
+   "q": "calculated by multiplying the product cost by two"
+  },
+  "B-078": {
+   "t": "Gruen Gruen + Associates for City of Boulder, 'Retail Market Research and Strategic Policy Recommendations' (Dec 2019)",
+   "u": "https://bouldercolorado.gov/media/1262/download",
+   "y": "2019",
+   "q": "$450-$649 per square foot 5 7 12 32.4"
+  },
+  "B-079": {
+   "t": "Gruen Gruen + Associates for City of Boulder, 'Retail Market Research and Strategic Policy Recommendations' (Dec 2019)",
+   "u": "https://bouldercolorado.gov/media/1262/download",
+   "y": "2019",
+   "q": "Average Size (in Square Feet) 3,100 2,600 2,800"
+  },
+  "B-080": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2244BASIC (Retail Trade summary statistics), Baltimore city, MD",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2244BASIC&g=050XX00US24510",
+   "y": "2022",
+   "q": "NAICS2022=449110 Furniture Retailers; ESTAB=19; RCPTOT=14439 ($1,000)"
+  },
+  "B-081": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2244BASIC (Retail Trade summary statistics), Baltimore city, MD",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2244BASIC&g=050XX00US24510",
+   "y": "2022",
+   "q": "NAICS2022=449110 Furniture Retailers; ESTAB=19; EMP=79"
+  },
+  "B-082": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2244BASIC (Retail Trade summary statistics), United States",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2244BASIC&g=010XX00US",
+   "y": "2022",
+   "q": "NAICS2022=449110 Furniture Retailers; ESTAB=23841; RCPTOT=91495919 ($1,000)"
+  },
+  "B-083": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2244BASIC (Retail Trade summary statistics), United States",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2244BASIC&g=010XX00US",
+   "y": "2022",
+   "q": "NAICS2022=449110 Furniture Retailers; ESTAB=23841; EMP=214081"
+  },
+  "B-084": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2244BASIC (Retail Trade summary statistics), United States",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2244BASIC&g=010XX00US",
+   "y": "2022",
+   "q": "NAICS2022=449110 Furniture Retailers; RCPTOT=91495919; PAYANN=10798437 ($1,000)"
+  },
+  "B-085": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2244BASIC (Retail Trade summary statistics), Baltimore city, MD",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2244BASIC&g=050XX00US24510",
+   "y": "2022",
+   "q": "NAICS2022=4491 Furniture and Home Furnishings Retailers; ESTAB=39; RCPTOT=28917 ($1,000)"
+  },
+  "B-086": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2244BASIC (Retail Trade summary statistics), Baltimore city, MD",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2244BASIC&g=050XX00US24510",
+   "y": "2022",
+   "q": "NAICS2022=4491 Furniture and Home Furnishings Retailers; ESTAB=39; EMP=196"
+  },
+  "B-087": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2244BASIC (Retail Trade summary statistics), United States",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2244BASIC&g=010XX00US",
+   "y": "2022",
+   "q": "NAICS2022=449129 All Other Home Furnishings Retailers; ESTAB=14043; RCPTOT=64851987 ($1,000)"
+  },
+  "B-088": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2244BASIC (Retail Trade summary statistics), United States",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2244BASIC&g=010XX00US",
+   "y": "2022",
+   "q": "NAICS2022=449129 All Other Home Furnishings Retailers; ESTAB=14043; EMP=204440"
+  },
+  "B-089": {
+   "t": "Gruen Gruen + Associates for City of Boulder, 'Retail Market Research and Strategic Policy Recommendations' (Dec 2019)",
+   "u": "https://bouldercolorado.gov/media/1262/download",
+   "y": "2017",
+   "q": "clothing and accessories, home furnishing, and sporting goods/hobby stores was closer to nine percent."
+  },
+  "B-090": {
+   "t": "Form 10-K of a furniture store chain, fiscal 2025 (filed 26 Feb 2026)",
+   "u": "https://www.sec.gov/Archives/edgar/data/216085/000162828026012199/hvt-20251231.htm",
+   "y": "2025",
+   "q": "Sales per WAVG retail square foot: $167 (2025)"
+  },
+  "B-091": {
+   "t": "Form 10-K of a furniture store chain, fiscal 2025 (filed 26 Feb 2026)",
+   "u": "https://www.sec.gov/Archives/edgar/data/216085/000162828026012199/hvt-20251231.htm",
+   "y": "2025",
+   "q": "with the average being approximately 35,000 square feet"
+  },
+  "B-092": {
+   "t": "Form 10-K of a furniture store chain, fiscal 2025 (filed 26 Feb 2026)",
+   "u": "https://www.sec.gov/Archives/edgar/data/216085/000162828026012199/hvt-20251231.htm",
+   "y": "2025",
+   "q": "maintained a gross profit margin of 60.7%"
+  },
+  "B-093": {
+   "t": "Form 10-K of a furniture store chain, fiscal 2025 (filed 26 Feb 2026)",
+   "u": "https://www.sec.gov/Archives/edgar/data/216085/000162828026012199/hvt-20251231.htm",
+   "y": "2025",
+   "q": "Net sales $758,995K; 129 stores at year end"
+  },
+  "B-094": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2244BASIC (Retail Trade summary statistics), United States",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2244BASIC&g=010XX00US",
+   "y": "2022",
+   "q": "NAICS2022=459110 Sporting Goods Retailers; ESTAB=22894; RCPTOT=81678108 ($1,000)"
+  },
+  "B-095": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2244BASIC (Retail Trade summary statistics), United States",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2244BASIC&g=010XX00US",
+   "y": "2022",
+   "q": "NAICS2022=459110 Sporting Goods Retailers; ESTAB=22894; EMP=285167"
+  },
+  "B-096": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2244BASIC (Retail Trade summary statistics), United States",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2244BASIC&g=010XX00US",
+   "y": "2022",
+   "q": "NAICS2022=459110 Sporting Goods Retailers; RCPTOT=81678108; PAYANN=9103179 ($1,000)"
+  },
+  "B-097": {
+   "t": "Bicycle Retailer & Industry News, 'Fred Clements: Bike shop metrics are on the rise' (17 Jul 2014), reporting NBDA Specialty Bicycle Retail ",
+   "u": "https://bicycleretailer.com/retail-news/2014/07/17/fred-clements-bike-shop-metrics-are-rise",
+   "y": "2013",
+   "q": "$179 in revenue per square foot"
+  },
+  "B-098": {
+   "t": "Bicycle Retailer & Industry News, 'Fred Clements: Bike shop metrics are on the rise' (17 Jul 2014), reporting NBDA Specialty Bicycle Retail ",
+   "u": "https://bicycleretailer.com/retail-news/2014/07/17/fred-clements-bike-shop-metrics-are-rise",
+   "y": "2013",
+   "q": "reports average store sales of $997,761 in 2013"
+  },
+  "B-099": {
+   "t": "Bicycle Retailer & Industry News, 'Fred Clements: Bike shop metrics are on the rise' (17 Jul 2014), reporting NBDA Specialty Bicycle Retail ",
+   "u": "https://bicycleretailer.com/retail-news/2014/07/17/fred-clements-bike-shop-metrics-are-rise",
+   "y": "2013",
+   "q": "average store size of 5,562 square feet"
+  },
+  "B-100": {
+   "t": "Gruen Gruen + Associates for City of Boulder, 'Retail Market Research and Strategic Policy Recommendations' (Dec 2019)",
+   "u": "https://bouldercolorado.gov/media/1262/download",
+   "y": "2017",
+   "q": "clothing and accessories, home furnishing, and sporting goods/hobby stores was closer to nine percent."
+  },
+  "B-101": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2281BASIC (Other Services (except Public Administration) summary statistics), Baltimore city",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2281BASIC&g=050XX00US24510",
+   "y": "2022",
+   "q": "NAICS2022=812111 Barber Shops; TAXSTAT=00; ESTAB=16; RCPTOT=5413 ($1,000)"
+  },
+  "B-102": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2281BASIC (Other Services (except Public Administration) summary statistics), Baltimore city",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2281BASIC&g=050XX00US24510",
+   "y": "2022",
+   "q": "NAICS2022=812111 Barber Shops; TAXSTAT=00; ESTAB=16; EMP=94"
+  },
+  "B-103": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2281BASIC (Other Services (except Public Administration) summary statistics), Baltimore city",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2281BASIC&g=050XX00US24510",
+   "y": "2022",
+   "q": "NAICS2022=812111 Barber Shops; TAXSTAT=00; RCPTOT=5413; PAYANN=2795 ($1,000)"
+  },
+  "B-104": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2281BASIC (Other Services (except Public Administration) summary statistics), Baltimore city",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2281BASIC&g=050XX00US24510",
+   "y": "2022",
+   "q": "NAICS2022=812112 Beauty Salons; TAXSTAT=00; ESTAB=81; RCPTOT=21488 ($1,000)"
+  },
+  "B-105": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2281BASIC (Other Services (except Public Administration) summary statistics), Baltimore city",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2281BASIC&g=050XX00US24510",
+   "y": "2022",
+   "q": "NAICS2022=812112 Beauty Salons; TAXSTAT=00; ESTAB=81; EMP=543"
+  },
+  "B-106": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2281BASIC (Other Services (except Public Administration) summary statistics), Baltimore city",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2281BASIC&g=050XX00US24510",
+   "y": "2022",
+   "q": "NAICS2022=812112 Beauty Salons; TAXSTAT=00; RCPTOT=21488; PAYANN=10146 ($1,000)"
+  },
+  "B-107": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2281BASIC (Other Services (except Public Administration) summary statistics), Baltimore city",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2281BASIC&g=050XX00US24510",
+   "y": "2022",
+   "q": "NAICS2022=812113 Nail salons; TAXSTAT=00; ESTAB=29; RCPTOT=13123 ($1,000)"
+  },
+  "B-108": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2281BASIC (Other Services (except Public Administration) summary statistics), Baltimore city",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2281BASIC&g=050XX00US24510",
+   "y": "2022",
+   "q": "NAICS2022=812113 Nail salons; TAXSTAT=00; ESTAB=29; EMP=162"
+  },
+  "B-109": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2281BASIC (Other Services (except Public Administration) summary statistics), Baltimore city",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2281BASIC&g=050XX00US24510",
+   "y": "2022",
+   "q": "NAICS2022=812113 Nail salons; TAXSTAT=00; RCPTOT=13123; PAYANN=4636 ($1,000)"
+  },
+  "B-110": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2281BASIC (Other Services (except Public Administration) summary statistics), United States",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2281BASIC&g=010XX00US",
+   "y": "2022",
+   "q": "NAICS2022=812111 Barber Shops; TAXSTAT=00; ESTAB=7025; RCPTOT=1663159 ($1,000)"
+  },
+  "B-111": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2281BASIC (Other Services (except Public Administration) summary statistics), United States",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2281BASIC&g=010XX00US",
+   "y": "2022",
+   "q": "NAICS2022=812111 Barber Shops; TAXSTAT=00; ESTAB=7025; EMP=27231"
+  },
+  "B-112": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2281BASIC (Other Services (except Public Administration) summary statistics), United States",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2281BASIC&g=010XX00US",
+   "y": "2022",
+   "q": "NAICS2022=812111 Barber Shops; TAXSTAT=00; RCPTOT=1663159; PAYANN=793047 ($1,000)"
+  },
+  "B-113": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2281BASIC (Other Services (except Public Administration) summary statistics), United States",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2281BASIC&g=010XX00US",
+   "y": "2022",
+   "q": "NAICS2022=812112 Beauty Salons; TAXSTAT=00; ESTAB=83392; RCPTOT=25664020 ($1,000)"
+  },
+  "B-114": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2281BASIC (Other Services (except Public Administration) summary statistics), United States",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2281BASIC&g=010XX00US",
+   "y": "2022",
+   "q": "NAICS2022=812112 Beauty Salons; TAXSTAT=00; ESTAB=83392; EMP=389199"
+  },
+  "B-115": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2281BASIC (Other Services (except Public Administration) summary statistics), United States",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2281BASIC&g=010XX00US",
+   "y": "2022",
+   "q": "NAICS2022=812112 Beauty Salons; TAXSTAT=00; RCPTOT=25664020; PAYANN=11364957 ($1,000)"
+  },
+  "B-116": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2281BASIC (Other Services (except Public Administration) summary statistics), United States",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2281BASIC&g=010XX00US",
+   "y": "2022",
+   "q": "NAICS2022=812113 Nail salons; TAXSTAT=00; ESTAB=33212; RCPTOT=11366371 ($1,000)"
+  },
+  "B-117": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2281BASIC (Other Services (except Public Administration) summary statistics), United States",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2281BASIC&g=010XX00US",
+   "y": "2022",
+   "q": "NAICS2022=812113 Nail salons; TAXSTAT=00; ESTAB=33212; EMP=155052"
+  },
+  "B-118": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2281BASIC (Other Services (except Public Administration) summary statistics), United States",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2281BASIC&g=010XX00US",
+   "y": "2022",
+   "q": "NAICS2022=812113 Nail salons; TAXSTAT=00; RCPTOT=11366371; PAYANN=3628302 ($1,000)"
+  },
+  "B-119": {
+   "t": "US Census Bureau, 2022 Nonemployer Statistics, table NS2200NONEMP, Baltimore city, MD",
+   "u": "https://data.census.gov/api/access/data/table?id=NONEMP2022.NS2200NONEMP&g=050XX00US24510",
+   "y": "2022",
+   "q": "NAICS2022=81 Other services (except public administration); NESTAB=5452; NRCPTOT=131026 ($1,000)"
+  },
+  "B-120": {
+   "t": "Boulevard (salon software) blog, Skya Jones, 'Salon Budget Examples' (25 Aug 2026)",
+   "u": "https://www.joinblvd.com/blog/salon-budget-examples",
+   "y": "2026",
+   "q": "8–15% of gross revenue is a good range to aim for"
+  },
+  "B-121": {
+   "t": "Boulevard (salon software) blog, Skya Jones, 'Salon Budget Examples' (25 Aug 2026)",
+   "u": "https://www.joinblvd.com/blog/salon-budget-examples",
+   "y": "2026",
+   "q": "between 40–50% of gross revenue generally signals a healthy operation"
+  },
+  "B-122": {
+   "t": "Boulevard (salon software) blog, Skya Jones, 'Salon Budget Examples' (25 Aug 2026)",
+   "u": "https://www.joinblvd.com/blog/salon-budget-examples",
+   "y": "2026",
+   "q": "leaving room for a 10–15% net profit margin"
+  },
+  "B-123": {
+   "t": "Boulevard (salon software) blog, Skya Jones, 'Salon Budget Examples' (25 Aug 2026)",
+   "u": "https://www.joinblvd.com/blog/salon-budget-examples",
+   "y": "2026",
+   "q": "for 1,000–1,500 square feet"
+  },
+  "B-124": {
+   "t": "Strategies (salon business coaching), 'The dirty truth about salon & spa service payroll costs' (undated)",
+   "u": "https://strategies.com/the-dirty-truth-about-salon-spa-service-payroll-costs",
+   "y": "n.d.",
+   "q": "The Strategies benchmark for service payroll is 30 to 35 percent of total revenue"
+  },
+  "B-125": {
+   "t": "BizBuySell Learning Center, 'Nail Salon revenue & profit benchmarks' (NAICS 812113; CoStar Group)",
+   "u": "https://www.bizbuysell.com/learning-center/revenue-profit-benchmarks/nail-salons",
+   "y": "2021",
+   "q": "Average Annual Revenue, 2021: $504,132"
+  },
+  "B-126": {
+   "t": "BizBuySell Learning Center, 'Nail Salon revenue & profit benchmarks' (NAICS 812113; CoStar Group)",
+   "u": "https://www.bizbuysell.com/learning-center/revenue-profit-benchmarks/nail-salons",
+   "y": "2021",
+   "q": "Gross Profit Margin, 2021: 76.96%"
+  },
+  "B-127": {
+   "t": "BizBuySell Learning Center, 'Nail Salon revenue & profit benchmarks' (NAICS 812113; CoStar Group)",
+   "u": "https://www.bizbuysell.com/learning-center/revenue-profit-benchmarks/nail-salons",
+   "y": "2021",
+   "q": "Net Profit Margin, 2021: 11.00%"
+  },
+  "B-128": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2271BASIC (Arts, Entertainment, and Recreation summary statistics), Baltimore city, MD",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2271BASIC&g=050XX00US24510",
+   "y": "2022",
+   "q": "NAICS2022=713940 Fitness and Recreational Sports Centers; TAXSTAT=00; ESTAB=51; RCPTOT=58562 ($1,000)"
+  },
+  "B-129": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2271BASIC (Arts, Entertainment, and Recreation summary statistics), Baltimore city, MD",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2271BASIC&g=050XX00US24510",
+   "y": "2022",
+   "q": "NAICS2022=713940 Fitness and Recreational Sports Centers; TAXSTAT=00; ESTAB=51; EMP=1169"
+  },
+  "B-130": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2271BASIC (Arts, Entertainment, and Recreation summary statistics), Baltimore city, MD",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2271BASIC&g=050XX00US24510",
+   "y": "2022",
+   "q": "NAICS2022=713940 Fitness and Recreational Sports Centers; TAXSTAT=00; RCPTOT=58562; PAYANN=20299 ($1,000)"
+  },
+  "B-131": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2271BASIC (Arts, Entertainment, and Recreation summary statistics), Baltimore city, MD",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2271BASIC&g=050XX00US24510",
+   "y": "2022",
+   "q": "NAICS2022=713940 Fitness and Recreational Sports Centers; TAXSTAT=T; ESTAB=42; RCPTOT=39370 ($1,000)"
+  },
+  "B-132": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2271BASIC (Arts, Entertainment, and Recreation summary statistics), United States",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2271BASIC&g=010XX00US",
+   "y": "2022",
+   "q": "NAICS2022=713940 Fitness and Recreational Sports Centers; TAXSTAT=00; ESTAB=38998; RCPTOT=36042321 ($1,000)"
+  },
+  "B-133": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2271BASIC (Arts, Entertainment, and Recreation summary statistics), United States",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2271BASIC&g=010XX00US",
+   "y": "2022",
+   "q": "NAICS2022=713940 Fitness and Recreational Sports Centers; TAXSTAT=00; ESTAB=38998; EMP=694014"
+  },
+  "B-134": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2271BASIC (Arts, Entertainment, and Recreation summary statistics), United States",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2271BASIC&g=010XX00US",
+   "y": "2022",
+   "q": "NAICS2022=713940 Fitness and Recreational Sports Centers; TAXSTAT=00; RCPTOT=36042321; PAYANN=11443416 ($1,000)"
+  },
+  "B-135": {
+   "t": "Health Club Management 2017 issue 1, Tharrett & Williamson (ClubIntel), 'Industry research: Boutique boom' (reporting AFS Fitness Studio Fin",
+   "u": "https://www.healthclubmanagement.co.uk/health-club-management-features/Report-Why-the-boutique-studio-market-continues-to-grow/31471",
+   "y": "2015",
+   "q": "Studios measuring less than 2,000sq ft generate revenue of US$104 per square foot"
+  },
+  "B-136": {
+   "t": "Health Club Management 2017 issue 1, Tharrett & Williamson (ClubIntel), 'Industry research: Boutique boom' (reporting AFS Fitness Studio Fin",
+   "u": "https://www.healthclubmanagement.co.uk/health-club-management-features/Report-Why-the-boutique-studio-market-continues-to-grow/31471",
+   "y": "2015",
+   "q": "generating US$189 per square foot compared to the industry average of US$77"
+  },
+  "B-137": {
+   "t": "Health Club Management 2017 issue 1, Tharrett & Williamson (ClubIntel), 'Industry research: Boutique boom' (reporting AFS Fitness Studio Fin",
+   "u": "https://www.healthclubmanagement.co.uk/health-club-management-features/Report-Why-the-boutique-studio-market-continues-to-grow/31471",
+   "y": "2015",
+   "q": "The average studio spends 63 per cent of revenue on staffing and 21 per cent of revenues on rent."
+  },
+  "B-138": {
+   "t": "Health Club Management 2017 issue 1, Tharrett & Williamson (ClubIntel), 'Industry research: Boutique boom' (reporting AFS Fitness Studio Fin",
+   "u": "https://www.healthclubmanagement.co.uk/health-club-management-features/Report-Why-the-boutique-studio-market-continues-to-grow/31471",
+   "y": "2015",
+   "q": "The average studio spends 63 per cent of revenue on staffing and 21 per cent of revenues on rent."
+  },
+  "B-139": {
+   "t": "Health Club Management 2017 issue 1, Tharrett & Williamson (ClubIntel), 'Industry research: Boutique boom' (reporting AFS Fitness Studio Fin",
+   "u": "https://www.healthclubmanagement.co.uk/health-club-management-features/Report-Why-the-boutique-studio-market-continues-to-grow/31471",
+   "y": "2015",
+   "q": "The average EBITDA margin for studios in 2015 was 24 per cent"
+  },
+  "B-140": {
+   "t": "American Spa, 'AFS Report: Average Fitness Studio Revenue Was Less Than $300,000 in 2014' (28 Sep 2015)",
+   "u": "https://www.americanspa.com/commercial-clubs/afs-report-average-fitness-studio-revenue-was-less-than-300-000-2014",
+   "y": "2014",
+   "q": "the average revenue for a fitness studio in 2014 was $297,468."
+  },
+  "B-141": {
+   "t": "Q4/FY2025 results of a boutique-fitness franchisor, Form 8-K Exhibit 99.1 (26 Feb 2026)",
+   "u": "https://www.sec.gov/Archives/edgar/data/1802156/000119312526076678/d102623dex991.htm",
+   "y": "2025",
+   "q": "Reported North America quarterly run-rate average unit volume (AUV)4 of $683,000"
+  },
+  "B-142": {
+   "t": "Form 10-K of a boutique-fitness franchisor, fiscal 2025 (filed 4 Mar 2026)",
+   "u": "https://www.sec.gov/Archives/edgar/data/1802156/000180215626000016/xpof-20251231.htm",
+   "y": "2025",
+   "q": "The typical studio is approximately 1,500 square feet"
+  },
+  "B-143": {
+   "t": "Q4/FY2025 results of a boutique-fitness franchisor, Form 8-K Exhibit 99.1 (26 Feb 2026)",
+   "u": "https://www.sec.gov/Archives/edgar/data/1802156/000119312526076678/d102623dex991.htm",
+   "y": "2025",
+   "q": "run-rate average unit volume (AUV)4 of $683,000; typical studio 1,500-2,500 square feet"
+  },
+  "B-144": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2271BASIC (Arts, Entertainment, and Recreation summary statistics), United States",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2271BASIC&g=010XX00US",
+   "y": "2022",
+   "q": "NAICS2022=711510 Independent Artists, Writers, and Performers; TAXSTAT=00; ESTAB=38760; RCPTOT=28629312 ($1,000)"
+  },
+  "B-145": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2271BASIC (Arts, Entertainment, and Recreation summary statistics), United States",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2271BASIC&g=010XX00US",
+   "y": "2022",
+   "q": "NAICS2022=711510 Independent Artists, Writers, and Performers; TAXSTAT=00; ESTAB=38760; EMP=87888"
+  },
+  "B-146": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2244BASIC (Retail Trade summary statistics), United States",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2244BASIC&g=010XX00US",
+   "y": "2022",
+   "q": "NAICS2022=459920 Art Dealers; ESTAB=5212; RCPTOT=11082262 ($1,000)"
+  },
+  "B-147": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2244BASIC (Retail Trade summary statistics), United States",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2244BASIC&g=010XX00US",
+   "y": "2022",
+   "q": "NAICS2022=459920 Art Dealers; ESTAB=5212; EMP=19929"
+  },
+  "B-148": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2244BASIC (Retail Trade summary statistics), Baltimore city, MD",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2244BASIC&g=050XX00US24510",
+   "y": "2022",
+   "q": "NAICS2022=459920 Art Dealers; ESTAB=4; EMP=9"
+  },
+  "B-149": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2271BASIC (Arts, Entertainment, and Recreation summary statistics), Baltimore city, MD",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2271BASIC&g=050XX00US24510",
+   "y": "2022",
+   "q": "NAICS2022=712110 Museums; TAXSTAT=00; ESTAB=21; RCPTOT=79464 ($1,000)"
+  },
+  "B-150": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2271BASIC (Arts, Entertainment, and Recreation summary statistics), Baltimore city, MD",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2271BASIC&g=050XX00US24510",
+   "y": "2022",
+   "q": "NAICS2022=712110 Museums; TAXSTAT=00; ESTAB=21; EMP=661"
+  },
+  "B-151": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2271BASIC (Arts, Entertainment, and Recreation summary statistics), United States",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2271BASIC&g=010XX00US",
+   "y": "2022",
+   "q": "NAICS2022=712110 Museums; TAXSTAT=00; ESTAB=5224; RCPTOT=13528862 ($1,000)"
+  },
+  "B-152": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2271BASIC (Arts, Entertainment, and Recreation summary statistics), United States",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2271BASIC&g=010XX00US",
+   "y": "2022",
+   "q": "NAICS2022=712110 Museums; TAXSTAT=00; ESTAB=5224; EMP=91249"
+  },
+  "B-153": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2271BASIC (Arts, Entertainment, and Recreation summary statistics), Baltimore city, MD",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2271BASIC&g=050XX00US24510",
+   "y": "2022",
+   "q": "NAICS2022=711310 Promoters of Performing Arts, Sports, and Similar Events with Facilities; TAXSTAT=00; ESTAB=11; RCPTOT=44356 ($1,000)"
+  },
+  "B-154": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2271BASIC (Arts, Entertainment, and Recreation summary statistics), Baltimore city, MD",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2271BASIC&g=050XX00US24510",
+   "y": "2022",
+   "q": "NAICS2022=711310 Promoters of Performing Arts, Sports, and Similar Events with Facilities; TAXSTAT=00; ESTAB=11; EMP=664"
+  },
+  "B-155": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2271BASIC (Arts, Entertainment, and Recreation summary statistics), United States",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2271BASIC&g=010XX00US",
+   "y": "2022",
+   "q": "NAICS2022=711310 Promoters of Performing Arts, Sports, and Similar Events with Facilities; TAXSTAT=00; ESTAB=3903; RCPTOT=21643588 ($1,000)"
+  },
+  "B-156": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2271BASIC (Arts, Entertainment, and Recreation summary statistics), United States",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2271BASIC&g=010XX00US",
+   "y": "2022",
+   "q": "NAICS2022=711310 Promoters of Performing Arts, Sports, and Similar Events with Facilities; TAXSTAT=00; ESTAB=3903; EMP=134982"
+  },
+  "B-157": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2271BASIC (Arts, Entertainment, and Recreation summary statistics), United States",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2271BASIC&g=010XX00US",
+   "y": "2022",
+   "q": "NAICS2022=711110 Theater Companies and Dinner Theaters; TAXSTAT=00; ESTAB=3473; RCPTOT=8731490 ($1,000)"
+  },
+  "B-158": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2271BASIC (Arts, Entertainment, and Recreation summary statistics), United States",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2271BASIC&g=010XX00US",
+   "y": "2022",
+   "q": "NAICS2022=711110 Theater Companies and Dinner Theaters; TAXSTAT=00; ESTAB=3473; EMP=66007"
+  },
+  "B-159": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2251BASIC (Information summary statistics), United States",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2251BASIC&g=010XX00US",
+   "y": "2022",
+   "q": "NAICS2022=512131 Motion picture theaters (except drive-ins); ESTAB=4273; RCPTOT=12975366 ($1,000)"
+  },
+  "B-160": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2251BASIC (Information summary statistics), United States",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2251BASIC&g=010XX00US",
+   "y": "2022",
+   "q": "NAICS2022=512131 Motion picture theaters (except drive-ins); ESTAB=4273; EMP=112488"
+  },
+  "B-161": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2254BASIC (Professional, Scientific, and Technical Services summary statistics), Baltimore c",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2254BASIC&g=050XX00US24510",
+   "y": "2022",
+   "q": "NAICS2022=54 Professional, scientific, and technical services; TAXSTAT=00; ESTAB=1801; RCPTOT=8061361 ($1,000)"
+  },
+  "B-162": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2254BASIC (Professional, Scientific, and Technical Services summary statistics), Baltimore c",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2254BASIC&g=050XX00US24510",
+   "y": "2022",
+   "q": "NAICS2022=54 Professional, scientific, and technical services; TAXSTAT=00; ESTAB=1801; EMP=32758"
+  },
+  "B-163": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2254BASIC (Professional, Scientific, and Technical Services summary statistics), Baltimore c",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2254BASIC&g=050XX00US24510",
+   "y": "2022",
+   "q": "NAICS2022=54 Professional, scientific, and technical services; TAXSTAT=00; RCPTOT=8061361; PAYANN=3254995 ($1,000)"
+  },
+  "B-164": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2254BASIC (Professional, Scientific, and Technical Services summary statistics), Baltimore c",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2254BASIC&g=050XX00US24510",
+   "y": "2022",
+   "q": "NAICS2022=5412 Accounting, Tax Preparation, Bookkeeping, and Payroll Services; TAXSTAT=00; ESTAB=145; RCPTOT=651194 ($1,000)"
+  },
+  "B-165": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2254BASIC (Professional, Scientific, and Technical Services summary statistics), Baltimore c",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2254BASIC&g=050XX00US24510",
+   "y": "2022",
+   "q": "NAICS2022=5412 Accounting, Tax Preparation, Bookkeeping, and Payroll Services; TAXSTAT=00; ESTAB=145; EMP=2543"
+  },
+  "B-166": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2254BASIC (Professional, Scientific, and Technical Services summary statistics), Baltimore c",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2254BASIC&g=050XX00US24510",
+   "y": "2022",
+   "q": "NAICS2022=5414 Specialized design services; TAXSTAT=00; ESTAB=81; RCPTOT=93466 ($1,000)"
+  },
+  "B-167": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2254BASIC (Professional, Scientific, and Technical Services summary statistics), Baltimore c",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2254BASIC&g=050XX00US24510",
+   "y": "2022",
+   "q": "NAICS2022=5414 Specialized design services; TAXSTAT=00; ESTAB=81; EMP=377"
+  },
+  "B-168": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2254BASIC (Professional, Scientific, and Technical Services summary statistics), Baltimore c",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2254BASIC&g=050XX00US24510",
+   "y": "2022",
+   "q": "NAICS2022=5416 Management, Scientific, and Technical Consulting Services; TAXSTAT=00; ESTAB=356; RCPTOT=1299348 ($1,000)"
+  },
+  "B-169": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2254BASIC (Professional, Scientific, and Technical Services summary statistics), Baltimore c",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2254BASIC&g=050XX00US24510",
+   "y": "2022",
+   "q": "NAICS2022=5416 Management, Scientific, and Technical Consulting Services; TAXSTAT=00; ESTAB=356; EMP=4187"
+  },
+  "B-170": {
+   "t": "US Census Bureau, 2022 Nonemployer Statistics, table NS2200NONEMP, Baltimore city, MD",
+   "u": "https://data.census.gov/api/access/data/table?id=NONEMP2022.NS2200NONEMP&g=050XX00US24510",
+   "y": "2022",
+   "q": "NAICS2022=54 Professional, scientific, and technical services; NESTAB=5997; NRCPTOT=293198 ($1,000)"
+  },
+  "B-171": {
+   "t": "Yardi Kube blog, '2019 Deskmag Global Coworking Survey Results' (30 May 2019)",
+   "u": "https://www.yardikube.com/blog/2019-deskmag-global-coworking-survey-results/",
+   "y": "2019",
+   "q": "The North American average jumped to 844 sq. meters (9,084 sq. ft) per location"
+  },
+  "B-172": {
+   "t": "OfficeRnD blog, 'Coworking financial benchmarks' (4 Oct 2024, updated 29 Jun 2026)",
+   "u": "https://officernd.com/blog/coworking-financial-benchmarks/",
+   "y": "2024",
+   "q": "A healthy profit margin for coworking spaces is between 10 and 30%."
+  },
+  "B-173": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2281BASIC (Other Services (except Public Administration) summary statistics), Baltimore city",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2281BASIC&g=050XX00US24510",
+   "y": "2022",
+   "q": "NAICS2022=8114 Personal and Household Goods Repair and Maintenance; TAXSTAT=00; ESTAB=24; RCPTOT=11907 ($1,000)"
+  },
+  "B-174": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2281BASIC (Other Services (except Public Administration) summary statistics), Baltimore city",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2281BASIC&g=050XX00US24510",
+   "y": "2022",
+   "q": "NAICS2022=8114 Personal and Household Goods Repair and Maintenance; TAXSTAT=00; ESTAB=24; EMP=92"
+  },
+  "B-175": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2281BASIC (Other Services (except Public Administration) summary statistics), Baltimore city",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2281BASIC&g=050XX00US24510",
+   "y": "2022",
+   "q": "NAICS2022=8114 Personal and Household Goods Repair and Maintenance; TAXSTAT=00; RCPTOT=11907; PAYANN=3993 ($1,000)"
+  },
+  "B-176": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2281BASIC (Other Services (except Public Administration) summary statistics), Baltimore city",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2281BASIC&g=050XX00US24510",
+   "y": "2022",
+   "q": "NAICS2022=811420 Reupholstery and Furniture Repair; TAXSTAT=00; ESTAB=7; RCPTOT=5343 ($1,000)"
+  },
+  "B-177": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2281BASIC (Other Services (except Public Administration) summary statistics), Baltimore city",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2281BASIC&g=050XX00US24510",
+   "y": "2022",
+   "q": "NAICS2022=811420 Reupholstery and Furniture Repair; TAXSTAT=00; ESTAB=7; EMP=43"
+  },
+  "B-178": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2281BASIC (Other Services (except Public Administration) summary statistics), United States",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2281BASIC&g=010XX00US",
+   "y": "2022",
+   "q": "NAICS2022=811490 Other Personal and Household Goods Repair and Maintenance; TAXSTAT=00; ESTAB=10982; RCPTOT=5760813 ($1,000)"
+  },
+  "B-179": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2281BASIC (Other Services (except Public Administration) summary statistics), United States",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2281BASIC&g=010XX00US",
+   "y": "2022",
+   "q": "NAICS2022=811490 Other Personal and Household Goods Repair and Maintenance; TAXSTAT=00; ESTAB=10982; EMP=45409"
+  },
+  "B-180": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2281BASIC (Other Services (except Public Administration) summary statistics), United States",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2281BASIC&g=010XX00US",
+   "y": "2022",
+   "q": "NAICS2022=811490 Other Personal and Household Goods Repair and Maintenance; TAXSTAT=00; RCPTOT=5760813; PAYANN=1681009 ($1,000)"
+  },
+  "B-181": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2281BASIC (Other Services (except Public Administration) summary statistics), Baltimore city",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2281BASIC&g=050XX00US24510",
+   "y": "2022",
+   "q": "NAICS2022=813410 Civic and Social Organizations; TAXSTAT=00; ESTAB=57; RCPTOT=66501 ($1,000)"
+  },
+  "B-182": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2281BASIC (Other Services (except Public Administration) summary statistics), Baltimore city",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2281BASIC&g=050XX00US24510",
+   "y": "2022",
+   "q": "NAICS2022=813410 Civic and Social Organizations; TAXSTAT=00; ESTAB=57; EMP=532"
+  },
+  "B-183": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2281BASIC (Other Services (except Public Administration) summary statistics), Baltimore city",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2281BASIC&g=050XX00US24510",
+   "y": "2022",
+   "q": "NAICS2022=813410 Civic and Social Organizations; TAXSTAT=00; RCPTOT=66501; PAYANN=22567 ($1,000)"
+  },
+  "B-184": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2281BASIC (Other Services (except Public Administration) summary statistics), Baltimore city",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2281BASIC&g=050XX00US24510",
+   "y": "2022",
+   "q": "NAICS2022=8133 Social Advocacy Organizations; TAXSTAT=00; ESTAB=82; RCPTOT=173932 ($1,000)"
+  },
+  "B-185": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2281BASIC (Other Services (except Public Administration) summary statistics), Baltimore city",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2281BASIC&g=050XX00US24510",
+   "y": "2022",
+   "q": "NAICS2022=8133 Social Advocacy Organizations; TAXSTAT=00; ESTAB=82; EMP=957"
+  },
+  "B-186": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2281BASIC (Other Services (except Public Administration) summary statistics), Baltimore city",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2281BASIC&g=050XX00US24510",
+   "y": "2022",
+   "q": "NAICS2022=813319 Other Social Advocacy Organizations; TAXSTAT=00; ESTAB=40; RCPTOT=45006 ($1,000)"
+  },
+  "B-187": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2281BASIC (Other Services (except Public Administration) summary statistics), Baltimore city",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2281BASIC&g=050XX00US24510",
+   "y": "2022",
+   "q": "NAICS2022=813319 Other Social Advocacy Organizations; TAXSTAT=00; ESTAB=40; EMP=223"
+  },
+  "B-188": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2281BASIC (Other Services (except Public Administration) summary statistics), United States",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2281BASIC&g=010XX00US",
+   "y": "2022",
+   "q": "NAICS2022=813410 Civic and Social Organizations; TAXSTAT=00; ESTAB=23452; RCPTOT=18502943 ($1,000)"
+  },
+  "B-189": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2281BASIC (Other Services (except Public Administration) summary statistics), United States",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2281BASIC&g=010XX00US",
+   "y": "2022",
+   "q": "NAICS2022=813410 Civic and Social Organizations; TAXSTAT=00; ESTAB=23452; EMP=179690"
+  },
+  "B-190": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2281BASIC (Other Services (except Public Administration) summary statistics), United States",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2281BASIC&g=010XX00US",
+   "y": "2022",
+   "q": "NAICS2022=813410 Civic and Social Organizations; TAXSTAT=00; RCPTOT=18502943; PAYANN=5058440 ($1,000)"
+  },
+  "B-191": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2281BASIC (Other Services (except Public Administration) summary statistics), United States",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2281BASIC&g=010XX00US",
+   "y": "2022",
+   "q": "NAICS2022=813319 Other Social Advocacy Organizations; TAXSTAT=00; ESTAB=7698; RCPTOT=16475296 ($1,000)"
+  },
+  "B-192": {
+   "t": "US Census Bureau, 2022 Economic Census, table EC2281BASIC (Other Services (except Public Administration) summary statistics), United States",
+   "u": "https://data.census.gov/api/access/data/table?id=ECNBASIC2022.EC2281BASIC&g=010XX00US",
+   "y": "2022",
+   "q": "NAICS2022=813319 Other Social Advocacy Organizations; TAXSTAT=00; ESTAB=7698; EMP=69225"
+  },
+  "O-001": {
+   "t": "Mainvest campaign page for My Mamas Vegan, SEC Form C exhibit (filed 2022-05-26)",
+   "u": "https://www.sec.gov/Archives/edgar/data/1904907/000174605922000208/mymama2_page.pdf",
+   "y": "2021",
+   "q": "Achieved revenue of $261,213 in 2020 ... which then grew to $320,842 in 2021"
+  },
+  "O-002": {
+   "t": "Baltimore Brew, 'Red Emma's move is seen as a boost for Greenmount Avenue and Waverly' (2021-05-03)",
+   "u": "https://baltimorebrew.com/2021/05/03/red-emmas-move-is-seen-as-a-boost-for-greenmount-avenue-and-waverly/",
+   "y": "",
+   "q": "a potential investment of about $1.6 million"
+  },
+  "O-003": {
+   "t": "Opportunity Finance Network impact story, 'Red Emma's / Seed Commons' (2022-11-30)",
+   "u": "https://ofn.org/impact-stories/red-emmas-seed-commons",
+   "y": "c.2014 (within a year of 2013 move)",
+   "q": "5,000-square-foot restaurant space ... exceeded $1 million in sales within a year"
+  },
+  "O-004": {
+   "t": "Opportunity Finance Network impact story, 'Red Emma's / Seed Commons' (2022-11-30)",
+   "u": "https://ofn.org/impact-stories/red-emmas-seed-commons",
+   "y": "",
+   "q": "paid upwards of $15,000/month in rent"
+  },
+  "O-005": {
+   "t": "SEC EDGAR Form C cover (primary_doc.xml), B'More Made with Pride LLC, filed 2021-10-14 (Mainvest)",
+   "u": "https://www.sec.gov/Archives/edgar/data/1887946/000174605921000502/primary_doc.xml",
+   "y": "2020 (inferred: most recent FY before 2021-10-14 filing)",
+   "q": "revenueMostRecentFiscalYear 178304.00; revenuePriorFiscalYear 103194.00"
+  },
+  "O-006": {
+   "t": "Mainvest campaign page for The Cube Cowork, SEC Form C exhibit (filed 2023-04-11)",
+   "u": "https://www.sec.gov/Archives/edgar/data/1971692/000174605923000088/cube_page.pdf",
+   "y": "2022",
+   "q": "has been operating since September, 2016 ... assumed operations of all 15,000 square feet"
+  },
+  "O-007": {
+   "t": "SEC EDGAR Form C/A offering document, Southeastern Roastery LLC, filed 2023-08-09 (Honeycomb)",
+   "u": "https://www.sec.gov/Archives/edgar/data/1981545/000198154523000001/southeasternroasteryformcnew.pdf",
+   "y": "2022",
+   "q": "Southeastern Roastery Coffee Lab where we currently roast and serve coffee"
+  },
+  "O-008": {
+   "t": "SEC EDGAR Form C cover (primary_doc.xml), Juice On The Go LLC, filed 2026-05-07 (Honeycomb)",
+   "u": "https://www.sec.gov/Archives/edgar/data/2130130/000213013026000001/primary_doc.xml",
+   "y": "2025 (inferred: most recent FY before 2026-05-07 filing)",
+   "q": "revenueMostRecentFiscalYear 141935; revenuePriorFiscalYear 42328"
+  },
+  "O-009": {
+   "t": "ProPublica Nonprofit Explorer API, Fells Point Creative Alliance Inc (EIN 52-1919988), IRS Form 990 data",
+   "u": "https://projects.propublica.org/nonprofits/api/v2/organizations/521919988.json",
+   "y": "2023",
+   "q": "tax_prd_yr 2023: totprgmrevnue 620363; totrevenue 2938798"
+  },
+  "O-010": {
+   "t": "ProPublica Nonprofit Explorer API, Baltimore Arts Realty Corporation (EIN 46-1134776), IRS Form 990 data",
+   "u": "https://projects.propublica.org/nonprofits/api/v2/organizations/461134776.json",
+   "y": "2023",
+   "q": "tax_prd_yr 2023: totprgmrevnue 422014; grsrntsreal 658031; totrevenue 853171"
+  },
+  "O-011": {
+   "t": "ProPublica Nonprofit Explorer API, Open Works Inc (EIN 47-5535634), IRS Form 990 data",
+   "u": "https://projects.propublica.org/nonprofits/api/v2/organizations/475535634.json",
+   "y": "2023",
+   "q": "tax_prd_yr 2023: totprgmrevnue 858400; totrevenue 2505105"
+  },
+  "O-012": {
+   "t": "ProPublica Nonprofit Explorer API, Station North Tool Library Inc (EIN 84-3734496), IRS Form 990 data",
+   "u": "https://projects.propublica.org/nonprofits/api/v2/organizations/843734496.json",
+   "y": "2024",
+   "q": "tax_prd_yr 2024: totprgmrevnue 343184; totrevenue 734988"
+  },
+  "O-013": {
+   "t": "ProPublica Nonprofit Explorer API, Velocipede Bike Project (EIN 76-0813009), IRS Form 990 data",
+   "u": "https://projects.propublica.org/nonprofits/api/v2/organizations/760813009.json",
+   "y": "2024",
+   "q": "tax_prd_yr 2024: totprgmrevnue 77332; totrevenue 93475"
+  },
+  "O-014": {
+   "t": "ProPublica Nonprofit Explorer API, Village Learning Place Inc (EIN 52-2109848), IRS Form 990 data",
+   "u": "https://projects.propublica.org/nonprofits/api/v2/organizations/522109848.json",
+   "y": "2023",
+   "q": "tax_prd_yr 2023: totprgmrevnue 46764; totrevenue 1360093"
+  },
+  "O-015": {
+   "t": "ProPublica Nonprofit Explorer API, Baltimore Clayworks Inc (EIN 52-1409133), IRS Form 990 data",
+   "u": "https://projects.propublica.org/nonprofits/api/v2/organizations/521409133.json",
+   "y": "2023",
+   "q": "tax_prd_yr 2023: totprgmrevnue 820785; grsrntsreal 31299; totrevenue 1604211"
+  },
+  "O-016": {
+   "t": "ProPublica Nonprofit Explorer API, The Book Thing of Baltimore Inc (EIN 31-1652354), IRS Form 990 data",
+   "u": "https://projects.propublica.org/nonprofits/api/v2/organizations/311652354.json",
+   "y": "2023",
+   "q": "tax_prd_yr 2023: totrevenue 190254; totprgmrevnue 0"
+  },
+  "O-017": {
+   "t": "ProPublica Nonprofit Explorer API, a Fells Point fair-trade shop's nonprofit (EIN 52-1992614), IRS Form 990 data",
+   "u": "https://projects.propublica.org/nonprofits/api/v2/organizations/521992614.json",
+   "y": "2024",
+   "q": "tax_prd_yr 2024: grsalesinvent 278698; lesscstofgoods 147201"
+  },
+  "O-018": {
+   "t": "ProPublica Nonprofit Explorer API, Baltimore Improv Group Inc (EIN 20-1493698), IRS Form 990 data",
+   "u": "https://projects.propublica.org/nonprofits/api/v2/organizations/201493698.json",
+   "y": "2023",
+   "q": "tax_prd_yr 2023: totprgmrevnue 213402; totrevenue 293707"
+  },
+  "O-019": {
+   "t": "ProPublica Nonprofit Explorer API, Baltimore Theatre Project (EIN 52-1319713), IRS Form 990-EZ data",
+   "u": "https://projects.propublica.org/nonprofits/api/v2/organizations/521319713.json",
+   "y": "2024",
+   "q": "tax_prd_yr 2024 (990-EZ): prgmservrev 103525; totrevenue 191277"
+  },
+  "O-020": {
+   "t": "ProPublica Nonprofit Explorer API, Pauls Place Inc (EIN 52-1372359), IRS Form 990 data",
+   "u": "https://projects.propublica.org/nonprofits/api/v2/organizations/521372359.json",
+   "y": "2023",
+   "q": "tax_prd_yr 2023: grsalesinvent 173997; grsrntsreal 180201; totrevenue 2388299"
+  },
+  "O-021": {
+   "t": "SMBX offering summary for Maketto LLC, SEC Form C exhibit (filed 2021-09-17)",
+   "u": "https://www.sec.gov/Archives/edgar/data/1882997/000188299721000001/OfferingSummaryMKTO.pdf",
+   "y": "2019",
+   "q": "a 6,000 sqft. sleekly designed communal marketplace located in Washington D.C."
+  },
+  "O-022": {
+   "t": "ProPublica Nonprofit Explorer API, Atlas Performing Arts Center (EIN 52-2358563), IRS Form 990 data",
+   "u": "https://projects.propublica.org/nonprofits/api/v2/organizations/522358563.json",
+   "y": "2023",
+   "q": "tax_prd_yr 2023: totprgmrevnue 244984; grsrntsreal 749771; totrevenue 2775528"
+  },
+  "O-023": {
+   "t": "ProPublica Nonprofit Explorer API, Reconcile New Orleans Inc (EIN 72-1341294), IRS Form 990 data",
+   "u": "https://projects.propublica.org/nonprofits/api/v2/organizations/721341294.json",
+   "y": "2023",
+   "q": "tax_prd_yr 2023: totprgmrevnue 471560; grsrntsreal 6700; totrevenue 3350778"
+  },
+  "O-024": {
+   "t": "ProPublica Nonprofit Explorer API, The Rebuild Foundation NFP (EIN 47-3026162), IRS Form 990 data",
+   "u": "https://projects.propublica.org/nonprofits/api/v2/organizations/473026162.json",
+   "y": "2023",
+   "q": "tax_prd_yr 2023: totprgmrevnue 220830; grsrntsreal 16317; totrevenue 2369652"
+  },
+  "O-025": {
+   "t": "ProPublica Nonprofit Explorer API, Mack Avenue Community Church Community Development Corporation (EIN 27-2810691), IRS Form 990 data",
+   "u": "https://projects.propublica.org/nonprofits/api/v2/organizations/272810691.json",
+   "y": "2023",
+   "q": "tax_prd_yr 2023: totprgmrevnue 253926; totrevenue 1382677"
+  },
+  "O-026": {
+   "t": "ProPublica Nonprofit Explorer API, Arch Development Corporation (EIN 52-1729252), IRS Form 990 data",
+   "u": "https://projects.propublica.org/nonprofits/api/v2/organizations/521729252.json",
+   "y": "2022",
+   "q": "tax_prd_yr 2022: totprgmrevnue 84365; totrevenue 1952390"
+  },
+  "O-027": {
+   "t": "Anacostia Arts Center retail marketing one-pager (Sept 2024 upload, with Wacif)",
+   "u": "https://anacostiaartscenter.com/wp-content/uploads/2024/09/AAC-Retail-Marketing-One-Pager.pdf",
+   "y": "",
+   "q": "Discounted rent 50% below market rates with utilities included [$1,399/month]"
+  },
+  "O-028": {
+   "t": "SEC EDGAR Form C offering document, Driftwood Oven LLC, filed 2020-12-02 (Honeycomb)",
+   "u": "https://www.sec.gov/Archives/edgar/data/1834389/000183438920000001/formcdo.pdf",
+   "y": "2019",
+   "q": "an increase of 100% growth in revenue from our first year to second"
+  },
+  "O-029": {
+   "t": "SEC EDGAR Form C/A cover (primary_doc.xml), Poppet LLC, filed 2020-04-08 (Honeycomb)",
+   "u": "https://www.sec.gov/Archives/edgar/data/1806194/000180619420000002/primary_doc.xml",
+   "y": "2019 (inferred: most recent FY before 2020-04-08 filing)",
+   "q": "revenueMostRecentFiscalYear 226084; revenuePriorFiscalYear 202800"
+  },
+  "O-030": {
+   "t": "ProPublica Nonprofit Explorer API, Pittsburgh Glass Center Inc (EIN 25-1814656), IRS Form 990 data",
+   "u": "https://projects.propublica.org/nonprofits/api/v2/organizations/251814656.json",
+   "y": "2023",
+   "q": "tax_prd_yr 2023: totprgmrevnue 1066336; grsrntsreal 850; totrevenue 6036344"
+  },
+  "O-031": {
+   "t": "SEC EDGAR Form C cover (primary_doc.xml), Remember When Ice Cream Inc, filed 2018-08-17 (Honeycomb)",
+   "u": "https://www.sec.gov/Archives/edgar/data/1750337/000175033718000001/primary_doc.xml",
+   "y": "2017 (partial year, July-Dec)",
+   "q": "revenueMostRecentFiscalYear 70048; revenuePriorFiscalYear 0"
+  },
+  "O-032": {
+   "t": "ProPublica Nonprofit Explorer API, Construction Junction Inc (EIN 25-1831918), IRS Form 990 data",
+   "u": "https://projects.propublica.org/nonprofits/api/v2/organizations/251831918.json",
+   "y": "2023",
+   "q": "tax_prd_yr 2023: grsalesinvent 1787674; totprgmrevnue 44000; grsrntsreal 38493"
+  },
+  "O-033": {
+   "t": "SEC EDGAR Form C cover (primary_doc.xml), Twelve27 Salon LLC, filed 2019-09-16 (Honeycomb)",
+   "u": "https://www.sec.gov/Archives/edgar/data/1788183/000178553819000001/primary_doc.xml",
+   "y": "2018 (inferred: most recent FY before 2019-09-16 filing)",
+   "q": "revenueMostRecentFiscalYear 590362; revenuePriorFiscalYear 0"
+  },
+  "O-034": {
+   "t": "SEC EDGAR Form C offering document, Ubuntu Fine Arts LLC, filed 2023-05-08 (Honeycomb)",
+   "u": "https://www.sec.gov/Archives/edgar/data/1975538/000197553823000001/formcubuntufineart.pdf",
+   "y": "2022",
+   "q": "Total Revenue FY2021 $25,877; FY2022 (through Dec. 2022) $57,344"
+  },
+  "O-035": {
+   "t": "SEC EDGAR Form C cover (primary_doc.xml), Vanity Glam Philadelphia LLC, filed 2023-09-14 (Mainvest)",
+   "u": "https://www.sec.gov/Archives/edgar/data/1993142/000174605923000243/primary_doc.xml",
+   "y": "2022 (inferred: most recent FY before 2023-09-14 filing)",
+   "q": "revenueMostRecentFiscalYear 180192; revenuePriorFiscalYear 142401"
+  },
+  "O-036": {
+   "t": "SEC EDGAR Form C cover (primary_doc.xml), Body Doctor LLC, filed 2021-01-25 (Mainvest)",
+   "u": "https://www.sec.gov/Archives/edgar/data/1839963/000174605921000041/primary_doc.xml",
+   "y": "not stated (most recent FY before 2021-01-25 filing; 2019 or 2020)",
+   "q": "revenueMostRecentFiscalYear 167789; revenuePriorFiscalYear 165000"
+  },
+  "O-037": {
+   "t": "SEC EDGAR Form C offering memorandum, Salem Cycle Inc, filed 2021-07-02 (Mainvest)",
+   "u": "https://www.sec.gov/Archives/edgar/data/1869590/000174605921000311/salemcycle_offmo.pdf",
+   "y": "2020",
+   "q": "Achieved revenue of $626,658 in 2019, which then grew to $1,274,355 in 2020"
+  },
+  "O-038": {
+   "t": "SEC EDGAR Form C offering document, Playground Detroit LLC, filed 2025-01-22 (Honeycomb)",
+   "u": "https://www.sec.gov/Archives/edgar/data/2051930/000205193025000001/playgrounddetroitformc.pdf",
+   "y": "2023",
+   "q": "officially opened as an art gallery in 2017"
+  },
+  "O-039": {
+   "t": "ProPublica Nonprofit Explorer API, Hyde Park Art Center (EIN 36-2887294), IRS Form 990 data",
+   "u": "https://projects.propublica.org/nonprofits/api/v2/organizations/362887294.json",
+   "y": "2023",
+   "q": "tax_prd_yr 2023: totprgmrevnue 587102; grsrntsreal 50400; totrevenue 3721399"
+  },
+  "O-040": {
+   "t": "ProPublica Nonprofit Explorer API, Philadelphia Aids Thrift (EIN 20-3253349), IRS Form 990 data",
+   "u": "https://projects.propublica.org/nonprofits/api/v2/organizations/203253349.json",
+   "y": "2023",
+   "q": "tax_prd_yr 2023: grsalesinvent 2160288; netincsales 1912971; totrevenue 1989585"
+  },
+  "O-041": {
+   "t": "SMBX offering summary for Style Bar LLC, SEC Form C exhibit (filed 2022-07-20)",
+   "u": "https://www.sec.gov/Archives/edgar/data/1937145/000193714522000001/offeringsummarystyl.pdf",
+   "y": "2021",
+   "q": "FY20 $214,933; FY21 $336,742; YTD 5/31/2022 $192,941"
+  },
+  "O-042": {
+   "t": "SMBX offering summary for TOOLBOX LLC, SEC Form C exhibit (filed 2022-06-29)",
+   "u": "https://www.sec.gov/Archives/edgar/data/1934621/000193462122000001/offeringsummarytbox.pdf",
+   "y": "2021",
+   "q": "FY20: $207,131; FY21: $325,155; YTD 3/31/2022: $223,015"
+  },
+  "O-043": {
+   "t": "SEC EDGAR Form C cover (primary_doc.xml), INNERGLOW YOGA LLC, filed 2020-03-12 (Mainvest)",
+   "u": "https://www.sec.gov/Archives/edgar/data/1802863/000174605920000075/primary_doc.xml",
+   "y": "not stated (most recent FY before 2020-03-12 filing)",
+   "q": "revenueMostRecentFiscalYear 267624; revenuePriorFiscalYear 345115"
+  },
+  "O-044": {
+   "t": "SEC EDGAR Form C cover (primary_doc.xml), 5 Generation Bakers LLC, filed 2018-08-30 (Honeycomb)",
+   "u": "https://www.sec.gov/Archives/edgar/data/1751259/000175125918000001/primary_doc.xml",
+   "y": "2017 (inferred: most recent FY before 2018-08-30 filing)",
+   "q": "revenueMostRecentFiscalYear 4030658; revenuePriorFiscalYear 3601525"
+  },
+  "O-045": {
+   "t": "ProPublica Nonprofit Explorer API, Social Entrepreneurs of New Orleans (EIN 26-3223585), IRS Form 990 data",
+   "u": "https://projects.propublica.org/nonprofits/api/v2/organizations/263223585.json",
+   "y": "2023",
+   "q": "tax_prd_yr 2023: grsrntsreal 149358; totprgmrevnue 0; totrevenue 3428613"
+  }
+ }
+}

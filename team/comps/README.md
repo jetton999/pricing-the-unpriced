@@ -1,4 +1,32 @@
-# Comps library: first ten (draft for review)
+# Comps library and engine (draft for review)
+
+## Comps engine v1
+
+Gives every ground-floor use a rent range and a revenue range for each Greenmount frontage parcel, and the rent
+the use could support (the lower of the asking rent and what the business could afford). The explorer
+(`team/explorer`) ranks uses and block plans with it. Method, results and limits: `MODEL_CARD.md`.
+
+```bash
+python3 team/comps/comps_engine.py                 # standard library only; writes comps_ranges.json
+python3 -m unittest team/comps/test_comps_engine.py
+python3 team/explorer/build_explorer.py            # rebuild the page with the new ranges
+```
+
+| File | What |
+|---|---|
+| `comps_engine.py` | The engine |
+| `engine_inputs.json` | Every assumption, with its source or "team judgement" |
+| `library/rents.csv`, `benchmarks.csv`, `operators.csv` | 79 asking rents, 192 benchmarks, 45 operators; every row has its URL, access date and a quote |
+| `library/*_notes.md`, `library/SCHEMA.md` | How the library was collected and what each column means |
+| `parcel_tax.csv` | City tax and building area per Greenmount parcel, from the city's Real Property layer |
+| `comps_ranges.json` | Output (generated; do not edit by hand) |
+| `test_comps_engine.py` | Tests, including that the private step leaves no trace in the public output |
+| `MODEL_CARD.md` | Why each method, what was rejected, results, limits |
+
+The NDA restaurant data is not in this folder and must never be added. The optional private step reads it from
+outside the repository (see `MODEL_CARD.md`).
+
+## First ten comps
 
 Ten comparable businesses and spaces for two candidate uses, one row per comp, in the column layout of
 `team/week1/comps_template.csv`. Six further rows that did not make the first ten are in
@@ -42,7 +70,7 @@ Each use is anchored on what the building has already shown it can carry, with t
 ## Sources and rules
 
 Public listing pages (CityFeet, CommercialCafe, Showcase, broker and MLS pages), SEC EDGAR Form C filings, IRS
-Form 990 data on ProPublica, and the Haverty Furniture 10-K. LoopNet, Crexi and BizBuySell refused automated
+Form 990 data on ProPublica, and a furniture chain's 10-K. LoopNet, Crexi and BizBuySell refused automated
 access, so their listings were read through the sites that repost them. No figures from the NDA restaurant data
 are used here, and none may be added.
 

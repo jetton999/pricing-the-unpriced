@@ -15,6 +15,8 @@ Sources the export holds only in part, collected for the 79 frontage records (69
 | `sanborn_frontage.csv` | 307 | One row per footprint on the 1915, 1928 and 1953 Sanborn sheets for the frontage (week 2) |
 | `nr_inventory_frontage.csv` | 98 | The frontage entries of the Waverly Main Street Historic District nomination (B-5229) (week 2) |
 | `blocklot_gaps.csv` | 20 | From the sponsor: export records with no block and lot of their own, merged into a neighbour or gone (week 2) |
+| `city_archives_unfiled_pages_2026-10-26.csv` | 174 | From the sponsor: City Archives pages (BRG48-43-10) scanned but not filed on any building |
+| `archive_unfiled_triage_2026-10-26.csv` | 174 | A suggested building for each unfiled page, from the filed pages either side; written by `triage_unfiled_pages.py` |
 
 ## Permit cards, 1924 to 1961
 
@@ -98,3 +100,23 @@ Collected and transcribed with Claude, 15 to 18 October 2026. A team member chec
 source images before merge.
 
 Checked by: ____________________ Date: __________
+
+## Unfiled City Archives pages (26 October 2026)
+
+- **Source.** The sponsor's list of pages from the City's revitalization files (BRG48-43-10) that are scanned but
+  not attached to any building in `archive_scans.csv`. Of the 174, 122 sit inside a folder's filed range and 52 come
+  after the last filed page.
+- **The triage.** `triage_unfiled_pages.py` suggests a building for each page from the folder and the filed pages
+  on either side. It writes the confidence and the reason on every row. The rule, most specific first:
+  - a folder about one building gives that building (high);
+  - the same building(s) on both neighbouring pages gives those (medium);
+  - only a page before gives its building(s) (low).
+  - The export files area-wide documents on one intersection record (Greenmount Ave and E 33rd St), so 107 pages
+    read "area-wide document".
+- **Not a filing.** Open the scan before filing or citing a page. `checked_by` and `filed_as` are blank for the
+  person who does.
+- **First to read.** Item 9 (the urban renewal plan), pages 4 to 29, all after the last filed page. On 26 October
+  the sponsor said the plan bars taverns, not restaurants, and that a restaurant can get a liquor licence more
+  easily. The explorer now says so, marked as still to confirm on these pages. Item 8 (the final Waverly plan,
+  pages 28 to 49) is next.
+

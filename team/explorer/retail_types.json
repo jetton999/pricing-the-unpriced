@@ -1,0 +1,174 @@
+{
+  "accessed_on": "2026-10-21",
+  "scope_note": "Seven retail trades: the modern version, the usual size and the cautions, each with its sources. The brands that earlier drafts gave as reference points are kept in the team report, not in the public repo (sponsor, 26 Oct 2026). Businesses already trading on or next to the frontage are named, as in the sponsor's storefront data.",
+  "corridor_context": [
+    {"t": "Red Emma's (worker-owned bookstore-cafe) already operates at 3128 Greenmount Ave, inside the study blocks; events listed for Oct 2026.", "u": "https://redemmas.org/"},
+    {"t": "Normal's Books & Records is at 425 E 31st St, just off Greenmount.", "u": "https://baltimorebeat.com/celebrate-normals-books-records-new-facade-dec-17/"},
+    {"t": "Waverly Ace Hardware (~8,000 sq ft retail plus 3,000+ sq ft garden centre) operates at 601 E Homestead St, a few blocks away.", "u": "https://www.acehardware.com/store-details/14925"},
+    {"t": "A Giant supermarket operates at 601 E 33rd St (Waverly Crossroads), at the corridor's north end.", "u": "https://betterwaverly.org/resources/local-businesses/"},
+    {"t": "The 2025 Baltimore Book Festival ran in Waverly on 31st and 32nd Streets, partnered with Red Emma's, Normal's and Waverly Main Street.", "u": "https://bmoreart.com/2025/09/the-2025-baltimore-book-festival.html"},
+    {"t": "A cluster of six local streetwear stores formed on 25th St between Charles St and Maryland Ave (2022).", "u": "https://www.thebanner.com/culture/arts/a-fashion-hub-forms-on-25th-street-45H2TVR3QNB7LMGXVIP33ZK6HI/"}
+  ],
+  "types": [
+    {
+      "id": "furniture_home",
+      "name": "Furniture and home showroom",
+      "modern_version": "A smaller, curated showroom where people see and test pieces in person, while most orders are placed online and shipped from a warehouse, often with design consultations bundled in. A second model is vintage, consignment or salvage furniture and decor, sold in store and online, with extra income from classes, styling services and space or prop rentals.",
+      "size": {
+        "low": 2000,
+        "high": 5000,
+        "note": "Online-first furniture showrooms run 2,000-4,000 sq ft; a multi-line home boutique in Indianapolis runs 5,000+ sq ft, close to 3117 Greenmount's 7,000 sq ft.",
+        "source": {"t": "Modern Retail: online-first furniture showrooms (2022)", "u": "https://www.modernretail.co/startups/its-important-to-have-a-showroom-dtc-furniture-brand-burrow-plans-to-open-10-new-stores/"}
+      },
+      "caution": {"t": "Furniture is a big purchase that people easily put off; a weak housing market and 2025 tariffs cut demand and raised costs.", "u": "https://www.modernretail.co/operations/how-companies-like-havenly-and-rh-are-strategizing-against-tariffs-in-a-slow-housing-market/"},
+      "sources": [
+        {"t": "Modern Retail: online-first furniture showrooms (2022)", "u": "https://www.modernretail.co/startups/its-important-to-have-a-showroom-dtc-furniture-brand-burrow-plans-to-open-10-new-stores/"},
+        {"t": "Home Accents Today: a 5,000+ sq ft home boutique in Indianapolis (2023)", "u": "https://www.homeaccentstoday.com/retail-profiles/this-first-of-its-kind-retailer-calls-indianapolis-home"},
+        {"t": "Resolve Philly: a vintage consignment shop with classes and space rental (2022)", "u": "https://resolvephilly.org/gih/from-vision-to-reality-black-soul-vintage-grand-opening-saturday/"},
+        {"t": "Modern Retail: furniture, tariffs and a slow housing market (May 2025)", "u": "https://www.modernretail.co/operations/how-companies-like-havenly-and-rh-are-strategizing-against-tariffs-in-a-slow-housing-market/"}
+      ]
+    },
+    {
+      "id": "clothing",
+      "name": "Clothing, shoes and accessories (including jewelry)",
+      "modern_version": "Small shops that often start online or as pop-ups, then open a storefront that runs weekly product 'drops' of a local label, or resale where the store buys used clothes from shoppers for cash or store credit. Jewelry has shifted toward service, such as permanent-jewelry welding studios that also earn from private events and classes.",
+      "size": {
+        "low": 1500,
+        "high": 3000,
+        "note": "A downtown Richmond resale store has ~3,000 sq ft of sales floor plus a basement stockroom; a permanent-jewelry studio took 1,900 sq ft; a Baltimore body-jewelry studio uses ~1,500 sq ft.",
+        "source": {"t": "Richmond BizSense: a resale chain's downtown store (Nov 2024)", "u": "https://richmondbizsense.com/2024/11/11/thrift-store-chain-uptown-cheapskate-lands-in-former-ledbury-storefront-downtown"}
+      },
+      "caution": {"t": "Budget shoppers are price-driven: resale and fast fashion compete for the same shoppers, and tariffs raise new-apparel prices.", "u": "https://www.retaildive.com/news/thredup-2025-resale-report-tariffs-fast-fashion/743095/"},
+      "sources": [
+        {"t": "Downtown Partnership of Baltimore: shopping directory", "u": "https://godowntownbaltimore.com/art-culture/shopping/"},
+        {"t": "Black Enterprise: BOOST cohort at Harborplace (2024)", "u": "https://www.blackenterprise.com/black-owned-businesses-take-over-baltimoresharborplace/amp/"},
+        {"t": "Richmond BizSense: a resale chain's downtown store (Nov 2024)", "u": "https://richmondbizsense.com/2024/11/11/thrift-store-chain-uptown-cheapskate-lands-in-former-ledbury-storefront-downtown"},
+        {"t": "Richmond BizSense: a permanent-jewelry shop (Sep 2025)", "u": "https://richmondbizsense.com/2025/09/10/permanent-jewelry-shop-full-circle-firms-up-carytown-spot/"},
+        {"t": "A Baltimore body-jewelry studio's own post, ~1,500 sq ft (2020)", "u": "https://infinitebody.com/blogs/news/infinite-in-baltimore"},
+        {"t": "Baltimore Fishbowl: a vintage shop moves from pop-ups and online to a storefront (2024)", "u": "https://baltimorefishbowl.com/stories/retrospect-vintage-opens-in-federal-hill/"},
+        {"t": "Brooklyn Magazine: Black-owned fashion hubs", "u": "https://www.bkmag.com/?p=80880"},
+        {"t": "The Banner: fashion hub on 25th Street (2022)", "u": "https://www.thebanner.com/culture/arts/a-fashion-hub-forms-on-25th-street-45H2TVR3QNB7LMGXVIP33ZK6HI/"},
+        {"t": "Retail Dive: 2025 resale report", "u": "https://www.retaildive.com/news/thredup-2025-resale-report-tariffs-fast-fashion/743095/"}
+      ]
+    },
+    {
+      "id": "grocery",
+      "name": "Grocery and specialty food market (small-format)",
+      "modern_version": "A 2,500-6,000 sq ft neighbourhood market selling fresh produce, staples and prepared food from a deli or cafe counter, and accepting SNAP/EBT with produce discounts. Some are worker- or member-owned co-ops or nonprofits, and the smallest are bodegas built around a deli counter.",
+      "size": {
+        "low": 2500,
+        "high": 6000,
+        "note": "A DC neighbourhood grocer's stores are 5,000-6,000 sq ft; an Oakland grocery co-op began at ~2,500 sq ft including a cafe; a nonprofit grocer's stores were ~3,000 sq ft.",
+        "source": {"t": "Progressive Grocer: a DC neighbourhood grocer's two new stores", "u": "https://progressivegrocer.com/streets-market-open-2-new-dc-stores"}
+      },
+      "caution": {"t": "Thin margins: a nonprofit grocer shut all its Boston-area stores in May 2025 when funding ran out, and a Giant supermarket already sits at 33rd St.", "u": "https://www.cambridgeday.com/2025/05/09/daily-table-is-closing-abruptly-in-central-square/"},
+      "sources": [
+        {"t": "KQED: an Oakland grocery co-op (2018)", "u": "https://www.kqed.org/bayareabites/129251/an-oakland-community-grocery-store-"},
+        {"t": "Progressive Grocer: a DC neighbourhood grocer's store sizes", "u": "https://progressivegrocer.com/streets-market-open-2-new-dc-stores"},
+        {"t": "Hoodline: a DC neighbourhood grocer's U Street plans (Feb 2026)", "u": "https://hoodline.com/2026/02/streets-market-plots-bold-u-street-move-at-the-ellington/"},
+        {"t": "Hoodline: an East Baltimore neighbourhood market to close (Mar 2026)", "u": "https://hoodline.com/2026/03/east-baltimore-shaken-as-yard-56-streets-market-pulls-plug/"},
+        {"t": "Black Enterprise: Baltimore's first Black woman-owned bodega (2025)", "u": "https://www.blackenterprise.com/order-up-baltimores-first-black-woman-owned-bodega-is-officially-open-for-business/amp/"},
+        {"t": "Baltimore Magazine: a Fells Point bodega and deli (Sep 2025)", "u": "https://www.baltimoremagazine.com/section/fooddrink/viral-chopped-sandwich-trend-chopped-broadway-bodega-deli-fells-point/"},
+        {"t": "Produce Business: a nonprofit grocer's ~3,000 sq ft stores (2023)", "u": "https://producebusiness.com/daily-table-takes-on-food-insecurity/"},
+        {"t": "Cambridge Day: a nonprofit grocer closes all its stores (May 2025)", "u": "https://www.cambridgeday.com/2025/05/09/daily-table-is-closing-abruptly-in-central-square/"},
+        {"t": "Maryland DHCD: NourishMD awardees, incl. a food store in a historic firehouse in Coldstream Homestead Montebello (2026)", "u": "https://news.maryland.gov/dhcd/wp-content/uploads/sites/16/2026/07/Public-NourishMD_Awardees_With_Descriptions.docx-2.pdf"},
+        {"t": "Better Waverly: local businesses (Giant, Waverly Ace)", "u": "https://betterwaverly.org/resources/local-businesses/"}
+      ]
+    },
+    {
+      "id": "hardware",
+      "name": "Hardware and home repair",
+      "modern_version": "A compact neighbourhood store of about 4,000-8,000 sq ft, usually tied to a retailer-owned co-op, that wins quick repair trips with know-how service, paint, plants and some locally sourced gifts while buying national brands at co-op prices. A newer low-cost add-on is a tool library that charges memberships and runs skills classes in a shared workshop.",
+      "size": {
+        "low": 4000,
+        "high": 8000,
+        "note": "A hardware co-op's small 'express' guideline was ~4,000 sq ft; urban co-op stores run 5,500-8,000 sq ft; Waverly Ace, nearby, has ~8,000 sq ft of retail.",
+        "source": {"t": "CNU Public Square: Return of the neighborhood hardware store (2012)", "u": "https://www.cnu.org/node/1071"}
+      },
+      "caution": {"t": "Waverly Ace (~8,000 sq ft) already serves the area from 601 E Homestead St, so a second general hardware store would split a small trade area.", "u": "https://www.acehardware.com/store-details/14925"},
+      "sources": [
+        {"t": "CNU: Return of the neighborhood hardware store (2012)", "u": "https://www.cnu.org/node/1071"},
+        {"t": "CNN: how co-op hardware stores beat big-box rivals (2024)", "u": "https://edition.cnn.com/2024/05/24/business/ace-hardware-staying-power"},
+        {"t": "Retail TouchPoints: an express hardware format of 5,000 sq ft or less (2012)", "u": "https://www.retailtouchpoints.com/topics/store-operations/ace-hardware-launches-express-store-format-to-drive-sales-growth"},
+        {"t": "Baltimore Fishbowl: a Baltimore hardware group becomes employee-owned (2021)", "u": "https://baltimorefishbowl.com/stories/a-few-cool-hardware-stores-group-shifts-to-employee-owned-model/"},
+        {"t": "PoPville: an employee-owned hardware group opens two stores (Jun 2025)", "u": "https://www.popville.com/2025/06/ace-hardware-opening-two-new-stores-coming-to-rockville-and-union-market/"},
+        {"t": "Baltimore Magazine: a Baltimore tool library (2015)", "u": "https://www.baltimoremagazine.com/section/community/station-north-tool-library-is-diy-dream/"},
+        {"t": "JHU Sustainability: a tool-library class (Jan 2026)", "u": "https://sustainability.jhu.edu/?p=10648"},
+        {"t": "Waverly Ace Hardware store page (nearby, 601 E Homestead St)", "u": "https://www.acehardware.com/store-details/14925"}
+      ]
+    },
+    {
+      "id": "pharmacy",
+      "name": "Pharmacy and health goods",
+      "modern_version": "A 1,500-3,000 sq ft independent pharmacy that earns almost all of its sales from prescriptions and adds services such as vaccines, blood-pressure checks, adherence packaging and delivery, with a small front shelf of low-cost essentials. Pharmacists often open through a franchise or supplier programme, and even national chains now open ~3,000 sq ft pharmacy-focused neighbourhood stores.",
+      "size": {
+        "low": 1500,
+        "high": 3000,
+        "note": "A new franchise pharmacy is 1,545 sq ft; a national chain's new pharmacy-focused neighbourhood stores average about 3,000 sq ft.",
+        "source": {"t": "Patch: a 1,545 sq ft franchise pharmacy in Old Lyme (Feb 2026)", "u": "https://patch.com/connecticut/thelymes/pharmacy-open-old-lyme-after-walgreens-departs"}
+      },
+      "caution": {"t": "PBMs pay independents below cost; nearly 1 in 3 retail pharmacies closed since 2010, with 38% closure rates in Black neighbourhoods.", "u": "https://ncpa.org/sites/default/files/2026-01/IndependentsClosing_2025FlyerEdit_0.pdf"},
+      "sources": [
+        {"t": "Pharmacy Times: NCPA 2026 Digest (Oct 2026)", "u": "https://www.pharmacytimes.com/view/ncpa-releases-2026-digest-report"},
+        {"t": "NCPA: independents closing flyer (2026)", "u": "https://ncpa.org/sites/default/files/2026-01/IndependentsClosing_2025FlyerEdit_0.pdf"},
+        {"t": "WOWT/InvestigateTV: pharmacies closing at an accelerating rate (Apr 2026)", "u": "https://www.wowt.com/2026/04/15/pharmacies-across-united-states-are-closing-an-accelerating-rate/"},
+        {"t": "KFF Health News: West Baltimore pharmacy gaps (2016)", "u": "https://kffhealthnews.org/public-health/in-west-baltimore-scarce-pharmacies-leave-health-care-gaps/"},
+        {"t": "CNS Maryland: a small Baltimore pharmacy against chain competition (2016)", "u": "https://cnsmaryland.org/baltimore-health/story/small-baltimore-pharmacy-tries-to-survive-chain-store-competition.html"},
+        {"t": "A drug wholesaler's programme for pharmacies in pharmacy deserts", "u": "https://www.mckesson.com/stories-insights/providing-an-oasis-to-pharmacy-deserts/"},
+        {"t": "WCPO: a Black-owned Cincinnati pharmacy with low-cost essentials and delivery (Jun 2024)", "u": "https://www.wcpo.com/news/local-news/finding-solutions/black-owned-pharmacy-in-avondale-gives-support-cheaper-essentials-to-community-in-need"},
+        {"t": "Spectrum News: a Louisville pharmacy opens (Aug 2025)", "u": "https://spectrumnews1.com/ky/louisville/news/2025/08/27/good-brothers-pharmacy-opens"},
+        {"t": "Patch: a 1,545 sq ft franchise pharmacy in Old Lyme (Feb 2026)", "u": "https://patch.com/connecticut/thelymes/pharmacy-open-old-lyme-after-walgreens-departs"},
+        {"t": "Boston.com: a national chain's ~3,000 sq ft pharmacy-focused store in Roxbury (Oct 2026)", "u": "https://www.boston.com/news/business/2026/10/08/cvs-pharmacy-opens-its-first-pharmacy-focused-location-in-roxbury/"},
+        {"t": "The Banner: Baltimore pharmacy deserts (2023)", "u": "https://www.thebanner.com/community/pharmacy-desert-access-medicine-SYPPASPMDNDVJLWL5PPQL6GXSM/"}
+      ]
+    },
+    {
+      "id": "books_music",
+      "name": "Books, records and media",
+      "modern_version": "A small shop pairing new or used books and records with a cafe counter and a steady events calendar (author talks, readings, concerts, classes, book clubs). Extra income comes from bulk or institutional book orders, catering, merchandise and online sales.",
+      "size": {
+        "low": 500,
+        "high": 3500,
+        "note": "A Baltimore bookshop opened in 2019 at ~1,300 sq ft, and the booksellers' association keeps guidance for shops under 1,000 sq ft; independents profiled by Publishers Weekly in 2015 ranged ~900-6,500 sq ft, many 1,200-3,500.",
+        "source": {"t": "Publishers Weekly: Filling the Void (2015)", "u": "https://www.publishersweekly.com/pw/print/20150216/65607-filling-the-void.html"}
+      },
+      "caution": {"t": "Rising costs, card swipe fees, tariffs and online retail squeeze independents, and two book/record shops already serve this block.", "u": "https://norfolkdailynews.com/online_features/press_releases/the-american-booksellers-association-releases-2025-annual-report--notes-consistent-growth-amidst-challenges/article_801c31c2-f5eb-5165-866e-ca2f9c88a272.html"},
+      "sources": [
+        {"t": "Red Emma's site (3128 Greenmount Ave, on the frontage)", "u": "https://redemmas.org/"},
+        {"t": "Baltimore Brew: Red Emma's move boosts Greenmount (2021)", "u": "https://www.baltimorebrew.com/2021/05/03/red-emmas-move-is-seen-as-a-boost-for-greenmount-avenue-and-waverly/"},
+        {"t": "Shelf Awareness: Red Emma's soft opening at 3128 Greenmount (2022)", "u": "https://www.shelf-awareness.com/theshelf/2022-10-26/red_emma_s_hosts_soft_opening_in_new_home.html"},
+        {"t": "Visit Baltimore: Baltimore record stores", "u": "https://baltimore.org/what-to-do/shopping/baltimore-record-stores/"},
+        {"t": "Baltimore Beat: Normal's new facade (2017)", "u": "https://baltimorebeat.com/celebrate-normals-books-records-new-facade-dec-17/"},
+        {"t": "BmoreArt: 2025 Baltimore Book Festival in Waverly", "u": "https://bmoreart.com/2025/09/the-2025-baltimore-book-festival.html"},
+        {"t": "Book Riot: Black-owned bookstores 2026", "u": "https://bookriot.com/black-owned-bookstores-2026/"},
+        {"t": "Shelf Awareness: a second Baltimore bookshop of ~1,300 sq ft (2019)", "u": "https://shelf-awareness.com/theshelf/2019-11-21/second_greedy_reads_location_celebrates_soft_opening.html"},
+        {"t": "Publishers Weekly: new bookstore sizes (2015)", "u": "https://www.publishersweekly.com/pw/print/20150216/65607-filling-the-void.html"},
+        {"t": "ABA 2025 Annual Report release (May 2026): 605 new stores in 2025", "u": "https://norfolkdailynews.com/online_features/press_releases/the-american-booksellers-association-releases-2025-annual-report--notes-consistent-growth-amidst-challenges/article_801c31c2-f5eb-5165-866e-ca2f9c88a272.html"},
+        {"t": "American Booksellers Association: Idea Exchange, stores under 1,000 square feet", "u": "https://bookweb.org/node/100355"}
+      ]
+    },
+    {
+      "id": "gifts_makers",
+      "name": "Gifts, variety and local makers' goods",
+      "modern_version": "A curated shop of local and diaspora makers' goods, often stocked on consignment or through rotating vendors and short 'residencies', with each product labelled by its maker. An upstairs or back room earns extra as a gallery, workshop or event space for classes, First Friday openings, night markets and sip-and-shop nights.",
+      "size": {
+        "low": 1000,
+        "high": 3000,
+        "note": "A DC makers' shop is in a 3,000 sq ft warehouse and its Arlington store was about a third of that.",
+        "source": {"t": "Northern Virginia Magazine: a DC makers' shop opens in Arlington (2019)", "u": "https://northernvirginiamag.com/style/shopping/2019/07/31/dc-based-steadfast-supply-opens-its-first-virginia-location-in-arlington/"}
+      },
+      "caution": {"t": "On consignment the shop typically keeps only ~40% (60/40 to the maker), and gift buying is discretionary, so rent must stay low or tied to sales.", "u": "https://www.madeurban.com/blog/what-is-a-fair-consignment-percentage/"},
+      "sources": [
+        {"t": "WMAR: a Baltimore shop of curated local art and gifts (Feb 2025)", "u": "https://www.wmar2news.com/shopsmall/shop-small-at-found-studios-a-destination-for-curated-local-art-and-gifts-in-baltimore"},
+        {"t": "Visit Baltimore: a sip-and-shop night at a Baltimore makers' shop (Oct 2026)", "u": "https://baltimore.org/event/sip-shop-with-the-charmers-club/"},
+        {"t": "Northern Virginia Magazine: a DC makers' shop opens in Arlington (2019)", "u": "https://northernvirginiamag.com/style/shopping/2019/07/31/dc-based-steadfast-supply-opens-its-first-virginia-location-in-arlington/"},
+        {"t": "Washingtonian: Navy Yard guide (Jun 2025)", "u": "https://washingtonian.com/2025/06/25/neighborhood-guide-things-to-do-at-navy-yard/"},
+        {"t": "DC DSLBD: FY26 Made in DC Retail Residency", "u": "https://dslbd.dc.gov/node/1842376"},
+        {"t": "DC Mayor: Shop Made in DC store and cafe, rotating DC-made goods (2017)", "u": "https://mayor.dc.gov/release/mayor-bowser-celebrates-first-ever-shop-made-dc-store-and-cafe"},
+        {"t": "Black Enterprise: BOOST cohort at Harborplace (2024)", "u": "https://www.blackenterprise.com/black-owned-businesses-take-over-baltimoresharborplace/amp/"},
+        {"t": "Visit Baltimore: handcrafted souvenirs by Baltimore makers", "u": "https://baltimore.org/what-to-do/handcrafted-souvenirs-by-baltimore-makers/"},
+        {"t": "Made Urban: fair consignment percentage", "u": "https://www.madeurban.com/blog/what-is-a-fair-consignment-percentage/"}
+      ]
+    }
+  ]
+}

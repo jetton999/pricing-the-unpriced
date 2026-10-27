@@ -3,11 +3,16 @@
 
 Run from anywhere:  python3 team/explorer/build_explorer.py
 Inputs: team/extractor/out, team/evidence, team/tenants, team/week1/out, properties.csv, property_incidents.csv,
-and the two hand-made files beside this script (concepts.json, library.json). Output: index.html beside this script.
+and the hand-made files beside this script (concepts.json, library.json, retail_types.json, typical_sqft.json).
+Output: index.html beside this script.
+
+The team's private copy is built by the same script with PTU_LIBRARY, PTU_CONCEPTS, PTU_PRIVATE_BRANDS,
+PTU_PRIVATE_SIZES and PTU_OUT pointing at files kept outside the repo (the reference brands, which the sponsor
+keeps out of the public repo; PTU_BARE=1 writes the page without its html wrapper). Unset, it reads repo files only.
 
 Same schema as screen_v0.py's explorer_data.json, so the page template keeps working.
 Standard library only."""
-import csv, json, collections, re, os
+import csv, json, collections, re, os, sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.dirname(os.path.dirname(HERE))
@@ -62,7 +67,7 @@ BENCH = {
     'food & drink': dict(small=(25.0, 37.5), large=(15.0, 25.0),
                          note='Rent: fitted 800 SF cafe suites in Hampden ask $30-37.50/SF NNN (CAFE-01, CAFE-02); the 3226 rent roll implies at least $25.23/SF gross (CAFE-04). Sales: an owner-run Baltimore tea cafe reported $250k-285k a year (CAFE-03).'),
     'retail goods': dict(small=(20.0, 30.0), large=(10.9, 20.0),
-                         note='Rent: large-format space asks $17-20/SF NNN in Hampden (SHOW-03, SHOW-04); a fully leased 14,000 SF 1920s building earns about $10.91/SF incl. CAM (SHOW-05). Sales: $167-185 per SF of showroom (SHOW-08, Havertys 10-K).'),
+                         note="Rent: large-format space asks $17-20/SF NNN in Hampden (SHOW-03, SHOW-04); a fully leased 14,000 SF 1920s building earns about $10.91/SF incl. CAM (SHOW-05). Sales: $167-185 per SF of showroom (SHOW-08, a furniture chain's 10-K)."),
 }
 NOT_CAND = {'residential', 'institutional & religious', 'vacant'}
 
@@ -105,7 +110,7 @@ for pid, p in props.items():
         elif r['cat'] == 'food & drink' and sqft and sqft <= 3000:
             fmt = 'small cafe / counter service'
         if r['cat'] == 'food & drink' and r['bar_share'] >= 0.5:
-            why += '; most of the record is a saloon or tavern, and a new tavern is barred by the urban renewal plan (restaurant or cafe allowed)'
+            why += '; most of the record is a saloon or tavern, and a new tavern is barred by the urban renewal plan (a restaurant or cafe is allowed and can serve alcohol)'
         cands.append(dict(use=r['cat'], format=fmt, score=round(2 * r['nd'] + min(r['ne'], 20) / 5 - pen, 2), why=why))
     cands.sort(key=lambda x: -x['score'])
     if not cands and any(r['cat'] == 'residential' for r in proven[pid]):
@@ -249,10 +254,11 @@ for q in data['props']:
     other = by_side.get(ACROSS.get(q['side'], ''), [])
     if other and q['lat']:
         q['nb']['across'] = [o['id'] for o in sorted(other, key=lambda o: abs(o['lat'] - q['lat']))[:2]]
-LIB = json.load(open(os.path.join(HERE, 'library.json'), encoding='utf-8'))
+LIB = json.load(open(os.environ.get('PTU_LIBRARY') or os.path.join(HERE, 'library.json'), encoding='utf-8'))
 data['lib'] = {k: LIB[k] for k in ('buildings', 'districts', 'waverly', 'aversion', 'requested', 'adjacency', 'segments', 'history_value', 'match_lessons')}
 # the page shows the sponsor's own rules; personal and ownership detail stays in the research report, not in shared page data
 data['lib']['sponsor'] = {'guardrails': LIB['sponsor'].get('guardrails', []), 'goals': LIB['sponsor'].get('goals', [])}
+data['lib']['meta'] = {k: LIB['meta'][k] for k in ('displacement_rubric', 'updated', 'research_2026_10_26') if k in LIB['meta']}
 
 # ---- preliminary back-test of the heritage prior: do uses proven before a cut-off year predict the 2026 use?
 NOTUSE = {'residential', 'vacant', ''}
@@ -290,17 +296,30 @@ for cut in (1940, 1960):
                            b=sum(c in now_cats[x] for x in other), bn=len(other)))
     bt.append(dict(cut=cut, n=len(rows), hit=hit, base=base, percat=percat))
 data['backtest'] = bt
+
+# back-test v2 (team/validation): the parcel-by-use test, run on the frontage and on the other Greenmount blocks
+_bt2p = os.path.join(REPO, 'team', 'validation', 'out', 'backtest_v2.json')
+if os.path.exists(_bt2p):
+    _b2 = json.load(open(_bt2p, encoding='utf-8'))
+    _keep = ('cut', 'parcels', 'parcels_with_history', 'p_perm', 'p_lr', 'auc_base', 'auc_history', 'odds_3_decades',
+             'p_lr_with_depth_control', 'by_history')
+    data['backtest2'] = {k: [{kk: a[kk] for kk in _keep if kk in a} for a in _b2[k]]
+                         for k in ('frontage', 'frontage_sponsor_only', 'other_blocks', 'other_blocks_without_low_confidence')}
+    data['backtest2']['transfer'] = _b2['transfer_frontage_sponsor_to_other']
+    data['backtest2']['holdout'] = _b2['frontage_leave_one_side_out']
+    data['backtest2']['decision'] = _b2['decision']
+    data['backtest2']['similarity'] = _b2['similarity']
 data['n_summary'] = n_summary
 
 # ---- candidate formats: heritage links, C-1 zoning status (Table 10-301), urban renewal plan, size range (team assumption)
 data['formats'] = [
     dict(id='cafe', name='Cafe or sit-down restaurant', cat='food & drink', her=[['food & drink', 1]], z='Restaurant', zs='P', size=[800, 4000],
-         note='Porch or sidewalk seating is outdoor dining: a conditional use in C-1 (Table 10-301, note 5).'),
+         note='Porch or sidewalk seating is outdoor dining: a conditional use in C-1 (Table 10-301, note 5). The urban renewal plan bars taverns, not restaurants, so a restaurant can serve alcohol (sponsor, 26 Oct 2026; to confirm on the plan text).'),
     dict(id='counter', name='Take-away counter (coffee, ice cream)', cat='food & drink', her=[['food & drink', 1]], z='Carry-Out Food Shop', zs='CB', size=[250, 1500],
          note='Serving mostly to go in disposable containers makes it a carry-out food shop (zoning code 1-303).'),
     dict(id='foodmaker', name='Food maker with a shop (bakery, roaster, ice cream)', cat='food & drink', her=[['food & drink', 0.8], ['production & light industry', 0.8]], z='Food Processing: Light', zs='P', size=[1000, 6000], note=''),
     dict(id='tavern', name='Bar or tavern', cat='food & drink', her=[['food & drink', 1]], bar=True, z='Tavern', zs='CB', urp=True, size=[800, 5000],
-         note='The urban renewal plan bars new taverns, liquor stores and pawnshops (since 4 Dec 1995).'),
+         note="The urban renewal plan bars new taverns, liquor stores and pawnshops (since 4 Dec 1995). It bars taverns, not restaurants: a restaurant can serve alcohol, and the sponsor notes its licence is easier to get (26 Oct 2026; to confirm on the plan's pages, City Archives BRG48-43-10-9 pp. 4-29, not yet filed)."),
     dict(id='shop', name='Small shop', cat='retail goods', her=[['retail goods', 1]], z='Retail Goods Establishment (no alcohol)', zs='P', size=[400, 2500], note=''),
     dict(id='showroom', name='Showroom or large shop', cat='retail goods', her=[['retail goods', 1]], z='Retail Goods Establishment (no alcohol)', zs='P', size=[2500, 12000], note=''),
     dict(id='bike', name='Bike shop', cat='retail goods', her=[['automotive', 0.6], ['retail goods', 0.4]], z='Retail Goods Establishment (no alcohol)', zs='P', size=[800, 4000],
@@ -322,17 +341,34 @@ data['zoning_src'] = 'https://codes.baltimorecity.gov/us/md/cities/baltimore/cod
 data['urp_src'] = 'https://www.baltimorecity.gov/media/document/waverlybusinessareaurppdf'
 
 # draft concepts for the three empty sponsor buildings (hand-written, every fact linked to a source)
-C = json.load(open(os.path.join(HERE, 'concepts.json'), encoding='utf-8'))
+C = json.load(open(os.environ.get('PTU_CONCEPTS') or os.path.join(HERE, 'concepts.json'), encoding='utf-8'))
 data['concepts'] = {k: C[k] for k in C['order']}
 data['concept_order'] = C['order']
 data['concept_note'] = C['_note']
+COMPS_DIR = os.path.join(REPO, 'team', 'comps')
+# comps engine v1 (team/comps): rent and revenue ranges; only the library rows the page cites are kept
+_cp = os.path.join(COMPS_DIR, 'comps_ranges.json')
+if os.path.exists(_cp):
+    _comps = json.load(open(_cp, encoding='utf-8'))
+    _srcs = _comps.pop('sources')
+    _cited = set(re.findall(r'\b[RBO]-\d{3}\b', json.dumps(_comps)))
+    _comps['sources'] = {k: v for k, v in _srcs.items() if k in _cited}
+    data['comps'] = _comps
+
+# extra layers: the sponsor's storefront check, heritage revivals, retail broken down, survey photos (extras.py)
+sys.path.insert(0, HERE)
+import extras  # noqa: E402
+extras.apply(REPO, data, {'brands': os.environ.get('PTU_PRIVATE_BRANDS'), 'sizes': os.environ.get('PTU_PRIVATE_SIZES')})
 page = open(os.path.join(HERE, 'template.html'), encoding='utf-8').read()
 blob = json.dumps(data, separators=(',', ':'), ensure_ascii=False).replace('</', '<\\/')
 assert page.count('__DATA__') == 1
-html = ('<!doctype html>\n<html lang="en">\n<meta charset="utf-8">\n<meta name="viewport" content="width=device-width, initial-scale=1">\n'
-        + page.replace('__DATA__', blob) + '\n</html>\n')
-open(os.path.join(HERE, 'index.html'), 'w', encoding='utf-8').write(html)
-print('wrote index.html,', len(html) // 1024, 'KB;', 'props', len(data['props']), data['totals'], data['silence'])
+html = page.replace('__DATA__', blob)
+if not os.environ.get('PTU_BARE'):
+    html = ('<!doctype html>\n<html lang="en">\n<meta charset="utf-8">\n<meta name="viewport" content="width=device-width, initial-scale=1">\n'
+            + html + '\n</html>\n')
+OUT = os.environ.get('PTU_OUT') or os.path.join(HERE, 'index.html')
+open(OUT, 'w', encoding='utf-8').write(html)
+print('wrote', os.path.basename(OUT) + ',', len(html) // 1024, 'KB;', 'props', len(data['props']), data['totals'], data['silence'])
 print([(m['cat'], m['then'], m['then_base'], m['now'], m['now_base']) for m in data['mix']])
 print(data['validation'])
 print(collections.Counter(s['cand1'].split(' - ')[0] for s in screen).most_common())

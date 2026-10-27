@@ -1,0 +1,398 @@
+{
+ "written_by": "team/validation/backtest.py",
+ "plan": "team/validation/PLAN_backtest_v2.md",
+ "categories": [
+  "food & drink",
+  "retail goods",
+  "personal services",
+  "automotive",
+  "entertainment & assembly",
+  "institutional & religious",
+  "office",
+  "production & light industry"
+ ],
+ "permutations": 10000,
+ "seed": 20261026,
+ "frontage": [
+  {
+   "cut": 1960,
+   "parcels": 44,
+   "parcels_with_history": 42,
+   "rows": 352,
+   "present": 49,
+   "beta": 1.041,
+   "odds_3_decades": 4.24,
+   "lr": 10.79,
+   "p_lr": 0.0005,
+   "p_perm": 0.0004,
+   "score": 10.484,
+   "auc_base": 0.839,
+   "auc_history": 0.87,
+   "beta_with_depth_control": 1.227,
+   "p_lr_with_depth_control": 0.0003,
+   "by_history": [
+    {
+     "group": "none on record",
+     "pairs": 198,
+     "present": 12,
+     "expected": 20.2
+    },
+    {
+     "group": "1 decade",
+     "pairs": 73,
+     "present": 12,
+     "expected": 10.2
+    },
+    {
+     "group": "2 or more decades",
+     "pairs": 81,
+     "present": 25,
+     "expected": 18.6
+    }
+   ]
+  },
+  {
+   "cut": 1940,
+   "parcels": 44,
+   "parcels_with_history": 42,
+   "rows": 352,
+   "present": 49,
+   "beta": 0.969,
+   "odds_3_decades": 3.83,
+   "lr": 8.27,
+   "p_lr": 0.002,
+   "p_perm": 0.0016,
+   "score": 8.594,
+   "auc_base": 0.839,
+   "auc_history": 0.861,
+   "beta_with_depth_control": 1.131,
+   "p_lr_with_depth_control": 0.0014,
+   "by_history": [
+    {
+     "group": "none on record",
+     "pairs": 211,
+     "present": 13,
+     "expected": 21.8
+    },
+    {
+     "group": "1 decade",
+     "pairs": 69,
+     "present": 15,
+     "expected": 10.4
+    },
+    {
+     "group": "2 or more decades",
+     "pairs": 72,
+     "present": 21,
+     "expected": 16.8
+    }
+   ]
+  }
+ ],
+ "frontage_sponsor_only": [
+  {
+   "cut": 1960,
+   "parcels": 44,
+   "parcels_with_history": 37,
+   "rows": 352,
+   "present": 49,
+   "beta": 0.572,
+   "odds_3_decades": 2.21,
+   "lr": 2.25,
+   "p_lr": 0.067,
+   "p_perm": 0.0607,
+   "score": 3.869,
+   "auc_base": 0.839,
+   "auc_history": 0.851,
+   "beta_with_depth_control": 0.536,
+   "p_lr_with_depth_control": 0.119,
+   "by_history": [
+    {
+     "group": "none on record",
+     "pairs": 280,
+     "present": 31,
+     "expected": 35.0
+    },
+    {
+     "group": "1 decade",
+     "pairs": 46,
+     "present": 12,
+     "expected": 8.7
+    },
+    {
+     "group": "2 or more decades",
+     "pairs": 26,
+     "present": 6,
+     "expected": 5.3
+    }
+   ]
+  },
+  {
+   "cut": 1940,
+   "parcels": 44,
+   "parcels_with_history": 37,
+   "rows": 352,
+   "present": 49,
+   "beta": 0.721,
+   "odds_3_decades": 2.72,
+   "lr": 3.03,
+   "p_lr": 0.041,
+   "p_perm": 0.03,
+   "score": 4.12,
+   "auc_base": 0.839,
+   "auc_history": 0.854,
+   "beta_with_depth_control": 0.692,
+   "p_lr_with_depth_control": 0.0768,
+   "by_history": [
+    {
+     "group": "none on record",
+     "pairs": 287,
+     "present": 31,
+     "expected": 36.4
+    },
+    {
+     "group": "1 decade",
+     "pairs": 44,
+     "present": 13,
+     "expected": 8.2
+    },
+    {
+     "group": "2 or more decades",
+     "pairs": 21,
+     "present": 5,
+     "expected": 4.4
+    }
+   ]
+  }
+ ],
+ "other_blocks": [
+  {
+   "cut": 1960,
+   "parcels": 52,
+   "parcels_with_history": 34,
+   "rows": 416,
+   "present": 57,
+   "beta": 1.141,
+   "odds_3_decades": 4.87,
+   "lr": 5.49,
+   "p_lr": 0.0095,
+   "p_perm": 0.0228,
+   "score": 4.663,
+   "auc_base": 0.707,
+   "auc_history": 0.741,
+   "beta_with_depth_control": 1.199,
+   "p_lr_with_depth_control": 0.0128,
+   "by_history": [
+    {
+     "group": "none on record",
+     "pairs": 362,
+     "present": 44,
+     "expected": 48.3
+    },
+    {
+     "group": "1 decade",
+     "pairs": 41,
+     "present": 7,
+     "expected": 5.8
+    },
+    {
+     "group": "2 or more decades",
+     "pairs": 13,
+     "present": 6,
+     "expected": 2.9
+    }
+   ]
+  },
+  {
+   "cut": 1940,
+   "parcels": 52,
+   "parcels_with_history": 33,
+   "rows": 416,
+   "present": 57,
+   "beta": 1.377,
+   "odds_3_decades": 6.75,
+   "lr": 7.56,
+   "p_lr": 0.003,
+   "p_perm": 0.007,
+   "score": 5.299,
+   "auc_base": 0.707,
+   "auc_history": 0.743,
+   "beta_with_depth_control": 1.557,
+   "p_lr_with_depth_control": 0.0025,
+   "by_history": [
+    {
+     "group": "none on record",
+     "pairs": 366,
+     "present": 44,
+     "expected": 48.9
+    },
+    {
+     "group": "1 decade",
+     "pairs": 39,
+     "present": 7,
+     "expected": 5.8
+    },
+    {
+     "group": "2 or more decades",
+     "pairs": 11,
+     "present": 6,
+     "expected": 2.3
+    }
+   ]
+  }
+ ],
+ "other_blocks_without_low_confidence": [
+  {
+   "cut": 1960,
+   "parcels": 47,
+   "parcels_with_history": 32,
+   "rows": 376,
+   "present": 52,
+   "beta": 1.013,
+   "odds_3_decades": 4.07,
+   "lr": 4.06,
+   "p_lr": 0.022,
+   "p_perm": 0.0352,
+   "score": 3.895,
+   "auc_base": 0.729,
+   "auc_history": 0.767,
+   "beta_with_depth_control": 1.036,
+   "p_lr_with_depth_control": 0.0308,
+   "by_history": [
+    {
+     "group": "none on record",
+     "pairs": 326,
+     "present": 40,
+     "expected": 43.4
+    },
+    {
+     "group": "1 decade",
+     "pairs": 37,
+     "present": 6,
+     "expected": 5.4
+    },
+    {
+     "group": "2 or more decades",
+     "pairs": 13,
+     "present": 6,
+     "expected": 3.2
+    }
+   ]
+  },
+  {
+   "cut": 1940,
+   "parcels": 47,
+   "parcels_with_history": 31,
+   "rows": 376,
+   "present": 52,
+   "beta": 1.265,
+   "odds_3_decades": 5.78,
+   "lr": 5.97,
+   "p_lr": 0.0073,
+   "p_perm": 0.0114,
+   "score": 4.569,
+   "auc_base": 0.729,
+   "auc_history": 0.776,
+   "beta_with_depth_control": 1.418,
+   "p_lr_with_depth_control": 0.0067,
+   "by_history": [
+    {
+     "group": "none on record",
+     "pairs": 330,
+     "present": 40,
+     "expected": 43.9
+    },
+    {
+     "group": "1 decade",
+     "pairs": 35,
+     "present": 6,
+     "expected": 5.5
+    },
+    {
+     "group": "2 or more decades",
+     "pairs": 11,
+     "present": 6,
+     "expected": 2.5
+    }
+   ]
+  }
+ ],
+ "transfer_frontage_sponsor_to_other": [
+  {
+   "cut": 1960,
+   "logloss_base": 0.6187,
+   "logloss_history": 0.6145,
+   "auc_base": 0.604,
+   "auc_history": 0.6,
+   "beta_train": 0.572,
+   "better": true
+  },
+  {
+   "cut": 1940,
+   "logloss_base": 0.6187,
+   "logloss_history": 0.6122,
+   "auc_base": 0.604,
+   "auc_history": 0.597,
+   "beta_train": 0.721,
+   "better": true
+  }
+ ],
+ "transfer_frontage_all_to_other": [
+  {
+   "cut": 1960,
+   "logloss_base": 0.6187,
+   "logloss_history": 0.6132,
+   "auc_base": 0.604,
+   "auc_history": 0.598,
+   "beta_train": 1.041,
+   "better": true
+  },
+  {
+   "cut": 1940,
+   "logloss_base": 0.6187,
+   "logloss_history": 0.6072,
+   "auc_base": 0.604,
+   "auc_history": 0.601,
+   "beta_train": 0.969,
+   "better": true
+  }
+ ],
+ "frontage_leave_one_side_out": [
+  {
+   "cut": 1960,
+   "sides": 7,
+   "logloss_base": 0.3405,
+   "logloss_history": 0.3304,
+   "auc_base": 0.789,
+   "auc_history": 0.83,
+   "better": true
+  },
+  {
+   "cut": 1940,
+   "sides": 7,
+   "logloss_base": 0.3405,
+   "logloss_history": 0.3325,
+   "auc_base": 0.789,
+   "auc_history": 0.826,
+   "better": true
+  }
+ ],
+ "similarity": {
+  "frontage": {
+   "parcels": 44,
+   "c1_share": 0.98,
+   "median_year_built": 1920
+  },
+  "other_blocks": {
+   "parcels": 52,
+   "c1_share": 0.81,
+   "median_year_built": 1920
+  }
+ },
+ "decision": {
+  "rule": "other blocks, 1960: permutation p < 0.05 and lower held-out log loss with history (transfer test)",
+  "p_perm": 0.0228,
+  "transfer_better": true,
+  "passes": true
+ }
+}
