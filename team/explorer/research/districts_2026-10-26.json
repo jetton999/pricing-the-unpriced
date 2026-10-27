@@ -1,0 +1,397 @@
+[
+ {
+  "id": "hampden-36th",
+  "displacement_evidence": [
+   {"indicator": "Gentrification markers, Hampden tract(s) (NCRC study)", "value": "College graduates roughly tripled; home prices roughly doubled; no absolute counts given", "period": "2000-2013", "source_url": "https://baltimorefishbowl.com/stories/study-baltimore-has-seen-one-of-the-highest-rates-of-gentrification-in-the-u-s/", "source_title": "Baltimore Fishbowl, 'Study: Baltimore has seen one of the highest rates of gentrification in the U.S.' (2019-03-19)", "accessed_on": "2026-10-26"},
+   {"indicator": "Long-time residents relocated (qualitative)", "value": "Gentrification and a real-estate surge from the late 1980s 'led many long-time residents to relocate'; no count; neighbourhood stayed predominantly white", "period": "late 1980s-2010s", "source_url": "https://en.wikipedia.org/wiki/Hampden,_Baltimore", "source_title": "Wikipedia: Hampden, Baltimore", "accessed_on": "2026-10-26"},
+   {"indicator": "Business turnover on The Avenue", "value": "Five and Dime Ale House (opened 2016, $2M build-out) closed; Spro and Ground & Griddled closed 2021; Cafe Hon space re-let; 8 new restaurants in works", "period": "2021-2023", "source_url": "https://www.thebanner.com/culture/food-drink/restaurants-closing-opening-hampden-RM56KRDFXNFVHLCZCSQIVVXA7M/", "source_title": "Baltimore Banner, restaurant closings/openings in Hampden (2023-03-22)", "accessed_on": "2026-10-26"},
+   {"indicator": "Anti-displacement measure", "value": "None documented; 'Hon' trademark protest page had 3,109 fans; HonFest draws ~50,000 over two days", "period": "2010-2011", "source_url": "https://ncph.org/history-at-work/more-heritage-hon-community-history-and-gentrification-in-baltimore/", "source_title": "NCPH History@Work, 'More than heritage, hon' (2011-02-12)", "accessed_on": "2026-10-26"}
+  ],
+  "start_conditions": {"start_year": 1992, "start_vacancy_pct": null, "start_income_note": "Predominantly white working-class mill neighbourhood settled by Southern/Appalachian whites (NCPH 2011)", "ownership_note": "No CDC or anchor; Cafe Hon (1992) and artist reuse of the Mill Centre (early 1990s) led; ownership dispersed"},
+  "milestones": [
+   {"year": 1992, "event": "Cafe Hon opens on W 36th St, 'at the forefront of Hampden's gentrification'", "source_url": "https://ncph.org/history-at-work/more-heritage-hon-community-history-and-gentrification-in-baltimore/"},
+   {"year": 1994, "event": "HonFest starts; later draws about 50,000 people over two days", "source_url": "https://ncph.org/history-at-work/more-heritage-hon-community-history-and-gentrification-in-baltimore/"},
+   {"year": 2011, "event": "'Hon' trademark dispute; protests outside Cafe Hon; 3,109-fan 'No One Owns HON' page", "source_url": "https://ncph.org/history-at-work/more-heritage-hon-community-history-and-gentrification-in-baltimore/"},
+   {"year": 2015, "event": "Rotunda redevelopment opens with nearly 400 apartments and a high-end cinema (construction began late 2013)", "source_url": "https://en.wikipedia.org/wiki/Hampden,_Baltimore"},
+   {"year": 2023, "event": "Five and Dime Ale House closes; Cafe Hon space goes to a Foreman Wolf concept; 8 new restaurants planned", "source_url": "https://www.thebanner.com/culture/food-drink/restaurants-closing-opening-hampden-RM56KRDFXNFVHLCZCSQIVVXA7M/"},
+   {"year": 2026, "event": "Dangerously Delicious Pies closes end of June; 1001-03 W 36th St (Ma Petite Shoe) auctioned, opening bid $650,000", "source_url": "https://hoodline.com/2026/07/beloved-hampden-corner-home-to-ma-petite-shoe-hits-the-auction-block/"}
+  ],
+  "status_2025_26": {"text": "2026: 'retail roller coaster' on The Avenue, longtime shops closing or turning over; a 5-unit corner block auctioned at $650k opening bid; still 'a compact, heavily walked retail strip'", "source_url": "https://hoodline.com/2026/06/last-slice-for-dangerously-delicious-pies-on-hampden-s-avenue/", "accessed_on": "2026-10-26"},
+  "displacement_rating_suggested": "moderate",
+  "rating_reason": "Price pressure quantified (home prices ~2x, graduates ~3x, 2000-13) and residents' relocation described but not counted; no mitigation. Team's 'high' needs a quantified resident-loss source."
+ },
+ {
+  "id": "highlandtown-eastern",
+  "displacement_evidence": [
+   {"indicator": "Commercial vacancy, Eastern Ave district (Southeast CDC)", "value": "30% in 2004 to about 9.16% at end of 2025", "period": "2004-2025", "source_url": "https://www.thebanner.com/economy/growth-development/highlandtown-baltimore-businesses-ice-raids-QD7C3QVXFNB5DCHSGDNURHYRQU/", "source_title": "Baltimore Banner, Highlandtown businesses and ICE raids (2026-06-08)", "accessed_on": "2026-10-26"},
+   {"indicator": "Racial/ethnic composition change", "value": "2000 CSA: 85.4% white, 7.9% Black; 2010 Census: 42.3% white, 34% Hispanic, 19.7% Black (different geographies; immigration, not out-pricing)", "period": "2000-2010", "source_url": "https://stg-planning.maryland.gov/MSDC/Documents/bnia/Highlandtown1_5.pdf", "source_title": "Md. Dept of Planning / BNIA, Highlandtown CSA 2000 Census profile; 2010 from Wikipedia Highlandtown", "accessed_on": "2026-10-26"},
+   {"indicator": "Home price pressure", "value": "Value of home sales +30% in one year (2017); median sale price $350,000, +15% year-over-year (2026); Latino population +13% 2010-20", "period": "2017; 2025-26", "source_url": "https://www.baltimoremagazine.com/2017/8/1/highlandtown-is-growing-without-leaving-anyone-behind", "source_title": "Baltimore Magazine (2017-08-01); Baltimore Banner (2026-06-08)", "accessed_on": "2026-10-26"},
+   {"indicator": "Anti-displacement measures", "value": "Home-loan assistance for lower-income families (NHS + Southeast CDC); United Way eviction counselling; 1:1 facade match; Project Restore matched 4 businesses (2024)", "period": "2017-2024", "source_url": "https://www.baltimoremagazine.com/2017/8/1/highlandtown-is-growing-without-leaving-anyone-behind", "source_title": "Baltimore Magazine, 'Highlandtown is growing without leaving anyone behind' (2017-08-01)", "accessed_on": "2026-10-26"}
+  ],
+  "start_conditions": {"start_year": 2004, "start_vacancy_pct": 30, "start_income_note": "2000 Census (CSA): median home value $66,565; 2010 Census: median household income $28,813, 22.6% below poverty", "ownership_note": "65.7% of occupied homes owner-occupied (2000 CSA); storefront ownership not stated; Southeast CDC (1975) runs Main Street"},
+  "milestones": [
+   {"year": 1999, "event": "Haussner's Restaurant closes; site vacant 10+ years, demolished 2016 for 65-unit Highland Haus", "source_url": "https://www.thebanner.com/economy/growth-development/highlandtown-baltimore-businesses-ice-raids-QD7C3QVXFNB5DCHSGDNURHYRQU/"},
+   {"year": 2004, "event": "Commercial vacancy peaks at 30% (Southeast CDC)", "source_url": "https://www.thebanner.com/economy/growth-development/highlandtown-baltimore-businesses-ice-raids-QD7C3QVXFNB5DCHSGDNURHYRQU/"},
+   {"year": 2013, "event": "Highlandtown Grocery opens, one of many immigrant-run stores; ~10,000 Nepalese and other immigrants in area", "source_url": "https://www.wypr.org/wypr-news/2017-05-18/immigrant-families-making-highlandtown-boom"},
+   {"year": 2017, "event": "Building vacancy down from 30% to 9% in 10 years; home-sale values +30% in a year; 34% of residents Hispanic", "source_url": "https://www.baltimoremagazine.com/2017/8/1/highlandtown-is-growing-without-leaving-anyone-behind"},
+   {"year": 2024, "event": "Project Restore Highlandtown places 4 businesses (Harp Vision, Bao Di, Highwire Improv, Kawaii Vida)", "source_url": "https://www.thebanner.com/economy/growth-development/highlandtown-baltimore-businesses-ice-raids-QD7C3QVXFNB5DCHSGDNURHYRQU/"},
+   {"year": 2026, "event": "ICE raids cut foot traffic; Geno's Menswear reports worst six months since 1994; CDC staff 'deeply worried'", "source_url": "https://www.thebanner.com/economy/growth-development/highlandtown-baltimore-businesses-ice-raids-QD7C3QVXFNB5DCHSGDNURHYRQU/"}
+  ],
+  "status_2025_26": {"text": "Vacancy ~9.16% at end 2025 (from 30% in 2004); 2026 immigration raids depress foot traffic and sales; median home price $350k (+15% YoY)", "source_url": "https://www.thebanner.com/economy/growth-development/highlandtown-baltimore-businesses-ice-raids-QD7C3QVXFNB5DCHSGDNURHYRQU/", "accessed_on": "2026-10-26"},
+  "displacement_rating_suggested": "moderate",
+  "rating_reason": "Mitigation documented (home loans, eviction counselling) but price pressure is quantified (+30% in 2017, +15% YoY to $350k in 2026); rubric puts documented price pressure at moderate, not low."
+ },
+ {
+  "id": "hamilton-lauraville-harford",
+  "displacement_evidence": [
+   {"indicator": "Racial composition (Lauraville CSA / Hamilton-Lauraville)", "value": "2000 Census: 53.6% white, 42.1% Black; 'in recent years about 50% black and 40% white' (2022) - Black share rose", "period": "2000-2022", "source_url": "https://mdp.state.md.us/MSDC/Documents/bnia/Lauravlle1_5.pdf", "source_title": "Md. Dept of Planning / BNIA, Lauraville CSA 2000 profile; Baltimore Fishbowl neighbourhood feature (2022-05-06)", "accessed_on": "2026-10-26"},
+   {"indicator": "Business openings vs closures", "value": "FY2011: 10 businesses opened, 6 closed, net +28 jobs; about 10 Harford Rd spaces suited to 500-1,500 sq ft retail", "period": "FY2011", "source_url": "https://origintdrdev.wpengine.com/2012/05/21/hamilton-lauraville-group-buys-building-for-incubator/", "source_title": "The Daily Record (mirror), 'Hamilton-Lauraville group buys building for incubator' (2012-05-21)", "accessed_on": "2026-10-26"},
+   {"indicator": "Community ownership (anti-displacement mechanism)", "value": "Old firehouse bought for $64,900 with money from local business owners and residents instead of a bank; HLMS budget $115,650", "period": "2012", "source_url": "https://origintdrdev.wpengine.com/2012/05/21/hamilton-lauraville-group-buys-building-for-incubator/", "source_title": "The Daily Record (mirror), 2012-05-21", "accessed_on": "2026-10-26"},
+   {"indicator": "Home price anecdote", "value": "A house with yard and driveway for 'under $200,000' (resident who moved in 2006); no series", "period": "2006", "source_url": "https://baltimorefishbowl.com/?p=145259", "source_title": "Baltimore Fishbowl, Hamilton-Lauraville neighbourhood feature (2022-05-06)", "accessed_on": "2026-10-26"}
+  ],
+  "start_conditions": {"start_year": 2008, "start_vacancy_pct": null, "start_income_note": "Not stated; 2000 CSA: 77.6% owner-occupied housing, 9.9% vacant housing units", "ownership_note": "Main Street (HLMS, started 2008) bought the firehouse with community money in 2012 and still runs an incubator in its building (2026)"},
+  "milestones": [
+   {"year": 2000, "event": "Baltimore Main Streets program begins citywide", "source_url": "https://origintdrdev.wpengine.com/2012/05/21/hamilton-lauraville-group-buys-building-for-incubator/"},
+   {"year": 2008, "event": "Hamilton-Lauraville Main Street (HLMS) starts", "source_url": "https://origintdrdev.wpengine.com/2012/05/21/hamilton-lauraville-group-buys-building-for-incubator/"},
+   {"year": 2012, "event": "HLMS buys the old Hamilton firehouse for $64,900 for an incubator; Green Onion market gets $70,000 fit-out after 2.5 years vacant", "source_url": "https://origintdrdev.wpengine.com/2012/05/21/hamilton-lauraville-group-buys-building-for-incubator/"},
+   {"year": 2017, "event": "Hamilton Bakery (5+ years) closed 2016; Batch Bake Shop opens in its space; wine shop and Southern restaurant announced", "source_url": "https://www.baltimoremagazine.com/section/fooddrink/batch-bake-shop-opens-in-hamilton-lauraville/"},
+   {"year": 2026, "event": "HLMS directory claims 250+ small/locally owned businesses and a small-business incubation initiative in its office building", "source_url": "https://hamiltonlauraville.org/business-directory/"}
+  ],
+  "status_2025_26": {"text": "HLMS (c) 2026 directory lists ~160 entries and claims 250+ locally owned businesses; incubator still operating on the first floor of its building", "source_url": "https://hamiltonlauraville.org/business-directory/", "accessed_on": "2026-10-26"},
+  "displacement_rating_suggested": "low",
+  "rating_reason": "Black share rose (42% in 2000 to ~50% by 2022), no documented loss, and community-financed building ownership is a mitigation mechanism."
+ },
+ {
+  "id": "pigtown-washington-blvd",
+  "displacement_evidence": [
+   {"indicator": "Population and racial composition", "value": "Population 5,410 (2000) to 5,116 (2010); about half Black/half white in 2011; by 2019 more than half Black, ~40% white, ~10% Latino", "period": "2000-2019", "source_url": "https://news.yahoo.com/baltimore-pigtown-struggles-overcome-industrial-100000245.html?fr=sycsrp_catchall", "source_title": "Baltimore Sun via Yahoo, 'Pigtown struggles to overcome industrial past' (c. 2021)", "accessed_on": "2026-10-26"},
+   {"indicator": "Median home sale price", "value": "$64,000 (2014-16, city $70,000) to $92,700 (2017-19, city $79,500); 2019 median household income $58,496", "period": "2014-2019", "source_url": "https://news.yahoo.com/baltimore-pigtown-struggles-overcome-industrial-100000245.html?fr=sycsrp_catchall", "source_title": "Baltimore Sun via Yahoo (c. 2021)", "accessed_on": "2026-10-26"},
+   {"indicator": "New-build rents on the corridor", "value": "900 Washington Blvd (7 units, $2M rehab): 1-BR from $1,175, 2-BR $1,700, 'more upscale than most units around here'; no affordability terms", "period": "2019", "source_url": "https://baltimorefishbowl.com/stories/historic-pigtown-bathhouse-and-fire-station-transformed-into-apartments-ground-floor-cafe/", "source_title": "Baltimore Fishbowl, bath house and fire station conversion (2019-05-31)", "accessed_on": "2026-10-26"},
+   {"indicator": "Public land assembly (eminent domain)", "value": "City took 5 adjoining storefronts (925-937 Washington Blvd, ~7,619 sq ft) after a suit ending Jan 2007; no business displacement reported", "period": "2006-2009", "source_url": "https://thedailyrecord.com/2009/08/10/trying-again-in-pigtown/", "source_title": "The Daily Record, 'Trying again in Pigtown' (2009-08-10)", "accessed_on": "2026-10-26"}
+  ],
+  "start_conditions": {"start_year": 2000, "start_vacancy_pct": null, "start_income_note": "Not stated at start; Main Street director recalled 'nearly everything' in the lower blocks 'vacant and boarded' about two decades before 2019", "ownership_note": "Pigtown Main Street founded 2000; city (BDC) assembled 5 storefronts by eminent domain (2007) and sold the bath house/fire station as-is for $100,000 (2016)"},
+  "milestones": [
+   {"year": 2000, "event": "Pigtown Main Street founded as a nonprofit for the Washington Blvd corridor", "source_url": "https://business.maryland.gov/?p=6567"},
+   {"year": 2006, "event": "BDC awards 5 city-assembled storefronts to Historic Pigtown Development LLC; costs rise ~20% in 18 months and the $5M+ deal collapses", "source_url": "https://thedailyrecord.com/2009/08/10/trying-again-in-pigtown/"},
+   {"year": 2009, "event": "BDC reissues the RFP for 925-937 Washington Blvd; a contractor has ~50% of five 700-block storefronts tentatively rented", "source_url": "https://thedailyrecord.com/2009/08/10/trying-again-in-pigtown/"},
+   {"year": 2018, "event": "Main Street invests $110,000+ in grants and loans in a record year; festival draws 5,000+", "source_url": "https://business.maryland.gov/?p=6567"},
+   {"year": 2019, "event": "Bath house and fire station at 900 Washington Blvd reopen as 7 apartments plus cafe after a $2M renovation", "source_url": "https://baltimorefishbowl.com/stories/historic-pigtown-bathhouse-and-fire-station-transformed-into-apartments-ground-floor-cafe/"},
+   {"year": 2024, "event": "Zeke's Coffee (opened Jan 2022) closes March 3; Main Street seeks a replacement cafe; 22nd Pigtown Festival held Sept 28", "source_url": "https://www.cbsnews.com/baltimore/news/zekes-coffee-in-baltimores-pigtown-closing-due-to-reorganization-and-downsizing"}
+  ],
+  "status_2025_26": {"text": "No 2025-26 source found. Latest (2024): Zeke's Coffee closed after two years and Main Street was recruiting another cafe; 22nd festival held Sept 2024", "source_url": "https://www.baltimoreculture.org/node/36398", "accessed_on": "2026-10-26"},
+  "displacement_rating_suggested": "moderate",
+  "rating_reason": "Price pressure documented: median sale price +45% between 2014-16 and 2017-19, overtaking the city median; no resident or business loss counted; Black share rose. Weak case; 'unknown' is defensible."
+ },
+ {
+  "id": "belair-edison",
+  "displacement_evidence": [
+   {"indicator": "Business ownership mix (BENI count)", "value": "At least 23 of 50+ Belair-Edison businesses Black-owned and 13 women-owned", "period": "March 2024", "source_url": "https://www.thebanner.com/article/black-owners-breathe-new-life-into-belair-edison-business-district-DTY6C2CULBDV5GJ7WY34JTDZVY/", "source_title": "Baltimore Banner / Capital News Service, 'Black owners breathe new life into Belair-Edison business district' (2024-06-19)", "accessed_on": "2026-10-26"},
+   {"indicator": "Income and poverty", "value": "Median household income $46,000 (2021), below city average; 27.4% of families in poverty (2021)", "period": "2021", "source_url": "https://www.thebanner.com/article/black-owners-breathe-new-life-into-belair-edison-business-district-DTY6C2CULBDV5GJ7WY34JTDZVY/", "source_title": "Baltimore Banner / CNS (2024-06-19)", "accessed_on": "2026-10-26"},
+   {"indicator": "Racial transition (pre-revival)", "value": "Shifted from white majority to African-American majority by the 1990s after plant closures, white flight and blockbusting", "period": "1970s-1990s", "source_url": "https://en.wikipedia.org/wiki/Belair-Edison,_Baltimore", "source_title": "Wikipedia: Belair-Edison, Baltimore (citing Baltimore Sun 2015; Holcomb 2005)", "accessed_on": "2026-10-26"},
+   {"indicator": "Housing market activity", "value": "175 home sales in 2025, 2nd-highest volume of any city neighbourhood (citywide median $235,000); no neighbourhood price given", "period": "2025", "source_url": "https://livebaltimore.com/wp-content/uploads/2026/01/SOTCM-2025-2-Page-Report-Handout.pdf", "source_title": "Live Baltimore, 'Baltimore City Home Sales' 2025 handout", "accessed_on": "2026-10-26"}
+  ],
+  "start_conditions": {"start_year": null, "start_vacancy_pct": null, "start_income_note": null, "ownership_note": "Main Street district is the 3200-3600 blocks of Belair Rd and 3000-3200 Erdman Ave, run by BENI; no ownership data"},
+  "milestones": [
+   {"year": 2024, "event": "BENI counts 23+ Black-owned and 13+ women-owned among 50+ businesses; new ice-cream and retail shops open", "source_url": "https://www.thebanner.com/article/black-owners-breathe-new-life-into-belair-edison-business-district-DTY6C2CULBDV5GJ7WY34JTDZVY/"},
+   {"year": 2025, "event": "BENI Main Street page (updated Oct 2025) offers facade grants, event funding and marketing to partner businesses", "source_url": "https://belair-edison.org/main-street/"},
+   {"year": 2026, "event": "Sam's Cheesesteak opens at 3320 Belair Rd (April 2) with Baltimore Main Streets and BENI support", "source_url": "https://www.baltimorecity.gov/smbad/news/baltimore-main-streets-welcomes-sams-cheesesteak-to-belair-edison-with-grand-opening"}
+  ],
+  "status_2025_26": {"text": "Active Main Street: April 2026 grand opening of Sam's Cheesesteak at 3320 Belair Rd with city Main Streets staff; no vacancy figure published", "source_url": "https://www.baltimorecity.gov/smbad/news/baltimore-main-streets-welcomes-sams-cheesesteak-to-belair-edison-with-grand-opening", "accessed_on": "2026-10-26"},
+  "displacement_rating_suggested": "unknown",
+  "rating_reason": "No source addresses displacement or price pressure on Belair Road; only ownership mix and income are quantified."
+ },
+ {
+  "id": "livernois-live6",
+  "displacement_evidence": [
+   {"indicator": "Black population share, Livernois-6 Mile area", "value": "95% (2000) to 90% (2020); University District fell to 72%; Fitzgerald-Marygrove stayed 97-99%; no investment-induced displacement found", "period": "2000-2020", "source_url": "https://www.brookings.edu/articles/investment-without-displacement-how-a-surge-of-development-changed-and-didnt-change-one-detroit-neighborhood/", "source_title": "Brookings, Perry & Stephens, 'Investment without displacement' (2024-01-24)", "accessed_on": "2026-10-26"},
+   {"indicator": "Rents and incomes", "value": "University District rents +20%; Fitzgerald-Marygrove rent ~$785/month (2015-20); median income fell ~$61k to ~$44k (2000-20, 2020 $); rent still under 30% of income", "period": "2000-2020", "source_url": "https://www.brookings.edu/articles/investment-without-displacement-how-a-surge-of-development-changed-and-didnt-change-one-detroit-neighborhood/", "source_title": "Brookings (2024-01-24)", "accessed_on": "2026-10-26"},
+   {"indicator": "Business loss during streetscape construction", "value": "Kuzzo's closed July 15, 2019; 1975 Urban Wear and Uptown Floral closed; 18 planned openings never happened; sales -33% to -50%; 6 forgivable loans of $5k-$20k", "period": "2019", "source_url": "https://www.bridgemi.com/detroit/can-detroit-businesses-survive-citys-push-walkable-neighborhoods", "source_title": "Bridge Michigan, 'Can Detroit businesses survive city's push for walkable neighborhoods?' (2019-10-17)", "accessed_on": "2026-10-26"},
+   {"indicator": "Anti-displacement measure", "value": "Kresge $50M commitment; Resident Investment & Opportunity Fund (early 2026) prioritises homeowner property-tax relief and home repair; 70+ vacant parcels maintained", "period": "2025-2026", "source_url": "https://kresge.org/wp-content/uploads/DET1104-Live6-Dist2-Handout-Final-1.pdf", "source_title": "Kresge Foundation, Live6 / District 2 handout (Sept 2025)", "accessed_on": "2026-10-26"}
+  ],
+  "start_conditions": {"start_year": 2015, "start_vacancy_pct": null, "start_income_note": "Live6 director recalls ~10% business occupancy/density before the alliance; area median income ~$44,000 by 2020 (down from ~$61,000 in 2000)", "ownership_note": "Dispersed private owners; investment 2015-20 was 83% mission lending and philanthropy; Fitzgerald-Marygrove got 72% of post-2010 CDFI loans"},
+  "milestones": [
+   {"year": 2015, "event": "Live6 Alliance formed by Kresge Foundation, University of Detroit Mercy and Marygrove College", "source_url": "https://wdet.org/2023/06/02/crossing-the-lines-live6-alliance-facilitates-business-growth/"},
+   {"year": 2019, "event": "$17M Livernois streetscape begins (early 2019); Kuzzo's closes in July; city unveils $5k-$20k forgivable loans in August", "source_url": "https://www.bridgemi.com/detroit/can-detroit-businesses-survive-citys-push-walkable-neighborhoods"},
+   {"year": 2020, "event": "Streetscape construction completed in fall 2020 after 50+ community meetings", "source_url": "https://planning.org/blog/9323701/refashioning-a-commercial-corridor-in-detroit/"},
+   {"year": 2024, "event": "Brookings finds no investment-induced displacement in Livernois-6 Mile; investment up 490% since 2010", "source_url": "https://www.brookings.edu/articles/investment-without-displacement-how-a-surge-of-development-changed-and-didnt-change-one-detroit-neighborhood/"},
+   {"year": 2025, "event": "Kresge announces $50M for the Livernois-McNichols neighbourhoods; resident fund to launch early 2026", "source_url": "https://kresge.org/wp-content/uploads/DET1104-Live6-Dist2-Handout-Final-1.pdf"},
+   {"year": 2026, "event": "MEDC awards $4.3M Michigan Talent Partnership grant for the Livernois Streetscape Extension (January)", "source_url": "https://planning.org/blog/9323701/refashioning-a-commercial-corridor-in-detroit/"}
+  ],
+  "status_2025_26": {"text": "New shops, restaurants and services have opened since 2020; $4.3M grant (Jan 2026) funds a streetscape extension; Kresge $50M neighbourhood fund launching 2026", "source_url": "https://planning.org/blog/9323701/refashioning-a-commercial-corridor-in-detroit/", "accessed_on": "2026-10-26"},
+  "displacement_rating_suggested": "low",
+  "rating_reason": "Brookings (2024) finds no investment-induced displacement, Black share stable at 90%, and a resident tax-relief/home-repair fund is funded; construction-period business losses were partly offset by loans."
+ },
+ {
+  "id": "hyde-park-53rd",
+  "displacement_evidence": [
+   {"indicator": "Commercial tenants displaced at Harper Court", "value": "17 retail tenants facing displacement by end of 2008 (incl. Dixie Kitchen, Calypso Cafe); only talks on alternative sites, no formal relocation aid or return right", "period": "2008", "source_url": "https://chicagodefender.com/black-restaurants-to-be-displaced-by-redevelopment-project", "source_title": "Chicago Defender, 'Black restaurants to be displaced by redevelopment project' (2008-05-27)", "accessed_on": "2026-10-26"},
+   {"indicator": "Black population, Hyde Park", "value": "Black population down 33% since 2000; investors own ~25% of housing", "period": "2000-2023", "source_url": "https://chicagomaroon.com/40274/news/hyde-park-faces-gentrification-waves-as-long-time-businesses-close-and-new-ones-emerge/", "source_title": "Chicago Maroon, 'Hyde Park faces gentrification waves...' (2023-10-29)", "accessed_on": "2026-10-26"},
+   {"indicator": "Census 2010-2020, Hyde Park community area", "value": "Population 25,681 to 29,456 (+14.7%); Black share 30.4% to 28.4%; white 46.7% to 40.8%; Asian 12.4% to 16.3%", "period": "2010-2020", "source_url": "https://www.hpherald.com/news/local/census-shows-hyde-park-s-population-up-14-7-from-2010/article_a98721ae-04f3-11ec-be6b-672a2e5f9f69.html", "source_title": "Hyde Park Herald, 'Census shows Hyde Park's population up 14.7%' (2021-08-24)", "accessed_on": "2026-10-26"},
+   {"indicator": "Long-standing businesses closed", "value": "Mellow Yellow (46 years) and Piccolo Mondo (39 years) closed 2022; What's Krackin Sept 2023; Park 52 replaced by Harper Court Phase II", "period": "2022-2023", "source_url": "https://chicagomaroon.com/40274/news/hyde-park-faces-gentrification-waves-as-long-time-businesses-close-and-new-ones-emerge/", "source_title": "Chicago Maroon (2023-10-29)", "accessed_on": "2026-10-26"},
+   {"indicator": "Mitigation (university-reported)", "value": "University offers 'affordable space' and marketing to Black-owned tenants; 6 Black-owned businesses listed on 53rd/Harper Court; no rent figures or counts recruited", "period": "2014-2019", "source_url": "https://civicengagement.uchicago.edu/news/the-heart-of-hyde-park-with-uchicago-support-black-owned-businesses-thrive-on-53rd-street", "source_title": "UChicago Civic Engagement, 'The heart of Hyde Park' (c. 2019-20)", "accessed_on": "2026-10-26"}
+  ],
+  "start_conditions": {"start_year": 2008, "start_vacancy_pct": null, "start_income_note": null, "ownership_note": "University of Chicago bought the 3.18-acre Harper Court site in 2008 inside an 84-acre TIF (2001); $20M TIF plus $30M university equity and a $21.5M hotel loan guarantee"},
+  "milestones": [
+   {"year": 2001, "event": "City designates the 84-acre 53rd Street TIF district", "source_url": "https://en.wikipedia.org/wiki/Harper_Court"},
+   {"year": 2008, "event": "University buys Harper Court; 17 retail tenants told to leave by year-end", "source_url": "https://chicagodefender.com/black-restaurants-to-be-displaced-by-redevelopment-project"},
+   {"year": 2013, "event": "Hyatt Place (Sept 17), office tower and retail (Nov 8) open; university buys office/retail for $98M (Nov 13)", "source_url": "https://en.wikipedia.org/wiki/Harper_Court"},
+   {"year": 2014, "event": "University sells Harper Court to Clal Insurance for $112M (closed July 25), keeping a say on tenant mix", "source_url": "https://news.uchicago.edu/story/harper-court-sale-allows-university-ensure-continuing-community-benefits"},
+   {"year": 2019, "event": "Silver Room Block Party draws 50,000 to 53rd Street (~$2.5M to Hyde Park); Virtue (opened 2018) named a top new US restaurant", "source_url": "https://civicengagement.uchicago.edu/news/the-heart-of-hyde-park-with-uchicago-support-black-owned-businesses-thrive-on-53rd-street"},
+   {"year": 2023, "event": "Harper Court Phase II, a 13-storey quantum/life-science lab tower, under construction; several long-time restaurants close", "source_url": "https://chicagomaroon.com/40274/news/hyde-park-faces-gentrification-waves-as-long-time-businesses-close-and-new-ones-emerge/"},
+   {"year": 2026, "event": "Bob's Pizza closes its Harper Court outpost (March 20) after ~3 years", "source_url": "https://hoodline.com/2026/03/bob-s-pizza-pulls-plug-on-harper-court-leaving-hyde-park-short-a-slice/"}
+  ],
+  "status_2025_26": {"text": "Harper Court churning: Bob's Pizza (opened Feb 2023) closed March 2026; Ja' Grill, Daisy's Po-Boy and Jade Court remain tenants", "source_url": "https://hoodline.com/2026/03/bob-s-pizza-pulls-plug-on-harper-court-leaving-hyde-park-short-a-slice/", "accessed_on": "2026-10-26"},
+  "displacement_rating_suggested": "high",
+  "rating_reason": "17 tenants displaced in 2008 with no relocation aid or return right, Black population -33% since 2000 and several 40-year businesses closed; later 'affordable space' recruitment is unquantified and after the fact."
+ },
+ {
+  "id": "h-street-ne",
+  "displacement_evidence": [
+   {"indicator": "Black population share within 0.5 mile of H Street", "value": "76.6% (1990), 73.0% (2000), 45.2% (2010); white 20.5% / 22.4% / 47.7%", "period": "1990-2010", "source_url": "https://www.hstreet.org/501dev/wp-content/uploads/2018/06/H-Street-Corridor-Profile.pdf", "source_title": "H Street Main Street, H Street Corridor Profile (Census 1990/2000/2010)", "accessed_on": "2026-10-26"},
+   {"indicator": "Median home value and income, 0.5-mile corridor", "value": "Home value $148,724 (2000) to $354,730 (2010); median household income $42,514 to $55,540; owner-occupied 47.7% to 57.7%", "period": "2000-2010", "source_url": "https://www.hstreet.org/501dev/wp-content/uploads/2018/06/H-Street-Corridor-Profile.pdf", "source_title": "H Street Corridor Profile", "accessed_on": "2026-10-26"},
+   {"indicator": "Long-standing businesses and churches lost", "value": "Studio 1307 barbershop (~25 yrs) and Salvation Army thrift (since 1950s) closed; Murry's replaced by Whole Foods; at least 4 churches closed/replaced", "period": "c. 2010-2019", "source_url": "https://streetsensemedia.org/article/i-dont-know-my-neighborhood-anymore-residents-shopkeepers-and-cultural-institutions-displaced-from-the-h-street-ne-corridor/", "source_title": "Street Sense, 'I don't know my neighborhood anymore' (2019-10-02)", "accessed_on": "2026-10-26"},
+   {"indicator": "Anti-displacement measure", "value": "None documented in any fetched source", "period": "2002-2026", "source_url": "https://ggwash.org/view/98465/h-street-ne-went-from-riot-torn-neighborhood-to-success-story-now-its-lost-its-magic", "source_title": "Greater Greater Washington, 'H Street NE went from riot-torn neighborhood to success story. Now it's lost its magic' (2025-02-21)", "accessed_on": "2026-10-26"}
+  ],
+  "start_conditions": {"start_year": 2002, "start_vacancy_pct": null, "start_income_note": "0.5-mile corridor in 2000: median household income $42,514; 15.5-16.2% of households below poverty; 73% Black", "ownership_note": "47.7% of homes owner-occupied (2000); corridor stagnated 'for two generations' after the 1968 riots; private landlords"},
+  "milestones": [
+   {"year": 1968, "event": "Riots destroy the corridor, which stagnates for two generations", "source_url": "https://ggwash.org/view/98465/h-street-ne-went-from-riot-torn-neighborhood-to-success-story-now-its-lost-its-magic"},
+   {"year": 2002, "event": "H Street Main Street begins revitalisation with the city", "source_url": "https://en.wikipedia.org/wiki/Near_Northeast_(Washington,_D.C.)"},
+   {"year": 2014, "event": "Former Apollo Theater site sold and cleared for luxury apartments and a Whole Foods", "source_url": "https://en.wikipedia.org/wiki/Near_Northeast_(Washington,_D.C.)"},
+   {"year": 2016, "event": "Modern streetcar begins service on H Street (Feb 27)", "source_url": "https://en.wikipedia.org/wiki/Near_Northeast_(Washington,_D.C.)"},
+   {"year": 2023, "event": "Brine Oyster House and Biergarten Haus close citing a spike in violent crime", "source_url": "https://ggwash.org/view/98465/h-street-ne-went-from-riot-torn-neighborhood-to-success-story-now-its-lost-its-magic"},
+   {"year": 2026, "event": "DC Streetcar makes final run March 31 (<2,600 daily riders, ~$10M/yr); Safeway at Hechinger Mall closing; city hires planners to revive corridor", "source_url": "https://www.axios.com/local/washington-dc/2026/03/24/dc-streetcar-shutdown-auction"}
+  ],
+  "status_2025_26": {"text": "2026: streetcar scrapped, business closures and stalled redevelopment; city studying how to revive the corridor, though the bar/restaurant scene persists", "source_url": "https://www.axios.com/local/washington-dc/2026/03/24/dc-streetcar-shutdown-auction", "accessed_on": "2026-10-26"},
+  "displacement_rating_suggested": "high",
+  "rating_reason": "Black share fell 73% to 45% and home values +138% within a decade (2000-10); long-standing businesses and churches gone; no mitigation documented."
+ },
+ {
+  "id": "east-liberty-penn",
+  "displacement_evidence": [
+   {"indicator": "African American population loss", "value": "~940 African Americans lost 2007-2015; ~70% tied to abandoned/uninhabitable units (2005-11); 550 low-rent bedrooms lost by 2012, ~90% via foreclosure/abandonment", "period": "2005-2015", "source_url": "https://appam.confex.com/appam/int18/webprogram/Paper25033.html", "source_title": "APPAM 2018, Fabusuyi, Hill & Jester, 'The Population Impact of East Liberty Revitalization'; ELDI Numeritics summary (2018-01-15)", "accessed_on": "2026-10-26"},
+   {"indicator": "Forced relocation, Penn Plaza Apartments", "value": "200+ residents given 90 days to leave (July 2015); complex demolished 2017; site now Whole Foods, garage, offices", "period": "2015-2025", "source_url": "https://www.publicsource.org/pittsburgh-penn-plaza-evictions-10-years-later-timeline/", "source_title": "PublicSource, 'Penn Plaza evictions, 10 years later' (2025-07-28)", "accessed_on": "2026-10-26"},
+   {"indicator": "Nonwhite population and rents", "value": "About one-quarter of nonwhite population lost since 2000; ZIP 15206 average rent $1,541 (Mar 2017) to $1,661 (Mar 2021) vs $1,256 citywide", "period": "2000-2021", "source_url": "https://www.publicsource.org/east-liberty-enright-court-development-eldi-catapult-gentrification-homeownership/", "source_title": "PublicSource, Enright Court / ELDI (2021-04-19)", "accessed_on": "2026-10-26"},
+   {"indicator": "Property values and crime", "value": "Property values +120% and crime -49% (2008-2012); population +5% 2010-20; 6,187 residents, nearly 60% minorities (2025)", "period": "2008-2025", "source_url": "https://www.eastliberty.org/spotlight-is-it-gentrification-understanding-east-libertys-transformation/", "source_title": "ELDI, 'Is it gentrification?' (2025-12-12)", "accessed_on": "2026-10-26"},
+   {"indicator": "Anti-displacement measures", "value": "979 rental units with affordability commitments (~1/3 of rentals, 2020); 509 LIHTC units; 38% of rentals long-term affordable; ELDI sold 7 Enright Court homes at $120k-$145k to modest-income buyers", "period": "2020-2025", "source_url": "https://www.eastliberty.org/spotlight-is-it-gentrification-understanding-east-libertys-transformation/", "source_title": "ELDI (2025-12-12); PublicSource (2021-04-19)", "accessed_on": "2026-10-26"}
+  ],
+  "start_conditions": {"start_year": 1999, "start_vacancy_pct": null, "start_income_note": "By 2000 more than three-quarters of residents were minorities; ELDI's 1999 plan counted 1,400 subsidised apartments in superblock complexes; population just under 8,000 in 1990", "ownership_note": "ELDI (CDC, 1979) acquires and resells housing (e.g. ~24 Enright Court units over a decade); private developer LG Realty owned Penn Plaza"},
+  "milestones": [
+   {"year": 1999, "event": "ELDI's community plan 'A Vision for East Liberty' launches the revitalisation", "source_url": "https://www.eastliberty.org/spotlight-is-it-gentrification-understanding-east-libertys-transformation/"},
+   {"year": 2012, "event": "Crime down 49% and property values up 120% over 2008-2012", "source_url": "https://www.eastliberty.org/spotlight-is-it-gentrification-understanding-east-libertys-transformation/"},
+   {"year": 2015, "event": "Penn Plaza: 200+ residents get 90-day eviction notices (July); demolished 2017", "source_url": "https://www.publicsource.org/pittsburgh-penn-plaza-evictions-10-years-later-timeline/"},
+   {"year": 2018, "event": "Numeritics report: ~940 African Americans lost 2007-15, mostly via abandonment", "source_url": "https://www.eastliberty.org/new-numeritics-report-east-liberty-population-loss/"},
+   {"year": 2022, "event": "Whole Foods moves to a larger Penn Avenue store; old site vacant until The Fresh Market (announced Jan 2024 for early 2025)", "source_url": "https://www.wpxi.com/news/local/fresh-market-opening-east-liberty-former-whole-foods-building/KXOQXR6NWRBENNHLB26QIEFKLY/"},
+   {"year": 2025, "event": "10th-anniversary Penn Plaza rally (July 28); ELDI reports 38% of rentals long-term affordable (Dec)", "source_url": "https://www.publicsource.org/pittsburgh-penn-plaza-evictions-10-years-later-timeline/"}
+  ],
+  "status_2025_26": {"text": "2025: ELDI reports 6,187 residents (~60% minorities), 509 LIHTC units and 38% of rentals affordable; Penn Plaza site holds Whole Foods, garage, offices and an overgrown field", "source_url": "https://www.eastliberty.org/spotlight-is-it-gentrification-understanding-east-libertys-transformation/", "accessed_on": "2026-10-26"},
+  "displacement_rating_suggested": "high",
+  "rating_reason": "Quantified loss (~940 Black residents 2007-15, 200+ forced out of Penn Plaza) occurred despite ELDI's affordability work; mitigation is real (38% of rentals) but was not effective at preventing the loss."
+ },
+ {
+  "id": "oc-haley",
+  "displacement_evidence": [
+   {"indicator": "Black population share, Central City (neighbourhood, wider than corridor)", "value": "87.0% (2000) to 63.8% (2020-24 ACS); white 9.9% to 18.5%; Hispanic 1.6% to 14.4% (Katrina confounds)", "period": "2000-2024", "source_url": "https://www.datacenterresearch.org/data-resources/neighborhood-data/district-2/central-city/", "source_title": "The Data Center, Central City neighborhood profile (updated 2026-07-09)", "accessed_on": "2026-10-26"},
+   {"indicator": "Renters and housing cost burden", "value": "Renter share 83.7% (2000) to 75.2% (2020-24); 55.8% of renters pay 30%+ of income; avg gross rent $1,194 (2006-10) vs $1,060 (2020-24), inflation-adjusted", "period": "2000-2024", "source_url": "https://www.datacenterresearch.org/data-resources/neighborhood-data/district-2/central-city/", "source_title": "The Data Center, Central City profile", "accessed_on": "2026-10-26"},
+   {"indicator": "Affordable housing built on the corridor (mitigation)", "value": "Muses Apartments: 263 affordable units, $50M (2010); 1300 OCH: 192 affordable units, $80M (Jan 2024); Lot 1701 tiny homes (2017)", "period": "2010-2024", "source_url": "https://jaxtoday.org/2024/04/03/the-jaxson-what-does-withintrification-look-like-oretha-castle-haley-boulevard/", "source_title": "The Jaxson / Jacksonville Today, 'What does withintrification look like? Oretha Castle Haley Boulevard' (2024-04-03)", "accessed_on": "2026-10-26"},
+   {"indicator": "Corridor outcomes (no displacement data)", "value": "32 new businesses, 176 jobs, $83M public+private investment, 24 buildings rehabbed since late 1990s; $7M public leveraged $53M private", "period": "late 1990s-2017", "source_url": "https://www.mainstreet.org/mainstreetamerica/mainstreetawards/gamsa/2017/ochaleyblvd", "source_title": "Main Street America, 2017 Great American Main Street Award: O.C. Haley Blvd", "accessed_on": "2026-10-26"}
+  ],
+  "start_conditions": {"start_year": 1995, "start_vacancy_pct": null, "start_income_note": "Central City 2000: average household income $42,524 (2024 $), 83.7% renters, 87% Black", "ownership_note": "Nonprofits anchor key buildings: Ashe Cultural Arts Center (30,000 sq ft former department store, 1998), Jazz Market in former Gators store; merchants association founded 1995"},
+  "milestones": [
+   {"year": 1989, "event": "Eight blocks of Dryades Street renamed for Oretha Castle Haley", "source_url": "https://jaxtoday.org/2024/04/03/the-jaxson-what-does-withintrification-look-like-oretha-castle-haley-boulevard/"},
+   {"year": 1995, "event": "Merchants and business association founded; coordinated revitalisation begins mid-1990s", "source_url": "https://www.mainstreet.org/mainstreetamerica/mainstreetawards/gamsa/2017/ochaleyblvd"},
+   {"year": 2006, "event": "Corridor designated a Louisiana Main Street", "source_url": "https://jaxtoday.org/2024/04/03/the-jaxson-what-does-withintrification-look-like-oretha-castle-haley-boulevard/"},
+   {"year": 2010, "event": "Muses Apartment Homes completed: 263 affordable units, $50M", "source_url": "https://jaxtoday.org/2024/04/03/the-jaxson-what-does-withintrification-look-like-oretha-castle-haley-boulevard/"},
+   {"year": 2017, "event": "Great American Main Street Award; $1.9M streetscape completed; 32 new businesses, 176 jobs", "source_url": "https://www.mainstreet.org/mainstreetamerica/mainstreetawards/gamsa/2017/ochaleyblvd"},
+   {"year": 2024, "event": "1300 OCH opens (Jan): 192 affordable units plus health clinic, $80M; Myrtle Banks grocery had closed 2019", "source_url": "https://jaxtoday.org/2024/04/03/the-jaxson-what-does-withintrification-look-like-oretha-castle-haley-boulevard/"},
+   {"year": 2026, "event": "Jazz & Blues Market (1436 OCH, 370 seats) rebranded Oct 2025, benefit concert Sept 2026 to finish rebuild; Sept 2024 building collapse nearby", "source_url": "https://hoodline.com/2026/08/central-city-jazz-venue-rallies-star-power-to-finish-long-rebuild/"}
+  ],
+  "status_2025_26": {"text": "2026: corridor 'has faced infrastructure challenges' incl. a Sept 2024 building collapse tied to redevelopment pressure; Jazz Market still fundraising to finish its rebuild", "source_url": "https://hoodline.com/2026/08/central-city-jazz-venue-rallies-star-power-to-finish-long-rebuild/", "accessed_on": "2026-10-26"},
+  "displacement_rating_suggested": "moderate",
+  "rating_reason": "Black share of Central City fell 87% to 64% (2000 to 2020-24) and 56% of renters are cost-burdened, but 455 affordable units were built on the corridor; loss with partial mitigation, Katrina confounds attribution."
+ },
+ {
+  "id": "east-passyunk",
+  "displacement_evidence": [
+   {"indicator": "Home prices, East Passyunk Crossing", "value": "Median $226,900 in Q1 2015 vs $102,717 citywide; +28% Q1 2014 to Q1 2015; shells not available under $150,000", "period": "2014-2015", "source_url": "https://www.inquirer.com/philly/business/real_estate/20150524_E__Passyunk_a_hot_property.html", "source_title": "Philadelphia Inquirer, 'E. Passyunk a hot property' (2015-05-23)", "accessed_on": "2026-10-26"},
+   {"indicator": "Income and price change, Passyunk Square", "value": "Median household income +34% (2000-2014) to $50,813 (Pew); median home price +51% over the decade to 2017 and +9% 2016-17 (Gillen)", "period": "2000-2017", "source_url": "https://www.inquirer.com/philly/business/real_estate/pats-genos-cheesesteak-passyunk-square-gentrification-redevelopment-20180427.html", "source_title": "Philadelphia Inquirer, Passyunk Square gentrification fight (2018-04-27)", "accessed_on": "2026-10-26"},
+   {"indicator": "Demographic change, Passyunk Square", "value": "Hispanic population +279% 2000-2010; population 21,815 (2010); median income $37,170 (2009); 10% housing vacancy", "period": "2000-2010", "source_url": "https://www.inquirer.com/philly/business/real_estate/20130210_Passyunk_Square__By_the_Numbers.html", "source_title": "Philadelphia Inquirer, 'Passyunk Square: By the Numbers' (2013-02-10)", "accessed_on": "2026-10-26"},
+   {"indicator": "Long-standing business not renewed by mission landlord", "value": "PARC declined to renew Black N Brew (17 years on the avenue) with two months' notice over tax liens (~$50,000); PARC owns 7 storefronts; vacancy <5%", "period": "2024", "source_url": "https://inquirer.com/business/east-passyunk-parc-coffee-shop-20240126.html", "source_title": "Philadelphia Inquirer, 'Why Black N Brew's lease wasn't renewed' (2024-01-26)", "accessed_on": "2026-10-26"}
+  ],
+  "start_conditions": {"start_year": null, "start_vacancy_pct": null, "start_income_note": "Not stated at start; Passyunk Square median income $37,170 in 2009", "ownership_note": "Citizens Alliance (founded 1990s by a state senator) bought and renovated 15 dilapidated mixed-use buildings in the early 2000s; successor PARC now owns 7 storefronts"},
+  "milestones": [
+   {"year": 2003, "event": "Early 2000s: Citizens Alliance buys and renovates 15 rundown commercial-residential buildings on the avenue", "source_url": "https://inquirer.com/business/east-passyunk-parc-coffee-shop-20240126.html"},
+   {"year": 2009, "event": "East Passyunk Avenue BID created by Resolution 090152 (Feb 26), levying ~300 commercial properties; report recommends renaming landlord to PARC", "source_url": "https://en.wikipedia.org/wiki/East_Passyunk_Crossing,_Philadelphia"},
+   {"year": 2015, "event": "Median sale price $226,900, more than double the citywide median", "source_url": "https://www.inquirer.com/philly/business/real_estate/20150524_E__Passyunk_a_hot_property.html"},
+   {"year": 2024, "event": "PARC declines to renew 17-year tenant Black N Brew; says avenue vacancy is below 5%", "source_url": "https://inquirer.com/business/east-passyunk-parc-coffee-shop-20240126.html"},
+   {"year": 2025, "event": "Laurel closes after 12 years as its lease winds down; Manatawny tasting room (1603 E Passyunk) shuts", "source_url": "https://www.inquirer.com/food/restaurants/philadelphia-restaurant-closings-2025-20251230.html"},
+   {"year": 2026, "event": "River Twice expands into the shuttered 1603 E Passyunk storefront, adding a ~24-seat bar (target Sept 2026)", "source_url": "https://hoodline.com/2026/07/river-twice-goes-big-on-east-passyunk-with-new-walk-in-bar-7040611/"}
+  ],
+  "status_2025_26": {"text": "Churn but quick backfill: Laurel (12 yrs) and Manatawny closed 2025; River Twice taking the vacated storefront in 2026", "source_url": "https://hoodline.com/2026/07/river-twice-goes-big-on-east-passyunk-with-new-walk-in-bar-7040611/", "accessed_on": "2026-10-26"},
+  "displacement_rating_suggested": "moderate",
+  "rating_reason": "Quantified price pressure (median price +51% in a decade, +28% in one year; income +34%) and one 17-year business pushed out by the mission landlord; no resident-loss count."
+ },
+ {
+  "id": "station-north",
+  "displacement_evidence": [
+   {"indicator": "Population by race, Station North/Greenmount West tract (NCRC)", "value": "Black 1,511 to 1,214 (-20%); white 104 to 453; total 1,668 to 2,073", "period": "2000-2010", "source_url": "https://baltimorefishbowl.com/stories/study-baltimore-has-seen-one-of-the-highest-rates-of-gentrification-in-the-u-s/", "source_title": "Baltimore Fishbowl on NCRC gentrification study (2019-03-19)", "accessed_on": "2026-10-26"},
+   {"indicator": "Median home value, same tract", "value": "$66,640 to $209,300 (+214%)", "period": "2000-2010", "source_url": "https://baltimorefishbowl.com/stories/study-baltimore-has-seen-one-of-the-highest-rates-of-gentrification-in-the-u-s/", "source_title": "Baltimore Fishbowl on NCRC study (2019-03-19)", "accessed_on": "2026-10-26"},
+   {"indicator": "Population growth", "value": "Station North population +15% since 2010 (planning director); ~3,000 in the core, ~27,000 in secondary area (28,000 in 2010)", "period": "2010-2024", "source_url": "https://www.wmar2news.com/local/jhu-funding-economic-redevelopment-plan-for-station-north", "source_title": "WMAR, 'JHU funding economic redevelopment plan for Station North' (2024-05-09)", "accessed_on": "2026-10-26"},
+   {"indicator": "Stakeholder perceptions (39 interviews)", "value": "'A certain level of gentrification'; artists seen as most likely to be displaced; institutions' influence outweighs longtime residents'", "period": "post-2002", "source_url": "https://www.ijurr.org/article/avoiding-soho-effect-baltimore-neighborhood-revitalization-arts-entertainment-districts/", "source_title": "IJURR, Rich & Tsitsos, 'Avoiding the SoHo effect in Baltimore' (DOI 10.1111/1468-2427.12376)", "accessed_on": "2026-10-26"},
+   {"indicator": "Anti-displacement measure", "value": "2024 roadmap 'avoids displacement of residents and businesses' but states no quantified measures", "period": "2024", "source_url": "https://foxbaltimore.com/news/local/central-baltimore-partnership-and-johns-hopkins-unveil-new-plan-for-station-north", "source_title": "FOX45, 'Central Baltimore Partnership and Johns Hopkins unveil new plan for Station North' (2024-05-09)", "accessed_on": "2026-10-26"}
+  ],
+  "start_conditions": {"start_year": 2002, "start_vacancy_pct": null, "start_income_note": "Tract in 2000: 1,511 of 1,668 residents Black, median home value $66,640; Abell/Mallach: Greenmount West tract moved from low- to middle-income 2000-2017", "ownership_note": "Private owners plus institutions; a CBP-led consortium later acquired the underused North Avenue Market (undated)"},
+  "milestones": [
+   {"year": 2002, "event": "Designated a Maryland Arts & Entertainment District", "source_url": "https://www.ijurr.org/article/avoiding-soho-effect-baltimore-neighborhood-revitalization-arts-entertainment-districts/"},
+   {"year": 2014, "event": "Johns Hopkins support begins; $5M gift toward the $16M Parkway Theatre renovation", "source_url": "https://foxbaltimore.com/news/local/central-baltimore-partnership-and-johns-hopkins-unveil-new-plan-for-station-north"},
+   {"year": 2015, "event": "Centre Theatre on North Ave reopens after $19M; BARCO plans $10M Open Works incubator; city plan with 27 recommendations", "source_url": "https://thedailyrecord.com/tag/station-north/"},
+   {"year": 2016, "event": "Nelson Kohl apartments (20 E Lanvale) break ground, the district's first new multifamily build", "source_url": "https://thedailyrecord.com/tag/station-north/"},
+   {"year": 2024, "event": "JHU-funded ($150,000) Economic Development Implementation Roadmap released by Central Baltimore Partnership with 200+ partners", "source_url": "https://www.wmar2news.com/local/jhu-funding-economic-redevelopment-plan-for-station-north"},
+   {"year": 2026, "event": "MCB delivers Guilford Row, 14 rental townhomes ($6.7M) on a former warehouse site near the district (Jan)", "source_url": "https://thedailyrecord.com/2026/01/21/guilford-row-residential-project-delivered-in-baltimore/"}
+  ],
+  "status_2025_26": {"text": "Residential infill continues (14-townhome Guilford Row delivered Jan 2026); no 2025-26 source on North Avenue storefront vacancy found", "source_url": "https://thedailyrecord.com/2026/01/21/guilford-row-residential-project-delivered-in-baltimore/", "accessed_on": "2026-10-26"},
+  "displacement_rating_suggested": "high",
+  "rating_reason": "NCRC tract data show Black residents -20% while white residents quadrupled and home values tripled (2000-10) after the 2002 designation; no quantified mitigation. Team's 'moderate' understates this."
+ },
+ {
+  "id": "dashilar-yangmeizhu",
+  "displacement_evidence": [
+   {"indicator": "Households that left under buy-outs", "value": "More than 600 of about 1,700 households opted to leave (compensation or housing exchange); 496-m alley", "period": "2011-2016", "source_url": "https://www.pressreader.com/hong-kong/china-daily/20160823/282071981316240", "source_title": "China Daily via PressReader (2016-08-23)", "accessed_on": "2026-10-26"},
+   {"indicator": "Buy-out terms and resident conditions", "value": "46,000 yuan/m2 plus 200,000-300,000 yuan bonus; avg household 22 m2, 2.5 people; No. 51 courtyard fell from 10+ to 5 households; public toilet demolished and not rebuilt", "period": "2011-2013", "source_url": "https://paper.people.com.cn/mszk/html/2013-10/28/content_1317282.htm", "source_title": "Minsheng Weekly (People's Daily), 'Xiejie suoshi' (2013-10-28)", "accessed_on": "2026-10-26"},
+   {"indicator": "Second-wave relocation, Guanyinsi area (15.4 ha, includes Yangmeizhu)", "value": "1,103 households signed (46% of households) between Oct 26 and Dec 25, 2020; 295 existing shops surveyed", "period": "2020", "source_url": "https://m.thepaper.cn/baijiahao_26523686", "source_title": "Tsinghua Tongheng Planning via The Paper (2024-03-01)", "accessed_on": "2026-10-26"},
+   {"indicator": "Residents remaining", "value": "'The large majority' of Yangmeizhu residents still original residents; many homes resident-owned", "period": "2019", "source_url": "https://www.theworldofchinese.com/2019/09/memory-lanes/", "source_title": "The World of Chinese, 'Memory Lanes' (2019-09-19)", "accessed_on": "2026-10-26"}
+  ],
+  "start_conditions": {"start_year": 2011, "start_vacancy_pct": null, "start_income_note": "Average household 22 m2 with 2.5 people (2013); resident could not afford to buy elsewhere at offered compensation", "ownership_note": "Mixed public/private courtyards; state-linked Dashilan Investment Co. bought out households voluntarily from 2011 and master-leased shops to creative tenants"},
+  "milestones": [
+   {"year": 2011, "event": "Dashilar Project launched through Beijing Design Week; relocation work begins", "source_url": "https://www.modumag.com/?p=7367"},
+   {"year": 2012, "event": "First creative tenants (Suzuki Canteen, Minian, Soloist Cafe) move in", "source_url": "https://paper.people.com.cn/mszk/html/2013-10/28/content_1317282.htm"},
+   {"year": 2013, "event": "West-side public toilet demolished and not rebuilt for 6+ months; sealed vacant houses reported", "source_url": "https://paper.people.com.cn/mszk/html/2013-10/28/content_1317282.htm"},
+   {"year": 2016, "event": "600+ of ~1,700 households have opted to leave; Dashilar named national history and culture zone (2015)", "source_url": "https://www.pressreader.com/hong-kong/china-daily/20160823/282071981316240"},
+   {"year": 2020, "event": "Application-based relocation in the Guanyinsi area: 1,103 households (46%) sign Oct-Dec", "source_url": "https://m.thepaper.cn/baijiahao_26523686"},
+   {"year": 2025, "event": "Dashilar subdistrict makes 17 hutongs no-parking after 20+ surveys and visits to 4,000+ households; Yangmeizhu a target street", "source_url": "https://www.bjnews.com.cn/detail/1761739260129604.html"}
+  ],
+  "status_2025_26": {"text": "2025: street-level management focus (no-parking hutongs, 147 off-street spaces found); Yangmeizhu one of three key streets; no shop or household counts published", "source_url": "https://www.bjnews.com.cn/detail/1761739260129604.html", "accessed_on": "2026-10-26"},
+  "displacement_rating_suggested": "moderate",
+  "rating_reason": "Quantified partial loss (600+ of ~1,700 households by 2016; 46% in the 2020 wave) under compensated, voluntary buy-outs, with amenity loss and sealed houses; mitigation partial."
+ },
+ {
+  "id": "baitasi",
+  "displacement_evidence": [
+   {"indicator": "Households relocated (voluntary buy-outs)", "value": "350+ of ~5,600 households signed, nearly 200 moved out; target ~100/yr and 15% overall; 807 courtyards, 200 to renovate by 2020", "period": "2015-2016", "source_url": "https://paper.people.com.cn/zgcsb/html/2016-09/12/content_1712557.htm", "source_title": "China City News, 'Courtyard rebirth has only just begun' (2016-09-12)", "accessed_on": "2026-10-26"},
+   {"indicator": "Resident profile at start", "value": "~13,000 permanent residents, ~50% migrants, ~19% elderly; ~70% of buildings in poor condition", "period": "2016", "source_url": "https://paper.people.com.cn/zgcsb/html/2016-09/12/content_1712557.htm", "source_title": "China City News (2016-09-12)", "accessed_on": "2026-10-26"},
+   {"indicator": "Compensation and sentiment", "value": "Residents 'gradually relocated to affordable housing with compensation'; 'prevailing antagonism towards the planning authority' (no counts)", "period": "2015-2018", "source_url": "https://www.modumag.com/?p=7367", "source_title": "Modu Magazine, Beijing courtyard renewal (2018-11-23)", "accessed_on": "2026-10-26"}
+  ],
+  "start_conditions": {"start_year": 2015, "start_vacancy_pct": null, "start_income_note": "~13,000 permanent residents, half migrants, 19% elderly; 70% of buildings poor; avg plot ratio 0.79 (2016)", "ownership_note": "Shared courtyard compounds (807 house numbers); state-commissioned renewal company buys out ~100 households a year and curates shops"},
+  "milestones": [
+   {"year": 2015, "event": "'Baitasi Remade' plan debuts at Beijing Design Week", "source_url": "https://paper.people.com.cn/zgcsb/html/2016-09/12/content_1712557.htm"},
+   {"year": 2016, "event": "International courtyard design competition; 350+ households signed, ~200 moved; 28 hutongs and 600 parking spaces targeted by 2020", "source_url": "https://paper.people.com.cn/zgcsb/html/2016-09/12/content_1712557.htm"},
+   {"year": 2019, "event": "Gongmenkou East/West Cha hutong renewal project begins (late 2019): utility burial, facade conservation", "source_url": "https://news.bjd.com.cn/2025/02/14/11067565.shtml"},
+   {"year": 2025, "event": "Beijing Daily feature on daily life continuing beneath the ~800-year-old White Dagoba", "source_url": "https://news.bjd.com.cn/2025/02/14/11067565.shtml"}
+  ],
+  "status_2025_26": {"text": "Feb 2025 state-media feature describes continued micro-renewal and everyday life in the hutongs; no 2025-26 shop, visitor or household figures retrieved (2025-26 trade press pages failed to load)", "source_url": "https://news.bjd.com.cn/2025/02/14/11067565.shtml", "accessed_on": "2026-10-26"},
+  "displacement_rating_suggested": "moderate",
+  "rating_reason": "Quantified partial loss (~200 of 5,600 households moved by 2016, 15% targeted) via compensated buy-outs; later totals unknown. Team's 'unknown' can move to moderate on the 2016 figures."
+ },
+ {
+  "id": "tianzifang",
+  "displacement_evidence": [
+   {"indicator": "Households that moved out and let homes to shops", "value": "More than 300 of 670+ resident households by early 2009", "period": "2004-2009", "source_url": "https://finance.sina.cn/sa/2009-07-23/detail-ikknscsi7510174.d.html", "source_title": "CBN Weekly via Sina Finance, 'A business district in the lanes' (2009-07-23)", "accessed_on": "2026-10-26"},
+   {"indicator": "Rent escalation", "value": "32 m2 room: 3,500 yuan/month (2004) to 8,000 (2006) to 10,000+ (2008); management fees ~20x; 29.2 yuan/m2/day in 2014, 'increased by seven times'; 83% say rents too high", "period": "2004-2014", "source_url": "https://scitepress.org/Papers/2018/75639/pdf/index.html", "source_title": "Guo, Xiao & Qi, IWEMSE 2018 (Scitepress); Sina Finance 2009", "accessed_on": "2026-10-26"},
+   {"indicator": "Creative tenants priced out", "value": "Creative/art businesses fell from 51 to 18 (2013-15); catering rose 24.3% to 33.7%; 216 shops surveyed 2015", "period": "2013-2015", "source_url": "https://www.sohu.com/a/305083280_534720", "source_title": "Shanghai Local Chronicles via Sohu, 'Tianzifang: how an ordinary neighbourhood evolved' (2019-03-31)", "accessed_on": "2026-10-26"},
+   {"indicator": "Anti-displacement measure", "value": "None; households were their own landlords (2.5% tax on rental income); 2008 land reclassified residential to mixed use", "period": "2004-2008", "source_url": "https://finance.sina.cn/sa/2009-07-23/detail-ikknscsi7510174.d.html", "source_title": "CBN Weekly via Sina Finance (2009-07-23)", "accessed_on": "2026-10-26"}
+  ],
+  "start_conditions": {"start_year": 1998, "start_vacancy_pct": null, "start_income_note": "Lilong housing of ~1,500 households; typical 32 m2 bathroom-less ground-floor rooms (2004); area nearly demolished in 2004", "ownership_note": "Each household its own landlord from Nov 2004; no curator; factory lofts leased to 70+ firms from 18 countries (1999)"},
+  "milestones": [
+   {"year": 1998, "event": "Chen Yifei and first artists set up studios in Lane 210 factories", "source_url": "https://www.sohu.com/a/305083280_534720"},
+   {"year": 2004, "event": "First residents rent homes to shops (Nov); demolition averted", "source_url": "https://www.sohu.com/a/305083280_534720"},
+   {"year": 2008, "event": "Management committee formed; land reclassified to mixed use; district invests 10M yuan in infrastructure", "source_url": "https://finance.sina.cn/sa/2009-07-23/detail-ikknscsi7510174.d.html"},
+   {"year": 2010, "event": "Rated a national AAA tourist attraction (March); Expo boosts profile", "source_url": "https://www.sohu.com/a/305083280_534720"},
+   {"year": 2015, "event": "Creative shops down to 18 from 51 in two years; catering a third of 216 shops", "source_url": "https://www.sohu.com/a/305083280_534720"},
+   {"year": 2025, "event": "After pandemic-era closures with rents kept high, visitor rebound driven by visa-free Korean tourists (Jan)", "source_url": "https://m.huxiu.com/article/3937088.html"}
+  ],
+  "status_2025_26": {"text": "Jan 2025: many merchants had closed during the slump while rents stayed high; lanes refilled within ~2 months on inbound tourism", "source_url": "https://m.huxiu.com/article/3937088.html", "accessed_on": "2026-10-26"},
+  "displacement_rating_suggested": "high",
+  "rating_reason": "Quantified turnover (300+ of 670 households gone by 2009), rents up ~7x, creative tenants cut from 51 to 18; no mitigation."
+ },
+ {
+  "id": "yongqingfang-enning",
+  "displacement_evidence": [
+   {"indicator": "Occupancy at start of micro-renovation", "value": "40% of houses occupied as homes, 7% shops/warehouses, 33% vacant", "period": "c. 2016", "source_url": "https://worldcitiescultureforum.com/city-project/yongqingfang-micro-renovation-project/", "source_title": "World Cities Culture Forum, Yongqingfang micro-renovation project (2023-09-07, updated 2025-10-17)", "accessed_on": "2026-10-26"},
+   {"indicator": "Resident relocation and protest", "value": "Government relocation began 2007; 'some 183 residents' petitioned higher authorities (Feb 2010); officials admitted a 'detour' (Aug 2010)", "period": "2007-2010", "source_url": "https://metropolitiques.eu/The-Politics-of-Urban-Heritage-Making-in-the-Yongqingfang-Redevelopment-Project.html", "source_title": "Metropolitiques, Yimeng Yang, 'The Politics of Urban Heritage-Making in the Yongqingfang Redevelopment Project' (2022-03-29)", "accessed_on": "2026-10-26"},
+   {"indicator": "Demolition and governance", "value": "Only 4 buildings (5%) demolished and rebuilt; co-development committee of 25 with 12 residents; government retakes ownership 2031", "period": "2016-2031", "source_url": "https://worldcitiescultureforum.com/city-project/yongqingfang-micro-renovation-project/", "source_title": "World Cities Culture Forum", "accessed_on": "2026-10-26"}
+  ],
+  "start_conditions": {"start_year": 2016, "start_vacancy_pct": 33, "start_income_note": null, "ownership_note": "Area government-relocated from 2007; Vanke won an April 2016 tender for a 15-year build-operate-transfer; ownership reverts to government in 2031"},
+  "milestones": [
+   {"year": 2007, "event": "Government begins relocating Enning Road residents", "source_url": "https://metropolitiques.eu/The-Politics-of-Urban-Heritage-Making-in-the-Yongqingfang-Redevelopment-Project.html"},
+   {"year": 2010, "event": "183 residents petition against the redevelopment plan (Feb); officials concede a 'detour' (Aug)", "source_url": "https://metropolitiques.eu/The-Politics-of-Urban-Heritage-Making-in-the-Yongqingfang-Redevelopment-Project.html"},
+   {"year": 2012, "event": "Enning Road and Yongqingfang designated Guangzhou's 23rd historical and cultural district", "source_url": "https://metropolitiques.eu/The-Politics-of-Urban-Heritage-Making-in-the-Yongqingfang-Redevelopment-Project.html"},
+   {"year": 2016, "event": "Vanke wins open tender (April) for 15-year BOT; national micro-renovation pilot", "source_url": "https://www.news.cn/culture/20250714/03c19e4acf08425982c0a5db70e87101/c.html"},
+   {"year": 2018, "event": "Roundtable sets up the Enning Road co-development forum (25 members, 12 residents)", "source_url": "https://worldcitiescultureforum.com/city-project/yongqingfang-micro-renovation-project/"},
+   {"year": 2025, "event": "Xinhua feature shows crowds at Yongqingfang, Bruce Lee ancestral home and Cantonese Opera Art Museum (July)", "source_url": "https://www.news.cn/culture/20250714/03c19e4acf08425982c0a5db70e87101/c.html"}
+  ],
+  "status_2025_26": {"text": "July 2025 state media presents Yongqingfang as a revived, crowded heritage landmark; no visitor, shop or resident counts given", "source_url": "https://www.news.cn/culture/20250714/03c19e4acf08425982c0a5db70e87101/c.html", "accessed_on": "2026-10-26"},
+  "displacement_rating_suggested": "high",
+  "rating_reason": "Residents were relocated by government from 2007 (183 petitioners, 33% of houses vacant by 2016) with no return mechanism; the 12-resident committee came after the loss."
+ },
+ {
+  "id": "yanesen",
+  "displacement_evidence": [
+   {"indicator": "Loss of traditional buildings (inheritance/redevelopment, not revival)", "value": "Traditional buildings decreased 30% in the 15 years from 1986; 30+ since regenerated", "period": "1986-2001", "source_url": "https://www.ur-net.go.jp/produce/machimichi-net/fehv9e0000001n7g-att/no19.pdf", "source_title": "UR Urban Renaissance Agency, Machimichi-net newsletter No. 19 (March 2017)", "accessed_on": "2026-10-26"},
+   {"indicator": "New businesses via resident-led events", "value": "60+ galleries, workshops and cafes opened through 24 years of the Geijutsu-sai open-studio event (1993-2017)", "period": "1993-2017", "source_url": "https://www.ur-net.go.jp/produce/machimichi-net/fehv9e0000001n7g-att/no19.pdf", "source_title": "UR Machimichi-net No. 19 (2017-03)", "accessed_on": "2026-10-26"},
+   {"indicator": "Anti-displacement / scale-control measures", "value": "NPO (2001) master-leases 4 buildings; 2000 machizukuri charter cut a planned 9-storey block to 4-6 storeys; council covers ~12,000 residents", "period": "2000-2017", "source_url": "https://www.ur-net.go.jp/produce/machimichi-net/fehv9e0000001n7g-att/no19.pdf", "source_title": "UR Machimichi-net No. 19 (2017-03)", "accessed_on": "2026-10-26"},
+   {"indicator": "Tourism pressure", "value": "Weekend crowds reach tens of thousands; HAGISO (2013) and hanare (2015) spread lodging across the neighbourhood", "period": "2013-2023", "source_url": "https://san-tatsu.jp/articles/282607/", "source_title": "Santatsu, HAGISO feature (updated 2023-12-23)", "accessed_on": "2026-10-26"}
+  ],
+  "start_conditions": {"start_year": 1984, "start_vacancy_pct": null, "start_income_note": null, "ownership_note": "Small private owners; NPO Taito Rekishi Toshi Kenkyukai master-leases 4 buildings; micro-developer HAGISO converted a 1955 apartment block (2013)"},
+  "milestones": [
+   {"year": 1984, "event": "Yanesen magazine and Yanaka Kiku Matsuri begin", "source_url": "https://www.ur-net.go.jp/produce/machimichi-net/fehv9e0000001n7g-att/no19.pdf"},
+   {"year": 1993, "event": "Geijutsu-sai open-studio event starts; 60+ galleries, workshops, cafes follow over 24 years", "source_url": "https://www.ur-net.go.jp/produce/machimichi-net/fehv9e0000001n7g-att/no19.pdf"},
+   {"year": 2001, "event": "NPO founded; later master-leases and manages 4 buildings", "source_url": "https://www.ur-net.go.jp/produce/machimichi-net/fehv9e0000001n7g-att/no19.pdf"},
+   {"year": 2013, "event": "HAGISO opens in a 1955 apartment slated for demolition after the 2011 earthquake", "source_url": "https://san-tatsu.jp/articles/282607/"},
+   {"year": 2015, "event": "Ueno Sakuragi Atari (three 1938 houses) opens in March; hanare neighbourhood hotel opens; Tokyo abolishes 3 planned roads (Dec)", "source_url": "https://www.ur-net.go.jp/produce/machimichi-net/fehv9e0000001n7g-att/no19.pdf"}
+  ],
+  "status_2025_26": null,
+  "displacement_rating_suggested": "low",
+  "rating_reason": "Mitigation in place (NPO master leases, height charter, resident-led events) and no documented resident or business loss; building loss is tied to inheritance, not the revival."
+ },
+ {
+  "id": "paris-vital-quartier",
+  "displacement_evidence": [
+   {"indicator": "Shop units bought and resold (no residents involved)", "value": "VQ1: 123 units; 28 sold to tenants, 56 to Foncière Paris Commerces, 38 to investors. VQ2: 92 units; 78 to Foncière", "period": "2004-2022", "source_url": "https://cdn.paris.fr/paris/2025/10/30/2025-dae-170-gqiN.pdf", "source_title": "Ville de Paris, Conseil de Paris 2025 DAE 170 (closing accounts of Vital'Quartier 1 and 2)", "accessed_on": "2026-10-26"},
+   {"indicator": "Vacancy and mix change", "value": "VQ1: vacancy -6.6%, mono-activity -26.9%, food shops +13.8%, personal services +15.8%. VQ2 Lancry: proximity shops +19% since 2007", "period": "2004-2022", "source_url": "https://cdn.paris.fr/paris/2025/10/30/2025-dae-170-gqiN.pdf", "source_title": "Ville de Paris 2025 DAE 170", "accessed_on": "2026-10-26"},
+   {"indicator": "Cost and jobs", "value": "Advances: VQ1 EUR 57.5M (deficit EUR 1.83M covered by City); VQ2 EUR 35.9M (surplus EUR 4.97M); Sem-wide 1,700+ jobs since 2004 across 800+ units", "period": "2004-2025", "source_url": "https://cdn.paris.fr/paris/2025/10/30/2025-dae-170-gqiN.pdf", "source_title": "Ville de Paris 2025 DAE 170", "accessed_on": "2026-10-26"},
+   {"indicator": "Current re-letting activity", "value": "253 premises re-let in 2025 (60% commercial/craft, 20% associations); 225 in 2024; 210+ in 2023", "period": "2023-2025", "source_url": "https://www.apur.org/en/economy-employment/business/2025-253-new-businesses-were-set-paris-commerces-economic-interest", "source_title": "Apur, '2025: 253 new businesses set up by Paris Commerces' (March 2026)", "accessed_on": "2026-10-26"},
+   {"indicator": "Rent policy (mitigation)", "value": "Subsidies offset rents below market; units only commercial so no household relocation", "period": "2004-2022", "source_url": "https://cdn.paris.fr/paris/2025/10/30/2025-dae-170-gqiN.pdf", "source_title": "Ville de Paris 2025 DAE 170", "accessed_on": "2026-10-26"}
+  ],
+  "start_conditions": {"start_year": 2004, "start_vacancy_pct": null, "start_income_note": null, "ownership_note": "Semaest (city-controlled SEM) bought only ground-floor shop units under a 2004 convention; resold to tenants, investors or the mission-locked Foncière Paris Commerces"},
+  "milestones": [
+   {"year": 2004, "event": "Vital'Quartier 1 convention signed (Feb 2); EUR 48M advances, later EUR 57.5M", "source_url": "https://cdn.paris.fr/paris/2025/10/30/2025-dae-170-gqiN.pdf"},
+   {"year": 2008, "event": "Vital'Quartier 2 concession signed (June 10) for 14 years, 92 units", "source_url": "https://cdn.paris.fr/paris/2025/10/30/2025-dae-170-gqiN.pdf"},
+   {"year": 2015, "event": "VQ1 operation ends (Dec 31); EUR 50M repaid; 28 units sold to tenants", "source_url": "https://cdn.paris.fr/paris/2025/10/30/2025-dae-170-gqiN.pdf"},
+   {"year": 2017, "event": "EIG Paris Commerces created (May) to pool public landlords' shop units", "source_url": "https://www.apur.org/en/economy-employment/business/2025-253-new-businesses-were-set-paris-commerces-economic-interest"},
+   {"year": 2022, "event": "VQ2 ends (Dec 31) with ~30 bookshops/publishers installed in the Quartier Latin; EUR 4.97M surplus", "source_url": "https://cdn.paris.fr/paris/2025/10/30/2025-dae-170-gqiN.pdf"},
+   {"year": 2025, "event": "Conseil de Paris closes VQ1/VQ2 accounts; Paris Commerces re-lets 253 premises in the year", "source_url": "https://www.apur.org/en/economy-employment/business/2025-253-new-businesses-were-set-paris-commerces-economic-interest"}
+  ],
+  "status_2025_26": {"text": "Programme concluded; successor EIG Paris Commerces re-let 253 premises in 2025 (60% to shops and crafts, 32 to repair/reuse/short-circuit food)", "source_url": "https://www.apur.org/en/economy-employment/business/2025-253-new-businesses-were-set-paris-commerces-economic-interest", "accessed_on": "2026-10-26"},
+  "displacement_rating_suggested": "low",
+  "rating_reason": "Shop-only acquisition, below-market rents and sales to tenants are documented mitigation; no resident or business loss reported."
+ },
+ {
+  "id": "seongsu-dong",
+  "displacement_evidence": [
+   {"indicator": "Rent pact effect (survey of 662 tenants)", "value": "Signatory landlords raised rents 1.68% vs 3.06% for non-signatories (2019); tenants stayed 75 vs 56 months; 69.8% of owners signed", "period": "2018-2019", "source_url": "https://www.asiae.co.kr/en/article/2020021807282861327", "source_title": "Asia Business Daily, Seongsu win-win agreement survey (2020-02-18)", "accessed_on": "2026-10-26"},
+   {"indicator": "District commercial rent rise despite pacts", "value": "Seongdong-gu rents +42% in 2022 vs 2020, highest in Seoul; signatories 79 vs 52 months tenure (2021 study); zone expanded 8.6x", "period": "2020-2023", "source_url": "https://view.asiae.co.kr/en/article/2023080106323487215", "source_title": "Asia Business Daily, 'Seongdong-gu expands sustainable development zone' (2023-08-01)", "accessed_on": "2026-10-26"},
+   {"indicator": "Residential rent pressure, Seongdong-gu", "value": "Average monthly rent +48.8% (840k to 1.25M won) and jeonse +52.2%, both highest in Seoul", "period": "2021-2025", "source_url": "https://en.fnnews.com/news/202603181355471450", "source_title": "Financial News, Seongdong district rents (2026-03-19)", "accessed_on": "2026-10-26"},
+   {"indicator": "Pop-up economy and short-term rents", "value": "Yeonmujang-gil rent per pyeong ~3x in five years; daily pop-up rents >10M won for 330 m2; pop-ups fell 233 to 196 (H1 2025 to H1 2026) as brands shift elsewhere", "period": "2021-2026", "source_url": "https://view.asiae.co.kr/en/article/2026072810213276857", "source_title": "Asia Business Daily, 'Must it be Seongsu?' pop-up landscape (2026-07-28)", "accessed_on": "2026-10-26"}
+  ],
+  "start_conditions": {"start_year": 2015, "start_vacancy_pct": null, "start_income_note": null, "ownership_note": "Private landlords; voluntary 'win-win' pacts signed by 69.8% of building owners in Seongsu 1-ga 2-dong by 2019; no public ownership"},
+  "milestones": [
+   {"year": 2015, "event": "Seongdong-gu introduces its gentrification-prevention policy and win-win agreements", "source_url": "https://view.asiae.co.kr/en/article/2023080106323487215"},
+   {"year": 2019, "event": "Survey: signatory landlords raise rents 1.68% vs 3.06%; Seoul Forest-gil rents +4.0% (down from 7.92%)", "source_url": "https://www.asiae.co.kr/en/article/2020021807282861327"},
+   {"year": 2023, "event": "'Gentrification Prevention Policy 2.0' (Feb); zone expanded 8.6x to most of Seongsu-dong (Aug) after rents +42% 2020-22", "source_url": "https://view.asiae.co.kr/en/article/2023080106323487215"},
+   {"year": 2025, "event": "District re-designated a land-transaction permit zone (March); assessed values +29% in 2026", "source_url": "https://en.fnnews.com/news/202603181355471450"},
+   {"year": 2026, "event": "Pop-up rents exceed 10M won/day; Seongdong's share of national pop-ups falls from 34.9% to 26.0% (H1)", "source_url": "https://view.asiae.co.kr/en/article/2026072810213276857"}
+  ],
+  "status_2025_26": {"text": "2026: still Korea's pop-up capital but rents ~3x in five years and brands drifting to Yongsan/Myeong-dong; residential rents up ~49% since 2021", "source_url": "https://view.asiae.co.kr/en/article/2026072810213276857", "accessed_on": "2026-10-26"},
+  "displacement_rating_suggested": "moderate",
+  "rating_reason": "Rent pacts measurably slow increases for signatories, but district rents still rose 42% (2020-22) and street rents ~3x; price pressure with partial, non-binding mitigation."
+ }
+]

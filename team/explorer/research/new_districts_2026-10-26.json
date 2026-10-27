@@ -1,0 +1,488 @@
+[
+ {
+  "id": "anacostia-mlk-marion-barry",
+  "name": "Martin Luther King Jr. Ave SE and Marion Barry Ave (Good Hope Rd) SE, Historic Anacostia",
+  "city": "Washington, DC",
+  "country": "USA",
+  "length_mi": null,
+  "storefronts": null,
+  "historic": "Anacostia Historic District: DC Inventory of Historic Sites 1973; National Register 1978 (about 550 buildings, 83 acres)",
+  "start_year": 2007,
+  "start_vacancy_pct": null,
+  "income": "low",
+  "majority_black": true,
+  "anchor_institution": "No university or hospital; the District housing agency (DHCD) headquarters at 1800 MLK Ave SE and a 150-employee cyber firm at MLK Gateway (2020) act as office anchors.",
+  "concentrated_ownership": false,
+  "interventions": [
+   "bid",
+   "arts_culture",
+   "incubator",
+   "events",
+   "small_biz_grants",
+   "tax_credits",
+   "nonprofit_acquisition"
+  ],
+  "lead": "ARCH Development Corporation (galleries, arts center, 2007-13), the Anacostia Business Improvement District (from 2012), DC's DHCD and Deputy Mayor's office with the Menkiti Group and LISC (MLK Gateway), Building Bridges Across the River and the Douglass Community Land Trust (11th Street Bridge Park equitable development plan), and WACIF (owner of the Arts Center since 2021).",
+  "outcomes": "No vacancy series is published; a 2011 market study found 'many' vacant storefronts and fragmented ownership. 25 new businesses opened in 2015 (BID figure); the Arts Center (2013), Playhouse (2013), Busboys & Poets and MLK Gateway (150 office jobs, 2020) filled key corners; in 2023 ten Good Hope Rd businesses got $8,000 micro-grants plus $50,000 of pro bono help.",
+  "vacancy_change": null,
+  "displacement": "moderate",
+  "displacement_note": "Price pressure is documented (Black share of home-purchase mortgages east of the river fell from 92% to 75%, 2007-2021) but the Black share of homeowners only slipped from 94% to 87%, and the land trust (230 units) and homebuyer grants are an unusually early mitigation; 2013 reporting shows business closures that predate, rather than follow, the revival.",
+  "displacement_evidence": [
+   {
+    "indicator": "Share of home-purchase mortgages to Black borrowers, east of the Anacostia River",
+    "value": "92% to 75%",
+    "period": "2007-2021",
+    "source_url": "https://dcist.com/story/23/02/09/percentage-black-mortgages-falling-east-of-anacostia-river",
+    "source_title": "DCist/WAMU, 'The Percentage Of Black Homeownership East of the Anacostia River Is Declining', 2023-02-09",
+    "accessed_on": "2026-10-26"
+   },
+   {
+    "indicator": "Share of homeowners who are Black, east of the river",
+    "value": "94% to 87%",
+    "period": "2005-09 to 2017-21",
+    "source_url": "https://dcist.com/story/23/02/09/percentage-black-mortgages-falling-east-of-anacostia-river",
+    "source_title": "DCist/WAMU, 2023-02-09",
+    "accessed_on": "2026-10-26"
+   },
+   {
+    "indicator": "Black share of households and median household income, Anacostia tracts (baseline)",
+    "value": "95% Black; MHI $40,062; 44% of households under $35,000 vs 32% District-wide",
+    "period": "2010",
+    "source_url": "https://dhcd.dc.gov/sites/default/files/dc/sites/dhcd/publication/attachments/Final_Anacostia_Commercial_Market_Analysis.pdf",
+    "source_title": "Green Door Advisors for NCRC/DHCD, 'Anacostia Commercial Market Analysis', March 2011",
+    "accessed_on": "2026-10-26"
+   },
+   {
+    "indicator": "Mitigation: Douglass Community Land Trust units and renter share",
+    "value": "230 units controlled; about 75% of residents east of the river are renters; 44 construction-training classes graduated",
+    "period": "as of 2026-08",
+    "source_url": "https://dc.citycast.fm/business-development/11th-street-bridge-park-construction-bid",
+    "source_title": "City Cast DC, 'The Long Awaited 11th Street Bridge Park Is One Step Closer to Breaking Ground', 2026-08-24",
+    "accessed_on": "2026-10-26"
+   }
+  ],
+  "milestones": [
+   {
+    "year": 2007,
+    "event": "ARCH Development Corporation opens Honfleur Gallery on Good Hope Rd, its first gallery in the neighborhood; DC's HPO pilot gives 50+ exterior-repair grants (about $900,000) to homeowners in the historic district (not renewed).",
+    "source_url": "https://www.congressheightsontherise.com/blog//2013/02/new-arts-center-to-open-in-anacostia.html"
+   },
+   {
+    "year": 2012,
+    "event": "Anacostia BID formalized (30 square blocks; BID tax $0.16 per $100; about $270,000 a year by FY2017).",
+    "source_url": "https://dslbd.dc.gov/sites/default/files/dc/sites/dslbd/Anacostia%20BIDC%20Renewal%202017%20Five_Year%20Business%20Plan%202017_2022_033117.pdf"
+   },
+   {
+    "year": 2013,
+    "event": "Anacostia Arts Center (about 10,000 sq ft at 1231 Good Hope Rd SE, three gallery and two boutique rental spaces, black-box theater, cafe) and the Anacostia Playhouse open; the same year reporting lists five recent storefront closures on MLK Ave and Good Hope Rd.",
+    "source_url": "https://ggwash.org/view/31339/anacostians-still-waiting-for-a-new-day"
+   },
+   {
+    "year": 2015,
+    "event": "11th Street Bridge Park Equitable Development Plan released (updated 2018); 25 new businesses open in the BID that year.",
+    "source_url": "https://www.washingtoninformer.com/?p=1179481"
+   },
+   {
+    "year": 2020,
+    "event": "MLK Gateway phase one at 1201-1215 Good Hope Rd: historic retail buildings renovated with a 20,000 sq ft office addition, financed with $4.25M New Markets Tax Credits, $3.3M Opportunity Zone equity and a $700,000 Neighborhood Prosperity Fund grant; 150 jobs relocate from downtown.",
+    "source_url": "https://mocrs.dc.gov/release/mayor-bowser-celebrates-transformation-mlk-gateway-historic-anacostia"
+   },
+   {
+    "year": 2021,
+    "event": "WACIF, a nonprofit lender, acquires the Anacostia Arts Center; an $11M renovation was set to start November 2025 with a temporary closure of up to a year.",
+    "source_url": "https://www.axios.com/local/washington-dc/2025/08/07/anacostia-arts-center-renovation-design"
+   }
+  ],
+  "status_2025_26": {
+   "text": "The $92M 11th Street Bridge Park is fully funded (half DDOT capital budget, half philanthropy and two federal grants) but still unbuilt: contractor bids from September 2026, construction expected to start by end-2026 and open mid-2029; the Douglass CLT controls 230 units. The Anacostia Arts Center closed for an $11M renovation from November 2025. Good Hope Rd had been renamed Marion Barry Ave by 2023.",
+   "source_url": "https://dc.citycast.fm/business-development/11th-street-bridge-park-construction-bid",
+   "accessed_on": "2026-10-26"
+  },
+  "lesson": "With no landlord of its own, an arts nonprofit plus a small BID took 15+ years to fill key corners and still has no vacancy count; the transferable piece is funding the land trust and business micro-grants before, not after, the big capital project lands.",
+  "sources": [
+   {
+    "l": "Green Door Advisors for NCRC/DHCD, Anacostia Commercial Market Analysis, March 2011",
+    "u": "https://dhcd.dc.gov/sites/default/files/dc/sites/dhcd/publication/attachments/Final_Anacostia_Commercial_Market_Analysis.pdf"
+   },
+   {
+    "l": "GGWash, 'Old Anacostia's spirit unshakable despite vacant properties', 2011-08-09",
+    "u": "https://ggwash.org/view/10316/old-anacostias-spirit-unshakable-despite-vacant-properties"
+   },
+   {
+    "l": "GGWash, 'Anacostians still waiting for a new day', 2013-05-29",
+    "u": "https://ggwash.org/view/31339/anacostians-still-waiting-for-a-new-day"
+   },
+   {
+    "l": "Wikipedia: Anacostia Historic District, accessed 2026-10-26",
+    "u": "https://en.wikipedia.org/wiki/Anacostia_Historic_District"
+   },
+   {
+    "l": "Congress Heights on the Rise, 'New Arts Center to Open in Anacostia', 2013-02-19",
+    "u": "https://www.congressheightsontherise.com/blog//2013/02/new-arts-center-to-open-in-anacostia.html"
+   },
+   {
+    "l": "Anacostia BID renewal five-year business plan FY2018-23, 2017-03-31",
+    "u": "https://dslbd.dc.gov/sites/default/files/dc/sites/dslbd/Anacostia%20BIDC%20Renewal%202017%20Five_Year%20Business%20Plan%202017_2022_033117.pdf"
+   },
+   {
+    "l": "GGWash, 'Anacostia is using a land trust to maintain affordable housing', 2018-05-07",
+    "u": "https://ggwash.org/view/67224/anacostia-is-using-a-land-trust-to-maintain-affordable-housing"
+   },
+   {
+    "l": "DC Mayor's Office (MOCRS), MLK Gateway milestones release, 2020-01-08",
+    "u": "https://mocrs.dc.gov/release/mayor-bowser-celebrates-transformation-mlk-gateway-historic-anacostia"
+   },
+   {
+    "l": "Next City, 'Can a Park Prevent Gentrification?', 2021-02-10",
+    "u": "https://nextcity.org/urbanist-news/can-a-park-prevent-gentrification"
+   },
+   {
+    "l": "Washington Informer, 'New Year, New Park', 2022-12-23",
+    "u": "https://www.washingtoninformer.com/?p=1179481"
+   },
+   {
+    "l": "DCist/WAMU on Urban Institute report, 2023-02-09",
+    "u": "https://dcist.com/story/23/02/09/percentage-black-mortgages-falling-east-of-anacostia-river"
+   },
+   {
+    "l": "Planetizen summarizing Fast Company, 2023-11-14",
+    "u": "https://planetizen.com/node/126343"
+   },
+   {
+    "l": "Building Bridges Across the River, 2023 Year in Review",
+    "u": "https://buildingbridgesdc.org/2023-year-in-review"
+   },
+   {
+    "l": "Washingtonian, Bridge Park renderings, 2024-02-15",
+    "u": "https://www.washingtonian.com/2024/02/15/check-out-these-cool-new-renderings-of-the-11th-street-bridge-park"
+   },
+   {
+    "l": "Axios DC, Anacostia Arts Center renovation, 2025-08-07",
+    "u": "https://www.axios.com/local/washington-dc/2025/08/07/anacostia-arts-center-renovation-design"
+   },
+   {
+    "l": "City Cast DC, Bridge Park construction bid, 2026-08-24",
+    "u": "https://dc.citycast.fm/business-development/11th-street-bridge-park-construction-bid"
+   }
+  ]
+ },
+ {
+  "id": "bronzeville-47th",
+  "name": "47th Street, 43rd Street and 51st Street corridors, Bronzeville",
+  "city": "Chicago",
+  "country": "USA",
+  "length_mi": null,
+  "storefronts": null,
+  "historic": "Black Metropolis-Bronzeville District: Chicago Landmark district 1998 (nine structures, six of them NRHP-listed 1986); Bronzeville-Black Metropolis National Heritage Area signed into law 2023",
+  "start_year": 2003,
+  "start_vacancy_pct": null,
+  "income": "low",
+  "majority_black": true,
+  "anchor_institution": null,
+  "concentrated_ownership": true,
+  "interventions": [
+   "main_street",
+   "bid",
+   "arts_culture",
+   "events",
+   "small_biz_grants",
+   "incubator",
+   "nonprofit_acquisition",
+   "tax_credits",
+   "zoning_change"
+  ],
+  "lead": "Quad Communities Development Corporation (formed 2003) and the Bronzeville Retail Initiative / Bronzeville Alliance with the Metropolitan Planning Council and LISC; Urban Juncture Foundation / Build Bronzeville (Boxville, Forum, Bronzeville Cookin', incubator); the City of Chicago through TIF districts, Special Service Areas and the Neighborhood Opportunity Fund; the Bronzeville Legacy Collective (from 2023).",
+  "outcomes": "No storefront vacancy series exists; in 2012 about 50% of lots on 47th St and 57% on 43rd St were vacant land (87-89% of it city-owned) and vacant lots had halved since 2006 with over $470M invested since 2005. Shops & Lofts at 47 (96 units, 55,000 sq ft, Walmart) opened 2014 after about a decade; Boxville's first season (2017) hosted 64 local enterprises and 2,500+ patrons; Bronzeville Winery got a $250,000 city grant and opened in the 84-unit 4400 Grove.",
+  "vacancy_change": null,
+  "displacement": "moderate",
+  "displacement_note": "Median single-family prices rose nearly $200,000 (2018-2022) and tax bills are more than doubling, against a 2024 median income of $40,692; a 2014 UIC study found the area 'improved but did not gentrify'; mitigation is about 5,500 city-backed affordable apartments, but the earlier CHA demolitions (7,000 public-housing units, from 1999) emptied the corridors' customer base.",
+  "displacement_evidence": [
+   {
+    "indicator": "Median single-family home price change, Bronzeville (Tribune figure cited)",
+    "value": "up nearly $200,000; average rent $1,720/month vs median household income $40,692 across the four community areas",
+    "period": "2018-2022 (rent/income 2024)",
+    "source_url": "https://www.citybureau.org/newswire/2024/4/24/bronzeville-real-estate-gem-black-metropolis",
+    "source_title": "City Bureau, 'Bronzeville's future as a real estate gem threatens its legacy as Chicago's Black Metropolis', 2024-04-25",
+    "accessed_on": "2026-10-26"
+   },
+   {
+    "indicator": "Population and public housing loss",
+    "value": "Bronzeville fell from about 300,000 (1950) to about 75,000 (2010), over 75%; 7,000 public-housing units built in the 1950s-60s were demolished under the CHA Plan for Transformation from 1999, with 635 of 7,873 replacement units built by end-2010",
+    "period": "1950-2010",
+    "source_url": "https://archive.metroplanning.org/uploads/cms/documents/mpc_developing_vibrant_retail_bronzeville_web.pdf",
+    "source_title": "Metropolitan Planning Council, 'Developing vibrant retail in Bronzeville', 2012",
+    "accessed_on": "2026-10-26"
+   },
+   {
+    "indicator": "Black share and income, Grand Boulevard community area",
+    "value": "92.6% Black (2018 ACS) to 84.0% (2024); median household income $39,111 (2020); population 21,929 (2010) to 24,589 (2020)",
+    "period": "2010-2024",
+    "source_url": "https://en.wikipedia.org/wiki/Grand_Boulevard,_Chicago",
+    "source_title": "Wikipedia: Grand Boulevard, Chicago, accessed 2026-10-26",
+    "accessed_on": "2026-10-26"
+   },
+   {
+    "indicator": "Gentrification assessment (UIC Voorhees Center index)",
+    "value": "Bronzeville 'improved but did not gentrify'; the issue is replacement by higher-income Black newcomers rather than displacement",
+    "period": "2000-2014",
+    "source_url": "https://www.wbez.org/stories/why-dont-black-chicago-neighborhoods-gentrify/ff0341a4-1ff2-4370-b4dd-e25dc84c5e5e",
+    "source_title": "WBEZ, 'Why don't Black Chicago neighborhoods gentrify?', 2014-12-17",
+    "accessed_on": "2026-10-26"
+   }
+  ],
+  "milestones": [
+   {
+    "year": 2003,
+    "event": "Quad Communities Development Corporation formed; it first called for redeveloping 47th & Cottage Grove.",
+    "source_url": "https://archive.metroplanning.org/uploads/cms/documents/mpc_developing_vibrant_retail_bronzeville_web.pdf"
+   },
+   {
+    "year": 2005,
+    "event": "Urban Juncture's founder buys an abandoned liquor store at 51st & Prairie, later the Bronzeville Incubator (home of an Illinois SBDC); the Foundation buys the 1897 Forum on 43rd St in 2011.",
+    "source_url": "https://www.buildbronzeville.com/blog/2023/9/11/allow-us-to-reintroduce-ourselves"
+   },
+   {
+    "year": 2009,
+    "event": "Bronzeville Retail Initiative created (Bronzeville Alliance 2008); its 2011 task force recommends focusing retail on 47th St, a new 3rd Ward SSA, land assembly of city-owned lots and flexible zoning; 12 TIFs generate over $50M.",
+    "source_url": "https://archive.metroplanning.org/uploads/cms/documents/mpc_developing_vibrant_retail_bronzeville_web.pdf"
+   },
+   {
+    "year": 2014,
+    "event": "Shops and Lofts at 47 opens at 47th & Cottage Grove: 96 units (44 affordable, 28 public housing, 24 market), 55,000 sq ft retail anchored by Walmart Neighborhood Market, $45.6M with nearly $13M TIF.",
+    "source_url": "https://chicago.gov/city/en/depts/mayor/press_room/press_releases/2013/april_2013/mayor_emanuel_celebratesgroundbreakingof47thstreetshopsandloftsi.html"
+   },
+   {
+    "year": 2017,
+    "event": "Boxville shipping-container market opens at 51st & Calumet beside the Green Line (four containers, $500/month for half a container); 64 local enterprises in its first season.",
+    "source_url": "https://www.chicagocityscape.com/blog/a-shipping-container-market-opened-in-bronzeville-last-night-f875efd7c6bb"
+   },
+   {
+    "year": 2022,
+    "event": "The Forum wins a $1M Mellon grant toward a $20M restoration after a residential-to-commercial rezoning; Bronzeville Winery opens in the publicly funded 84-unit 4400 Grove (two-thirds below-market) on the Invest South/West Cottage Grove corridor.",
+    "source_url": "https://www.preservationchicago.org/win-the-forum-receives-1-million-restoration-grant-from-andrew-m-mellon-foundation/"
+   }
+  ],
+  "status_2025_26": {
+   "text": "In October 2026 the Bronzeville Legacy Collective (founded 2023) announced a nine-site cultural zone with $75M raised toward a $250M goal; The Forum (318-328 E 43rd St) is under construction for Q4 2029, Bronzeville Cookin' food hub at 300-314 E 51st St for Q4 2029, and the South Side Community Art Center reopening Q1 2027. The 1.5-mile Bronzeville Trail has a $5M city framework plan (2024) but an $83M+ cost and construction around 2032.",
+   "source_url": "https://chicago.suntimes.com/museums-zoos/2026/10/05/bronzeville-cultural-zone-museums-arts-black-history-chicago",
+   "accessed_on": "2026-10-26"
+  },
+  "lesson": "A mission owner that bought cheap buildings early (2005, 2011) and tested tenants in $500-a-month containers built a pipeline while anchor projects took a decade; the real lever was the city holding nearly 90% of the vacant land, which Waverly's fragmented owners do not offer.",
+  "sources": [
+   {
+    "l": "Metropolitan Planning Council, 'Developing vibrant retail in Bronzeville', 2012",
+    "u": "https://archive.metroplanning.org/uploads/cms/documents/mpc_developing_vibrant_retail_bronzeville_web.pdf"
+   },
+   {
+    "l": "City of Chicago press release, Shops and Lofts at 47 groundbreaking, April 2013",
+    "u": "https://chicago.gov/city/en/depts/mayor/press_room/press_releases/2013/april_2013/mayor_emanuel_celebratesgroundbreakingof47thstreetshopsandloftsi.html"
+   },
+   {
+    "l": "MPC, 'Prioritizing Culture: Bronzeville's Approach to Commercial Development', 2013-10-10",
+    "u": "https://archive.metroplanning.org/news/6806/Prioritizing-Culture-Bronzevilles-Approach-to-Commercial-Development"
+   },
+   {
+    "l": "WBEZ, 'Why don't Black Chicago neighborhoods gentrify?', 2014-12-17",
+    "u": "https://www.wbez.org/stories/why-dont-black-chicago-neighborhoods-gentrify/ff0341a4-1ff2-4370-b4dd-e25dc84c5e5e"
+   },
+   {
+    "l": "Chicago Cityscape, 'A shipping container market opened in Bronzeville last night', 2017-06-22",
+    "u": "https://www.chicagocityscape.com/blog/a-shipping-container-market-opened-in-bronzeville-last-night-f875efd7c6bb"
+   },
+   {
+    "l": "Brookings Bass Center, Bronzeville transformative placemaking case study, 2018-11",
+    "u": "https://www.brookings.edu/wp-content/uploads/2018/11/2018.11_Bass-Center_Bronzeville_case-study.pdf"
+   },
+   {
+    "l": "Preservation Chicago reposting Block Club, Forum $1M Mellon grant, 2022-04-01",
+    "u": "https://www.preservationchicago.org/win-the-forum-receives-1-million-restoration-grant-from-andrew-m-mellon-foundation/"
+   },
+   {
+    "l": "Hyde Park Herald, 'Bronzeville Winery, landmark attraction of 4400 Grove, opens', undated (c. 2022)",
+    "u": "https://www.hpherald.com/news/business/bronzeville-winery-landmark-attraction-of-4400-grove-mixed-use-development-opens/article_58a1231e-c1bf-11ec-bae7-b377a40ef092.html"
+   },
+   {
+    "l": "Build Bronzeville blog, 'Allow Us To Reintroduce Ourselves', 2023-09-11",
+    "u": "https://www.buildbronzeville.com/blog/2023/9/11/allow-us-to-reintroduce-ourselves"
+   },
+   {
+    "l": "City Bureau, 'Bronzeville's future as a real estate gem...', 2024-04-25",
+    "u": "https://www.citybureau.org/newswire/2024/4/24/bronzeville-real-estate-gem-black-metropolis"
+   },
+   {
+    "l": "Streetsblog Chicago, Bronzeville Trail open house, 2026-06-04",
+    "u": "https://chi.streetsblog.org/2026/06/04/bronzeville-trail-open-house-draws-big-crowd-as-community-led-rail-trail-plan-moves-forward"
+   },
+   {
+    "l": "Chicago Sun-Times, nine-site Bronzeville cultural zone, 2026-10-05",
+    "u": "https://chicago.suntimes.com/museums-zoos/2026/10/05/bronzeville-cultural-zone-museums-arts-black-history-chicago"
+   },
+   {
+    "l": "Wikipedia: Black Metropolis-Bronzeville District, accessed 2026-10-26",
+    "u": "https://en.wikipedia.org/wiki/Black_Metropolis%E2%80%93Bronzeville_District"
+   },
+   {
+    "l": "Wikipedia: Grand Boulevard, Chicago, accessed 2026-10-26",
+    "u": "https://en.wikipedia.org/wiki/Grand_Boulevard,_Chicago"
+   }
+  ]
+ },
+ {
+  "id": "germantown-avenue",
+  "name": "Germantown Avenue (Central Germantown and Mt. Airy)",
+  "city": "Philadelphia",
+  "country": "USA",
+  "length_mi": null,
+  "storefronts": 282,
+  "historic": "Colonial Germantown Historic District: National Historic Landmark 1965 (NRHP 1965/66), 4500-6600 blocks of Germantown Ave, extended 1987 to the 7600 block; 514 contributing properties",
+  "start_year": 2011,
+  "start_vacancy_pct": 21.5,
+  "income": "low",
+  "majority_black": true,
+  "anchor_institution": null,
+  "concentrated_ownership": null,
+  "interventions": [
+   "bid",
+   "facade_grants",
+   "streetscape",
+   "nonprofit_acquisition",
+   "tenant_to_owner",
+   "events"
+  ],
+  "lead": "Germantown United CDC (formed 2011 after the Germantown Settlement bankruptcy) with the Philadelphia City Planning Commission and Commerce Department; Germantown Special Services District (BID, disbanded 2019); Mt. Airy CDC (founded 1980 as Mt. Airy USA) with the Business Association of Mt. Airy; the Philadelphia Redevelopment Authority and PIDC/PAID as owners of the YWCA and Town Hall.",
+  "outcomes": "Central Germantown storefront vacancy moved only from 21.5% (59 of 275 ground-floor spaces, 2012) to 18% (50 of 282 storefronts, summer 2023); Mt. Airy USA rehabbed four Germantown Ave buildings for $1.2M (2013); Maplewood Mall got a $2.2M-$3.3M city remake (pledged 2013, ground-breaking 2019); Weavers Way Co-op (May 2024) runs about 1,000 transactions a day; the publicly owned Town Hall (vacant since 1998) and YWCA (PRA-owned since 2013) are still empty.",
+  "vacancy_change": "21.5% (59 of 275 spaces, 2012) to 18% (50 of 282 storefronts, summer 2023)",
+  "displacement": "moderate",
+  "displacement_note": "Median sale price rose 142% to $184,000 (2012-2022, still below the $235,000 city median) and 400+ new units came online 2019-24; residents report neighbors leaving after rent rises while the Black share stayed above 70% (2015-2022); mitigation is partial (a 35-unit community land trust plan, locally trained small developers).",
+  "displacement_evidence": [
+   {
+    "indicator": "Median home sale price, Germantown",
+    "value": "up 142% to $184,000 (city median $235,000); 400+ apartments delivered since 2019, expected to more than double in 2025; new one-bedrooms $1,300-$1,400",
+    "period": "2012-2022 (units 2019-2025)",
+    "source_url": "https://whyy.org/articles/philadelphia-germantown-gentrification-development/",
+    "source_title": "WHYY/PlanPhilly, 'Rise in residential development in Germantown sparks optimism - and caution', 2024-03-19",
+    "accessed_on": "2026-10-26"
+   },
+   {
+    "indicator": "Racial composition stability and reported moves",
+    "value": "Black residents over 70% of 47,000+ population, demographics 'largely unchanged' 2015-2022; one resident reports three neighbors on her block moved after rent increases",
+    "period": "2015-2024",
+    "source_url": "https://whyy.org/articles/philadelphia-germantown-gentrification-development/",
+    "source_title": "WHYY/PlanPhilly, 2024-03-19",
+    "accessed_on": "2026-10-26"
+   },
+   {
+    "indicator": "Home values vs city and baseline income",
+    "value": "Zillow median $227,000, up 30% May 2010-May 2018 vs 29% citywide; ZIP median income just above $28,000 vs about $39,000 citywide; about 80% African-American (2016)",
+    "period": "2010-2018",
+    "source_url": "https://nextcity.org/features/view/how-this-philadelphia-neighborhood-is-gentrifying-without-displacement",
+    "source_title": "Next City, 'How This Philadelphia Neighborhood is Gentrifying Without Displacement', 2018-07-09",
+    "accessed_on": "2026-10-26"
+   }
+  ],
+  "milestones": [
+   {
+    "year": 1980,
+    "event": "Mt. Airy CDC founded (as Mt. Airy Village Development Corp., later Mt. Airy USA); early work acquires and rehabs neglected Germantown Ave storefronts for local merchants to own and run.",
+    "source_url": "https://pacdc.org/?p=9458"
+   },
+   {
+    "year": 2011,
+    "event": "Germantown United CDC incorporated after the Germantown Settlement's assets were liquidated in bankruptcy; PIDC lists the Town Hall (vacant since 1998) for sale.",
+    "source_url": "https://whyy.org/articles/new-germantown-cdc-tries-to-qdream-bigq-about-neighborhoods-future"
+   },
+   {
+    "year": 2012,
+    "event": "City Planning Commission adopts the Central Germantown Business District plan: 275 ground-floor spaces, 78.5% occupied, 25 projects, Storefront Improvement Program (50% up to $8,000/$12,000).",
+    "source_url": "https://www.phila.gov/media/20190517135315/Central_Germantown_Business_District_Beautification_Plan_2012.pdf"
+   },
+   {
+    "year": 2013,
+    "event": "PRA buys the 49,000 sq ft YWCA at sheriff's auction; city pledges $2.2M for Maplewood Mall; Mt. Airy USA rehabs 6513 Germantown Ave and three other avenue buildings ($1.2M, $600,000 city mixed-use grants).",
+    "source_url": "https://chestnuthilllocal.com/stories/mt-airy-usa-renovates-mixed-use-building,3190"
+   },
+   {
+    "year": 2019,
+    "event": "Maplewood Mall $3.3M remake breaks ground (about 50% of the mall's storefronts vacant in 2018); the Germantown Special Services District BID disbands amid mismanagement claims.",
+    "source_url": "https://whyy.org/articles/3-3m-maplewood-mall-remake-to-break-ground-in-2019"
+   },
+   {
+    "year": 2026,
+    "event": "Planning Commission approves (April 16) transfer of the Town Hall to PAID for an all-commercial reuse anchored by YouthBuild, which must occupy by Q3 2028; the YWCA developer's rights lapsed end-2024 with no new RFP.",
+    "source_url": "https://resolvephilly.org/gih/property-transfer-historic-germantown-town-hall/"
+   }
+  ],
+  "status_2025_26": {
+   "text": "Germantown has had no BID since 2019; Germantown United is drafting a five-year plan to link West Chelten Ave, Maplewood Mall and Market Square (lighting, cameras, absentee landlords). Historic Germantown opened a visitor center in July 2026 (about 125,000 visits a year); Weavers Way and several cafes opened, one brewery reports its worst finances in 6.5 years, and the CDC names gentrification as a major community concern. The Town Hall transfer was approved in April 2026; the YWCA still has no developer.",
+   "source_url": "https://www.inquirer.com/business/small-business/germantown-northwest-philadelphia-small-business-restaurants-shops-20260914.html",
+   "accessed_on": "2026-10-26"
+  },
+  "lesson": "A plan-and-grant approach with a thin CDC, no landlord role and a collapsed BID moved vacancy only from 21.5% to 18% in eleven years while two publicly owned anchor buildings sat empty for 13-28 years; controlling a few key buildings beats another beautification plan.",
+  "sources": [
+   {
+    "l": "WHYY, 'New Germantown CDC tries to dream big', 2011-11-18",
+    "u": "https://whyy.org/articles/new-germantown-cdc-tries-to-qdream-bigq-about-neighborhoods-future"
+   },
+   {
+    "l": "Philadelphia City Planning Commission, Central Germantown Business District Beautification Plan, 2012-09",
+    "u": "https://www.phila.gov/media/20190517135315/Central_Germantown_Business_District_Beautification_Plan_2012.pdf"
+   },
+   {
+    "l": "Chestnut Hill Local, 'Mt. Airy USA renovates mixed-use building', 2013-04-04",
+    "u": "https://chestnuthilllocal.com/stories/mt-airy-usa-renovates-mixed-use-building,3190"
+   },
+   {
+    "l": "WHYY, 'City launches $2.2 million Maplewood Mall redesign effort', 2013-06-14",
+    "u": "https://whyy.org/articles/city-launches-22-million-maplewood-mall-redesign-effort-in-germantown"
+   },
+   {
+    "l": "WHYY, 'New BID director lays out challenges... Mt. Airy', 2014-01-13",
+    "u": "https://whyy.org/articles/new-bid-director-lays-out-challenges-goals-in-revitalizing-mt-airys-business-corridor"
+   },
+   {
+    "l": "WHYY, 'Mt. Airy welcomes new business association and commercial corridor manager', 2014-11-04",
+    "u": "https://whyy.org/articles/mt-airy-welcomes-new-business-association-and-commercial-corridor-manager"
+   },
+   {
+    "l": "Next City, 'How This Philadelphia Neighborhood is Gentrifying Without Displacement', 2018-07-09",
+    "u": "https://nextcity.org/features/view/how-this-philadelphia-neighborhood-is-gentrifying-without-displacement"
+   },
+   {
+    "l": "WHYY, '$3.3M Maplewood Mall remake to break ground in 2019', 2018-11-13",
+    "u": "https://whyy.org/articles/3-3m-maplewood-mall-remake-to-break-ground-in-2019"
+   },
+   {
+    "l": "Bisnow, 'Why 2 Historic Germantown Properties Haven't Been Redeveloped', 2023-08-23",
+    "u": "https://www.bisnow.com/news/philadelphia/construction-development/germantown-historic-properties-120357"
+   },
+   {
+    "l": "Resolve Philly / Germantown Info Hub, 'Anticipating Germantown's 2024', 2024-01-02",
+    "u": "https://resolvephilly.org/gih/anticipating-germantowns-2024-a-look-ahead-at-updates-events-and-projects-to-come/"
+   },
+   {
+    "l": "WHYY/PlanPhilly, 'Rise in residential development in Germantown sparks optimism - and caution', 2024-03-19",
+    "u": "https://whyy.org/articles/philadelphia-germantown-gentrification-development/"
+   },
+   {
+    "l": "Resolve Philly / Germantown Info Hub, PRA and the Germantown YWCA, 2025-02-13",
+    "u": "https://resolvephilly.org/gih/pra-germantown-ywca-2025/"
+   },
+   {
+    "l": "Resolve Philly / Germantown Info Hub, Town Hall property transfer, 2026-04-22",
+    "u": "https://resolvephilly.org/gih/property-transfer-historic-germantown-town-hall/"
+   },
+   {
+    "l": "Philadelphia Inquirer, Germantown small business feature, 2026-09-14",
+    "u": "https://www.inquirer.com/business/small-business/germantown-northwest-philadelphia-small-business-restaurants-shops-20260914.html"
+   },
+   {
+    "l": "PACDC member overview: Mt. Airy CDC, undated",
+    "u": "https://pacdc.org/?p=9458"
+   },
+   {
+    "l": "Wikipedia: Colonial Germantown Historic District, accessed 2026-10-26",
+    "u": "https://en.wikipedia.org/wiki/Colonial_Germantown_Historic_District"
+   }
+  ]
+ }
+]

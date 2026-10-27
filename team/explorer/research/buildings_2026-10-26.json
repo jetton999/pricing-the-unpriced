@@ -1,0 +1,441 @@
+[
+ {
+  "id": "r-house",
+  "cost": {"total_usd": 13000000, "total_usd_low": 12000000, "total_usd_high": 13000000, "cost_year": 2016, "includes_acquisition": null, "scope": "full rehab", "source_url": "https://www.bisnow.com/baltimore/news/retail/13m-remington-food-hall-r-house-opening-this-month-68335", "source_title": "Bisnow, '$13M Remington Food Hall R. House Opening This Month' (2016-12-01)", "accessed_on": "2026-10-26", "note": "Bisnow says $13M; FSR Magazine says $12M. Phase 2 of Seawall's $80M Remington Row. No funding sources stated."},
+  "sqft": 50000,
+  "sqft_source_url": "https://www.fsrmagazine.com/industry-news/baltimore-car-showroom-and-garage-morphs-12-million-launch-pad/",
+  "timeline": {"year_vacant_or_acquired": null, "year_opened": 2016, "months_construction": null, "source_url": "https://www.bisnow.com/baltimore/news/retail/13m-remington-food-hall-r-house-opening-this-month-68335", "note": "Opened Dec 8, 2016 (Bisnow)."},
+  "financing_stack": [
+   {"item": "developer-led project (Seawall Development), phase 2 of $80M Remington Row; no incentives or lenders named", "source_url": "https://www.fsrmagazine.com/industry-news/baltimore-car-showroom-and-garage-morphs-12-million-launch-pad/"}
+  ],
+  "status_2025_26": {"status": "operating", "as_of": "2026-10", "evidence": "Visit Baltimore listing (last modified 2026-10-26) gives daily hours, 10 stalls, R. Bar and monthly events", "source_url": "https://baltimore.org/listings/r-house/", "accessed_on": "2026-10-26"},
+  "operator_model": "private",
+  "operator_source_url": "https://www.bisnow.com/baltimore/news/retail/13m-remington-food-hall-r-house-opening-this-month-68335"
+ },
+ {
+  "id": "motor-house",
+  "cost": {"total_usd": 6500000, "cost_year": 2015, "includes_acquisition": true, "scope": "purchase + rehab", "source_url": "https://www.bisnow.com/baltimore/news/commercial-real-estate/arts-center-opens-in-former-load-of-fun-space-52630", "source_title": "Bisnow, 'Arts Center Opens In Former Load Of Fun Space' (2015-11-19)", "accessed_on": "2026-10-26", "note": "BARCO 'spent $6.5M to purchase and rehab the 25k SF building'."},
+  "sqft": 25000,
+  "sqft_source_url": "https://www.bisnow.com/baltimore/news/commercial-real-estate/arts-center-opens-in-former-load-of-fun-space-52630",
+  "timeline": {"year_vacant_or_acquired": 2013, "year_opened": 2015, "months_construction": null, "source_url": "https://explore.baltimoreheritage.org/items/show/560", "note": "BARCO acquired 2013 (Baltimore Heritage). Bisnow: opened Nov 2015; Baltimore Heritage: grand reopening Jan 2016; MD Planning blog: 2017. Sources conflict."},
+  "financing_stack": [
+   {"item": "tax credits, grants and a state bond bill", "source_url": "https://www.bisnow.com/baltimore/news/commercial-real-estate/arts-center-opens-in-former-load-of-fun-space-52630"},
+   {"item": "Maryland Heritage Structure Rehabilitation Tax Credits (state historic tax credits)", "source_url": "https://mdplanningblog.com/2018/06/21/120-w-north-avenue/"},
+   {"item": "Robert W. Deutsch Foundation support; 2025 rent-party fundraisers for crash repairs", "source_url": "https://baltimorefishbowl.com/stories/motor-house-kicks-off-10th-anniversary-celebrations-and-fundraisers-thursday-night/"}
+  ],
+  "status_2025_26": {"status": "operating", "as_of": "2025-10", "evidence": "Baltimore Beat (2025-10-07): free 10-year anniversary party Oct 10, 2025 and 2026 season reveal; reopened days after June 29, 2025 car crash", "source_url": "https://baltimorebeat.com/baltimore-beat-partners-with-motor-house-for-their-10-year-anniversary/", "accessed_on": "2026-10-26"},
+  "operator_model": "nonprofit",
+  "operator_source_url": "https://baltimorefishbowl.com/stories/motor-house-kicks-off-10th-anniversary-celebrations-and-fundraisers-thursday-night/"
+ },
+ {
+  "id": "open-works",
+  "cost": {"total_usd": 11500000, "total_usd_low": 10000000, "total_usd_high": 11500000, "cost_year": 2016, "includes_acquisition": null, "scope": "full rehab", "source_url": "https://baltimorefishbowl.com/stories/doors-open-open-works-baltimores-11-5-million-makerspace/", "source_title": "Baltimore Fishbowl, 'Doors Open at Open Works, Baltimore's $11.5 Million Makerspace' (2016-09-21)", "accessed_on": "2026-10-26", "note": "$11.5M at opening (Fishbowl 2016); $11M at groundbreaking (WMAR 2015); $10M in 2015 plan (Wikipedia citing BBJ)."},
+  "sqft": 34000,
+  "sqft_source_url": "https://baltimorefishbowl.com/stories/doors-open-open-works-baltimores-11-5-million-makerspace/",
+  "timeline": {"year_vacant_or_acquired": null, "year_opened": 2016, "months_construction": 12, "source_url": "https://wmar2news.com/news/region/baltimore-city/construction-begins-on-11-million-arts-incubator-called-open-works-in-baltimores-arts-district", "note": "Construction start Sept 22, 2015 (WMAR); ribbon-cutting Sept 20, 2016 (Fishbowl); 12 months is derived from those two dates."},
+  "financing_stack": [
+   {"item": "bank investment: PNC Bank and Telesis Corporation", "source_url": "https://baltimorefishbowl.com/stories/doors-open-open-works-baltimores-11-5-million-makerspace/"},
+   {"item": "low-interest loans: The Reinvestment Fund (CDFI) and Baltimore Development Corporation", "source_url": "https://baltimorefishbowl.com/stories/doors-open-open-works-baltimores-11-5-million-makerspace/"},
+   {"item": "grants: Robert W. Deutsch Foundation, Abell Foundation, Maryland General Assembly, MD DHCD, MD Dept of Commerce", "source_url": "https://baltimorefishbowl.com/stories/doors-open-open-works-baltimores-11-5-million-makerspace/"},
+   {"item": "construction financing: M&T Bank", "source_url": "https://baltimorefishbowl.com/stories/doors-open-open-works-baltimores-11-5-million-makerspace/"}
+  ],
+  "status_2025_26": {"status": "operating", "as_of": "2026-09", "evidence": "10-year anniversary block party listed at Open Works, 1400 Greenmount Ave, Sept 26, 2026; UMB (May 2025) names Open Works as operating partner of its makerspace", "source_url": "https://ma.to/event/open-works-10th-anniversary-26-sep-2026", "accessed_on": "2026-10-26"},
+  "operator_model": "nonprofit",
+  "operator_source_url": "https://baltimorefishbowl.com/stories/doors-open-open-works-baltimores-11-5-million-makerspace/"
+ },
+ {
+  "id": "superior-motors",
+  "cost": {"total_usd": null, "cost_year": null, "includes_acquisition": null, "scope": "unknown", "source_url": "https://www.pittsburghmagazine.com/?p=5098", "source_title": "Pittsburgh Magazine, 'A Superior Strategy? Kevin Sousa's Big Bet on Braddock' (2015-03-19)", "accessed_on": "2026-10-26", "note": "No total cost published. Kickstarter pledged $310,225, net ~$261,000; foundations gave $225,000 to the culinary program via Braddock Redux."},
+  "sqft": null,
+  "sqft_source_url": null,
+  "timeline": {"year_vacant_or_acquired": 2013, "year_opened": 2017, "months_construction": null, "source_url": "https://www.wesanews.org/identity-community/2021-08-06/dine-and-dash-leaders-in-braddock-chew-on-sousa-departure", "note": "Project started 2013, opened 2017 (WESA); closed during the pandemic (Pittsburgh Magazine 2024)."},
+  "financing_stack": [
+   {"item": "Kickstarter crowdfunding (~$261,000 net of fees)", "source_url": "https://www.pittsburghmagazine.com/?p=5098"},
+   {"item": "foundation grants ($225,000 to culinary program via nonprofit Braddock Redux)", "source_url": "https://www.pittsburghmagazine.com/?p=5098"},
+   {"item": "rent-free first floor donated by the building owner to nonprofit Braddock Redux", "source_url": "https://www.pittsburghmagazine.com/?p=5098"},
+   {"item": "federal PPP loans, over $190,000 (2020)", "source_url": "https://www.wesanews.org/identity-community/2021-08-06/dine-and-dash-leaders-in-braddock-chew-on-sousa-departure"}
+  ],
+  "status_2025_26": {"status": "closed", "as_of": "2024-09", "evidence": "Superior Motors closed in the pandemic; Brew Gentlemen opened Braddock Public House in the space in early Sept 2024", "source_url": "https://www.pittsburghmagazine.com/brew-gentlemen-opens-braddock-public-house/", "accessed_on": "2026-10-26"},
+  "operator_model": "private",
+  "operator_source_url": "https://www.pittsburghmagazine.com/?p=5098"
+ },
+ {
+  "id": "studio-theatre",
+  "cost": {"total_usd": 20000000, "cost_year": 2022, "includes_acquisition": false, "scope": "full rehab", "source_url": "https://dcist.com/story/22/04/01/studio-theatre-renovation-photos", "source_title": "DCist, Studio Theatre renovation photos (2022-04-01)", "accessed_on": "2026-10-26", "note": "$20M 'Open Studio' campaign, >$15.4M of it design/construction, for the 2021-22 renovation of the building owned since 1997. Original 1987/1997/2004 costs not found."},
+  "sqft": null,
+  "sqft_source_url": null,
+  "timeline": {"year_vacant_or_acquired": 1987, "year_opened": 1987, "months_construction": 12, "source_url": "https://studiotheatre.org/about/mission-and-history", "note": "Leased 1987, bought 1997, expanded 2004. 2021-22 renovation: groundbreaking spring 2021, grand opening Mar 31, 2022 (DCist); 12 months derived."},
+  "financing_stack": [
+   {"item": "DC Commission on the Arts and Humanities grant, $3.8M", "source_url": "https://dcist.com/story/22/04/01/studio-theatre-renovation-photos"},
+   {"item": "Sandy Spring Bank co-financing", "source_url": "https://dcist.com/story/22/04/01/studio-theatre-renovation-photos"},
+   {"item": "donor capital campaign ($16.7M raised toward $20M as of Apr 2022)", "source_url": "https://dcist.com/story/22/04/01/studio-theatre-renovation-photos"}
+  ],
+  "status_2025_26": {"status": "operating", "as_of": "2025-05", "evidence": "DC Theater Arts (2025-05-08): Studio announces 2025/26 season at its multi-venue complex; ~75,000 served a year", "source_url": "https://dctheaterarts.org/2025/05/08/studio-theatre-announces-2025-26-season/", "accessed_on": "2026-10-26"},
+  "operator_model": "nonprofit",
+  "operator_source_url": null
+ },
+ {
+  "id": "the-livery",
+  "cost": {"total_usd": null, "cost_year": null, "includes_acquisition": null, "scope": "unknown", "source_url": "https://www.michigan.org/article/trip-idea/livery-beer-food-music-makers-trail", "source_title": "Pure Michigan, 'The Livery - Beer, Food, Music & Makers Trail' (2017-10-03)", "accessed_on": "2026-10-26", "note": "No cost published in any fetched source."},
+  "sqft": null,
+  "sqft_source_url": null,
+  "timeline": {"year_vacant_or_acquired": null, "year_opened": 2005, "months_construction": null, "source_url": "https://www.michigan.org/article/trip-idea/livery-beer-food-music-makers-trail", "note": "'This is our 12th year' in Oct 2017 implies 2005-06; restored 'in the early 2000s'. Ownership changed c. 2016 to a former staff member."},
+  "financing_stack": [],
+  "status_2025_26": {"status": "unknown", "as_of": "2026-03", "evidence": "Listed on Visit Southwest Michigan (site (c)2026, blog to Mar 2026) with 16 taps and beer garden, but no dated 2025-26 confirmation of trading", "source_url": "https://swmichigan.org/member/the-livery", "accessed_on": "2026-10-26"},
+  "operator_model": "private",
+  "operator_source_url": "https://www.michigan.org/article/trip-idea/livery-beer-food-music-makers-trail"
+ },
+ {
+  "id": "snf-parkway",
+  "cost": {"total_usd": 18500000, "cost_year": 2015, "includes_acquisition": false, "scope": "full rehab", "source_url": "https://www.baltimorebrew.com/2015/10/24/parkway-theatre-turns-100-passes-15m-mark-in-renovation-funds/", "source_title": "Baltimore Brew, 'Parkway Theatre turns 100, passes $15M mark in renovation funds' (2015-10-24)", "accessed_on": "2026-10-26", "note": "$18.5M renovation and expansion; city sold the theatre plus three adjacent lots for $1 (appraised ~$1.2M)."},
+  "sqft": 29000,
+  "sqft_source_url": "https://www.baltimorebrew.com/2015/10/24/parkway-theatre-turns-100-passes-15m-mark-in-renovation-funds/",
+  "timeline": {"year_vacant_or_acquired": 2016, "year_opened": 2017, "months_construction": null, "source_url": "https://www.thebanner.com/culture/theater/parkway-theatre-maryland-film-festival-future-gaming-H7BZVPL6MBCSNLG4RZWKYUBZ2A/", "note": "Construction to begin Nov 2015 (Brew); MdFF acquired property 2016 and reopened 2017 (Banner). Closed early 2023, relaunched May 2024."},
+  "financing_stack": [
+   {"item": "Stavros Niarchos Foundation grant, $5M via Johns Hopkins University", "source_url": "https://www.baltimorebrew.com/2015/10/24/parkway-theatre-turns-100-passes-15m-mark-in-renovation-funds/"},
+   {"item": "City of Baltimore sale of theatre + 3 lots for $1", "source_url": "https://www.baltimorebrew.com/2015/10/24/parkway-theatre-turns-100-passes-15m-mark-in-renovation-funds/"},
+   {"item": "Johns Hopkins multi-year pledge (several $M) and $155K Central Baltimore Partnership/Station North grant (2024)", "source_url": "https://www.thebanner.com/culture/theater/parkway-theatre-maryland-film-festival-future-gaming-H7BZVPL6MBCSNLG4RZWKYUBZ2A/"}
+  ],
+  "status_2025_26": {"status": "reopened", "as_of": "2025-11", "evidence": "WYPR (2025-11-07): 2025 Maryland Film Festival returned to the SNF Parkway Nov 5-9 under a new executive director", "source_url": "https://www.wypr.org/show/midday/2025-11-07/movies-the-2025-maryland-film-festival-returns-to-the-parkway", "accessed_on": "2026-10-26"},
+  "operator_model": "nonprofit",
+  "operator_source_url": "https://www.thebanner.com/culture/theater/parkway-theatre-maryland-film-festival-future-gaming-H7BZVPL6MBCSNLG4RZWKYUBZ2A/"
+ },
+ {
+  "id": "creative-alliance",
+  "cost": {"total_usd": 1574000, "cost_year": 2005, "includes_acquisition": true, "scope": "purchase + rehab", "source_url": "https://mgaleg.maryland.gov/2005rs/fnotes/bil_0001/hb0131B.pdf", "source_title": "Maryland General Assembly fiscal note HB131/SB837 (2005), Creative Alliance state debt", "accessed_on": "2026-10-26", "note": "CONFLICT: state fiscal note lists $1,574,000 estimated capital cost (acquisition, design, construction, equipment); Baltimore Heritage says 'multi-million dollar renovation'. Treat as lower bound."},
+  "sqft": 12750,
+  "sqft_source_url": "https://explore.baltimoreheritage.org/items/show/512",
+  "timeline": {"year_vacant_or_acquired": 1995, "year_opened": 2003, "months_construction": null, "source_url": "https://explore.baltimoreheritage.org/items/show/512", "note": "Theatre closed 1995; renovation began 2000; reopened May 2003. Sqft = 85 x 150 ft building footprint given by Baltimore Heritage (derived)."},
+  "financing_stack": [
+   {"item": "Maryland state bond bill (state debt) $750,000 for acquisition/construction at 3134 Eastern Ave", "source_url": "https://mgaleg.maryland.gov/2005rs/fnotes/bil_0001/hb0131B.pdf"},
+   {"item": "later: $250,000 state bond bill (2018) toward a separate $4.3M arts-education building at 3137 Eastern Ave", "source_url": "https://mgaleg.maryland.gov/2018RS/fnotes/bil_0002/hb0872B.pdf"}
+  ],
+  "status_2025_26": {"status": "operating", "as_of": "2025-10", "evidence": "Creative Alliance press release (2025-10-20) announcing its thematic 2026 season", "source_url": "https://creativealliance.org/wp-content/uploads/2025/10/Creative-Alliance-Announces-Thematic-Season-2026.pdf", "accessed_on": "2026-10-26"},
+  "operator_model": "nonprofit",
+  "operator_source_url": "https://mgaleg.maryland.gov/2018RS/fnotes/bil_0002/hb0872B.pdf"
+ },
+ {
+  "id": "carver-theater",
+  "cost": {"total_usd": 8000000, "cost_year": 2014, "includes_acquisition": false, "scope": "full rehab", "source_url": "https://prcno.org/historic-carver-theatre-in-treme-goes-up-for-auction/", "source_title": "Preservation Resource Center of New Orleans, 'Historic Carver Theatre in Treme goes up for auction' (2025-06-30)", "accessed_on": "2026-10-26", "note": "'About $8 million' (PRCNO 2025; The Advocate 2017). Building bought 1991 for $240,000 (Advocate). Auction listing estimates renovation at $8M+."},
+  "sqft": 17613,
+  "sqft_source_url": "https://prcno.org/historic-carver-theatre-in-treme-goes-up-for-auction/",
+  "timeline": {"year_vacant_or_acquired": 1991, "year_opened": 2014, "months_construction": null, "source_url": "https://prcno.org/historic-carver-theatre-in-treme-goes-up-for-auction/", "note": "Bought 1991; reopened Apr 30, 2014; closed Nov 14, 2017 (Advocate); events running again by 2025; auction Jul 17-23, 2025."},
+  "financing_stack": [
+   {"item": "federal New Markets Tax Credits", "source_url": "https://www.theadvocate.com/new_orleans/news/business/historic-carver-theater-closes-after-operating-in-treme-off-and-on-for-70-years/article_877e720a-d488-11e7-8209-6bfe35b571d0.html"},
+   {"item": "federal and state historic rehabilitation tax credits", "source_url": "https://www.theadvocate.com/new_orleans/news/business/historic-carver-theater-closes-after-operating-in-treme-off-and-on-for-70-years/article_877e720a-d488-11e7-8209-6bfe35b571d0.html"},
+   {"item": "Louisiana live performance tax credits", "source_url": "https://www.theadvocate.com/new_orleans/news/business/historic-carver-theater-closes-after-operating-in-treme-off-and-on-for-70-years/article_877e720a-d488-11e7-8209-6bfe35b571d0.html"},
+   {"item": "state Office of Community Development funds; operating line of credit (later pulled)", "source_url": "https://www.theadvocate.com/new_orleans/news/business/historic-carver-theater-closes-after-operating-in-treme-off-and-on-for-70-years/article_877e720a-d488-11e7-8209-6bfe35b571d0.html"}
+  ],
+  "status_2025_26": {"status": "reopened", "as_of": "2025-06", "evidence": "PRCNO (2025-06-30): hosts live jazz/big band/blues, ~600 seats; offered at online auction Jul 2025 with 15 lots, $2M starting bid; result not found", "source_url": "https://prcno.org/historic-carver-theatre-in-treme-goes-up-for-auction/", "accessed_on": "2026-10-26"},
+  "operator_model": "private",
+  "operator_source_url": "https://www.theadvocate.com/new_orleans/news/business/historic-carver-theater-closes-after-operating-in-treme-off-and-on-for-70-years/article_877e720a-d488-11e7-8209-6bfe35b571d0.html"
+ },
+ {
+  "id": "capitol-theatre",
+  "cost": {"total_usd": 7500000, "total_usd_low": 7000000, "total_usd_high": 7500000, "cost_year": 2009, "includes_acquisition": false, "scope": "full rehab", "source_url": "https://www.dscdo.org/capitol-theatre", "source_title": "Detroit Shoreway CDO, 'Capitol Theatre' (undated)", "accessed_on": "2026-10-26", "note": "DSCDO: $7.5M; Ideastream (2026-05-16): $7M, of which ~$1.5M from the City of Cleveland (unrepaid as of Mar 2026)."},
+  "sqft": null,
+  "sqft_source_url": null,
+  "timeline": {"year_vacant_or_acquired": 1985, "year_opened": 2009, "months_construction": null, "source_url": "https://www.cinematreasures.org/theaters/5824", "note": "Closed early 1980s/1985; project began 2008 (DSCDO); reopened Oct 2, 2009 (Cinema Treasures, user-edited)."},
+  "financing_stack": [
+   {"item": "federal New Markets Tax Credits", "source_url": "https://www.dscdo.org/capitol-theatre"},
+   {"item": "City of Cleveland funding, ~$1.5M", "source_url": "https://www.ideastream.org/arts-culture/2026-05-16/changes-coming-to-gordon-squares-capitol-theatre"},
+   {"item": "Gordon Square Arts District capital campaign; earlier Urban Development Action Grant for roof", "source_url": "https://www.dscdo.org/capitol-theatre"},
+   {"item": "2021 Centennial Campaign ($100K goal) with Charles M. and Helen M. Brown Foundation support", "source_url": "https://plainpress.blog/2021/08/01/films-returning-to-the-capitol-as-it-celebrates-its-centennial/"}
+  ],
+  "status_2025_26": {"status": "operating", "as_of": "2026-05", "evidence": "Ideastream (2026-05-16): Arthouse Management replaces Cleveland Cinemas as operator Jul 31, 2026; owner cites unrecovered post-COVID ticket sales", "source_url": "https://www.ideastream.org/arts-culture/2026-05-16/changes-coming-to-gordon-squares-capitol-theatre", "accessed_on": "2026-10-26"},
+  "operator_model": "CDC/CDFI",
+  "operator_source_url": "https://www.ideastream.org/arts-culture/2026-05-16/changes-coming-to-gordon-squares-capitol-theatre"
+ },
+ {
+  "id": "uptown-theater",
+  "cost": {"total_usd": 14000000, "cost_year": 2024, "includes_acquisition": false, "scope": "full rehab", "source_url": "https://temple-news.com/?p=127294", "source_title": "The Temple News, 'The Uptown Theater: Legendary venue to community revival' (2024-02-27)", "accessed_on": "2026-10-26", "note": "$14M is the renovation BUDGET, never fully raised; building bought 2001. Not an actual spend figure."},
+  "sqft": null,
+  "sqft_source_url": null,
+  "timeline": {"year_vacant_or_acquired": 2001, "year_opened": null, "months_construction": null, "source_url": "https://temple-news.com/?p=127294", "note": "Closed 1978; bought 2001; 2019 partial reopening stalled; no reopening date as of Feb 2024."},
+  "financing_stack": [
+   {"item": "individual donors", "source_url": "https://temple-news.com/?p=127294"},
+   {"item": "Pennsylvania state grants (incl. PA DCED funds for phase-one stabilization); amounts not stated", "source_url": "https://temple-news.com/?p=127294"}
+  ],
+  "status_2025_26": {"status": "in development", "as_of": "2024-02", "evidence": "Temple News: renovation ongoing, no reopening date; UEDC in talks with a new developer. No 2025-26 source found.", "source_url": "https://temple-news.com/?p=127294", "accessed_on": "2026-10-26"},
+  "operator_model": "nonprofit",
+  "operator_source_url": "https://temple-news.com/?p=127294"
+ },
+ {
+  "id": "stony-island-arts-bank",
+  "cost": {"total_usd": 4500000, "cost_year": 2015, "includes_acquisition": false, "scope": "full rehab", "source_url": "https://rebusinessonline.com/?p=141488", "source_title": "REBusiness Online, Stony Island Arts Bank renovation complete (2015-10-13)", "accessed_on": "2026-10-26", "note": "$4.5M project; building bought from the City of Chicago for $1 in 2012."},
+  "sqft": 26000,
+  "sqft_source_url": "https://rebusinessonline.com/?p=141488",
+  "timeline": {"year_vacant_or_acquired": 2012, "year_opened": 2015, "months_construction": null, "source_url": "https://www.landmarks.org/preservation-programs/richard-h-driehaus-foundation-preservation-awards/2016-award-winners/rehabilitation-award/", "note": "Vacant ~30 years; bought 2012 days before scheduled demolition; reopened Oct 2015."},
+  "financing_stack": [
+   {"item": "City of Chicago sale for $1 (2012)", "source_url": "https://www.landmarks.org/preservation-programs/richard-h-driehaus-foundation-preservation-awards/2016-award-winners/rehabilitation-award/"}
+  ],
+  "status_2025_26": {"status": "operating", "as_of": "2025-03", "evidence": "Rebuild Foundation exhibition 'When Clouds Roll Away' at Stony Island Arts Bank ran Sept 13, 2024 - Mar 15, 2025 (Gagosian)", "source_url": "https://gagosian.com/news/museum-exhibitions/theaster-gates-when-clouds-roll-away-stony-island-arts-bank-chicago/", "accessed_on": "2026-10-26"},
+  "operator_model": "nonprofit",
+  "operator_source_url": "https://gagosian.com/news/museum-exhibitions/theaster-gates-when-clouds-roll-away-stony-island-arts-bank-chicago/"
+ },
+ {
+  "id": "currency-exchange-cafe",
+  "cost": {"total_usd": null, "cost_year": null, "includes_acquisition": null, "scope": "unknown", "source_url": "https://abc7chicago.com/1067712", "source_title": "ABC7 Chicago (2015-11-04)", "accessed_on": "2026-10-26", "note": "No cost, area or financing published in fetched sources."},
+  "sqft": null,
+  "sqft_source_url": null,
+  "timeline": {"year_vacant_or_acquired": null, "year_opened": 2015, "months_construction": null, "source_url": "https://abc7chicago.com/1067712", "note": "Cafe featured Nov 2015; reworked as 'Retreat' coffee house/incubator (events Apr 2023)."},
+  "financing_stack": [],
+  "status_2025_26": {"status": "unknown", "as_of": "2023-04", "evidence": "Last dated evidence: Rebuild Foundation happy hour at Retreat at Currency Exchange Cafe, 305 E Garfield Blvd, Apr 13, 2023; no 2025-26 source found", "source_url": "https://rebuild-foundation.org/event-details/thursday-happy-hour-at-retreat-at-currency-exchange-cafe", "accessed_on": "2026-10-26"},
+  "operator_model": "nonprofit",
+  "operator_source_url": "https://rebuild-foundation.org/event-details/thursday-happy-hour-at-retreat-at-currency-exchange-cafe"
+ },
+ {
+  "id": "the-commons-detroit",
+  "cost": {"total_usd": 1500000, "cost_year": 2018, "includes_acquisition": false, "scope": "full rehab", "source_url": "https://tostadamagazine.com/2018/04/11/look-inside-the-commons-adds-community-values-cafe-laundromat-to-detroits-islandview/", "source_title": "Tostada Magazine, 'Look inside: The Commons adds community values cafe, laundromat to Detroit's Islandview' (2018-04-11)", "accessed_on": "2026-10-26", "note": "'About $1.5 million' renovation per the CDC's executive director; building bought for $500 at a 2011 Wayne County tax-foreclosure auction."},
+  "sqft": 12000,
+  "sqft_source_url": "https://modeldmedia.com/features/the-commons-cdad-061217.aspx",
+  "timeline": {"year_vacant_or_acquired": 2011, "year_opened": 2018, "months_construction": null, "source_url": "https://tostadamagazine.com/2018/04/11/look-inside-the-commons-adds-community-values-cafe-laundromat-to-detroits-islandview/", "note": "Bought 2011; quietly opened Mar 2018; grand opening May 12, 2018."},
+  "financing_stack": [
+   {"item": "foundation grants and fundraising (no foundations named)", "source_url": "https://tostadamagazine.com/2018/04/11/look-inside-the-commons-adds-community-values-cafe-laundromat-to-detroits-islandview/"},
+   {"item": "Public Spaces Community Places crowdfunding/matching-grant program", "source_url": "https://www.axios.com/newsletters/axios-detroit-67713630-220c-11f0-a1b0-07361d2ad9c4"}
+  ],
+  "status_2025_26": {"status": "operating", "as_of": "2025-04", "evidence": "Axios Detroit (2025-04-28) describes The Commons as a current coffee shop/laundromat/community center with a barista of two years", "source_url": "https://www.axios.com/newsletters/axios-detroit-67713630-220c-11f0-a1b0-07361d2ad9c4", "accessed_on": "2026-10-26"},
+  "operator_model": "church-affiliated",
+  "operator_source_url": "https://tostadamagazine.com/2018/04/11/look-inside-the-commons-adds-community-values-cafe-laundromat-to-detroits-islandview/"
+ },
+ {
+  "id": "anacostia-arts-center",
+  "cost": {"total_usd": null, "cost_year": null, "includes_acquisition": null, "scope": "unknown", "source_url": "https://dcist.com/story/23/04/18/anacostia-arts-center-redevelopment-chase-bank-donation/", "source_title": "DCist, Anacostia Arts Center redevelopment / Chase donation (2023-04-18)", "accessed_on": "2026-10-26", "note": "2013 conversion cost not published. WACIF bought the building for $4M (Dec 2021); planned redevelopment $37M (2023). Construction under way as of Oct 2025."},
+  "sqft": 35000,
+  "sqft_source_url": "https://dcist.com/story/23/04/18/anacostia-arts-center-redevelopment-chase-bank-donation/",
+  "timeline": {"year_vacant_or_acquired": 1999, "year_opened": 2013, "months_construction": null, "source_url": "https://anacostiaartscenter.com/?p=1440", "note": "Local nonprofit bought 1999 with 15-year BB&T loan; arts center opened Jun 22, 2013; WACIF acquired Dec 2021; closed for ~1 year of construction from Oct 2025."},
+  "financing_stack": [
+   {"item": "15-year bank loan (BB&T) for the 1999 purchase by a local nonprofit", "source_url": "https://anacostiaartscenter.com/?p=1440"},
+   {"item": "JPMorgan Chase donation $2M toward $37M redevelopment (2023)", "source_url": "https://dcist.com/story/23/04/18/anacostia-arts-center-redevelopment-chase-bank-donation/"},
+   {"item": "Wells Fargo Foundation $500K 'Seed to Storefront' pilot funding reduced-rent retail at AAC (2026)", "source_url": "https://www.popville.com/2026/10/wells-fargo-foundation-invests-500000-to-help-small-businesses-grow-east-of-the-river/"}
+  ],
+  "status_2025_26": {"status": "in development", "as_of": "2025-10", "evidence": "AAC (2025-10-16): building closed to the public for a year of construction (two-floor addition); programs continue off-site; Oct 2026 pilot assigns a bookstore to AAC", "source_url": "https://anacostiaartscenter.com/?p=3168", "accessed_on": "2026-10-26"},
+  "operator_model": "CDC/CDFI",
+  "operator_source_url": "https://dcist.com/story/23/04/18/anacostia-arts-center-redevelopment-chase-bank-donation/"
+ },
+ {
+  "id": "cafe-hon",
+  "cost": {"total_usd": null, "cost_year": null, "includes_acquisition": null, "scope": "unknown", "source_url": "https://baltimorefishbowl.com/?p=198110", "source_title": "Baltimore Fishbowl (2024-10-16) on The Duchess at 1000 W 36th St", "accessed_on": "2026-10-26", "note": "No cost for Cafe Hon itself. Successor restaurant The Duchess (Foreman Wolf) reported an investment 'close to $2 million' (fit-out, 2024)."},
+  "sqft": null,
+  "sqft_source_url": null,
+  "timeline": {"year_vacant_or_acquired": null, "year_opened": 1992, "months_construction": null, "source_url": "https://en.wikipedia.org/wiki/Cafe_Hon", "note": "Opened 1992; closed Apr 29, 2022 after 30 years (Fishbowl)."},
+  "financing_stack": [],
+  "status_2025_26": {"status": "closed", "as_of": "2024-10", "evidence": "Cafe Hon closed Apr 29, 2022; space leased to Foreman Wolf, whose 'The Duchess' was still under construction with hiring under way in Oct 2024", "source_url": "https://baltimorefishbowl.com/?p=198110", "accessed_on": "2026-10-26"},
+  "operator_model": "private",
+  "operator_source_url": "https://baltimorefishbowl.com/stories/cafe-hon-will-serve-its-last-meal-tonight-making-way-for-a-new-concept-by-the-foreman-wolf-restaurant-group/"
+ },
+ {
+  "id": "red-canoe",
+  "cost": {"total_usd": null, "cost_year": null, "includes_acquisition": null, "scope": "unknown", "source_url": "https://wmar2news.com/local/wellness-boutique-replaces-longtime-baltimore-cafe-bookstore", "source_title": "WMAR, 'Wellness boutique replaces longtime Baltimore cafe, bookstore' (2024-07-26)", "accessed_on": "2026-10-26", "note": "No cost, area or financing published."},
+  "sqft": null,
+  "sqft_source_url": null,
+  "timeline": {"year_vacant_or_acquired": null, "year_opened": 2004, "months_construction": null, "source_url": "https://wmar2news.com/local/wellness-boutique-replaces-longtime-baltimore-cafe-bookstore", "note": "WMAR: operated 'about 20 years', closed earlier in 2024; Flourish boutique/tea lounge moved in late May 2024."},
+  "financing_stack": [],
+  "status_2025_26": {"status": "closed", "as_of": "2024-07", "evidence": "WMAR (2024-07-26): Red Canoe closed earlier in 2024; replaced by Flourish lifestyle boutique and tea lounge with a plant shop", "source_url": "https://wmar2news.com/local/wellness-boutique-replaces-longtime-baltimore-cafe-bookstore", "accessed_on": "2026-10-26"},
+  "operator_model": "private",
+  "operator_source_url": "https://wmar2news.com/local/wellness-boutique-replaces-longtime-baltimore-cafe-bookstore"
+ },
+ {
+  "id": "st-roch-market",
+  "cost": {"total_usd": 3600000, "cost_year": 2015, "includes_acquisition": false, "scope": "full rehab", "source_url": "https://antigravitymagazine.com/?p=186016", "source_title": "Antigravity Magazine, St. Roch Market feature (2015-06-08)", "accessed_on": "2026-10-26", "note": "City agency NOBC 'used 3.6 million recovery dollars' ($600K FEMA + $3.1M HUD Disaster CDBG) on the city-owned building."},
+  "sqft": null,
+  "sqft_source_url": null,
+  "timeline": {"year_vacant_or_acquired": 2005, "year_opened": 2015, "months_construction": null, "source_url": "https://www.strochmarket.com/news/st-roch-market-turns-150", "note": "Empty after Katrina (2005); reopened April 2015 (Antigravity); new operator Sept 2023 with 30-year city lease (Axios)."},
+  "financing_stack": [
+   {"item": "FEMA public assistance, $600,000", "source_url": "https://antigravitymagazine.com/?p=186016"},
+   {"item": "HUD Disaster Community Development Block Grant, $3.1M", "source_url": "https://antigravitymagazine.com/?p=186016"},
+   {"item": "city-owned building leased to master tenant (30-year lease, 2024); vendors pay market rent or 30% of gross", "source_url": "https://www.axios.com/local/new-orleans/2024/10/09/st-roch-market-vendors-food-hall-kevin-pedeaux"}
+  ],
+  "status_2025_26": {"status": "operating", "as_of": "2025-10", "evidence": "strochmarket.com (2025-10-01) 150th-anniversary post lists daily hours and current independent vendors; Axios Oct 2024: 12 stalls full with waiting list", "source_url": "https://www.strochmarket.com/news/st-roch-market-turns-150", "accessed_on": "2026-10-26"},
+  "operator_model": "curator/master tenant",
+  "operator_source_url": "https://www.axios.com/local/new-orleans/2024/10/09/st-roch-market-vendors-food-hall-kevin-pedeaux"
+ },
+ {
+  "id": "eddies-sweet-shop",
+  "cost": {"total_usd": null, "cost_year": null, "includes_acquisition": null, "scope": "unknown", "source_url": "https://untappedcities.com/2023/01/18/soda-fountain-new-york-city/2/", "source_title": "Untapped New York, NYC soda fountains (updated 2025-06-23)", "accessed_on": "2026-10-26", "note": "Continuity case; no conversion cost exists."},
+  "sqft": null,
+  "sqft_source_url": null,
+  "timeline": {"year_vacant_or_acquired": null, "year_opened": 1925, "months_construction": null, "source_url": "https://untappedcities.com/2023/01/18/soda-fountain-new-york-city/2/", "note": "Founded 1925; same family since 1968."},
+  "financing_stack": [],
+  "status_2025_26": {"status": "operating", "as_of": "2025-06", "evidence": "Untapped New York (2025-06-23) describes it in the present tense as NYC's oldest ice cream parlor, still serving", "source_url": "https://untappedcities.com/2023/01/18/soda-fountain-new-york-city/2/", "accessed_on": "2026-10-26"},
+  "operator_model": "private",
+  "operator_source_url": "https://untappedcities.com/2023/01/18/soda-fountain-new-york-city/2/"
+ },
+ {
+  "id": "nitehawk-prospect-park",
+  "cost": {"total_usd": null, "cost_year": null, "includes_acquisition": null, "scope": "unknown", "source_url": "https://newyorkyimby.com/?p=1827222", "source_title": "New York YIMBY, Nitehawk to replace residential redevelopment of Pavilion Theater (2016-09-08)", "accessed_on": "2026-10-26", "note": "Renovation cost not published. Investors (an LLC) bought the building for $28M in Aug 2016 and leased it to the cinema operator."},
+  "sqft": null,
+  "sqft_source_url": null,
+  "timeline": {"year_vacant_or_acquired": 2016, "year_opened": 2018, "months_construction": 24, "source_url": "https://www.brooklynpaper.com/movie-revival-nitehawk-cinema-opens-in-former-pavilion-theater", "note": "Pavilion closed Oct 2016; 'more than two-year renovation'; reopened Dec 2018 (nitehawkcinema.com). 24 is a floor, not exact."},
+  "financing_stack": [
+   {"item": "investor purchase of building, $28M (2016), leased to operator", "source_url": "https://www.brooklynpaper.com/movie-revival-nitehawk-cinema-opens-in-former-pavilion-theater"}
+  ],
+  "status_2025_26": {"status": "operating", "as_of": "2026-10", "evidence": "nitehawkcinema.com/prospectpark lists showtimes for Oct 26, 2026 at 188 Prospect Park West", "source_url": "https://nitehawkcinema.com/prospectpark/", "accessed_on": "2026-10-26"},
+  "operator_model": "private",
+  "operator_source_url": "https://www.brooklynpaper.com/movie-revival-nitehawk-cinema-opens-in-former-pavilion-theater"
+ },
+ {
+  "id": "spectacle-theater",
+  "cost": {"total_usd": null, "cost_year": null, "includes_acquisition": null, "scope": "unknown", "source_url": "https://en.wikipedia.org/wiki/Spectacle_Theater", "source_title": "Wikipedia, Spectacle Theater", "accessed_on": "2026-10-26", "note": "No cost published; leased storefront; 2015 Kickstarter amount not stated on fetched pages."},
+  "sqft": null,
+  "sqft_source_url": null,
+  "timeline": {"year_vacant_or_acquired": null, "year_opened": 2010, "months_construction": null, "source_url": "https://www.spectacletheater.com/about/", "note": "Opened Sept 2010 in a former bodega (Wikipedia)."},
+  "financing_stack": [
+   {"item": "$5 tickets and memberships; volunteer labour", "source_url": "https://www.spectacletheater.com/about/"},
+   {"item": "2015 Kickstarter after rent increase and lease-mandated improvements", "source_url": "https://en.wikipedia.org/wiki/Spectacle_Theater"}
+  ],
+  "status_2025_26": {"status": "operating", "as_of": "2026-08", "evidence": "BroadwayWorld (2026-07-30): August 2026 retrospective screenings at Spectacle, 124 S 3rd St, $5 tickets; site links a Sept 2026 calendar", "source_url": "https://www.broadwayworld.com/article/CLUB-LINGERIE-ROLLER-JUNKIES-Lead-Spectacle-Theaters-Jared-Masters-Retrospective-20260730", "accessed_on": "2026-10-26"},
+  "operator_model": "co-op",
+  "operator_source_url": "https://www.spectacletheater.com/about/"
+ },
+ {
+  "id": "bergn",
+  "cost": {"total_usd": null, "cost_year": null, "includes_acquisition": null, "scope": "unknown", "source_url": "https://therealdeal.com/new-york/2019/03/13/brownstoner-founder-jonathan-butler-and-partners-selling-crown-heights-building-home-to-bergn-beer-hall/", "source_title": "The Real Deal, 1000 Dean Street sale (2019-03-13)", "accessed_on": "2026-10-26", "note": "Berg'n-only cost not published. Whole 1000 Dean complex: $11M purchase (2012) + ~$30M redevelopment = ~$41M for 155,000 sf (TRD) / 140,000 sf (Commercial Observer). Do not divide by Berg'n's 9,000 sf.", "complex_total_usd": 41000000, "complex_sqft": 155000},
+  "sqft": 9000,
+  "sqft_source_url": "https://www.selldorf.com/news/bergn-beer-hall-opening",
+  "timeline": {"year_vacant_or_acquired": 2012, "year_opened": 2014, "months_construction": null, "source_url": "https://www.dnainfo.com/new-york/20140827/crown-heights/smorgasburg-founders-9000-square-foot-beer-hall-opens-crown-heights/slideshow/548113", "note": "Complex bought 2012 (TRD); Berg'n opened Aug 27, 2014 (DNAinfo, Selldorf). Closure date not found. JLL lists 899 Bergen St as 12,872 SF retail condo 'delivered vacant' (Nov 2024)."},
+  "financing_stack": [
+   {"item": "developer equity with partners BFC Partners and Goldman Sachs Urban Investment Group; ~$5M down payment on purchase", "source_url": "https://commercialobserver.com/2014/02/batting-1000-jonathan-butler-on-his-crown-heights-development"}
+  ],
+  "status_2025_26": {"status": "closed", "as_of": "2024-11", "evidence": "JLL listing (updated 2024-11-12) offers the 899 Bergen St units (12,872 SF) for sale, 'delivered vacant', with no beer hall; Time Out marks Berg'n '(CLOSED)'", "source_url": "https://invest.jll.com/ca/en/listings/retail/899-bergen-street", "accessed_on": "2026-10-26"},
+  "operator_model": "private",
+  "operator_source_url": "https://commercialobserver.com/2014/02/batting-1000-jonathan-butler-on-his-crown-heights-development"
+ },
+ {
+  "id": "petes-candy-store",
+  "cost": {"total_usd": null, "cost_year": null, "includes_acquisition": null, "scope": "unknown", "source_url": "https://en.wikipedia.org/wiki/Pete%27s_Candy_Store", "source_title": "Wikipedia, Pete's Candy Store", "accessed_on": "2026-10-26", "note": "No cost published. Storefront leased in 1999; the founder later bought the building (price/date not stated)."},
+  "sqft": null,
+  "sqft_source_url": null,
+  "timeline": {"year_vacant_or_acquired": 1999, "year_opened": 1999, "months_construction": null, "source_url": "https://en.wikipedia.org/wiki/Pete%27s_Candy_Store", "note": "Opened Dec 1, 1999 in a storefront in continuous use since the 1920s."},
+  "financing_stack": [
+   {"item": "lease (1999), later owner purchase of the building", "source_url": "https://en.wikipedia.org/wiki/Pete%27s_Candy_Store"}
+  ],
+  "status_2025_26": {"status": "operating", "as_of": "2026-09", "evidence": "Pete's Mini Zinefest held at Pete's Candy Store, 709 Lorimer St, Sept 19, 2026; Greenpointers (2024-12-18) marked 25 years", "source_url": "https://www.ayunhalliday.com/news-and-events-posts/petes-mini-zinefest-919", "accessed_on": "2026-10-26"},
+  "operator_model": "private",
+  "operator_source_url": "https://greenpointers.com/?p=148042"
+ },
+ {
+  "id": "jm-cafe-baitasi",
+  "cost": {"total_usd": null, "cost_year": null, "includes_acquisition": null, "scope": "unknown", "source_url": "https://mooool.com/jm-cafe-white-pagoda-temple-in-beijing-by-b-l-u-e-architecture-studio.html", "source_title": "mooool, 'JM Cafe White Pagoda Temple / B.L.U.E. Architecture Studio' (c. 2025-03)", "accessed_on": "2026-10-26", "note": "No cost published in design press."},
+  "sqft": 2260,
+  "sqft_source_url": "https://mooool.com/jm-cafe-white-pagoda-temple-in-beijing-by-b-l-u-e-architecture-studio.html",
+  "timeline": {"year_vacant_or_acquired": null, "year_opened": 2025, "months_construction": 4, "source_url": "https://wallpaper.com/travel/jm-cafe-white-pagoda-temple-beijing", "note": "Site 105 m2, GFA 210 m2 (=2,260 sf). Design Mar-Jun 2024, construction Jun-Sep 2024 (mooool). Wallpaper (2025-03-20) calls it a new cafe; exact opening date not stated."},
+  "financing_stack": [],
+  "status_2025_26": {"status": "operating", "as_of": "2025-03", "evidence": "Wallpaper* (2025-03-20) features it as a newly opened cafe and bakery beside the White Pagoda; no later check found", "source_url": "https://wallpaper.com/travel/jm-cafe-white-pagoda-temple-beijing", "accessed_on": "2026-10-26"},
+  "operator_model": "private",
+  "operator_source_url": "https://mooool.com/jm-cafe-white-pagoda-temple-in-beijing-by-b-l-u-e-architecture-studio.html"
+ },
+ {
+  "id": "hagiso",
+  "cost": {"total_usd": null, "cost_year": null, "includes_acquisition": null, "scope": "unknown", "source_url": "https://toyokeizai.net/articles/-/39565?display=b", "source_title": "Toyo Keizai Online, HAGISO feature (2014-06-19)", "accessed_on": "2026-10-26", "note": "No cost or floor area published in fetched sources."},
+  "sqft": null,
+  "sqft_source_url": null,
+  "timeline": {"year_vacant_or_acquired": 2011, "year_opened": 2013, "months_construction": 12, "source_url": "https://www.t-treasureislands.metro.tokyo.lg.jp/information/report_all2-fw3.pdf", "note": "Pre-demolition art event drew ~1,500 in 3 weeks (Toyo Keizai dates it 2011; input said 2012); renovated over about one year; opened Mar 2013."},
+  "financing_stack": [
+   {"item": "landlord decided to restore rather than demolish after the art event; no subsidy stated", "source_url": "https://toyokeizai.net/articles/-/39565?display=b"}
+  ],
+  "status_2025_26": {"status": "operating", "as_of": "2026-09", "evidence": "co-trip.jp visitor reviews dated 2026-02-05 and 2026-09-25 describe HAGI CAFE and gallery visits; 10th anniversary 2023 (san-tatsu)", "source_url": "https://co-trip.jp/post/623040", "accessed_on": "2026-10-26"},
+  "operator_model": "private",
+  "operator_source_url": "https://www.t-treasureislands.metro.tokyo.lg.jp/information/report_all2-fw3.pdf"
+ },
+ {
+  "id": "ueno-sakuragi-atari",
+  "cost": {"total_usd": null, "cost_year": null, "includes_acquisition": null, "scope": "unknown", "source_url": "https://www.ur-net.go.jp/produce/machimichi-net/fehv9e0000001n7g-att/no19.pdf", "source_title": "UR Machimichi newsletter No. 19 (2017-03)", "accessed_on": "2026-10-26", "note": "No cost or floor area published."},
+  "sqft": null,
+  "sqft_source_url": null,
+  "timeline": {"year_vacant_or_acquired": null, "year_opened": 2015, "months_construction": null, "source_url": "https://www.ur-net.go.jp/produce/machimichi-net/fehv9e0000001n7g-att/no19.pdf", "note": "Three 1938 houses; opened Mar 2015."},
+  "financing_stack": [
+   {"item": "no municipal or other government subsidy used", "source_url": "https://www.t-treasureislands.metro.tokyo.lg.jp/information/report_all2-fw3.pdf"},
+   {"item": "owners and tenants lease directly; a local NPO brokered introductions", "source_url": "https://www.ur-net.go.jp/produce/machimichi-net/fehv9e0000001n7g-att/no19.pdf"}
+  ],
+  "status_2025_26": {"status": "operating", "as_of": "2025-06", "evidence": "co-trip.jp review (2025-06-22) of the beer hall, bakery, olive-oil shop and goods store at the renovated houses", "source_url": "https://co-trip.jp/post/694866", "accessed_on": "2026-10-26"},
+  "operator_model": "private",
+  "operator_source_url": "https://www.t-treasureislands.metro.tokyo.lg.jp/information/report_all2-fw3.pdf"
+ },
+ {
+  "id": "nui-hostel",
+  "cost": {"total_usd": null, "cost_year": null, "includes_acquisition": null, "scope": "unknown", "source_url": "https://backpackersjapan.co.jp/nuihostel/storyen", "source_title": "Backpackers' Japan, Nui. 'Story'", "accessed_on": "2026-10-26", "note": "No cost published; rented property."},
+  "sqft": 1722,
+  "sqft_source_url": "https://backpackersjapan.co.jp/nuihostel/storyen",
+  "timeline": {"year_vacant_or_acquired": null, "year_opened": 2012, "months_construction": 4, "source_url": "https://backpackersjapan.co.jp/nuihostel/storyen", "note": "~160 m2 floor (=1,722 sf), 4.5 m ceiling; four-month renovation; opened Sept 2012."},
+  "financing_stack": [],
+  "status_2025_26": {"status": "operating", "as_of": "2026-10", "evidence": "Hostelworld listing bookable with guest reviews dated Oct 2026 at 2-14-13 Kuramae", "source_url": "https://www.hostelworld.com/hostels/p/67481/nui-hostel-and-bar-lounge/", "accessed_on": "2026-10-26"},
+  "operator_model": "private",
+  "operator_source_url": "https://backpackersjapan.co.jp/nuihostel/storyen"
+ },
+ {
+  "id": "castle-cinema",
+  "cost": {"total_usd": null, "cost_year": null, "includes_acquisition": null, "scope": "unknown", "source_url": "https://www.hackneycitizen.co.uk/2016/09/07/homerton-castle-cinema-to-reopen-after-50-years/", "source_title": "Hackney Citizen, 'Homerton Castle Cinema to reopen after 50 years' (2016-09-07)", "accessed_on": "2026-10-26", "note": "Total renovation cost not published; crowdfunding raised GBP 57,000 from 667 backers (2016). Leased, not bought."},
+  "sqft": null,
+  "sqft_source_url": null,
+  "timeline": {"year_vacant_or_acquired": 2016, "year_opened": 2017, "months_construction": null, "source_url": "https://en.wikipedia.org/wiki/Castle_Cinema,_Hackney", "note": "Lease signed and crowdfunding Sept 2016; reopened Feb 3, 2017; closed 2020, reopened May 2021."},
+  "financing_stack": [
+   {"item": "Kickstarter crowdfunding, GBP 57,000 (120% of goal, 650+ backers)", "source_url": "https://en.wikipedia.org/wiki/Castle_Cinema,_Hackney"},
+   {"item": "BFI Culture Recovery Fund support for 2021 reopening (amount not stated)", "source_url": "https://en.wikipedia.org/wiki/Castle_Cinema,_Hackney"}
+  ],
+  "status_2025_26": {"status": "operating", "as_of": "2026-04", "evidence": "Waltham Forest Echo (2026-04-02): the Castle Cinema, a working Hackney cinema, has bid to run a second site in Highams Park", "source_url": "https://walthamforestecho.co.uk/2026/04/02/independent-filmhouse-reveals-bid-to-run-highams-parks-regal-cinema/", "accessed_on": "2026-10-26"},
+  "operator_model": "private",
+  "operator_source_url": "https://www.hackneycitizen.co.uk/2016/09/07/homerton-castle-cinema-to-reopen-after-50-years/"
+ },
+ {
+  "id": "peckham-levels",
+  "cost": {"total_usd": null, "cost_year": null, "includes_acquisition": null, "scope": "unknown", "source_url": "https://www.propertyweek.com/markets/peckham-levels-transforms-run-down-car-park-into-cultural-hub-/5097266.article", "source_title": "Property Week, 'Peckham Levels transforms run-down car park into cultural hub'", "accessed_on": "2026-10-26", "note": "No capital cost published in LGA, Southwark News, Property Week or The Spaces."},
+  "sqft": 97952,
+  "sqft_source_url": "https://www.local.gov.uk/case-studies/peckham-levels",
+  "timeline": {"year_vacant_or_acquired": 2015, "year_opened": 2017, "months_construction": null, "source_url": "https://www.local.gov.uk/case-studies/peckham-levels", "note": "LGA: ~9,100 m2 (=97,950 sf; Southwark News' '900,000 sq ft' looks like an error). Council decision 2015; opened Dec 8, 2017; operator entered administration 2024."},
+  "financing_stack": [
+   {"item": "council-owned building; peppercorn-rent lease to operator, 5 years extended to 6 then 8", "source_url": "https://www.propertyweek.com/markets/peckham-levels-transforms-run-down-car-park-into-cultural-hub-/5097266.article"},
+   {"item": "20% of studios at ~1/3 market rent; 10% of profits to a community investment fund", "source_url": "https://www.local.gov.uk/case-studies/peckham-levels"}
+  ],
+  "status_2025_26": {"status": "operating", "as_of": "2025-07", "evidence": "Steam Down show listed at Peckham Levels, 95A Rye Lane, Jul 16, 2025; Southwark Council (2024-08-28) appointed The Trampery after the previous operator entered administration", "source_url": "https://www.jambase.com/show/steam-down-peckham-levels-20250716", "accessed_on": "2026-10-26"},
+  "operator_model": "public",
+  "operator_source_url": "https://www.southwark.gov.uk/news/2024/peckham-levels-southwark-council-welcomes-new-operators-trampery",
+  "operator_note": "Changed from curator/master tenant: council took back control in Aug 2024 and a social enterprise (The Trampery) runs day-to-day operations."
+ },
+ {
+  "id": "brixton-village",
+  "cost": {"total_usd": null, "cost_year": null, "includes_acquisition": null, "scope": "unknown", "source_url": "https://www.brixtonbuzz.com/2018/02/brixton-village-and-market-row-sold-to-private-group-of-companies-for-37m/", "source_title": "Brixton Buzz, 'Brixton Village and Market Row sold... for GBP 37m' (2018-02)", "accessed_on": "2026-10-26", "note": "No 2009 activation cost. Asset values: sold for GBP 37.25M cash (2018); marketed 2024 at est. GBP 80M+; pitched at GBP 50M in 2026; traders' GBP 15M buy-back target."},
+  "sqft": null,
+  "sqft_source_url": null,
+  "timeline": {"year_vacant_or_acquired": 2009, "year_opened": 2009, "months_construction": null, "source_url": "https://humancities.eu/?p=1423", "note": "Built 1937; 2009 Space Makers scheme: 98 proposals in a week, 30 selected with 3 months' free rent; fully let for first time in 30 years."},
+  "financing_stack": [
+   {"item": "landlord (London & Associated Properties) seed money and 3 months' free rent for 30 start-ups (2009)", "source_url": "https://humancities.eu/?p=1423"},
+   {"item": "2018 purchase by private investors (Hondo Enterprises / TPG Angelo Gordon), GBP 37.25M cash", "source_url": "https://novaramedia.com/2026/06/19/race-against-time-to-save-brixton-market-from-private-equity/"}
+  ],
+  "status_2025_26": {"status": "operating", "as_of": "2026-06", "evidence": "Novara (2026-06-19): 100+ vendors trading while owners pitch the market to private equity at GBP 50M; Time Out (2024-10): 179 units, ~100,000 visitors a week", "source_url": "https://novaramedia.com/2026/06/19/race-against-time-to-save-brixton-market-from-private-equity/", "accessed_on": "2026-10-26"},
+  "operator_model": "private",
+  "operator_source_url": "https://www.timeout.com/london/news/brixton-market-has-been-put-up-for-sale-and-could-sell-for-80-million-100124",
+  "operator_note": "Input said curator/master tenant (2009 Space Makers model). Since 2018 the arcade is owned and let directly by private investors."
+ },
+ {
+  "id": "de-hallen",
+  "cost": {"total_usd": null, "cost_year": null, "includes_acquisition": null, "scope": "unknown", "source_url": "https://tijdelijk.burovanstigt.nl/wp-content/uploads/2018/10/De-Hallen-Resultaat-casus-De-Hallen.pdf", "source_title": "Buro van Stigt, 'Resultaat casus De Hallen' (2018)", "accessed_on": "2026-10-26", "note": "Total not stated. Related: TROM paid EUR 4M to the municipality for land and building and took on EUR 16M deferred maintenance; an earlier EUR 36M scheme was abandoned."},
+  "sqft": 161459,
+  "sqft_source_url": "https://tijdelijk.burovanstigt.nl/wp-content/uploads/2018/10/De-Hallen-Resultaat-casus-De-Hallen.pdf",
+  "timeline": {"year_vacant_or_acquired": 1996, "year_opened": 2014, "months_construction": 21, "source_url": "https://dehallen-amsterdam.nl/en/history", "note": "15,000 m2 complex (=161,459 sf). Vacant from 1996; squatted Jan 31, 2010; renovation from 2012 (NH Nieuws); first phase at 15 months, complete at 21 (Buro van Stigt); official opening Feb 5, 2015."},
+  "financing_stack": [
+   {"item": "municipality sold land and building to TROM for EUR 4M", "source_url": "https://tijdelijk.burovanstigt.nl/wp-content/uploads/2018/10/De-Hallen-Resultaat-casus-De-Hallen.pdf"},
+   {"item": "bank loan: Triodos Bank", "source_url": "https://tijdelijk.burovanstigt.nl/wp-content/uploads/2018/10/De-Hallen-Resultaat-casus-De-Hallen.pdf"},
+   {"item": "Nationaal Restauratiefonds (national restoration fund) financing", "source_url": "https://tijdelijk.burovanstigt.nl/wp-content/uploads/2018/10/De-Hallen-Resultaat-casus-De-Hallen.pdf"},
+   {"item": "private limited partners (incl. Lips Capital Group) and subordinated financiers; EUR 3M rent subsidy withdrawn in crisis", "source_url": "https://tijdelijk.burovanstigt.nl/wp-content/uploads/2018/10/De-Hallen-Resultaat-casus-De-Hallen.pdf"}
+  ],
+  "status_2025_26": {"status": "operating", "as_of": "2025-02", "evidence": "NH Nieuws (2025-02-15): De Hallen marks 10 years as a well-used neighbourhood 'living room'", "source_url": "https://www.nhnieuws.nl/nieuws/345805/tien-jaar-de-hallen-van-scepsis-naar-succes", "accessed_on": "2026-10-26"},
+  "operator_model": "nonprofit",
+  "operator_source_url": "https://tijdelijk.burovanstigt.nl/wp-content/uploads/2018/10/De-Hallen-Resultaat-casus-De-Hallen.pdf",
+  "operator_note": "Stichting TROM, a non-profit foundation, is managing partner of CV TROM (economic owner) with private limited partners; input had null."
+ },
+ {
+  "id": "blue-house-cluster",
+  "cost": {"total_usd": 9670000, "total_local": "HKD 75,400,000 (MOD prices) / HKD 63,800,000 (Sept 2011 prices)", "cost_year": 2011, "includes_acquisition": false, "scope": "full rehab", "source_url": "https://www.legco.gov.hk/yr11-12/english/fc/pwsc/papers/p11-47e.pdf", "source_title": "LegCo Public Works Subcommittee paper PWSC(2011-12)47, project 16QW Blue House Cluster", "accessed_on": "2026-10-26", "note": "USD figure is HKD 75.4M converted at the HK$7.8 peg (derived, not from source). Viva Blue House (2017) cites HK$76M. Government-owned; works cost met by capital subvention."},
+  "sqft": 25500,
+  "sqft_source_url": "https://www.legco.gov.hk/yr11-12/english/fc/pwsc/papers/p11-47e.pdf",
+  "timeline": {"year_vacant_or_acquired": 2006, "year_opened": 2017, "months_construction": null, "source_url": "https://vivabluehouse.hk/en/menu/46/news/details/37?page=1", "note": "2,369 m2 construction floor area (=25,500 sf). Works planned Jun 2012-Sep 2014 (LegCo); tenants moved in Jul 2017 after 'almost four years of work'; opening ceremony Sept 2017 (DevB)."},
+  "financing_stack": [
+   {"item": "Revitalising Historic Buildings Through Partnership Scheme (Batch II): government capital subvention from the Capital Works Reserve Fund", "source_url": "https://www.legco.gov.hk/yr11-12/english/fc/pwsc/papers/p11-47e.pdf"},
+   {"item": "one-off government grant for start-up costs and operating deficits for up to two years", "source_url": "https://www.legco.gov.hk/yr11-12/english/fc/pwsc/papers/p11-47e.pdf"}
+  ],
+  "status_2025_26": {"status": "unknown", "as_of": "2026-10", "evidence": "vivabluehouse.hk is live (c)2026 with tours, workshops, cafe and shop menus, but no dated 2025-26 content was fetched", "source_url": "https://vivabluehouse.hk/en/menu/46/news/details/37?page=1", "accessed_on": "2026-10-26"},
+  "operator_model": "nonprofit",
+  "operator_source_url": "https://www.legco.gov.hk/yr11-12/english/fc/pwsc/papers/p11-47e.pdf"
+ }
+]
