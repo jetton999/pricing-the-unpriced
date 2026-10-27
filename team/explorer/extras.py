@@ -344,8 +344,15 @@ def neighbourhoods(repo, frontage_ids, typical_shop_sqft):
         c['rent_x_waverly'] = round(c['rent_median'] / W['rent_median'], 2) if c['rent_median'] and W['rent_median'] else None
         inc = (c['residents'].get('median_household_income') or {}).get('v1')
         c['rent_per_10k_income'] = round(c['rent_median'] / (inc / 10000), 2) if c['rent_median'] and inc else None
+    engine = {}
+    cr = os.path.join(repo, 'team', 'comps', 'comps_ranges.json')
+    if os.path.exists(cr):
+        with open(cr, encoding='utf-8') as fh:
+            for c in json.load(fh)['corridors']:
+                engine['waverly-greenmount' if c['id'] == 'waverly' else c.get('district_id')] = dict(pooled=c['pooled'], n=c['n'], name=c['name'])
     return dict(about=src['about'], accessed_on=src['accessed_on'], loads=loads, range_max=RANGE_MAX,
-                typical_shop_sqft=typical_shop_sqft, storefront_vacancy=sv, rows=out, compare=compare(out, sv, typical_shop_sqft))
+                typical_shop_sqft=typical_shop_sqft, storefront_vacancy=sv, rows=out,
+                compare=compare(out, sv, typical_shop_sqft, engine))
 
 
 SHORT = {'waverly-greenmount': 'Greenmount', 'pigtown-washington-blvd': 'Pigtown', 'hampden-36th': 'Hampden',
@@ -369,7 +376,7 @@ def _day(iso):
     return f"{int(d)} {['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'][int(m) - 1]} {y}"
 
 
-def compare(rows, sv, shop):
+def compare(rows, sv, shop, engine=None):
     """How Greenmount compares, in sentences built from the rows (so every number traces to a row)."""
     W, others = rows[0], rows[1:]
     w = W['calc']
@@ -381,12 +388,16 @@ def compare(rows, sv, shop):
     thin = [n for n in rated if n['calc']['rent_n'] <= 2]
     out = [dict(k='Rent', t=(
         f"Ground-floor space on Greenmount asks about {_usd(w['rent_median'])} per sq ft a year, triple-net equivalent "
-        f"({w['rent_n']} rows from the comps library). {'That is the lowest of the eight' if cheap else 'Some ask less'}: "
+        f"({w['rent_n']} rows from the comps library). {'That is the lowest of the eight on listing medians' if cheap else 'Some ask less'}: "
         f"the others ask {lo['calc']['rent_x_waverly']:.1f} to {hi['calc']['rent_x_waverly']:.1f} times as much "
         f"({', '.join(nm(n) + ' ' + format(n['calc']['rent_x_waverly'], '.1f') for n in rated)}). "
         f"A typical {shop:,} sq ft shop would pay about {_usd(w['shop_year'])} a year here, {_usd(lo['calc']['shop_year'])} "
         f"in {nm(lo)} and {_usd(hi['calc']['shop_year'])} in {nm(hi)}."
-        + (f" {_and(nm(n) for n in thin)} rest on one or two rows, so read those as rough." if thin else '')))]
+        + (f" {_and(nm(n) for n in thin)} rest on one or two rows, so read those as rough." if thin else '')
+        + (f" On the comps engine's corridor means, which adjust for the mix of uses listed, Greenmount and Pigtown are level "
+           f"({_usd(engine['waverly-greenmount']['pooled'])} and {_usd(engine['pigtown-washington-blvd']['pooled'])}) and Hampden "
+           f"is {_usd(engine['hampden-36th']['pooled'])}."
+           if engine and all(k in engine for k in ('waverly-greenmount', 'pigtown-washington-blvd', 'hampden-36th')) else '')))]
     ri = sorted((n for n in rows if n['calc']['rent_per_10k_income']), key=lambda n: n['calc']['rent_per_10k_income'])
     near = [n for n in ri if n is not W and n['calc']['rent_per_10k_income'] <= 1.15 * w['rent_per_10k_income']]
     far = [n for n in ri if n['calc']['rent_per_10k_income'] >= 1.6 * w['rent_per_10k_income']]
@@ -431,8 +442,8 @@ def compare(rows, sv, shop):
         f"rents today are {min(n['calc']['rent_x_waverly'] for n in high):.1f} to {max(n['calc']['rent_x_waverly'] for n in high):.1f} "
         f"times Greenmount's. The rest of the set rates {_and(sorted(rest))}.")))
     out.append(dict(k='What it means', t=(
-        "In dollars Greenmount is the cheapest place in the set to open a shop, near Pigtown and well under the corridors "
-        "it is compared with. The discount comes with the highest vacancy and among the lowest incomes nearby, so a plan "
+        "In dollars, Greenmount and Pigtown are the cheapest places in the set to open a shop, well under the other "
+        "corridors they are compared with, Hampden and Ohio City included. The discount comes with the highest vacancy and among the lowest incomes nearby, so a plan "
         "has to bring customers as well as tenants. For a single use, the rent it could support (Money tab) is a better "
         "guide than asking rents elsewhere.")))
     return out
