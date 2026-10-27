@@ -253,6 +253,7 @@ LIB = json.load(open(os.path.join(HERE, 'library.json'), encoding='utf-8'))
 data['lib'] = {k: LIB[k] for k in ('buildings', 'districts', 'waverly', 'aversion', 'requested', 'adjacency', 'segments', 'history_value', 'match_lessons')}
 # the page shows the sponsor's own rules; personal and ownership detail stays in the research report, not in shared page data
 data['lib']['sponsor'] = {'guardrails': LIB['sponsor'].get('guardrails', []), 'goals': LIB['sponsor'].get('goals', [])}
+data['lib']['meta'] = {k: LIB['meta'][k] for k in ('displacement_rubric', 'updated', 'research_2026_10_26') if k in LIB['meta']}
 
 # ---- preliminary back-test of the heritage prior: do uses proven before a cut-off year predict the 2026 use?
 NOTUSE = {'residential', 'vacant', ''}
@@ -290,6 +291,19 @@ for cut in (1940, 1960):
                            b=sum(c in now_cats[x] for x in other), bn=len(other)))
     bt.append(dict(cut=cut, n=len(rows), hit=hit, base=base, percat=percat))
 data['backtest'] = bt
+
+# back-test v2 (team/validation): the parcel-by-use test, run on the frontage and on the other Greenmount blocks
+_bt2p = os.path.join(REPO, 'team', 'validation', 'out', 'backtest_v2.json')
+if os.path.exists(_bt2p):
+    _b2 = json.load(open(_bt2p, encoding='utf-8'))
+    _keep = ('cut', 'parcels', 'parcels_with_history', 'p_perm', 'p_lr', 'auc_base', 'auc_history', 'odds_3_decades',
+             'p_lr_with_depth_control', 'by_history')
+    data['backtest2'] = {k: [{kk: a[kk] for kk in _keep if kk in a} for a in _b2[k]]
+                         for k in ('frontage', 'frontage_sponsor_only', 'other_blocks', 'other_blocks_without_low_confidence')}
+    data['backtest2']['transfer'] = _b2['transfer_frontage_sponsor_to_other']
+    data['backtest2']['holdout'] = _b2['frontage_leave_one_side_out']
+    data['backtest2']['decision'] = _b2['decision']
+    data['backtest2']['similarity'] = _b2['similarity']
 data['n_summary'] = n_summary
 
 # ---- candidate formats: heritage links, C-1 zoning status (Table 10-301), urban renewal plan, size range (team assumption)

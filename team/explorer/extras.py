@@ -7,6 +7,8 @@
 - retail: retail broken down into seven trades: what each building and the street have carried
   (evidence.csv), plus the modern version and reference brands (retail_types.json, every claim sourced).
 - photos: how many 2026 survey photos the sponsor has filed on each building (property_images.csv).
+- legacy: how long the business there today has been at the address, where a record or the checks say so, so
+  that plans can be read with long-standing businesses in view (an anti-displacement aid, not a score input).
 """
 import collections
 import csv
@@ -148,9 +150,62 @@ def photos(repo, props):
             p['ph'] = len(c[p['id']])
 
 
+TENURE_SOURCES = ('dhcd_1970s', 'polk_directory', 'permit_card', 'sponsor:newspapers_com', 'sponsor:mdlandrec', 'sponsor:polk',
+                  'sponsor:census_directory', 'sponsor:local_news')   # dated per record; white papers are dated to the building
+TENURE_LABEL = {'dhcd_1970s': '1970s city housing file', 'polk_directory': 'Polk directory', 'permit_card': 'permit card',
+                'sponsor:newspapers_com': 'newspaper item', 'sponsor:mdlandrec': 'land record', 'sponsor:polk': 'Polk directory',
+                'sponsor:census_directory': 'census directory', 'sponsor:local_news': 'local news item'}
+NAME_STOP = {'greenmount', 'baltimore', 'store', 'shop', 'the', 'and', 'of', 'market', 'deli', 'grocery', 'inc', 'llc'}
+SINCE = re.compile(r"\b(?:since|opened in|open since|founded in|in business since)\s+((?:19|20)\d\d)\b", re.I)
+YEARS = re.compile(r"\b(?:owner|run|open|trading|here|tenant)\b[^.]{0,30}?\b(?:of|for)\s+(?:about\s+|over\s+|more than\s+)?(\d{1,2})\s+years", re.I)
+
+
+def _toks(name):
+    return {t for t in _norm(name).split() if len(t) > 2 and t not in NAME_STOP}
+
+
+def legacy(repo, props, now_year=2026, min_years=15):
+    """Earliest year the business there today is documented at the address (records, tenant check, sponsor's check)."""
+    byid = {p['id']: p for p in props}
+    gaps = _csv(os.path.join(repo, 'team', 'evidence', 'blocklot_gaps.csv'))
+    merged = {g['property_id']: g['current_property_id'] for g in gaps if g['current_property_id']}
+    recs = collections.defaultdict(list)
+    for e in _csv(os.path.join(repo, 'team', 'extractor', 'out', 'evidence.csv')):
+        if e.get('business') and e.get('year', '').isdigit() and e['source'] in TENURE_SOURCES:
+            recs[merged.get(e['property_id'], e['property_id'])].append((int(e['year']), e['business'], e['source'], e.get('source_ref', '')))
+    sa = {r['property_id']: r for r in _csv(os.path.join(repo, 'storefront_assessments.csv'))}
+    n = 0
+    for t in _csv(os.path.join(repo, 'team', 'tenants', 'current_tenants_2026-10.csv')):
+        pid = merged.get(t['property_id'], t['property_id'])
+        p = byid.get(pid)
+        types = {x for x in (t['business_type'] or '').split(' ; ') if x}
+        if not p or t['status'] != 'occupied' or not types or types <= {'institutional & religious'}:
+            continue   # public and religious uses are not at risk from rents in the same way
+        found = []
+        for nm in [x.strip() for x in re.split(r'[;(]', t['tenant_name']) if x.strip()]:
+            tk = _toks(nm)
+            for y, bn, src, ref in recs.get(pid, []):
+                if tk and len(tk & _toks(bn)) >= min(2, len(tk)):
+                    found.append((y, f"{nm} in a {TENURE_LABEL.get(src, src)}, {y}"))
+        for txt, label in ((t.get('notes') or '', "team's tenant check"), ((sa.get(pid) or {}).get('summary') or '', "sponsor's storefront check")):
+            m = SINCE.search(txt)
+            if m:
+                found.append((int(m.group(1)), f'{label}: "since {m.group(1)}"'))
+            m = YEARS.search(txt)
+            if m and 0 < int(m.group(1)) < 80:
+                found.append((now_year - int(m.group(1)), f'{label}: "{m.group(1)} years"'))
+        if found:
+            y, basis = min(found)
+            yrs = now_year - y
+            p['since'] = dict(year=y, years=yrs, basis=basis, legacy=yrs >= min_years, name=re.split(r'[;(]', t['tenant_name'])[0].strip())
+            n += p['since']['legacy']
+    return dict(legacy=n, min_years=min_years)
+
+
 def apply(repo, data):
     props = data['props']
     data['sa_stats'] = storefront(repo, props)
     revivals(repo, props)
     data['retail'] = retail(repo, props)
     photos(repo, props)
+    data['legacy_stats'] = legacy(repo, props)

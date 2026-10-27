@@ -186,6 +186,7 @@ details summary { cursor: pointer; font-weight: 600; }
 .wbox { overflow-x: auto; }
 @media (max-width: 560px) { .wrow { grid-template-columns: 112px minmax(0, 1fr) 40px; } }
 .wrow .n { font-family: var(--f-mono); font-size: 12px; text-align: right; }
+.vrob { font-size: 13px; color: var(--ink-2); line-height: 1.7; } .vrob .pill { margin-right: 6px; }
 .chk { font-size: 13px; color: var(--ink-2); display: flex; gap: 8px; align-items: flex-start; }
 .chk input { margin-top: 3px; accent-color: var(--accent); }
 .sbar { display: flex; height: 8px; border-radius: 4px; overflow: hidden; background: var(--rule); }
@@ -258,6 +259,15 @@ details summary { cursor: pointer; font-weight: 600; }
 .chips span { font-size: 11px; padding: 0 6px; border-radius: 999px; border: 1px solid var(--rule-2); color: var(--ink-2); }
 .chips span.y { border-color: var(--good); color: var(--ink); }
 .simv { font-family: var(--f-mono); font-size: 12px; color: var(--accent); }
+.btt.cmp { min-width: 720px; }
+.btt.cmp tr, .tbl .btt.cmp tr { cursor: default; } .tbl .btt.cmp tr:hover td { background: none; } .tbl .btt.cmp tr:hover td.here { background: var(--accent-soft); }
+.tbl .btt.cmp th { white-space: normal; cursor: default; }
+.btt.cmp th[scope="row"] { position: sticky; left: 0; background: var(--surface); width: 150px; font-size: 12px; color: var(--ink-2); vertical-align: top; }
+.btt.cmp td { vertical-align: top; min-width: 150px; }
+.btt.cmp .here { background: var(--accent-soft); }
+.mst { display: grid; gap: 2px; font-size: 12.5px; color: var(--ink-2); border-left: 2px solid var(--rule-2); padding-left: 8px; }
+.mst .y { font-family: var(--f-mono); color: var(--ink); margin-right: 4px; }
+ul.dev { margin: 4px 0; padding-left: 18px; font-size: 12.5px; color: var(--ink-2); display: grid; gap: 2px; }
 .fblog { display: grid; gap: 6px; font-size: 13px; }
 .fbrow { display: grid; grid-template-columns: 26px 120px minmax(0, 1fr); gap: 8px; align-items: start; border-bottom: 1px solid var(--rule); padding: 5px 0; }
 .fbrow img { width: 22px; height: 22px; border-radius: 50%; }
@@ -293,7 +303,7 @@ details.more > summary { font-size: 14px; }
 
 <div class="wrap">
   <header>
-    <div class="eyebrow">Waverly, Baltimore · Greenmount Ave, E 29th to E 33rd St · extractor v1 · score v0.3 · comps engine v1 · 20 Oct 2026</div>
+    <div class="eyebrow">Waverly, Baltimore · Greenmount Ave, E 29th to E 33rd St · extractor v1 · score v0.3 · comps engine v1 · back-test v2 · 26 Oct 2026</div>
     <h1>Greenmount Frontage Explorer</h1>
     <p class="lede">For every building on the Greenmount frontage, E 29th to E 33rd St: what it was, what it could become, what that could earn, and whether the mix works as a block. Every answer links to its sources.</p>
     <ol class="start"><li>Pick a building on the map</li><li>Read its best fit, the money and the history on the right</li><li>Try a mix for the whole block in <b>Block plan</b></li></ol>
@@ -338,21 +348,21 @@ details.more > summary { font-size: 14px; }
 
   <section data-view="b" class="card" id="cmp" aria-labelledby="cmph">
     <div class="bar"><h2 id="cmph">Compare uses</h2><span class="small" id="cmpfor"></span></div>
-    <p class="lede" style="font-size:14px">Pick up to three uses for the selected building and read them factor by factor. Agree or disagree with each one; the votes are shared with the team and the sponsor and, when switched on, nudge the scores.</p>
+    <p class="lede" style="font-size:14px">Pick up to three uses for the selected building and read them factor by factor. Agree or disagree with each one; the votes are shared with the team and the sponsor. They change the scores only when that is switched on (Evidence and method), which is off by default.</p>
     <div class="legend" id="cmppick" aria-label="Uses to compare"></div>
     <div class="tbl" id="cmptab"></div>
   </section>
 
   <section data-view="e" class="card" id="method" aria-labelledby="mh">
     <div class="bar"><h2 id="mh">How the recommendation works</h2><span class="small">score v0.3 · change the weights and every view updates</span></div>
-    <p class="lede" style="font-size:14px">It is not history alone. After two rule filters, each possible use of a building is scored on six inputs: its heritage, saturation, size, what residents have asked for or objected to, its neighbours, and how similar buildings elsewhere turned out. Team and sponsor feedback then nudges the score. The block plan places uses one at a time under a saturation limit, and the comps engine below adds what each use could pay and earn. The concepts further down are written text, not computed: drafted with AI assistance (Claude) from each building's records and cited sources, for the team to review, and they say so.</p>
+    <p class="lede" style="font-size:14px">It is not history alone. After two rule filters, each possible use of a building is scored on six inputs: its heritage, saturation, size, what residents have asked for or objected to, its neighbours, and how similar buildings elsewhere turned out. Team and sponsor votes are recorded beside each score; they change it only if you switch that on below. The block plan places uses one at a time under a saturation limit, and the comps engine below adds what each use could pay and earn. The concepts further down are written text, not computed: drafted with AI assistance (Claude) from each building's records and cited sources, for the team to review, and they say so.</p>
     <ol class="flow" id="flow"></ol>
     <div class="grid2 even">
       <div class="wbox">
         <h3>Weights</h3>
         <div id="wts"></div>
         <label class="chk"><input type="checkbox" id="gf" checked> Ground-floor commercial only (leave housing out of the ranking)</label>
-        <label class="chk"><input type="checkbox" id="fbon" checked> Apply team and sponsor feedback to the scores</label>
+        <label class="chk"><input type="checkbox" id="fbon"> Apply team and sponsor feedback to the scores (off by default: the sponsor's rules say the sponsor cannot override model results)</label>
         <p class="small" id="formula"></p>
       </div>
       <div class="wbox" id="bt"></div>
@@ -477,8 +487,15 @@ details.more > summary { font-size: 14px; }
   const REQ = {}; (L.requested || []).forEach(r => (r.format_ids || []).forEach(id => { (REQ[id] = REQ[id] || []).push(r); }));
   const MIXC = Object.fromEntries((D.mix || []).map(m => [m.cat, m]));
   const WT = { h: 35, s: 20, f: 15, c: 10, a: 10, k: 10 };
+  // weight presets: starting points to compare, until the sponsor agrees a documented set
+  const WPRE = {
+    team: { name: 'Team default', w: { h: 35, s: 20, f: 15, c: 10, a: 10, k: 10 }, note: "The team's weights (score v0.3): history leads, then room on the block and size. The sponsor has not yet agreed a set." },
+    history: { name: 'History first', w: { h: 55, s: 15, f: 10, c: 7, a: 7, k: 6 }, note: 'History carries over half the weight: what a building has carried decides most of the score.' },
+    neigh: { name: 'Neighbourhood first', w: { h: 20, s: 20, f: 10, c: 25, a: 15, k: 10 }, note: 'What residents asked for and how a use fits its neighbours lead; history counts less.' },
+    prec: { name: 'Proven elsewhere', w: { h: 20, s: 15, f: 15, c: 10, a: 10, k: 30 }, note: 'How similar buildings elsewhere turned out leads: uses that worked in comparable reuses score higher.' } };
+  let wpre = 'team';
   const WL = [['h', 'Heritage', 'var(--accent)'], ['s', 'Room (saturation)', 'var(--c-pers)'], ['f', 'Size fit', 'var(--muted)'], ['c', 'Community', 'var(--c-ent)'], ['a', 'Neighbours', 'var(--c-auto)'], ['k', 'Precedents', 'var(--c-off)']];
-  let gfOnly = true, inclUnk = false, useFb = true, overrides = {};
+  let gfOnly = true, inclUnk = false, useFb = false, overrides = {};
   const SIDE_CAP = [1, 0.6, 0.25, 0];
   const POLM = { P: 1, CB: 0.75, CO: 0.75 };
   const AVM = { strong: 0.3, moderate: 0.6, weak: 0.85 };
@@ -744,6 +761,15 @@ details.more > summary { font-size: 14px; }
     return (SMAA[p.id] = { key, rows, label, when, N });
   }
   const pctR = x => Math.round(x * 20) * 5 + '%';
+  // how firm the verdict is: the share of 1,000 priority mixes (factor weights and how much money counts) in which it comes first
+  function robust(p, best) {
+    const sm = smaaOf(p); if (!sm || !sm.rows || !sm.rows.length || !best) return '';
+    const me = sm.rows.find(x => x.r.f.id === best.f.id); if (!me) return '';
+    const other = sm.rows.find(x => x.r.f.id !== best.f.id), n = fmt(sm.N), on = other ? esc(other.r.f.name.toLowerCase()) : '';
+    if (me.b1 >= 0.6) return `<span class="pill ok">Holds up</span> first in ${pctR(me.b1)} of ${n} priority mixes`;
+    if (other && Math.abs(me.b1 - other.b1) < 0.15) return `<span class="pill">Close call</span> with ${on}: first in ${pctR(me.b1)} of ${n} priority mixes, against ${pctR(other.b1)}`;
+    return `<span class="pill warn">Depends on priorities</span> first in ${pctR(me.b1)} of ${n} priority mixes${other ? `; ${on} in ${pctR(other.b1)}${sm.when && sm.rows[0] === other ? ' (' + esc(sm.when) + ')' : ''}` : ''}`;
+  }
   const payWord = x => x >= 0.6 ? 'can usually pay the asking rent' : x >= 0.4 ? 'about even against the asking rent' : 'often cannot pay the asking rent';
   // test hook: compare these functions with the Python engine's worked examples (team/comps/comps_ranges.json)
   window.__compsProbe = () => {
@@ -964,7 +990,8 @@ details.more > summary { font-size: 14px; }
   function todayLine(p) {
     const ours = p.status === 'occupied' ? (p.tenant || 'occupied') : p.status;
     const sa = p.sa ? `<div class="small">Sponsor's check (Oct 2026): <b>${esc(p.sa.label)}</b>, ${esc(p.sa.conf)} confidence${p.sa.sv ? `; latest Street View ${esc(p.sa.sv)}` : ''}. ${esc(p.sa.summary)}</div>` : '';
-    return `<dt>Today</dt><dd>${esc(ours)}${p.status_note ? `<div class="small">${esc(p.status_note)}</div>` : ''}${sa}</dd>`;
+    const lg = p.since && p.since.legacy ? ` <span class="pill ok" title="${esc(p.since.basis)}">here since ${p.since.year}</span><div class="small">Long-standing business (${p.since.years} years; ${esc(p.since.basis)}). Plans leave occupied buildings out; the block plan flags rent pressure on businesses like this.</div>` : '';
+    return `<dt>Today</dt><dd>${esc(ours)}${lg}${p.status_note ? `<div class="small">${esc(p.status_note)}</div>` : ''}${sa}</dd>`;
   }
   // retail broken down: which trades this building and the street have carried, the modern version, reference brands
   const RT = (D.retail && D.retail.types) || [];
@@ -996,10 +1023,11 @@ details.more > summary { font-size: 14px; }
     const isRetail = top3.some(r => r.f.cat === 'retail goods');
     const evs = p.ev.slice().sort((a, b) => (+a.y || 9999) - (+b.y || 9999)).map(e => `<div class="ev"><div class="y">${esc(e.y || '—')}</div><div><div class="src"><span>${esc(e.src)}</span>${e.cat ? `<span class="pill" style="font-size:11px;padding:0 6px"><span class="sw" style="width:8px;height:8px;background:${cssFill(e.cat)}"></span>${esc(e.cat)}</span>` : ''}${e.m ? `<span title="the address was inferred, not read: through the York Road renumbering or a neighbouring house number">address inferred: ${esc(e.m)}</span>` : ''}</div><div>${esc(e.t)}</div><div class="small">${e.url ? `<a href="${esc(e.url)}" target="_blank" rel="noopener">${esc(e.ref || 'source')}</a>` : esc(e.ref)}</div></div></div>`).join('');
     const verdict = best ? `<div class="verdict">
-        <div class="eyebrow">Best fit${p.availability === 'occupied' ? ' if it came free' : ''}</div>
+        <div class="eyebrow">${p.availability === 'occupied' ? 'If this space ever came free' : 'Best fit'}</div>
         <div class="vname"><span class="sw" style="background:${cssFill(best.f.cat)}"></span>${esc(best.f.name)}${best.f.zs !== 'P' ? ` <span class="pol cb">conditional</span>` : ''}<span class="sc">${Math.round(best.score * 100)}<span class="small">/100</span></span></div>
         <div class="vwhy">${esc(whyLine(best, p))}</div>
-        ${CO && earn(p, best.f) ? `<div class="vmoney">${money(best)}${b1(best.f.id) != null ? ` · first in ${pctR(b1(best.f.id))} of scenarios` : ''}</div>` : ''}
+        ${p.availability === 'occupied' ? `<div class="small">A business trades here today${p.since && p.since.legacy ? ` and has for ${p.since.years} years` : ''}. This is for planning if the space comes free, not a suggestion to replace it.</div>` : ''}
+        ${CO && earn(p, best.f) ? `<div class="vmoney">${money(best)}</div>` : ''}${robust(p, best) ? `<div class="vrob">${robust(p, best)}</div>` : ''}
         ${rv ? `<div class="small"><b>Heritage revival:</b> ${esc(rv.name)}, here ${rv.first}${rv.last !== rv.first ? '–' + rv.last : ''} (${rv.n} records). A revival reopens under a documented name and look; the trademark check comes first.</div>` : ''}
         <div class="cfoot">${fbBtns(p.id, best.f.id)}<a class="cxsrc small" href="#cmp">compare uses</a></div>
       </div>
@@ -1089,23 +1117,46 @@ details.more > summary { font-size: 14px; }
       ['computed', 'Community', `What residents asked for (${(L.requested || []).length} wishes) or pushed back on (${(L.aversion || []).length} business types), from news, plans and testimony`],
       ['computed', 'Neighbours', 'What is next door and across the street: conflicts and complements from law and research'],
       ['computed', 'Precedents', `How the ${(L.buildings || []).length} most comparable reuse cases elsewhere turned out`],
-      ['computed', 'Feedback', 'Team and sponsor votes on each recommendation, applied as a bounded multiplier'],
+      ['computed', 'Feedback', 'Team and sponsor votes on each recommendation, shown beside it; applied as a bounded multiplier only when switched on'],
       ['computed', 'Block plan', 'Uses placed one at a time; each placement changes saturation and the neighbours of the next'],
       ['hand', 'Concepts and businesses', 'Drafted as text for three buildings with AI assistance, every fact sourced, and checked against the score'],
       [CO ? 'computed' : 'next', 'What it earns', 'Rent and revenue ranges for each use from listings in 17 corridors and industry benchmarks; plans ranked by the rent the uses could support']];
     document.getElementById('flow').innerHTML = FLOW.map(([s, t, d]) => `<li class="${s}"><b>${esc(t)}</b><span class="st ${s}">${s === 'computed' ? 'computed' : s === 'hand' ? 'written' : 'next'}</span><span>${esc(d)}</span></li>`).join('');
-    document.getElementById('wts').innerHTML = WL.map(([k, l, c]) => `<div class="wrow"><label for="w-${k}"><span class="sw" style="background:${c};margin-right:6px;vertical-align:-1px"></span>${l}</label><input type="range" id="w-${k}" min="0" max="100" step="5" value="${WT[k]}"><span class="n" id="wn-${k}"></span></div>`).join('');
-    WL.forEach(([k]) => document.getElementById('w-' + k).addEventListener('input', e => { WT[k] = +e.target.value; update(); }));
+    document.getElementById('wts').innerHTML = `<div class="seg" role="group" aria-label="Weight presets">${Object.entries(WPRE).map(([k, v]) => `<button type="button" data-wp="${k}" aria-pressed="${k === wpre}">${esc(v.name)}</button>`).join('')}</div>
+      <p class="small" id="wpnote" style="margin:0"></p>
+      <details><summary class="small">Set the weights by hand</summary><div style="display:grid;gap:6px;margin-top:6px">${WL.map(([k, l, c]) => `<div class="wrow"><label for="w-${k}"><span class="sw" style="background:${c};margin-right:6px;vertical-align:-1px"></span>${l}</label><input type="range" id="w-${k}" min="0" max="100" step="5" value="${WT[k]}"><span class="n" id="wn-${k}"></span></div>`).join('')}</div></details>`;
+    const setPre = k => { wpre = k; if (WPRE[k]) Object.assign(WT, WPRE[k].w); WL.forEach(([kk]) => { document.getElementById('w-' + kk).value = WT[kk]; });
+      document.querySelectorAll('[data-wp]').forEach(b => b.setAttribute('aria-pressed', b.dataset.wp === wpre));
+      document.getElementById('wpnote').textContent = WPRE[wpre] ? WPRE[wpre].note : 'Your own weights. The presets are starting points; the sponsor has not yet agreed a set.'; update(); };
+    document.querySelectorAll('[data-wp]').forEach(b => b.onclick = () => setPre(b.dataset.wp));
+    document.getElementById('wpnote').textContent = WPRE[wpre].note;
+    WL.forEach(([k]) => document.getElementById('w-' + k).addEventListener('input', e => { WT[k] = +e.target.value; wpre = 'custom'; document.querySelectorAll('[data-wp]').forEach(b => b.setAttribute('aria-pressed', 'false')); document.getElementById('wpnote').textContent = 'Your own weights. The presets are starting points; the sponsor has not yet agreed a set.'; update(); }));
     document.getElementById('gf').onchange = e => { gfOnly = e.target.checked; update(); };
     document.getElementById('fbon').onchange = e => { useFb = e.target.checked; update(); };
-    // back-test
-    const B = D.backtest || [], b6 = B.find(b => b.cut === 1960), b4 = B.find(b => b.cut === 1940);
-    if (b6) {
-      document.getElementById('bt').innerHTML = `<h3>Does a building's past predict its present?</h3>
-        <div><span class="big">${pct0(b6.hit / b6.n)}</span> <span class="small">against ${pct0(b6.base / b6.n)} for a plain guess</span></div>
-        <p style="margin:0;font-size:13px;color:var(--ink-2)">A preliminary back-test. Using only records up to 1960, ${b6.hit} of ${b6.n} occupied parcels have a use in October 2026 that was already proven there. Guessing the corridor's most common uses instead gets ${b6.base}. With records up to 1940: ${b4 ? `${b4.hit} of ${b4.n}, against ${b4.base}` : 'n/a'}.</p>
+    // back-test: v2 (parcel by use, tested on Greenmount blocks the model had not seen); v1 kept for the record
+    const B = D.backtest || [], b6 = B.find(b => b.cut === 1960), b4 = B.find(b => b.cut === 1940), B2 = D.backtest2;
+    const pv = x => x < 0.001 ? '< 0.001' : x.toFixed(3);
+    const v1html = b6 ? `
+        <div class="small"><b>First back-test (v1, hit or miss, this stretch only):</b> ${pct0(b6.hit / b6.n)} against ${pct0(b6.base / b6.n)} for a plain guess.</div>
+        <p style="margin:0;font-size:13px;color:var(--ink-2)">Using only records up to 1960, ${b6.hit} of ${b6.n} occupied parcels have a use in October 2026 that was already proven there. Guessing the corridor's most common uses instead gets ${b6.base}. With records up to 1940: ${b4 ? `${b4.hit} of ${b4.n}, against ${b4.base}` : 'n/a'}.</p>
         <table class="btt"><thead><tr><th>Use</th><th>Proven before 1960: has it now</th><th>Not proven: has it now</th></tr></thead><tbody>${b6.percat.filter(r => r.an).map(r => `<tr><td><span class="sw" style="background:${fill(r.cat)};margin-right:6px;vertical-align:-1px"></span>${esc(r.cat)}</td><td class="num">${r.a} of ${r.an} (${pct0(r.a / r.an)})</td><td class="num">${r.b} of ${r.bn} (${pct0(r.b / Math.max(1, r.bn))})</td></tr>`).join('')}</tbody></table>
-        <p class="small" style="margin:0">Overall the record ${b6.hit - b6.base <= 2 ? 'barely beats' : 'beats'} a plain guess, because the corridor's common uses are themselves a strong guess. Within a use it is clearer: history is a real signal for food and retail, a weak one for services and offices, and none for trades that left main streets (vehicles, workshops). Small sample, measured on the same data the score uses; the spring validation repeats it held out.</p>`;
+        <p class="small" style="margin:0">Overall the record ${b6.hit - b6.base <= 2 ? 'barely beats' : 'beats'} a plain guess, because the corridor's common uses are themselves a strong guess. Within a use it is clearer: history is a real signal for food and retail, a weak one for services and offices, and none for trades that left main streets (vehicles, workshops). This hit-or-miss count ignores how long a use was on record, and the pairs where no record correctly predicts no use, which is why the test above replaced it.</p>` : '';
+    if (B2) {
+      const g = (k, c) => (B2[k] || []).find(x => x.cut === c) || {};
+      const o6 = g('other_blocks', 1960), t6 = g('transfer', 1960), h6 = g('holdout', 1960);
+      const run = (lab, a, note) => a.cut ? `<tr><td>${esc(lab)}${note ? ` <span class="small">${esc(note)}</span>` : ''}</td><td class="num">${a.cut}</td><td class="num">${a.parcels} (${a.parcels_with_history})</td><td class="num">${pv(a.p_perm)}</td><td class="num">${a.auc_base} to ${a.auc_history}</td></tr>` : '';
+      document.getElementById('bt').innerHTML = `<h3>Does a building's past predict its present?</h3>
+        <div><span class="big">p = ${pv(o6.p_perm)}</span> <span class="small">on ${o6.parcels} Greenmount parcels outside this stretch, which the model had not seen</span></div>
+        <p style="margin:0;font-size:13px;color:var(--ink-2)">Using only records up to 1960, a use that is on record at a building for more decades is more likely to be there in October 2026 than its frequency on the street predicts. The test the team wrote down before running it ${B2.decision && B2.decision.passes ? '<b>passes</b>' : '<b>does not pass</b>'}: a shuffle test gives p = ${pv(o6.p_perm)}, and the history model predicts those blocks better than the base model (log loss ${t6.logloss_base} to ${t6.logloss_history}). The sponsor has not yet signed off on the rule.</p>
+        <table class="btt"><thead><tr><th>Record at the building before 1960</th><th>Building-use pairs</th><th>Has that use in 2026</th><th>Expected from how common the use is</th></tr></thead><tbody>${(o6.by_history || []).map(x => `<tr><td>${esc(x.group)}</td><td class="num">${x.pairs}</td><td class="num">${x.present}</td><td class="num">${x.expected}</td></tr>`).join('')}</tbody></table>
+        <p class="small" style="margin:0">The gain is real but modest: most of what predicts a use is how common it is on the street. History does not show cause, and the same buildings suit the same uses. Method, data and code: team/validation (plan committed before the run).</p>
+        <details><summary class="small">All runs, and the first back-test</summary>
+          <table class="btt" style="margin-top:6px"><thead><tr><th>Data</th><th>Cut-off</th><th>Parcels (with history)</th><th>p, shuffle test</th><th>AUC, base to history</th></tr></thead><tbody>
+            ${run('Other Greenmount blocks', o6, 'the test')}${run('Other Greenmount blocks', g('other_blocks', 1940))}${run('Other blocks, low-confidence codes left out', g('other_blocks_without_low_confidence', 1960))}${run('This stretch, all sources', g('frontage', 1960), 'exploratory: the model was chosen here')}${run('This stretch, sponsor records only', g('frontage_sponsor_only', 1960))}</tbody></table>
+          <p class="small" style="margin:6px 0 0">Out of sample: coefficients fitted on this stretch, applied to the other blocks, lower the log loss from ${t6.logloss_base} to ${t6.logloss_history}; leaving one block side of this stretch out at a time, from ${h6.logloss_base} to ${h6.logloss_history} (AUC ${h6.auc_base} to ${h6.auc_history}).</p>
+          <div style="margin-top:8px;display:grid;gap:6px">${v1html}</div></details>`;
+    } else if (b6) {
+      document.getElementById('bt').innerHTML = `<h3>Does a building's past predict its present?</h3>${v1html}`;
     }
     // rules table
     const ZS = { P: 'permitted', CB: 'conditional (zoning board)', CO: 'conditional (ordinance)', NP: 'not permitted' };
@@ -1138,7 +1189,7 @@ details.more > summary { font-size: 14px; }
   function drawWeights() {
     const t = WL.reduce((a, [k]) => a + WT[k], 0) || 1, pc = k => Math.round(100 * WT[k] / t) + '%';
     WL.forEach(([k]) => { document.getElementById('wn-' + k).textContent = pc(k); });
-    document.getElementById('formula').innerHTML = `score = heritage × ${pc('h')} + room × ${pc('s')} + size × ${pc('f')} + community × ${pc('c')} + neighbours × ${pc('a')} + precedents × ${pc('k')}, then times 0.75 for a conditional use, times 0.3 / 0.6 / 0.85 for a strong / moderate / weak community objection, and times the feedback multiplier. Uses barred by the plan or not permitted in C-1 are left out. <b>Heritage</b> = decades on record at the building ÷ 5 (capped), halved for a single record, +0.1 for two kinds of source; with no record, the street's record at a third of the weight. <b>Room</b> = 1 − saturation: half a block-side term (0 of the same use → 1, 1 → 0.6, 2 → 0.25, 3+ → 0) and half a corridor term (1 while the use's storefront share is at or below its 1920-23 share). <b>Size</b> = 1 inside the usual range, 0 at three times outside it. <b>Neighbours</b> = the weighted mean of the matrix values for next-door and across-the-street uses, scaled to 0-1. <b>Precedents</b> = among the 8 most similar reuse cases, the similarity-weighted share that went this way and are still open (closed cases count against), doubled and capped at 1. <b>Feedback</b> = 1 + 0.1 × (agree − disagree), kept between 0.6 and 1.2.`;
+    document.getElementById('formula').innerHTML = `score = heritage × ${pc('h')} + room × ${pc('s')} + size × ${pc('f')} + community × ${pc('c')} + neighbours × ${pc('a')} + precedents × ${pc('k')}, then times 0.75 for a conditional use, times 0.3 / 0.6 / 0.85 for a strong / moderate / weak community objection, and, only when switched on, times the feedback multiplier. Uses barred by the plan or not permitted in C-1 are left out. <b>Heritage</b> = decades on record at the building ÷ 5 (capped), halved for a single record, +0.1 for two kinds of source; with no record, the street's record at a third of the weight. <b>Room</b> = 1 − saturation: half a block-side term (0 of the same use → 1, 1 → 0.6, 2 → 0.25, 3+ → 0) and half a corridor term (1 while the use's storefront share is at or below its 1920-23 share). <b>Size</b> = 1 inside the usual range, 0 at three times outside it. <b>Neighbours</b> = the weighted mean of the matrix values for next-door and across-the-street uses, scaled to 0-1. <b>Precedents</b> = among the 8 most similar reuse cases, the similarity-weighted share that went this way and are still open (closed cases count against), doubled and capped at 1. <b>Feedback</b> = 1 + 0.1 × (agree − disagree), kept between 0.6 and 1.2.`;
   }
 
   // ---------------- block plan (assemblage optimiser v0)
@@ -1161,9 +1212,29 @@ details.more > summary { font-size: 14px; }
     return Object.entries(cnt || {}).filter(([, n]) => n > 0).sort((a, b) => b[1] - a[1]).map(([c, n]) =>
       `<span class="mc${before && n > ((before || {})[c] || 0) ? ' up' : ''}${n >= 3 ? ' full' : ''}"><span class="sw" style="background:${fill(c)}"></span>${esc(c)} ${n}</span>`).join('') || '<span class="small">no confirmed businesses</span>';
   }
+  // rent pressure on businesses already trading: an anti-displacement flag for the talk with owners, not a prediction
+  const PRESS_FMT = { 'food & drink': 'cafe', 'retail goods': 'shop', 'personal services': 'services', 'office': 'office' }, PRESS_GAP = 0.2;
+  function pressureOf(assign) {
+    if (!CO) return null;
+    const bySide = {};
+    Object.entries(assign).forEach(([pid, fid]) => { const p = PI[pid], f = FM[fid]; if (!p || !f) return; const e = earn(p, f); if (!e || !e.rankable) return; (bySide[p.side] = bySide[p.side] || []).push(e.sup[1]); });
+    const sides = {}, hit = [];
+    Object.entries(bySide).forEach(([s, v]) => {
+      const level = v.reduce((a, b) => a + b, 0) / v.length;
+      const at = P.filter(q => q.side === s && q.status === 'occupied').map(q => {
+        const vals = String(q.uses_now || '').split(' ; ').filter(c => PRESS_FMT[c]).map(c => { const e = earn(q, FM[PRESS_FMT[c]]); return e ? e.sup[1] : null; }).filter(x => x != null);
+        if (!vals.length) return null;
+        const v2 = Math.min(...vals);
+        return v2 < (1 - PRESS_GAP) * level ? { q, v: v2 } : null; }).filter(Boolean);
+      sides[s] = { level, at }; hit.push(...at);
+    });
+    return { sides, n: hit.length, legacy: hit.filter(x => x.q.since && x.q.since.legacy).length };
+  }
+  const longStanding = s => P.filter(q => q.side === s && q.since && q.since.legacy);
   function drawPlan() {
     PLAN = runPlan();
     const { out, C, avail } = PLAN;
+    const PR = pressureOf(Object.fromEntries(Object.entries(out).map(([pid, o]) => [pid, o.r.f.id])));
     const placed = Object.values(out), cond = placed.filter(o => o.r.f.zs !== 'P').length;
     const byCat = {}; placed.forEach(o => { byCat[o.r.f.cat] = (byCat[o.r.f.cat] || 0) + 1; });
     let h = `<div style="grid-column:1/-1;display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;font-size:13px;color:var(--ink-2)"><span><b style="color:var(--ink)">${placed.length} parcels planned:</b> ${Object.entries(byCat).sort((a, b) => b[1] - a[1]).map(([c, n]) => `${n} ${esc(c)}`).join(', ')}. ${cond ? `${cond} need a conditional approval.` : ''}</span>${Object.keys(overrides).length ? '<button type="button" class="cx-tab" id="preset">Reset my choices</button>' : ''}</div>`;
@@ -1182,7 +1253,9 @@ details.more > summary { font-size: 14px; }
         }).join('')}
         <div class="mixline"><span class="small" style="width:44px">After</span>${chips(C.side[s], BASE.side[s])}</div>
         ${was.length ? `<div class="small" style="color:var(--ink-2)">Already saturated today: ${was.map(([c, n]) => `${esc(c)} (${n})`).join(', ')}, so the plan adds no more of it here unless you choose to.</div>` : ''}
-        ${made.length ? `<div class="warn">The plan brings ${made.map(([c]) => esc(c)).join(', ')} to 3 on this block side: saturated.</div>` : ''}</div>`;
+        ${made.length ? `<div class="warn">The plan brings ${made.map(([c]) => esc(c)).join(', ')} to 3 on this block side: saturated.</div>` : ''}
+        ${longStanding(s).length ? `<div class="small" style="color:var(--ink-2)">Long-standing here: ${longStanding(s).map(q => `${esc(q.since.name || q.tenant || q.address)} at ${esc(q.address)} (since ${q.since.year})`).join('; ')}.</div>` : ''}
+        ${PR && PR.sides[s] && PR.sides[s].at.length ? `<div class="warn">Rent pressure: the new uses here could support about ${usd(PR.sides[s].level)} per sq ft. ${PR.sides[s].at.length === 1 ? 'One business' : PR.sides[s].at.length + ' businesses'} already trading on this side ${PR.sides[s].at.length === 1 ? 'is' : 'are'} of a kind that typically supports at least ${Math.round(PRESS_GAP * 100)}% less: ${PR.sides[s].at.map(x => `${esc(x.q.tenant || x.q.address)} (${usd(x.v)}${x.q.since && x.q.since.legacy ? ', here since ' + x.q.since.year : ''})`).join('; ')}. If owners reprice at renewal, ${PR.sides[s].at.length === 1 ? 'it' : 'they'} could be squeezed.</div>` : ''}</div>`;
     });
     const el = document.getElementById('plan'); el.innerHTML = h;
     el.querySelectorAll('select[data-pl]').forEach(sel => sel.onchange = () => { overrides[sel.dataset.pl] = sel.value; drawPlan(); drawMix(); });
@@ -1201,7 +1274,7 @@ details.more > summary { font-size: 14px; }
   function drawEarnOnce() {
     if (!CO) { document.getElementById('earn').hidden = true; return; }
     const m = CO.model, h = CO.holdout, bf = CO.built_from, w = m.waverly;
-    document.getElementById('earnlede').innerHTML = `Two independent routes to the rent a use could pay, then the lower of the two is what the ranking uses. <b>Listings:</b> ${bf.rows_used} asking rents from ${bf.corridors} corridors (Waverly, ten other Baltimore main streets and seven comparable corridors in six other cities), made triple-net equivalent and pooled so that thin corridors borrow strength from their city. <b>Affordability:</b> what businesses of the kind usually take in per sq ft (industry and Census benchmarks, in 2025 dollars) × the share of sales they usually spend on rent − the parcel's own taxes. Every figure links to the row it came from. These are planning ranges with stated assumptions: what a use could pay, not what a building is worth.`;
+    document.getElementById('earnlede').innerHTML = `Two independent routes to the rent a use could pay, then the lower of the two is what the ranking uses. <b>Listings:</b> ${bf.rows_used} asking rents from ${bf.corridors} corridors (Waverly, ten other Baltimore main streets and seven comparable corridors in six other cities), made triple-net equivalent and pooled so that thin corridors borrow strength from their city. <b>Affordability:</b> what businesses of the kind usually take in per sq ft (industry and Census benchmarks, in 2025 dollars) × the share of sales they usually spend on rent − the parcel's own taxes. Every figure links to the row it came from. These are planning ranges with stated assumptions: what a use could pay, not what a building is worth.${D.backtest2 && D.backtest2.decision ? `<span class="guard" style="display:block;margin-top:8px"><b>When dollar figures may be shown.</b> The sponsor's proposal shows no dollar figure that rests on history until history passes a held-out test. The ranges on this page come from listings and benchmarks, not from history. The plan rankings mix fit and money, and the test the team wrote down for them ${D.backtest2.decision.passes ? 'passes' : 'does not pass'} on Greenmount blocks the model had not seen (p = ${(D.backtest2.decision.p_perm).toFixed(3)}; Evidence and method). The sponsor has not yet signed off on that rule.</span>` : ''}`;
     document.getElementById('earntiles').innerHTML = `
       <div class="tile"><span class="k">Waverly corridor, asking rent</span><span class="v">${usd(w.pooled)}</span><span class="s">per sq ft, triple-net, format-adjusted. ${w.n} local listings carry ${Math.round(w.own_share * 100)}% of it; the Baltimore mean (${usd(m.city_means.baltimore)}) carries the rest.</span></div>
       <div class="tile"><span class="k">Held-out check</span><span class="v">${Math.round(h.nominal_cover * 100)}% → ${Math.round(h.honest_cover * 100)}%</span><span class="s">An 80% range should hold 80% of listings it has not seen. It held ${h.nominal_hits} of ${h.n}, so every range is widened ×${CO.interval.widen.toFixed(2)}; checked again without each row, the widened range holds ${h.honest_hits} of ${h.n}.</span></div>
@@ -1394,7 +1467,11 @@ details.more > summary { font-size: 14px; }
       pl.miss = avail.filter(p => !pl.a[p.id]).length;
     });
     uniq.forEach(pl => { pl.pareto = !uniq.some(o => o !== pl && o.fit >= pl.fit - 1e-9 && o.q[1] >= pl.q[1] - 1e-9 && (o.fit > pl.fit + 1e-9 || o.q[1] > pl.q[1] + 1e-9)); });
-    return { plans: uniq, gap, blocks: Object.keys(blocks).length };
+    // the balanced search optimises its own blend; when another plan beats it on both columns shown, it adds nothing
+    let dropped = null;
+    const bal = uniq.find(pl => pl.name === 'Balanced');
+    if (bal && !bal.pareto && !bal.current) { dropped = uniq.find(o => o !== bal && o.fit >= bal.fit - 1e-9 && o.q[1] >= bal.q[1] - 1e-9); uniq.splice(uniq.indexOf(bal), 1); }
+    return { plans: uniq, gap, blocks: Object.keys(blocks).length, dropped };
   }
   function simulate(plans, avail) {
     const N = PLN.draws || 2000, rho = PLN.shared_shock ?? 0.5, R = rngOf(20261020), sr = Math.sqrt(rho), si = Math.sqrt(1 - rho);
@@ -1417,23 +1494,27 @@ details.more > summary { font-size: 14px; }
     const g = RK.gap, pctg = g.b ? Math.round(1000 * g.g / g.b) / 10 : 100;
     el2.innerHTML = `<div class="bar" style="margin-top:6px"><h3>Plans ranked by the rent they could support</h3>
         <label class="small">Rank by <select id="prsort" class="sel"><option value="q"${sortBy === 'q' ? ' selected' : ''}>median rent supported</option><option value="p"${sortBy === 'p' ? ' selected' : ''}>chance of the highest</option><option value="fit"${sortBy === 'fit' ? ' selected' : ''}>fit score</option></select></label></div>
-      <div class="tbl"><table class="btt wide"><thead><tr><th>Plan</th><th>Uses</th><th>Fit score (mean)</th><th>Rent the uses could support, all ${PLAN.avail.length} parcels, per year</th><th>Highest in</th><th>Neighbour effects</th><th></th></tr></thead><tbody>
+      <div class="tbl"><table class="btt wide"><thead><tr><th>Plan</th><th>Uses</th><th>Fit score (mean)</th><th>Rent the uses could support, all ${PLAN.avail.length} parcels, per year</th><th>Highest in</th><th>Neighbour effects</th><th>Rent pressure on neighbours</th><th></th></tr></thead><tbody>
       ${P2.map(pl => `<tr${pl.current ? ' class="cur"' : ''}><td><b>${esc(pl.name)}</b>${pl.pareto ? ' <span class="pol">best trade-off</span>' : ''}<div class="small">${esc(pl.why)}${pl.also ? '; same as ' + esc(pl.also.join(', ')) : ''}</div></td>
         <td>${mixOf(pl.a)}${pl.miss ? `<div class="small">${pl.miss} parcel${pl.miss > 1 ? 's' : ''} left without a use the engine can rank by money</div>` : ''}${pl.cond || pl.weak ? `<div class="small">${[pl.cond ? pl.cond + ' conditional' : '', pl.weak ? pl.weak + ' that often cannot pay the asking rent' : ''].filter(Boolean).join(' · ')}</div>` : ''}</td>
         <td class="num">${Math.round(pl.fit * 100)}</td><td class="num">${rng(pl.q, kusd)}</td><td class="num">${pctR(pl.pbest)}</td>
         <td class="num">${pl.credit >= 0 ? '+' : '−'}${Math.abs(Math.round(pl.credit * 100))}%</td>
+        <td class="num">${(() => { const z = pressureOf(pl.a); return z ? `${z.n}${z.legacy ? ` <span class="small">(${z.legacy} long-standing)</span>` : ''}` : '—'; })()}</td>
         <td>${pl.current ? '<span class="small">shown above</span>' : `<button type="button" class="cx-tab" data-apply="${esc(pl.key)}" aria-label="Show ${esc(pl.name)} on the plan">Show</button>`}</td></tr>`).join('')}
       </tbody></table></div>
-      <div class="wbox"><div class="wrow"><label for="cau">Caution</label><input type="range" id="cau" min="0" max="100" step="10" value="${Math.round(CAUTION * 100)}"><span class="n">${Math.round(CAUTION * 100)}%</span></div>
+      <div class="wbox"><div class="ctl" style="flex-wrap:wrap;gap:8px"><span>Plan for</span><div class="seg" role="group" aria-label="How cautious the plan search is">${[[0, 'a typical year'], [0.5, 'a cautious year'], [1, 'a bad year']].map(([v, l]) => `<button type="button" data-cau="${v}" aria-pressed="${Math.abs(CAUTION - v) < 0.01}">${l}</button>`).join('')}</div></div>
+        <details><summary class="small">Model assumptions (for testing; team judgement from the methods report)</summary><div style="display:grid;gap:6px;margin-top:6px">
         <div class="wrow"><label for="hair">Same use nearby</label><input type="range" id="hair" min="0" max="30" step="5" value="${Math.round(HAIR * 100)}"><span class="n">−${Math.round(HAIR * 100)}%</span></div>
-        <div class="wrow"><label for="upl">Neighbour pull</label><input type="range" id="upl" min="0" max="10" step="1" value="${Math.round(UPLIFT * 100)}"><span class="n">${Math.round(UPLIFT * 100)}%</span></div>
-        <p class="small" style="margin:0">The search ranks plans by a mix of the median and the low (P10) rent each use could support: caution 0% uses the median only, 100% the low case only. Same use nearby: each use of the same kind beyond the first on a block side (the second for food and retail, which cluster well) cuts sales and rent by this much. No block side gets more than three of one kind of use, the score's rule for full; a parcel can be left empty if every use would break that. Neighbour pull: each complementary next-door use adds this much, each conflicting or vacant one takes it away (across the street counts half; at most ±2 steps). The ranges come from ${fmt(PLN.draws || 2000)} scenarios in which the corridor's rent level and sales level move together across all buildings (half of each building's uncertainty is shared).</p></div>
-      <p class="small">Search check: one-at-a-time placement with swaps reached ${pctg}% of the best plan found by trying every combination of each parcel's top ${g.Ks.length ? Math.min(...g.Ks) + '–' + Math.max(...g.Ks) : ''} uses${g.cert ? '' : ` (${esc(g.big.join('; '))}: too many combinations to check in full)`}. "Best trade-off": no other plan here has both a higher fit score and a higher median. Neighbour effects: the share of the median that comes from neighbours (negative when vacant or conflicting neighbours pull it down).</p>
+        <div class="wrow"><label for="upl">Neighbour pull</label><input type="range" id="upl" min="0" max="10" step="1" value="${Math.round(UPLIFT * 100)}"><span class="n">${Math.round(UPLIFT * 100)}%</span></div></div></details>
+        <p class="small" style="margin:0">The search ranks plans by the rent each use could support in a typical year (the median), a bad year (the low, P10 case) or halfway between (cautious, the default). Same use nearby: each use of the same kind beyond the first on a block side (the second for food and retail, which cluster well) cuts sales and rent by this much. No block side gets more than three of one kind of use, the score's rule for full; a parcel can be left empty if every use would break that. Neighbour pull: each complementary next-door use adds this much, each conflicting or vacant one takes it away (across the street counts half; at most ±2 steps). The ranges come from ${fmt(PLN.draws || 2000)} scenarios in which the corridor's rent level and sales level move together across all buildings (half of each building's uncertainty is shared).</p></div>
+      ${RK.dropped ? `<p class="small" style="margin:0">The balanced search (fit and money together) is not shown: ${esc(RK.dropped.name.toLowerCase())} beats it on both fit and rent.</p>` : ''}
+      <p class="small">Search check: one-at-a-time placement with swaps reached ${pctg}% of the best plan found by trying every combination of each parcel's top ${g.Ks.length ? Math.min(...g.Ks) + '–' + Math.max(...g.Ks) : ''} uses${g.cert ? '' : ` (${esc(g.big.join('; '))}: too many combinations to check in full)`}. "Best trade-off": no other plan here has both a higher fit score and a higher median. Neighbour effects: the share of the median that comes from neighbours (negative when vacant or conflicting neighbours pull it down). Rent pressure on neighbours: businesses already trading on the same block sides whose kind of business typically supports at least 20% less rent than the plan's new uses there; a flag for the conversation with owners, not a prediction.</p>
       <div class="guard">Plans are compared for the same parcels; no parcel or block is ranked by money. Most of these parcels belong to other owners, so a shared plan needs their agreement. Figures are planning ranges with stated assumptions, not a promise of income.</div>`;
     el2.querySelectorAll('[data-apply]').forEach(b => b.onclick = () => { const pl = RK.plans.find(x => x.key === b.dataset.apply); overrides = Object.assign({}, pl.a); drawPlan(); drawMix(); document.getElementById('planS').scrollIntoView({ behavior: 'smooth', block: 'start' }); });
     document.getElementById('prsort').onchange = () => drawPlanRank();
     const wire = (id, set) => { const x = document.getElementById(id); x.onchange = () => { set(+x.value / 100); clearEarn(); for (const k in SLIM) delete SLIM[k]; drawPlanRank(); }; };
-    wire('cau', v => { CAUTION = v; }); wire('hair', v => { HAIR = v; }); wire('upl', v => { UPLIFT = v; });
+    el2.querySelectorAll('[data-cau]').forEach(b => b.onclick = () => { CAUTION = +b.dataset.cau; clearEarn(); for (const k in SLIM) delete SLIM[k]; drawPlanRank(); });
+    wire('hair', v => { HAIR = v; }); wire('upl', v => { UPLIFT = v; });
   }
 
   // ---------------- roadmap: where this ends
@@ -1442,25 +1523,25 @@ details.more > summary { font-size: 14px; }
       ['done', 'What was it?', 'A sourced use timeline for every parcel.', 'Done for the 69 frontage parcels'],
       ['demo', 'What could it become?', 'Ranked uses with reasons: heritage, rules, saturation, community, neighbours, precedents.', 'Score v0.3 on this page, with comparison and feedback'],
       ['demo', 'What would it earn?', 'Rent and revenue range for each use, from comps, with the rent each use could support.', 'Comps engine v1 on this page: 58 listings, 192 benchmarks, 45 operators'],
-      ['demo', 'Does the mix work as a block?', 'A use plan for a block or a sponsor assemblage, under a saturation limit.', 'Greedy plan v0 on this page'],
+      ['demo', 'Does the mix work as a block?', 'A use plan for a block or a sponsor assemblage, under a saturation limit.', 'Plan v1 on this page: plans ranked by the rent the uses could support, with saturation, neighbour and rent-pressure checks'],
       ['demo', 'Who is it for?', 'The customer groups that would use, lease or buy each building, their obstacles and the programmes that help.', 'Seven groups matched on this page'],
-      ['demo', 'How far can it be trusted?', 'Validation report and a model card that says where not to use it.', 'Reference timelines; back-test started']];
+      ['demo', 'How far can it be trusted?', 'Validation report and a model card that says where not to use it.', 'Back-test v2 passes on Greenmount blocks the model had not seen (p = 0.023, plan written first); four blind reference timelines next']];
     document.getElementById('endstate').innerHTML = `<p class="lede" style="font-size:14px">The final deliverable answers five questions for any address on the corridor, and for any block the sponsor names, with every answer traced to a source. It ships as a pilot in the sponsor's Property Dossier tool, with the code and tests, a validation report, a model card and the final report.</p>
       <div class="end" style="margin-top:12px">${E.map(([s, q, d, n]) => `<div class="endc"><span class="st ${s}">${s === 'done' ? 'done' : s === 'demo' ? 'working draft' : 'next'}</span><div class="q">${esc(q)}</div><div>${esc(d)}</div><div class="small">${esc(n)}</div></div>`).join('')}</div>`;
     const M = [
-      ['now', '20 Oct 2026', 'Now', 'Timelines for 69 parcels; score v0.3 with community, neighbours, precedents and feedback; comps engine v1; plans ranked by supportable rent; customer groups; concepts for three buildings'],
+      ['now', '26 Oct 2026', 'Now', 'Timelines for 69 parcels; score v0.3 with weight presets and a robustness label; comps engine v1; plans ranked by supportable rent with a rent-pressure check; back-test v2 on blocks not seen; comparable cases with costs, timelines and a displacement rubric; concepts for three buildings'],
       ['', '4 Nov 2026', 'Midterm', 'Validation memo with four blind timelines; precedent memo; extractor v1.1; this page as the pilot'],
-      ['', 'Dec 2026', 'End of fall term', 'Comps engine v1.1 (calls for the unlisted Greenmount rents, private calibration if approved); generator v1 with building-design match; the 107 focus-area parcels'],
-      ['', 'Mar 2027', 'Spring validation', 'Held-out back-test; weight sensitivity; demand data if feasible; optimiser v1 for a sponsor-named assemblage'],
+      ['', 'Dec 2026', 'End of fall term', 'Comps engine v1.1 (calls for the unlisted Greenmount rents, private calibration if approved); generator v1 with building-design match; the 97 focus-area parcels'],
+      ['', 'Mar 2027', 'Spring validation', 'Back-test repeated on four blind reference timelines; weight sensitivity; demand data if feasible; optimiser v1 for a sponsor-named assemblage'],
       ['', 'May 2027', 'Final', 'Pilot in the Property Dossier; model card and guardrails; data contract; report, community brief, CUSP showcase']];
     document.getElementById('miles').innerHTML = M.map(([c, d, t, x]) => `<div class="mile ${c}"><span class="d">${esc(d)}</span><span class="t">${esc(t)}</span><span>${esc(x)}</span></div>`).join('');
     const R = [
       ['Use-history timelines', 'done', '69 frontage parcels, 566 spans, 8 kinds of source', 'Blind references; fix the summary rows; side streets', 'Whole corridor, with its gap map'],
-      ['Candidate-use generator', 'demo', 'Score v0.3: heritage, rules, saturation, size, community, neighbours, precedents, feedback', 'Weights agreed with the sponsor; a short resident survey to test the community layer', 'Generator v1 with documented weights'],
+      ['Candidate-use generator', 'demo', 'Score v0.3: heritage, rules, saturation, size, community, neighbours, precedents, feedback; four weight presets and a label for how firm each verdict is', 'Weights agreed with the sponsor; a short resident survey to test the community layer', 'Generator v1 with documented weights'],
       ['Customer matching', 'demo', 'Seven customer groups with ranked obstacles and programmes; buildings ranked by fit', 'Interviews with 5-10 businesses per group; an intake form for both sides', 'Matching with tracked 12, 24 and 36-month survival against the BLS benchmark (about 68% at 3 years)'],
       ['Comps engine', 'demo', 'Engine v1: rent and revenue ranges for 14 uses, held-out check, other cities side by side', 'Calls for the Greenmount rents listed as "contact for pricing"; private check with the NDA operator if the sponsor approves; Census data for catchment spending', 'Comps library, engine and model card'],
-      ['Assemblage optimiser', 'demo', 'Plan v1: plans ranked by the rent the uses could support, with neighbour and saturation effects and a search check', 'A sponsor-named assemblage; owners who opt in; content uses kept apart', 'Plan for a sponsor-named assemblage'],
-      ['Validation', 'demo', 'Four reference timelines; preliminary back-test', 'Four blind timelines; held-out back-test; precedent statuses checked for 2026', 'Validation report'],
+      ['Assemblage optimiser', 'demo', 'Plan v1: plans ranked by the rent the uses could support, with neighbour and saturation effects, a search check and a rent-pressure flag for businesses already trading', 'A sponsor-named assemblage; owners who opt in; content uses kept apart', 'Plan for a sponsor-named assemblage'],
+      ['Validation', 'demo', 'Back-test v2: plan committed first, then run on 52 Greenmount parcels outside the frontage (p = 0.023); case statuses checked against 2025-26 sources', 'Four blind timelines; the sponsor signs off the test rule', 'Validation report'],
       ['Pilot and handoff', 'demo', 'This page', 'Sponsor feedback on the score and the plan', 'Property Dossier pilot, model card, data contract, report']];
     document.getElementById('comp').innerHTML = `<table><thead><tr><th>Part (Idea 1)</th><th>Now</th><th>Next</th><th>Final, May 2027</th></tr></thead><tbody>${R.map(([a, s, b, c, d]) => `<tr><td><b>${esc(a)}</b><br><span class="st ${s}">${s === 'done' ? 'done' : s === 'demo' ? 'working draft' : 'next'}</span></td><td>${esc(b)}</td><td>${esc(c)}</td><td>${esc(d)}</td></tr>`).join('')}</tbody></table>`;
   }
@@ -1657,13 +1738,41 @@ details.more > summary { font-size: 14px; }
 
   // ---------------- comparable cases: buildings like the selected one, streets like Waverly
   let caseTab = 'b', caseRegion = 'all';
+  const caseF = { open: false, mission: false, cost: false }, distF = { us: false, low: false, noanchor: false, black: false };
+  const MISSION = ['nonprofit', 'co-op', 'CDC/CDFI', 'church-affiliated', 'public'];
+  const usCase = b => ['Baltimore', 'US', 'NYC'].includes(b.region);
+  const costSf = b => (b.cost && b.cost.per_sqft_2025) || null;
+  const hasAnchor = d => !!(d.anchor_institution && !/^no\b/i.test(String(d.anchor_institution)));
+  const RUB = (L.meta && L.meta.displacement_rubric) || {};
+  function costRange(p) {
+    // the three most similar US cases with a sourced total cost and floor area
+    const xs = simsOf(p).filter(x => usCase(x.b) && costSf(x.b)).slice(0, 3);
+    if (xs.length < 2) return { xs, ok: false };
+    const v = xs.map(x => costSf(x.b)).sort((a, b) => a - b), n = v.length;
+    const med = n % 2 ? v[(n - 1) / 2] : (v[n / 2 - 1] + v[n / 2]) / 2, sq = +p.sqft || null;
+    return { xs, ok: true, lo: v[0], hi: v[n - 1], med, sq, tot: sq ? [v[0] * sq, med * sq, v[n - 1] * sq] : null };
+  }
   function dsim(d) {
     const inc = d.income === 'low' || d.income === 'moderate' ? 1 : d.income === 'mixed' ? 0.6 : d.income === 'high' ? 0 : 0.5;
     const blk = d.majority_black === true ? 1 : d.majority_black === false ? 0 : 0.5;
-    const anc = d.anchor_institution ? 1 : 0.3, own = d.concentrated_ownership === true ? 1 : d.concentrated_ownership === false ? 0.3 : 0.5;
+    const anc = hasAnchor(d) ? 1 : 0.3, own = d.concentrated_ownership === true ? 1 : d.concentrated_ownership === false ? 0.3 : 0.5;
     const his = d.historic ? 1 : 0.5, len = d.length_mi ? Math.max(0, 1 - Math.abs(Math.log(d.length_mi / 0.4)) / Math.log(6)) : 0.5;
     const us = ['Baltimore', 'US'].includes(d.region) ? 1 : 0.5;
     return { v: 0.2 * inc + 0.15 * blk + 0.15 * anc + 0.15 * own + 0.1 * his + 0.1 * len + 0.15 * us, inc, blk, anc, own, his, len, us };
+  }
+  const fchip = (key, on, label) => `<button type="button" class="chip" data-cf="${key}" aria-pressed="${on}">${esc(label)}</button>`;
+  const statusPill = b => `<span class="pill${b.status === 'closed' ? ' warn' : b.status === 'operating' || b.status === 'reopened' ? ' ok' : ''}">${esc(b.status)}${b.status_year ? ' (' + b.status_year + ')' : ''}</span>`;
+  const dpill = r => `<span class="pill${r === 'high' ? ' warn' : r === 'low' ? ' ok' : r === 'unknown' ? ' q' : ''}">${esc(r || 'unknown')}</span>`;
+  const short = (t, n) => { t = String(t || ''); return t.length > n ? t.slice(0, n - 1).replace(/[\s,;:.]+\S*$/, '') + '…' : t; };
+  function costCell(b) {
+    const c = b.cost; if (!c || !c.total_mid) return '<span class="small">no sourced cost</span>';
+    const yr = c.cost_year ? ` (${c.cost_year})` : '', sc = c.scope && c.scope !== 'unknown' ? `, ${c.scope}` : '';
+    return `${kusd(c.total_mid)}${c.total_usd_low && c.total_usd_high ? ` <span class="small">(${kusd(c.total_usd_low)}–${kusd(c.total_usd_high)})</span>` : ''}<span class="small">${esc(yr + sc)}${c.includes_acquisition ? ', includes buying the building' : ''}</span>${c.source_url ? ` <a class="cxsrc small" href="${esc(c.source_url)}" target="_blank" rel="noopener">source</a>` : ''}`;
+  }
+  function timeCell(b) {
+    const t = b.timeline || {}, a = t.year_vacant_or_acquired, o = t.year_opened || b.year_opened;
+    if (a && o) return `${a} to ${o} <span class="small">(${Math.max(0, o - a)} yr${o - a === 1 ? '' : 's'})</span>`;
+    return o ? `opened ${o}` : '<span class="small">not found</span>';
   }
   function drawCases() {
     const p = PI[sel]; if (!p) return;
@@ -1674,31 +1783,74 @@ details.more > summary { font-size: 14px; }
     if (caseTab === 'b') {
       document.getElementById('casefor').textContent = `matched to ${p.address} Greenmount (${p.btype}, ${p.sqft ? fmt(+p.sqft) + ' sq ft' : 'size unknown'}${p.built ? ', c. ' + p.built : ''})`;
       const regions = ['all', ...new Set((L.buildings || []).map(b => b.region))];
-      const list = simsOf(p).filter(x => caseRegion === 'all' || x.b.region === caseRegion).slice(0, 12);
-      body.innerHTML = `<div class="ctl" style="margin-bottom:8px"><label for="creg">Region</label><select id="creg" style="font:inherit;font-size:13px;padding:3px 6px;border:1px solid var(--rule-2);border-radius:6px;background:var(--bg);color:var(--ink)">${regions.map(r => `<option value="${esc(r)}"${r === caseRegion ? ' selected' : ''}>${esc(r === 'all' ? 'All regions' : r)}</option>`).join('')}</select><span class="small">Similarity: building type 35%, history 25%, size 20%, age 10%, income context 10%.</span></div>
-        <div class="casel">${list.map(x => { const b = x.b, s = x.s; return `<div class="casec"><div class="hd"><span class="simv">${Math.round(s.v * 100)}%</span><b>${esc(b.name)}</b><span class="small">${esc(b.city)}, ${esc(b.country)} · ${esc(b.region)}</span><span class="pill${b.status === 'closed' ? ' warn' : b.status === 'operating' ? ' ok' : ''}" style="margin-left:auto">${esc(b.status)}${b.status_year ? ' (' + b.status_year + ')' : ''}</span></div>
+      const pass = b => (caseRegion === 'all' || b.region === caseRegion) && (!caseF.open || ((b.status === 'operating' || b.status === 'reopened') && (b.status_year || 0) >= 2025))
+        && (!caseF.mission || MISSION.includes(b.operator_model)) && (!caseF.cost || costSf(b));
+      const list = simsOf(p).filter(x => pass(x.b)), top3 = list.slice(0, 3), CR = costRange(p), best = topOf(p.id);
+      const ratio = b => (+p.sqft && b.sqft) ? b.sqft / +p.sqft : null;
+      const R = [
+        ['Similarity', () => '—', x => `<span class="simv">${Math.round(x.s.v * 100)}%</span>`],
+        ['Where', () => `${esc(p.address)} Greenmount, Baltimore`, x => `<b>${esc(x.b.name)}</b><div class="small">${esc(x.b.city)}, ${esc(x.b.country)}</div>`],
+        ['Building', () => esc(p.btype || 'unknown'), x => esc(x.b.building_type || 'unknown')],
+        ['Built', () => p.built ? 'c. ' + p.built : 'unknown', x => x.b.year_built ? esc(String(x.b.year_built)) : '<span class="small">unknown</span>'],
+        ['Floor area', () => p.sqft ? fmt(+p.sqft) + ' sq ft' : 'unknown', x => x.b.sqft ? `${fmt(x.b.sqft)} sq ft${ratio(x.b) ? `<div class="small">${ratio(x.b) >= 1 ? ratio(x.b).toFixed(1) + '× this building' : (1 / ratio(x.b)).toFixed(1) + '× smaller'}</div>` : ''}` : '<span class="small">not found</span>'],
+        ['Was', () => esc(short(String(p.proven || p.cand1 || 'not enough evidence').replace(/\((\d+)d\)/g, '$1 decades').replace(/ ; /g, ', '), 110)), x => esc(short(x.b.orig_use, 90))],
+        ['Became', () => best ? `<b>${esc(best.f.name)}</b> <span class="small">best fit here, ${Math.round(best.score * 100)}/100</span>` : '—', x => `${esc(short(x.b.new_use, 110))}${x.b.year_opened ? ` <span class="small">(${x.b.year_opened})</span>` : ''}`],
+        ['Run by', () => '<span class="small">not decided</span>', x => esc(x.b.operator_model || 'unknown')],
+        ['Total cost', () => CR.ok && CR.tot ? `${kusd(CR.tot[0])}–${kusd(CR.tot[2])} <span class="small">if it costs what similar projects did</span>` : '<span class="small">not enough cost figures</span>', x => costCell(x.b)],
+        ['Cost per sq ft, 2025 $', () => CR.ok ? `$${fmt(Math.round(CR.lo))}–$${fmt(Math.round(CR.hi))}` : '—', x => costSf(x.b) ? `$${fmt(costSf(x.b))}${+p.sqft ? `<div class="small">${kusd(costSf(x.b) * +p.sqft)} at this building's size</div>` : ''}` : '<span class="small">—</span>'],
+        ['Money from', () => '—', x => (x.b.financing_stack || []).length ? esc(short(x.b.financing_stack.slice(0, 3).map(f => f.item).join('; '), 150)) : esc(short(x.b.financing || 'not found', 150))],
+        ['Empty or bought to opening', () => '—', x => timeCell(x.b)],
+        ['Status now', () => esc(p.status === 'occupied' ? 'occupied' : p.status === 'unknown' ? 'occupant not confirmed' : p.status), x => `${statusPill(x.b)}${x.b.status_evidence && x.b.status_evidence.url ? ` <a class="cxsrc small" href="${esc(x.b.status_evidence.url)}" target="_blank" rel="noopener">evidence</a>` : ''}`],
+        ['Lesson', () => '—', x => esc(x.b.lesson || '')]];
+      const table = top3.length ? `<div class="tbl"><table class="btt cmp"><thead><tr><th scope="col"></th><th scope="col" class="here">This building</th>${top3.map((x, i) => `<th scope="col">Match ${i + 1}</th>`).join('')}</tr></thead><tbody>${R.map(([lab, f0, f]) => `<tr><th scope="row">${esc(lab)}</th><td class="here">${f0()}</td>${top3.map(x => `<td>${f(x)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>` : '<p class="small">No case passes these filters.</p>';
+      const costBox = CR.ok ? `<div class="wbox"><h3 style="margin:0">What a project like this could cost</h3>
+          <div style="font-size:14px">The ${CR.xs.length} most similar US projects with a sourced cost and floor area spent <b>$${fmt(Math.round(CR.lo))}–$${fmt(Math.round(CR.hi))} per sq ft</b> in 2025 dollars (middle $${fmt(Math.round(CR.med))}).${CR.tot ? ` At ${fmt(CR.sq)} sq ft that is about <b>${kusd(CR.tot[0])}–${kusd(CR.tot[2])}</b> (middle ${kusd(CR.tot[1])}).` : ''}</div>
+          <div class="chips">${CR.xs.map(x => `<span>${esc(x.b.name)} (${Math.round(x.s.v * 100)}% similar): $${fmt(costSf(x.b))}/sq ft${x.b.cost.includes_acquisition ? ' incl. purchase' : ''}</span>`).join('')}</div>
+          <p class="small" style="margin:0">What comparable projects spent, adjusted for inflation only (CPI-U), not for local building costs or this building's condition. Scope differs: some figures include buying the building. A planning range for a first conversation, not a quote and not a price for the building.</p></div>` : '';
+      body.innerHTML = `<div class="ctl" style="margin-bottom:8px;flex-wrap:wrap"><label for="creg">Region</label><select id="creg" class="sel">${regions.map(r => `<option value="${esc(r)}"${r === caseRegion ? ' selected' : ''}>${esc(r === 'all' ? 'All regions' : r)}</option>`).join('')}</select>
+          ${fchip('open', caseF.open, 'Open in 2025-26')}${fchip('mission', caseF.mission, 'Nonprofit, co-op or CDC')}${fchip('cost', caseF.cost, 'Has a sourced cost')}</div>
+        <p class="small" style="margin:0 0 8px">Similarity: building type 35%, history 25%, size 20%, age 10%, income context 10%. ${list.length} of ${(L.buildings || []).length} cases pass the filters.</p>
+        ${table}${costBox}
+        <details class="more" style="margin-top:10px"><summary>All matching cases (${list.length})</summary><div class="casel" style="margin-top:8px">${list.slice(0, 15).map(x => { const b = x.b, s = x.s; return `<div class="casec"><div class="hd"><span class="simv">${Math.round(s.v * 100)}%</span><b>${esc(b.name)}</b><span class="small">${esc(b.city)}, ${esc(b.country)} · ${esc(b.region)}</span><span style="margin-left:auto">${statusPill(b)}</span></div>
           <div class="chips"><span class="${s.t === 1 ? 'y' : ''}">${esc(b.building_type)}</span><span class="${s.h > 0 ? 'y' : ''}">was ${esc(b.orig_cat || 'unknown')}</span><span class="${s.sz > 0.6 ? 'y' : ''}">${b.sqft ? fmt(b.sqft) + ' sq ft' : 'size unknown'}</span><span class="${s.era > 0.6 ? 'y' : ''}">${b.year_built ? 'built ' + b.year_built : 'age unknown'}</span><span class="${s.ctx === 1 ? 'y' : ''}">${esc(b.context_income ? b.context_income + ' income' : 'income unknown')}</span><span>${esc(b.operator_model || '')}</span></div>
           <div>${esc(b.orig_use || '')} → <b>${esc(b.new_use || '')}</b>${b.year_opened ? ' (' + b.year_opened + ')' : ''}</div>
-          ${b.financing ? `<div class="small" style="color:var(--ink-2)">Money: ${esc(b.financing)}</div>` : ''}
-          <div class="small" style="color:var(--ink-2)">${esc(b.outcome || '')}</div>
-          <div><b>Lesson.</b> ${esc(b.lesson || '')}</div><div class="srcs">${src(b.sources)}</div></div>`; }).join('')}</div>`;
-      const cr = document.getElementById('creg'); cr.onchange = e => { caseRegion = e.target.value; drawCases(); };
+          <div class="small" style="color:var(--ink-2)">Cost: ${costCell(b)}${costSf(b) ? ` · $${fmt(costSf(b))} per sq ft in 2025 dollars` : ''} · ${timeCell(b)}</div>
+          ${(b.financing_stack || []).length ? `<div class="chips">${b.financing_stack.slice(0, 5).map(f => `<span>${esc(short(f.item, 60))}</span>`).join('')}</div>` : b.financing ? `<div class="small" style="color:var(--ink-2)">Money: ${esc(b.financing)}</div>` : ''}
+          ${b.status_evidence && b.status_evidence.text ? `<div class="small" style="color:var(--ink-2)">Now: ${esc(b.status_evidence.text)}</div>` : `<div class="small" style="color:var(--ink-2)">${esc(b.outcome || '')}</div>`}
+          <div><b>Lesson.</b> ${esc(b.lesson || '')}</div><div class="srcs">${src(b.sources)}</div></div>`; }).join('')}</div></details>`;
+      document.getElementById('creg').onchange = e => { caseRegion = e.target.value; drawCases(); };
+      body.querySelectorAll('[data-cf]').forEach(b => b.onclick = () => { caseF[b.dataset.cf] = !caseF[b.dataset.cf]; drawCases(); });
     } else {
       const W0 = L.waverly || {};
       document.getElementById('casefor').textContent = 'similarity to Waverly: income 20%, majority-Black 15%, anchor institution 15%, concentrated ownership 15%, historic 10%, length 10%, US 15%';
       const ds = (L.districts || []).map(d => ({ d, s: dsim(d) })).sort((a, b) => b.s.v - a.s.v);
       const top5 = ds.slice(0, 5), tags = {};
       top5.forEach(x => (x.d.interventions || []).forEach(t => { tags[t] = (tags[t] || 0) + 1; }));
+      const pass = d => (!distF.us || ['Baltimore', 'US'].includes(d.region)) && (!distF.low || d.displacement === 'low' || d.displacement === 'moderate')
+        && (!distF.noanchor || !hasAnchor(d)) && (!distF.black || d.majority_black === true);
+      const shown = ds.filter(x => pass(x.d)), cnt = {};
+      (L.districts || []).forEach(d => { cnt[d.displacement || 'unknown'] = (cnt[d.displacement || 'unknown'] || 0) + 1; });
+      const startCell = d => d.start_vacancy_pct != null ? `${d.start_vacancy_pct}% vacant${d.start && d.start.start_year && d.start.start_year !== d.start_year ? ' (' + d.start.start_year + ')' : ''}` : (d.start && d.start.start_income_note ? `<span class="small">${esc(short(d.start.start_income_note, 90))}</span>` : '<span class="small">not found</span>');
+      const anchorCell = d => hasAnchor(d) ? esc(short(d.anchor_institution, 48)) : 'none';
+      const wv = `<tr class="cur"><td class="num">—</td><td><b>Waverly today</b><div class="small">Greenmount Ave, E 29th-E 33rd St</div></td><td>${esc((W0.interventions_past || []).length ? 'c. 2005' : '—')}</td><td>${esc(short(W0.vacancy_note || '', 80))}</td><td>${W0.majority_black ? 'yes' : '—'}</td><td>${esc(short(W0.anchor_institution || 'none', 48))}</td><td>main street, city shopping-district grants, master plan (2013)</td><td>—</td><td>—</td><td class="small">${esc(short(W0.ownership_note || '', 90))}</td></tr>`;
+      const tbl = `<div class="tbl"><table class="btt wide"><thead><tr><th>Similarity</th><th>Street</th><th>Began</th><th>At the start</th><th>Majority-Black</th><th>Anchor institution</th><th>Main levers</th><th>Vacancy change</th><th>Displacement</th><th>2025-26</th></tr></thead><tbody>${wv}${shown.map(x => { const d = x.d; return `<tr><td class="num">${Math.round(x.s.v * 100)}%</td><td><b>${esc(short(d.name, 60))}</b><div class="small">${esc(d.city)}</div></td><td class="num">${d.start_year || '—'}</td><td>${startCell(d)}</td><td>${d.majority_black === true ? 'yes' : d.majority_black === false ? 'no' : '—'}</td><td>${anchorCell(d)}</td><td>${esc((d.interventions || []).slice(0, 4).map(t => t.replace(/_/g, ' ')).join(', ') || '—')}</td><td>${esc(d.vacancy_change || '—')}</td><td>${dpill(d.displacement)}</td><td class="small">${d.status_now && d.status_now.text ? `${esc(short(d.status_now.text, 110))}${d.status_now.source_url ? ` <a class="cxsrc" href="${esc(d.status_now.source_url)}" target="_blank" rel="noopener">source</a>` : ''}` : 'no 2025-26 source found'}</td></tr>`; }).join('')}</tbody></table></div>`;
       body.innerHTML = `<div class="segc"><div class="wbox"><div class="eyebrow">Waverly, Greenmount Ave E 29th-E 33rd St</div>
           <div style="font-size:13px;display:grid;gap:4px"><div>${W0.length_mi || 0.4} miles · ${W0.parcels || 69} parcels · ${esc(W0.historic || '')}</div><div>${esc(W0.vacancy_note || '')}</div><div>${esc(W0.income_note || '')}</div><div>${esc(W0.anchor_institution || '')}</div><div>${esc(W0.ownership_note || '')}</div></div></div>
         <div class="wbox"><h3>What the five closest streets did</h3><div class="chips">${Object.entries(tags).sort((a, b) => b[1] - a[1]).map(([t, n]) => `<span class="${n >= 3 ? 'y' : ''}">${esc(t.replace(/_/g, ' '))} ${n}/5</span>`).join('')}</div>
-          <p class="small" style="margin:0">Displacement on those five: ${top5.map(x => `${esc(x.d.name)} ${esc(x.d.displacement)}`).join('; ')}.</p></div></div>
-        <div class="casel" style="margin-top:12px">${ds.map(x => { const d = x.d, s = x.s; return `<div class="casec"><div class="hd"><span class="simv">${Math.round(s.v * 100)}%</span><b>${esc(d.name)}</b><span class="small">${esc(d.city)}, ${esc(d.country)}${d.length_mi ? ' · ' + d.length_mi + ' mi' : ''}${d.start_year ? ' · from ' + d.start_year : ''}</span><span class="pill${d.displacement === 'high' ? ' warn' : d.displacement === 'low' ? ' ok' : ''}" style="margin-left:auto">displacement: ${esc(d.displacement)}</span></div>
-          <div class="chips"><span class="${s.inc === 1 ? 'y' : ''}">${esc(d.income ? d.income + ' income' : 'income unknown')}</span><span class="${s.blk === 1 ? 'y' : ''}">${d.majority_black === true ? 'majority-Black' : d.majority_black === false ? 'not majority-Black' : 'race unknown'}</span><span class="${d.anchor_institution ? 'y' : ''}">${d.anchor_institution ? 'anchor: ' + esc(String(d.anchor_institution).slice(0, 40)) : 'no anchor'}</span><span class="${d.concentrated_ownership ? 'y' : ''}">${d.concentrated_ownership === true ? 'concentrated ownership' : 'ownership spread'}</span><span class="${d.historic ? 'y' : ''}">${d.historic ? 'historic' : 'not listed'}</span></div>
+          <p class="small" style="margin:0">Displacement on those five: ${top5.map(x => `${esc(x.d.name)} ${esc(x.d.displacement)}`).join('; ')}.</p>
+          <p class="small" style="margin:0">Across all ${(L.districts || []).length} streets: ${['high', 'moderate', 'low', 'unknown'].filter(k => cnt[k]).map(k => `${cnt[k]} ${k}`).join(', ')}.</p></div></div>
+        <details class="more" style="margin-top:10px"><summary>How displacement is rated</summary><table class="btt" style="margin-top:6px"><tbody>${['high', 'moderate', 'low', 'unknown'].map(k => `<tr><td style="width:96px">${dpill(k)}</td><td>${esc(RUB[k] || '')}</td></tr>`).join('')}</tbody></table>
+          <p class="small" style="margin:6px 0 0">Ratings follow the evidence on each card, read on 26 Oct 2026 from the sources linked. A rating that changed when the rubric was written down shows its earlier value.</p></details>
+        <div class="ctl" style="margin:10px 0 8px;flex-wrap:wrap">${fchip('us', distF.us, 'US only')}${fchip('low', distF.low, 'Low or moderate displacement')}${fchip('noanchor', distF.noanchor, 'No anchor institution')}${fchip('black', distF.black, 'Majority-Black')}<span class="small">${shown.length} of ${ds.length} streets</span></div>
+        ${tbl}
+        <details class="more" style="margin-top:10px"><summary>Street cards: who led it, what happened, timeline and evidence (${shown.length})</summary><div class="casel" style="margin-top:8px">${shown.map(x => { const d = x.d, s = x.s; return `<div class="casec"><div class="hd"><span class="simv">${Math.round(s.v * 100)}%</span><b>${esc(d.name)}</b><span class="small">${esc(d.city)}, ${esc(d.country)}${d.length_mi ? ' · ' + d.length_mi + ' mi' : ''}${d.start_year ? ' · from ' + d.start_year : ''}</span><span style="margin-left:auto">displacement ${dpill(d.displacement)}${d.displacement_v1 ? ` <span class="small">(was ${esc(d.displacement_v1)})</span>` : ''}</span></div>
+          <div class="chips"><span class="${s.inc === 1 ? 'y' : ''}">${esc(d.income ? d.income + ' income' : 'income unknown')}</span><span class="${s.blk === 1 ? 'y' : ''}">${d.majority_black === true ? 'majority-Black' : d.majority_black === false ? 'not majority-Black' : 'race unknown'}</span><span class="${hasAnchor(d) ? 'y' : ''}">${hasAnchor(d) ? 'anchor: ' + esc(short(d.anchor_institution, 40)) : 'no anchor'}</span><span class="${d.concentrated_ownership ? 'y' : ''}">${d.concentrated_ownership === true ? 'concentrated ownership' : d.concentrated_ownership === false ? 'ownership spread' : 'ownership unknown'}</span><span class="${d.historic ? 'y' : ''}">${d.historic ? 'historic' : 'not listed'}</span></div>
           <div class="chips">${(d.interventions || []).map(t => `<span>${esc(t.replace(/_/g, ' '))}</span>`).join('')}</div>
-          <div class="small" style="color:var(--ink-2)">${esc(d.lead || '')}. ${esc(d.outcomes || '')}${d.vacancy_change ? ' Vacancy: ' + esc(d.vacancy_change) + '.' : ''}</div>
-          ${d.displacement_note ? `<div class="small" style="color:var(--ink-2)">${esc(d.displacement_note)}</div>` : ''}
-          <div><b>Lesson.</b> ${esc(d.lesson || '')}</div><div class="srcs">${src(d.sources)}</div></div>`; }).join('')}</div>`;
+          <div class="small" style="color:var(--ink-2)">${esc(d.lead || '')} ${esc(d.outcomes || '')}${d.vacancy_change ? ' Vacancy: ' + esc(d.vacancy_change) + '.' : ''}</div>
+          ${(d.milestones || []).length ? `<details><summary class="small">Timeline (${d.milestones.length})</summary><div class="mst">${d.milestones.map(m => `<div><span class="y">${esc(String(m.year || ''))}</span> ${esc(short(m.event, 140))}${m.source_url ? ` <a class="cxsrc" href="${esc(m.source_url)}" target="_blank" rel="noopener">source</a>` : ''}</div>`).join('')}</div></details>` : ''}
+          ${(d.displacement_evidence || []).length ? `<details><summary class="small">Displacement evidence (${d.displacement_evidence.length})</summary><ul class="dev">${d.displacement_evidence.map(e => `<li><b>${esc(e.indicator || '')}</b>: ${esc(e.value || '')}${e.period ? ` <span class="small">(${esc(e.period)})</span>` : ''}${e.source_url ? ` <a class="cxsrc" href="${esc(e.source_url)}" target="_blank" rel="noopener">source</a>` : ''}</li>`).join('')}</ul>${d.displacement_reason ? `<div class="small">Rating: ${esc(d.displacement_reason)}</div>` : ''}</details>` : d.displacement_note ? `<div class="small" style="color:var(--ink-2)">${esc(d.displacement_note)}</div>` : ''}
+          <div><b>Lesson.</b> ${esc(d.lesson || '')}</div><div class="srcs">${src(d.sources)}</div></div>`; }).join('')}</div></details>`;
+      body.querySelectorAll('[data-cf]').forEach(b => b.onclick = () => { distF[b.dataset.cf] = !distF[b.dataset.cf]; drawCases(); });
     }
   }
 
