@@ -26,8 +26,7 @@
         {"t": "Home Accents Today: a 5,000+ sq ft home boutique in Indianapolis (2023)", "u": "https://www.homeaccentstoday.com/retail-profiles/this-first-of-its-kind-retailer-calls-indianapolis-home"},
         {"t": "Resolve Philly: a vintage consignment shop with classes and space rental (2022)", "u": "https://resolvephilly.org/gih/from-vision-to-reality-black-soul-vintage-grand-opening-saturday/"},
         {"t": "Modern Retail: furniture, tariffs and a slow housing market (May 2025)", "u": "https://www.modernretail.co/operations/how-companies-like-havenly-and-rh-are-strategizing-against-tariffs-in-a-slow-housing-market/"}
-      ],
-      "brands": []
+      ]
     },
     {
       "id": "clothing",
@@ -50,8 +49,7 @@
         {"t": "Brooklyn Magazine: Black-owned fashion hubs", "u": "https://www.bkmag.com/?p=80880"},
         {"t": "The Banner: fashion hub on 25th Street (2022)", "u": "https://www.thebanner.com/culture/arts/a-fashion-hub-forms-on-25th-street-45H2TVR3QNB7LMGXVIP33ZK6HI/"},
         {"t": "Retail Dive: 2025 resale report", "u": "https://www.retaildive.com/news/thredup-2025-resale-report-tariffs-fast-fashion/743095/"}
-      ],
-      "brands": []
+      ]
     },
     {
       "id": "grocery",
@@ -75,8 +73,7 @@
         {"t": "Cambridge Day: a nonprofit grocer closes all its stores (May 2025)", "u": "https://www.cambridgeday.com/2025/05/09/daily-table-is-closing-abruptly-in-central-square/"},
         {"t": "Maryland DHCD: NourishMD awardees, incl. a food store in a historic firehouse in Coldstream Homestead Montebello (2026)", "u": "https://news.maryland.gov/dhcd/wp-content/uploads/sites/16/2026/07/Public-NourishMD_Awardees_With_Descriptions.docx-2.pdf"},
         {"t": "Better Waverly: local businesses (Giant, Waverly Ace)", "u": "https://betterwaverly.org/resources/local-businesses/"}
-      ],
-      "brands": []
+      ]
     },
     {
       "id": "hardware",
@@ -98,8 +95,7 @@
         {"t": "Baltimore Magazine: a Baltimore tool library (2015)", "u": "https://www.baltimoremagazine.com/section/community/station-north-tool-library-is-diy-dream/"},
         {"t": "JHU Sustainability: a tool-library class (Jan 2026)", "u": "https://sustainability.jhu.edu/?p=10648"},
         {"t": "Waverly Ace Hardware store page (nearby, 601 E Homestead St)", "u": "https://www.acehardware.com/store-details/14925"}
-      ],
-      "brands": []
+      ]
     },
     {
       "id": "pharmacy",
@@ -124,8 +120,7 @@
         {"t": "Patch: a 1,545 sq ft franchise pharmacy in Old Lyme (Feb 2026)", "u": "https://patch.com/connecticut/thelymes/pharmacy-open-old-lyme-after-walgreens-departs"},
         {"t": "Boston.com: a national chain's ~3,000 sq ft pharmacy-focused store in Roxbury (Oct 2026)", "u": "https://www.boston.com/news/business/2026/10/08/cvs-pharmacy-opens-its-first-pharmacy-focused-location-in-roxbury/"},
         {"t": "The Banner: Baltimore pharmacy deserts (2023)", "u": "https://www.thebanner.com/community/pharmacy-desert-access-medicine-SYPPASPMDNDVJLWL5PPQL6GXSM/"}
-      ],
-      "brands": []
+      ]
     },
     {
       "id": "books_music",
@@ -150,8 +145,7 @@
         {"t": "Publishers Weekly: new bookstore sizes (2015)", "u": "https://www.publishersweekly.com/pw/print/20150216/65607-filling-the-void.html"},
         {"t": "ABA 2025 Annual Report release (May 2026): 605 new stores in 2025", "u": "https://norfolkdailynews.com/online_features/press_releases/the-american-booksellers-association-releases-2025-annual-report--notes-consistent-growth-amidst-challenges/article_801c31c2-f5eb-5165-866e-ca2f9c88a272.html"},
         {"t": "American Booksellers Association: Idea Exchange, stores under 1,000 square feet", "u": "https://bookweb.org/node/100355"}
-      ],
-      "brands": []
+      ]
     },
     {
       "id": "gifts_makers",
@@ -174,8 +168,7 @@
         {"t": "Black Enterprise: BOOST cohort at Harborplace (2024)", "u": "https://www.blackenterprise.com/black-owned-businesses-take-over-baltimoresharborplace/amp/"},
         {"t": "Visit Baltimore: handcrafted souvenirs by Baltimore makers", "u": "https://baltimore.org/what-to-do/handcrafted-souvenirs-by-baltimore-makers/"},
         {"t": "Made Urban: fair consignment percentage", "u": "https://www.madeurban.com/blog/what-is-a-fair-consignment-percentage/"}
-      ],
-      "brands": []
+      ]
     }
   ]
 }

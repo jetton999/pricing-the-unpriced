@@ -374,8 +374,8 @@ details.more > summary { font-size: 14px; }
   </section>
 
   <section data-view="e" class="card" id="retailS" aria-labelledby="rth">
-    <div class="bar"><h2 id="rth">Retail, broken down</h2><span class="small">seven trades · what the frontage has carried · the modern version · reference brands</span></div>
-    <p class="lede" style="font-size:14px">Brands are reference points for what the modern format looks like, not prospects; nobody has been contacted. Counts come from the use records on this page; descriptions and brands from the sources linked.</p>
+    <div class="bar"><h2 id="rth">Retail, broken down</h2><span class="small" id="rtsub">seven trades · what the frontage has carried · the modern version</span></div>
+    <p class="lede" style="font-size:14px" id="rtlede">Counts come from the use records on this page; descriptions from the sources linked. Reference brands for each trade are in the team's report, not on this public page (the sponsor's rule).</p>
     <div class="tbl" id="retailtab"></div>
   </section>
 
@@ -995,14 +995,15 @@ details.more > summary { font-size: 14px; }
   }
   // retail broken down: which trades this building and the street have carried, the modern version, reference brands
   const RT = (D.retail && D.retail.types) || [];
+  const HASB = RT.some(t => (t.brands || []).length);   // only the team's private build carries reference brands
   function retailBlock(p, show) {
     if (!RT.length || !show) return '';
     const rt = p.rt || {}, sq = +p.sqft || 0;
     const rows = RT.map(t => ({ t, here: rt[t.id] || null })).sort((a, b) => ((b.here ? b.here[0] : 0) - (a.here ? a.here[0] : 0)) || (b.t.street - a.t.street)).slice(0, 3);
-    return `<div class="retail"><h3>What kind of shop</h3><div class="small">Retail broken down. The brands are reference points for the modern format, not prospects; nobody has been contacted.</div>
+    return `<div class="retail"><h3>What kind of shop</h3><div class="small">${HASB ? 'Retail broken down. The brands are reference points for the modern format, not prospects; nobody has been contacted.' : 'Retail broken down: the trades this building and the street have carried, and the modern version of each.'}</div>
       ${rows.map(({ t, here }) => { const fits = !sq || (sq >= t.size.low * 0.8 && sq <= t.size.high * 3); return `<div class="rrow"><div><b>${esc(t.name)}</b> <span class="small">${here ? `on record here ${here[1] || ''}${here[2] && here[2] !== here[1] ? '–' + here[2] : ''} (${here[0]} record${here[0] > 1 ? 's' : ''}${here[3] ? ', e.g. ' + esc(here[3]) : ''})` : `on ${t.street} building${t.street === 1 ? '' : 's'} on this frontage, not here`} · usual ${fmt(t.size.low)}–${fmt(t.size.high)} sq ft${fits ? '' : ' (size is a stretch here)'}</span></div>
         <div class="small" style="color:var(--ink-2)">${esc(t.modern_version.split(/(?<=\.)\s/)[0])}</div>
-        <div class="small">Like: ${t.brands.slice(0, 3).map(b => `<a class="cxsrc" href="${esc(b.u)}" target="_blank" rel="noopener" title="${esc(b.why)}">${esc(b.name)}</a> <span>(${esc(b.city.split('(')[0].trim())})</span>`).join(', ')}</div></div>`; }).join('')}
+        ${(t.brands || []).length ? `<div class="small">Like: ${t.brands.slice(0, 3).map(b => `<a class="cxsrc" href="${esc(b.u)}" target="_blank" rel="noopener" title="${esc(b.why)}">${esc(b.name)}</a> <span>(${esc(b.city.split('(')[0].trim())})</span>`).join(', ')}</div>` : ''}</div>`; }).join('')}
       <a class="cxsrc small" href="#retailS">all seven retail trades</a></div>`;
   }
   function drawPanel() {
@@ -1569,13 +1570,17 @@ details.more > summary { font-size: 14px; }
     const el = document.getElementById('retailtab'); if (!el) return;
     if (!RT.length) { document.getElementById('retailS').hidden = true; return; }
     const ctx = (D.retail.context || []).map(c => `<li>${esc(c.t)} <a class="cxsrc" href="${esc(c.u)}" target="_blank" rel="noopener">source</a></li>`).join('');
-    el.innerHTML = `<table class="btt wide"><thead><tr><th>Trade</th><th>On this frontage</th><th>The modern version</th><th>Usual size</th><th>Reference brands</th><th>Watch out for</th></tr></thead><tbody>
+    if (HASB) {
+      document.getElementById('rtsub').textContent = 'seven trades · what the frontage has carried · the modern version · reference brands';
+      document.getElementById('rtlede').textContent = 'Team build: brands are reference points for what the modern format looks like, not prospects; nobody has been contacted. They stay out of the public repo (the sponsor\'s rule). Counts come from the use records on this page; descriptions and brands from the sources linked.';
+    }
+    el.innerHTML = `<table class="btt wide"><thead><tr><th>Trade</th><th>On this frontage</th><th>The modern version</th><th>Usual size</th>${HASB ? '<th>Reference brands</th>' : ''}<th>Watch out for</th></tr></thead><tbody>
       ${RT.map(t => `<tr><td><b>${esc(t.name)}</b><div class="small">money: see ${esc(FM[t.fmt] ? FM[t.fmt].name.toLowerCase() : t.fmt)}</div></td><td class="num">${t.street} building${t.street === 1 ? '' : 's'}</td><td>${esc(t.modern_version.split(/(?<=\.)\s/).slice(0, 2).join(' '))}</td>
         <td class="num">${fmt(t.size.low)}–${fmt(t.size.high)} sq ft${t.size.source ? ` <a class="cxsrc" href="${esc(t.size.source.u)}" target="_blank" rel="noopener">source</a>` : ''}</td>
-        <td>${t.brands.map(b => `<div><a class="cxsrc" href="${esc(b.u)}" target="_blank" rel="noopener" title="${esc(b.why)}">${esc(b.name)}</a> <span class="small">${esc(b.city.split('(')[0].trim())}</span></div>`).join('')}<div class="small">hover a name for why it is a reference</div></td>
+        ${HASB ? `<td>${(t.brands || []).map(b => `<div><a class="cxsrc" href="${esc(b.u)}" target="_blank" rel="noopener" title="${esc(b.why)}">${esc(b.name)}</a> <span class="small">${esc(b.city.split('(')[0].trim())}</span></div>`).join('')}<div class="small">hover a name for why it is a reference</div></td>` : ''}
         <td class="small">${esc(t.caution.t)}${t.caution.u ? ` <a class="cxsrc" href="${esc(t.caution.u)}" target="_blank" rel="noopener">source</a>` : ''}</td></tr>`).join('')}
       </tbody></table>${ctx ? `<h3 style="margin-top:10px">Already nearby</h3><ul class="checks">${ctx}</ul>` : ''}
-      <p class="small">"On this frontage" counts the buildings with at least one use record naming the trade (shoes and jewelry count under clothing). Researched ${esc(D.retail.accessed_on || '')}; brands not confirmed open in 2025-26 are left out.</p>`;
+      <p class="small">"On this frontage" counts the buildings with at least one use record naming the trade (shoes and jewelry count under clothing). Researched ${esc(D.retail.accessed_on || '')}${HASB ? '; brands not confirmed open in 2025-26 are left out' : ''}.</p>`;
   }
 
   // ---------------- compare uses side by side

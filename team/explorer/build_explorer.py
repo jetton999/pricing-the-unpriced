@@ -3,7 +3,12 @@
 
 Run from anywhere:  python3 team/explorer/build_explorer.py
 Inputs: team/extractor/out, team/evidence, team/tenants, team/week1/out, properties.csv, property_incidents.csv,
-and the two hand-made files beside this script (concepts.json, library.json). Output: index.html beside this script.
+and the hand-made files beside this script (concepts.json, library.json, retail_types.json, typical_sqft.json).
+Output: index.html beside this script.
+
+The team's private copy is built by the same script with PTU_LIBRARY, PTU_CONCEPTS, PTU_PRIVATE_BRANDS,
+PTU_PRIVATE_SIZES and PTU_OUT pointing at files kept outside the repo (the reference brands, which the sponsor
+keeps out of the public repo; PTU_BARE=1 writes the page without its html wrapper). Unset, it reads repo files only.
 
 Same schema as screen_v0.py's explorer_data.json, so the page template keeps working.
 Standard library only."""
@@ -62,7 +67,7 @@ BENCH = {
     'food & drink': dict(small=(25.0, 37.5), large=(15.0, 25.0),
                          note='Rent: fitted 800 SF cafe suites in Hampden ask $30-37.50/SF NNN (CAFE-01, CAFE-02); the 3226 rent roll implies at least $25.23/SF gross (CAFE-04). Sales: an owner-run Baltimore tea cafe reported $250k-285k a year (CAFE-03).'),
     'retail goods': dict(small=(20.0, 30.0), large=(10.9, 20.0),
-                         note='Rent: large-format space asks $17-20/SF NNN in Hampden (SHOW-03, SHOW-04); a fully leased 14,000 SF 1920s building earns about $10.91/SF incl. CAM (SHOW-05). Sales: $167-185 per SF of showroom (SHOW-08, a furniture chain 10-K).'),
+                         note="Rent: large-format space asks $17-20/SF NNN in Hampden (SHOW-03, SHOW-04); a fully leased 14,000 SF 1920s building earns about $10.91/SF incl. CAM (SHOW-05). Sales: $167-185 per SF of showroom (SHOW-08, a furniture chain's 10-K)."),
 }
 NOT_CAND = {'residential', 'institutional & religious', 'vacant'}
 
@@ -249,7 +254,7 @@ for q in data['props']:
     other = by_side.get(ACROSS.get(q['side'], ''), [])
     if other and q['lat']:
         q['nb']['across'] = [o['id'] for o in sorted(other, key=lambda o: abs(o['lat'] - q['lat']))[:2]]
-LIB = json.load(open(os.path.join(HERE, 'library.json'), encoding='utf-8'))
+LIB = json.load(open(os.environ.get('PTU_LIBRARY') or os.path.join(HERE, 'library.json'), encoding='utf-8'))
 data['lib'] = {k: LIB[k] for k in ('buildings', 'districts', 'waverly', 'aversion', 'requested', 'adjacency', 'segments', 'history_value', 'match_lessons')}
 # the page shows the sponsor's own rules; personal and ownership detail stays in the research report, not in shared page data
 data['lib']['sponsor'] = {'guardrails': LIB['sponsor'].get('guardrails', []), 'goals': LIB['sponsor'].get('goals', [])}
@@ -336,7 +341,7 @@ data['zoning_src'] = 'https://codes.baltimorecity.gov/us/md/cities/baltimore/cod
 data['urp_src'] = 'https://www.baltimorecity.gov/media/document/waverlybusinessareaurppdf'
 
 # draft concepts for the three empty sponsor buildings (hand-written, every fact linked to a source)
-C = json.load(open(os.path.join(HERE, 'concepts.json'), encoding='utf-8'))
+C = json.load(open(os.environ.get('PTU_CONCEPTS') or os.path.join(HERE, 'concepts.json'), encoding='utf-8'))
 data['concepts'] = {k: C[k] for k in C['order']}
 data['concept_order'] = C['order']
 data['concept_note'] = C['_note']
@@ -353,14 +358,17 @@ if os.path.exists(_cp):
 # extra layers: the sponsor's storefront check, heritage revivals, retail broken down, survey photos (extras.py)
 sys.path.insert(0, HERE)
 import extras  # noqa: E402
-extras.apply(REPO, data)
+extras.apply(REPO, data, {'brands': os.environ.get('PTU_PRIVATE_BRANDS'), 'sizes': os.environ.get('PTU_PRIVATE_SIZES')})
 page = open(os.path.join(HERE, 'template.html'), encoding='utf-8').read()
 blob = json.dumps(data, separators=(',', ':'), ensure_ascii=False).replace('</', '<\\/')
 assert page.count('__DATA__') == 1
-html = ('<!doctype html>\n<html lang="en">\n<meta charset="utf-8">\n<meta name="viewport" content="width=device-width, initial-scale=1">\n'
-        + page.replace('__DATA__', blob) + '\n</html>\n')
-open(os.path.join(HERE, 'index.html'), 'w', encoding='utf-8').write(html)
-print('wrote index.html,', len(html) // 1024, 'KB;', 'props', len(data['props']), data['totals'], data['silence'])
+html = page.replace('__DATA__', blob)
+if not os.environ.get('PTU_BARE'):
+    html = ('<!doctype html>\n<html lang="en">\n<meta charset="utf-8">\n<meta name="viewport" content="width=device-width, initial-scale=1">\n'
+            + html + '\n</html>\n')
+OUT = os.environ.get('PTU_OUT') or os.path.join(HERE, 'index.html')
+open(OUT, 'w', encoding='utf-8').write(html)
+print('wrote', os.path.basename(OUT) + ',', len(html) // 1024, 'KB;', 'props', len(data['props']), data['totals'], data['silence'])
 print([(m['cat'], m['then'], m['then_base'], m['now'], m['now_base']) for m in data['mix']])
 print(data['validation'])
 print(collections.Counter(s['cand1'].split(' - ')[0] for s in screen).most_common())
