@@ -110,7 +110,7 @@ for pid, p in props.items():
         elif r['cat'] == 'food & drink' and sqft and sqft <= 3000:
             fmt = 'small cafe / counter service'
         if r['cat'] == 'food & drink' and r['bar_share'] >= 0.5:
-            why += '; most of the record is a saloon or tavern, and a new tavern is barred by the urban renewal plan (restaurant or cafe allowed)'
+            why += '; most of the record is a saloon or tavern, and a new tavern is barred by the urban renewal plan (a restaurant or cafe is allowed and can serve alcohol)'
         cands.append(dict(use=r['cat'], format=fmt, score=round(2 * r['nd'] + min(r['ne'], 20) / 5 - pen, 2), why=why))
     cands.sort(key=lambda x: -x['score'])
     if not cands and any(r['cat'] == 'residential' for r in proven[pid]):
@@ -314,12 +314,12 @@ data['n_summary'] = n_summary
 # ---- candidate formats: heritage links, C-1 zoning status (Table 10-301), urban renewal plan, size range (team assumption)
 data['formats'] = [
     dict(id='cafe', name='Cafe or sit-down restaurant', cat='food & drink', her=[['food & drink', 1]], z='Restaurant', zs='P', size=[800, 4000],
-         note='Porch or sidewalk seating is outdoor dining: a conditional use in C-1 (Table 10-301, note 5).'),
+         note='Porch or sidewalk seating is outdoor dining: a conditional use in C-1 (Table 10-301, note 5). The urban renewal plan bars taverns, not restaurants, so a restaurant can serve alcohol (sponsor, 26 Oct 2026; to confirm on the plan text).'),
     dict(id='counter', name='Take-away counter (coffee, ice cream)', cat='food & drink', her=[['food & drink', 1]], z='Carry-Out Food Shop', zs='CB', size=[250, 1500],
          note='Serving mostly to go in disposable containers makes it a carry-out food shop (zoning code 1-303).'),
     dict(id='foodmaker', name='Food maker with a shop (bakery, roaster, ice cream)', cat='food & drink', her=[['food & drink', 0.8], ['production & light industry', 0.8]], z='Food Processing: Light', zs='P', size=[1000, 6000], note=''),
     dict(id='tavern', name='Bar or tavern', cat='food & drink', her=[['food & drink', 1]], bar=True, z='Tavern', zs='CB', urp=True, size=[800, 5000],
-         note='The urban renewal plan bars new taverns, liquor stores and pawnshops (since 4 Dec 1995).'),
+         note="The urban renewal plan bars new taverns, liquor stores and pawnshops (since 4 Dec 1995). It bars taverns, not restaurants: a restaurant can serve alcohol, and the sponsor notes its licence is easier to get (26 Oct 2026; to confirm on the plan's pages, City Archives BRG48-43-10-9 pp. 4-29, not yet filed)."),
     dict(id='shop', name='Small shop', cat='retail goods', her=[['retail goods', 1]], z='Retail Goods Establishment (no alcohol)', zs='P', size=[400, 2500], note=''),
     dict(id='showroom', name='Showroom or large shop', cat='retail goods', her=[['retail goods', 1]], z='Retail Goods Establishment (no alcohol)', zs='P', size=[2500, 12000], note=''),
     dict(id='bike', name='Bike shop', cat='retail goods', her=[['automotive', 0.6], ['retail goods', 0.4]], z='Retail Goods Establishment (no alcohol)', zs='P', size=[800, 4000],
