@@ -1,6 +1,6 @@
 # Model card: Greenmount frontage explorer
 
-Release candidate, 26 October 2026. Covers the use score (v0.4), the block plan (v1), the comps at three levels,
+Release candidate, 9 November 2026. Covers the use score (v0.4), the block plan (v2), the comps at three levels,
 the typical units and the displacement flags. The rent and revenue ranges have their own card: `team/comps/MODEL_CARD.md`.
 
 ## What it is for
@@ -39,9 +39,10 @@ the typical units and the displacement flags. The rent and revenue ranges have t
    The weights are shares of one score and always add to 100%; they are team judgement, and four presets show how
    much the ranking depends on them. A label says how firm each verdict is: the share of 1,000 priority mixes in
    which it comes first.
-3. **Block plan.** Uses are placed one at a time under a cap of three of a kind per block side. A search then
-   ranks whole plans by the rent the uses could support (typical, cautious or bad year), and checks itself
-   against an exhaustive search.
+3. **Block plan.** Uses are placed one at a time under a cap of three of a kind per block side; each storefront
+   gets a sheet with its use, reasons, rent and risks. A search then finds the plan that could support the most
+   rent (typical, cautious or bad year) for comparison, and checks itself against an exhaustive search. A plan's
+   total is the sum of its sheets.
 4. **Comps at three levels.** 32 reuse buildings and 22 corridors, each with sources. Buildings are matched on
    type, history, size, age and income context; streets on income, race, anchor, ownership, history, length and
    country. Project costs are total cost divided by floor area, adjusted to 2025 dollars with CPI-U. They are
@@ -73,10 +74,11 @@ the typical units and the displacement flags. The rent and revenue ranges have t
 ## Where it fails or is weak
 
 - **Thin records.** About ten parcels have little on record (the silence map), so history says little about them.
-- **Weights not agreed.** The weights are not the sponsor's yet. A close call (labelled on the page) can flip
-  with them.
-- **Uses that cannot be ranked by money.** A use with no sales benchmark and fewer than three listings (a food
-  maker, a maker workshop) gets no money estimate, and plans that include it understate rent.
+- **Weights are a judgement.** The sponsor agreed the default set on 9 November 2026. A close call (labelled on
+  the page) can still flip under other weights.
+- **Uses on thin rent evidence.** A use with no sales benchmark and fewer than three listings (a food maker, a
+  maker workshop) is left out of the search for the highest-rent plan. When the best-fit plan places one, its
+  listing-based range is counted in the plan's total and the sheet says how many listings it rests on.
 - **Rare buildings.** Theatres, churches and banks have few comparable projects with costs, so cost ranges are
   wide or missing.
 - **Costs.** Project costs differ in scope (some include buying the building) and exclude this building's
