@@ -338,7 +338,7 @@ details.more > summary { font-size: 14px; }
 
 <div class="wrap">
   <header>
-    <div class="eyebrow">Waverly, Baltimore · Greenmount Ave, E 29th to E 33rd St · 26 Oct 2026<span class="xcol"> · extractor v1 · score v0.3 · comps engine v1 · back-test v2 · comps at three levels</span></div>
+    <div class="eyebrow">Waverly, Baltimore · Greenmount Ave, E 29th to E 33rd St · 2 Nov 2026<span class="xcol"> · extractor v1 · score v0.4 · comps engine v1 · back-test v2 · comps at three levels</span></div>
     <h1>Greenmount Frontage Explorer</h1>
     <p class="lede">For every building on the Greenmount frontage, E 29th to E 33rd St: what it was, what it could become, what that could earn, and whether the mix works as a block. Every answer links to its sources.</p>
     <ol class="start"><li>Pick a building on the map</li><li>Read its best fit, the money and the history on the right</li><li>Try a mix for the whole block in <b>Block plan</b></li><li>See how it compares in <b>Comps</b></li></ol>
@@ -389,7 +389,7 @@ details.more > summary { font-size: 14px; }
   </section>
 
   <section data-view="e" class="card" id="method" aria-labelledby="mh">
-    <div class="bar"><h2 id="mh">How the recommendation works</h2><span class="small">score v0.3 · change the weights and every view updates</span></div>
+    <div class="bar"><h2 id="mh">How the recommendation works</h2><span class="small">score v0.4 · change the weights and every view updates</span></div>
     <p class="lede" style="font-size:14px">After two rule filters, each use is scored on six inputs: heritage, saturation, size, community, neighbours and precedents. Change the weights and every view updates.<span class="xcol"> Team and sponsor votes are recorded beside each score; they change it only if you switch that on below. The block plan places uses one at a time under a saturation limit, and the comps engine adds what each use could pay and earn.</span> The concepts are written text drafted with AI assistance (Claude) from cited sources, for the team to review.</p>
     <ol class="flow" id="flow"></ol>
     <div class="grid2 even">
@@ -510,7 +510,7 @@ details.more > summary { font-size: 14px; }
   const CX = D.concepts || {}, CXO = D.concept_order || [];
   let cxSel = CXO[0];
 
-  // ---------------- score engine (v0.3): six factors after the rule filters
+  // ---------------- score engine (v0.4): six factors after the rule filters
   const L = D.lib || {};
   const AVER = {}; (L.aversion || []).forEach(a => { if (a.format_id) AVER[a.format_id] = a; });
   const EXTRA = [
@@ -520,13 +520,19 @@ details.more > summary { font-size: 14px; }
     { id: 'liquor', name: 'Liquor or package store', cat: 'retail goods', her: [['food & drink', 1]], bar: true, z: 'Retail Goods Establishment (with alcohol)', zs: 'CO', urp: true, size: [800, 4000], note: 'Barred by the urban renewal plan; also 300 ft from other alcohol retail (14-336) and from churches and schools (state law 12-1605).' },
     { id: 'pawn', name: 'Pawn shop', cat: 'retail goods', her: [['retail goods', 0.5]], z: 'Pawn Shop', zs: 'NP', urp: true, size: [600, 3000], note: 'Not permitted in C-1 and barred by the urban renewal plan.' }];
   const FMT = (D.formats || []).concat(EXTRA), FM = Object.fromEntries(FMT.map(f => [f.id, f]));
+  // score v0.4 (team decision, 2 Nov 2026): the size fit uses each use's sourced typical range (Money tab) where there
+  // is one, and keeps the team's range otherwise. Studios and offices are many small units in one building, so they may
+  // split it into up to 12 units; every other use into up to 3, as before.
+  const SZ = (D.sizes && D.sizes.formats) || {};
+  const MANY_UNITS = { studio: 12, office: 12 };
+  FMT.forEach(f => { f.sizeTeam = f.size.slice(); const z = SZ[f.id]; if (z && z.low && z.high) f.size = [z.low, z.high]; f.maxUnits = MANY_UNITS[f.id] || 3; });
   FMT.forEach(f => { f.av = AVER[f.id] || (f.id === 'tavern' ? AVER.tavern : null); });
   const REQ = {}; (L.requested || []).forEach(r => (r.format_ids || []).forEach(id => { (REQ[id] = REQ[id] || []).push(r); }));
   const MIXC = Object.fromEntries((D.mix || []).map(m => [m.cat, m]));
   const WT = { h: 35, s: 20, f: 15, c: 10, a: 10, k: 10 };
   // weight presets: starting points to compare, until the sponsor agrees a documented set
   const WPRE = {
-    team: { name: 'Team default', w: { h: 35, s: 20, f: 15, c: 10, a: 10, k: 10 }, note: "The team's weights (score v0.3): history leads, then room on the block and size. The sponsor has not yet agreed a set." },
+    team: { name: 'Team default', w: { h: 35, s: 20, f: 15, c: 10, a: 10, k: 10 }, note: "The team's weights (score v0.4): history leads, then room on the block and size. The sponsor has not yet agreed a set." },
     history: { name: 'History first', w: { h: 55, s: 15, f: 10, c: 7, a: 7, k: 6 }, note: 'History carries over half the weight: what a building has carried decides most of the score.' },
     neigh: { name: 'Neighbourhood first', w: { h: 20, s: 20, f: 10, c: 25, a: 15, k: 10 }, note: 'What residents asked for and how a use fits its neighbours lead; history counts less.' },
     prec: { name: 'Proven elsewhere', w: { h: 20, s: 15, f: 15, c: 10, a: 10, k: 30 }, note: 'How similar buildings elsewhere turned out leads: uses that worked in comparable reuses score higher.' } };
@@ -588,6 +594,7 @@ details.more > summary { font-size: 14px; }
     let v = fit1(s, f.size), how = 'as one unit';
     if (s >= 2500) { const v2 = 0.85 * fit1(s / 2, f.size); if (v2 > v) { v = v2; how = 'split in two'; } }
     if (s >= 4000) { const v3 = 0.8 * fit1(s / 3, f.size); if (v3 > v) { v = v3; how = 'split in three'; } }
+    for (let n = 4; n <= f.maxUnits; n++) { if (s / n < f.size[0]) break; const vn = 0.8 * fit1(s / n, f.size); if (vn > v) { v = vn; how = 'split into ' + n + ' units'; } }
     return [v, how];
   }
   // community: residents asked for it, or pushed back on it (research: community_aversion)
@@ -731,7 +738,7 @@ details.more > summary { font-size: 14px; }
     return F(0) >= p ? 0 : bisect(F, p, 50);
   }
   function canPay(d, n = 400) { if (!(d.A && d.B)) return null; let s = 0; for (let j = 0; j < n; j++) s += 1 - cdfB(d, qLn((j + 0.5) / n, d.A)); return s / n; }
-  const unitsOf = (p, f) => p.sqft ? Math.max(1, Math.min(3, Math.ceil(+p.sqft / f.size[1]))) : 1;
+  const unitsOf = (p, f) => p.sqft ? Math.max(1, Math.min(f.maxUnits || 3, Math.ceil(+p.sqft / f.size[1]))) : 1;
   const usableOf = (p, f) => p.sqft ? Math.min(+p.sqft, unitsOf(p, f) * f.size[1]) : null;
   const rankable = fid => { const c = cfOf(fid); return !!(c && c.rankable); };
   const apprOf = f => (CO && CO.approval && CO.approval[f.zs]) ?? 1;
@@ -807,17 +814,16 @@ details.more > summary { font-size: 14px; }
     return (SMAA[p.id] = { key, rows, label, when, N });
   }
   const pctR = x => Math.round(x * 20) * 5 + '%';
-  const SZ = (D.sizes && D.sizes.formats) || {};
   function drawSizesOnce() {
     const el = document.getElementById('earnsize'); if (!el) return;
     const ids = Object.keys(SZ); if (!ids.length) { document.getElementById('sizesD').hidden = true; return; }
     el.innerHTML = `<p class="small" style="margin:0 0 8px">${esc(D.sizes.about)} ${esc(D.sizes.brands)}</p>
-      <div class="tbl"><table class="btt wide"><thead><tr><th>Use</th><th>Typical, sq ft</th><th>Range, sq ft</th><th>Range used for size fit (team)</th><th>Basis</th><th>Sources</th></tr></thead><tbody>
+      <div class="tbl"><table class="btt wide"><thead><tr><th>Use</th><th>Typical, sq ft</th><th>Range, sq ft</th><th>Team's earlier range (score v0.3)</th><th>Basis</th><th>Sources</th></tr></thead><tbody>
       ${ids.map(id => { const z = SZ[id], f = FM[id]; return `<tr><td>${f ? `<span class="sw" style="background:${cssFill(f.cat)};margin-right:6px;vertical-align:-1px"></span>` : ''}${esc(f ? f.name : z.name)}</td><td class="num"><b>${fmt(z.typical)}</b></td><td class="num">${fmt(z.low)}–${fmt(z.high)}</td>
-        <td class="num">${f ? `${fmt(f.size[0])}–${f.size[1] >= 100000 ? 'any' : fmt(f.size[1])}` : '—'}</td><td class="small">${esc(z.basis)}${z.note ? `<div style="color:var(--ink-2)">${esc(z.note)}</div>` : ''}</td>
+        <td class="num">${f ? `${fmt(f.sizeTeam[0])}–${f.sizeTeam[1] >= 100000 ? 'any' : fmt(f.sizeTeam[1])}` : '—'}</td><td class="small">${esc(z.basis)}${z.note ? `<div style="color:var(--ink-2)">${esc(z.note)}</div>` : ''}</td>
         <td class="small">${z.sources.map(x => `<div><a class="cxsrc" href="${esc(x.u)}" target="_blank" rel="noopener" title="${esc(x.q)}">${esc(x.t)}</a></div>`).join('')}</td></tr>`; }).join('')}
       </tbody></table></div>
-      <p class="small">Hover a source for the quote it supports. Read on ${esc(D.sizes.accessed_on)}. The size fit in the score keeps the team's wider ranges for now: moving it to these sourced ranges changes rankings, so it is left for the sponsor to agree (score v0.4).</p>`;
+      <p class="small">Hover a source for the quote it supports. Read on ${esc(D.sizes.accessed_on)}. Since score v0.4 (team decision, 2 Nov 2026) the size fit in the score uses these sourced ranges; the team's earlier, wider ranges are shown for comparison. A typical range describes one unit, so a larger building is scored as split into units: up to 3, or up to 12 for studios and offices.</p>`;
   }
   // how firm the verdict is: the share of 1,000 priority mixes (factor weights and how much money counts) in which it comes first
   function robust(p, best) {
@@ -1247,7 +1253,7 @@ details.more > summary { font-size: 14px; }
       'Rent ranges rest on asking rents (5 of them in Waverly, none for a bike shop) and on national sales benchmarks; revenue ranges cannot yet be checked against local operators.',
       'Corridor saturation is measured against the 1920-23 mix: a use is not penalised until its share of storefronts passes its 1920s share. Being rare now earns no bonus, because the back-test shows that trades which left main streets have not come back.',
       'The weights are team judgement. Move the sliders to see how much the ranking depends on them.',
-      'Usual sizes per format are team assumptions, not industry data.',
+      'Usual sizes are the sourced typical ranges of each use (Money tab), which describe one unit; housing has none and keeps the team\'s range.',
       'Building condition and repair cost are not in the score; the readiness flags (vacant-building notice, violations, receivership) show what the public record says. The sponsor\'s draft condition assessments are not used.',
       'Precedent similarity uses building type, history, size, age and income context only; most cases lack a confirmed 2025-26 status.',
       'The community layer rests on news, testimony and plans, not a survey of residents. A short survey on the street would test it.',
@@ -1284,7 +1290,7 @@ details.more > summary { font-size: 14px; }
     const t = WL.reduce((a, [k]) => a + WT[k], 0) || 1, pc = k => Math.round(100 * WT[k] / t) + '%';
     WL.forEach(([k]) => { document.getElementById('wn-' + k).textContent = pc(k); });
     drawPie(hot);
-    document.getElementById('formula').innerHTML = `score = heritage × ${pc('h')} + room × ${pc('s')} + size × ${pc('f')} + community × ${pc('c')} + neighbours × ${pc('a')} + precedents × ${pc('k')}, then times 0.75 for a conditional use, times 0.3 / 0.6 / 0.85 for a strong / moderate / weak community objection, and, only when switched on, times the feedback multiplier. Uses barred by the plan or not permitted in C-1 are left out. <b>Heritage</b> = decades on record at the building ÷ 5 (capped), halved for a single record, +0.1 for two kinds of source; with no record, the street's record at a third of the weight. <b>Room</b> = 1 − saturation: half a block-side term (0 of the same use → 1, 1 → 0.6, 2 → 0.25, 3+ → 0) and half a corridor term (1 while the use's storefront share is at or below its 1920-23 share). <b>Size</b> = 1 inside the usual range, 0 at three times outside it. <b>Neighbours</b> = the weighted mean of the matrix values for next-door and across-the-street uses, scaled to 0-1. <b>Precedents</b> = among the 8 most similar reuse cases, the similarity-weighted share that went this way and are still open (closed cases count against), doubled and capped at 1. <b>Feedback</b> = 1 + 0.1 × (agree − disagree), kept between 0.6 and 1.2.`;
+    document.getElementById('formula').innerHTML = `score = heritage × ${pc('h')} + room × ${pc('s')} + size × ${pc('f')} + community × ${pc('c')} + neighbours × ${pc('a')} + precedents × ${pc('k')}, then times 0.75 for a conditional use, times 0.3 / 0.6 / 0.85 for a strong / moderate / weak community objection, and, only when switched on, times the feedback multiplier. Uses barred by the plan or not permitted in C-1 are left out. <b>Heritage</b> = decades on record at the building ÷ 5 (capped), halved for a single record, +0.1 for two kinds of source; with no record, the street's record at a third of the weight. <b>Room</b> = 1 − saturation: half a block-side term (0 of the same use → 1, 1 → 0.6, 2 → 0.25, 3+ → 0) and half a corridor term (1 while the use's storefront share is at or below its 1920-23 share). <b>Size</b> = 1 inside the usual range (the sourced typical range of the use), 0 at three times outside it; a building can be split into two units (× 0.85) or three (× 0.8), and for studios and offices into as many as 12 (× 0.8). <b>Neighbours</b> = the weighted mean of the matrix values for next-door and across-the-street uses, scaled to 0-1. <b>Precedents</b> = among the 8 most similar reuse cases, the similarity-weighted share that went this way and are still open (closed cases count against), doubled and capped at 1. <b>Feedback</b> = 1 + 0.1 × (agree − disagree), kept between 0.6 and 1.2.`;
   }
 
   // ---------------- block plan (assemblage optimiser v0)
@@ -1620,7 +1626,7 @@ details.more > summary { font-size: 14px; }
   function drawRoad() {
     const E = [
       ['done', 'What was it?', 'A sourced use timeline for every parcel.', 'Done for the 69 frontage parcels'],
-      ['demo', 'What could it become?', 'Ranked uses with reasons: heritage, rules, saturation, community, neighbours, precedents.', 'Score v0.3 on this page, with comparison and feedback'],
+      ['demo', 'What could it become?', 'Ranked uses with reasons: heritage, rules, saturation, community, neighbours, precedents.', 'Score v0.4 on this page, with comparison and feedback'],
       ['demo', 'What would it earn?', 'Rent and revenue range for each use, from comps, with the rent each use could support.', 'Comps engine v1 on this page: 58 listings, 192 benchmarks, 45 operators; a sourced typical unit and total rent a year for each use; eight benchmark neighbourhoods'],
       ['demo', 'Does the mix work as a block?', 'A use plan for a block or a sponsor assemblage, under a saturation limit.', 'Plan v1 on this page: plans ranked by the rent the uses could support, with saturation, neighbour and rent-pressure checks'],
       ['demo', 'Who is it for?', 'The customer groups that would use, lease or buy each building, their obstacles and the programmes that help.', 'Seven groups matched on this page'],
@@ -1628,7 +1634,7 @@ details.more > summary { font-size: 14px; }
     document.getElementById('endstate').innerHTML = `<p class="lede" style="font-size:14px">The final deliverable answers five questions for any address on the corridor, and for any block the sponsor names, with every answer traced to a source. It ships as a pilot in the sponsor's Property Dossier tool, with the code and tests, a validation report, a model card and the final report.</p>
       <div class="end" style="margin-top:12px">${E.map(([s, q, d, n]) => `<div class="endc"><span class="st ${s}">${s === 'done' ? 'done' : s === 'demo' ? 'working draft' : 'next'}</span><div class="q">${esc(q)}</div><div>${esc(d)}</div><div class="small">${esc(n)}</div></div>`).join('')}</div>`;
     const M = [
-      ['now', '26 Oct 2026', 'Now', 'Timelines for 69 parcels; score v0.3 with weights that add to 100% and a robustness label; comps engine v1 with typical units and total rents; plans ranked by supportable rent with a rent-pressure check; back-test v2 on blocks not seen; comps at three levels (buildings, streets, neighbourhoods) with a displacement rubric; concepts for three buildings'],
+      ['now', '2 Nov 2026', 'Now', 'Timelines for 69 parcels; score v0.4 with sourced sizes, weights that add to 100% and a robustness label; comps engine v1 with typical units and total rents; plans ranked by supportable rent with a rent-pressure check; back-test v2 on blocks not seen; comps at three levels (buildings, streets, neighbourhoods) with a displacement rubric; concepts for three buildings'],
       ['', '4 Nov 2026', 'Midterm', 'Validation memo with four blind timelines; precedent memo; extractor v1.1; this page as the pilot'],
       ['', 'Dec 2026', 'End of fall term', 'Comps engine v1.1 (calls for the unlisted Greenmount rents, private calibration if approved); generator v1 with building-design match; the 97 focus-area parcels'],
       ['', 'Mar 2027', 'Spring validation', 'Back-test repeated on four blind reference timelines; weight sensitivity; demand data if feasible; optimiser v1 for a sponsor-named assemblage'],
@@ -1636,9 +1642,9 @@ details.more > summary { font-size: 14px; }
     document.getElementById('miles').innerHTML = M.map(([c, d, t, x]) => `<div class="mile ${c}"><span class="d">${esc(d)}</span><span class="t">${esc(t)}</span><span>${esc(x)}</span></div>`).join('');
     const R = [
       ['Use-history timelines', 'done', '69 frontage parcels, 566 spans, 8 kinds of source', 'Blind references; fix the summary rows; side streets', 'Whole corridor, with its gap map'],
-      ['Candidate-use generator', 'demo', 'Score v0.3: heritage, rules, saturation, size, community, neighbours, precedents, feedback; four weight presets and a label for how firm each verdict is', 'Weights agreed with the sponsor; a short resident survey to test the community layer', 'Generator v1 with documented weights'],
+      ['Candidate-use generator', 'demo', 'Score v0.4: heritage, rules, saturation, size, community, neighbours, precedents, feedback; four weight presets and a label for how firm each verdict is', 'Weights agreed with the sponsor; a short resident survey to test the community layer', 'Generator v1 with documented weights'],
       ['Customer matching', 'demo', 'Seven customer groups with ranked obstacles and programmes; buildings ranked by fit', 'Interviews with 5-10 businesses per group; an intake form for both sides', 'Matching with tracked 12, 24 and 36-month survival against the BLS benchmark (about 68% at 3 years)'],
-      ['Comps engine', 'demo', 'Engine v1: rent and revenue ranges for 14 uses, held-out check, other cities side by side; typical units and total rents; eight benchmark neighbourhoods on public rents and vacancy', 'Calls for the Greenmount rents listed as "contact for pricing"; private check with the NDA operator if the sponsor approves; Census data for catchment spending; size fit on the sourced ranges (score v0.4) if the sponsor agrees', 'Comps library, engine and model card'],
+      ['Comps engine', 'demo', 'Engine v1: rent and revenue ranges for 14 uses, held-out check, other cities side by side; typical units and total rents; eight benchmark neighbourhoods on public rents and vacancy', 'Calls for the Greenmount rents listed as "contact for pricing"; private check with the NDA operator if the sponsor approves; Census data for catchment spending', 'Comps library, engine and model card'],
       ['Assemblage optimiser', 'demo', 'Plan v1: plans ranked by the rent the uses could support, with neighbour and saturation effects, a search check and a rent-pressure flag for businesses already trading', 'A sponsor-named assemblage; owners who opt in; content uses kept apart', 'Plan for a sponsor-named assemblage'],
       ['Validation', 'demo', 'Back-test v2: plan committed first, then run on 52 Greenmount parcels outside the frontage (p = 0.023); case statuses checked against 2025-26 sources', 'Four blind timelines; the sponsor signs off the test rule', 'Validation report'],
       ['Pilot and handoff', 'demo', 'This page', 'Sponsor feedback on the score and the plan', 'Property Dossier pilot, model card, data contract, report']];

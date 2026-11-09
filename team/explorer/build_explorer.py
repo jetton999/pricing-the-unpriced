@@ -311,7 +311,7 @@ if os.path.exists(_bt2p):
     data['backtest2']['similarity'] = _b2['similarity']
 data['n_summary'] = n_summary
 
-# ---- candidate formats: heritage links, C-1 zoning status (Table 10-301), urban renewal plan, size range (team assumption)
+# ---- candidate formats: heritage links, C-1 zoning status (Table 10-301), urban renewal plan, size range (team assumption; the page uses the sourced typical range where there is one, score v0.4)
 data['formats'] = [
     dict(id='cafe', name='Cafe or sit-down restaurant', cat='food & drink', her=[['food & drink', 1]], z='Restaurant', zs='P', size=[800, 4000],
          note='Porch or sidewalk seating is outdoor dining: a conditional use in C-1 (Table 10-301, note 5). The urban renewal plan bars taverns, not restaurants, so a restaurant can serve alcohol (sponsor, 26 Oct 2026; to confirm on the plan text).'),
