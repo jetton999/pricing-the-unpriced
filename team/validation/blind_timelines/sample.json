@@ -1,0 +1,34 @@
+{
+ "seed": "blind reference timelines, 2026-11-10",
+ "rule": "one parcel per hundred block, drawn with random.Random(seed).choice over the eligible parcels sorted by street number; eligible = frontage parcels that are not already a reference timeline and that the sponsor's storefront assessment does not class as residential",
+ "frontage_parcels": 69,
+ "eligible": 59,
+ "eligible_by_block": {
+  "2900": 9,
+  "3000": 18,
+  "3100": 16,
+  "3200": 16
+ },
+ "drawn": [
+  {
+   "property_id": "703",
+   "address": "2934 Greenmount Ave",
+   "block_side": "west side, 2900 block"
+  },
+  {
+   "property_id": "720",
+   "address": "3011 Greenmount Ave",
+   "block_side": "east side, 3000 block"
+  },
+  {
+   "property_id": "738",
+   "address": "3111 Greenmount Ave",
+   "block_side": "east side, 3100 block"
+  },
+  {
+   "property_id": "755",
+   "address": "3204 Greenmount Ave",
+   "block_side": "west side, 3200 block"
+  }
+ ]
+}
