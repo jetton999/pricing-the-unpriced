@@ -382,6 +382,37 @@ details.more > summary { font-size: 14px; }
   .rrow2.hd { display: none; } .rrow2 .yr { text-align: right; } .rrow2 .pay { justify-content: flex-end; max-width: 130px; text-align: right; }
   .rrow2 .mono { white-space: normal; } .meter { width: 40px; }
 }
+/* a card that opens on demand */
+section.fold > details > summary { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; list-style: none; }
+section.fold > details > summary::-webkit-details-marker { display: none; }
+section.fold > details > summary::after { content: "Show"; margin-left: auto; font-size: 13px; font-weight: 500; color: var(--ink-2); border: 1px solid var(--rule-2); border-radius: 6px; padding: 4px 12px; }
+section.fold > details[open] > summary::after { content: "Hide"; }
+section.fold > details > summary h2 { font-size: 22px; }
+section.fold > details > summary .small { font-weight: 400; }
+section.fold .foldin { display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; margin-top: 14px; }
+/* voting needs the shared page; a plain copy hides it */
+body.nofb .fbonly, body.nofb #fb { display: none !important; }
+/* which storefronts are empty */
+details.vacbox { border: 1px solid var(--rule); border-radius: 8px; padding: 10px 14px; min-width: 0; }
+details.vacbox > summary { font-size: 14px; }
+details.vacbox > summary .small { font-weight: 400; }
+.vacin { display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px; margin-top: 10px; }
+.vacgrid { display: grid; gap: 6px; }
+.vrow { display: grid; grid-template-columns: 170px minmax(0, 1fr); gap: 8px; align-items: start; font-size: 12px; }
+.vrow > span { color: var(--ink-2); padding-top: 4px; }
+.vrow > div { display: flex; flex-wrap: wrap; gap: 5px; }
+.vchip { position: relative; font: inherit; font-family: var(--f-mono); font-size: 12px; line-height: 1.4; padding: 2px 7px; border: 1px solid var(--rule-2); border-radius: 6px; background: var(--surface); color: var(--ink-2); cursor: pointer; }
+.vchip.on, .vchip[aria-pressed="true"] { background: var(--accent-soft); border-color: var(--accent); color: var(--ink); font-weight: 600; }
+.vchip.unc { border-style: dashed; }
+.vchip.mine { box-shadow: 0 0 0 2px var(--ink); }
+.vchip.sp::after { content: ""; position: absolute; top: -4px; right: -4px; width: 7px; height: 7px; border-radius: 50%; background: var(--warn); border: 1.5px solid var(--surface); }
+.vchip:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.vkey { display: flex; flex-wrap: wrap; gap: 6px 16px; align-items: center; }
+.vkey .vchip { cursor: default; margin-right: 6px; }
+.vacsw { display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: center; font-size: 13px; color: var(--ink-2); }
+#vacin { font: inherit; font-size: 13px; padding: 5px 9px; border: 1px solid var(--rule-2); border-radius: 6px; background: var(--surface); color: var(--ink); min-width: 0; width: 260px; max-width: 100%; }
+@media (max-width: 900px) { .vrow { grid-template-columns: minmax(0, 1fr); gap: 2px; } .vrow > span { padding-top: 0; } }
+@media print { section.fold > details > summary::after { display: none; } }
 @media print {
   :root, :root:not([data-theme="light"]), :root[data-theme="dark"] { --bg: #fff; --surface: #fff; --ink: #13202c; --ink-2: #4a5661; --muted: #7d8791; --rule: #dde2e1; --rule-2: #c5cccb; --accent: #1c5cab; --accent-soft: #e3ecf8; --hi: #13202c;
     --c-retail: #2a78d6; --c-food: #eb6834; --c-pers: #1baf7a; --c-auto: #eda100; --c-ent: #e87ba4; --c-inst: #008300; --c-off: #6250d6; --c-prod: #e34948; --c-res: #b9bdb8; --c-none: #eef1f0; color-scheme: light; }
@@ -408,14 +439,14 @@ details.more > summary { font-size: 14px; }
 
 <div class="wrap">
   <header>
-    <div class="eyebrow">Waverly, Baltimore · Greenmount Ave, E 29th to E 33rd St · 9 Nov 2026<span class="xcol"> · extractor v1 · score v0.4 · comps engine v1 · back-test v2 · comps at three levels</span></div>
+    <div class="eyebrow">Waverly, Baltimore · Greenmount Ave, E 29th to E 33rd St · 10 Nov 2026<span class="xcol"> · extractor v1 · score v0.4 · comps engine v1 · back-test v2 · comps at three levels</span></div>
     <h1>Greenmount Frontage Explorer</h1>
-    <p class="lede">For every building on the Greenmount frontage, E 29th to E 33rd St: what it was, what it could become, what that could earn, and whether the mix works as a block. Every answer links to its sources.</p>
-    <ol class="start"><li>Pick a building on the map</li><li>Read its best fit, the money and the history on the right</li><li>See the plan for the empty storefronts in <b>Block plan</b>, and what each use could pay in <b>Money</b></li><li>See how it compares in <b>Comps</b></li></ol>
+    <p class="lede">For every building on the Greenmount frontage, E 29th to E 33rd St: what it was, what it could become, what that could earn, who it is for, and whether the mix works as a block. Every answer links to its sources.</p>
+    <ol class="start"><li>Pick a building on the map</li><li>Read its best fit, the money and the history on the right</li><li>See the plan for the empty storefronts in <b>Block plan</b>, and what each use could pay in <b>Money</b></li><li>See who each use is for in <b>Who it is for</b>, and how the building compares in <b>Comps</b></li></ol>
   </header>
 
   <nav class="tabs" id="tabs" aria-label="Views">
-    <button type="button" data-v="b" aria-pressed="true">Buildings</button><button type="button" data-v="p" aria-pressed="false">Block plan</button><button type="button" data-v="m" aria-pressed="false">Money</button><button type="button" data-v="c" aria-pressed="false">Comps</button><button type="button" data-v="e" aria-pressed="false">Evidence and method</button><button type="button" data-v="r" aria-pressed="false">Roadmap</button><label class="xtog"><input type="checkbox" id="xtog"> Show details</label>
+    <button type="button" data-v="b" aria-pressed="true">Buildings</button><button type="button" data-v="p" aria-pressed="false">Block plan</button><button type="button" data-v="m" aria-pressed="false">Money</button><button type="button" data-v="w" aria-pressed="false">Who it is for</button><button type="button" data-v="c" aria-pressed="false">Comps</button><button type="button" data-v="e" aria-pressed="false">Evidence and method</button><button type="button" data-v="r" aria-pressed="false">Roadmap</button><label class="xtog"><input type="checkbox" id="xtog"> Show details</label>
   </nav>
 
   <div class="tiles" id="tiles" data-view="e"></div>
@@ -451,23 +482,27 @@ details.more > summary { font-size: 14px; }
     <section class="card panel" id="panel" aria-live="polite"></section>
   </div>
 
-  <section data-view="b" class="card" id="cmp" aria-labelledby="cmph">
-    <div class="bar"><h2 id="cmph">Compare uses</h2><span class="small" id="cmpfor"></span></div>
-    <p class="lede" style="font-size:14px">Pick up to three uses for the selected building and read them factor by factor. Agree or disagree with each one; the votes are shared with the team and the sponsor. They change the scores only when that is switched on (Evidence and method), which is off by default.</p>
-    <div class="legend" id="cmppick" aria-label="Uses to compare"></div>
-    <div class="tbl" id="cmptab"></div>
+  <section data-view="b" class="card fold" id="cmp" aria-labelledby="cmph">
+    <details>
+      <summary><h2 id="cmph">Compare uses</h2><span class="small" id="cmpfor"></span></summary>
+      <div class="foldin">
+        <p class="lede" style="font-size:14px">Pick up to three uses for the selected building and read them factor by factor.<span class="fbonly"> Agree or disagree with each one; the votes are shared with the team and the sponsor. They change the scores only when that is switched on (Evidence and method), which is off by default.</span></p>
+        <div class="legend" id="cmppick" aria-label="Uses to compare"></div>
+        <div class="tbl" id="cmptab"></div>
+      </div>
+    </details>
   </section>
 
   <section data-view="e" class="card" id="method" aria-labelledby="mh">
     <div class="bar"><h2 id="mh">How the recommendation works</h2><span class="small">score v0.4 · change the weights and every view updates</span></div>
-    <p class="lede" style="font-size:14px">After two rule filters, each use is scored on six inputs: heritage, saturation, size, community, neighbours and precedents. Change the weights and every view updates.<span class="xcol"> Team and sponsor votes are recorded beside each score; they change it only if you switch that on below. The block plan places uses one at a time under a saturation limit, and the comps engine adds what each use could pay and earn.</span> The concepts are written text drafted with AI assistance (Claude) from cited sources, for the team to review.</p>
+    <p class="lede" style="font-size:14px">After two rule filters, each use is scored on six inputs: heritage, saturation, size, community, neighbours and precedents. Change the weights and every view updates.<span class="xcol"><span class="fbonly"> Team and sponsor votes are recorded beside each score; they change it only if you switch that on below.</span> The block plan places uses one at a time under a saturation limit, and the comps engine adds what each use could pay and earn.</span> The concepts are written text drafted with AI assistance (Claude) from cited sources, for the team to review.</p>
     <ol class="flow" id="flow"></ol>
     <div class="grid2 even">
       <div class="wbox">
         <h3>Weights</h3>
         <div id="wts"></div>
         <label class="chk"><input type="checkbox" id="gf" checked> Ground-floor commercial only (leave housing out of the ranking)</label>
-        <label class="chk"><input type="checkbox" id="fbon"> Apply team and sponsor feedback to the scores (off by default: the sponsor's rules say the sponsor cannot override model results)</label>
+        <label class="chk fbonly"><input type="checkbox" id="fbon"> Apply team and sponsor feedback to the scores (off by default: the sponsor's rules say the sponsor cannot override model results)</label>
         <p class="small" id="formula"></p>
       </div>
       <div class="wbox" id="bt"></div>
@@ -478,10 +513,14 @@ details.more > summary { font-size: 14px; }
     <details><summary>Known limits of this version</summary><ul class="checks" id="limits" style="margin-top:8px"></ul></details>
   </section>
 
-  <section data-view="e" class="card" id="retailS" aria-labelledby="rth">
-    <div class="bar"><h2 id="rth">Retail, broken down</h2><span class="small" id="rtsub">seven trades · what the frontage has carried · the modern version</span></div>
+  <section data-view="e" class="card fold" id="retailS" aria-labelledby="rth">
+    <details>
+    <summary><h2 id="rth">Retail, broken down</h2><span class="small" id="rtsub">seven trades · what the frontage has carried · the modern version</span></summary>
+    <div class="foldin">
     <p class="lede" style="font-size:14px" id="rtlede">Counts come from the use records on this page; descriptions from the sources linked. Reference brands for each trade are in the team's report, not on this public page (the sponsor's rule).</p>
     <div class="tbl" id="retailtab"></div>
+    </div>
+    </details>
   </section>
 
   <section data-view="m" class="card" id="earn" aria-labelledby="eh">
@@ -511,13 +550,22 @@ details.more > summary { font-size: 14px; }
   <section data-view="p" class="card" id="planS" aria-labelledby="ph">
     <div class="bar"><h2 id="ph">The plan for the empty storefronts</h2>
       <div class="ctl noprint"><button type="button" class="cx-tab" id="plprint">Print</button><button type="button" class="cx-tab" id="plcsv">Download as CSV</button></div></div>
-    <p class="lede" style="font-size:14px">One recommended use for each empty storefront, chosen so that no block fills up with one kind of shop. Each sheet gives the reasons, the rent the use could support and what to watch. Change any use to see the effect.</p>
+    <p class="lede" style="font-size:14px">One recommended use for each empty storefront, chosen so that no block fills up with one kind of shop. Each sheet gives the reasons, the rent the use could support, who the use is for and what to watch. Change any use, or the list of empty storefronts, to see the effect.</p>
     <div class="ctl noprint">
       <span>Show</span>
       <div class="seg" role="group" aria-label="Which plan to show" id="plmode"><button type="button" data-pm="fit" aria-pressed="true">Best fit</button><button type="button" data-pm="rent" aria-pressed="false">Highest rent</button><button type="button" data-pm="bal" aria-pressed="false" hidden>Balanced</button></div>
       <button type="button" class="cx-tab" id="preset" hidden>Undo my changes</button>
-      <label class="chk"><input type="checkbox" id="unk"> <span id="unklab">Also plan the storefronts with no confirmed occupant</span></label>
     </div>
+    <details class="vacbox noprint" id="vacbox">
+      <summary id="vacsum">Which storefronts are empty</summary>
+      <div class="vacin">
+        <p class="small" id="vacnote" style="margin:0"></p>
+        <div class="ctl"><span>Count as empty</span><div class="seg" role="group" aria-label="Whose check decides which storefronts are empty" id="vacset"><button type="button" data-vs="team" aria-pressed="true">The team's check</button><button type="button" data-vs="sponsor" aria-pressed="false">The team's and the sponsor's checks</button></div><button type="button" class="cx-tab" id="vacreset" hidden>Clear my changes</button></div>
+        <div class="vacgrid" id="vacgrid"></div>
+        <div class="ctl"><label for="vacin">Mark several empty at once</label><input type="text" id="vacin" inputmode="numeric" placeholder="street numbers, e.g. 2930 3019 3029" autocomplete="off"><button type="button" class="cx-tab" id="vacadd">Mark empty</button></div>
+        <p class="small" id="vaclist" style="margin:0" aria-live="polite"></p>
+      </div>
+    </details>
     <div class="tiles" id="plantiles"></div>
     <div class="mapbox" id="planmapbox"><svg id="planmap" role="img" aria-label="Map of the plan on the Greenmount Avenue frontage, north to the right"></svg><div class="tip" id="plantip" hidden></div></div>
     <div class="legend" id="planlegend" aria-label="What the map shows"></div>
@@ -527,7 +575,7 @@ details.more > summary { font-size: 14px; }
     <div class="guard" id="planbasis"></div>
   </section>
 
-  <section data-view="e" class="card" id="seg" aria-labelledby="segh">
+  <section data-view="w" class="card" id="seg" aria-labelledby="segh">
     <div class="bar"><h2 id="segh">Who it is for</h2><span class="small">customer groups, their obstacles, and the buildings that fit them</span></div>
     <p class="lede" style="font-size:14px" id="seglede"></p>
     <div class="cx-tabs" role="tablist" id="segtabs" aria-label="Customer groups"></div>
@@ -541,12 +589,16 @@ details.more > summary { font-size: 14px; }
     <div id="casebody"></div>
   </section>
 
-  <section data-view="b" class="card" id="cx" aria-labelledby="cxh">
-    <div class="bar"><h2 id="cxh">What it could become</h2><span class="small">three empty buildings the sponsor has walked through · draft concepts · nobody has been contacted</span></div>
+  <section data-view="b" class="card fold" id="cx" aria-labelledby="cxh">
+    <details>
+    <summary><h2 id="cxh">What it could become</h2><span class="small">concepts for three empty buildings the sponsor has walked through · nobody has been contacted</span></summary>
+    <div class="foldin">
     <p class="lede" style="font-size:14px" id="cxlede">For each building: what it was, what its history, the block and the rules allow, two concepts, and places that have done something like it.</p>
     <div class="cx-tabs" role="tablist" id="cxtabs" aria-label="Concept buildings"></div>
     <div id="cxbody" role="tabpanel"></div>
     <p class="small" id="cxnote"></p>
+    </div>
+    </details>
   </section>
 
   <section data-view="p" class="card" aria-labelledby="mixh">
@@ -640,17 +692,47 @@ details.more > summary { font-size: 14px; }
     raw.map((x, i) => [x - Math.floor(x), i]).sort((a, b) => b[0] - a[0]).forEach(([, i]) => { if (left > 0) { fl[i]++; left--; } });
     WT[k] = v; others.forEach((x, i) => { WT[x] = fl[i]; });
   }
-  let gfOnly = true, inclUnk = false, useFb = false, overrides = {};
+  let gfOnly = true, useFb = false, overrides = {};
   const SIDE_CAP = [1, 0.6, 0.25, 0];
   const POLM = { P: 1, CB: 0.75, CO: 0.75 };
   const AVM = { strong: 0.3, moderate: 0.6, weak: 0.85 };
   const pct0 = x => Math.round(x * 100) + '%';
+  // ---------------- which storefronts are empty
+  // The plan fills only empty storefronts, so this list decides what gets planned. It starts from the team's October
+  // tenant check. The reader can add the sponsor's own check (which differs on some buildings) or switch any storefront;
+  // the choice is kept in this browser only. Each parcel keeps its record in p._0 and says where its state comes from in p._src.
+  P.forEach(p => { p._0 = { availability: p.availability, status: p.status, occ: p.occ, now: p.now, tenant: p.tenant }; });
+  const SPV = p => !!(p.sa && p.sa.label === 'vacant storefront');
+  const isShop = p => p._0.availability !== 'house';
+  const isEmpty = p => p.availability === 'available now';
+  let vset = 'team', VAC = {}, vacMsg = '';
+  try {
+    const st = JSON.parse(localStorage.getItem('gm-empty-v1') || 'null');
+    if (st && typeof st === 'object') {
+      if (st.set === 'sponsor') vset = 'sponsor';
+      Object.entries(st.marks || {}).forEach(([id, v]) => { if ((v === 'empty' || v === 'occupied') && P.some(p => p.id === id && isShop(p))) VAC[id] = v; });
+    }
+  } catch (e) { /* no storage here: the list starts from the team's check */ }
+  const saveVac = () => { try { localStorage.setItem('gm-empty-v1', JSON.stringify({ set: vset, marks: VAC })); } catch (e) { /* not kept */ } };
+  const baseEmpty = p => p._0.availability === 'available now' || (vset === 'sponsor' && SPV(p));
+  function applyVacancy() {
+    P.forEach(p => {
+      const o = p._0, mark = VAC[p.id];
+      Object.assign(p, o); p._src = o.availability === 'available now' ? 'team' : '';
+      if (!isShop(p)) return;
+      const empty = mark ? mark === 'empty' : baseEmpty(p);
+      if (empty && o.availability !== 'available now') { p.availability = 'available now'; p.status = 'vacant'; p.occ = false; p.now = []; p._src = mark ? 'you' : 'sponsor'; }
+      else if (!empty && mark === 'occupied' && o.availability !== 'occupied') { p.availability = 'occupied'; p.status = 'occupied'; p.occ = false; p.now = []; p.tenant = 'in use (your mark)'; p._src = 'you'; }
+    });
+  }
+  applyVacancy();
+  const wasLine = p => { const o = p._0; return o.status === 'occupied' ? (o.tenant || 'a business').split(' ; ')[0] : o.status === 'unknown' ? 'no confirmed occupant' : o.status; };
   function baseCounts() {
     const side = {}, corr = {};
     P.filter(p => p.occ).forEach(p => (p.now || []).forEach(c => {
       side[p.side] = side[p.side] || {}; side[p.side][c] = (side[p.side][c] || 0) + 1; corr[c] = (corr[c] || 0) + 1;
     }));
-    return { side, corr, base: (D.mix && D.mix[0] ? D.mix[0].now_base : 44), cat: {} };
+    return { side, corr, base: (D.mix && D.mix[0] ? D.mix[0].now_base : 44) + P.filter(p => p.occ).length - P.filter(p => p._0.occ).length, cat: {} };
   }
   const BASE = baseCounts();
   const cloneC = C => ({ side: JSON.parse(JSON.stringify(C.side)), corr: Object.assign({}, C.corr), base: C.base, cat: Object.assign({}, C.cat) });
@@ -964,7 +1046,8 @@ details.more > summary { font-size: 14px; }
     if (q && !p.address.startsWith(q)) return false;
     return true;
   }
-  const availPill = p => p.availability === 'available now' ? `<span class="pill ok">${esc(p.status)}</span>`
+  const availPill = p => p._src === 'you' ? `<span class="pill q">${isEmpty(p) ? 'empty' : 'in use'}: your mark</span>` : p._src === 'sponsor' ? `<span class="pill q">vacant on the sponsor's check</span>`
+    : p.availability === 'available now' ? `<span class="pill ok">${esc(p.status)}</span>`
     : p.availability === 'occupied' ? `<span class="pill warn">occupied</span>` : p.availability === 'house' ? `<span class="pill">house, no shop front</span>` : `<span class="pill q">not confirmed</span>`;
 
   // ---------------- tiles
@@ -972,15 +1055,19 @@ details.more > summary { font-size: 14px; }
   const SRCK = [['sponsor', 'sponsor', 'var(--accent)'], ['polk_directory', 'Polk', 'var(--muted)'], ['permit_card', 'permit cards', 'var(--ink-2)'],
     ['sanborn', 'Sanborn', 'var(--c-retail)'], ['nr_inventory', 'NR inventory', 'var(--c-pers)'], ['dhcd_1970s', '1970s files', 'var(--c-auto)'], ['current_2026', '2026 check', 'var(--rule-2)']];
   const tot = SRCK.reduce((a, [k]) => a + (T[k] || 0), 0);
-  const avail = P.filter(p => p.availability === 'available now').length, unk = P.filter(p => p.availability === 'possibly available').length;
   const pct = n => (100 * n / tot).toFixed(1) + '%';
+  function drawTiles() {
+  const shops = P.filter(isShop), nE = shops.filter(isEmpty).length, nT = shops.filter(p => p._0.availability === 'available now').length;
+  const nS = shops.filter(SPV).length, nB = shops.filter(p => SPV(p) && p._0.availability === 'available now').length, nU = shops.filter(p => p._0.availability === 'possibly available').length, nM = Object.keys(VAC).length;
   document.getElementById('tiles').innerHTML = `
     <div class="tile"><div class="k">Frontage parcels</div><div class="v">${P.length}</div><div class="s">${P.filter(p => p.sponsor).length} have a sponsor Matterport walk-through; the sponsor's own LLC is the owner of record for ${P.filter(p => p.ready && p.ready.owner === 'sponsor-linked LLC').length}</div></div>
     <div class="tile"><div class="k">Records joined</div><div class="v">${fmt(tot)}</div>
       <div class="srcbar" aria-hidden="true">${SRCK.map(([k, , c]) => `<span style="width:${pct(T[k] || 0)};background:${c}"></span>`).join('')}</div>
       <div class="srckey">${SRCK.map(([k, l, c]) => `<span><i style="background:${c}"></i>${l} ${fmt(T[k] || 0)}</span>`).join('')}</div></div>
     <div class="tile"><div class="k">Decades documented, 1900s to 2020s</div><div class="v">${S.after} <span style="font-size:20px;color:var(--ink-2)">of 13</span></div><div class="s">average per parcel, up from ${S.before} with sponsor records alone</div></div>
-    <div class="tile"><div class="k">Space to work with</div><div class="v">${avail} <span style="font-size:20px;color:var(--ink-2)">+ ${unk}</span></div><div class="s">${avail} vacant or for lease now; ${unk} more with no confirmed occupant</div></div>`;
+    <div class="tile"><div class="k">Empty storefronts</div><div class="v">${nE}</div><div class="s">${vset === 'team' && !nM ? `on the team's October check` : `as the list is set now; ${nT} on the team's October check`}. The sponsor's own check marks ${nS} vacant and the two agree on ${nB}; ${nU} more have no confirmed occupant. <a class="cxsrc" href="#vacbox">Set the list</a></div></div>`;
+  wireJumps(document.getElementById('tiles'));
+  }
 
   // ---------------- legend
   const lg = document.getElementById('legend');
@@ -1135,6 +1222,9 @@ details.more > summary { font-size: 14px; }
     return out.map(([c, t]) => `<span class="pill ${c}">${esc(t)}</span>`).join(' ');
   }
   const segsFor = (fid) => (L.segments || []).filter(s => (s.fit_formats || []).includes(fid));
+  // the customer groups a use is for, each a link to its page
+  const whoLinks = fid => segsFor(fid).slice(0, 3).map(x => `<a class="cxsrc" href="#seg" data-seg="${esc(x.id)}">${esc(x.name)}</a>`).join(' · ');
+  function wireSeg(root) { root.querySelectorAll('a[data-seg]').forEach(a => a.onclick = e => { e.preventDefault(); segSel = a.dataset.seg; drawSeg(); jumpTo('seg'); }); }
   // one plain line on why a use scores well: its three strongest factors
   function whyLine(r, p) {
     const out = [], hrow = p.h && p.h[r.via];
@@ -1150,7 +1240,7 @@ details.more > summary { font-size: 14px; }
   }
   const SA_CLS = { open_active: 'warn', institution: 'warn', office_industrial: 'warn', residential: 'warn', vacant_storefront: 'ok', vacant_lot: 'ok', listed_likely_dead: 'ok' };
   function todayLine(p) {
-    const ours = p.status === 'occupied' ? (p.tenant || 'occupied') : p.status;
+    const ours = p._src === 'sponsor' ? `counted as empty, from the sponsor's check; the team's check: ${wasLine(p)}` : p._src === 'you' ? `counted as ${isEmpty(p) ? 'empty' : 'in use'}, by your mark; the team's check: ${wasLine(p)}` : p.status === 'occupied' ? (p.tenant || 'occupied') : p.status;
     const sa = p.sa ? `<div class="small">Sponsor's check (Oct 2026): <b>${esc(p.sa.label)}</b>, ${esc(p.sa.conf)} confidence${p.sa.sv ? `; latest Street View ${esc(p.sa.sv)}` : ''}. ${esc(p.sa.summary)}</div>` : '';
     const lg = p.since && p.since.legacy ? ` <span class="pill ok" title="${esc(p.since.basis)}">here since ${p.since.year}</span><div class="small">Long-standing business (${p.since.years} years; ${esc(p.since.basis)}). Plans leave occupied buildings out; the block plan flags rent pressure on businesses like this.</div>` : '';
     return `<dt>Today</dt><dd>${esc(ours)}${lg}${p.status_note ? `<div class="small">${esc(p.status_note)}</div>` : ''}${sa}</dd>`;
@@ -1192,6 +1282,7 @@ details.more > summary { font-size: 14px; }
         <div class="vwhy">${esc(whyLine(best, p))}</div>
         ${p.availability === 'occupied' ? `<div class="small">A business trades here today${p.since && p.since.legacy ? ` and has for ${p.since.years} years` : ''}. This is for planning if the space comes free, not a suggestion to replace it.</div>` : ''}
         ${CO && earn(p, best.f) ? `<div class="vmoney">${money(best)}${unitLine(best)}</div>` : ''}${robust(p, best) ? `<div class="vrob">${robust(p, best)}</div>` : ''}
+        ${whoLinks(best.f.id) ? `<div class="small"><b>Who it is for:</b> ${whoLinks(best.f.id)}</div>` : ''}
         ${rv ? `<div class="small"><b>Heritage revival:</b> ${esc(rv.name)}, here ${rv.first}${rv.last !== rv.first ? '–' + rv.last : ''} (${rv.n} records). A revival reopens under a documented name and look; the trademark check comes first.</div>` : ''}
         <div class="cfoot">${fbBtns(p.id, best.f.id)}<a class="cxsrc small" href="#cmp">compare uses</a></div>
       </div>
@@ -1201,6 +1292,7 @@ details.more > summary { font-size: 14px; }
       <div class="eyebrow">${esc(SIDE[p.side])}${p.sponsor ? ' · sponsor walk-through' : ''}</div>
       <div class="addr">${esc(p.address)} Greenmount</div>
       <div>${availPill(p)} <span class="small">${p.decades} of 13 decades on record (1900s to 2020s)</span></div>
+      ${isShop(p) ? `<div class="vacsw"><span>For the plan, count this storefront as</span><div class="seg" role="group" aria-label="Count this storefront as"><button type="button" data-vac="empty" aria-pressed="${isEmpty(p)}">empty</button><button type="button" data-vac="occupied" aria-pressed="${!isEmpty(p)}">in use</button></div>${VAC[p.id] ? '<button type="button" class="cx-tab" data-vac="reset">as recorded</button>' : ''}</div>` : ''}
       <dl class="facts">
         ${todayLine(p)}
         <dt>Size</dt><dd class="mono">${p.sqft ? fmt(+p.sqft) + ' sq ft' : 'not in export'}</dd>
@@ -1218,7 +1310,8 @@ details.more > summary { font-size: 14px; }
         <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:8px">${readiness(p)}${p.ph ? `<span class="pill">${p.ph} survey photos (2026), in the sponsor's image viewer</span>` : ''}</div>
         <p class="small" style="margin:8px 0 0">Story material: ${st[0]} curated records, ${st[1]} white papers. Content uses (a tour stop, a podcast, a film) draw on these and do not saturate, so they are kept out of the score.</p></details>
       <details class="more"><summary>Evidence (${p.ev.length} records)</summary><div class="evlist">${evs || '<p class="small">No records.</p>'}</div></details>`;
-    wireVotes(el); wireJumps(el);
+    wireVotes(el); wireJumps(el); wireSeg(el);
+    el.querySelectorAll('[data-vac]').forEach(b => b.onclick = () => { const v = b.dataset.vac; markVac(p.id, v); const nb = document.querySelector(`#panel [data-vac="${v === 'reset' ? 'empty' : v}"]`); if (nb) nb.focus(); });
     const g = document.getElementById('gocx');
     if (g) g.onclick = () => jumpTo('cx');
   }
@@ -1285,7 +1378,7 @@ details.more > summary { font-size: 14px; }
       ['computed', 'Block plan', 'Uses placed one at a time; each placement changes saturation and the neighbours of the next'],
       ['hand', 'Concepts and businesses', 'Drafted as text for three buildings with AI assistance, every fact sourced, and checked against the score'],
       [CO ? 'computed' : 'next', 'What it earns', 'Rent and revenue ranges for each use from listings in 17 corridors and industry benchmarks; plans ranked by the rent the uses could support']];
-    document.getElementById('flow').innerHTML = FLOW.map(([s, t, d]) => `<li class="${s}"><b>${esc(t)}</b><span class="st ${s}">${s === 'computed' ? 'computed' : s === 'hand' ? 'written' : 'next'}</span><span>${esc(d)}</span></li>`).join('');
+    document.getElementById('flow').innerHTML = FLOW.map(([s, t, d]) => `<li class="${s}${t === 'Feedback' ? ' fbonly' : ''}"><b>${esc(t)}</b><span class="st ${s}">${s === 'computed' ? 'computed' : s === 'hand' ? 'written' : 'next'}</span><span>${esc(d)}</span></li>`).join('');
     document.getElementById('wts').innerHTML = `<div class="seg" role="group" aria-label="Weight presets">${Object.entries(WPRE).map(([k, v]) => `<button type="button" data-wp="${k}" aria-pressed="${k === wpre}">${esc(v.name)}</button>`).join('')}</div>
       <p class="small" id="wpnote" style="margin:0"></p>
       <div class="wpie"><svg id="wpie" viewBox="-88 -88 176 176" role="img" aria-label="How the score is split between its six inputs"></svg>
@@ -1347,6 +1440,7 @@ details.more > summary { font-size: 14px; }
       <p class="small">+1 complement, −1 conflict, 0 neutral; L law, R research, J judgement. Hover a cell for its basis. Next door counts in full, across the street at ${ADJ.across_weight || 0.5}. A vacant neighbour is −1 for everything: filling a storefront lifts the ones beside it, and the block plan uses that.</p>
       <ul class="checks">${(ADJ.rules || []).slice(0, 8).map(r => `<li><b>${esc(r.rule)}</b> ${esc(r.applies_to || '')}${r.code ? ' (' + esc(r.code) + ')' : ''}${r.src ? ` <a class="cxsrc" href="${esc(r.src)}" target="_blank" rel="noopener">source</a>` : ''}</li>`).join('')}</ul>`;
     document.getElementById('limits').innerHTML = [
+      'Which storefronts are empty rests on the team\'s October tenant check. The sponsor\'s own check differs on some buildings, so the list can be set on the Block plan page; a storefront counted as empty there is planned whatever the record says.',
       'No demand data yet (households, spending, foot traffic). Planned for spring.',
       'Rent ranges rest on asking rents (5 of them in Waverly, none for a bike shop) and on national sales benchmarks; revenue ranges cannot yet be checked against local operators.',
       'Corridor saturation is measured against the 1920-23 mix: a use is not penalised until its share of storefronts passes its 1920s share. Being rare now earns no bonus, because the back-test shows that trades which left main streets have not come back.',
@@ -1357,7 +1451,7 @@ details.more > summary { font-size: 14px; }
       'The community layer rests on news, testimony and plans, not a survey of residents. A short survey on the street would test it.',
       'Feedback is a team signal, not a vote of residents, and is capped (at most +20% or −40% on a score).',
       `${D.n_summary || 26} building summaries that the extractor dates to the year of construction are not coded here (fix goes into extractor v1.1).`
-    ].map(t => `<li>${esc(t)}</li>`).join('');
+    ].map(t => `<li${/^Feedback /.test(t) ? ' class="fbonly"' : ''}>${esc(t)}</li>`).join('');
   }
   function drawPie(hot) {
     const svg = document.getElementById('wpie'); if (!svg) return;
@@ -1388,7 +1482,7 @@ details.more > summary { font-size: 14px; }
     const t = WL.reduce((a, [k]) => a + WT[k], 0) || 1, pc = k => Math.round(100 * WT[k] / t) + '%';
     WL.forEach(([k]) => { document.getElementById('wn-' + k).textContent = pc(k); });
     drawPie(hot);
-    document.getElementById('formula').innerHTML = `score = heritage × ${pc('h')} + room × ${pc('s')} + size × ${pc('f')} + community × ${pc('c')} + neighbours × ${pc('a')} + precedents × ${pc('k')}, then times 0.75 for a conditional use, times 0.3 / 0.6 / 0.85 for a strong / moderate / weak community objection, and, only when switched on, times the feedback multiplier. Uses barred by the plan or not permitted in C-1 are left out. <b>Heritage</b> = decades on record at the building ÷ 5 (capped), halved for a single record, +0.1 for two kinds of source; with no record, the street's record at a third of the weight. <b>Room</b> = 1 − saturation: half a block-side term (0 of the same use → 1, 1 → 0.6, 2 → 0.25, 3+ → 0) and half a corridor term (1 while the use's storefront share is at or below its 1920-23 share). <b>Size</b> = 1 inside the usual range (the sourced typical range of the use), 0 at three times outside it; a building can be split into two units (× 0.85) or three (× 0.8), and for studios and offices into as many as 12 (× 0.8). <b>Neighbours</b> = the weighted mean of the matrix values for next-door and across-the-street uses, scaled to 0-1. <b>Precedents</b> = among the 8 most similar reuse cases, the similarity-weighted share that went this way and are still open (closed cases count against), doubled and capped at 1. <b>Feedback</b> = 1 + 0.1 × (agree − disagree), kept between 0.6 and 1.2.`;
+    document.getElementById('formula').innerHTML = `score = heritage × ${pc('h')} + room × ${pc('s')} + size × ${pc('f')} + community × ${pc('c')} + neighbours × ${pc('a')} + precedents × ${pc('k')}, then times 0.75 for a conditional use, times 0.3 / 0.6 / 0.85 for a strong / moderate / weak community objection<span class="fbonly">, and, only when switched on, times the feedback multiplier</span>. Uses barred by the plan or not permitted in C-1 are left out. <b>Heritage</b> = decades on record at the building ÷ 5 (capped), halved for a single record, +0.1 for two kinds of source; with no record, the street's record at a third of the weight. <b>Room</b> = 1 − saturation: half a block-side term (0 of the same use → 1, 1 → 0.6, 2 → 0.25, 3+ → 0) and half a corridor term (1 while the use's storefront share is at or below its 1920-23 share). <b>Size</b> = 1 inside the usual range (the sourced typical range of the use), 0 at three times outside it; a building can be split into two units (× 0.85) or three (× 0.8), and for studios and offices into as many as 12 (× 0.8). <b>Neighbours</b> = the weighted mean of the matrix values for next-door and across-the-street uses, scaled to 0-1. <b>Precedents</b> = among the 8 most similar reuse cases, the similarity-weighted share that went this way and are still open (closed cases count against), doubled and capped at 1.<span class="fbonly"> <b>Feedback</b> = 1 + 0.1 × (agree − disagree), kept between 0.6 and 1.2.</span>`;
   }
 
   // ---------------- block plan: one recommended use for each empty storefront, placed one at a time under a saturation limit
@@ -1397,15 +1491,17 @@ details.more > summary { font-size: 14px; }
   function runPlan(ov) {
     ov = ov || overrides;
     const C = cloneC(BASE), out = {};
-    const avail = P.filter(p => p.availability === 'available now' || (inclUnk && p.availability === 'possibly available'));
+    const avail = P.filter(isEmpty);
     const add = (p, f) => { C.cat[p.id] = f.cat; if (f.cat === 'residential') return; C.side[p.side] = C.side[p.side] || {}; C.side[p.side][f.cat] = (C.side[p.side][f.cat] || 0) + 1; C.corr[f.cat] = (C.corr[f.cat] || 0) + 1; C.base += 1; };
     avail.filter(p => ov[p.id] && FM[ov[p.id]]).forEach(p => { const r = scoreAll(p, C).find(x => x.f.id === ov[p.id]); out[p.id] = { r, fixed: true }; add(p, r.f); });
+    // three of a kind on one block side is full (businesses there today count): a use that would be the fourth is passed over
+    const room = (p, f) => f.cat === 'residential' || ((C.side[p.side] || {})[f.cat] || 0) < CAP;
     let left = avail.filter(p => !out[p.id]), k = 0;
     while (left.length) {
       let best = null;
-      left.forEach(p => { const r = scoreAll(p, C).find(x => x.ok && !x.f.av); if (r && (!best || r.score > best.r.score)) best = { p, r }; });
+      left.forEach(p => { const rs = scoreAll(p, C).filter(x => x.ok && !x.f.av), r = rs.find(x => room(p, x.f)); if (r && (!best || r.score > best.r.score)) best = { p, r, over: rs[0] !== r ? rs[0] : null }; });
       if (!best) break;
-      out[best.p.id] = { r: best.r, fixed: false, order: ++k }; add(best.p, best.r.f); left = left.filter(p => p !== best.p);
+      out[best.p.id] = { r: best.r, fixed: false, order: ++k, over: best.over }; add(best.p, best.r.f); left = left.filter(p => p !== best.p);
     }
     return { out, C, avail };
   }
@@ -1432,7 +1528,7 @@ details.more > summary { font-size: 14px; }
     });
     return { sides, n: hit.length, legacy: hit.filter(x => x.q.since && x.q.since.legacy).length, hit };
   }
-  const longStanding = s => P.filter(q => q.side === s && q.since && q.since.legacy);
+  const longStanding = s => P.filter(q => q.side === s && q.status === 'occupied' && q.since && q.since.legacy);
   const streetOrder = ps => ps.slice().sort((a, b) => SIDE_ORDER.indexOf(a.side) - SIDE_ORDER.indexOf(b.side) || a.address - b.address);
   // how firm a recommendation is, in plain words: how often it comes first when the weights and the weight on money are varied
   function firmLine(p, r) {
@@ -1446,9 +1542,11 @@ details.more > summary { font-size: 14px; }
   // everything the sheet, the print view and the CSV say about one storefront in the plan
   function sheetFacts(p, o, a, cnt) {
     const r = o.r, f = r.f, mo = multOf(p, f, a, cnt), e = CO ? earn(p, f, mo.m) : null, cf = cfOf(f.id), rd = p.ready || {};
-    const next = (SC[p.id] || []).find(x => x.ok && !x.f.av && x.f.id !== f.id) || null;
+    const full = c => c !== f.cat && c !== 'residential' && PLAN && ((PLAN.C.side[p.side] || {})[c] || 0) >= CAP;
+    const next = (SC[p.id] || []).find(x => x.ok && !x.f.av && x.f.id !== f.id && !full(x.f.cat)) || null;
     const watch = [];
-    if (p.availability !== 'available now') watch.push('occupant not confirmed: check before planning');
+    if (o.over) watch.push(`${o.over.f.name.toLowerCase()} scores higher here, but ${o.over.f.cat} is already full on this block side (three or more)`);
+    if (p._src === 'sponsor' || p._src === 'you') watch.push(`${p._src === 'you' ? 'counted as empty by your mark' : "empty on the sponsor's check only"}; the team's check: ${wasLine(p)}`);
     if (f.zs !== 'P') watch.push('needs an approval: ' + (ZTXT[f.zs] || f.zs));
     if (r.s.n >= 2) watch.push(`would be the ${ordinal(r.s.n + 1)} ${f.cat} business on this block side`);
     if (r.fi < 0.6) watch.push('the space is a stretch for this use');
@@ -1462,7 +1560,8 @@ details.more > summary { font-size: 14px; }
     const ctx = [], hair = mo.m / mo.up;
     if (Math.abs(mo.up - 1) >= 0.005) ctx.push(`${mo.up > 1 ? '+' : '−'}${Math.abs(Math.round((mo.up - 1) * 100))}% from its neighbours`);
     if (hair < 0.995) ctx.push(`−${Math.round((1 - hair) * 100)}% for the same use nearby`);
-    return { p, o, r, f, e, next, watch, ctx, why: whyLine(r, p), firm: CO ? firmLine(p, r) : '' };
+    const cr = costRange(p), seg1 = segsFor(f.id)[0], pain = seg1 && (seg1.pains || []).slice().sort((x, y) => x.rank - y.rank)[0];
+    return { p, o, r, f, e, next, watch, ctx, why: whyLine(r, p), firm: CO ? firmLine(p, r) : '', who: segsFor(f.id), pain: pain ? pain.pain : '', cost: cr.ok && cr.tot ? cr : null };
   }
   function sheetHTML(s) {
     const { p, r, f, e, next, watch } = s;
@@ -1475,6 +1574,8 @@ details.more > summary { font-size: 14px; }
       <dl>
         <dt>Why</dt><dd>${esc(s.why) || 'the best-scoring permitted use here'}</dd>
         ${e ? `<dt>Rent</dt><dd>asking rent about ${usd(e.typ[1])} per sq ft a year${e.pay != null ? `; ${pctR(e.pay)} chance a business of this kind can pay it` : ''}</dd>` : ''}
+        <dt>Who for</dt><dd>${whoLinks(f.id) || 'no customer group matched yet'}${s.pain ? `<div class="small">first obstacle: ${esc(s.pain.charAt(0).toLowerCase() + s.pain.slice(1))}</div>` : ''}</dd>
+        ${s.cost ? `<dt>Works</dt><dd>about ${kusd(s.cost.tot[0])}–${kusd(s.cost.tot[2])} to convert, if it costs what ${s.cost.xs.length} similar reuse projects did <span class="small">(a first range, not a quote)</span></dd>` : ''}
         <dt>Watch</dt><dd>${watch.length ? esc(watch.join('; ')) : 'nothing flagged'}</dd>
         ${next ? `<dt>Next best</dt><dd>${esc(next.f.name)} (${Math.round(next.score * 100)})</dd>` : ''}
         ${s.firm ? `<dt>How firm</dt><dd>${esc(s.firm)}</dd>` : ''}
@@ -1490,10 +1591,9 @@ details.more > summary { font-size: 14px; }
     el.innerHTML = SHEETS.map(sheetHTML).join('') || '<p class="small">No storefront is available to plan.</p>';
     el.querySelectorAll('select[data-pl]').forEach(s => s.onchange = () => { overrides[s.dataset.pl] = s.value; userCh[s.dataset.pl] = true; drawPlan(); drawMix(); });
     el.querySelectorAll('[data-go]').forEach(b => b.onclick = () => { select(b.dataset.go, false); jumpTo('panel'); });
+    wireSeg(el);
     drawPlanMap(); drawPlanBlocks(pressureOf(a));
     document.getElementById('preset').hidden = !Object.keys(userCh).length;
-    const nu = P.filter(p => p.availability === 'possibly available').length;
-    document.getElementById('unklab').textContent = `Also plan the ${nu} storefront${nu === 1 ? '' : 's'} with no confirmed occupant`;
     clearTimeout(drawPlan.t); drawPlan.t = setTimeout(drawPlanRank, 120);
   }
   // settings changed (weights, the year to plan for, which storefronts count): rebuild the kind of plan being shown
@@ -1535,10 +1635,10 @@ details.more > summary { font-size: 14px; }
     P.filter(p => !out[p.id]).forEach(p => { const c = catNow(p); h += shape(p, c === 'unknown' ? 'lot un' : 'lot bg', c === 'vacant' ? 'url(#hatch2)' : fill(c)); });
     P.filter(p => out[p.id]).forEach(p => { h += shape(p, 'lot pl', fill(out[p.id].r.f.cat)); });
     [0, 1].forEach(side => {
-      let lastX = -99, row = 0;
+      const last = [-99, -99, -99];   // three rows of labels, so neighbouring storefronts in the plan do not print over each other
       P.filter(p => out[p.id] && (+p.address % 2) === side).sort((a, b) => a.address - b.address).forEach(p => {
-        const x = X(p._c[1]); row = x - lastX < 44 ? 1 - row : 0; lastX = x;
-        h += `<text class="pa" x="${x.toFixed(1)}" y="${(side === 0 ? padTop - 8 - row * 12 : H - 20 + row * 12).toFixed(1)}" text-anchor="middle">${p.address}</text>`;
+        const x = X(p._c[1]); let row = last.findIndex(v => x - v >= 42); if (row < 0) row = last.indexOf(Math.min(...last)); last[row] = x;
+        h += `<text class="pa" x="${x.toFixed(1)}" y="${(side === 0 ? padTop - 5 - row * 10 : H - 24 + row * 10).toFixed(1)}" text-anchor="middle">${p.address}</text>`;
       });
     });
     sv.innerHTML = h;
@@ -1558,9 +1658,9 @@ details.more > summary { font-size: 14px; }
   }
   function planCSV() {
     const q = v => '"' + String(v == null ? '' : v).replace(/"/g, '""') + '"';
-    const head = ['address', 'block_side', 'status', 'sq_ft', 'recommended_use', 'use_category', 'fit_score', 'why', 'rent_supported_low_per_year', 'rent_supported_typical_per_year', 'rent_supported_high_per_year', 'block_effect_on_rent', 'asking_rent_per_sq_ft', 'chance_can_pay', 'watch', 'next_best_use'];
-    const rows = SHEETS.map(s => [s.p.address + ' Greenmount Ave', SIDE[s.p.side], s.p.status === 'unknown' ? 'occupant not confirmed' : s.p.status, s.p.sqft || '', s.f.name, s.f.cat, Math.round(s.r.score * 100), s.why,
-      ...(s.e ? s.e.ann.map(x => Math.round(x / 100) * 100) : ['', '', '']), s.e ? s.ctx.join(', ') : '', s.e ? s.e.typ[1].toFixed(2) : '', s.e && s.e.pay != null ? Math.round(s.e.pay * 100) + '%' : '', s.watch.join('; '), s.next ? s.next.f.name : '']);
+    const head = ['address', 'block_side', 'status', 'empty_according_to', 'sq_ft', 'recommended_use', 'use_category', 'fit_score', 'why', 'rent_supported_low_per_year', 'rent_supported_typical_per_year', 'rent_supported_high_per_year', 'block_effect_on_rent', 'asking_rent_per_sq_ft', 'chance_can_pay', 'who_it_is_for', 'conversion_cost_low', 'conversion_cost_high', 'watch', 'next_best_use'];
+    const rows = SHEETS.map(s => [s.p.address + ' Greenmount Ave', SIDE[s.p.side], s.p.status, s.p._src === 'you' ? "the reader's mark" : s.p._src === 'sponsor' ? "the sponsor's check" : "the team's check", s.p.sqft || '', s.f.name, s.f.cat, Math.round(s.r.score * 100), s.why,
+      ...(s.e ? s.e.ann.map(x => Math.round(x / 100) * 100) : ['', '', '']), s.e ? s.ctx.join(', ') : '', s.e ? s.e.typ[1].toFixed(2) : '', s.e && s.e.pay != null ? Math.round(s.e.pay * 100) + '%' : '', s.who.map(x => x.name).join('; '), s.cost ? Math.round(s.cost.tot[0] / 1000) * 1000 : '', s.cost ? Math.round(s.cost.tot[2] / 1000) * 1000 : '', s.watch.join('; '), s.next ? s.next.f.name : '']);
     return [head].concat(rows).map(r => r.map(q).join(',')).join('\r\n');
   }
   const ordinal = n => n + (n % 10 === 1 && n % 100 !== 11 ? 'st' : n % 10 === 2 && n % 100 !== 12 ? 'nd' : n % 10 === 3 && n % 100 !== 13 ? 'rd' : 'th');
@@ -1845,10 +1945,10 @@ details.more > summary { font-size: 14px; }
     const el2 = document.getElementById('planrank'), tiles = document.getElementById('plantiles'), basis = document.getElementById('planbasis'); if (!el2 || !PLAN) return;
     const placed = Object.values(PLAN.out), byCat = {}; placed.forEach(o => { byCat[o.r.f.cat] = (byCat[o.r.f.cat] || 0) + 1; });
     const mixTxt = Object.entries(byCat).sort((a, b) => b[1] - a[1]).map(([c, n]) => `${n} ${esc(c)}`).join(', ');
-    const nUnk = PLAN.avail.filter(p => p.availability !== 'available now').length;
-    const t1 = `<div class="tile"><span class="k">Storefronts in the plan</span><span class="v">${placed.length}</span><span class="s">${mixTxt || 'none available'}${nUnk ? `; ${nUnk} of them with no confirmed occupant` : ''}</span></div>`;
+    const nSp = PLAN.avail.filter(p => p._src === 'sponsor').length, nYou = PLAN.avail.filter(p => p._src === 'you').length, nMk = Object.keys(VAC).length;
+    const t1 = `<div class="tile"><span class="k">Storefronts in the plan</span><span class="v">${placed.length}</span><span class="s">${mixTxt || 'none counted as empty'}${nSp ? `; ${nSp} empty on the sponsor's check only` : ''}${nYou ? `; ${nYou} marked empty by you` : ''}</span></div>`;
     const teamW = Object.keys(WPRE.team.w).every(k => WT[k] === WPRE.team.w[k]);
-    basis.innerHTML = `<b>What every plan obeys.</b> C-1 zoning and the Waverly renewal plan (no new taverns, liquor stores or pawnshops), and a building with a business in it is never planned. State law allows no new liquor licence in this district (the 43rd) except for a restaurant with at least 75 seats and $200,000 invested, so a smaller place that wants to serve alcohol would have to take over an existing licence. This is the team's reading as students, not legal advice. Scores use ${teamW ? `the weights agreed with the sponsor on ${AGREED.on}` : 'your own weights, set on the Evidence and method page'}. Most of these storefronts have other owners, so a shared plan needs their agreement.`;
+    basis.innerHTML = `<b>What every plan obeys.</b> C-1 zoning and the Waverly renewal plan (no new taverns, liquor stores or pawnshops), and only storefronts counted as empty are planned: here, those on ${vset === 'team' ? "the team's October check" : "the team's October check or the sponsor's own check"}${nMk ? `, with ${nMk} changed by the reader` : ''}. State law allows no new liquor licence in this district (the 43rd) except for a restaurant with at least 75 seats and $200,000 invested, so a smaller place that wants to serve alcohol would have to take over an existing licence. This is the team's reading as students, not legal advice. Scores use ${teamW ? `the weights agreed with the sponsor on ${AGREED.on}` : 'your own weights, set on the Evidence and method page'}. Most of these storefronts have other owners, so a shared plan needs their agreement.`;
     if (!CO) { tiles.innerHTML = t1; el2.innerHTML = ''; return; }
     const RK = RKLAST = rankPlans(PLAN.avail), cur = RK.plans.find(pl => pl.current) || RK.plans[0], prc = pressureOf(cur.a);
     const flags = pl => [pl.miss ? `${pl.miss} storefront${pl.miss > 1 ? 's' : ''} left empty` : '', pl.noest ? `${pl.noest} use${pl.noest > 1 ? 's' : ''} with no rent estimate, not in the total` : '', pl.thin ? `${pl.thin} use${pl.thin > 1 ? 's' : ''} on thin rent evidence` : '', pl.cond ? `${pl.cond} needing an approval` : '', pl.weak ? `${pl.weak} that often cannot pay the asking rent` : ''].filter(Boolean);
@@ -1874,7 +1974,7 @@ details.more > summary { font-size: 14px; }
         <div class="ctl" style="flex-wrap:wrap;gap:8px"><span>Plan for</span><div class="seg" role="group" aria-label="How cautious the plan search is">${[[0, 'a typical year'], [0.5, 'a cautious year'], [1, 'a bad year']].map(([v, l]) => `<button type="button" data-cau="${v}" aria-pressed="${Math.abs(CAUTION - v) < 0.01}">${l}</button>`).join('')}</div></div>
         <div class="wrow"><label for="hair">Same use nearby</label><input type="range" id="hair" min="0" max="30" step="5" value="${Math.round(HAIR * 100)}"><span class="n">−${Math.round(HAIR * 100)}%</span></div>
         <div class="wrow"><label for="upl">Neighbour pull</label><input type="range" id="upl" min="0" max="10" step="1" value="${Math.round(UPLIFT * 100)}"><span class="n">${Math.round(UPLIFT * 100)}%</span></div>
-        <p class="small" style="margin:0"><b>Best fit</b> gives each storefront its highest-scoring permitted use, best storefront first; after each placement that use scores lower on the same block side, and the placed use becomes a neighbour of the next storefront. <b>Highest rent</b> searches for the mix that could support the most rent in a typical year (the median), a bad year (the low case) or halfway between (cautious, the default). Same use nearby: each use of the same kind beyond the first on a block side (the second for food and retail, which cluster well) cuts sales and rent by this much. No block side gets more than three of one kind of use; a storefront can be left empty if every use would break that. Neighbour pull: each complementary next-door use adds this much, each conflicting or vacant one takes it away (across the street counts half; at most ±2 steps). Each sheet's figure includes these effects and says so, which is why it can differ from the same use on the Buildings and Money pages. A plan's total is its sheets added up; the range comes from ${fmt(PLN.draws || 2000)} scenarios in which the corridor's rent level and sales level move together across all buildings (half of each building's uncertainty is shared).</p>
+        <p class="small" style="margin:0"><b>Best fit</b> gives each storefront its highest-scoring permitted use, best storefront first; after each placement that use scores lower on the same block side, and the placed use becomes a neighbour of the next storefront. A use that would be the fourth of its kind on a block side is passed over. <b>Highest rent</b> searches for the mix that could support the most rent in a typical year (the median), a bad year (the low case) or halfway between (cautious, the default). Same use nearby: each use of the same kind beyond the first on a block side (the second for food and retail, which cluster well) cuts sales and rent by this much. No block side gets more than three of one kind of use; a storefront can be left empty if every use would break that. Neighbour pull: each complementary next-door use adds this much, each conflicting or vacant one takes it away (across the street counts half; at most ±2 steps). Each sheet's figure includes these effects and says so, which is why it can differ from the same use on the Buildings and Money pages. A plan's total is its sheets added up; the range comes from ${fmt(PLN.draws || 2000)} scenarios in which the corridor's rent level and sales level move together across all buildings (half of each building's uncertainty is shared).</p>
         ${RK.dropped ? `<p class="small" style="margin:0">The balanced search (fit and rent together) is not shown: ${esc(RK.dropped.name.toLowerCase())} beats it on both.</p>` : ''}
         <p class="small" style="margin:0">Search check: one-at-a-time placement with swaps reached ${pctg}% of the best plan found by trying every combination of each storefront's top ${g.Ks.length ? (Math.min(...g.Ks) === Math.max(...g.Ks) ? Math.min(...g.Ks) : Math.min(...g.Ks) + ' to ' + Math.max(...g.Ks)) : ''} uses${g.cert ? '' : ` (${esc(g.big.join('; '))}: too many combinations to check in full)`}. Businesses under rent pressure: those already trading on the same block sides whose kind of business typically supports at least ${Math.round(PRESS_GAP * 100)}% less rent than the plan's new uses there; a flag for the conversation with owners, not a prediction. With "Show details" on: how often each plan comes out highest, the share of its rent that comes from neighbour effects, and the search's runners-up.</p></div></details>`;
     if (wasOpen) el2.querySelector('details').open = true;
@@ -1896,14 +1996,14 @@ details.more > summary { font-size: 14px; }
       ['done', 'What was it?', 'A sourced use timeline for every parcel.', 'Done for the 69 frontage parcels'],
       ['demo', 'What could it become?', 'Ranked uses with reasons: heritage, rules, saturation, community, neighbours, precedents.', 'Score v0.4 on this page, with comparison and feedback'],
       ['demo', 'What would it earn?', 'Rent and revenue range for each use, from comps, with the rent each use could support.', 'Comps engine v1 on this page: 58 listings, 192 benchmarks, 45 operators; a rent range and a chance of paying it for each use; the same figures for any one building at its own size; eight benchmark neighbourhoods'],
-      ['demo', 'Does the mix work as a block?', 'A use plan for a block or a sponsor assemblage, under a saturation limit.', 'Plan v2 on this page: a sheet for each empty storefront with its use, reasons, rent and risks; a map; a block-by-block check; three plans compared; print and CSV'],
-      ['demo', 'Who is it for?', 'The customer groups that would use, lease or buy each building, their obstacles and the programmes that help.', 'Seven groups matched on this page'],
+      ['demo', 'Does the mix work as a block?', 'A use plan for a block or a sponsor assemblage, under a saturation limit.', 'Plan v2 on this page: a sheet for each empty storefront with its use, reasons, rent and risks; a map; a block-by-block check; three plans compared; a list of empty storefronts the reader can set; print and CSV'],
+      ['demo', 'Who is it for?', 'The customer groups that would use, lease or buy each building, their obstacles and the programmes that help.', 'Seven groups on the Who it is for page; each plan sheet names the groups its use is for'],
       ['demo', 'How far can it be trusted?', 'Validation report and a model card that says where not to use it.', 'Back-test v2 passes on Greenmount blocks the model had not seen (p = 0.023, plan written first); four blind reference timelines next']];
     document.getElementById('endstate').innerHTML = `<p class="lede" style="font-size:14px">The final deliverable answers five questions for any address on the corridor, and for any block the sponsor names, with every answer traced to a source. It ships as a pilot in the sponsor's Property Dossier tool, with the code and tests, a validation report, a model card and the final report.</p>
       <div class="end" style="margin-top:12px">${E.map(([s, q, d, n]) => `<div class="endc"><span class="st ${s}">${s === 'done' ? 'done' : s === 'demo' ? 'working draft' : 'next'}</span><div class="q">${esc(q)}</div><div>${esc(d)}</div><div class="small">${esc(n)}</div></div>`).join('')}</div>`;
     const M = [
       ['past', '4 Nov 2026', 'Midterm', 'Midterm Progress Report submitted with the signed Client Agreement'],
-      ['now', '9 Nov 2026', 'Now', 'Timelines for 69 parcels; score v0.4 with sourced sizes and the weights agreed with the sponsor; comps engine v1 with typical units and total rents; a plan with one sheet per empty storefront, compared on fit, rent and rent pressure; back-test v2 on blocks not seen; comps at three levels (buildings, streets, neighbourhoods) with a displacement rubric; concepts for three buildings'],
+      ['now', '10 Nov 2026', 'Now', 'Timelines for 69 parcels; score v0.4 with sourced sizes and the weights agreed with the sponsor; comps engine v1 with typical units and total rents; a plan with one sheet per empty storefront, compared on fit, rent and rent pressure; back-test v2 on blocks not seen; comps at three levels (buildings, streets, neighbourhoods) with a displacement rubric; concepts for three buildings'],
       ['', 'Dec 2026', 'End of fall term', 'Four blind timelines and extractor precision; a use recommendation for each of the 69 frontage parcels, with reasons and risks; comps engine v1.1 (calls for the unlisted Greenmount rents, private calibration if approved); generator v1 with building-design match; the 97 focus-area parcels'],
       ['', 'Mar 2027', 'Spring validation', 'Back-test repeated on four blind reference timelines; weight sensitivity; demand data if feasible; optimiser v1 for a sponsor-named assemblage'],
       ['', 'May 2027', 'Final', 'Pilot in the Property Dossier; model card and guardrails; data contract; report, community brief, CUSP showcase']];
@@ -1915,11 +2015,11 @@ details.more > summary { font-size: 14px; }
       ['Comps engine', 'demo', 'Engine v1: rent and revenue ranges for 14 uses, held-out check, other cities side by side; typical units and total rents; eight benchmark neighbourhoods on public rents and vacancy', 'Calls for the Greenmount rents listed as "contact for pricing"; private check with the NDA operator if the sponsor approves; Census data for catchment spending', 'Comps library, engine and model card'],
       ['Assemblage optimiser', 'demo', 'Plan v2: one sheet per empty storefront (use, reasons, rent, risks), a map and a block-by-block check; best-fit, highest-rent and balanced plans compared, with a search check and a rent-pressure flag for businesses already trading', 'A sponsor-named assemblage; owners who opt in; content uses kept apart', 'Plan for a sponsor-named assemblage'],
       ['Validation', 'demo', 'Back-test v2: plan committed first, then run on 52 Greenmount parcels outside the frontage (p = 0.023); case statuses checked against 2025-26 sources; decision rule agreed with the sponsor on 9 Nov 2026', 'Four blind timelines', 'Validation report'],
-      ['Pilot and handoff', 'demo', 'This page', 'Sponsor feedback on the score and the plan', 'Property Dossier pilot, model card, data contract, report']];
+      ['Pilot and handoff', 'demo', 'This page', 'Settle with the sponsor which storefronts are empty; agree the hand-off format', 'Property Dossier pilot, model card, data contract, report']];
     document.getElementById('comp').innerHTML = `<table><thead><tr><th>Part (Idea 1)</th><th>Now</th><th>Next</th><th>Final, May 2027</th></tr></thead><tbody>${R.map(([a, s, b, c, d]) => `<tr><td><b>${esc(a)}</b><br><span class="st ${s}">${s === 'done' ? 'done' : s === 'demo' ? 'working draft' : 'next'}</span></td><td>${esc(b)}</td><td>${esc(c)}</td><td>${esc(d)}</td></tr>`).join('')}</tbody></table>`;
   }
 
-  // ---------------- views: one tab at a time, so the page reads as six short pages
+  // ---------------- views: one tab at a time, so the page reads as seven short pages
   let VIEW = 'b';
   function showView(v) {
     VIEW = v;
@@ -1929,6 +2029,8 @@ details.more > summary { font-size: 14px; }
   function jumpTo(id) {
     const t = document.getElementById(id); if (!t) return;
     const host = t.closest('[data-view]'); if (host && host.hidden) showView(host.dataset.view);
+    for (let d = t.closest('details'); d; d = d.parentElement && d.parentElement.closest('details')) d.open = true;
+    const own = t.querySelector(':scope > details'); if (own) own.open = true;
     t.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
   function wireJumps(root) {
@@ -1997,7 +2099,7 @@ details.more > summary { font-size: 14px; }
       ${tr('Multipliers', r => [r.pol < 1 ? `conditional ×${r.pol}` : '', r.avm < 1 ? `objection ×${r.avm}` : '', r.fbm !== 1 ? `feedback ×${r.fbm.toFixed(2)}` : ''].filter(Boolean).join(', ') || 'none')}
       ${tr('Who runs it', seg1)}
       ${tr('Their first obstacle', pain1)}
-      ${tr('Your view', r => fbBtns(p.id, r.f.id) || '<span class="small">voting works on the claude.ai page</span>')}
+      ${fbState === 'none' ? '' : tr('Your view', r => fbBtns(p.id, r.f.id))}
     </tbody></table>`;
     wireVotes(document.getElementById('cmptab'));
   }
@@ -2041,6 +2143,8 @@ details.more > summary { font-size: 14px; }
   function reason(k, txt) { if (!MY[k]) return; MY[k].r = String(txt).slice(0, 200); MY[k].t = new Date().toISOString(); save(); FBDOCS.forEach(x => { if (x.uid === ME && x.k === k) x.r = MY[k].r; }); drawFbLog(); }
   async function drawFbLog() {
     const st = document.getElementById('fbstat'), el = document.getElementById('fblog');
+    const was = document.body.classList.contains('nofb'); document.body.classList.toggle('nofb', fbState === 'none');
+    if (was !== (fbState === 'none')) drawCompare();
     if (fbState === 'none') {
       st.textContent = 'not available in this copy';
       el.innerHTML = '<p class="small">Voting works on the published page on claude.ai, for people the owner has shared it with as Contributor or Editor. A downloaded copy shows the scores without feedback.</p>';
@@ -2354,8 +2458,8 @@ details.more > summary { font-size: 14px; }
     <p><b>Coding.</b> A keyword rule assigns each line to one of the team's use categories, so a few lines will be coded wrong, and most permit lines (signs, repairs, awnings) carry no use at all. A bare "store" on a permit or a Sanborn "S" says there was a shop front, not what it sold, so those records are listed but not coloured. Numbers that are not a parcel in the export go to the next parcel down the same side, and the record says the address was inferred. ${esc(D.validation)}</p>
     <p><b>A rule that still binds.</b> The Waverly Business Area Urban Renewal Plan (1979, amended to 2012) still covers the frontage. Since 1995 it bars new taverns, liquor stores and pawnshops, and it sets facade, sign and awning standards for every commercial building. Where a building's food-and-drink history is mostly a saloon, the best-proven use says so. The sponsor added on 26 Oct 2026 that the plan bars taverns, not restaurants, and that a restaurant can get a liquor licence more easily; the plan's own pages (City Archives BRG48-43-10-9, pp. 4-29) are scanned but not yet filed, so the wording is still to be confirmed there (team/evidence/archive_unfiled_triage_2026-10-26.csv).</p>
     <p><b>The concepts.</b> The three concepts were drafted with AI assistance (Claude) from each building's records, its block side today, the urban renewal plan and the comps, and are reviewed by the team before use. The named businesses are examples drawn from public reporting, chosen because they fit the building and appear to need space or to have no street-front shop yet. Nobody has been contacted, and the sponsor decides whether anyone is. Every outside fact links to its source; check it again before any outreach.</p>
-    <p><b>What it is not.</b> This is a screening draft for the team, not the final optimiser and not an agreed recommendation. It ranks uses for a building, never buildings by price: no valuation, no appraisal language and no acquisition targeting, following the sponsor's own rules. A sponsor walk-through is not a statement of ownership; the owner of record comes from the state assessment snapshot. The score and the block plan are drafts; their limits are listed under How the recommendation works. "Best-proven use" ranks the uses a building has carried by how many decades of evidence it has, minus a penalty where the same use is already common on its block side today. The rent figures are indicative ranges from the comps library and are not an appraisal. Every row should be checked against its source before it is used.</p>
-    <p><b>Next sources.</b> The 1960s to 1990s are the gap: Polk 1930s to 1960s and newspapers through the research desk, the 1931 Building Survey, and a Street View check of the 28 buildings with no confirmed occupant.</p>`;
+    <p><b>What it is not.</b> A planning aid: not an appraisal, not an offer and not a decision. It ranks uses for a building, never buildings by price: no valuation, no appraisal language and no acquisition targeting, following the sponsor's own rules. A sponsor walk-through is not a statement of ownership; the owner of record comes from the state assessment snapshot. The sponsor agreed the default weights and the back-test rule on ${AGREED.on}; the scores, the plan and the rent ranges are still estimates, and their limits are listed under How the recommendation works. "Best-proven use" ranks the uses a building has carried by how many decades of evidence it has, minus a penalty where the same use is already common on its block side today. The rent figures are indicative ranges from the comps library and are not an appraisal. Every row should be checked against its source before it is used.</p>
+    <p><b>Still open.</b> Which storefronts are empty: the team's October check and the sponsor's own check differ on some buildings, and the list is being settled with the sponsor; until then it can be set on the Block plan page. The 1960s to 1990s are the thinnest decades in the record; the next sources are Polk 1930s to 1960s and newspapers through the research desk, and the 1931 Building Survey.</p>`;
 
   // ---------------- interactions
   function select(id, scroll) { sel = id; if (CX[id]) cxSel = id; render(); if (scroll && window.matchMedia('(max-width: 900px)').matches) document.getElementById('panel').scrollIntoView({ behavior: 'smooth', block: 'start' }); }
@@ -2364,7 +2468,41 @@ details.more > summary { font-size: 14px; }
   document.getElementById('m-now').onclick = () => { mode = 'now'; setSeg(MB, 'm-now'); render(); };
   document.getElementById('m-best').onclick = () => { mode = 'best'; setSeg(MB, 'm-best'); render(); };
   document.getElementById('m-rec').onclick = () => { mode = 'rec'; setSeg(MB, 'm-rec'); render(); };
-  document.getElementById('unk').onchange = e => { inclUnk = e.target.checked; replan(); };
+  // the list of empty storefronts: one switch per storefront, the sponsor's check as a second starting point
+  function vacChanged() {
+    applyVacancy(); const b = baseCounts(); BASE.side = b.side; BASE.corr = b.corr; BASE.base = b.base;
+    Object.keys(overrides).forEach(id => { if (!PI[id] || !isEmpty(PI[id])) { delete overrides[id]; delete userCh[id]; } });
+    saveVac(); const se = document.getElementById('ebsel'); if (se) se.innerHTML = '';
+    drawTiles(); update(); drawVac();
+  }
+  function markVac(id, want) {   // want: 'empty', 'occupied', or 'reset' to go back to the record
+    const p = PI[id]; if (!p || !isShop(p)) return;
+    if (want === 'reset' || (want === 'empty') === baseEmpty(p)) delete VAC[id]; else VAC[id] = want;
+    vacMsg = ''; vacChanged();
+  }
+  function drawVac() {
+    const box = document.getElementById('vacgrid'); if (!box) return;
+    const shops = streetOrder(P.filter(isShop)), empty = shops.filter(isEmpty), nM = Object.keys(VAC).length;
+    const nT = shops.filter(p => p._0.availability === 'available now').length, spv = shops.filter(SPV), nB = spv.filter(p => p._0.availability === 'available now').length, nO = spv.filter(p => p._0.status === 'occupied').length;
+    document.getElementById('vacsum').innerHTML = `Which storefronts are empty: ${empty.length} <span class="small">· from ${vset === 'team' ? "the team's check" : "the team's and the sponsor's checks"}${nM ? `, ${nM} changed by you` : ''} · change the list</span>`;
+    document.getElementById('vacnote').textContent = `The plan fills only empty storefronts, so this list decides what is planned. The team's October tenant check found ${nT} empty. The sponsor's own check (October 2026) marks ${spv.length} vacant: the two agree on ${nB}, and the team recorded a business at ${nO} of the others. Select a number to switch that storefront between empty and in use. The list is kept in this browser only.`;
+    box.innerHTML = SIDE_ORDER.map(sd => { const ps = shops.filter(p => p.side === sd); if (!ps.length) return '';
+      return `<div class="vrow"><span>${esc(SIDE[sd])}</span><div>${ps.map(p => { const e = isEmpty(p);
+        return `<button type="button" class="vchip${SPV(p) ? ' sp' : ''}${p._0.availability === 'possibly available' ? ' unc' : ''}${VAC[p.id] ? ' mine' : ''}" data-vid="${p.id}" aria-pressed="${e}" aria-label="${esc(p.address)} Greenmount, counted as ${e ? 'empty' : 'in use'}" title="${esc(`${p.address} Greenmount. Team's check: ${wasLine(p)}.${p.sa ? ` Sponsor's check: ${p.sa.label}, ${p.sa.conf} confidence.` : ''}${VAC[p.id] ? ' Changed by you.' : ''}`)}">${esc(p.address)}</button>`; }).join('')}</div></div>`; }).join('')
+      + `<div class="small vkey"><span><span class="vchip on" aria-hidden="true">0000</span>counted as empty, and planned</span><span><span class="vchip sp" aria-hidden="true">0000</span>vacant on the sponsor's check</span><span><span class="vchip unc" aria-hidden="true">0000</span>the team could not confirm an occupant</span><span><span class="vchip mine" aria-hidden="true">0000</span>changed by you</span></div>`;
+    box.querySelectorAll('[data-vid]').forEach(b => b.onclick = () => { const id = b.dataset.vid; markVac(id, isEmpty(PI[id]) ? 'occupied' : 'empty'); const nb = document.querySelector(`#vacgrid [data-vid="${id}"]`); if (nb) nb.focus(); });
+    const nums = ps => ps.map(p => p.address).join(', '), mE = shops.filter(p => VAC[p.id] === 'empty'), mO = shops.filter(p => VAC[p.id] === 'occupied');
+    document.getElementById('vaclist').innerHTML = `<b>Counted as empty (${empty.length}):</b> ${esc(nums(empty)) || 'none'}.${nM ? ` <b>Your changes:</b> ${[mE.length ? 'empty ' + esc(nums(mE)) : '', mO.length ? 'in use ' + esc(nums(mO)) : ''].filter(Boolean).join('; ')}.` : ''}${vacMsg ? ' ' + esc(vacMsg) : ''}`;
+    document.getElementById('vacreset').hidden = !nM;
+    document.querySelectorAll('#vacset button').forEach(b => b.setAttribute('aria-pressed', b.dataset.vs === vset));
+  }
+  document.querySelectorAll('#vacset button').forEach(b => b.onclick = () => { vset = b.dataset.vs; P.forEach(p => { if (VAC[p.id] && (VAC[p.id] === 'empty') === baseEmpty(p)) delete VAC[p.id]; }); vacMsg = ''; vacChanged(); });
+  document.getElementById('vacreset').onclick = () => { VAC = {}; vacMsg = ''; vacChanged(); };
+  document.getElementById('vacadd').onclick = () => {
+    const inp = document.getElementById('vacin'), nums = inp.value.match(/\d{4}/g) || [], miss = [];
+    nums.forEach(n => { const p = P.find(x => x.address === n && isShop(x)); if (!p) { miss.push(n); return; } if (baseEmpty(p)) delete VAC[p.id]; else VAC[p.id] = 'empty'; });
+    vacMsg = !nums.length ? 'Enter one or more four-digit street numbers.' : miss.length ? `Not a storefront on this frontage: ${miss.join(', ')}.` : ''; inp.value = ''; vacChanged(); };
+  document.getElementById('vacin').onkeydown = e => { if (e.key === 'Enter') { e.preventDefault(); document.getElementById('vacadd').click(); } };
   document.querySelectorAll('#plmode button').forEach(b => b.onclick = () => {
     const pl = RKLAST && RKLAST.byId[b.dataset.pm]; if (!pl) return;
     planBase = b.dataset.pm; userCh = {}; overrides = planBase === 'fit' ? {} : Object.assign({}, pl.a); drawPlan(); drawMix(); });
@@ -2377,6 +2515,6 @@ details.more > summary { font-size: 14px; }
   [['f-all', 'all'], ['f-avail', 'avail'], ['f-sponsor', 'sponsor']].forEach(([i, v]) => document.getElementById(i).onclick = () => { filt = v; setSeg(['f-all', 'f-avail', 'f-sponsor'], i); render(); });
   document.getElementById('q').addEventListener('input', e => { q = e.target.value.replace(/\D/g, ''); const hit = P.filter(p => p.address.startsWith(q)); if (q.length >= 4 && hit.length) sel = hit[0].id; render(); });
   function render() { drawLegend(); drawMap(); drawLedger(); drawPanel(); wireJumps(document.getElementById('panel')); drawCompare(); drawCases(); drawConcept(); drawTable(); drawEarnBuilding(); }
-  drawMethodOnce(); drawEarnOnce(); drawRetailOnce(); drawWeights(); render(); drawPlan(); drawMix(); drawRoad(); drawSeg(); drawFbLog();
+  drawMethodOnce(); drawEarnOnce(); drawRetailOnce(); drawWeights(); render(); drawPlan(); drawMix(); drawRoad(); drawSeg(); drawFbLog(); drawTiles(); drawVac();
 })();
 </script>

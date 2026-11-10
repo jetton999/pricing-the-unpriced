@@ -1,6 +1,6 @@
 # Model card: Greenmount frontage explorer
 
-Release candidate, 9 November 2026. Covers the use score (v0.4), the block plan (v2), the comps at three levels,
+Release candidate, 10 November 2026. Covers the use score (v0.4), the block plan (v2), the comps at three levels,
 the typical units and the displacement flags. The rent and revenue ranges have their own card: `team/comps/MODEL_CARD.md`.
 
 ## What it is for
@@ -42,7 +42,9 @@ the typical units and the displacement flags. The rent and revenue ranges have t
 3. **Block plan.** Uses are placed one at a time under a cap of three of a kind per block side; each storefront
    gets a sheet with its use, reasons, rent and risks. A search then finds the plan that could support the most
    rent (typical, cautious or bad year) for comparison, and checks itself against an exhaustive search. A plan's
-   total is the sum of its sheets.
+   total is the sum of its sheets. Only storefronts counted as empty are planned. The list starts from the
+   team's October 2026 tenant check (6 storefronts); the sponsor's own check marks 16 vacant and agrees on 3, so
+   the reader can add that list or switch any storefront, and each sheet says whose check it rests on.
 4. **Comps at three levels.** 32 reuse buildings and 22 corridors, each with sources. Buildings are matched on
    type, history, size, age and income context; streets on income, race, anchor, ownership, history, length and
    country. Project costs are total cost divided by floor area, adjusted to 2025 dollars with CPI-U. They are
