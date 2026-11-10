@@ -17,6 +17,7 @@ Sources the export holds only in part, collected for the 79 frontage records (69
 | `blocklot_gaps.csv` | 20 | From the sponsor: export records with no block and lot of their own, merged into a neighbour or gone (week 2) |
 | `city_archives_unfiled_pages_2026-10-26.csv` | 174 | From the sponsor: City Archives pages (BRG48-43-10) scanned but not filed on any building |
 | `archive_unfiled_triage_2026-10-26.csv` | 174 | A suggested building for each unfiled page, from the filed pages either side; written by `triage_unfiled_pages.py` |
+| `streetview_check_2026-11.csv` | 28 | Street View check of the 28 frontage storefronts with unknown tenants (week 5, in progress) |
 
 ## Permit cards, 1924 to 1961
 
@@ -120,3 +121,15 @@ Checked by: ____________________ Date: __________
   easily. The explorer now says so, marked as still to confirm on these pages. Item 8 (the final Waverly plan,
   pages 28 to 49) is next.
 
+
+## Street View check of the 28 unknown storefronts (week 5, in progress)
+
+- The 28 frontage addresses whose current tenant could not be found online (week 2 walk-by list). Kevin Lin looked
+  at each in Google Street View on 8 November 2026, using the September 2026 imagery and, where useful, 2023.
+- Result so far: 18 can be sorted by what is visible; 10 are still unclear (use not visible, or not clear which
+  door goes with which address). Only the rows with a `status` are filled in this draft; the rest follow.
+- `status` is one of: occupied, vacant, for lease, residential, boarded, unclear. `parcel_today` and `blocklot`
+  give the parcel each address now belongs to (several were absorbed by a neighbour; see
+  `absorbed_addresses` in `properties.csv`).
+- Next: compare with the sponsor's photos of 9 November (15 of the 28 have one; none for 2900 to 2956). The
+  photos are for the team only and are not committed.
