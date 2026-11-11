@@ -134,5 +134,5 @@ Checked by: ____________________ Date: __________
   sponsor's photos do not cover; both need a walk.
 - Changes from the imagery: 3127 and 3133 are Citi Trends, open by 3 November (vacant in September); 2946 has
   closed although its awning is still up.
-- Phone numbers on signs are replaced with `[phone]`. `parcel_today` and `blocklot` give the parcel each address
+- Phone numbers on signs are replaced with `[phone]` and people's names with `[name]`. `parcel_today` and `blocklot` give the parcel each address
   belongs to now (see `absorbed_addresses` in `properties.csv`).
