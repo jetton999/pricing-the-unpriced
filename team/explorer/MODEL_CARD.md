@@ -1,6 +1,6 @@
 # Model card: Greenmount frontage explorer
 
-Release candidate, 26 October 2026. Covers the use score (v0.3), the block plan (v1), the comps at three levels,
+Release candidate, 26 October 2026. Covers the use score (v0.4), the block plan (v1), the comps at three levels,
 the typical units and the displacement flags. The rent and revenue ranges have their own card: `team/comps/MODEL_CARD.md`.
 
 ## What it is for
@@ -30,7 +30,8 @@ the typical units and the displacement flags. The rent and revenue ranges have t
 2. **Score.** Each allowed use gets a score from six inputs:
    - **Heritage:** the decades the use is on record at the building.
    - **Room on the block:** saturation on the block side and on the corridor against its 1920-23 mix.
-   - **Size fit.**
+   - **Size fit:** the floor area against the sourced typical range of the use; a larger building is scored as
+     split into units (up to 3, or up to 12 for studios and offices).
    - **Community:** what residents asked for or objected to.
    - **Neighbours:** a matrix grounded in law and research.
    - **Precedents:** how the most similar reuse cases turned out.
@@ -48,7 +49,8 @@ the typical units and the displacement flags. The rent and revenue ranges have t
    public asking rents, made triple-net equivalent with the comps engine's allowances, on vacancy with its
    definition, and on residents; the comparison sentences are written from the rows at build time.
 5. **Typical units.** The typical floor area of 20 uses (sourced) turns a rent per sq ft into a total rent a
-   year. The size fit in the score still uses the team's wider ranges, pending the sponsor.
+   year. Since score v0.4 (team decision, 2 Nov 2026) the size fit uses these sourced ranges; on that date it
+   changed the top use of one of the 69 buildings.
 6. **Displacement flags.**
    - **Long-standing businesses:** where a dated record or a check documents them (5 so far).
    - **Rent pressure:** businesses already trading on a block side whose kind of business typically supports
