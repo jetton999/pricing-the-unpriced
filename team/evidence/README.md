@@ -17,6 +17,7 @@ Sources the export holds only in part, collected for the 79 frontage records (69
 | `blocklot_gaps.csv` | 20 | From the sponsor: export records with no block and lot of their own, merged into a neighbour or gone (week 2) |
 | `city_archives_unfiled_pages_2026-10-26.csv` | 174 | From the sponsor: City Archives pages (BRG48-43-10) scanned but not filed on any building |
 | `archive_unfiled_triage_2026-10-26.csv` | 174 | A suggested building for each unfiled page, from the filed pages either side; written by `triage_unfiled_pages.py` |
+| `LICENCE_3200.md` | – | Whether 3200 can get a liquor licence: district 43A and the § 12-1603 rules (week 5) |
 | `streetview_check_2026-11.csv` | 28 | Street View check of the 28 frontage storefronts with unknown tenants (week 5, in progress) |
 
 ## Permit cards, 1924 to 1961
