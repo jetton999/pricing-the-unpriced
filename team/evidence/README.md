@@ -122,14 +122,17 @@ Checked by: ____________________ Date: __________
   pages 28 to 49) is next.
 
 
-## Street View check of the 28 unknown storefronts (week 5, in progress)
+## Street View check of the 28 unknown storefronts (week 5)
 
-- The 28 frontage addresses whose current tenant could not be found online (week 2 walk-by list). Kevin Lin looked
-  at each in Google Street View on 8 November 2026, using the September 2026 imagery and, where useful, 2023.
-- Result so far: 18 can be sorted by what is visible; 10 are still unclear (use not visible, or not clear which
-  door goes with which address). Only the rows with a `status` are filled in this draft; the rest follow.
-- `status` is one of: occupied, vacant, for lease, residential, boarded, unclear. `parcel_today` and `blocklot`
-  give the parcel each address now belongs to (several were absorbed by a neighbour; see
-  `absorbed_addresses` in `properties.csv`).
-- Next: compare with the sponsor's photos of 9 November (15 of the 28 have one; none for 2900 to 2956). The
-  photos are for the team only and are not committed.
+- The 28 frontage addresses whose current tenant could not be found online (week 2 walk-by list), checked by
+  Kevin Lin in Google Street View using the September 2026 imagery, with older captures (2023) where they helped.
+  `streetview_status` is what that imagery shows.
+- `final_status` adds two later sources: the sponsor's walk photos of 30 October and 3 November (used to check
+  the calls; the photos are for the team only and are not committed) and one direct confirmation (2946).
+- Result: 19 of 28 settled (8 occupied, 6 residential, 3 boarded, 1 vacant, 1 for lease); 9 still unclear:
+  2902, 2920, 3000, 3011, 3013, 3015, 3032, 3103 and 3124. Only 2902 and 2920 are on the 2900 block, which the
+  sponsor's photos do not cover; both need a walk.
+- Changes from the imagery: 3127 and 3133 are Citi Trends, open by 3 November (vacant in September); 2946 has
+  closed although its awning is still up.
+- Phone numbers on signs are replaced with `[phone]` and people's names with `[name]`. `parcel_today` and `blocklot` give the parcel each address
+  belongs to now (see `absorbed_addresses` in `properties.csv`).
