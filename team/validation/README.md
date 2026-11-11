@@ -84,3 +84,7 @@ Read the tables with these points in mind:
 python3 team/validation/backtest.py              # about 10 seconds; writes out/backtest_v2.json
 python3 -m unittest team/validation/test_backtest.py
 ```
+
+## Blind reference timelines
+
+The four blind reference timelines the plan calls for are set up in `blind_timelines/`: the parcels are drawn and each has a reading packet. The timelines themselves are not started and need a person; see `blind_timelines/README.md`.
