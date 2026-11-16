@@ -70,6 +70,9 @@ def storefront(repo, props):
             elif s['status'] == 'residential':
                 p['availability'] = 'house'
                 houses += 1
+        elif p['status'] == 'vacant' and s['status'] == 'residential':   # a vacant house is not an empty storefront
+            p['availability'] = 'house'
+            houses += 1
         elif p['status'] == 'occupied' and s['status'] in ('vacant_storefront', 'vacant_lot', 'listed_likely_dead'):
             disagree += 1
             p['status_note'] = 'our check and the sponsor disagree: check on the walk-by'
