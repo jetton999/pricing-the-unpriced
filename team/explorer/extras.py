@@ -185,7 +185,6 @@ def legacy(repo, props, now_year=2026, min_years=15):
         if e.get('business') and e.get('year', '').isdigit() and e['source'] in TENURE_SOURCES:
             recs[merged.get(e['property_id'], e['property_id'])].append((int(e['year']), e['business'], e['source'], e.get('source_ref', '')))
     sa = {r['property_id']: r for r in _csv(os.path.join(repo, 'storefront_assessments.csv'))}
-    n = 0
     for t in _csv(os.path.join(repo, 'team', 'tenants', 'current_tenants_2026-10.csv')):
         pid = merged.get(t['property_id'], t['property_id'])
         p = byid.get(pid)
@@ -208,8 +207,10 @@ def legacy(repo, props, now_year=2026, min_years=15):
         if found:
             y, basis = min(found)
             yrs = now_year - y
+            if 'since' in p and p['since']['year'] <= y:
+                continue   # two tenant rows on one parcel (an absorbed street number): keep the earlier date, count once
             p['since'] = dict(year=y, years=yrs, basis=basis, legacy=yrs >= min_years, name=re.split(r'[;(]', t['tenant_name'])[0].strip())
-            n += p['since']['legacy']
+    n = sum(1 for p in byid.values() if p.get('since', {}).get('legacy'))
     return dict(legacy=n, min_years=min_years)
 
 
