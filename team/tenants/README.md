@@ -25,9 +25,21 @@ sponsor's walk photos of 3 November; `team/evidence/streetview_check_2026-11.csv
 shops on five numbers), 6 houses, 5 empty (vacant or for lease, three of them boarded). The 9 still `unknown` have
 `needs_street_view_check = walk`: 2902, 2920, 3000, 3011, 3013, 3015, 3032, 3103, 3124. Houses carry no name.
 
+## Sponsor's storefront audit (16 November 2026)
+
+The sponsor checked the empty storefronts against their own BDC storefront audit (records, September Street View
+and walks on 30 October and 3 November) and sent the list of 22 empty frontage parcels.
+`apply_sponsor_audit_2026-11.py` writes it in after the Street View step: those 22 (and 3013 and 3124, which sit
+inside two of them) are empty, 3000 is open (a medical practice), and 2936 is a vacant house, not a storefront.
+The audit's main correction is Yelp: an "Updated" date on a Yelp page is when Yelp refreshed it, not proof that a
+shop is open, so ten storefronts this list had as occupied are empty. 3211 stays `for lease` (an August 2026
+listing) until the sponsor's visit. Rows with `business_type = residential` are houses: the explorer leaves them
+out of the block plan.
+
 ## What is still open
 
-- The 9 rows marked `walk` above: they need a visit, because neither the imagery nor the photos settle them.
+- 3211: the sponsor will check it in person.
+- 2902, 3032 and 3103 are still `unknown` as street numbers; their parcels (2900, 3028 and 3031) are occupied.
 - Address conflicts are written out in `notes`, for example Goodwill (listed at 3101, parcel 3031), Raven
   Grocery (listed at 3215, assigned to 3213), and 3224 (a 2025 permit for a restaurant conversion, but a clothing
   store is listed there).

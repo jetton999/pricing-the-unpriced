@@ -97,6 +97,8 @@ for pid, p in props.items():
     side = p['block_side_id']
     status = t['status']
     avail = 'available now' if status in ('vacant', 'for lease') else ('possibly available' if status == 'unknown' else 'occupied')
+    if t['business_type'] == 'residential':
+        avail = 'house'   # a house, lived in or empty, has no shop front: never in the block plan
     cands = []
     for r in proven[pid]:
         if r['cat'] in NOT_CAND or not r['strong']:
