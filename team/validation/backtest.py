@@ -70,7 +70,7 @@ def frontage(sponsor_only=False):
         pid = merged.get(e['property_id'], e['property_id'])
         if pid not in props or not e['year'].isdigit() or not e['decade']:
             continue
-        if e['source'].startswith('sponsor') and e['text'].startswith('Built ca') and 'B-5229' in e['text']:
+        if e['source'].startswith('sponsor') and nr_summary_row(e['text']):
             continue   # NR summary rows dated to the build year (see build_explorer.py)
         if sponsor_only and not e['source'].startswith('sponsor'):
             continue
@@ -82,7 +82,13 @@ def frontage(sponsor_only=False):
                 n_unoccupied=len(props) - len(parcels))
 
 
-def other_blocks(include_low=True):
+def nr_summary_row(text):
+    """A National Register summary row: dated to the build year, but it states the use as of 2013. Counting it as
+    pre-cut-off history lets the outcome leak into the predictor, so both samples leave these rows out."""
+    return ('B-5229' in text and text.startswith('Built ca')) or 'Use as of 2013' in text
+
+
+def other_blocks(include_low=True, keep_nr_summary=False):
     """Greenmount parcels outside the frontage, coded blind (outcomes_other_greenmount_2026-10.csv)."""
     oc = [r for r in rd('team', 'validation', 'outcomes_other_greenmount_2026-10.csv') if r['included'] == 'yes']
     if not include_low:
@@ -101,6 +107,8 @@ def other_blocks(include_low=True):
     for r in rd('property_incidents.csv'):
         if r['property_id'] not in keep or is_admin(r['source']):
             continue
+        if not keep_nr_summary and nr_summary_row(r['summary']):
+            continue   # the leak found in the sponsor's review of 17 Nov 2026: frontage() left these out, this did not
         b = biz.get(r['id'], [])
         if not (b or r['source'] in A_SOURCES or r['category'] in A_CATEGORIES):
             continue
@@ -346,6 +354,7 @@ def similarity(data_ids):
 def main():
     fr, frs, ob = frontage(), frontage(sponsor_only=True), other_blocks()
     ob_hi = other_blocks(include_low=False)
+    ob_leak = other_blocks(keep_nr_summary=True)   # as first run and reported (p = 0.023), kept for the record
     res = dict(
         written_by='team/validation/backtest.py', plan='team/validation/PLAN_backtest_v2.md',
         categories=CATS, permutations=N_PERM, seed=SEED,
@@ -353,6 +362,7 @@ def main():
         frontage_sponsor_only=[analyse(frs, c) for c in CUTS],
         other_blocks=[analyse(ob, c) for c in CUTS],
         other_blocks_without_low_confidence=[analyse(ob_hi, c) for c in CUTS],
+        other_blocks_before_leak_fix=[analyse(ob_leak, c) for c in CUTS],
         transfer_frontage_sponsor_to_other=[transfer(frs, ob, c) for c in CUTS],
         transfer_frontage_all_to_other=[transfer(fr, ob, c) for c in CUTS],
         frontage_leave_one_side_out=[leave_one_side_out(fr, c) for c in CUTS],

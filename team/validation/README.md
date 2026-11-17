@@ -1,6 +1,19 @@
 # Validation: does a building's past predict its use today?
 
-**Result (back-test v2, 26 October 2026).** On Greenmount parcels the model had never seen, a use
+**Correction, 17 November 2026.** The sponsor's review found a leak in the test on the other Greenmount blocks.
+National Register summary rows are dated to a building's build year but state its use as of 2013; the frontage
+sample left them out and the other-blocks sample did not, so 12 such rows counted as pre-1960 history. With the
+same exclusion applied to both samples, the 1960 test gives **p = 0.055** (0.084 without low-confidence codes),
+against 0.023 as first reported, and **does not pass** the rule agreed with the sponsor on 9 November 2026
+(p below 0.05 and a lower held-out log loss). The 1940 cut-off gives 0.024. Held-out log loss still falls a
+little (0.6188 to 0.6175, sponsor-record coefficients) while held-out AUC falls (0.604 to 0.583); with
+all-source coefficients the log loss rises (0.6188 to 0.6206). `out/backtest_v2.json` holds both runs
+(`other_blocks` and `other_blocks_before_leak_fix`). The text below describes the first run and still needs
+rewriting: per-category results, a leave-one-parcel-out range and an interval for the transfer gain are to be added.
+The plan file was committed four minutes before the first results, in the same working session, so it is not an
+independent pre-registration.
+
+**First result, superseded by the correction above (back-test v2, 26 October 2026).** On Greenmount parcels the model had never seen, a use
 with a documented past at a building is more likely to be there today than its frequency on the
 street predicts. At the 1960 cut-off, the one-sided permutation test gives **p = 0.023**. The
 history model also has a lower held-out log loss than the base model when frontage coefficients
@@ -27,7 +40,7 @@ parcel and uses the gradient, not only the top group.
 
 | Data set | Cut-off | Parcels (with history) | One-sided p, permutation | AUC, base to history | With a record-depth control |
 |---|---|---|---|---|---|
-| **Other Greenmount blocks (not seen before)** | 1960 | 52 (34) | **0.023** | 0.707 to 0.741 | p = 0.013 |
+| **Other Greenmount blocks (not seen before)** | 1960 | 52 (34) | **0.023** before the fix; **0.055** after (52 (32), AUC 0.707 to 0.724) | 0.707 to 0.741 | p = 0.013 |
 | Other Greenmount blocks | 1940 | 52 (33) | 0.007 | 0.707 to 0.743 | p = 0.003 |
 | Other blocks, low-confidence codes left out | 1960 | 47 (32) | 0.035 | 0.729 to 0.767 | p = 0.031 |
 | Frontage, all sources (exploratory) | 1960 | 44 (42) | 0.0004 | 0.839 to 0.870 | p = 0.0003 |

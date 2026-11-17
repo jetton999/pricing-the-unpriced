@@ -83,8 +83,9 @@ python3 -m unittest team/explorer/test_explorer_data.py team/validation/test_bac
 See `MODEL_CARD.md`. In short:
 
 - **The weights are team judgement,** agreed with the sponsor as the default on 9 November 2026.
-- **Back-test v2 passes on blocks the model had not seen** (p = 0.023), but the gain over "how common is this use"
-  is modest, and history does not show cause.
+- **Back-test v2 does not pass the agreed rule on blocks the model had not seen** (p = 0.055 after a leak was fixed on
+  17 November 2026; 0.023 before). On held-out blocks the gain over "how common is this use" is not distinguishable
+  from zero, and history does not show cause.
 - **Project costs are adjusted for inflation only.** Scope differs between projects.
 - **The displacement rubric is applied by the team** from published sources. "Unknown" does not mean none.
 - **Long-standing businesses are found only where a record or a check documents them.** Others may exist.
