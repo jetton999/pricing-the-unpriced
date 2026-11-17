@@ -32,8 +32,8 @@ On 16 November 2026 the sponsor checked the list of empty storefronts against it
 into this file: 13 addresses become empty (2920, 2930, 3010, 3011, 3015, 3019, 3029, 3038, 3111, 3120, 3122,
 3200, 3224), 3000 is open, and 2936 is a vacant house, not a storefront, so the plan leaves it out. The main
 cause was Yelp: "Updated <month>" on a page is when the page was refreshed, not proof that the shop is open.
-With these, 22 of the 69 frontage parcels are empty on the audit. 3211 stays listed for lease until the sponsor
-checks it in person, so the explorer plans 23.
+On 17 November the sponsor added 2942 and confirmed 3211 (listed for lease), so 24 of the 69 frontage parcels are
+empty on the audit and the explorer plans 24. The list has moved twice in two days and may move again.
 
 ## What is still open
 

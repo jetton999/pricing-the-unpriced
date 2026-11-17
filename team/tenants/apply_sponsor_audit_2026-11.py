@@ -2,12 +2,12 @@
 
 The sponsor checked the list of empty storefronts against its own audit (records, September 2026 Street View, and
 walks on 30 October and 3 November) and sent the result on 16 November 2026: 22 of the 69 frontage parcels are
-empty. This applies the rows where the audit differs from the list. A Yelp page marked "Updated <month>" was the
+empty. On 17 November it added 2942 and confirmed 3211, making 24. This applies the rows where the audit differs from the list. A Yelp page marked "Updated <month>" was the
 main cause: that date is when the page was refreshed, not proof the shop is open. Standard library only.
 
     python3 team/tenants/apply_sponsor_audit_2026-11.py
 
-3211 is left as it is (listed for lease): the sponsor will check it in person.
+Rows already stamped by this script are skipped, so it can be run again when the audit changes.
 """
 import csv
 import os
@@ -22,7 +22,7 @@ EMPTY = {
     '2920': '', '2930': 'The old barber sign is still up.', '3010': 'The convenience store has closed (seen 3 November).',
     '3011': '', '3015': '', '3019': '', '3029': '', '3038': '', '3111': '',
     '3120': "The neon sign belongs to the next building.", '3122': 'The old jewelry sign is still up.',
-    '3200': '', '3224': '',
+    '3200': '', '3224': '', '2942': 'Added by the sponsor on 17 November.',
 }
 # Open on the audit; the list had no occupant. The use category is not coded yet.
 OPEN = {'3000': 'The Practitioner Provider'}
@@ -39,6 +39,9 @@ def main():
         n = r['address'].split()[0]
         stamp = dict(evidence_date='2026-11', source_title=SOURCE, source_url='', source_type='sponsor audit',
                      accessed_on='2026-11-16', confidence='high', needs_street_view_check='no', entered_by=BY)
+        if r['source_type'] == 'sponsor audit':
+            seen.add(n)
+            continue                      # already applied
         if n in EMPTY:
             was = r['tenant_name'].strip()
             note = 'Empty on the sponsor\'s audit.' + (' ' + EMPTY[n] if EMPTY[n] else '') + (f' The list had: {was}.' if was else '')

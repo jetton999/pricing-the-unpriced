@@ -43,8 +43,7 @@ the typical units and the displacement flags. The rent and revenue ranges have t
    gets a sheet with its use, reasons, rent and risks. A search then finds the plan that could support the most
    rent (typical, cautious or bad year) for comparison, and checks itself against an exhaustive search. A plan's
    total is the sum of its sheets. Only storefronts counted as empty are planned. The list is the tenant
-   list, which follows the sponsor's storefront audit of November 2026 (22 storefronts, plus one listed for lease
-   that is still to be checked in person). The reader can switch any storefront, and a sheet says so when its
+   list, which follows the sponsor's storefront audit of November 2026 (24 storefronts as of 17 November). The reader can switch any storefront, and a sheet says so when its
    storefront was switched by the reader.
 4. **Comps at three levels.** 32 reuse buildings and 22 corridors, each with sources. Buildings are matched on
    type, history, size, age and income context; streets on income, race, anchor, ownership, history, length and
