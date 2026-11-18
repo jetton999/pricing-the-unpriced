@@ -71,7 +71,7 @@ Waverly plus Charles Village comes to 26 rows: 15 Waverly, plus 7 Charles Villag
   - Medical office at 3333 N Calvert $36 FSG (R-020); 1812 Greenmount Ave 2nd floor, "medical concepts", $16 MG (R-031).
   - Other cities: Bronzeville "health and wellness" $20 NNN (R-070); Anacostia "nonprofit / community health" $50 FSG (R-066).
 - **housing**: 7 listings and 5 reference rows.
-  - Listings: upstairs 1BR on Greenmount $915/mo, in place with a Section 8 tenant (R-008); 1BRs $1,350-$1,400 (R-009, R-076); 3BRs $1,950-$3,150 (R-010, R-077, R-078); 4BR house $3,300 (R-079).
+  - Listings: upstairs 1BR on Greenmount $915/mo, in place (R-008); 1BRs $1,350-$1,400 (R-009, R-076); 3BRs $1,950-$3,150 (R-010, R-077, R-078); 4BR house $3,300 (R-079).
   - ACS 2020-2024 median gross rent: tract 903 $1,052, tract 904 $1,220, tract 905 $1,589 (R-011 to R-013).
   - HUD FY2026 Small Area FMR for ZIP 21218: 1BR $1,450, 2BR $1,770 (R-014, R-015).
 

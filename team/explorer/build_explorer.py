@@ -227,8 +227,7 @@ def btype_of(prop, r):
     if h.get('automotive') and h['automotive'][0] >= 3 and (prop['sqft'] or 0) >= 4000: return 'garage/showroom'
     if ('rowhouse' in st or 'row house' in st or 'dwelling' in st) and not any(k in st for k in ('storefront', 'commercial')): return 'rowhouse/house'
     return 'small storefront'
-OWNER_KIND = lambda n: ('sponsor-linked LLC' if '2631 GREENMOUNT' in n.upper() else
-                        'company' if any(k in n.upper() for k in ('LLC', ' INC', 'CORP', 'COMPANY', 'TRUST', 'REALTY', 'LIMITED', 'NET-LEASED', 'HOMES', 'HOUSING', 'CAPITAL', 'INVESTMENT')) else
+OWNER_KIND = lambda n: ('company' if any(k in n.upper() for k in ('LLC', ' INC', 'CORP', 'COMPANY', 'TRUST', 'REALTY', 'LIMITED', 'NET-LEASED', 'HOMES', 'HOUSING', 'CAPITAL', 'INVESTMENT')) else
                         'church or nonprofit' if any(k in n.upper() for k in ('CHURCH', 'TEMPLE', 'MINIST', 'OUTREACH', 'PARISH')) else
                         'individual' if n.strip() else 'unknown')
 for q in data['props']:
@@ -314,7 +313,7 @@ data['n_summary'] = n_summary
 # ---- candidate formats: heritage links, C-1 zoning status (Table 10-301), urban renewal plan, size range (team assumption; the page uses the sourced typical range where there is one, score v0.4)
 data['formats'] = [
     dict(id='cafe', name='Cafe or sit-down restaurant', cat='food & drink', her=[['food & drink', 1]], z='Restaurant', zs='P', size=[800, 4000],
-         note='Porch or sidewalk seating is outdoor dining: a conditional use in C-1 (Table 10-301, note 5). The urban renewal plan bars taverns, not restaurants, so a restaurant can serve alcohol (sponsor, 26 Oct 2026; to confirm on the plan text).'),
+         note='Porch or sidewalk seating is outdoor dining: a conditional use in C-1 (Table 10-301, note 5). The urban renewal plan bars taverns, not restaurants, so a restaurant can serve alcohol (Waverly Business Area Urban Renewal Plan, Amendment No. 2, 4 December 1995). This is the team\'s reading, not legal advice.'),
     dict(id='counter', name='Take-away counter (coffee, ice cream)', cat='food & drink', her=[['food & drink', 1]], z='Carry-Out Food Shop', zs='CB', size=[250, 1500],
          note='Serving mostly to go in disposable containers makes it a carry-out food shop (zoning code 1-303).'),
     dict(id='foodmaker', name='Food maker with a shop (bakery, roaster, ice cream)', cat='food & drink', her=[['food & drink', 0.8], ['production & light industry', 0.8]], z='Food Processing: Light', zs='P', size=[1000, 6000], note=''),

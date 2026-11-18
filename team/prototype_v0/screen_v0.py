@@ -91,7 +91,7 @@ for pid, p in props.items():
         lo, hi = b['large'] if sqft >= 5000 else b['small']
         econ = f"indicative rent ${sqft * lo / 1000:,.0f}k-${sqft * hi / 1000:,.0f}k/yr at ${lo:g}-{hi:g}/SF. " + b['note']
     screen.append(dict(property_id=pid, address=p['address'], block_side_id=side, structure_sqft=sqft or '',
-                       zoning=p['zoning_code'], sponsor_building=fa.get(pid, {}).get('matterport_tour', ''),
+                       zoning=p['zoning_code'], has_3d_tour=fa.get(pid, {}).get('matterport_tour', ''),
                        status_2026=status, tenant_2026=t['tenant_name'], uses_2026=' ; '.join(now),
                        availability=avail, evidence_status=sil[pid]['status_after'],
                        decades_with_evidence=sil[pid]['decades_after'],
@@ -171,7 +171,7 @@ for s in screen:
             strip.setdefault(int(e['decade']), collections.Counter())[e['use_category']] += 1
     data['props'].append(dict(
         id=pid, address=s['address'].replace(' Greenmount Ave', ''), side=s['block_side_id'], sqft=s['structure_sqft'],
-        zoning=s['zoning'], sponsor=s['sponsor_building'] == 'yes', status=s['status_2026'], tenant=s['tenant_2026'],
+        zoning=s['zoning'], sponsor=s['has_3d_tour'] == 'yes', status=s['status_2026'], tenant=s['tenant_2026'],
         uses_now=s['uses_2026'], availability=s['availability'], evidence=s['evidence_status'],
         decades=int(s['decades_with_evidence']), proven=s['proven_uses'], cand1=s['candidate_1'],
         cand1_why=s['candidate_1_why'], cand2=s['candidate_2'], econ=s['economics_note'],
