@@ -5,7 +5,7 @@ with a documented past at a building is more likely to be there today than its f
 street predicts. At the 1960 cut-off, the one-sided permutation test gives **p = 0.023**. The
 history model also has a lower held-out log loss than the base model when frontage coefficients
 are applied to those parcels. The test therefore **passes the rule written down before it was
-run** (`PLAN_backtest_v2.md`, commit `fac73ce`). The rule still needs the sponsor's sign-off. The
+run** (`PLAN_backtest_v2.md`, commit `fac73ce`). The
 transfer gain is small, so the case rests mainly on the permutation test.
 
 ## In plain words
