@@ -165,11 +165,5 @@
     "draws": 2000,
     "money_weight": [0.2, 0.5],
     "weight_concentration": 75
-  },
-  "private_calibration": {
-    "about": "How one private operator's figure would move the public sales benchmark for its format, if the team runs the private step. Weight = tau^2 / (tau^2 + sigma^2). Nothing from this step is ever written into the public outputs.",
-    "tau": "from_rent_pooling",
-    "sigma": "sigma_default",
-    "sensitivity": [{"tau": 0.30}, {"sigma": 0.335}]
   }
 }

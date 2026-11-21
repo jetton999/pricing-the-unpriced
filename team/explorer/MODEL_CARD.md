@@ -99,8 +99,6 @@ the typical units and the displacement flags. The rent and revenue ranges have t
 ## Data, people and rights
 
 - **Data.** Sponsor data is CC BY 4.0. Sensitivity-flagged records are never dropped and never quoted.
-- **No NDA data.** No NDA operator data is used. A private check against one operator's sales is built but switched
-  off, and needs the sponsor's approval.
 - **No private individuals.** The case library names organizations and businesses only.
 - **No brand names.** Brand names go in reports only (the sponsor's rule, 26 Oct 2026); reference brands and the
   chains behind the typical sizes stay in the team report.

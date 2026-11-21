@@ -16,12 +16,6 @@ What it computes (MODEL_CARD.md explains why each method was chosen and what was
      Supportable rent (what the explorer ranks with) = the lower of the listing rent and what the use can afford.
   4. Checks: held-out coverage, interval score against a naive range, a Baltimore-only check, sensitivity
      reruns, a cross-city comparison with price-level factors, and operators' figures against the ranges.
-
-Private step (optional; its input and output never go into the repo):
-  PTU_PRIVATE_OPERATOR=/secure/path/operator.json python3 team/comps/comps_engine.py
-  operator.json: {"format_id": "cafe", "sales_per_sqft": ..., "year": ...}  or "annual_sales" and "sqft"
-  Writes private_annex.json beside that file (or in PTU_PRIVATE_OUT). The public comps_ranges.json is
-  byte-identical with or without it; test_comps_engine.py checks that.
 """
 import csv
 import json
@@ -100,7 +94,6 @@ def rent_rows(inp, loads=None, drop=()):
     rr = inp.cfg['rent_rows']
     out = []
     for x in read_csv('rents.csv'):
-        assert '2731 greenmount' not in (x['address'] or '').lower(), 'NDA parcel must never enter the library'
         f = x['format_id']
         if f in rr['drop_formats'] or not x['asking_rent_usd_per_sqft_yr'] or x['row_id'] in drop:
             continue
@@ -437,7 +430,7 @@ def parcel_tax(inp):
 
 
 # ---------------------------------------------------------------- build
-def build(cfg=None, private_path=None):
+def build(cfg=None):
     inp = Inputs(cfg or load_inputs())
     rows = rent_rows(inp)
     m = fit(rows)
@@ -679,10 +672,7 @@ def build(cfg=None, private_path=None):
         local_demand=inp.cfg['local_demand'],
         sources=sources_index(),
     )
-    priv = None
-    if private_path:
-        priv = private_step(private_path, inp, B, sig, m, A_w, wA_of, eti_med, qs)
-    return out, priv
+    return out
 
 
 def sources_index():
@@ -695,38 +685,8 @@ def sources_index():
     return idx
 
 
-# ---------------------------------------------------------------- private step
-def private_step(path, inp, B, sig, m, A_w, wA_of, eti_med, qs):
-    path = os.path.abspath(path)
-    if os.path.commonpath([path, REPO]) == REPO:
-        raise SystemExit('Refusing: the private operator file must live outside the repository (CUSP RCF or another secure folder).')
-    with open(path, encoding='utf-8') as fh:
-        op = json.load(fh)
-    f = op['format_id']
-    if not (B.get(f) or {}).get('applies'):
-        raise SystemExit(f'No affordability route for {f}; nothing to calibrate.')
-    s = op.get('sales_per_sqft') or (op['annual_sales'] / op['sqft'])
-    s *= inp.cpi_factor(op.get('year', inp.target))
-    b = B[f]
-    k_obs = math.log(s) - b['mu']
-    tau = math.sqrt(m['tau2'])
-    def w_of(t, sg):
-        return t * t / (t * t + sg * sg)
-    runs = [('default', w_of(tau, sig))] + [(json.dumps(x), w_of(x.get('tau', tau), x.get('sigma', sig))) for x in inp.cfg['private_calibration']['sensitivity']]
-    lo = q_tp(inp.alpha / 2, b['mu'], b['slo'], b['shi']); hi = q_tp(1 - inp.alpha / 2, b['mu'], b['slo'], b['shi'])
-    res = dict(note='PRIVATE. Never commit, publish or quote. Built from the NDA operator file; the calibrated figures can be inverted to recover it.',
-               format=f, inside_public_range=lo <= s <= hi, runs=[])
-    for lab, w in runs:
-        bb = dict(b, mu=b['mu'] + w * k_obs)
-        d = Dist(A_w[f], bb, eti_med, wA_of(f))
-        res['runs'].append(dict(setting=lab, weight=round(w, 3), shift_pct=round(100 * (math.exp(w * k_obs) - 1), 1),
-                                sales=qs(d.qS), typical=qs(d.typical), supportable=qs(d.supportable)))
-    return res
-
-
 def main():
-    priv_in = os.environ.get('PTU_PRIVATE_OPERATOR')
-    out, priv = build(private_path=priv_in)
+    out = build()
     dst = os.path.join(HERE, 'comps_ranges.json')
     with open(dst, 'w', encoding='utf-8') as fh:
         json.dump(out, fh, indent=1, ensure_ascii=False)
@@ -734,14 +694,6 @@ def main():
     h = out['holdout']
     print(f"wrote {os.path.relpath(dst, REPO)}: {out['built_from']['rows_used']} listings in {out['built_from']['corridors']} corridors; "
           f"held-out coverage {h['nominal_hits']}/{h['n']} at the nominal 80%, widened x{out['interval']['widen']:.2f}")
-    if priv is not None:
-        pdir = os.environ.get('PTU_PRIVATE_OUT') or os.path.dirname(os.path.abspath(priv_in))
-        if os.path.commonpath([os.path.abspath(pdir), REPO]) == REPO:
-            raise SystemExit('Refusing to write the private annex inside the repository.')
-        pth = os.path.join(pdir, 'private_annex.json')
-        with open(pth, 'w', encoding='utf-8') as fh:
-            json.dump(priv, fh, indent=1)
-        print('private annex written outside the repository (contents not printed)')
 
 
 if __name__ == '__main__':

@@ -20,11 +20,8 @@ python3 team/explorer/build_explorer.py            # rebuild the page with the n
 | `library/*_notes.md`, `library/SCHEMA.md` | How the library was collected and what each column means |
 | `parcel_tax.csv` | City tax and building area per Greenmount parcel, from the city's Real Property layer |
 | `comps_ranges.json` | Output (generated; do not edit by hand) |
-| `test_comps_engine.py` | Tests, including that the private step leaves no trace in the public output |
+| `test_comps_engine.py` | Tests |
 | `MODEL_CARD.md` | Why each method, what was rejected, results, limits |
-
-The NDA restaurant data is not in this folder and must never be added. The optional private step reads it from
-outside the repository (see `MODEL_CARD.md`).
 
 ## First ten comps
 
@@ -71,8 +68,7 @@ Each use is anchored on what the building has already shown it can carry, with t
 
 Public listing pages (CityFeet, CommercialCafe, Showcase, broker and MLS pages), SEC EDGAR Form C filings, IRS
 Form 990 data on ProPublica, and a furniture chain's 10-K. LoopNet, Crexi and BizBuySell refused automated
-access, so their listings were read through the sites that repost them. No figures from the NDA restaurant data
-are used here, and none may be added.
+access, so their listings were read through the sites that repost them.
 
 ## AI use
 

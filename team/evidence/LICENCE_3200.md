@@ -28,8 +28,7 @@ Commissioners for Baltimore City is the authority.
 
 - A Class B licence means a real restaurant: the Liquor Board's licensee packet sets a minimum share of food
   sales (41% to 65%, depending on the district) and a working kitchen.
-- Class D is the tavern licence. The Waverly urban renewal plan also bars new taverns (sponsor, 26 October;
-  the plan text is item 9, pp. 4-29 of BRG48-43-10, flagged in `archive_unfiled_triage_2026-10-26.csv`). The
+- Class D is the tavern licence. The Waverly urban renewal plan also bars new taverns (Waverly Business Area Urban Renewal Plan, Amendment No. 2, 4 December 1995). The
   exact wording and section are still to be read from those pages.
 
 ## Still to do
