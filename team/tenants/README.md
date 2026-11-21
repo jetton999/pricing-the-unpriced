@@ -25,6 +25,16 @@ sponsor's walk photos of 3 November; `team/evidence/streetview_check_2026-11.csv
 shops on five numbers), 6 houses, 5 empty (vacant or for lease, three of them boarded). The 9 still `unknown` have
 `needs_street_view_check = walk`: 2902, 2920, 3000, 3011, 3013, 3015, 3032, 3103, 3124. Houses carry no name.
 
+## Sponsor's storefront audit (November 2026)
+
+On 16 November 2026 the sponsor checked the list of empty storefronts against its own audit (records, September
+2026 Street View, walks on 30 October and 3 November). `apply_sponsor_audit_2026-11.py` writes the differences
+into this file: 13 addresses become empty (2920, 2930, 3010, 3011, 3015, 3019, 3029, 3038, 3111, 3120, 3122,
+3200, 3224), 3000 is open, and 2936 is a vacant house, not a storefront, so the plan leaves it out. The main
+cause was Yelp: "Updated <month>" on a page is when the page was refreshed, not proof that the shop is open.
+On 17 November the sponsor added 2942 and confirmed 3211 (listed for lease), so 24 of the 69 frontage parcels are
+empty on the audit and the explorer plans 24. The list has moved twice in two days and may move again.
+
 ## What is still open
 
 - The 9 rows marked `walk` above: they need a visit, because neither the imagery nor the photos settle them.
