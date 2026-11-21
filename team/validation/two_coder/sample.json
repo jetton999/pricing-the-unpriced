@@ -1,0 +1,11 @@
+{
+ "seed": "two-coder gold set, 2026-11-21",
+ "outcomes": 52,
+ "history": 200,
+ "history_coded_rows": 1433,
+ "history_pools": {
+  "sponsor records": 429,
+  "other sources": 1004
+ },
+ "rule": "history: 100 drawn at random from the coded sponsor records and 100 from the coded records of the other sources, with random.Random(seed).sample over each pool in file order; outcomes: every parcel in the back-test"
+}

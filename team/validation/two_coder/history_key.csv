@@ -1,0 +1,201 @@
+sample_id,stratum,evidence_row,property_id,year,source,source_ref,extractor_use_category,extractor_use_subcategory,matched_keyword,basis
+H001,other sources,2705,758,1941,permit_card,BRG48-53 image 677-0866 line 1,entertainment & assembly,theatre / pictures,Motion Picture,stated
+H002,sponsor records,344,766,1928,sponsor:nrhp,incident 23937,retail goods,,jewelry,stated
+H003,sponsor records,444,721,1903,sponsor:polk,incident 42037,food & drink,food retail,flour,stated
+H004,sponsor records,90,701,1920,sponsor:whitepaper,incident 6563,residential,dwelling (stated),was a two-story brick dwelling,stated
+H005,sponsor records,332,768,1958,sponsor:newspapers_com,incident 23671,food & drink,restaurant / lunch,RESTAURANT,stated
+H006,other sources,1113,748,1909,polk_directory,Polk 1909: 1039 York rd (now 3131 Greenmount),retail goods,,dry goods,inferred
+H007,sponsor records,97,708,1914,sponsor:whitepaper,incident 6570,residential,dwelling (stated),was a two-story brick dwelling,stated
+H008,sponsor records,401,719,1950,sponsor:census_directory,incident 41876,residential,,dwelling,stated
+H009,other sources,1905,748,1922,polk_directory,Polk 1922: 3131 Greenmount av,food & drink,food retail,fish,inferred
+H010,sponsor records,399,719,1901,sponsor:polk,incident 41874,retail goods,,cigar,stated
+H011,sponsor records,483,737,1920,sponsor:polk,incident 42266,food & drink,food retail,grocer,stated
+H012,other sources,845,740,1906,polk_directory,Polk 1906: 1025 York rd (now 3115 Greenmount),institutional & religious,,School,inferred
+H013,other sources,3231,705,2011,nr_inventory,"NR nomination B-5229 p. 32 (use at fieldwork, c. 2011)",institutional & religious,,Temple,stated
+H014,sponsor records,47,742,1935,sponsor:newspapers_com,incident 4944,retail goods,,Furniture,stated
+H015,sponsor records,151,758,1953,sponsor:whitepaper,incident 10451,residential,dwelling (stated),as a neighborhood movie house,stated
+H016,other sources,2195,693,1937,permit_card,BRG48-53 image 674-3863 line 9,food & drink,bar / tavern,tavern,stated
+H017,other sources,541,731,1901,polk_directory,Polk 1901: 1006 York rd (now 3038 Greenmount),personal services,,seamstress,stated
+H018,other sources,1468,728,1917,polk_directory,Polk 1917: 3035 Greenmount av,food & drink,food retail,butter and eggs,inferred
+H019,other sources,3152,749,1930,nr_inventory,NR nomination B-5229 p. 23,food & drink,restaurant / lunch,restaurant,stated
+H020,sponsor records,70,752,1936,sponsor:whitepaper,incident 5196,food & drink,restaurant / lunch,soda fountain,stated
+H021,other sources,1299,726,1914,polk_directory,Polk 1914: 3028 Greenmount av,food & drink,bar / tavern,rectifier,stated
+H022,other sources,1233,735,1912,polk_directory,Polk 1912: 3102 Greenmount av,entertainment & assembly,hall / lodge,Lodge,inferred
+H023,other sources,2370,745,1941,permit_card,BRG48-53 image 675-0604 line 1,entertainment & assembly,recreation,skating,stated
+H024,other sources,1900,730,1922,polk_directory,Polk 1922: 3036 Greenmount av,food & drink,food retail,confx,stated
+H025,sponsor records,71,752,1937,sponsor:whitepaper,incident 5198,food & drink,restaurant / lunch,Coffee,stated
+H026,other sources,1184,767,1912,polk_directory,Polk 1912: 1117 York rd (now 3225 Greenmount),production & light industry,,marblewkr,inferred
+H027,other sources,1405,720,1915,polk_directory,Polk 1915: 3011 Greenmount av,production & light industry,,plumber,stated
+H028,sponsor records,132,739,1918,sponsor:whitepaper,incident 10365,residential,,Residence,stated
+H029,sponsor records,497,720,1901,sponsor:polk,incident 42351,personal services,,tailor,stated
+H030,other sources,2060,751,1923,polk_directory,Polk 1923: 3135 Greenmount av,food & drink,food retail,confr,inferred
+H031,sponsor records,262,758,1941,sponsor:whitepaper,incident 17776,entertainment & assembly,theatre / pictures,Theatre,stated
+H032,sponsor records,9,714,1965,sponsor:newspapers_com,incident 4811,personal services,,cash,stated
+H033,sponsor records,125,726,1930,sponsor:whitepaper,incident 10335,personal services,,barber,stated
+H034,sponsor records,207,742,1914,sponsor:whitepaper,incident 11808,automotive,,automobile,stated
+H035,other sources,829,751,1906,polk_directory,Polk 1906: 1041 York rd (now 3133 Greenmount),production & light industry,,horseshoer,inferred
+H036,sponsor records,309,769,1928,sponsor:newspapers_com,incident 18815,food & drink,food retail,Baker,stated
+H037,sponsor records,376,739,1912,sponsor:polk,incident 41325,residential,dwelling (stated),as a plain dwelling,stated
+H038,sponsor records,119,730,1914,sponsor:whitepaper,incident 10326,food & drink,food retail,grocer,stated
+H039,other sources,756,721,1905,polk_directory,Polk 1905: 1007 York rd (now 3015 Greenmount),retail goods,,shoes,stated
+H040,sponsor records,446,721,1915,sponsor:polk,incident 42039,personal services,,shoe repair,stated
+H041,other sources,946,750,1907,polk_directory,Polk 1907: 1044 York rd (now 3132 Greenmount),personal services,,shoemkr,inferred
+H042,sponsor records,289,758,1909,sponsor:web_research,incident 18739,entertainment & assembly,theatre / pictures,Theatre,stated
+H043,other sources,3220,712,1900,nr_inventory,NR nomination B-5229 p. 30,residential,dwelling (stated),as a rowhouse,stated
+H044,sponsor records,325,768,1904,sponsor:polk,incident 23651,personal services,,Laundries,stated
+H045,sponsor records,306,769,1926,sponsor:newspapers_com,incident 18812,institutional & religious,,School,stated
+H046,other sources,1787,721,1921,polk_directory,Polk 1921: 3017 Greenmount av,retail goods,,shoes,inferred
+H047,sponsor records,402,719,1883,sponsor:census_directory,incident 41878,food & drink,food retail,dairy,stated
+H048,other sources,3219,713,1900,nr_inventory,NR nomination B-5229 p. 30,residential,dwelling (stated),as a rowhouse,stated
+H049,sponsor records,115,727,1959,sponsor:whitepaper,incident 10322,food & drink,restaurant / lunch,soda fountain,stated
+H050,sponsor records,194,762,1920,sponsor:whitepaper,incident 11264,food & drink,food retail,Groceries,stated
+H051,other sources,3149,750,2011,nr_inventory,"NR nomination B-5229 p. 23 (use at fieldwork, c. 2011)",food & drink,restaurant / lunch,restaurant,stated
+H052,sponsor records,393,762,1968,sponsor:web_press,incident 41583,food & drink,food retail,grocery,stated
+H053,sponsor records,348,723,1977,sponsor:bca_dhcd,incident 38982,residential,dwelling (stated),"as a shingled, center-gable, two-story, three-bay house",stated
+H054,other sources,2406,749,1952,permit_card,BRG48-53 image 675-0608 line 3,food & drink,bar / tavern,tavern,stated
+H055,sponsor records,164,732,1897,sponsor:whitepaper,incident 10541,automotive,,garage,stated
+H056,sponsor records,37,742,1929,sponsor:newspapers_com,incident 4929,retail goods,,Furniture,stated
+H057,sponsor records,19,768,1894,sponsor:newspapers_com,incident 4843,food & drink,food retail,Grocery,stated
+H058,other sources,876,742,1906,polk_directory,Polk 1906: 1027 York rd (now 3117 Greenmount),automotive,,livery,stated
+H059,other sources,3241,693,1890,nr_inventory,NR nomination B-5229 p. 33,residential,dwelling (stated),as 3 separate 2-story brick rowhouses,stated
+H060,other sources,971,731,1907,polk_directory,Polk 1907: 1006 York rd (now 3038 Greenmount),food & drink,food retail,baker,stated
+H061,other sources,503,767,1901,polk_directory,Polk 1901: 1117 York rd (now 3225 Greenmount),food & drink,food retail,grocer,inferred
+H062,other sources,1798,725,1921,polk_directory,Polk 1921: 3026 Greenmount av,production & light industry,,plumber,stated
+H063,sponsor records,223,742,1936,sponsor:whitepaper,incident 11836,retail goods,,Furniture,stated
+H064,other sources,913,747,1907,polk_directory,Polk 1907: 1038 York rd (now 3126 Greenmount),food & drink,bar / tavern,saloon,stated
+H065,other sources,832,767,1906,polk_directory,Polk 1906: 1123 York rd (now 3225 Greenmount),automotive,,wagon,inferred
+H066,sponsor records,184,738,1925,sponsor:whitepaper,incident 11151,food & drink,restaurant / lunch,Grill,stated
+H067,other sources,2067,693,1923,polk_directory,Polk 1923: 2900 Greenmount av,food & drink,food retail,confr,stated
+H068,sponsor records,266,758,1921,sponsor:newspapers_com,incident 17793,entertainment & assembly,theatre / pictures,THEATRE,stated
+H069,other sources,3168,743,2011,nr_inventory,"NR nomination B-5229 p. 24 (use at fieldwork, c. 2011)",retail goods,,Jewelry,stated
+H070,sponsor records,352,740,1977,sponsor:bca_dhcd,incident 38986,institutional & religious,,firehouse,stated
+H071,other sources,1907,751,1922,polk_directory,Polk 1922: 3133 Greenmount av,retail goods,,pianos,stated
+H072,sponsor records,339,768,1893,sponsor:newspapers_com,incident 23704,food & drink,bar / tavern,saloon,stated
+H073,sponsor records,30,768,1937,sponsor:newspapers_com,incident 4899,personal services,,laundry,stated
+H074,sponsor records,283,752,1958,sponsor:newspapers_com,incident 18027,food & drink,restaurant / lunch,COFFEE,stated
+H075,other sources,2066,728,1923,polk_directory,Polk 1923: 3105 Greenmount av,retail goods,,Hat Shop,inferred
+H076,sponsor records,104,705,1914,sponsor:whitepaper,incident 6577,residential,dwelling (stated),was a two-story brick dwelling,stated
+H077,sponsor records,256,753,1930,sponsor:whitepaper,incident 17740,food & drink,food retail,grocery,stated
+H078,other sources,3187,734,1937,nr_inventory,NR nomination B-5229 p. 27,food & drink,food retail,confectioner,stated
+H079,sponsor records,470,737,1927,sponsor:ephemera,incident 42237,personal services,,Beauty,stated
+H080,other sources,1102,747,1909,polk_directory,Polk 1909: 1038 York rd (now 3126 Greenmount),food & drink,bar / tavern,saloon,stated
+H081,other sources,3126,737,1880,nr_inventory,NR nomination B-5229 p. 20,residential,dwelling (stated),as a dwelling,stated
+H082,other sources,3009,703,1953,sanborn,Sanborn 1953 sheet 648,residential,,dwelling,stated
+H083,sponsor records,84,768,1955,sponsor:whitepaper,incident 5225,vacant,vacant,FOR RENT,stated
+H084,sponsor records,259,762,1915,sponsor:whitepaper,incident 17761,residential,dwelling (stated),was still a frame 2-story dwelling,stated
+H085,sponsor records,6,714,1924,sponsor:newspapers_com,incident 4800,residential,dwelling (stated),as a corner 20-by-100-ft modern two-story porch-front brick dwelling,stated
+H086,other sources,1231,735,1912,polk_directory,Polk 1912: 3102 Greenmount av,entertainment & assembly,hall / lodge,Council No,inferred
+H087,other sources,2661,748,1934,permit_card,BRG48-53 image 677-0905 line 5,food & drink,food retail,market,stated
+H088,sponsor records,188,747,1880,sponsor:whitepaper,incident 11198,food & drink,restaurant / lunch,restaurant,stated
+H089,other sources,3093,761,2011,nr_inventory,"NR nomination B-5229 p. 16 (use at fieldwork, c. 2011)",retail goods,,Clothing,stated
+H090,sponsor records,163,726,2013,sponsor:whitepaper,incident 10503,entertainment & assembly,hall / lodge,Hall,stated
+H091,sponsor records,177,727,1940,sponsor:whitepaper,incident 11120,entertainment & assembly,recreation,billiard,stated
+H092,sponsor records,185,739,1900,sponsor:whitepaper,incident 11153,retail goods,,Hardware,stated
+H093,other sources,1493,755,1917,polk_directory,Polk 1917: 3204 Greenmount av,retail goods,,dry gds,stated
+H094,other sources,1298,752,1914,polk_directory,Polk 1914: 3202 Greenmount av,food & drink,bar / tavern,saloon,inferred
+H095,other sources,1461,749,1917,polk_directory,Polk 1917: 3128 Greenmount av,food & drink,food retail,srocer,stated
+H096,sponsor records,42,742,1934,sponsor:newspapers_com,incident 4939,retail goods,,Furniture,stated
+H097,other sources,2430,743,1961,permit_card,BRG48-53 image 675-0623 line 3,automotive,,Used Car,stated
+H098,other sources,3040,738,1953,sanborn,Sanborn 1953 sheet 735,office,,Bank,stated
+H099,sponsor records,336,768,1926,sponsor:newspapers_com,incident 23698,food & drink,food retail,market,stated
+H100,other sources,2822,736,1915,sanborn,Sanborn 1915 sheet 717,residential,,dwelling,stated
+H101,other sources,3020,713,1953,sanborn,Sanborn 1953 sheet 648,residential,,dwelling,stated
+H102,other sources,2435,752,1936,permit_card,BRG48-53 image 675-0647 line 4,food & drink,restaurant / lunch,restaurant,stated
+H103,sponsor records,297,769,1927,sponsor:newspapers_com,incident 18800,food & drink,restaurant / lunch,restaurant,stated
+H104,sponsor records,343,761,1928,sponsor:nrhp,incident 23935,institutional & religious,,Mission,stated
+H105,sponsor records,495,720,1905,sponsor:polk,incident 42349,food & drink,food retail,confectioner,stated
+H106,other sources,824,747,1906,polk_directory,Polk 1906: 1038 York rd (now 3126 Greenmount),food & drink,bar / tavern,saloon,stated
+H107,other sources,676,733,1904,polk_directory,Polk 1904: 1008 York rd (now 3046 Greenmount),office,,lawyer,inferred
+H108,other sources,3069,758,1909,nr_inventory,NR nomination B-5229 p. 14,entertainment & assembly,theatre / pictures,movie,stated
+H109,other sources,1265,722,1914,polk_directory,Polk 1914: 3019 Greenmount av,office,,real estate,stated
+H110,sponsor records,409,719,1916,sponsor:newspapers_com,incident 41921,residential,dwelling (stated),was an office tenant in the house,stated
+H111,sponsor records,234,742,1958,sponsor:whitepaper,incident 11848,retail goods,named store,store,stated
+H112,other sources,2275,731,1959,permit_card,BRG48-53 image 675-0014 line 3,retail goods,,clothing,stated
+H113,sponsor records,353,742,1977,sponsor:bca_dhcd,incident 38987,institutional & religious,,firehouse,stated
+H114,sponsor records,390,755,1920,sponsor:census_directory,incident 41571,food & drink,food retail,baker,stated
+H115,sponsor records,64,714,1963,sponsor:whitepaper,incident 5175,office,,realty,stated
+H116,other sources,1052,749,1908,polk_directory,Polk 1908: 1040 York rd (now 3128 Greenmount),food & drink,bar / tavern,bartndr,stated
+H117,sponsor records,264,758,1985,sponsor:whitepaper,incident 17778,entertainment & assembly,theatre / pictures,theatre,stated
+H118,sponsor records,150,758,1918,sponsor:whitepaper,incident 10450,entertainment & assembly,theatre / pictures,Theatre,stated
+H119,sponsor records,301,769,1988,sponsor:newspapers_com,incident 18804,food & drink,restaurant / lunch,carryout,stated
+H120,other sources,3000,719,1953,sanborn,Sanborn 1953 sheet 654,vacant,vacant,vacant,inferred
+H121,other sources,1285,750,1914,polk_directory,Polk 1914: 3130 Greenmount av,retail goods,,hardware,stated
+H122,other sources,2830,732,1915,sanborn,Sanborn 1915 sheet 717,residential,,dwelling,inferred
+H123,sponsor records,133,740,1918,sponsor:whitepaper,incident 10366,residential,,Dwelling,stated
+H124,other sources,645,767,1904,polk_directory,Polk 1904: 1117 York rd (now 3225 Greenmount),automotive,,express,inferred
+H125,other sources,2051,743,1923,polk_directory,Polk 1923: 3118 Greenmount av,retail goods,,hdw,stated
+H126,other sources,3102,755,1880,nr_inventory,NR nomination B-5229 p. 17,residential,dwelling (stated),as a 3-story dwelling,stated
+H127,sponsor records,322,769,2013,sponsor:nrhp,incident 20738,institutional & religious,,School,stated
+H128,sponsor records,157,764,1918,sponsor:whitepaper,incident 10457,retail goods,,florist,stated
+H129,sponsor records,73,752,1955,sponsor:whitepaper,incident 5200,personal services,,Beauty,stated
+H130,other sources,1164,740,1909,polk_directory,Polk 1909: 1025 York rd (now 3115 Greenmount),personal services,,Laundry,inferred
+H131,other sources,2387,747,1934,permit_card,BRG48-53 image 675-0605 line 9,food & drink,bar / tavern,bar,stated
+H132,sponsor records,136,745,1918,sponsor:whitepaper,incident 10369,automotive,,Garage,stated
+H133,other sources,1289,735,1914,polk_directory,Polk 1914: 3100 Greenmount av,entertainment & assembly,hall / lodge,Hall,stated
+H134,sponsor records,421,726,1871,sponsor:census_directory,incident 41975,institutional & religious,,Church,stated
+H135,other sources,1685,764,1920,polk_directory,Polk 1920: 3220 Greenmount av,retail goods,,florist,stated
+H136,sponsor records,224,742,1936,sponsor:whitepaper,incident 11838,automotive,,Motorists,stated
+H137,sponsor records,175,721,1900,sponsor:whitepaper,incident 11082,personal services,,veterinary,stated
+H138,other sources,1266,740,1914,polk_directory,Polk 1914: 3115 Greenmount av,entertainment & assembly,recreation,pool,inferred
+H139,sponsor records,379,729,1913,sponsor:polk,incident 41519,food & drink,bar / tavern,saloon,stated
+H140,sponsor records,36,742,1929,sponsor:newspapers_com,incident 4928,retail goods,named store,sales,stated
+H141,sponsor records,170,737,1887,sponsor:whitepaper,incident 10813,institutional & religious,,School,stated
+H142,other sources,2465,759,1926,permit_card,BRG48-53 image 675-0652 line 2,residential,private garage,brick garage,stated
+H143,other sources,1366,751,1915,polk_directory,Polk 1915: 3139 Greenmount av,retail goods,,dry gds,inferred
+H144,other sources,1696,758,1920,polk_directory,Polk 1920: 3211 Greenmount av,entertainment & assembly,theatre / pictures,mov pictures,stated
+H145,other sources,3182,735,1928,nr_inventory,NR nomination B-5229 p. 25,personal services,,cleaner,stated
+H146,sponsor records,406,719,1920,sponsor:polk,incident 41882,institutional & religious,,Library,stated
+H147,other sources,1064,720,1908,polk_directory,Polk 1908: 1005 York rd (now 3013 Greenmount),retail goods,,dry gds,stated
+H148,other sources,1046,750,1908,polk_directory,Polk 1908: 1044 York rd (now 3132 Greenmount),personal services,,shoemkr,inferred
+H149,other sources,2783,693,1915,sanborn,Sanborn 1915 sheet 710,food & drink,restaurant / lunch,restaurant,stated
+H150,other sources,1507,715,1917,polk_directory,Polk 1917: 3008 Greenmount av,retail goods,,florist,stated
+H151,sponsor records,473,737,1929,sponsor:ephemera,incident 42240,institutional & religious,,church,stated
+H152,sponsor records,31,768,1941,sponsor:newspapers_com,incident 4901,retail goods,named store,shop,stated
+H153,sponsor records,484,752,1902,sponsor:newspapers_com,incident 42313,food & drink,bar / tavern,Liquor,stated
+H154,sponsor records,465,725,1915,sponsor:polk,incident 42232,personal services,,funeral,stated
+H155,sponsor records,28,768,1932,sponsor:newspapers_com,incident 4897,personal services,,laundry,stated
+H156,other sources,787,740,1905,polk_directory,Polk 1905: 1025 York rd (now 3115 Greenmount),office,,Bldg Assn,inferred
+H157,sponsor records,209,742,1923,sponsor:whitepaper,incident 11810,automotive,,Garage,stated
+H158,sponsor records,75,752,1979,sponsor:whitepaper,incident 5202,food & drink,restaurant / lunch,Restaurant,stated
+H159,sponsor records,108,723,1920,sponsor:whitepaper,incident 10296,personal services,,barber,stated
+H160,other sources,775,743,1905,polk_directory,Polk 1905: 1030 York rd (now 3118 Greenmount),food & drink,food retail,grocer,stated
+H161,sponsor records,445,721,1913,sponsor:polk,incident 42038,retail goods,,shoes,stated
+H162,other sources,1014,740,1908,polk_directory,Polk 1908: 1025 York rd (now 3115 Greenmount),personal services,,laundry,inferred
+H163,other sources,1267,755,1914,polk_directory,Polk 1914: 3204 Greenmount av,food & drink,food retail,confr,stated
+H164,other sources,1859,732,1921,polk_directory,Polk 1921: 3044 Greenmount av,personal services,,Photo,inferred
+H165,sponsor records,127,735,1918,sponsor:whitepaper,incident 10360,entertainment & assembly,hall / lodge,Hall,stated
+H166,sponsor records,384,747,1912,sponsor:polk,incident 41553,food & drink,bar / tavern,saloon,stated
+H167,sponsor records,290,769,1900,sponsor:web_research,incident 18740,institutional & religious,,School,stated
+H168,other sources,1510,734,1917,polk_directory,Polk 1917: 3048 Greenmount av,food & drink,food retail,confr,stated
+H169,other sources,1569,693,1918,polk_directory,Polk 1918: 2900 Greenmount av,entertainment & assembly,hall / lodge,Hall,stated
+H170,other sources,3150,749,1890,nr_inventory,NR nomination B-5229 p. 23,residential,dwelling (stated),as a 2-story dwelling,stated
+H171,other sources,1799,750,1921,polk_directory,Polk 1921: 3132 Greenmount av,personal services,,barber,inferred
+H172,other sources,2071,754,1923,polk_directory,Polk 1923: 3207 Greenmount av,food & drink,food retail,meats,inferred
+H173,other sources,1180,751,1912,polk_directory,Polk 1912: 1047 York rd (now 3139 Greenmount),retail goods,,dry gds,inferred
+H174,sponsor records,407,719,1900,sponsor:newspapers_com,incident 41904,food & drink,food retail,dairy,stated
+H175,other sources,2382,747,1925,permit_card,BRG48-53 image 675-0605 line 4,residential,private garage,block garage,stated
+H176,other sources,2281,731,1938,permit_card,BRG48-53 image 675-0015 line 6,residential,private garage,block garage,stated
+H177,other sources,1214,729,1913,polk_directory,Polk 1913: 1000 York rd (now 3034 Greenmount),retail goods,,shoes,inferred
+H178,other sources,2107,732,1923,polk_directory,Polk 1923: 3042 Greenmount av,personal services,,photogr,inferred
+H179,sponsor records,494,720,1887,sponsor:polk,incident 42348,personal services,,laund,stated
+H180,other sources,3186,734,1890,nr_inventory,NR nomination B-5229 p. 27,residential,dwelling (stated),as a rowhouse,stated
+H181,other sources,1899,767,1922,polk_directory,Polk 1922: 3225 Greenmount av,production & light industry,,lumber,inferred
+H182,other sources,2789,705,1915,sanborn,Sanborn 1915 sheet 710,residential,,dwelling,stated
+H183,other sources,1392,719,1915,polk_directory,Polk 1915: 3014 Greenmount av,food & drink,food retail,dairy,inferred
+H184,other sources,1471,693,1917,polk_directory,Polk 1917: 2900 Greenmount av,food & drink,bar / tavern,saloon,stated
+H185,sponsor records,38,742,1932,sponsor:newspapers_com,incident 4930,retail goods,,Furniture,stated
+H186,sponsor records,288,765,1950,sponsor:web_research,incident 18738,retail goods,,Jewelers,stated
+H187,sponsor records,86,768,1967,sponsor:whitepaper,incident 5227,food & drink,restaurant / lunch,Restaurant,stated
+H188,other sources,2794,709,1915,sanborn,Sanborn 1915 sheet 710,residential,,dwelling,stated
+H189,sponsor records,236,742,1958,sponsor:whitepaper,incident 11850,personal services,,cash,stated
+H190,sponsor records,51,742,1936,sponsor:newspapers_com,incident 4950,automotive,,auto,stated
+H191,sponsor records,159,766,1922,sponsor:whitepaper,incident 10459,retail goods,,florist,stated
+H192,other sources,514,729,1901,polk_directory,Polk 1901: 1002 York rd (now 3034 Greenmount),food & drink,bar / tavern,saloon,stated
+H193,sponsor records,403,719,1903,sponsor:polk,incident 41879,entertainment & assembly,hall / lodge,lodge,stated
+H194,sponsor records,292,764,1923,sponsor:web_research,incident 18742,office,,Savings,stated
+H195,sponsor records,428,726,1922,sponsor:polk,incident 41986,food & drink,food retail,soft drinks,stated
+H196,sponsor records,89,750,1932,sponsor:whitepaper,incident 5667,entertainment & assembly,hall / lodge,Hall,stated
+H197,other sources,1360,754,1915,polk_directory,Polk 1915: 3203 Greenmount av,food & drink,food retail,confr,stated
+H198,other sources,3023,767,1953,sanborn,Sanborn 1953 sheet 739,office,,Bank,inferred
+H199,sponsor records,276,750,1948,sponsor:ephemera,incident 17999,food & drink,restaurant / lunch,restaurant,stated
+H200,other sources,2232,712,1948,permit_card,BRG48-53 image 674-3878 line 4,residential,,apartment,stated
