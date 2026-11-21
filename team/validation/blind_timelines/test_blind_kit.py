@@ -2,12 +2,13 @@
 import csv
 import json
 import os
+import sys
 import unittest
 
-import make_kit as K
-import score_blind as S
-
 HERE = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, HERE)          # so the tests also run from the repo root
+import make_kit as K  # noqa: E402
+import score_blind as S  # noqa: E402
 
 
 class Kit(unittest.TestCase):
