@@ -279,6 +279,7 @@ for _id, _r in geo.items():
         _out.append(dict(address=_m.group(1), east_2900=_r['block_side_id'] == '66',
                          status=_word.get(_assess.get(_id), (_assess.get(_id) or 'no assessment').replace('_', ' '))))
 data['left_out'] = sorted(_out, key=lambda r: (int(r['address'].split()[0]), r['address']))
+data['source_kinds'] = sorted({FAMILY[e['source']] for e in _hist})      # kinds of source among the history records
 data['placed'] = dict(total=len(_hist), inferred=sum(1 for e in _hist if e['basis'] == 'inferred'),
                       next=sum(1 for e in _hist if 'next parcel' in e['address_method']))
 st = collections.Counter(s['status'] for s in sil.values())
