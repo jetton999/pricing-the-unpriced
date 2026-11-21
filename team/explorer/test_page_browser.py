@@ -80,9 +80,25 @@ class TestPage(unittest.TestCase):
                 self.assertNotRegex(panel, r'\d+\s*/100', p['address'])
                 self.assertFalse(self.page.eval_on_selector('#panel details.ifempty', 'e => e.open'), p['address'])
                 self.assertIn('Not a suggestion to replace the business here', self.page.text_content('#panel details.ifempty'), p['address'])
+            # the compare-uses fold, opened: no rent row for a building in use, and nothing at all for a house
+            compare = self.page.evaluate("() => { const d = document.getElementById('cmph').closest('details'); d.open = true; return d.innerText; }")
+            self.assertIsNone(DOLLARS.search(compare), f"{p['address']}: a dollar figure under Compare uses")
+            self.assertNotIn('Listed rent for this use', compare, p['address'])
+            if p['availability'] == 'house':
+                self.assertIn('compares uses for storefronts only', compare, p['address'])
+            else:
+                self.assertIn('Not a suggestion to replace the business here', compare, p['address'])
             self.tab('m')
             box = self.page.inner_text('#earnbld')
             self.assertIsNone(DOLLARS.search(box), f"{p['address']}: a dollar figure on the Money page")
+            # Comps, "Buildings like this one": the column for this building names no use and no conversion cost
+            self.tab('c')
+            here = self.page.evaluate("() => Array.from(document.querySelectorAll('#casebody td.here')).map(e => e.innerText).join(' | ')")
+            self.assertTrue(here, p['address'])
+            self.assertIsNone(DOLLARS.search(here), f"{p['address']}: a dollar figure for this building on the Comps page")
+            self.assertNotRegex(here, r'(?i)top candidate|best fit|/100', p['address'])
+            self.assertNotIn('What a project like this could cost', self.page.inner_text('#casebody'), p['address'])
+            self.assertNotIn("at this building's size", self.page.inner_text('#casebody'), p['address'])
 
     def test_3_every_empty_storefront_shows_candidates_evidence_and_the_low_case_first(self):
         empty = [p for p in self.props if p['availability'] == 'available now']

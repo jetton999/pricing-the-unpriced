@@ -21,8 +21,8 @@ described in `team/validation/README.md`. Every number below is filled in from `
 - A valuation, appraisal or price for any building, or a promise of income.
 - Choosing buildings to buy, or ranking buildings, blocks, uses or plans by money.
 - Pressuring or replacing a business that trades today. The page makes no recommendation and shows no rent for a
-  building in use; a test opens the panel of every such building and fails if a dollar figure or a recommendation
-  appears.
+  building in use or a house; a test opens the panel, the compare view, the Money page and the Comps page for every
+  such building and fails if a dollar figure, a suggested use or a conversion cost appears.
 - Deciding anyone's eligibility for a programme or a loan.
 - Legal advice. The rules shown are the team's reading as students.
 

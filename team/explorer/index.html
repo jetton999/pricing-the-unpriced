@@ -1989,6 +1989,11 @@ details.vacbox > summary .small { font-weight: 400; }
     const ranked = SC[p.id] || [];
     if (cmpFor !== p.id || !cmpIds) { cmpIds = ranked.filter(r => r.ok && !r.f.av).slice(0, 3).map(r => r.f.id); cmpFor = p.id; }
     document.getElementById('cmpfor').textContent = `${p.address} Greenmount${isEmpty(p) ? '' : isShop(p) ? ' · in use today: for reference, not a recommendation' : ' · a house'} · select another building on the map or ledger`;
+    if (!isShop(p)) {     // a house: nothing to compare, the page looks at storefronts only
+      document.getElementById('cmppick').innerHTML = '';
+      document.getElementById('cmptab').innerHTML = '<p class="small">A house with no shop front. The page compares uses for storefronts only, so nothing is compared here.</p>';
+      return;
+    }
     const pick = ranked.filter(r => !r.filt);
     const pk = document.getElementById('cmppick');
     pk.innerHTML = pick.map(r => `<button type="button" class="chip" data-f="${r.f.id}" aria-pressed="${cmpIds.includes(r.f.id)}"><span class="sw" style="background:${cssFill(r.f.cat)}"></span>${esc(r.f.name)} <span class="mono">${r.ok ? Math.round(r.score * 100) : '×'}</span></button>`).join('');
@@ -2005,7 +2010,7 @@ details.vacbox > summary .small { font-weight: 400; }
     const seg1 = r => { const s = segsFor(r.f.id); return s.length ? s.map(x => esc(x.name)).join(', ') : '—'; };
     const pain1 = r => { const s = segsFor(r.f.id)[0]; const pn = s && (s.pains || []).slice().sort((a, b) => a.rank - b.rank)[0]; return pn ? `${esc(pn.pain)}: ${esc(pn.evidence)}` : '—'; };
     const best = r => { const hs = r.pr.hits.slice().sort((a, b) => b.s.v * (SUCC[b.b.status] ?? 0.6) - a.s.v * (SUCC[a.b.status] ?? 0.6)); const h = hs[0], c = hs.find(x => x.b.status === 'closed'); return h ? `${esc(h.b.name)}, ${esc(h.b.city)} (${esc(h.b.status)})${c && c !== h ? `; closed: ${esc(c.b.name)}` : ''}` : 'none among the 8 most similar'; };
-    document.getElementById('cmptab').innerHTML = `<table class="cmpt"><thead><tr><th></th>${rows.map(r => `<th><span class="sw" style="background:${cssFill(r.f.cat)};margin-right:6px;vertical-align:-1px"></span>${esc(r.f.name)}</th>`).join('')}</tr></thead><tbody>
+    document.getElementById('cmptab').innerHTML = `${isEmpty(p) ? '' : '<p class="small" style="margin:0 0 8px">In use today. Shown for reference only: what the record and the block would support if this storefront ever stood empty. Not a suggestion to replace the business here, and no rent is shown for a building in use.</p>'}<table class="cmpt"><thead><tr><th></th>${rows.map(r => `<th><span class="sw" style="background:${cssFill(r.f.cat)};margin-right:6px;vertical-align:-1px"></span>${esc(r.f.name)}</th>`).join('')}</tr></thead><tbody>
       ${tr('Score', r => r.ok ? `<span class="big" style="font-size:24px">${Math.round(r.score * 100)}</span>${sbar(r.parts)}` : `<b>not allowed</b>: ${esc(r.bl || 'filtered out')}`)}
       ${tr('Against a building with no record', r => r.ok ? liftPill(r) : '—')}
       ${tr('Evidence at this building', r => { const ev = evOf(p, r); return `${gradePill(ev.grade)} ${esc(ev.text)}`; })}
@@ -2016,7 +2021,7 @@ details.vacbox > summary .small { font-weight: 400; }
       ${tr('Neighbours', r => `${n100(r.nb.v)} ${r.nb.list.map(x => `${esc(x.q.address)} ${esc(x.c)} ${sgn(x.v)}`).join(', ') || 'none known'}`)}
       ${tr('Precedents', r => `${n100(r.pr.v)} ${r.pr.hits.length} of 8 similar cases`)}
       ${tr('Best matching case', best)}
-      ${CO ? tr('Listed rent for this use /sq ft a year', r => { const u = useRent(p, r.f.id); return u ? rng(u.q) + `<div class="small">${esc(basisWord(u.cf.asking))}</div>` : 'not estimated'; })
+      ${CO && isEmpty(p) ? tr('Listed rent for this use /sq ft a year', r => { const u = useRent(p, r.f.id); return u ? rng(u.q) + `<div class="small">${esc(basisWord(u.cf.asking))}</div>` : 'not estimated'; })
           + tr('Sales check', r => { const cf = cfOf(r.f.id); return cf ? (cf.check ? `${checkPill(cf.check)}<div class="small">could pay about ${usd(cf.check.afford_mid)} per sq ft from typical sales</div>` : `<span class="small">${esc((cf.sales_na || 'no sales benchmark').replace(/\.$/, ''))}</span>`) : '—'; }) : ''}
       ${isEmpty(p) ? tr('Comes first', r => { const sm = smaaOf(p), x = sm && sm.rows.find(y => y.r.f.id === r.f.id); return x ? pctR(x.b1) + ' of weightings close to the ones set' : '—'; }) : ''}
       ${tr('Zoning', r => esc(ZTXT[r.f.zs] || r.f.zs) + (r.f.urp ? '; barred by the urban renewal plan' : ''))}
@@ -2273,6 +2278,8 @@ details.vacbox > summary .small { font-weight: 400; }
       const pass = b => (caseRegion === 'all' || b.region === caseRegion) && (!caseF.open || ((b.status === 'operating' || b.status === 'reopened') && (b.status_year || 0) >= 2025))
         && (!caseF.mission || MISSION.includes(b.operator_model)) && (!caseF.cost || costSf(b));
       const list = simsOf(p).filter(x => pass(x.b)), top3 = list.slice(0, 3), CR = costRange(p), best = topOf(p.id);
+      // a conversion cost and a candidate use are shown for an empty storefront only: nothing is suggested for a building in use or a house
+      const shopHere = isShop(p), emptyHere = isEmpty(p);
       const ratio = b => (+p.sqft && b.sqft) ? b.sqft / +p.sqft : null;
       const R = [
         ['Similarity', () => '—', x => `<span class="simv">${Math.round(x.s.v * 100)}%</span>`],
@@ -2281,16 +2288,16 @@ details.vacbox > summary .small { font-weight: 400; }
         ['Built', () => p.built ? 'c. ' + p.built : 'unknown', x => x.b.year_built ? esc(String(x.b.year_built)) : '<span class="small">unknown</span>'],
         ['Floor area', () => p.sqft ? fmt(+p.sqft) + ' sq ft' : 'unknown', x => x.b.sqft ? `${fmt(x.b.sqft)} sq ft${ratio(x.b) ? `<div class="small">${ratio(x.b) >= 1 ? ratio(x.b).toFixed(1) + '× this building' : (1 / ratio(x.b)).toFixed(1) + '× smaller'}</div>` : ''}` : '<span class="small">not found</span>'],
         ['Was', () => esc(short(String(p.proven || p.cand1 || 'not enough evidence').replace(/\((\d+)d\)/g, '$1 decades').replace(/ ; /g, ', '), 110)), x => esc(short(x.b.orig_use, 90))],
-        ['Became', () => best ? `<b>${esc(best.f.name)}</b> <span class="small">best fit here, ${Math.round(best.score * 100)}/100</span>` : '—', x => `${esc(short(x.b.new_use, 110))}${x.b.year_opened ? ` <span class="small">(${x.b.year_opened})</span>` : ''}`],
+        ['Became', () => !shopHere ? '<span class="small">a house, no shop front: no use is suggested</span>' : !emptyHere ? `<span class="small">in use today${p.tenant ? ': ' + esc(String(p.tenant).split(' ; ')[0]) : ''}. No use is suggested for a building in use</span>` : best ? `<b>${esc(best.f.name)}</b> <span class="small">top candidate here, ${Math.round(best.score * 100)}/100</span>` : '—', x => `${esc(short(x.b.new_use, 110))}${x.b.year_opened ? ` <span class="small">(${x.b.year_opened})</span>` : ''}`],
         ['Run by', () => '<span class="small">not decided</span>', x => esc(x.b.operator_model || 'unknown')],
-        ['Total cost', () => CR.ok && CR.tot ? `${kusd(CR.tot[0])}–${kusd(CR.tot[2])} <span class="small">if it costs what similar projects did</span>` : '<span class="small">not enough cost figures</span>', x => costCell(x.b)],
-        ['Cost per sq ft, 2025 $', () => CR.ok ? `$${fmt(Math.round(CR.lo))}–$${fmt(Math.round(CR.hi))}` : '—', x => costSf(x.b) ? `$${fmt(costSf(x.b))}${+p.sqft ? `<div class="small">${kusd(costSf(x.b) * +p.sqft)} at this building's size</div>` : ''}` : '<span class="small">—</span>'],
+        ['Total cost', () => !emptyHere ? '<span class="small">not estimated: no conversion is suggested here</span>' : CR.ok && CR.tot ? `${kusd(CR.tot[0])}–${kusd(CR.tot[2])} <span class="small">if it costs what similar projects did</span>` : '<span class="small">not enough cost figures</span>', x => costCell(x.b)],
+        ['Cost per sq ft, 2025 $', () => emptyHere && CR.ok ? `$${fmt(Math.round(CR.lo))}–$${fmt(Math.round(CR.hi))}` : '—', x => costSf(x.b) ? `$${fmt(costSf(x.b))}${emptyHere && +p.sqft ? `<div class="small">${kusd(costSf(x.b) * +p.sqft)} at this building's size</div>` : ''}` : '<span class="small">—</span>'],
         ['Money from', () => '—', x => (x.b.financing_stack || []).length ? esc(short(x.b.financing_stack.slice(0, 3).map(f => f.item).join('; '), 150)) : esc(short(x.b.financing || 'not found', 150))],
         ['Empty or bought to opening', () => '—', x => timeCell(x.b)],
         ['Status now', () => esc(p.status === 'occupied' ? 'occupied' : p.status === 'unknown' ? 'occupant not confirmed' : p.status), x => `${statusPill(x.b)}${x.b.status_evidence && x.b.status_evidence.url ? ` <a class="cxsrc small" href="${esc(x.b.status_evidence.url)}" target="_blank" rel="noopener">evidence</a>` : ''}`],
         ['Lesson', () => '—', x => esc(x.b.lesson || '')]];
       const table = top3.length ? `<div class="tbl"><table class="btt cmp"><thead><tr><th scope="col"></th><th scope="col" class="here">This building</th>${top3.map((x, i) => `<th scope="col">Match ${i + 1}</th>`).join('')}</tr></thead><tbody>${R.map(([lab, f0, f]) => `<tr><th scope="row">${esc(lab)}</th><td class="here">${f0()}</td>${top3.map(x => `<td>${f(x)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>` : '<p class="small">No case passes these filters.</p>';
-      const costBox = CR.ok ? `<div class="wbox"><h3 style="margin:0">What a project like this could cost</h3>
+      const costBox = CR.ok && emptyHere ? `<div class="wbox"><h3 style="margin:0">What a project like this could cost</h3>
           <div style="font-size:14px">The ${CR.xs.length} most similar US projects with a sourced cost and floor area spent <b>$${fmt(Math.round(CR.lo))}–$${fmt(Math.round(CR.hi))} per sq ft</b> in 2025 dollars (middle $${fmt(Math.round(CR.med))}).${CR.tot ? ` At ${fmt(CR.sq)} sq ft that is about <b>${kusd(CR.tot[0])}–${kusd(CR.tot[2])}</b> (middle ${kusd(CR.tot[1])}).` : ''}</div>
           <div class="chips">${CR.xs.map(x => `<span>${esc(x.b.name)} (${Math.round(x.s.v * 100)}% similar): $${fmt(costSf(x.b))}/sq ft${x.b.cost.includes_acquisition ? ' incl. purchase' : ''}</span>`).join('')}</div>
           <p class="small" style="margin:0">What comparable projects spent, adjusted for inflation only (CPI-U), not for local building costs or this building's condition. Scope differs: some figures include buying the building. A planning range for a first conversation, not a quote and not a price for the building.</p></div>` : '';
