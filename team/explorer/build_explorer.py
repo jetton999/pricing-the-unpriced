@@ -12,11 +12,12 @@ keeps out of the public repo; PTU_BARE=1 writes the page without its html wrappe
 
 Same schema as screen_v0.py's explorer_data.json, so the page template keeps working.
 Standard library only."""
-import csv, json, collections, re, os, sys
+import csv, json, collections, math, re, os, sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.dirname(os.path.dirname(HERE))
 X = os.path.join(REPO, 'team', 'extractor', 'out')
+csv.field_size_limit(sys.maxsize)
 rd = lambda p: list(csv.DictReader(open(p, encoding='utf-8-sig')))
 
 fa = {r['property_id']: r for r in rd(os.path.join(REPO, 'team/week1/out/focus_area_properties.csv'))}
@@ -47,6 +48,17 @@ def cats_now(t):
     return [c for c in (t['business_type'] or '').split(' ; ') if c]
 
 
+# One business in two street numbers is one business: the tenant list says "same store as 3127" on the second row,
+# and that parcel is then left out of every count of businesses (the cap of three, the corridor mix, the back-test).
+SAME = re.compile(r'same (?:store|business|shop|church|office) as (\d{3,4})', re.I)
+by_number = {v['address'].split()[0]: k for k, v in props.items()}
+same_as = {}
+for pid, t in ten.items():
+    m = SAME.search(t['tenant_name'] or '')
+    cur = merged.get(pid, pid)
+    if m and cur in props and by_number.get(m.group(1)) and by_number[m.group(1)] != cur:
+        same_as[cur] = by_number[m.group(1)]
+
 side_mix = collections.defaultdict(collections.Counter)
 corr_mix = collections.Counter()
 parcel_now = collections.defaultdict(set)      # a parcel's uses today, across the tenant rows filed on it
@@ -59,36 +71,71 @@ for pid, t in ten.items():
     if t['status'] == 'occupied':
         occupied.add(cur)
 for cur, cs in parcel_now.items():
+    if cur in same_as:
+        continue
     for c in cs:
         side_mix[props[cur]['block_side_id']][c] += 1
         corr_mix[c] += 1
 
-BENCH = {
-    'food & drink': dict(small=(25.0, 37.5), large=(15.0, 25.0),
-                         note='Rent: fitted 800 SF cafe suites in Hampden ask $30-37.50/SF NNN (CAFE-01, CAFE-02); the 3226 rent roll implies at least $25.23/SF gross (CAFE-04). Sales: an owner-run Baltimore tea cafe reported $250k-285k a year (CAFE-03).'),
-    'retail goods': dict(small=(20.0, 30.0), large=(10.9, 20.0),
-                         note="Rent: large-format space asks $17-20/SF NNN in Hampden (SHOW-03, SHOW-04); a fully leased 14,000 SF 1920s building earns about $10.91/SF incl. CAM (SHOW-05). Sales: $167-185 per SF of showroom (SHOW-08, a furniture chain's 10-K)."),
-}
+
+def now_basis(t):
+    """How the tenant list knows what is at an address today, in the page's words, and whether a person has checked the row."""
+    st = (t['source_type'] or '').strip()
+    who = (t['entered_by'] or '')
+    person = not who.startswith('Claude') and 'AI-assisted' not in who
+    label = {'sponsor audit': "the sponsor's storefront audit, November 2026", 'street view': 'Street View, September 2026 imagery',
+             'sponsor photo': "the sponsor's walk photos, 3 November 2026", 'search snippet': 'a search listing only',
+             'map listing': 'a map listing', 'business website': "the business's website", 'news': 'a news article',
+             'licence data': 'licence records', 'listing': 'a property listing', 'directory': 'a directory',
+             'team check': "the team's check"}.get(st, st or 'no source')
+    return dict(src=st, label=label, person=person)
+
 NOT_CAND = {'residential', 'institutional & religious', 'vacant'}
 
 by = collections.defaultdict(list)
 for e in ev:
     by[e['property_id']].append(e)
 
-# proven uses from stated trades only (a bare "store" is a shop front, not a use)
-proven = collections.defaultdict(list)
-for pid, es in by.items():
-    g = collections.defaultdict(list)
-    for e in es:
-        if e['use_category'] and e['year'] and e['use_subcategory'] != GENERIC:
-            g[e['use_category']].append(e)
-    for c, rows in g.items():
-        decs = sorted({int(r['decade']) for r in rows})
-        srcs = {r['source'].split(':')[0] for r in rows}
-        bar = sum(1 for r in rows if r['use_subcategory'] == 'bar / tavern')
-        proven[pid].append(dict(cat=c, nd=len(decs), ne=len(rows), first=min(int(r['year']) for r in rows),
-                                last=max(int(r['year']) for r in rows), strong=len(decs) >= 2 or len(srcs) >= 2,
-                                bar_share=bar / len(rows), nsrc=len(srcs)))
+# Kinds of source. Two rows count as independent only if they come from different kinds: a sponsor record that
+# transcribes a directory is the same kind as the directory.
+FAMILY = {'polk_directory': 'directory', 'sponsor:polk': 'directory', 'sponsor:census_directory': 'directory',
+          'permit_card': 'permit card', 'sanborn': 'fire-insurance map',
+          'nr_inventory': 'National Register', 'sponsor:nrhp': 'National Register',
+          'dhcd_1970s': '1970s city file', 'sponsor:bca_dhcd': '1970s city file',
+          'sponsor:newspapers_com': 'newspaper', 'sponsor:web_press': 'newspaper', 'sponsor:chronicling_america': 'newspaper',
+          'sponsor:mdlandrec': 'land record', 'sponsor:msa_ce168': 'land record',
+          'sponsor:whitepaper': 'sponsor research note', 'sponsor:ephemera': 'ephemera', 'sponsor:web_research': 'web research'}
+CURRENT = lambda e: e['source'] == 'current_2026' or e['kind'] == 'current'    # the tenant check is today, not history
+for e in ev:
+    assert e['source'] in FAMILY or CURRENT(e), 'source with no family: ' + e['source']
+
+
+def summarise(rows):
+    decs = sorted({int(r['decade']) for r in rows})
+    srcs = {r['source'].split(':')[0] for r in rows}
+    bar = sum(1 for r in rows if r['use_subcategory'] == 'bar / tavern')
+    return dict(nd=len(decs), ne=len(rows), first=min(int(r['year']) for r in rows), last=max(int(r['year']) for r in rows),
+                strong=len(decs) >= 2 or len(srcs) >= 2, bar_share=bar / len(rows), nsrc=len(srcs))
+
+
+def proven_from(keep):
+    """Uses on record per parcel, from stated trades only (a bare "store" is a shop front, not a use)."""
+    out = collections.defaultdict(list)
+    for pid, es in by.items():
+        g = collections.defaultdict(list)
+        for e in es:
+            if e['use_category'] and e['year'] and e['use_subcategory'] != GENERIC and keep(e):
+                g[e['use_category']].append(e)
+        for c, rows in g.items():
+            out[pid].append(dict(summarise(rows), cat=c, rows=rows))
+    return out
+
+
+# The score's heritage reads history only. Until 21 Nov 2026 the 2026 tenant check counted too, so a business
+# trading today raised the score of its own use (sponsor's review, 17 Nov 2026). proven_with_today keeps the old
+# reading for the comparison the page publishes.
+proven = proven_from(lambda e: not CURRENT(e))
+proven_with_today = proven_from(lambda e: True)
 
 screen = []
 for pid, p in props.items():
@@ -115,21 +162,15 @@ for pid, p in props.items():
     cands.sort(key=lambda x: -x['score'])
     if not cands and any(r['cat'] == 'residential' for r in proven[pid]):
         cands = [dict(use='residential', format='no commercial use on record', score=0, why='only dwelling evidence so far')]
-    econ = ''
-    if cands and cands[0]['use'] in BENCH and sqft:
-        b = BENCH[cands[0]['use']]
-        lo, hi = b['large'] if sqft >= 5000 else b['small']
-        econ = f"indicative rent ${sqft * lo / 1000:,.0f}k-${sqft * hi / 1000:,.0f}k/yr at ${lo:g}-{hi:g}/SF. " + b['note']
     pv = sorted([r for r in proven[pid] if r['strong']], key=lambda r: -r['nd'])
     screen.append(dict(pid=pid, address=p['address'], side=side, sqft=sqft or '', zoning=p['zoning_code'],
-                       sponsor=p['matterport_tour'] == 'yes', status=status, tenant=t['tenant_name'],
+                       tour=p['matterport_tour'] == 'yes', status=status, tenant=t['tenant_name'],
                        uses_now=' ; '.join(cats_now(t)), availability=avail, evidence=sil[pid]['status'],
                        decades=int(sil[pid]['decades_all_sources']),
                        proven=' ; '.join(f"{r['cat']} ({r['nd']}d)" for r in pv),
                        cand1=(cands[0]['use'] + (' - ' + cands[0]['format'] if cands[0]['format'] else '')) if cands else '',
                        cand1_why=cands[0]['why'] if cands else '',
-                       cand2=(cands[1]['use'] + (' - ' + cands[1]['format'] if cands[1]['format'] else '')) if len(cands) > 1 else '',
-                       econ=econ))
+                       cand2=(cands[1]['use'] + (' - ' + cands[1]['format'] if cands[1]['format'] else '')) if len(cands) > 1 else ''))
 screen.sort(key=lambda r: int(r['address'].split()[0]))
 
 
@@ -152,11 +193,47 @@ for r in inc:
         story[cur][0] += 1
         story[cur][1] += r['source'] == 'whitepaper'
 
+
+def ring_sqft(ring):
+    """Area of one outline in sq ft: the shoelace formula on a local flat projection (the outlines are in longitude and latitude)."""
+    lat0 = sum(pt[1] for pt in ring) / len(ring)
+    kx, ky = 111320.0 * math.cos(math.radians(lat0)), 110574.0
+    pts = [(pt[0] * kx, pt[1] * ky) for pt in ring]
+    return abs(sum(pts[j][0] * pts[(j + 1) % len(pts)][1] - pts[(j + 1) % len(pts)][0] * pts[j][1] for j in range(len(pts)))) / 2 * 10.7639
+
+
+def outline_sqft(pid, column):
+    """Total area of the outlines the sponsor's export gives in one column (lot_polygon or building_polygons); None if none."""
+    try:
+        j = json.loads(geo.get(pid, {}).get(column) or 'null')
+    except ValueError:
+        return None
+    total = 0.0
+    for poly in (j if isinstance(j, list) else [j] if j else []):
+        for i, ring in enumerate(poly.get('rings') or []):
+            total += ring_sqft(ring) * (1 if i == 0 else -1)          # a second ring in one polygon is a hole
+    return round(total) if total > 0 else None
+
+
+def ground_floor(pid, sqft):
+    """Ground-floor area for the rent figures. The export records the floor area of the whole building only, so this
+    is an estimate from its outlines until someone measures the shop floor:
+      low   the building outline, capped at the recorded floor area and at the lot (the planning figure);
+      high  the smaller of the recorded floor area and the lot (the most the ground floor can be).
+    Some outlines cover only part of a building. Where the outline is under half of the high figure, or the export has
+    no outline, the parcel is marked "measure first"; with no outline the high figure is all there is."""
+    fp, lot = outline_sqft(pid, 'building_polygons'), outline_sqft(pid, 'lot_polygon')
+    caps = [x for x in (sqft, lot) if x]
+    hi = min(caps) if caps else None
+    lo = min([fp] + caps) if fp else hi
+    note = 'no outline' if not fp else ('outline may be partial' if hi and fp < 0.5 * hi else 'outline')
+    return dict(lo=lo, hi=hi, note=note, lot=lot, outline=fp)
+
 SRC = {'polk_directory': 'Polk directory', 'permit_card': 'permit card', 'sanborn': 'Sanborn map',
        'nr_inventory': 'NR inventory', 'dhcd_1970s': '1970s DHCD file', 'current_2026': '2026 tenant check'}
 DOM = ['food & drink', 'retail goods', 'personal services', 'automotive', 'entertainment & assembly',
        'institutional & religious', 'production & light industry', 'office', 'residential']
-data = dict(props=[], generated='2026-10-18')
+data = dict(props=[])
 for s in screen:
     pid = s['pid']
     g = geo.get(pid, {})
@@ -166,33 +243,61 @@ for s in screen:
         if e['use_category'] in DOM and e['decade'] and e['use_subcategory'] != GENERIC:
             strip.setdefault(int(e['decade']), collections.Counter())[e['use_category']] += 1
     shown = [e for e in es if e['use_category'] or e['kind'] in ('business listed', 'current', 'building')]
+    gfl = ground_floor(pid, s['sqft'] or None)
+    hrow = lambda r: [r['nd'], r['ne'], r['nsrc'], r['first'], r['last'], round(r['bar_share'], 2)]
+    h_now = {r['cat']: hrow(r) for r in proven[pid] if r['cat'] != 'vacant'}
+    h_old = {r['cat']: hrow(r) for r in proven_with_today[pid] if r['cat'] != 'vacant'}
     data['props'].append(dict(
         id=pid, address=s['address'].replace(' Greenmount Ave', ''), side=s['side'], sqft=s['sqft'], zoning=s['zoning'],
-        sponsor=s['sponsor'], status=s['status'], tenant=s['tenant'], uses_now=s['uses_now'],
+        gf=gfl['lo'], gf_hi=gfl['hi'], gf_note=gfl['note'], tour=s['tour'], status=s['status'], tenant=s['tenant'], uses_now=s['uses_now'],
+        same_as=same_as.get(pid), basis=now_basis(ten[pid]),
         availability=s['availability'], evidence=s['evidence'], decades=s['decades'], proven=s['proven'],
-        cand1=s['cand1'], cand1_why=s['cand1_why'], cand2=s['cand2'], econ=s['econ'],
+        cand1=s['cand1'], cand1_why=s['cand1_why'], cand2=s['cand2'],
         lat=float(g.get('latitude') or 0), lon=float(g.get('longitude') or 0), ring=ring(pid),
-        h={r['cat']: [r['nd'], r['ne'], r['nsrc'], r['first'], r['last'], round(r['bar_share'], 2)] for r in proven[pid] if r['cat'] != 'vacant'},
+        h=h_now, h0=h_old if h_old != h_now else None,
         story=story.get(pid, [0, 0]), now=sorted(c for c in parcel_now[pid] if c != 'vacant'), occ=pid in occupied,
         strip={str(d): c.most_common(1)[0][0] for d, c in strip.items()},
         ev=[dict(y=e['year'], src=SRC.get(e['source'], e['source'].replace('sponsor:', 'sponsor ').replace('_', ' ')),
                  cat=e['use_category'] + (' (shop front)' if e['use_subcategory'] == GENERIC else ''),
                  t=((e['business'] + ' - ') if e['business'] and e['source'] != 'polk_directory' else '') + e['text'][:160],
-                 ref=e['source_ref'], url=e['url'], m=e['address_method'] if e['basis'] == 'inferred' else '')
+                 ref=e['source_ref'], url=e['url'], m=e['address_method'] if e['basis'] == 'inferred' else '',
+                 k='' if CURRENT(e) else FAMILY[e['source']])
             for e in shown][:150]))
 
 srcs = collections.Counter(e['source'].split(':')[0] for e in ev)
 data['totals'] = dict(srcs)
+# how records reached a parcel: by the address they state, or by inference (the next parcel down, the York Road crosswalk)
+_hist = [e for e in ev if not CURRENT(e)]
+# Greenmount parcels the export has between 2900 and 3299 that are not among the frontage parcels on this page: the
+# focus outline was traced by hand from the sponsor's map in week 1 (team/week1/focus_area.py). Shown under "known limits".
+_assess = {r['property_id']: r['status'] for r in rd(os.path.join(REPO, 'storefront_assessments.csv'))}
+_out = []
+_word = {'vacant_lot': 'a vacant lot', 'open_active': 'an open business', 'institution': 'an institution', 'vacant_storefront': 'a vacant storefront'}
+for _id, _r in geo.items():
+    _m = re.match(r'(\d+(?: 1/2)?) Greenmount', _r['address'])
+    if _m and 2900 <= int(_m.group(1).split()[0]) <= 3299 and _id not in props and _id not in merged:
+        _out.append(dict(address=_m.group(1), east_2900=_r['block_side_id'] == '66',
+                         status=_word.get(_assess.get(_id), (_assess.get(_id) or 'no assessment').replace('_', ' '))))
+data['left_out'] = sorted(_out, key=lambda r: (int(r['address'].split()[0]), r['address']))
+data['placed'] = dict(total=len(_hist), inferred=sum(1 for e in _hist if e['basis'] == 'inferred'),
+                      next=sum(1 for e in _hist if 'next parcel' in e['address_method']))
 st = collections.Counter(s['status'] for s in sil.values())
 mean = lambda k: round(sum(int(s[k]) for s in sil.values()) / len(sil), 1)
 data['silence'] = dict(before=mean('decades_sponsor_only'), after=mean('decades_all_sources'), status=dict(st))
 val = open(os.path.join(X, 'validation.md'), encoding='utf-8').read()
 m = re.search(r'\| all sources \| (\d+) \| (\d+) \| (\d+)% \| (\d+)% \| (\d+) \| (\d+)% \|', val)
 m2 = re.search(r'\| new sources only[^|]*\| (\d+) \| (\d+) \| (\d+)% \| (\d+)% \| (\d+) \| (\d+)% \|', val)
-data['validation'] = (f"Against the four hand-built reference timelines, the extractor finds {m.group(4)}% of the reference uses where a "
-                      f"source covers those years, and {m.group(6)}% of its {m.group(5)} coded records agree with the reference category. "
-                      f"From the new sources alone: {m2.group(4)}% and {m2.group(6)}% of {m2.group(5)}. The references were built from the "
-                      f"same sponsor records, so four blind reference timelines are still needed.")
+# Lead with the independent figure. The "all sources" row is not a test: the references were built from the same sponsor
+# records the extractor reads (sponsor's review, 17 Nov 2026: the page and the model card had quoted the flattering one).
+data['validation'] = (f"Against the four hand-built reference timelines, using only the sources that were not used to build them, the "
+                      f"extractor finds {m2.group(3)}% of the reference uses ({m2.group(2)} of {m2.group(1)}; {m2.group(4)}% where those sources cover the "
+                      f"years), and {m2.group(6)}% of its {m2.group(5)} coded records agree with the reference category. With all sources it finds "
+                      f"{m.group(3)}%, but the references were built from the same sponsor records, so that figure is not a test. The four blind "
+                      f"reference timelines that would be one are not started.")
+data['validation_numbers'] = dict(independent=dict(rows=int(m2.group(1)), found=int(m2.group(2)), recall=int(m2.group(3)), recall_covered=int(m2.group(4)),
+                                                   records=int(m2.group(5)), agreement=int(m2.group(6))),
+                                  all_sources=dict(rows=int(m.group(1)), found=int(m.group(2)), recall=int(m.group(3)), recall_covered=int(m.group(4)),
+                                                   records=int(m.group(5)), agreement=int(m.group(6))))
 
 # the mix then (Polk 1920-23, buildings with a coded line) and now (occupied in Oct 2026)
 then = collections.defaultdict(set)
@@ -202,7 +307,7 @@ for e in ev:
             and e['use_subcategory'] != GENERIC:
         base_then.add(e['property_id'])
         then[e['use_category']].add(e['property_id'])
-occ = sorted(occupied)
+occ = sorted(occupied - set(same_as))             # one business in two street numbers counts once
 data['mix'] = [dict(cat=c, then=len(then[c]), then_base=len(base_then), now=corr_mix[c], now_base=len(occ))
                for c in DOM if c != 'residential']
 data['mix'].sort(key=lambda m: -m['then'] / max(1, m['then_base']))
@@ -240,7 +345,28 @@ for q in data['props']:
     q['ready'] = dict(vbn=g.get('vacant_notice_status', ''), viol=int(g.get('violations_12mo_count') or 0),
                       permits=int(g.get('active_permit_count') or 0), receiv=g.get('receivership_status', ''),
                       taxcert=g.get('tax_certificate_active', '') == 'true', owner=OWNER_KIND(g.get('owner_name', '')),
-                      walk=q['sponsor'])
+                      tour=q['tour'])
+# Evidence behind each use at each building: how many records name the address itself, how many kinds of source they
+# come from, and whether they date from the building that stands there now. "strict" follows the definition in the
+# sponsor's review of 17 Nov 2026: two independent kinds of source, a stated address, a named trade, the standing building.
+for q in data['props']:
+    built = q['built']
+    hq, hs = {}, {}
+    for r in proven[q['id']]:
+        if r['cat'] == 'vacant':
+            continue
+        rows = r['rows']
+        stated = [e for e in rows if e['basis'] != 'inferred']
+        standing = [e for e in stated if not built or int(e['year']) >= built - 1]
+        fams = sorted({FAMILY[e['source']] for e in standing})
+        strict = len(fams) >= 2
+        hq[r['cat']] = dict(n=len(rows), stated=len(stated), inferred=len(rows) - len(stated), before=len(stated) - len(standing),
+                            fams=fams, strict=strict)
+        if strict:
+            x = summarise(standing)
+            hs[r['cat']] = [x['nd'], x['ne'], len(fams), x['first'], x['last'], round(x['bar_share'], 2)]
+    q['hq'] = hq
+    q['hs'] = hs
 by_side = collections.defaultdict(list)
 for q in data['props']:
     by_side[q['side']].append(q)
@@ -255,9 +381,11 @@ for q in data['props']:
         q['nb']['across'] = [o['id'] for o in sorted(other, key=lambda o: abs(o['lat'] - q['lat']))[:2]]
 LIB = json.load(open(os.environ.get('PTU_LIBRARY') or os.path.join(HERE, 'library.json'), encoding='utf-8'))
 data['lib'] = {k: LIB[k] for k in ('buildings', 'districts', 'waverly', 'aversion', 'requested', 'adjacency', 'segments', 'history_value', 'match_lessons')}
-# the page shows the sponsor's own rules; personal and ownership detail stays in the research report, not in shared page data
-data['lib']['sponsor'] = {'guardrails': LIB['sponsor'].get('guardrails', []), 'goals': LIB['sponsor'].get('goals', [])}
+# the page shows the ground rules from the sponsor's proposal, and nothing else about the sponsor
+data['lib']['sponsor'] = {'guardrails': LIB['sponsor'].get('guardrails', [])}
 data['lib']['meta'] = {k: LIB['meta'][k] for k in ('displacement_rubric', 'updated', 'research_2026_10_26') if k in LIB['meta']}
+# the count of empty storefronts in the Waverly facts box comes from the tenant list at build time, never from typed text
+data['lib']['waverly'] = dict(LIB['waverly'])
 
 # ---- preliminary back-test of the heritage prior: do uses proven before a cut-off year predict the 2026 use?
 NOTUSE = {'residential', 'vacant', ''}
@@ -300,12 +428,19 @@ data['backtest'] = bt
 _bt2p = os.path.join(REPO, 'team', 'validation', 'out', 'backtest_v2.json')
 if os.path.exists(_bt2p):
     _b2 = json.load(open(_bt2p, encoding='utf-8'))
-    _keep = ('cut', 'parcels', 'parcels_with_history', 'p_perm', 'p_lr', 'auc_base', 'auc_history', 'odds_3_decades',
-             'p_lr_with_depth_control', 'by_history')
+    _keep = ('cut', 'parcels', 'parcels_with_history', 'rows', 'present', 'p_perm', 'p_lr', 'auc_base', 'auc_history', 'odds_3_decades',
+             'p_lr_with_depth_control', 'by_history', 'per_category')
     data['backtest2'] = {k: [{kk: a[kk] for kk in _keep if kk in a} for a in _b2[k]]
-                         for k in ('frontage', 'frontage_sponsor_only', 'other_blocks', 'other_blocks_without_low_confidence')}
+                         for k in ('frontage', 'frontage_sponsor_only', 'other_blocks', 'other_blocks_without_low_confidence',
+                                   'other_blocks_stated_uses_only', 'other_blocks_without_multi_tenant', 'other_blocks_before_leak_fix')}
     data['backtest2']['transfer'] = _b2['transfer_frontage_sponsor_to_other']
+    data['backtest2']['transfer_ci'] = _b2['transfer_interval_sponsor_to_other']
     data['backtest2']['holdout'] = _b2['frontage_leave_one_side_out']
+    data['backtest2']['by_kind'] = _b2['other_blocks_by_kind_of_use']
+    data['backtest2']['loo'] = [{k: x[k] for k in ('cut', 'p_all_parcels', 'min', 'max', 'median', 'below_0_05', 'parcels', 'lowest', 'highest')}
+                                for x in _b2['other_blocks_leave_one_parcel_out']]
+    data['backtest2']['multi'] = _b2['multi_tenant_parcels']
+    data['backtest2']['selection'] = _b2['selection_empty_against_in_use']
     data['backtest2']['decision'] = _b2['decision']
     data['backtest2']['similarity'] = _b2['similarity']
 data['n_summary'] = n_summary
@@ -318,7 +453,7 @@ data['formats'] = [
          note='Serving mostly to go in disposable containers makes it a carry-out food shop (zoning code 1-303).'),
     dict(id='foodmaker', name='Food maker with a shop (bakery, roaster, ice cream)', cat='food & drink', her=[['food & drink', 0.8], ['production & light industry', 0.8]], z='Food Processing: Light', zs='P', size=[1000, 6000], note=''),
     dict(id='tavern', name='Bar or tavern', cat='food & drink', her=[['food & drink', 1]], bar=True, z='Tavern', zs='CB', urp=True, size=[800, 5000],
-         note="The urban renewal plan bars new taverns, liquor stores and pawnshops (since 4 Dec 1995). It bars taverns, not restaurants: a restaurant can serve alcohol, and the sponsor notes its licence is easier to get (26 Oct 2026; to confirm on the plan's pages, City Archives BRG48-43-10-9 pp. 4-29, not yet filed)."),
+         note="The urban renewal plan bars new taverns, liquor stores and pawnshops (Waverly Business Area Urban Renewal Plan, Amendment No. 2, 4 December 1995). It bars taverns, not restaurants, so a restaurant can serve alcohol. This is the team's reading, not legal advice."),
     dict(id='shop', name='Small shop', cat='retail goods', her=[['retail goods', 1]], z='Retail Goods Establishment (no alcohol)', zs='P', size=[400, 2500], note=''),
     dict(id='showroom', name='Showroom or large shop', cat='retail goods', her=[['retail goods', 1]], z='Retail Goods Establishment (no alcohol)', zs='P', size=[2500, 12000], note=''),
     dict(id='bike', name='Bike shop', cat='retail goods', her=[['automotive', 0.6], ['retail goods', 0.4]], z='Retail Goods Establishment (no alcohol)', zs='P', size=[800, 4000],
@@ -339,7 +474,7 @@ data['formats'] = [
 data['zoning_src'] = 'https://codes.baltimorecity.gov/us/md/cities/baltimore/code/32/zoning-tables/10-301'
 data['urp_src'] = 'https://www.baltimorecity.gov/media/document/waverlybusinessareaurppdf'
 
-# draft concepts for the three empty sponsor buildings (hand-written, every fact linked to a source)
+# draft concepts for three empty buildings (hand-written, every fact linked to a source)
 C = json.load(open(os.environ.get('PTU_CONCEPTS') or os.path.join(HERE, 'concepts.json'), encoding='utf-8'))
 data['concepts'] = {k: C[k] for k in C['order']}
 data['concept_order'] = C['order']
@@ -358,6 +493,16 @@ if os.path.exists(_cp):
 sys.path.insert(0, HERE)
 import extras  # noqa: E402
 extras.apply(REPO, data, {'brands': os.environ.get('PTU_PRIVATE_BRANDS'), 'sizes': os.environ.get('PTU_PRIVATE_SIZES')})
+# The mix today is a share of the storefronts in use, as the 1920-23 mix is a share of the buildings with a listed
+# business: a lived-in house is not in either base. (Until 21 November 2026 the houses were in today's base, which
+# made every storefront use look a little rarer today than it is.) One business in two street numbers counts once.
+_now_base = sum(1 for q in data['props'] if q['occ'] and q['availability'] != 'house' and not q['same_as'])
+for _m in data['mix']:
+    _m['now_base'] = _now_base
+_fn = data['frontage_now']
+data['lib']['waverly']['vacancy_note'] = (LIB['waverly']['vacancy_note'].rstrip() + f" On this frontage, E 29th to E 33rd St, {_fn['vacant']} of "
+                                          f"{_fn['storefronts']} storefronts are empty on the tenant list, which follows the sponsor's storefront "
+                                          f"audit of November 2026 ({_fn['houses']} of the {len(data['props'])} parcels are houses).")
 page = open(os.path.join(HERE, 'template.html'), encoding='utf-8').read()
 blob = json.dumps(data, separators=(',', ':'), ensure_ascii=False).replace('</', '<\\/')
 assert page.count('__DATA__') == 1
@@ -371,4 +516,5 @@ print('wrote', os.path.basename(OUT) + ',', len(html) // 1024, 'KB;', 'props', l
 print([(m['cat'], m['then'], m['then_base'], m['now'], m['now_base']) for m in data['mix']])
 print(data['validation'])
 print(collections.Counter(s['cand1'].split(' - ')[0] for s in screen).most_common())
+print('one business in two numbers:', {props[k]['address']: props[v]['address'] for k, v in same_as.items()})
 print('backtest', [(b['cut'], b['n'], b['hit'], b['base']) for b in data['backtest']], 'summaries', n_summary)

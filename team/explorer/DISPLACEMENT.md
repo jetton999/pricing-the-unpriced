@@ -1,6 +1,7 @@
 # Displacement in the explorer: what it measures and how to use it in planning
 
-A short note for the sponsor, 26 October 2026. The numbers come from the built page (`index.html`).
+A short note for the sponsor, first written on 26 October 2026 and brought up to date on 21 November 2026. The counts
+are filled in from `team/NUMBERS.md`.
 
 ## What it measures
 
@@ -26,17 +27,24 @@ The evidence is of four kinds:
 - changes in rents and home prices;
 - named closures of long-standing businesses.
 
-Of the 22 comparison streets, 6 rate high, 11 moderate, 4 low and 1 unknown. Of the 8 benchmark neighbourhoods,
-U Street and Bed-Stuy rate high; the other six, Waverly included, rate moderate.
+Of the <!--=library.corridors-->22<!--/--> comparison streets, <!--=library.corridor_displacement.high-->6<!--/--> rate high,
+<!--=library.corridor_displacement.moderate-->11<!--/--> moderate, <!--=library.corridor_displacement.low-->4<!--/--> low and
+<!--=library.corridor_displacement.unknown-->1<!--/--> unknown. Of the <!--=library.benchmark_neighbourhoods-->8<!--/--> benchmark neighbourhoods,
+<!--=library.neighbourhood_displacement.high-->2<!--/--> rate high (<!--=library.neighbourhoods_rated_high|list-->U Street, Bedford-Stuyvesant<!--/-->); the other
+<!--=library.neighbourhood_displacement.moderate-->6<!--/-->, Waverly included, rate moderate.
 
 Three more checks apply to Greenmount itself:
 
-- **Long-standing businesses.** The page marks every business documented at the same address for 15 years or more.
-  There are 5 so far, and the oldest has been on record since 1977.
-- **Rent pressure.** For any block plan, the page flags businesses already trading on a block side whose kind of
-  business typically supports at least 20% less rent than the plan's new uses there. These are the tenants who
-  could be squeezed if owners raise rents at renewal.
-- **Occupied buildings.** They are never planned. Their panel reads "if this space ever came free".
+- **Long-standing businesses.** The page marks every business documented at the same address for
+  <!--=frontage.long_standing_means_years-->15<!--/--> years or more. There are <!--=frontage.long_standing_businesses-->4<!--/--> so far, and the
+  oldest has been on record since <!--=frontage.oldest_long_standing_since-->1,977<!--/-->.
+- **Rent-pressure watch.** For any block plan, the page lists the block sides where the plan fills three or more
+  storefronts at once, with the businesses already trading there, long-standing ones first. Filling several empty
+  storefronts on one block side is when owners are most likely to raise rents at renewal. The plan on the page today
+  puts <!--=plan.pressure.block_sides-->4<!--/--> block sides and <!--=plan.pressure.businesses-->11<!--/--> businesses on the watch,
+  <!--=plan.pressure.long_standing-->1<!--/--> of them long-standing. The rule it replaces compared rents use by use and could not
+  fire (sponsor's review, 17 November 2026).
+- **Buildings in use.** They are never planned, and the page makes no recommendation and shows no rent for them.
 
 ## What it does not do
 
@@ -48,15 +56,15 @@ Three more checks apply to Greenmount itself:
 
 ## How it could be used in planning
 
-Suppose the aim is to keep Waverly out of "high", across the neighbourhood and not only in the sponsor's buildings.
-A full Greenmount raises values and rents for every landlord nearby, commercial and residential. The meter turns
+Suppose the aim is to keep Waverly out of "high", across the whole neighbourhood and not only in the buildings a
+plan touches. A full Greenmount raises values and rents for every landlord nearby, commercial and residential. The meter turns
 that aim into three checks:
 
 1. **A red line.** Treat the high threshold as the line not to cross: no double-digit fall in Waverly's long-standing
    population share, and no long-standing business forced out.
-2. **A check before each lease mix.** Run the block plan and read its rent-pressure flags. Pair any flagged block side
-   with a measure that worked in the low-rated places: stepped rents, a first right of renewal for long-standing
-   tenants, buying shop units only, or the tenant-to-owner path in Idea 2.
+2. **A check before each lease mix.** Run the block plan and read its rent-pressure watch. Pair any block side on the
+   watch with a measure that worked in the low-rated places: stepped rents, a first right of renewal for
+   long-standing tenants, or buying shop units only.
 3. **A yearly re-rating.** Rate Waverly once a year with the same rule, starting from the baseline below.
 
 The low-rated places kept their rating with ownership and lease terms.
@@ -69,8 +77,8 @@ The low-rated places kept their rating with ownership and lease terms.
 | Median sale price of homes | $84,950 (2010) | $210,000 (2023) | BNIA Vital Signs |
 | Median gross rent, census tracts 903, 904 and 905 | $713 to $804 (2006-10) | $951 to $1,190 (2019-23) | ACS table B25064 |
 | Median household income | $34,787 (2010) | $55,871 (2023) | BNIA Vital Signs |
-| Storefront parcels vacant on this frontage | | 16 of 47 (October 2026) | sponsor's storefront assessments |
-| Businesses at the same address for 15 years or more | | 5 | explorer, long-standing layer |
+| Empty storefronts on this frontage | | <!--=frontage.empty-->24<!--/--> of <!--=frontage.storefronts-->62<!--/--> (November 2026) | the tenant list, which follows the sponsor's storefront audit |
+| Businesses at the same address for <!--=frontage.long_standing_means_years-->15<!--/--> years or more | | <!--=frontage.long_standing_businesses-->4<!--/--> | explorer, long-standing layer |
 
 The rating today is moderate. Prices and rents are rising, the Black share fell 2.9 points, and the published business
 losses are tied to buildings held empty, not to a revival. The sources are in

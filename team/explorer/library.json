@@ -5736,7 +5736,7 @@
  "waverly": {
   "length_mi": 0.4,
   "parcels": 69,
-  "vacancy_note": "The Banner (Oct 2026) found more than 1 in 4 buildings in the Waverly Main Street district (29th-35th St) appear completely empty, and the city does not track long-term empty storefronts. Sponsor data on 79 frontage properties (Jul-Oct 2026): 44 occupied, 28 unknown, 4 vacant, 3 for lease, 9 with open vacant-building notices.",
+  "vacancy_note": "The Banner (Oct 2026) found more than 1 in 4 buildings in the Waverly Main Street district (29th-35th St) appear completely empty, and the city does not track long-term empty storefronts.",
   "income_note": "Conflicting figures: the project brief/proposal gives tract median family income of about 36-61% of area median (poverty 12-30%), while sponsor tract data show median household incomes of $103,750 (47 rows) and $68,569 (21 rows). Check against ACS block groups before use.",
   "majority_black": true,
   "historic": "Waverly Main Street Historic District, National Register listed 31 Dec 2013 (ref. 13001020): about 31 acres and 141 properties along Greenmount from about 29th to 35th St; 70 of 79 frontage properties are inside it. Waverly Main Street calls it a city historic district, but local (CHAP) status was not confirmed.",
@@ -5745,7 +5745,7 @@
   "ownership_note": "Ownership is concentrated: LLCs controlled by one owner hold 11 Greenmount properties, most with empty storefronts (The Banner, 5 Oct 2026).",
   "city_note": "Baltimore city: population 569,997 (2025 estimate), 59.2% Black, median household income $62,177 (2020-24), 19.7% in poverty. Waverly neighbourhood: 3,551 people (2010) at about 24,000 per sq mi.",
   "zoning_note": "Sponsor data flag 68 of 79 frontage properties as C-1; the study block's zoning was not independently confirmed.",
-  "urban_renewal_note": "The city lists a 'Waverly Business Area' urban renewal plan (2012) with a 2011 amendment; the brief's 1979 plan and its ban on new taverns, liquor stores and pawnshops could not be verified.",
+  "urban_renewal_note": "The Waverly Business Area Urban Renewal Plan was first approved by Ordinance 1029 on 24 May 1979 and is published as amended through Amendment No. 5 (Ordinance 12-710, 5 December 2012). Since Amendment No. 2 (4 December 1995) it does not permit new pawnshops, liquor and package goods stores or taverns (plan pp. 5-6, read by the team on 18 October 2026: team/precedent/precedent_memo_draft.md, section 7). The plan cites the zoning code from before the 2017 rewrite, so how the City applies its use list under C-1 should be confirmed with Planning. The team's reading, not legal advice.",
   "interventions_past": [
    "c.2005: one of seven city-funded shopping districts, with grants for Greenmount 28th-35th St; about $1M public and $3M private investment.",
    "2004: a 60,000 sq ft Giant supermarket opened.",
@@ -5930,7 +5930,7 @@
    "type": "Package-goods liquor store",
    "format_id": "liquor",
    "waverly_evidence": "In 2018 the Waverly Improvement Association fought the Waverly Tavern licence (38th St and Old York Rd, outside the study block) over drug dealing and loitering; it was suspended for a week and fined $2,500.",
-   "law": "Conditional use by City Council ordinance in C-1 and at least 300 ft from other alcohol retail (Sec. 14-336); no new licence within 300 ft of a church or school (MD Alc. Bev. Sec. 12-1605); stores in residential zones phased out by 2019 (Sec. 18-701); the claimed urban renewal ban is unverified.",
+   "law": "Conditional use by City Council ordinance in C-1 and at least 300 ft from other alcohol retail (Sec. 14-336); no new licence within 300 ft of a church or school (MD Alc. Bev. Sec. 12-1605); stores in residential zones phased out by 2019 (Sec. 18-701); the urban renewal plan does not permit new liquor or package goods stores (Amendment No. 2, 4 December 1995; plan pp. 5-6).",
    "zs": "CO",
    "research": "Baltimore studies: each 10% more outlet access went with 4.2% more violent crime, worse for package stores (2018); closing 80 non-conforming stores was linked to 22 fewer homicides a year (2020); liquor and corner stores have about 25% more violent crime nearby (2016).",
    "grade": "strong",
@@ -6152,7 +6152,7 @@
   {
    "type": "Pawn shop",
    "format_id": "pawn",
-   "waverly_evidence": "Little recent record; the brief's claim of a 1995 urban renewal ban could not be verified.",
+   "waverly_evidence": "Little recent record. The urban renewal plan does not permit new pawnshops (Amendment No. 2, 4 December 1995; plan pp. 5-6).",
    "law": "Not permitted in C-1 (conditional in C-2); excluded from state DHCD loans.",
    "zs": "NP",
    "research": "A 10% rise in pawnshops went with about 0.3% more theft-type crime, consistent with a stolen-goods market (d'Este 2020).",
@@ -7184,7 +7184,7 @@
     800,
     1300
    ],
-   "rent_or_price": "Greenmount in-place rents about $11-$25/sq ft a year; nearby Hampden 800 sq ft cafe suites ask $22.70-$37.50/sq ft NNN ($2,000-$5,499 a month).",
+   "rent_or_price": "Greenmount in-place rents about $11-$25/sq ft a year; nearby Hampden 800 sq ft cafe suites ask $22.70-$37.50/sq ft a year before taxes and insurance ($2,000-$5,499 a month).",
    "needs": "Small, move-in-ready space, a kitchen hood for hot food, and below-market or incubator rent.",
    "pains": [
     {
@@ -7733,9 +7733,9 @@
   {
    "id": "investors",
    "name": "Small local and impact investors",
-   "who": "Small local and mission investors, including neighbours buying shares in a trust.",
+   "who": "Small local and mission investors, including neighbours who buy a share in a building.",
    "size_need": null,
-   "rent_or_price": "Greenmount income signals: 3010 sold for $755,000 on $102,444 a year of NNN rent; 3226 lists NOI of $307,000+ on $453,000+ of scheduled rent.",
+   "rent_or_price": "Rents in place on Greenmount, from two public listings: about $11.67 per sq ft a year at 3010 before taxes and insurance, and at least $25.23 at 3226 with tenants' expense payments included.",
    "needs": "Protection against loss, a way to cash out, local assets they can see, and plain-language information.",
    "pains": [
     {
@@ -7745,29 +7745,16 @@
      "src": "https://nextcity.org/urbanist-news/how-these-portland-residents-got-to-own-a-piece-of-their-neighborhood"
     },
     {
-     "pain": "Distrust of local investment vehicles in Waverly",
-     "evidence": "A 2019 suit by investors in a Waverly trust over $4M was dismissed, and its brochure asked investors to 'keep it under wraps'.",
-     "rank": 2,
-     "src": "https://www.thebanner.com/economy/waverly-empty-storefronts-VIM3XERU3NDVZAQXI5QO55BYNY/"
-    },
-    {
      "pain": "No performance data or comparisons",
      "evidence": "The city does not track empty storefronts, and prices in business buyouts are rarely disclosed.",
-     "rank": 3,
+     "rank": 2,
      "src": "https://www.thebanner.com/community/local-news/waverly-storefronts-readers-react-5CW4A5VIUFFM3FKXXNHI63J76A/"
-    },
-    {
-     "pain": "Securities law once neighbours buy shares",
-     "evidence": "The sponsor says any neighbour-share structure needs a lawyer before it is offered.",
-     "rank": 4,
-     "src": "https://github.com/jetton999/pricing-the-unpriced/blob/main/site/Pricing_the_Unpriced_Proposal_2026-09.pdf"
     }
    ],
    "tool_should_show": [
-    "Quarterly occupancy, income and tenant survival on trust buildings",
+    "Quarterly occupancy, income and tenant survival for the buildings held",
     "Plain-language risk and exit terms",
-    "Dated rent and sale comparisons",
-    "Disclosure of the sponsor's property interests"
+    "Dated rent and sale comparisons"
    ],
    "programs": [
     {
@@ -7781,7 +7768,7 @@
    "deal_structures": [
     "Community investment trust: shares from $10 a month, local residents only, buybacks at current value, backed by a bank letter of credit (East Portland)",
     "Crowdfunded promissory notes, e.g. a Baltimore tea shop raised $35,000-$70,000 at 12.25% for 36 months (Reg CF)",
-    "Neighbourhood trust holding property in permanent community control and reinvesting income (Kensington, Philadelphia)",
+    "A corridor land trust holding property in permanent community control and reinvesting income (Kensington Corridor Trust, Philadelphia)",
     "Commercial-property investment co-op with one member, one vote and a modest return (Minneapolis)"
    ],
    "sources": [
@@ -7794,20 +7781,12 @@
      "u": "https://www.sec.gov/Archives/edgar/data/2001889/000200175923000003/formcemmas.pdf"
     },
     {
-     "l": "The Banner, 2026-10-05",
-     "u": "https://www.thebanner.com/economy/waverly-empty-storefronts-VIM3XERU3NDVZAQXI5QO55BYNY/"
-    },
-    {
      "l": "Ben Frederick listing, 3010 Greenmount, undated",
      "u": "https://benfrederick.com/property/greenmount3010/"
     },
     {
      "l": "@properties MLS, 3226 Greenmount",
      "u": "https://www.atproperties.com/MDBA2173304/3226-greenmount-baltimore-maryland-21218-brightmls"
-    },
-    {
-     "l": "Sponsor revised proposal, 2026-09",
-     "u": "https://github.com/jetton999/pricing-the-unpriced/blob/main/site/Pricing_the_Unpriced_Proposal_2026-09.pdf"
     },
     {
      "l": "Kensington Corridor Trust, accessed 2026-10-19",
@@ -8469,10 +8448,8 @@
    "\"bulk 'undervalued-property' rankings are prohibited\"",
    "\"public outputs are designed for parcel understanding, not acquisition targeting\"",
    "\"no appraisal language, no guaranteed-return language, no automatic eligibility determinations\"",
-   "\"relevant sponsor property interests are disclosed; the sponsor cannot override evidence classifications or model results\"",
+   "\"the sponsor cannot override evidence classifications or model results\"",
    "\"Revenue estimates and comps are planning figures with stated assumptions, never a valuation, promise, or guaranteed return.\"",
-   "\"Any structure in which neighbors buy shares needs counsel before it is offered.\"",
-   "\"If no lease survives the stress test, the finding is that the model needs more public capital, and that is the deliverable.\"",
    "If the history index adds no held-out predictive power, its money layer \"does not ship\"",
    "Resident-and-owner usability and anti-displacement framing",
    "Matterport scans \"are the sponsor's work; ask before reusing the images\""
