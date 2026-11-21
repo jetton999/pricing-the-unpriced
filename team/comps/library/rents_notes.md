@@ -1,5 +1,9 @@
 # Asking rents by format: Greenmount/Waverly, other Baltimore corridors, comparable corridors elsewhere
 
+**21 November 2026.** Two rows were added (R-080 and R-081, rents in place at 3226 and 3010 Greenmount, carried over from
+`comps.csv` and `comps_alternates.csv`) and three columns (`rent_kind`, `verified_by`, `verified_on`); see `SCHEMA.md`. The
+counts below describe the collection of 20 October 2026. No row has been checked by a person yet.
+
 Companion to `rents.csv` (79 rows, R-001 to R-079, all accessed 2026-10-20). Every figure was read from a page I opened myself. Rents are $/SF/yr unless marked /mo. NNN means triple net, MG modified gross, FSG full-service gross. The source URL for each figure is in the CSV row cited.
 
 ## 1. What did we find, by format and tier?
