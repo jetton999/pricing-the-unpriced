@@ -66,7 +66,7 @@ the typical units and the displacement flags. The rent and revenue ranges have t
 | Check | Result | Where |
 |---|---|---|
 | Use timelines against four hand-built references | 96% of reference uses found where a source covers those years; 88% of 135 coded records agree on the category | `team/extractor` |
-| Does history predict use today? Back-test v2, plan committed before the run | On 52 Greenmount parcels outside the frontage, records up to 1960: one-sided p = 0.023 (shuffle test within block sides); AUC 0.707 to 0.741; held-out log loss 0.6187 to 0.6145. Passes the written rule, which the sponsor has not yet signed off | `team/validation` |
+| Does history predict use today? Back-test v2, corrected 17 November 2026 | On 52 Greenmount parcels outside the frontage, records up to 1960: one-sided p = 0.055 after a leak was fixed (0.023 before); in-sample AUC 0.707 to 0.724; held-out log loss 0.6188 to 0.6175 and held-out AUC 0.604 to 0.583. Does not pass the rule the sponsor agreed on 9 November 2026 | `team/validation` |
 | Rent ranges on listings the model had not seen | 46 of 57 inside the widened 80% range | `team/comps` |
 | Plan search against exhaustive search | 100% of the best plan over each parcel's top five uses | Block plan page |
 | Case library, desk research of 26 Oct 2026 | Every added value carries the URL of a page read that day; four claims re-checked by hand, all matched | `research/` |
