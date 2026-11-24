@@ -1,7 +1,7 @@
 """Tests for the comps engine (standard library only):  python3 -m unittest team/comps/test_comps_engine.py
 
 They check what would make the ranges wrong or unsafe: rows that must never enter, the pooling arithmetic,
-the own-listing rule, quantiles in order, the private step leaving no trace in public outputs, and the words
+the own-listing rule, quantiles in order, and the words
 the sponsor's guardrails rule out."""
 import json
 import math
@@ -33,7 +33,6 @@ def read_text(path):
 
 def run_engine(env=None):
     e = dict(os.environ)
-    e.pop('PTU_PRIVATE_OPERATOR', None)
     e.update(env or {})
     subprocess.run([sys.executable, os.path.join(HERE, 'comps_engine.py')], check=True, env=e, capture_output=True, text=True)
     with open(OUT, 'rb') as fh:
@@ -53,10 +52,6 @@ class TestRows(unittest.TestCase):
                 self.assertTrue(x['source_url'].startswith('http'), x['row_id'])
                 self.assertRegex(x['accessed_on'], r'^\d{4}-\d{2}-\d{2}$', x['row_id'])
 
-    def test_nda_parcel_absent(self):
-        for name in ('rents.csv', 'benchmarks.csv', 'operators.csv'):
-            text = read_text(os.path.join(E.LIBDIR, name)).lower()
-            self.assertNotIn('2731 greenmount', text)
 
     def test_filters(self):
         self.assertFalse(any(d['fmt'] == 'housing' for d in self.rows))
@@ -121,42 +116,6 @@ class TestModel(unittest.TestCase):
         self.assertGreaterEqual(h['widen'], 1.0)
         self.assertEqual(h['nominal_hits'] + h['below'] + h['above'], h['n'])
         self.assertLessEqual(h['nominal_ci95'][0], h['nominal_cover'])
-
-
-class TestPrivateStep(unittest.TestCase):
-    def test_public_output_unchanged_and_no_trace(self):
-        base = run_engine()
-        with tempfile.TemporaryDirectory() as tmp:
-            synth = 987.65   # a synthetic stand-in; never use real operator data in tests
-            pf = os.path.join(tmp, 'operator.json')
-            with open(pf, 'w') as fh:
-                json.dump({'format_id': 'cafe', 'sales_per_sqft': synth, 'year': 2025}, fh)
-            after = run_engine({'PTU_PRIVATE_OPERATOR': pf})
-            self.assertEqual(base, after, 'the private step changed the public output')
-            annex = os.path.join(tmp, 'private_annex.json')
-            self.assertTrue(os.path.exists(annex))
-            a = jload(annex)
-            self.assertIn('PRIVATE', a['note'])
-            self.assertNotIn('987.65', after.decode())
-            # the calibrated figures differ from the public ones (so the step did something) ...
-            pub = json.loads(after)['formats']['cafe']['B']['sales_q']
-            self.assertNotEqual(a['runs'][0]['sales'], pub)
-            # ... and can be inverted to recover the private input, which is why they stay private
-            w = a['runs'][0]['weight']
-            back = pub[1] * (a['runs'][0]['sales'][1] / pub[1]) ** (1 / w)
-            self.assertAlmostEqual(back / synth, 1.0, delta=0.02)
-
-    def test_refuses_private_file_inside_repo(self):
-        pf = os.path.join(HERE, '_operator_test.json')
-        try:
-            with open(pf, 'w') as fh:
-                json.dump({'format_id': 'cafe', 'sales_per_sqft': 500}, fh)
-            e = dict(os.environ, PTU_PRIVATE_OPERATOR=pf)
-            r = subprocess.run([sys.executable, os.path.join(HERE, 'comps_engine.py')], env=e, capture_output=True, text=True)
-            self.assertNotEqual(r.returncode, 0)
-            self.assertIn('outside the repository', r.stderr + r.stdout)
-        finally:
-            os.remove(pf)
 
 
 class TestWords(unittest.TestCase):

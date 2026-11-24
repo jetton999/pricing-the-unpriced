@@ -61,7 +61,7 @@ python3 -m unittest team/explorer/test_explorer_data.py team/validation/test_bac
 
 - **Uses, not buildings.** The page ranks uses for a building and compares plans for the same parcels. It never
   ranks buildings or blocks by money. There is no valuation, appraisal language or acquisition targeting.
-- **Ownership.** A sponsor walk-through is not a statement of ownership. The owner of record comes from the state
+- **Ownership.** The owner of record comes from the state
   assessment snapshot.
 - **Feedback.** Team and sponsor votes are shown beside each score. They change scores only when switched on,
   because the sponsor's rules say the sponsor cannot override model results.
@@ -73,7 +73,7 @@ python3 -m unittest team/explorer/test_explorer_data.py team/validation/test_bac
   listings back a size or a benchmark are cited by link and labelled by kind ("a drive-thru coffee chain's 10-K").
   The page still names businesses already trading on or next to the frontage (as the sponsor's storefront data
   does), the reuse projects and corridors in the case library, and the local operators whose own figures are
-  checked against the ranges. No NDA data is used.
+  checked against the ranges.
 - **Sources.** Every outside fact links to its source. The pipeline never drops the export's 126
   sensitivity-flagged records, as the repo requires. None of them is among the frontage records, and none is quoted
   on the page.

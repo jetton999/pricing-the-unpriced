@@ -1,5 +1,5 @@
 {
- "_note": "Draft concepts for three empty buildings the sponsor has walked through, 19 Oct 2026. This public version names no businesses as possible tenants. Facts about precedents come from the public sources linked, as of the dates shown.",
+ "_note": "Draft concepts for three empty buildings with a 3D tour, 19 Oct 2026. This public version names no businesses as possible tenants. Facts about precedents come from the public sources linked, as of the dates shown.",
  "order": [
   "742",
   "737",
@@ -50,7 +50,7 @@
     "src": "NR p. 19; 2026 listing"
    }
   ],
-  "now": "For lease. The listing offers 3,042 sq ft of the 7,000 sq ft building free in exchange for simple cosmetic repairs, and is aimed at nonprofit, artist and community groups (January 2026). Owner of record (state assessment snapshot, July 2026): 3117 Greenmount Avenue LLC, not the sponsor's LLC.",
+  "now": "For lease. The listing offers 3,042 sq ft of the 7,000 sq ft building free in exchange for simple cosmetic repairs, and is aimed at nonprofit, artist and community groups (January 2026). Owner of record (state assessment snapshot, July 2026): 3117 Greenmount Avenue LLC.",
   "now_url": "https://www.officespace.com/md/baltimore/2378636-3117-greenmount-ave",
   "fit": [
    {
@@ -126,7 +126,7 @@
     "name": "Chashama",
     "year": "since 1995",
     "t": "An arts charity that persuades owners to lend empty commercial space to artists: about 40 sites across the five boroughs in 2021. Its Storefront Startup programme, run with the City's small-business department, gave rent-free storefronts to small firms.",
-    "lesson": "Free-for-repairs deals work when a go-between picks the tenants and sets the terms. That is the role the sponsor would play here.",
+    "lesson": "Free-for-repairs deals work when a go-between picks the tenants and sets the terms.",
     "src": [
      {
       "l": "Art & Object, 27 Sep 2021",
@@ -136,7 +136,7 @@
    }
   ],
   "checks": [
-   "Measure the usable floor on the Matterport walk-through.",
+   "Measure the usable floor on the 3D tour.",
    "Ask City zoning whether a bike repair bay is accessory to a bike shop (retail is permitted in C-1; vehicle repair is not)."
   ],
   "zoning_src": "https://codes.baltimorecity.gov/us/md/cities/baltimore/code/32/zoning-tables/10-301"
@@ -186,7 +186,7 @@
     "src": "2026 listing"
    }
   ],
-  "now": "For lease. The listing offers 4,732 sq ft of the 7,003 sq ft building free in exchange for simple cosmetic repairs (January 2026). Owner of record (July 2026): 3107 Greenmount Avenue LLC, not the sponsor's LLC.",
+  "now": "For lease. The listing offers 4,732 sq ft of the 7,003 sq ft building free in exchange for simple cosmetic repairs (January 2026). Owner of record (July 2026): 3107 Greenmount Avenue LLC.",
   "now_url": "https://www.officespace.com/md/baltimore/2378634-3107-greenmount-ave",
   "fit": [
    {
@@ -310,7 +310,7 @@
     "src": "The Banner, 5 Oct 2026"
    }
   ],
-  "now": "Vacant. The owner told The Banner that a cafe tenant is lined up (5 October 2026). 1,555 sq ft. Owner of record (July 2026): 3028 Greenmount Avenue LLC; not the sponsor's LLC.",
+  "now": "Vacant. The owner told The Banner that a cafe tenant is lined up (5 October 2026). 1,555 sq ft. Owner of record (July 2026): 3028 Greenmount Avenue LLC.",
   "now_url": "https://www.thebanner.com/economy/waverly-empty-storefronts-VIM3XERU3NDVZAQXI5QO55BYNY/",
   "fit": [
    {

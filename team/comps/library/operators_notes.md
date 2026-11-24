@@ -1,7 +1,6 @@
 # Operator revenue benchmarks for Greenmount Ave, Waverly (operators.csv)
 
-Researched 2026-10-20. 45 rows in `operators.csv` (O-001 to O-045): 2 waverly, 18 baltimore_corridor, 25 other_city, 0 national. Every format except housing has at least 2 rows. Every figure was opened by the researcher, and the URL is in the row. Rows already in `team/comps/comps.csv` and `comps_alternates.csv` (Emma's Tea Spot, Square Cafe, Georgie's, Second Chance, Community Forklift and others) were not repeated. The NDA restaurant at 2731 Greenmount Ave is not used anywhere.
-
+Researched 2026-10-20. 45 rows in `operators.csv` (O-001 to O-045): 2 waverly, 18 baltimore_corridor, 25 other_city, 0 national. Every format except housing has at least 2 rows. Every figure was opened by the researcher, and the URL is in the row. Rows already in `team/comps/comps.csv` and `comps_alternates.csv` (Emma's Tea Spot, Square Cafe, Georgie's, Second Chance, Community Forklift and others) were not repeated.
 ## Conventions used in the CSV (read before using the numbers)
 
 - **Form C rows (private businesses)**: revenue is from the SEC Form C cover (`primary_doc.xml`, fields `revenueMostRecentFiscalYear` / `revenuePriorFiscalYear`) or from the campaign page or offering PDF filed with it. Many covers do not name the fiscal year. Where the year is inferred from the filing date, `revenue_year` says "(inferred)". Where the year cannot be inferred safely (filed in January to March), it says "not stated". All are owner-certified, unaudited figures. "Projected rent" figures from Mainvest pro formas are mentioned in the notes column only. They are **not** put in `rent_paid_usd_per_yr`.

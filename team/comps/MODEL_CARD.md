@@ -23,8 +23,6 @@ from the 20 October 2026 build; `comps_ranges.json` is always the current source
 | `parcel_tax.csv` | 60 | City tax and building area per Greenmount parcel (Baltimore Real Property layer) |
 | `engine_inputs.json` | — | Every assumption, with its source or "team judgement" |
 
-The NDA restaurant at 2731 Greenmount is not in any of these files and is never used in a public output.
-
 ## How it works, and why each method
 
 | Step | Method | Why this one | Rejected, and why |
@@ -58,17 +56,6 @@ lowers the median error from 23.8% to 22.3%, so it is kept for comparisons. The 
 would turn Penn Ave's $16.50 into $27.09. Operators' revenue per sq ft is moved by CPI and the price parity and
 checked against the benchmark range: both cafes (Baltimore and DC) fall inside.
 
-## The NDA operator (private step)
-
-- The operator's data is a single draw from many businesses. It gets a weight of about 0.2: tau² / (tau² +
-  sigma²), with tau the between-corridor spread and sigma the cafe sales spread.
-- A calibrated figure can be inverted to recover the private one. So the step runs only when
-  `PTU_PRIVATE_OPERATOR` points at a file outside the repo. It writes `private_annex.json` beside that file and
-  never touches `comps_ranges.json`. `test_comps_engine.py` checks both.
-- Keep the input and the annex in the team's CUSP RCF project space. Do not upload them to AI tools without
-  instructor permission (Week 2 rule). Share even a yes/no ("inside the public range") only with the sponsor's
-  approval.
-
 ## Limits
 
 - Listings are asking rents, not signed leases. Only 3217 is a rent being paid, and it moves Waverly's shop
@@ -83,8 +70,8 @@ checked against the benchmark range: both cafes (Baltimore and DC) fall inside.
 
 ## Checks to rerun after any change
 
-1. `python3 team/comps/comps_engine.py`, then `python3 -m unittest team/comps/test_comps_engine.py` (15 tests:
-   sources, NDA absence, pooling arithmetic, own-listing exclusion, quantile order, private-step isolation,
+1. `python3 team/comps/comps_engine.py`, then `python3 -m unittest team/comps/test_comps_engine.py` (12 tests:
+   sources, pooling arithmetic, own-listing exclusion, quantile order,
    guardrail words, determinism).
 2. `python3 team/explorer/build_explorer.py`, and open `index.html`.
 3. Read the sensitivity table on the page: lease allowances, the 3217 lease, the combining weight, the

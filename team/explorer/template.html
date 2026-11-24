@@ -464,7 +464,7 @@ details.vacbox > summary .small { font-weight: 400; }
         <div class="seg" role="group" aria-label="Show">
           <button type="button" id="f-all" aria-pressed="true">All</button>
           <button type="button" id="f-avail" aria-pressed="false">Available or unconfirmed</button>
-          <button type="button" id="f-sponsor" aria-pressed="false">Sponsor walk-throughs</button>
+          <button type="button" id="f-sponsor" aria-pressed="false">3D tour available</button>
         </div>
         <label for="q" class="small">Find</label><input type="search" id="q" placeholder="e.g. 3211" inputmode="numeric" autocomplete="off">
       </div>
@@ -591,7 +591,7 @@ details.vacbox > summary .small { font-weight: 400; }
 
   <section data-view="b" class="card fold" id="cx" aria-labelledby="cxh">
     <details>
-    <summary><h2 id="cxh">What it could become</h2><span class="small">concepts for three empty buildings the sponsor has walked through · nobody has been contacted</span></summary>
+    <summary><h2 id="cxh">What it could become</h2><span class="small">concepts for three empty buildings with a 3D tour · nobody has been contacted</span></summary>
     <div class="foldin">
     <p class="lede" style="font-size:14px" id="cxlede">For each building: what it was, what its history, the block and the rules allow, two concepts, and places that have done something like it.</p>
     <div class="cx-tabs" role="tablist" id="cxtabs" aria-label="Concept buildings"></div>
@@ -1060,7 +1060,7 @@ details.vacbox > summary .small { font-weight: 400; }
   const shops = P.filter(isShop), nE = shops.filter(isEmpty).length, nT = shops.filter(p => p._0.availability === 'available now').length;
   const nS = shops.filter(SPV).length, nB = shops.filter(p => SPV(p) && p._0.availability === 'available now').length, nU = shops.filter(p => p._0.availability === 'possibly available').length, nM = Object.keys(VAC).length;
   document.getElementById('tiles').innerHTML = `
-    <div class="tile"><div class="k">Frontage parcels</div><div class="v">${P.length}</div><div class="s">${P.filter(p => p.sponsor).length} have a sponsor Matterport walk-through; the sponsor's own LLC is the owner of record for ${P.filter(p => p.ready && p.ready.owner === 'sponsor-linked LLC').length}</div></div>
+    <div class="tile"><div class="k">Frontage parcels</div><div class="v">${P.length}</div><div class="s">${P.filter(p => p.sponsor).length} have a 3D tour</div></div>
     <div class="tile"><div class="k">Records joined</div><div class="v">${fmt(tot)}</div>
       <div class="srcbar" aria-hidden="true">${SRCK.map(([k, , c]) => `<span style="width:${pct(T[k] || 0)};background:${c}"></span>`).join('')}</div>
       <div class="srckey">${SRCK.map(([k, l, c]) => `<span><i style="background:${c}"></i>${l} ${fmt(T[k] || 0)}</span>`).join('')}</div></div>
@@ -1189,7 +1189,7 @@ details.vacbox > summary .small { font-weight: 400; }
         h += `<td class="now">${esc(p.status === 'occupied' ? (p.tenant || '').split(' ; ')[0].slice(0, 24) : p.status)}</td></tr>`;
       });
     });
-    h += '</tbody></table><p class="small">◆ sponsor walk-through (not a statement of ownership). Grey cells: no use evidence yet for that decade. Hover a cell for its category.</p>';
+    h += '</tbody></table><p class="small">◆ 3D tour available. Grey cells: no use evidence yet for that decade. Hover a cell for its category.</p>';
     const el = document.getElementById('ledger'); el.innerHTML = h;
     el.querySelectorAll('tr.row').forEach(r => { r.onclick = () => select(r.dataset.id, false); r.onkeydown = e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); select(r.dataset.id, false); } }; });
   }
@@ -1217,8 +1217,8 @@ details.vacbox > summary .small { font-weight: 400; }
     if (r.receiv) out.push(['warn', `receivership: ${r.receiv}`]);
     if (r.taxcert) out.push(['warn', 'tax certificate sold']);
     if (r.permits) out.push(['', `${r.permits} active permit${r.permits > 1 ? 's' : ''}`]);
-    if (r.walk) out.push(['ok', 'sponsor Matterport walk-through']);
-    out.push([r.owner === 'sponsor-linked LLC' ? 'ok' : '', `owner of record: ${r.owner === 'sponsor-linked LLC' ? "the sponsor's LLC" : (r.owner || 'unknown')}`]);
+    if (r.walk) out.push(['ok', '3D tour available']);
+    out.push(['', `owner of record: ${r.owner || 'unknown'}`]);
     return out.map(([c, t]) => `<span class="pill ${c}">${esc(t)}</span>`).join(' ');
   }
   const segsFor = (fid) => (L.segments || []).filter(s => (s.fit_formats || []).includes(fid));
@@ -1289,7 +1289,7 @@ details.vacbox > summary .small { font-weight: 400; }
       ${top3.length > 1 ? `<div class="also"><div class="eyebrow">Also strong</div>${top3.slice(1).map(r => `<div class="arow"><span class="sw" style="background:${cssFill(r.f.cat)}"></span><span>${esc(r.f.name)}${r.f.zs !== 'P' ? ' <span class="pol cb">conditional</span>' : ''}</span><span class="mono">${Math.round(r.score * 100)}</span><span class="small">${money(r) || esc(whyLine(r, p))}</span></div>`).join('')}</div>` : ''}` : '<p class="small">No permitted use scores above zero.</p>';
     const el = document.getElementById('panel');
     el.innerHTML = `
-      <div class="eyebrow">${esc(SIDE[p.side])}${p.sponsor ? ' · sponsor walk-through' : ''}</div>
+      <div class="eyebrow">${esc(SIDE[p.side])}${p.sponsor ? ' · 3D tour available' : ''}</div>
       <div class="addr">${esc(p.address)} Greenmount</div>
       <div>${availPill(p)} <span class="small">${p.decades} of 13 decades on record (1900s to 2020s)</span></div>
       ${isShop(p) ? `<div class="vacsw"><span>For the plan, count this storefront as</span><div class="seg" role="group" aria-label="Count this storefront as"><button type="button" data-vac="empty" aria-pressed="${isEmpty(p)}">empty</button><button type="button" data-vac="occupied" aria-pressed="${!isEmpty(p)}">in use</button></div>${VAC[p.id] ? '<button type="button" class="cx-tab" data-vac="reset">as recorded</button>' : ''}</div>` : ''}
@@ -1297,7 +1297,7 @@ details.vacbox > summary .small { font-weight: 400; }
         ${todayLine(p)}
         <dt>Size</dt><dd class="mono">${p.sqft ? fmt(+p.sqft) + ' sq ft' : 'not in export'}</dd>
         <dt>Built</dt><dd>${p.built ? 'c. ' + p.built : 'unknown'}${p.form ? ' · ' + esc(p.form) : ''}</dd>
-        <dt>Rules</dt><dd>${esc(p.zoning || '—')}; urban renewal plan (1979, in force): no new taverns, liquor stores or pawnshops (restaurants allowed, and they can serve alcohol); facade and sign standards</dd>
+        <dt>Rules</dt><dd>${esc(p.zoning || '—')}; urban renewal plan (1979, in force): no new taverns, liquor stores or pawnshops (restaurants allowed, and they can serve alcohol); facade and sign standards. The team's reading, not legal advice</dd>
       </dl>
       ${verdict}
       ${nogo.length || push.length ? `<div class="nogo">${nogo.length ? `<b>Proven here but not allowed:</b> ${nogo.join('; ')}. ` : ''}${push.length ? `<b>Fits, but residents have pushed back:</b> ${push.join('; ')}.` : ''}</div>` : ''}
@@ -1344,7 +1344,7 @@ details.vacbox > summary .small { font-weight: 400; }
     const srcs = a => `<div class="srcs">${a.map(s => `<a href="${esc(s.u)}" target="_blank" rel="noopener">${esc(s.l)}</a>`).join('')}</div>`;
     const fitLabel = { yes: 'fits', partly: 'partly', check: 'check' };
     const pr = c.prospect;
-    if (CXO.some(id => CX[id].prospect)) document.getElementById('cxlede').textContent = 'For each building: what it was, what its history, the block and the rules allow, two concepts, one real business that could fit, and places that have done something like it. Two of the three prospects are worker-owned businesses, the kind of tenant the sponsor\'s tenant-to-owner idea is built for.';
+    if (CXO.some(id => CX[id].prospect)) document.getElementById('cxlede').textContent = 'For each building: what it was, what its history, the block and the rules allow, two concepts, one real business that could fit, and places that have done something like it.';
     document.getElementById('cxbody').innerHTML = `<div class="cx">
       <div class="cx-col">
         <div><div class="eyebrow">${esc(SIDE[p.side])} · ${p.sqft ? fmt(+p.sqft) + ' sq ft' : ''} · zoned ${esc(p.zoning)}</div>
@@ -1567,7 +1567,7 @@ details.vacbox > summary .small { font-weight: 400; }
     const { p, r, f, e, next, watch } = s;
     const opts = (SC[p.id] || []).filter(x => x.ok && !x.f.av).map(x => `<option value="${x.f.id}"${x.f.id === f.id ? ' selected' : ''}>${esc(x.f.name)} · ${Math.round(x.score * 100)}</option>`).join('');
     return `<article class="sheet${userCh[p.id] ? ' mine' : ''}" id="sheet-${p.id}">
-      <div class="top"><button type="button" class="ad" data-go="${p.id}" title="Open this building's record">${esc(p.address)} Greenmount</button><span>${availPill(p)}${p.sponsor ? ' <span class="pill">sponsor walk-through</span>' : ''}</span></div>
+      <div class="top"><button type="button" class="ad" data-go="${p.id}" title="Open this building's record">${esc(p.address)} Greenmount</button><span>${availPill(p)}${p.sponsor ? ' <span class="pill">3D tour</span>' : ''}</span></div>
       <div class="small">${esc(SIDE[p.side])}${p.sqft ? ' · ' + fmt(+p.sqft) + ' sq ft' : ''}${e && e.units > 1 ? `, as ${e.units} units` : ''}${p.built ? ' · built c. ' + p.built : ''}</div>
       <div class="use"><span class="sw" style="background:${cssFill(f.cat)}"></span><span>${esc(f.name)}</span><span class="sc" title="Fit score out of 100, after the uses placed before it">${Math.round(r.score * 100)}<span class="small">/100</span></span></div>
       ${e ? `<div class="smoney">could support <b>${kusd(e.ann[1])}</b> a year <span class="small">(${kusd(e.ann[0])}–${kusd(e.ann[2])})${s.ctx.length ? ' · ' + esc(s.ctx.join(', ')) : ''}</span></div>` : ''}
@@ -1751,8 +1751,7 @@ details.vacbox > summary .small { font-weight: 400; }
       ['Rent a use could support', 'The lower of the asking rent and what the business can afford, per scenario', 'A tenant who cannot pay the asking rent does not stay; this is what the plan ranks with', 'Ranking by asking rent alone (rewards uses that would fail)', 'Treats rent and sales as independent within one building', 'Survival of matched tenants, tracked from the first lease'],
       ['Comes first', 'Rank acceptability (SMAA): 1,000 scenarios drawing the weights (±5 points), the weight on money (20–50%) and the rents', 'Shows whether a recommendation survives disagreement about priorities, without forcing one weight on money', 'AHP and TOPSIS (rank reversal when a use is added); one money weight fixed in advance', 'Scenario ranges are team judgement', 'Shown for every building'],
       ['Block plans', 'One parcel at a time with swaps, then every combination of each parcel\'s top uses as a check', 'Plain one-at-a-time placement has no guarantee here (neighbour effects make the objective non-submodular), so the gap is measured each time', 'Simulated annealing (a different answer each click); an integer-programming solver in the browser (heavy, opaque)', 'The full check covers each parcel\'s top uses only', 'Gap reported under the plan table'],
-      ['Other cities', 'Listings enter only through pooling; operators\' figures move by CPI and BEA all-items price parity', 'The trail from source to Waverly-equivalent is shown factor by factor', 'Housing price index (Pittsburgh ×1.64, implausible); propensity matching or synthetic control (19 corridors, no time series)', 'Benefit-transfer studies put the median error of moved values near 39%', 'Held-out corridor test with and without the factor'],
-      ['The NDA operator', 'Kept out of every public number; an optional private step shrinks the sales benchmark toward it with weight about 0.2 and writes a private annex outside the repo', 'One business is one draw from many; and a published calibrated figure could be inverted to recover the private one', 'Using it as the anchor; publishing a calibrated range', 'The private annex needs the sponsor\'s approval before any yes/no is shared', 'A test checks the public output is identical with and without it']];
+      ['Other cities', 'Listings enter only through pooling; operators\' figures move by CPI and BEA all-items price parity', 'The trail from source to Waverly-equivalent is shown factor by factor', 'Housing price index (Pittsburgh ×1.64, implausible); propensity matching or synthetic control (19 corridors, no time series)', 'Benefit-transfer studies put the median error of moved values near 39%', 'Held-out corridor test with and without the factor']];
     document.getElementById('earnwhy').innerHTML = `<table class="btt wide"><thead><tr><th>Part</th><th>What it does</th><th>Why this one</th><th>Rejected</th><th>Limits</th><th>How it is checked</th></tr></thead><tbody>${WHY.map(r => `<tr>${r.map((c, i) => `<td${i ? '' : ' style="font-weight:600"'}>${esc(c)}</td>`).join('')}</tr>`).join('')}</tbody></table>
       <p class="small">Full method notes, sources and the model card: <span class="mono">team/comps/MODEL_CARD.md</span>. Every assumption is in <span class="mono">team/comps/engine_inputs.json</span>; change one and rerun <span class="mono">comps_engine.py</span>.</p>`;
   }
@@ -2004,7 +2003,7 @@ details.vacbox > summary .small { font-weight: 400; }
     const M = [
       ['past', '4 Nov 2026', 'Midterm', 'Midterm Progress Report submitted with the signed Client Agreement'],
       ['now', '10 Nov 2026', 'Now', 'Timelines for 69 parcels; score v0.4 with sourced sizes and the weights agreed with the sponsor; comps engine v1 with typical units and total rents; a plan with one sheet per empty storefront, compared on fit, rent and rent pressure; back-test v2 on blocks not seen; comps at three levels (buildings, streets, neighbourhoods) with a displacement rubric; concepts for three buildings'],
-      ['', 'Dec 2026', 'End of fall term', 'Four blind timelines and extractor precision; a use recommendation for each of the 69 frontage parcels, with reasons and risks; comps engine v1.1 (calls for the unlisted Greenmount rents, private calibration if approved); generator v1 with building-design match; the 97 focus-area parcels'],
+      ['', 'Dec 2026', 'End of fall term', 'Four blind timelines and extractor precision; a use recommendation for each of the 69 frontage parcels, with reasons and risks; comps engine v1.1 (calls for the unlisted Greenmount rents); generator v1 with building-design match; the 97 focus-area parcels'],
       ['', 'Mar 2027', 'Spring validation', 'Back-test repeated on four blind reference timelines; weight sensitivity; demand data if feasible; optimiser v1 for a sponsor-named assemblage'],
       ['', 'May 2027', 'Final', 'Pilot in the Property Dossier; model card and guardrails; data contract; report, community brief, CUSP showcase']];
     document.getElementById('miles').innerHTML = M.map(([c, d, t, x]) => `<div class="mile ${c}"><span class="d">${esc(d)}</span><span class="t">${esc(t)}</span><span>${esc(x)}</span></div>`).join('');
@@ -2012,7 +2011,7 @@ details.vacbox > summary .small { font-weight: 400; }
       ['Use-history timelines', 'done', '69 frontage parcels, 619 spans, 8 kinds of source', 'Blind references; fix the summary rows; side streets', 'Whole corridor, with its gap map'],
       ['Candidate-use generator', 'demo', 'Score v0.4: heritage, rules, saturation, size, community, neighbours, precedents, feedback; four weight presets and a label for how firm each verdict is; default weights agreed with the sponsor on 9 Nov 2026', 'A short resident survey to test the community layer', 'Generator v1 with documented weights'],
       ['Customer matching', 'demo', 'Seven customer groups with ranked obstacles and programmes; buildings ranked by fit', 'Interviews with 5-10 businesses per group; an intake form for both sides', 'Matching with tracked 12, 24 and 36-month survival against the BLS benchmark (about 68% at 3 years)'],
-      ['Comps engine', 'demo', 'Engine v1: rent and revenue ranges for 14 uses, held-out check, other cities side by side; typical units and total rents; eight benchmark neighbourhoods on public rents and vacancy', 'Calls for the Greenmount rents listed as "contact for pricing"; private check with the NDA operator if the sponsor approves; Census data for catchment spending', 'Comps library, engine and model card'],
+      ['Comps engine', 'demo', 'Engine v1: rent and revenue ranges for 14 uses, held-out check, other cities side by side; typical units and total rents; eight benchmark neighbourhoods on public rents and vacancy', 'Calls for the Greenmount rents listed as "contact for pricing"; Census data for catchment spending', 'Comps library, engine and model card'],
       ['Assemblage optimiser', 'demo', 'Plan v2: one sheet per empty storefront (use, reasons, rent, risks), a map and a block-by-block check; best-fit, highest-rent and balanced plans compared, with a search check and a rent-pressure flag for businesses already trading', 'A sponsor-named assemblage; owners who opt in; content uses kept apart', 'Plan for a sponsor-named assemblage'],
       ['Validation', 'demo', 'Back-test v2: plan committed first, then run on 52 Greenmount parcels outside the frontage (p = 0.023); case statuses checked against 2025-26 sources; decision rule agreed with the sponsor on 9 Nov 2026', 'Four blind timelines', 'Validation report'],
       ['Pilot and handoff', 'demo', 'This page', 'Settle with the sponsor which storefronts are empty; agree the hand-off format', 'Property Dossier pilot, model card, data contract, report']];
@@ -2186,7 +2185,7 @@ details.vacbox > summary .small { font-weight: 400; }
   function drawSeg() {
     const S = L.segments || []; if (!S.length) { document.getElementById('seg').hidden = true; return; }
     const sp = L.sponsor || {};
-    document.getElementById('seglede').textContent = 'The sponsor works as an owner-operator developer on the corridor, with a nonprofit programme arm and a planned neighbourhood trust that would let successful tenants buy their buildings. Its customers are therefore businesses that will lease and later buy, the groups that finance them, and investors in the trust. This section matches each building to the groups that would use, lease or buy it, and shows what stands in their way.';
+    document.getElementById('seglede').textContent = 'This section matches each building to the groups that would use, lease or buy it, and shows what stands in their way.';
     const tabs = document.getElementById('segtabs');
     tabs.innerHTML = S.map(s => `<button type="button" role="tab" class="cx-tab" data-s="${esc(s.id)}" aria-selected="${s.id === segSel}">${esc(s.name)}</button>`).join('');
     tabs.querySelectorAll('.cx-tab').forEach(b => b.onclick = () => { segSel = b.dataset.s; drawSeg(); });
@@ -2211,8 +2210,8 @@ details.vacbox > summary .small { font-weight: 400; }
         <div><h3>Buildings that fit this group</h3><label class="chk"><input type="checkbox" id="segunk"${segUnk ? ' checked' : ''}> Include parcels with no confirmed occupant</label></div>
         <div class="fitlist">${fits.length ? fits.slice(0, 10).map((x, i) => `<div class="fitrow"><div class="hd"><span class="mono">${i + 1}</span><button type="button" class="a" data-go="${x.p.id}">${esc(x.p.address)}</button><b>${esc(x.r.f.name)}</b><span class="mono" style="margin-left:auto">${Math.round(x.v * 100)}</span></div>
           <div class="small" style="color:var(--ink-2)">${x.p.sqft ? fmt(+x.p.sqft) + ' sq ft' : ''} · ${esc(x.p.status === 'unknown' ? 'occupant not confirmed' : x.p.status)} · use score ${Math.round(x.r.score * 100)} · size fit for this group ${Math.round(x.sz * 100)}%${x.p.ready && x.p.ready.vbn === 'open' ? ' · <b>open vacant-building notice</b>' : ''}</div>
-          <div class="small">${x.p.ready && x.p.ready.owner === 'sponsor-linked LLC' ? "Owner of record is the sponsor's LLC: lease-to-own terms can be modelled here." : 'Another owner of record: use fit only, no financial scenario (sponsor rule).'}</div></div>`).join('') : '<p class="small">No available building fits this group\'s formats.</p>'}</div>
-        <div class="guard"><b>Ground rules, from the sponsor's proposal.</b> ${(sp.guardrails || []).slice(0, 4).map(esc).join(' ')} <b>Ownership.</b> Of the buildings the sponsor has walked through, the state assessment snapshot (July 2026) titles only 3200 and 3224 to the sponsor's LLC; the rest belong to other owners, so the page never presents them as the sponsor's.</div>
+          <div class="small">Use fit only; no financial scenario.</div></div>`).join('') : '<p class="small">No available building fits this group\'s formats.</p>'}</div>
+        <div class="guard"><b>Ground rules, from the sponsor's proposal.</b> ${(sp.guardrails || []).slice(0, 4).map(esc).join(' ')}</div>
       </div></div>`;
     const cb = document.getElementById('segunk'); if (cb) cb.onchange = e => { segUnk = e.target.checked; drawSeg(); };
     document.getElementById('segbody').querySelectorAll('[data-go]').forEach(b => b.onclick = () => { select(b.dataset.go, false); document.getElementById('panel').scrollIntoView({ behavior: 'smooth', block: 'start' }); });
@@ -2263,7 +2262,7 @@ details.vacbox > summary .small { font-weight: 400; }
       <p style="margin:0">The rating answers one question: according to published sources, did the revival there cost the residents and businesses who were already there? It is not a forecast for Greenmount and not an income index. Rising incomes alone never make a place high, because newcomers can raise them without anyone leaving.</p>
       <table class="btt"><tbody>${['high', 'moderate', 'low', 'unknown'].map(k => `<tr><td style="width:96px">${dpill(k)}</td><td>${esc(RUB[k] || '')}</td></tr>`).join('')}</tbody></table>
       <p style="margin:0"><b>On Greenmount itself</b> the page marks long-standing businesses (15 years or more at the address), flags rent pressure in every block plan (businesses already trading whose kind of business typically supports at least 20% less rent than the plan's new uses), and never plans an occupied building.</p>
-      <p style="margin:0"><b>How it could be used.</b> Treat high as the line not to cross: no double-digit fall in Waverly's long-standing population share, and no long-standing business forced out. Before agreeing a lease mix, read the block plan's rent-pressure flags, and pair any flagged block side with a measure that worked in the low-rated places: stepped rents, a first right of renewal, buying shop units only, or the tenant-to-owner path. Re-rate Waverly once a year with the same rule, from the baseline in the neighbourhood cards.</p>
+      <p style="margin:0"><b>How it could be used.</b> Treat high as the line not to cross: no double-digit fall in Waverly's long-standing population share, and no long-standing business forced out. Before agreeing a lease mix, read the block plan's rent-pressure flags, and pair any flagged block side with a measure that worked in the low-rated places: stepped rents, a first right of renewal, buying shop units only or a route for tenants to buy their units. Re-rate Waverly once a year with the same rule, from the baseline in the neighbourhood cards.</p>
       <p class="small" style="margin:0">Ratings follow the evidence on each card, read on 26 Oct 2026 from the sources linked. A rating that changed when the rubric was written down shows its earlier value. Unknown does not mean none. Full note: team/explorer/DISPLACEMENT.md.</p></div></details>`;
   }
   // neighbourhoods like Waverly: the sponsor's benchmark set (extras.neighbourhoods; the comparison sentences come from the build)
@@ -2456,9 +2455,9 @@ details.vacbox > summary .small { font-weight: 400; }
   document.getElementById('notes').innerHTML = `
     <p><b>Sources.</b> Sponsor records are the class-A rows (records that state a use) from the team's week-1 classification of the curated layer. Polk lines come from the archive.org text of the Baltimore city directories, 1901 to 1923. Before about 1914 these blocks were numbered as York Road, so the early lines reach a parcel through a crosswalk built from Sanborn sheets that print both numbers, statements in the sponsor's records, and people listed at both addresses. Permit lines are a transcription of 108 cards from the City Archives' Master Index Cards, Building Permits (BRG48-53), 1924 to 1961. Sanborn rows are one per footprint on the 1915, 1928 and 1953 sheets at the Library of Congress. The National Register rows come from the 2013 Waverly Main Street nomination. The 1970s rows come from the team's index of the City's revitalization files (BRG48-43-10). The 2026 column is the October tenant check. Every record links to its source where one is online.</p>
     <p><b>Coding.</b> A keyword rule assigns each line to one of the team's use categories, so a few lines will be coded wrong, and most permit lines (signs, repairs, awnings) carry no use at all. A bare "store" on a permit or a Sanborn "S" says there was a shop front, not what it sold, so those records are listed but not coloured. Numbers that are not a parcel in the export go to the next parcel down the same side, and the record says the address was inferred. ${esc(D.validation)}</p>
-    <p><b>A rule that still binds.</b> The Waverly Business Area Urban Renewal Plan (1979, amended to 2012) still covers the frontage. Since 1995 it bars new taverns, liquor stores and pawnshops, and it sets facade, sign and awning standards for every commercial building. Where a building's food-and-drink history is mostly a saloon, the best-proven use says so. The sponsor added on 26 Oct 2026 that the plan bars taverns, not restaurants, and that a restaurant can get a liquor licence more easily; the plan's own pages (City Archives BRG48-43-10-9, pp. 4-29) are scanned but not yet filed, so the wording is still to be confirmed there (team/evidence/archive_unfiled_triage_2026-10-26.csv).</p>
+    <p><b>A rule that still binds.</b> The Waverly Business Area Urban Renewal Plan (1979, amended to 2012) still covers the frontage. Since 1995 it bars new taverns, liquor stores and pawnshops, and it sets facade, sign and awning standards for every commercial building. Where a building's food-and-drink history is mostly a saloon, the best-proven use says so. The plan bars taverns, not restaurants (Amendment No. 2, 4 December 1995). This is the team's reading as students, not legal advice.</p>
     <p><b>The concepts.</b> The three concepts were drafted with AI assistance (Claude) from each building's records, its block side today, the urban renewal plan and the comps, and are reviewed by the team before use. The named businesses are examples drawn from public reporting, chosen because they fit the building and appear to need space or to have no street-front shop yet. Nobody has been contacted, and the sponsor decides whether anyone is. Every outside fact links to its source; check it again before any outreach.</p>
-    <p><b>What it is not.</b> A planning aid: not an appraisal, not an offer and not a decision. It ranks uses for a building, never buildings by price: no valuation, no appraisal language and no acquisition targeting, following the sponsor's own rules. A sponsor walk-through is not a statement of ownership; the owner of record comes from the state assessment snapshot. The sponsor agreed the default weights and the back-test rule on ${AGREED.on}; the scores, the plan and the rent ranges are still estimates, and their limits are listed under How the recommendation works. "Best-proven use" ranks the uses a building has carried by how many decades of evidence it has, minus a penalty where the same use is already common on its block side today. The rent figures are indicative ranges from the comps library and are not an appraisal. Every row should be checked against its source before it is used.</p>
+    <p><b>What it is not.</b> A planning aid: not an appraisal, not an offer and not a decision. It ranks uses for a building, never buildings by price: no valuation, no appraisal language and no acquisition targeting, following the sponsor's own rules. The owner of record comes from the state assessment snapshot. The sponsor agreed the default weights and the back-test rule on ${AGREED.on}; the scores, the plan and the rent ranges are still estimates, and their limits are listed under How the recommendation works. "Best-proven use" ranks the uses a building has carried by how many decades of evidence it has, minus a penalty where the same use is already common on its block side today. The rent figures are indicative ranges from the comps library and are not an appraisal. Every row should be checked against its source before it is used.</p>
     <p><b>Still open.</b> Which storefronts are empty: the team's October check and the sponsor's own check differ on some buildings, and the list is being settled with the sponsor; until then it can be set on the Block plan page. The 1960s to 1990s are the thinnest decades in the record; the next sources are Polk 1930s to 1960s and newspapers through the research desk, and the 1931 Building Survey.</p>`;
 
   // ---------------- interactions
