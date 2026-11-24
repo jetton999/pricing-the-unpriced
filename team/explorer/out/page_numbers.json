@@ -1,0 +1,749 @@
+{
+ "comps_probe": {
+  "compared": 108,
+  "within_half_a_percent_of_the_engine": true
+ },
+ "empty": 24,
+ "empty_addresses": [
+  "2920",
+  "2930",
+  "2932",
+  "2934",
+  "2942",
+  "2946",
+  "2958",
+  "3010",
+  "3011",
+  "3015",
+  "3019",
+  "3023",
+  "3026",
+  "3029",
+  "3036",
+  "3038",
+  "3107",
+  "3111",
+  "3117",
+  "3120",
+  "3122",
+  "3200",
+  "3211",
+  "3224"
+ ],
+ "houses": 7,
+ "in_use": 38,
+ "inputs_by_use": {
+  "cafe": {
+   "at_a_building_with_no_record": {
+    "community": 100,
+    "heritage": 30,
+    "neighbours": 50,
+    "precedents": 100,
+    "room": 100,
+    "size": 50
+   },
+   "community": [
+    100,
+    100
+   ],
+   "heritage": [
+    30,
+    100
+   ],
+   "neighbours": [
+    0,
+    100
+   ],
+   "precedents": [
+    54,
+    100
+   ],
+   "room": [
+    50,
+    100
+   ],
+   "size": [
+    41,
+    100
+   ]
+  },
+  "services": {
+   "at_a_building_with_no_record": {
+    "community": 50,
+    "heritage": 19,
+    "neighbours": 50,
+    "precedents": 27,
+    "room": 100,
+    "size": 50
+   },
+   "community": [
+    50,
+    50
+   ],
+   "heritage": [
+    19,
+    100
+   ],
+   "neighbours": [
+    0,
+    100
+   ],
+   "precedents": [
+    0,
+    32
+   ],
+   "room": [
+    63,
+    100
+   ],
+   "size": [
+    0,
+    100
+   ]
+  },
+  "shop": {
+   "at_a_building_with_no_record": {
+    "community": 100,
+    "heritage": 24,
+    "neighbours": 50,
+    "precedents": 0,
+    "room": 87,
+    "size": 50
+   },
+   "community": [
+    100,
+    100
+   ],
+   "heritage": [
+    24,
+    100
+   ],
+   "neighbours": [
+    0,
+    100
+   ],
+   "precedents": [
+    0,
+    66
+   ],
+   "room": [
+    37,
+    87
+   ],
+   "size": [
+    16,
+    100
+   ]
+  },
+  "showroom": {
+   "at_a_building_with_no_record": {
+    "community": 100,
+    "heritage": 24,
+    "neighbours": 50,
+    "precedents": 0,
+    "room": 87,
+    "size": 50
+   },
+   "community": [
+    100,
+    100
+   ],
+   "heritage": [
+    24,
+    100
+   ],
+   "neighbours": [
+    0,
+    100
+   ],
+   "precedents": [
+    0,
+    0
+   ],
+   "room": [
+    37,
+    87
+   ],
+   "size": [
+    21,
+    100
+   ]
+  }
+ },
+ "no_record_baseline": {
+  "bike": 38,
+  "cafe": 63,
+  "community": 30,
+  "counter": 44,
+  "fitness": 44,
+  "foodmaker": 51,
+  "office": 46,
+  "services": 47,
+  "shop": 48,
+  "showroom": 48,
+  "studio": 45,
+  "venue": 41,
+  "workshop": 43
+ },
+ "parcels": 69,
+ "plan": {
+  "cap_broken": [],
+  "evidence": {
+   "none": 8,
+   "one": 2,
+   "two": 14
+  },
+  "fit_mean": 72,
+  "ground_floor_sq_ft": 57133,
+  "ground_floor_sq_ft_at_most": 70926,
+  "lift_mean": 19,
+  "no_area": 0,
+  "pressure": {
+   "block_sides": 4,
+   "businesses": 11,
+   "long_standing": 1
+  },
+  "sheets": 24,
+  "space_rent_high": 1633500,
+  "space_rent_low": 538200,
+  "space_rent_mid": 937600,
+  "to_measure": 3,
+  "uses": {
+   "cafe": 10,
+   "office": 2,
+   "services": 6,
+   "shop": 3,
+   "showroom": 1,
+   "studio": 1,
+   "workshop": 1
+  },
+  "whole_building_sq_ft": 82606
+ },
+ "ranking": [
+  {
+   "cafe_top": 46,
+   "cafe_top_empty": 12,
+   "differs": 0,
+   "differs_empty": 0,
+   "evidence": {
+    "none": 17,
+    "one": 5,
+    "placed": 1,
+    "two": 39
+   },
+   "food_top": 47,
+   "id": "agreed",
+   "name": "As agreed on 9 November 2026",
+   "no_lift": 6
+  },
+  {
+   "cafe_top": 54,
+   "cafe_top_empty": 17,
+   "differs": 14,
+   "differs_empty": 9,
+   "evidence": {
+    "none": 27,
+    "one": 6,
+    "placed": 1,
+    "two": 28
+   },
+   "food_top": 54,
+   "id": "noher",
+   "name": "Heritage weight at zero",
+   "no_lift": 16
+  },
+  {
+   "cafe_top": 32,
+   "cafe_top_empty": 9,
+   "differs": 19,
+   "differs_empty": 8,
+   "evidence": {
+    "none": 8,
+    "one": 8,
+    "placed": 2,
+    "two": 44
+   },
+   "food_top": 32,
+   "id": "nock",
+   "name": "Without community and precedents",
+   "no_lift": 1
+  },
+  {
+   "cafe_top": 46,
+   "cafe_top_empty": 13,
+   "differs": 2,
+   "differs_empty": 1,
+   "evidence": {
+    "none": 22,
+    "one": 0,
+    "placed": 0,
+    "two": 40
+   },
+   "food_top": 46,
+   "id": "strict",
+   "name": "History from the firmest records only",
+   "no_lift": 11
+  },
+  {
+   "cafe_top": 44,
+   "cafe_top_empty": 12,
+   "differs": 4,
+   "differs_empty": 0,
+   "evidence": {
+    "none": 14,
+    "one": 5,
+    "placed": 2,
+    "two": 41
+   },
+   "food_top": 45,
+   "id": "today",
+   "name": "With today's tenant counted as history",
+   "no_lift": 5
+  }
+ ],
+ "storefronts": 62,
+ "top_candidates": {
+  "2900": {
+   "counted_as": "in use",
+   "evidence": "two",
+   "lift": 30,
+   "score": 74,
+   "use": "studio"
+  },
+  "2920": {
+   "counted_as": "empty",
+   "evidence": "none",
+   "lift": -0.0,
+   "score": 63,
+   "use": "cafe"
+  },
+  "2930": {
+   "counted_as": "empty",
+   "evidence": "none",
+   "lift": 9,
+   "score": 57,
+   "use": "shop"
+  },
+  "2932": {
+   "counted_as": "empty",
+   "evidence": "none",
+   "lift": 9,
+   "score": 57,
+   "use": "shop"
+  },
+  "2934": {
+   "counted_as": "empty",
+   "evidence": "none",
+   "lift": 9,
+   "score": 57,
+   "use": "shop"
+  },
+  "2938": {
+   "counted_as": "in use",
+   "evidence": "none",
+   "lift": -5,
+   "score": 58,
+   "use": "cafe"
+  },
+  "2942": {
+   "counted_as": "empty",
+   "evidence": "two",
+   "lift": 25,
+   "score": 72,
+   "use": "services"
+  },
+  "2946": {
+   "counted_as": "empty",
+   "evidence": "none",
+   "lift": 19,
+   "score": 67,
+   "use": "shop"
+  },
+  "2958": {
+   "counted_as": "empty",
+   "evidence": "two",
+   "lift": 23,
+   "score": 70,
+   "use": "services"
+  },
+  "3000": {
+   "counted_as": "in use",
+   "evidence": "none",
+   "lift": -0.0,
+   "score": 63,
+   "use": "cafe"
+  },
+  "3009": {
+   "counted_as": "in use",
+   "evidence": "none",
+   "lift": 1,
+   "score": 64,
+   "use": "cafe"
+  },
+  "3010": {
+   "counted_as": "empty",
+   "evidence": "one",
+   "lift": 28,
+   "score": 91,
+   "use": "cafe"
+  },
+  "3011": {
+   "counted_as": "empty",
+   "evidence": "two",
+   "lift": 27,
+   "score": 74,
+   "use": "services"
+  },
+  "3015": {
+   "counted_as": "empty",
+   "evidence": "two",
+   "lift": 30,
+   "score": 77,
+   "use": "services"
+  },
+  "3019": {
+   "counted_as": "empty",
+   "evidence": "none",
+   "lift": 6,
+   "score": 69,
+   "use": "cafe"
+  },
+  "3021": {
+   "counted_as": "in use",
+   "evidence": "two",
+   "lift": 17,
+   "score": 80,
+   "use": "cafe"
+  },
+  "3023": {
+   "counted_as": "empty",
+   "evidence": "two",
+   "lift": 27,
+   "score": 90,
+   "use": "cafe"
+  },
+  "3026": {
+   "counted_as": "empty",
+   "evidence": "one",
+   "lift": 18,
+   "score": 69,
+   "use": "foodmaker"
+  },
+  "3028": {
+   "counted_as": "in use",
+   "evidence": "one",
+   "lift": 8,
+   "score": 71,
+   "use": "cafe"
+  },
+  "3029": {
+   "counted_as": "empty",
+   "evidence": "two",
+   "lift": 14,
+   "score": 77,
+   "use": "cafe"
+  },
+  "3031": {
+   "counted_as": "in use",
+   "evidence": "two",
+   "lift": 26,
+   "score": 89,
+   "use": "cafe"
+  },
+  "3034": {
+   "counted_as": "in use",
+   "evidence": "two",
+   "lift": 30,
+   "score": 93,
+   "use": "cafe"
+  },
+  "3036": {
+   "counted_as": "empty",
+   "evidence": "two",
+   "lift": 24,
+   "score": 87,
+   "use": "cafe"
+  },
+  "3038": {
+   "counted_as": "empty",
+   "evidence": "two",
+   "lift": 20,
+   "score": 83,
+   "use": "cafe"
+  },
+  "3040": {
+   "counted_as": "in use",
+   "evidence": "none",
+   "lift": 2,
+   "score": 65,
+   "use": "cafe"
+  },
+  "3046": {
+   "counted_as": "in use",
+   "evidence": "none",
+   "lift": 1,
+   "score": 64,
+   "use": "cafe"
+  },
+  "3048": {
+   "counted_as": "in use",
+   "evidence": "two",
+   "lift": 28,
+   "score": 91,
+   "use": "cafe"
+  },
+  "3100": {
+   "counted_as": "in use",
+   "evidence": "two",
+   "lift": 8,
+   "score": 72,
+   "use": "cafe"
+  },
+  "3106": {
+   "counted_as": "in use",
+   "evidence": "none",
+   "lift": -3,
+   "score": 60,
+   "use": "cafe"
+  },
+  "3107": {
+   "counted_as": "empty",
+   "evidence": "two",
+   "lift": 30,
+   "score": 93,
+   "use": "cafe"
+  },
+  "3111": {
+   "counted_as": "empty",
+   "evidence": "two",
+   "lift": 32,
+   "score": 78,
+   "use": "office"
+  },
+  "3112": {
+   "counted_as": "in use",
+   "evidence": "two",
+   "lift": 15,
+   "score": 63,
+   "use": "shop"
+  },
+  "3113": {
+   "counted_as": "in use",
+   "evidence": "two",
+   "lift": 26,
+   "score": 89,
+   "use": "cafe"
+  },
+  "3114": {
+   "counted_as": "in use",
+   "evidence": "none",
+   "lift": -4,
+   "score": 59,
+   "use": "cafe"
+  },
+  "3117": {
+   "counted_as": "empty",
+   "evidence": "two",
+   "lift": 27,
+   "score": 75,
+   "use": "showroom"
+  },
+  "3118": {
+   "counted_as": "in use",
+   "evidence": "two",
+   "lift": 19,
+   "score": 82,
+   "use": "cafe"
+  },
+  "3120": {
+   "counted_as": "empty",
+   "evidence": "none",
+   "lift": -6,
+   "score": 57,
+   "use": "cafe"
+  },
+  "3122": {
+   "counted_as": "empty",
+   "evidence": "two",
+   "lift": 7,
+   "score": 70,
+   "use": "cafe"
+  },
+  "3123": {
+   "counted_as": "in use",
+   "evidence": "none",
+   "lift": 1,
+   "score": 64,
+   "use": "cafe"
+  },
+  "3126": {
+   "counted_as": "in use",
+   "evidence": "two",
+   "lift": 20,
+   "score": 83,
+   "use": "cafe"
+  },
+  "3127": {
+   "counted_as": "in use",
+   "evidence": "one",
+   "lift": 29,
+   "score": 92,
+   "use": "cafe"
+  },
+  "3128": {
+   "counted_as": "in use",
+   "evidence": "two",
+   "lift": 23,
+   "score": 86,
+   "use": "cafe"
+  },
+  "3130": {
+   "counted_as": "in use",
+   "evidence": "two",
+   "lift": 26,
+   "score": 89,
+   "use": "cafe"
+  },
+  "3133": {
+   "counted_as": "in use",
+   "evidence": "one",
+   "lift": 34,
+   "score": 97,
+   "use": "cafe"
+  },
+  "3200": {
+   "counted_as": "empty",
+   "evidence": "two",
+   "lift": 25,
+   "score": 88,
+   "use": "cafe"
+  },
+  "3201": {
+   "counted_as": "in use",
+   "evidence": "two",
+   "lift": 19,
+   "score": 82,
+   "use": "cafe"
+  },
+  "3203": {
+   "counted_as": "in use",
+   "evidence": "two",
+   "lift": 5,
+   "score": 68,
+   "use": "cafe"
+  },
+  "3204": {
+   "counted_as": "in use",
+   "evidence": "two",
+   "lift": 25,
+   "score": 88,
+   "use": "cafe"
+  },
+  "3208": {
+   "counted_as": "in use",
+   "evidence": "two",
+   "lift": 25,
+   "score": 88,
+   "use": "cafe"
+  },
+  "3210": {
+   "counted_as": "in use",
+   "evidence": "none",
+   "lift": 3,
+   "score": 66,
+   "use": "cafe"
+  },
+  "3211": {
+   "counted_as": "empty",
+   "evidence": "two",
+   "lift": 37,
+   "score": 82,
+   "use": "studio"
+  },
+  "3212": {
+   "counted_as": "in use",
+   "evidence": "placed",
+   "lift": 1,
+   "score": 64,
+   "use": "cafe"
+  },
+  "3213": {
+   "counted_as": "in use",
+   "evidence": "two",
+   "lift": 27,
+   "score": 90,
+   "use": "cafe"
+  },
+  "3216": {
+   "counted_as": "in use",
+   "evidence": "two",
+   "lift": 31,
+   "score": 79,
+   "use": "shop"
+  },
+  "3217": {
+   "counted_as": "in use",
+   "evidence": "two",
+   "lift": 22,
+   "score": 86,
+   "use": "cafe"
+  },
+  "3218": {
+   "counted_as": "in use",
+   "evidence": "two",
+   "lift": 4,
+   "score": 67,
+   "use": "cafe"
+  },
+  "3220": {
+   "counted_as": "in use",
+   "evidence": "two",
+   "lift": 28,
+   "score": 75,
+   "use": "services"
+  },
+  "3221": {
+   "counted_as": "in use",
+   "evidence": "two",
+   "lift": 21,
+   "score": 84,
+   "use": "cafe"
+  },
+  "3222": {
+   "counted_as": "in use",
+   "evidence": "none",
+   "lift": 1,
+   "score": 64,
+   "use": "cafe"
+  },
+  "3223": {
+   "counted_as": "in use",
+   "evidence": "two",
+   "lift": 27,
+   "score": 90,
+   "use": "cafe"
+  },
+  "3224": {
+   "counted_as": "empty",
+   "evidence": "two",
+   "lift": 22,
+   "score": 86,
+   "use": "cafe"
+  },
+  "3226": {
+   "counted_as": "in use",
+   "evidence": "two",
+   "lift": 16,
+   "score": 79,
+   "use": "cafe"
+  }
+ },
+ "weights": {
+  "a": 10,
+  "c": 10,
+  "f": 15,
+  "h": 35,
+  "k": 10,
+  "s": 20
+ }
+}

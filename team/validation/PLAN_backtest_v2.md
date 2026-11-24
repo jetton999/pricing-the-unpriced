@@ -1,5 +1,20 @@
 # Back-test v2: analysis plan
 
+**Note added 21 November 2026.** The plan below is kept as it was written on 26 October 2026. Four things should be
+read with it:
+
+1. **Timing.** The commit that adds this file is four minutes older than the commit with the code, the coded uses
+   and the first results, and both come from one working session. "Before the test was run" is true only in that
+   narrow sense. This is not an independent pre-registration; the spring plan will be lodged with the faculty
+   advisor by dated email before any data is coded.
+2. **The rule was agreed.** The sponsor agreed the decision rule below on 9 November 2026.
+3. **A leak was fixed.** On 17 November 2026 the sponsor's review found that National Register summary rows, which
+   the export dates to a building's build year but which state its use as of 2013, counted as history on the other
+   blocks and not on the frontage. They are now left out of both samples.
+4. **The test does not pass.** With the leak fixed the rule fails, so the second sentence of the decision rule
+   applies. Results are in `README.md` and `out/backtest_v2.md`. The first back-test figure quoted below (26 of 41)
+   was computed on the October tenant list; `team/NUMBERS.md` has it on the current list.
+
 Written 26 October 2026, before the test below was run on the other Greenmount blocks. The commit
 that adds this file is the record of what was fixed in advance. Results go in `README.md` and
 `out/backtest_v2.json`, not here.

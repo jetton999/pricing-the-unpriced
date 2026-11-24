@@ -1,0 +1,641 @@
+{
+ "about": "Written by team/numbers_of_record.py. Do not edit by hand.",
+ "frontage": {
+  "parcels": 69,
+  "storefronts": 62,
+  "houses": 7,
+  "empty": 24,
+  "in_use": 38,
+  "empty_addresses": [
+   "2920",
+   "2930",
+   "2932",
+   "2934",
+   "2942",
+   "2946",
+   "2958",
+   "3010",
+   "3011",
+   "3015",
+   "3019",
+   "3023",
+   "3026",
+   "3029",
+   "3036",
+   "3038",
+   "3107",
+   "3111",
+   "3117",
+   "3120",
+   "3122",
+   "3200",
+   "3211",
+   "3224"
+  ],
+  "empty_follows": "the sponsor's storefront audit of November 2026 (24 storefronts as of 17 November)",
+  "in_use_by_basis": {
+   "search snippet": 15,
+   "map listing": 4,
+   "business website": 4,
+   "news": 4,
+   "street view": 3,
+   "licence data": 3,
+   "sponsor photo": 2,
+   "sponsor audit": 1,
+   "directory": 1,
+   "listing": 1
+  },
+  "in_use_checked_by_a_person": 5,
+  "in_use_named_from_a_search_listing_only": 15,
+  "one_business_in_two_numbers": [
+   "3133"
+  ],
+  "businesses_counted": 37,
+  "with_a_3d_tour": 7,
+  "long_standing_businesses": 4,
+  "long_standing_means_years": 15,
+  "oldest_long_standing_since": 1977
+ },
+ "evidence": {
+  "rows": 3331,
+  "history_rows": 3252,
+  "tenant_check_rows": 79,
+  "by_source": {
+   "polk_directory": 1664,
+   "permit_card": 615,
+   "sponsor": 501,
+   "sanborn": 274,
+   "nr_inventory": 187,
+   "current_2026": 79,
+   "dhcd_1970s": 11
+  },
+  "sponsor_rows": 501,
+  "coded_with_a_use": 1433,
+  "address_inferred": 753,
+  "placed_by_the_next_parcel": 691,
+  "share_placed_by_the_next_parcel": 0.212,
+  "spans": 619,
+  "parcel_use_rows": 303,
+  "parcel_use_rows_by_grade": {
+   "proven": 208,
+   "single mention": 95
+  },
+  "unassigned_source_lines": 512,
+  "uses_on_record_parcel_by_kind": 229,
+  "of_which_two_kinds_of_source_at_the_address": 89,
+  "parcels_where_todays_tenant_used_to_count_as_history": 44,
+  "extractor_against_hand_timelines": {
+   "independent": {
+    "rows": 32,
+    "found": 9,
+    "recall": 28,
+    "recall_covered": 82,
+    "records": 28,
+    "agreement": 89
+   },
+   "all_sources": {
+    "rows": 32,
+    "found": 25,
+    "recall": 78,
+    "recall_covered": 96,
+    "records": 135,
+    "agreement": 88
+   }
+  }
+ },
+ "score": {
+  "weights_agreed_9_nov_2026": {
+   "a": 10,
+   "c": 10,
+   "f": 15,
+   "h": 35,
+   "k": 10,
+   "s": 20
+  },
+  "a_building_with_no_record_scores": {
+   "bike": 38,
+   "cafe": 63,
+   "community": 30,
+   "counter": 44,
+   "fitness": 44,
+   "foodmaker": 51,
+   "office": 46,
+   "services": 47,
+   "shop": 48,
+   "showroom": 48,
+   "studio": 45,
+   "venue": 41,
+   "workshop": 43
+  },
+  "inputs_by_use": {
+   "cafe": {
+    "at_a_building_with_no_record": {
+     "community": 100,
+     "heritage": 30,
+     "neighbours": 50,
+     "precedents": 100,
+     "room": 100,
+     "size": 50
+    },
+    "community": [
+     100,
+     100
+    ],
+    "heritage": [
+     30,
+     100
+    ],
+    "neighbours": [
+     0,
+     100
+    ],
+    "precedents": [
+     54,
+     100
+    ],
+    "room": [
+     50,
+     100
+    ],
+    "size": [
+     41,
+     100
+    ]
+   },
+   "services": {
+    "at_a_building_with_no_record": {
+     "community": 50,
+     "heritage": 19,
+     "neighbours": 50,
+     "precedents": 27,
+     "room": 100,
+     "size": 50
+    },
+    "community": [
+     50,
+     50
+    ],
+    "heritage": [
+     19,
+     100
+    ],
+    "neighbours": [
+     0,
+     100
+    ],
+    "precedents": [
+     0,
+     32
+    ],
+    "room": [
+     63,
+     100
+    ],
+    "size": [
+     0,
+     100
+    ]
+   },
+   "shop": {
+    "at_a_building_with_no_record": {
+     "community": 100,
+     "heritage": 24,
+     "neighbours": 50,
+     "precedents": 0,
+     "room": 87,
+     "size": 50
+    },
+    "community": [
+     100,
+     100
+    ],
+    "heritage": [
+     24,
+     100
+    ],
+    "neighbours": [
+     0,
+     100
+    ],
+    "precedents": [
+     0,
+     66
+    ],
+    "room": [
+     37,
+     87
+    ],
+    "size": [
+     16,
+     100
+    ]
+   },
+   "showroom": {
+    "at_a_building_with_no_record": {
+     "community": 100,
+     "heritage": 24,
+     "neighbours": 50,
+     "precedents": 0,
+     "room": 87,
+     "size": 50
+    },
+    "community": [
+     100,
+     100
+    ],
+    "heritage": [
+     24,
+     100
+    ],
+    "neighbours": [
+     0,
+     100
+    ],
+    "precedents": [
+     0,
+     0
+    ],
+    "room": [
+     37,
+     87
+    ],
+    "size": [
+     21,
+     100
+    ]
+   }
+  },
+  "top_candidate_is_a_cafe": {
+   "of_storefronts": 46,
+   "of_empty": 12,
+   "storefronts": 62
+  },
+  "top_candidate_no_higher_than_no_record": 6,
+  "evidence_behind_top_candidates": {
+   "none": 17,
+   "one": 5,
+   "placed": 1,
+   "two": 39
+  },
+  "if_heritage_weight_is_zero": {
+   "cafe_top": 54,
+   "top_candidate_changes": 14,
+   "of_empty": 9
+  },
+  "without_community_and_precedents": {
+   "cafe_top": 32,
+   "top_candidate_changes": 19,
+   "of_empty": 8
+  },
+  "firmest_records_only": {
+   "cafe_top": 46,
+   "top_candidate_changes": 2,
+   "of_empty": 1
+  },
+  "with_todays_tenant_as_history": {
+   "cafe_top": 44,
+   "top_candidate_changes": 4,
+   "of_empty": 0
+  }
+ },
+ "plan": {
+  "cap_broken": [],
+  "evidence": {
+   "none": 8,
+   "one": 2,
+   "two": 14
+  },
+  "fit_mean": 72,
+  "ground_floor_sq_ft": 57133,
+  "ground_floor_sq_ft_at_most": 70926,
+  "lift_mean": 19,
+  "no_area": 0,
+  "pressure": {
+   "block_sides": 4,
+   "businesses": 11,
+   "long_standing": 1
+  },
+  "sheets": 24,
+  "space_rent_high": 1633500,
+  "space_rent_low": 538200,
+  "space_rent_mid": 937600,
+  "to_measure": 3,
+  "uses": {
+   "cafe": 10,
+   "office": 2,
+   "services": 6,
+   "shop": 3,
+   "showroom": 1,
+   "studio": 1,
+   "workshop": 1
+  },
+  "whole_building_sq_ft": 82606
+ },
+ "comps": {
+  "engine": "comps engine v2",
+  "library_rent_rows": 81,
+  "rents_used": 60,
+  "asking": 57,
+  "in_place": 3,
+  "in_place_rows": [
+   "R-004",
+   "R-080",
+   "R-081"
+  ],
+  "newly_signed_leases": 0,
+  "corridors": 17,
+  "sources": 50,
+  "benchmarks": 192,
+  "operators": 45,
+  "waverly": {
+   "rows": 6,
+   "asking": 3,
+   "in_place": 3,
+   "mean_of_own_rows": 15.71,
+   "pooled": 16.22,
+   "rent_level_low_mid_high": [
+    9.33,
+    16.22,
+    28.22
+   ]
+  },
+  "held_out": {
+   "rows": 59,
+   "inside_plain_80_range": 41,
+   "inside_widened_range": 48,
+   "widened_by": 1.2597
+  },
+  "held_out_detail": {
+   "sources": 50,
+   "share_plain": 0.6949,
+   "share_widened": 0.8136,
+   "below": 8,
+   "above": 10,
+   "baltimore_rows": 40,
+   "baltimore_plain": 29,
+   "baltimore_widened": 34,
+   "better_than_a_plain_range_of_all_listings": 0.2282,
+   "second_method_waverly_shop": [
+    9.85,
+    31.21
+   ]
+  },
+  "model": {
+   "spread_within_a_corridor": 0.3225,
+   "spread_between_corridors": 0.2286,
+   "waverly_weight_on_its_own_rows": 0.7509,
+   "baltimore_mean": 17.88
+  },
+  "waverly_level_if": {
+   "asking_rents_only": 14.38,
+   "r004_read_with_the_tax_record_floor_area": 15.35,
+   "r004_left_out": 14.78
+  },
+  "sales_check": {
+   "cafe": "too close to call",
+   "counter": "too close to call",
+   "tavern": "too close to call",
+   "shop": "covers",
+   "showroom": "does not cover",
+   "bike": "covers",
+   "services": "covers",
+   "fitness": "covers"
+  },
+  "sales_check_margin": 0.1,
+  "library_rows_checked_by_a_person": 0,
+  "library_rows": 318
+ },
+ "backtest": {
+  "passes_the_agreed_rule": false,
+  "rule": "other blocks, 1960: permutation p < 0.05 and lower held-out log loss with history (transfer test)",
+  "if_it_fails": "the money layer shows rent and revenue ranges from comparable listings only, labelled as planning figures, and nothing that ranks uses or plans by history and money together (PLAN_backtest_v2.md)",
+  "parcels": 52,
+  "pairs": 416,
+  "pairs_true_today": 57,
+  "parcels_with_history": 32,
+  "p_1960": 0.0546,
+  "p_1940": 0.0243,
+  "p_1960_before_leak_fix": 0.0228,
+  "p_1960_without_low_confidence": 0.0838,
+  "p_1960_stated_uses_only": 0.0864,
+  "p_1960_without_multi_tenant": 0.0866,
+  "multi_tenant_parcels": [
+   "2801"
+  ],
+  "p_1960_storefront_trades_only": 0.4554,
+  "p_1960_without_automotive": 0.4843,
+  "p_1960_automotive_only": 0.0044,
+  "automotive": {
+   "parcels_with_it_on_record": 4,
+   "of_which_today": 4,
+   "base_rate": 0.173,
+   "adds_to_statistic": 2.866
+  },
+  "leave_one_parcel_out": {
+   "min": 0.0278,
+   "max": 0.1481,
+   "median": 0.0548,
+   "below_0_05": 12,
+   "runs": 52
+  },
+  "by_kind": {
+   "food & drink": {
+    "parcels_with_it_on_record": 16,
+    "of_which_today": 4,
+    "base_rate": 0.308,
+    "adds_to_statistic": -0.503,
+    "adds_to_statistic_before_leak_fix": 0.524,
+    "of_which_today_before_leak_fix": 6,
+    "parcels_with_it_on_record_before_leak_fix": 19
+   },
+   "retail goods": {
+    "parcels_with_it_on_record": 3,
+    "of_which_today": 0,
+    "base_rate": 0.154,
+    "adds_to_statistic": -0.32,
+    "adds_to_statistic_before_leak_fix": -0.32,
+    "of_which_today_before_leak_fix": 0,
+    "parcels_with_it_on_record_before_leak_fix": 3
+   },
+   "personal services": {
+    "parcels_with_it_on_record": 10,
+    "of_which_today": 1,
+    "base_rate": 0.077,
+    "adds_to_statistic": 0.472,
+    "adds_to_statistic_before_leak_fix": 1.486,
+    "of_which_today_before_leak_fix": 2,
+    "parcels_with_it_on_record_before_leak_fix": 11
+   },
+   "automotive": {
+    "parcels_with_it_on_record": 4,
+    "of_which_today": 4,
+    "base_rate": 0.173,
+    "adds_to_statistic": 2.866,
+    "adds_to_statistic_before_leak_fix": 2.866,
+    "of_which_today_before_leak_fix": 4,
+    "parcels_with_it_on_record_before_leak_fix": 4
+   },
+   "entertainment & assembly": {
+    "parcels_with_it_on_record": 9,
+    "of_which_today": 0,
+    "base_rate": 0.0,
+    "adds_to_statistic": 0.0,
+    "adds_to_statistic_before_leak_fix": 0.0,
+    "of_which_today_before_leak_fix": 0,
+    "parcels_with_it_on_record_before_leak_fix": 9
+   },
+   "institutional & religious": {
+    "parcels_with_it_on_record": 2,
+    "of_which_today": 0,
+    "base_rate": 0.173,
+    "adds_to_statistic": -0.24,
+    "adds_to_statistic_before_leak_fix": -0.36,
+    "of_which_today_before_leak_fix": 0,
+    "parcels_with_it_on_record_before_leak_fix": 3
+   },
+   "office": {
+    "parcels_with_it_on_record": 1,
+    "of_which_today": 0,
+    "base_rate": 0.173,
+    "adds_to_statistic": -0.12,
+    "adds_to_statistic_before_leak_fix": -0.12,
+    "of_which_today_before_leak_fix": 0,
+    "parcels_with_it_on_record_before_leak_fix": 1
+   },
+   "production & light industry": {
+    "parcels_with_it_on_record": 4,
+    "of_which_today": 1,
+    "base_rate": 0.038,
+    "adds_to_statistic": 0.587,
+    "adds_to_statistic_before_leak_fix": 0.587,
+    "of_which_today_before_leak_fix": 1,
+    "parcels_with_it_on_record_before_leak_fix": 4
+   }
+  },
+  "p_1960_with_a_control_for_how_much_is_on_record": 0.1139,
+  "mix_of_uses_on_record_empty_against_in_use": {
+   "distance": 0.438,
+   "p": 0.1766
+  },
+  "decades_on_record_p": 0.9861,
+  "held_out_log_loss": [
+   0.607,
+   0.605
+  ],
+  "held_out_auc": [
+   0.631,
+   0.632
+  ],
+  "held_out_gain_per_row": 0.002,
+  "held_out_gain_ci95": [
+   -0.0043,
+   0.0088
+  ],
+  "gain_distinguishable_from_zero": false,
+  "in_sample_auc": [
+   0.707,
+   0.724
+  ],
+  "frontage_storefronts_tested": 38,
+  "frontage_empty_storefronts_not_tested": 24,
+  "decades_on_record_empty_against_in_use": [
+   6.75,
+   6.79
+  ],
+  "outcome_rows": 52,
+  "outcome_rows_checked_by_a_person": 0,
+  "first_back_test_1960": {
+   "hit": 21,
+   "plain_guess": 22,
+   "of": 35
+  }
+ },
+ "human_checks": {
+  "tenant_rows": 79,
+  "tenant_rows_entered_or_checked_by_a_person": 23,
+  "outcome_rows_checked_by_a_person": 0,
+  "outcome_rows": 52,
+  "comps_library_rows_checked_by_a_person": 0,
+  "comps_library_rows": 318,
+  "blind_timelines_built": 0,
+  "blind_timelines_needed": 4,
+  "checked_by_lines": 8,
+  "checked_by_lines_unsigned": 8,
+  "checked_by_lines_signed": 0,
+  "unsigned_files": [
+   "team/comps/MODEL_CARD.md",
+   "team/comps/README.md",
+   "team/evidence/README.md",
+   "team/explorer/README.md",
+   "team/extractor/README.md",
+   "team/precedent/README.md",
+   "team/prototype_v0/README.md",
+   "team/tenants/README.md"
+  ]
+ },
+ "library": {
+  "reuse_buildings": 32,
+  "corridors": 22,
+  "benchmark_neighbourhoods": 8,
+  "corridor_displacement": {
+   "moderate": 11,
+   "low": 4,
+   "unknown": 1,
+   "high": 6
+  },
+  "neighbourhood_displacement": {
+   "moderate": 6,
+   "high": 2
+  },
+  "neighbourhoods_rated_high": [
+   "U Street",
+   "Bedford-Stuyvesant"
+  ],
+  "customer_groups": 7,
+  "cases_with_a_cafe": 20
+ },
+ "other_documents": [
+  {
+   "document": "team/extractor/README.md",
+   "what": "rows in evidence.csv",
+   "says": "3,156",
+   "now": 3331
+  },
+  {
+   "document": "team/extractor/README.md",
+   "what": "spans in timeline_table.csv",
+   "says": "566",
+   "now": 619
+  },
+  {
+   "document": "team/extractor/README.md",
+   "what": "rows in proven_uses.csv",
+   "says": "283",
+   "now": 303
+  },
+  {
+   "document": "team/extractor/README.md",
+   "what": "uses graded \"proven\"",
+   "says": "186",
+   "now": 208
+  },
+  {
+   "document": "team/extractor/README.md",
+   "what": "sponsor records read",
+   "says": "326",
+   "now": 501
+  },
+  {
+   "document": "team/extractor/README.md",
+   "what": "rows the inferred-address count is out of",
+   "says": "3,156",
+   "now": 3331
+  },
+  {
+   "document": "team/extractor/README.md",
+   "what": "records scored for category agreement, all sources",
+   "says": "117",
+   "now": 135
+  }
+ ]
+}

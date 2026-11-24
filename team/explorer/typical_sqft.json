@@ -1,6 +1,6 @@
 {
   "accessed_on": "2026-10-26",
-  "about": "Typical ground-floor floor area for each use, to turn a rent per sq ft into a total rent. typical is the middle of the urban-storefront range, rounded to the nearest 50 sq ft; low and high bound that range. Every figure comes from a page read on the access date, quoted in under 25 words. The size fit in the score still uses the team's wider ranges (template formats); these sourced sizes give the typical unit for total rent.",
+  "about": "Typical ground-floor floor area for each use. typical is the middle of the urban-storefront range, rounded to the nearest 50 sq ft; low and high bound that range. Every figure comes from a page read on the access date, quoted in under 25 words. Since score v0.4 (2 November 2026) the size fit in the score reads these sourced ranges; the team's earlier ranges are shown beside them for comparison.",
   "brands": "Where a figure comes from a company's own filing, site or tenant-requirements sheet, the public label says what kind of business it is; the names are in the team report, not the public repo (sponsor, 26 Oct 2026).",
   "formats": [
     {

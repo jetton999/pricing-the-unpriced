@@ -70,12 +70,18 @@ def storefront(repo, props):
             elif s['status'] == 'residential':
                 p['availability'] = 'house'
                 houses += 1
+        elif p['status'] == 'vacant' and s['status'] == 'residential':   # a vacant house is not an empty storefront
+            p['availability'] = 'house'
+            houses += 1
+        elif p['status'] == 'occupied' and p['uses_now'] == 'residential' and s['status'] == 'residential':
+            p['availability'] = 'house'                                  # a house someone lives in is not a storefront in use
+            houses += 1
         elif p['status'] == 'occupied' and s['status'] in ('vacant_storefront', 'vacant_lot', 'listed_likely_dead'):
             disagree += 1
-            p['status_note'] = 'our check and the sponsor disagree: check on the walk-by'
+            p['status_note'] = "the sponsor's October assessment said otherwise; the tenant list follows the later audit and walk photos"
         elif p['status'] in ('vacant', 'for lease') and s['status'] == 'open_active':
             disagree += 1
-            p['status_note'] = 'our check and the sponsor disagree: check on the walk-by'
+            p['status_note'] = "the sponsor's October assessment said otherwise; the tenant list follows the later audit and walk photos"
     return dict(filled=filled, houses=houses, disagree=disagree, n=sum(1 for p in props if 'sa' in p))
 
 
@@ -222,7 +228,11 @@ def apply(repo, data, private=None):
     revivals(repo, props)
     data['retail'] = retail(repo, props, private.get('brands'))
     data['sizes'] = sizes(private.get('sizes'))
-    data['nbhd'] = neighbourhoods(repo, {p['id'] for p in props}, data['sizes']['formats']['shop']['typical'])
+    shops = [p for p in props if p['availability'] != 'house']
+    as_of = max((t['accessed_on'] for t in _csv(os.path.join(repo, 'team', 'tenants', 'current_tenants_2026-10.csv')) if t['accessed_on']), default='')
+    data['frontage_now'] = dict(vacant=sum(1 for p in shops if p['availability'] == 'available now'), storefronts=len(shops),
+                                houses=len(props) - len(shops), as_of=as_of)
+    data['nbhd'] = neighbourhoods(repo, {p['id'] for p in props}, data['sizes']['formats']['shop']['typical'], data['frontage_now'])
     photos(repo, props)
     data['legacy_stats'] = legacy(repo, props)
 
@@ -283,8 +293,10 @@ def _first_last(rows):
     return dict(y0=y0, v0=_median(by[y0]), y1=y1, v1=_median(by[y1]), n_areas=max(len(v) for v in by.values()))
 
 
-def storefront_vacancy(repo, frontage_ids):
-    """Vacant storefront parcels / storefront parcels, from the sponsor's storefront assessments."""
+def storefront_vacancy(repo, frontage_ids, frontage_now=None):
+    """Vacant storefront parcels / storefront parcels. For all of Greenmount: the sponsor's October storefront
+    assessments, the only count that covers every block. For this frontage: the tenant list, which follows the
+    sponsor's storefront audit of November 2026 (frontage_now, from the build), so the page gives one number."""
     rows = _csv(os.path.join(repo, 'storefront_assessments.csv'))
     props = {r['id']: r for r in _csv(os.path.join(repo, 'properties.csv'))}
     VAC, OCC = ('vacant_storefront', 'listed_likely_dead'), ('open_active', 'office_industrial', 'institution')
@@ -294,17 +306,23 @@ def storefront_vacancy(repo, frontage_ids):
         o = sum(r['status'] in OCC for r in rs)
         return dict(vacant=v, storefronts=v + o, pct=round(100 * v / (v + o), 1) if v + o else None,
                     assessed_on=max((r['assessed_on'] for r in rs), default=''))
-    return dict(frontage=rate([r for r in rows if r['property_id'] in frontage_ids]),
-                greenmount=rate([r for r in rows if 'greenmount' in props.get(r['property_id'], {}).get('address', '').lower()]))
+    out = dict(frontage=rate([r for r in rows if r['property_id'] in frontage_ids]),
+               greenmount=rate([r for r in rows if 'greenmount' in props.get(r['property_id'], {}).get('address', '').lower()]))
+    out['frontage_october'] = out['frontage']
+    if frontage_now:
+        v, n = frontage_now['vacant'], frontage_now['storefronts']
+        out['frontage'] = dict(vacant=v, storefronts=n, pct=round(100 * v / n, 1) if n else None, assessed_on=frontage_now['as_of'],
+                               source="the tenant list, which follows the sponsor's storefront audit of November 2026")
+    return out
 
 
-def neighbourhoods(repo, frontage_ids, typical_shop_sqft):
+def neighbourhoods(repo, frontage_ids, typical_shop_sqft, frontage_now=None):
     with open(os.path.join(HERE, 'research', 'neighbourhoods_2026-10-26.json'), encoding='utf-8') as fh:
         src = json.load(fh)
     with open(os.path.join(repo, 'team', 'comps', 'engine_inputs.json'), encoding='utf-8') as fh:
         loads = {k: v for k, v in json.load(fh)['lease_basis_loads'].items() if isinstance(v, (int, float))}
     lib = {r['row_id']: r for r in _csv(os.path.join(repo, 'team', 'comps', 'library', 'rents.csv'))}
-    sv = storefront_vacancy(repo, frontage_ids)
+    sv = storefront_vacancy(repo, frontage_ids, frontage_now)
     out = []
     for n in src['neighbourhoods']:
         n = json.loads(json.dumps(n))
@@ -319,10 +337,13 @@ def neighbourhoods(repo, frontage_ids, typical_shop_sqft):
             for i, (key, label) in enumerate((('frontage', 'Greenmount Ave, E 29th to E 33rd St (this frontage)'),
                                               ('greenmount', 'Greenmount Ave, all blocks the sponsor assessed (2300 to 3700)'))):
                 x = sv[key]
+                audit = key == 'frontage' and x.get('source')
                 n['retail_vacancy'].insert(i, dict(
-                    value_pct=x['pct'], definition="storefront parcels counted from the desk (the sponsor's storefront assessment)",
+                    value_pct=x['pct'], definition=("storefront parcels counted from the desk and on two walks (the sponsor's storefront audit, November 2026)" if audit
+                                                    else "storefront parcels counted from the desk (the sponsor's storefront assessment)"),
                     area=label, date=x['assessed_on'][:7], count_note=f"{x['vacant']} of {x['storefronts']} storefront parcels vacant",
-                    source_url='storefront_assessments.csv', source_title="Sponsor's storefront assessments (data package, Oct 2026)",
+                    source_url='team/tenants/current_tenants_2026-10.csv' if audit else 'storefront_assessments.csv',
+                    source_title="Tenant list, following the sponsor's storefront audit (Nov 2026)" if audit else "Sponsor's storefront assessments (data package, Oct 2026)",
                     accessed_on=x['assessed_on']))
         for v in n['retail_vacancy']:
             v['kind'] = _vkind(v['definition'])
@@ -417,8 +438,9 @@ def compare(rows, sv, shop, engine=None):
               for n in others if counted(n)]
     none = [nm(n) for n in others if not n['retail_vacancy']]
     out.append(dict(k='Vacancy', t=(
-        f"{f['vacant']} of {f['storefronts']} storefront parcels on this stretch are empty ({f['pct']:.0f}%, the sponsor's "
-        f"assessment of {_day(f['assessed_on'])}), and {g['pct']:.0f}% along all of Greenmount ({g['vacant']} of {g['storefronts']}). "
+        f"{f['vacant']} of {f['storefronts']} storefront parcels on this stretch are empty ({f['pct']:.0f}%, "
+        + (f"{f['source']}" if f.get('source') else f"the sponsor's assessment of {_day(f['assessed_on'])}")
+        + f"), and {g['pct']:.0f}% along all of Greenmount ({g['vacant']} of {g['storefronts']}, the sponsor's assessment of {_day(g['assessed_on'])}, before the audit). "
         + (f"{_and(counts)}. " if counts else '')
         + "Broker availability rates (DC and Hollywood, 7 to 9%) measure something else and run lower"
         + (f"; {_and(none)} have no published count." if none else '.'))))
@@ -445,6 +467,6 @@ def compare(rows, sv, shop, engine=None):
     out.append(dict(k='What it means', t=(
         "In dollars, Greenmount and Pigtown are the cheapest places in the set to open a shop, well under the other "
         "corridors they are compared with, Hampden and Ohio City included. The discount comes with the highest vacancy and among the lowest incomes nearby, so a plan "
-        "has to bring customers as well as tenants. For a single use, the rent it could support (Money tab) is a better "
-        "guide than asking rents elsewhere.")))
+        "has to bring customers as well as tenants. For a single use, the Money page gives the rent level for the space "
+        "and a check of whether a business of that kind could pay it.")))
     return out

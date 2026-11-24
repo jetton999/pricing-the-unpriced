@@ -1,10 +1,12 @@
-# Comps library and engine (draft for review)
+# Comps library and engine (working draft)
 
-## Comps engine v1
+## Comps engine v2
 
-Gives every ground-floor use a rent range and a revenue range for each Greenmount frontage parcel, and the rent
-the use could support (the lower of the asking rent and what the business could afford). The explorer
-(`team/explorer`) ranks uses and block plans with it. Method, results and limits: `MODEL_CARD.md`.
+Gives the rent level of ground-floor space on the Greenmount frontage from listed rents, low, middle and high, and a
+sales check for each kind of business: at typical sales, could it cover the listed rent for its use (covers, does not
+cover, or too close to call). The explorer (`team/explorer`) turns the rent level into a rent for each empty
+storefront at its estimated ground floor. Nothing is ranked by money. Method, results and limits: `MODEL_CARD.md`.
+v1's "supportable rent" and "chance it can pay" were withdrawn after the sponsor's review of 17 November 2026.
 
 ```bash
 python3 team/comps/comps_engine.py                 # standard library only; writes comps_ranges.json
@@ -16,7 +18,7 @@ python3 team/explorer/build_explorer.py            # rebuild the page with the n
 |---|---|
 | `comps_engine.py` | The engine |
 | `engine_inputs.json` | Every assumption, with its source or "team judgement" |
-| `library/rents.csv`, `benchmarks.csv`, `operators.csv` | 79 asking rents, 192 benchmarks, 45 operators; every row has its URL, access date and a quote |
+| `library/rents.csv`, `benchmarks.csv`, `operators.csv` | <!--=comps.library_rent_rows-->81<!--/--> listed rents, <!--=comps.benchmarks-->192<!--/--> benchmarks, <!--=comps.operators-->45<!--/--> operators; every row has its URL, access date and a quote. `rent_kind` says whether a rent is asking, in place or a reference figure. `verified_by` and `verified_on` are for the person who checks a row against its source: <!--=comps.library_rows_checked_by_a_person-->0<!--/--> of <!--=comps.library_rows-->318<!--/--> rows are filled |
 | `library/*_notes.md`, `library/SCHEMA.md` | How the library was collected and what each column means |
 | `parcel_tax.csv` | City tax and building area per Greenmount parcel, from the city's Real Property layer |
 | `comps_ranges.json` | Output (generated; do not edit by hand) |
@@ -55,6 +57,9 @@ Each use is anchored on what the building has already shown it can carry, with t
   from IRS Form 990 is program-service revenue and can mix sales with service fees.
 
 ## Open checks before these figures are used
+
+- R-004 (3217 Greenmount), R-080 (3226) and R-081 (3010) are rents in place taken from for-sale listings. A person
+  re-reads each listing before the figures are quoted outside the team; `MODEL_CARD.md` shows what rests on R-004.
 
 - SHOW-04, 3700 Falls Rd: the listing says $20.00/SF NNN (re-checked 16 Oct), but the broker flyer's text reads
   "$2 SF/YR". Confirm with the broker.

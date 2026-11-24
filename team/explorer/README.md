@@ -1,98 +1,131 @@
-# Greenmount frontage explorer (release candidate, 26 October 2026)
+# Greenmount frontage explorer (working draft, 21 November 2026)
 
-For each of the 69 frontage parcels on Greenmount Ave, E 29th to E 33rd St, one page shows:
+For each of the <!--=frontage.parcels-->69<!--/--> frontage parcels on Greenmount Ave, E 29th to E 33rd St, one page shows:
 
-- what the building was used for;
-- what it could become, and why;
-- what that use could pay;
-- whether the mix works as a block.
+- what the building has been used for, with the source of every record;
+- for each empty storefront, candidate uses and the evidence for each at that address;
+- what ground-floor space on the corridor rents for;
+- whether a set of candidates works as a block.
 
-Every answer links to its source. To view it, download `index.html` and open it in a browser. GitHub shows the
-source, not the page.
+It makes no recommendation and shows no rent for a building in use or for a house. **Nothing on it has been
+checked by a second person yet**: see "What a person has checked" in `team/NUMBERS.md`.
+
+To view it, download `index.html` and open it in a browser. GitHub shows the source, not the page.
+
+Every headline number in this file is filled in from `team/NUMBERS.md` by `team/numbers_of_record.py`. The page was
+reworked on 21 November 2026 after the sponsor's review of 17 November; `team/REVIEW_RESPONSE.md` lists each finding
+and what was done about it.
+
+## The frontage today
+
+<!--=frontage.parcels-->69<!--/--> parcels: <!--=frontage.storefronts-->62<!--/--> storefronts and <!--=frontage.houses-->7<!--/--> houses with no shop front.
+<!--=frontage.empty-->24<!--/--> storefronts are empty and <!--=frontage.in_use-->38<!--/--> are in use, on the tenant list
+(`team/tenants/current_tenants_2026-10.csv`), which follows the sponsor's storefront audit of November 2026. A reader
+can switch any storefront between empty and in use; the page then says so on every sheet, in the print view and in
+the CSV.
 
 ## What is on the page
 
 | Tab | What it does |
 |---|---|
-| Buildings | **Map and ledger:** the map of the frontage, and the use ledger (the main use in each decade, 1880s to today).<br>**Building panel:**<br>- the best fit, why, and the rent that use could support;<br>- a label for how firm the verdict is (holds up, close call, or depends on priorities), from 1,000 mixes of priorities;<br>- the rules that apply;<br>- a heritage-revival name where one is documented;<br>- for retail, the trade and its modern version;<br>- long-standing businesses, marked with the years they have traded there.<br>For a building with a business in it, the verdict reads as planning for if the space comes free, never as a suggestion to replace the tenant.<br>**Also:** compare up to three uses; three concepts drafted with AI assistance. |
-| Block plan | **The plan:** one recommended use for each empty storefront, placed one at a time under a cap of three of a kind per block side, shown on a map.<br>**Which storefronts are empty:** the team's tenant check by default (October, with the November Street View check folded in). The sponsor's own check can be added, any storefront can be switched between empty and in use (on this page or in the building panel), and several can be marked at once by street number. The list is kept in the reader's browser and stated on every sheet, in the print view and in the CSV.<br>**A sheet per storefront:** the use, its score, the reasons, the rent it could support (with the effect of its neighbours stated), who the use is for and their first obstacle, a first range for the conversion cost, what to watch, the next-best use and how firm the choice is. Any use can be changed.<br>**Block by block:** businesses today and after the plan, saturation, long-standing businesses, and a rent-pressure flag for businesses already trading whose kind of business typically supports at least 20% less rent than the plan's new uses.<br>**Plans compared:** best fit, highest rent and (when no other plan beats it on both) balanced, on fit, rent and rent pressure. A plan's total is its sheets added up.<br>**Output:** print view and CSV. |
-| Money | **Use by use:** where each use's rent usually falls, what such a business could afford, a typical unit's rent a year (`typical_sqft.json`, 20 uses, sourced) and the chance it can pay.<br>**One building:** the same figures for any building's six best-fitting uses, at its own floor area and taxes.<br>**Comps engine (`team/comps`), folded:** the full table, the trail from each figure to its source rows, other cities' corridors, held-out checks.<br>**Why dollar figures are shown:** the sponsor's rule, the test result (p-value and held-out log loss) and the date the sponsor agreed the rule. |
-| Who it is for | Seven customer groups (first-time tenants, owner-occupant buyers, co-ops, nonprofits and arts groups, investors, tax-credit developers, incubator tenants): who they are, what they need from a building, what stops them, the programmes that help, and the empty buildings that fit each group. Plan sheets and the building panel link here. |
-| Comps | **Three levels, from the building out:**<br>- **Buildings like this one:** the selected building side by side with its three closest reuse cases (size, uses, operator, cost, money sources, time to open, 2025-26 status, lesson); what projects like it spent per sq ft in 2025 dollars; filters.<br>- **Streets like Greenmount:** 22 corridors with a Waverly-today row, the comps engine's corridor rent beside each street, the displacement rubric, milestones and evidence per street; filters.<br>- **Neighbourhoods like Waverly:** the sponsor's benchmark set (Waverly, Pigtown, Hampden, Ohio City, Fishtown, U Street, Melrose Hill, Bed-Stuy) on public asking rents (made triple-net equivalent), a typical shop's rent a year, vacancy with how it was measured, residents and displacement; a chart, cards with every row and source, and "how Greenmount compares", written from the rows at build time. |
-| Evidence and method | **Weights:** one pie that always adds to 100%. Move one slider and the others give way in proportion; four presets (team default, history first, neighbourhood first, proven elsewhere) set all six at once. Feedback (votes) exists only on the shared claude.ai page, where it changes scores only when switched on; a plain copy of the page hides it.<br>**Back-test v2:** the results from `team/validation`.<br>**Also:** the rules, community and neighbour layers, retail broken into seven trades, customer groups, the screening table. |
-| Roadmap | The road to the final deliverable, with what is done |
+| Buildings | **Map and ledger.** The map can be coloured by use today, by the use with the longest record, or by top candidate (empty storefronts only). The ledger shows the main use in each decade, 1880s to today.<br>**Panel of an empty storefront.** Up to three candidate uses. Each shows its fit score, how far the score is above the same use at a building with no record, the evidence at this address (two kinds of source, one kind, placed by inference only, or no record), a sales check, who the use is for and how firm the choice is under other weights. Below: what the space rents for at its estimated ground floor, low case first.<br>**Panel of a building in use.** Today's business and how the tenant list knows it, today's use against the record, and the uses on record. No recommendation and no rent. What the record would support if the storefront ever stood empty is in a fold that is closed until the reader opens it.<br>**Panel of a house.** The record only.<br>**Also:** compare uses factor by factor; three concepts drafted with AI assistance. |
+| Block plan | **The plan.** One candidate for each empty storefront, placed one at a time under a cap of three of a kind per block side. Businesses already there count toward the cap, and a business that occupies two street numbers counts once.<br>**A sheet per storefront.** The candidate, its fit and its lift over a building with no record, the evidence grade, the ground-floor estimate (flagged "measure first" where the outline is partial or missing), the rent for the space, the sales check, who the use is for, what to watch, the next candidate and how firm the choice is. Any candidate can be changed.<br>**Block by block.** Businesses today and after the plan, and long-standing businesses.<br>**Rent-pressure watch.** Block sides where the plan fills three or more storefronts at once, with the businesses trading there, long-standing ones first.<br>**Output.** Print view and CSV. |
+| Money | **What a space rents for.** The rent level on Waverly's corridor from listed rents, and each empty storefront's rent at its estimated ground floor. The figure is for the space and is the same whatever the use.<br>**Use by use.** The listed rent for each use and a sales check: at typical sales, does a business of this kind cover that rent (covers, does not cover, or too close to call). The check is a flag. It never changes a rent figure and nothing is ranked by it.<br>**Folded.** The full table, the trail from each figure to its source rows, other corridors, the held-out check and what moves the numbers.<br>**Why no dollar figure rests on history.** The rule agreed with the sponsor and the test result. |
+| Who it is for | Seven customer groups: who they are, what they need from a building, what stops them, the programmes that help, and the empty storefronts that fit each group. |
+| Comps | **Three levels.** Buildings like this one (<!--=library.reuse_buildings-->32<!--/--> reuse cases), streets like Greenmount (<!--=library.corridors-->22<!--/--> corridors) and neighbourhoods like Waverly (<!--=library.benchmark_neighbourhoods-->8<!--/--> benchmark neighbourhoods), each with sources. |
+| Evidence and method | **Weights.** One pie that always adds to 100%, and five presets. **How much of each score is the building.** A table of the ranking with the heritage weight at zero, without the two inputs that are the same for every building, with only the firmest records, and with today's tenant counted as history.<br>**Back-test.** The corrected result, kind of use by kind of use, with one parcel left out at a time, and on blocks the model had not seen.<br>**Also:** the extractor check, the rules with their citation, the community and neighbour layers, retail in seven trades, and the known limits. |
+| Roadmap | The road to the final deliverable, with what is done and what is not. |
 
-"Today" shows the team's tenant check next to the sponsor's October 2026 storefront assessments
-(`storefront_assessments.csv`). Where the team's check found no listing at an address but the sponsor found a
-business, a church or a house, the page says so. Houses with no shop front are left out of the block plan.
+## The score in one paragraph
+
+Six inputs with the weights agreed with the sponsor on 9 November 2026: heritage <!--=score.weights_agreed_9_nov_2026.h-->35<!--/-->,
+room on the block <!--=score.weights_agreed_9_nov_2026.s-->20<!--/-->, size <!--=score.weights_agreed_9_nov_2026.f-->15<!--/-->, community
+<!--=score.weights_agreed_9_nov_2026.c-->10<!--/-->, neighbours <!--=score.weights_agreed_9_nov_2026.a-->10<!--/-->, precedents
+<!--=score.weights_agreed_9_nov_2026.k-->10<!--/-->. Community is the same for every building, and precedents come from a hand-picked library of reuse cases in which
+<!--=library.cases_with_a_cafe-->20<!--/--> of <!--=library.reuse_buildings-->32<!--/--> include a cafe or restaurant, so a building with no record at all still scores <!--=score.a_building_with_no_record_scores.cafe-->63<!--/--> of 100 for a cafe or restaurant. That is why
+a cafe is the top candidate on <!--=score.top_candidate_is_a_cafe.of_storefronts-->46<!--/--> of the <!--=frontage.storefronts-->62<!--/-->
+storefronts (<!--=score.top_candidate_is_a_cafe.of_empty-->12<!--/--> of the <!--=frontage.empty-->24<!--/--> empty ones), and on
+<!--=score.if_heritage_weight_is_zero.cafe_top-->54<!--/--> with the heritage weight at zero. Without those two inputs it is the top
+candidate on <!--=score.without_community_and_precedents.cafe_top-->32<!--/-->. The page therefore shows every score next to its
+lift over a building with no record, and offers the ranking without the two inputs as the preset "Building evidence
+only". Whether that preset becomes the default is a decision for the team and the sponsor; `MODEL_CARD.md` has the
+table.
 
 ## Rebuild
 
 ```bash
-python3 team/comps/comps_engine.py           # rent and revenue ranges (optional; the page uses the last comps_ranges.json)
-python3 team/validation/backtest.py          # back-test v2 (optional; the page uses the last out/backtest_v2.json)
-python3 team/explorer/build_explorer.py       # standard library only; writes index.html
-python3 -m unittest team/explorer/test_explorer_data.py team/validation/test_backtest.py team/comps/test_comps_engine.py
+python3 team/extractor/extract.py            # only if the tenant list or a source changed
+python3 team/comps/comps_engine.py           # rents; writes team/comps/comps_ranges.json
+python3 team/validation/backtest.py          # about a minute; writes team/validation/out/
+python3 team/explorer/build_explorer.py      # standard library only; writes index.html
+python3 team/explorer/page_numbers.py        # needs Playwright for Python; reads the numbers off the built page
+python3 team/numbers_of_record.py            # writes team/NUMBERS.md and fills the figures quoted in the documents
+python3 -m unittest team/explorer/test_explorer_data.py team/explorer/test_page_rules.py team/explorer/test_page_browser.py
 ```
 
 | File | What |
 |---|---|
-| `build_explorer.py` | Reads the extractor outputs, the evidence and tenant files, `properties.csv`, `storefront_assessments.csv`, `team/comps/comps_ranges.json` and `team/validation/out/backtest_v2.json`, and writes `index.html`. The `PTU_*` variables let the team build a private copy from files kept outside the repo; unset, it reads repo files only |
-| `template.html` | The page: layout, score engine and views |
-| `concepts.json` | The three drafted concepts (written with AI assistance), every fact with its source |
-| `library.json` | The case library (32 reuse buildings, 22 corridors) and the evidence behind the community, neighbour and customer layers. Every entry has its sources; `meta.displacement_rubric` holds the rating rule |
-| `research/` | The 26 Oct 2026 desk research merged into `library.json` (costs, floor areas, timelines, financing, 2025-26 statuses, displacement evidence, milestones, three added corridors), and the script that merged it |
-| `extras.py` | The sponsor's storefront check, heritage-revival names, retail trades, survey-photo counts, long-standing businesses, typical sizes, and the neighbourhood benchmarks (rents made triple-net equivalent, Waverly's own rents and vacancy, and the comparison sentences) |
-| `retail_types.json` | Seven retail trades: the modern version, usual size and cautions, every claim with its source. No reference brands (see Rules kept) |
-| `typical_sqft.json` | The typical floor area of 20 uses (low, typical, high), 96 sources read on 26 Oct 2026; chains' filings and sites are labelled by kind |
-| `research/neighbourhoods_2026-10-26.json` | The eight benchmark neighbourhoods as researched: asking rents with the lease type as stated, vacancy with its definition, residents, displacement evidence and sources |
-| `DISPLACEMENT.md` | What the displacement rating measures and how it could be used in planning (note for the sponsor, 26 Oct 2026) |
+| `build_explorer.py` | Reads the extractor outputs, the evidence and tenant files, `properties.csv`, `storefront_assessments.csv`, `team/comps/comps_ranges.json` and `team/validation/out/backtest_v2.json`, and writes `index.html` |
+| `template.html` | The page: layout, score and views |
+| `extras.py` | The tenant list against the sponsor's assessments, houses, heritage-revival names, retail trades, long-standing businesses, typical sizes and the neighbourhood benchmarks |
+| `page_numbers.py`, `out/page_numbers.json` | The numbers the built page computes in the browser (the ranking, the plan, the totals), saved so that documents and tests can read them |
+| `concepts.json` | Three drafted concepts (written with AI assistance), every fact with its source |
+| `library.json` | The case library (<!--=library.reuse_buildings-->32<!--/--> reuse buildings, <!--=library.corridors-->22<!--/--> corridors) and the evidence behind the community, neighbour and customer layers |
+| `retail_types.json`, `typical_sqft.json` | Seven retail trades and the typical floor area of 20 uses, every claim with its source |
+| `research/` | The desk research of 26 October 2026 merged into `library.json`, and the script that merged it |
+| `test_explorer_data.py` | Sources, the neighbourhood arithmetic and the no-brand-names rule |
+| `test_page_rules.py` | The empty list, houses, history without today's tenant, the evidence grades, one business counted once, ground floors, no stored rent on a building in use, nothing ranked by money, and the statements removed after the sponsor's review |
+| `test_page_browser.py` | What a reader sees: no dollar figure and no recommendation on a building in use or a house, candidates with evidence and the low case first on every empty storefront, one sheet per empty storefront, the cap |
+| `DISPLACEMENT.md` | What the displacement rating measures and how it could be used in planning |
 | `MODEL_CARD.md` | What the page is for, what it must not be used for, how it was checked and where it fails |
 | `index.html` | The built page (generated; do not edit by hand) |
 
-## Data vintage
-
-- Built from the extractor's October 2026 rerun (PR #12), on the sponsor's 69-parcel frontage.
-- Parcel facts (owner type, vacant-building notices, permits) come from the October `properties.csv`.
-- The case library was last checked on 26 October 2026. Statuses say "operating" only where a 2025 or 2026 source
-  says so.
-
 ## Rules kept
 
-- **Uses, not buildings.** The page ranks uses for a building and compares plans for the same parcels. It never
-  ranks buildings or blocks by money. There is no valuation, appraisal language or acquisition targeting.
-- **Ownership.** The owner of record comes from the state
-  assessment snapshot.
+- **Uses, not buildings.** The page lists candidate uses for a building. It never ranks buildings or blocks by money,
+  and nothing is ranked by money at all. There is no valuation, appraisal language or acquisition targeting.
+- **Buildings in use.** No recommendation and no rent. The plan fills empty storefronts only.
+- **Rent is for the space.** It comes from listed rents on the corridor and the estimated ground floor, with the low
+  case first. It is not what a building is worth.
+- **Ownership.** The page shows the kind of owner (company, individual, public body), from the state assessment
+  snapshot in the export. It names no private individual.
+- **Rules of the street.** The limits on taverns, liquor stores and pawnshops are cited to the Waverly Business Area
+  Urban Renewal Plan (Ordinance 1029 of 24 May 1979, Amendment No. 2 of 4 December 1995). Every panel that states a
+  rule says it is the team's reading as students, not legal advice. A team member still has to open the plan once and
+  confirm the page numbers.
 - **Feedback.** Team and sponsor votes are shown beside each score. They change scores only when switched on,
   because the sponsor's rules say the sponsor cannot override model results.
-- **Displacement.** Buildings with a business in them are never planned. The block plan flags rent pressure on
-  businesses already trading, and long-standing businesses are named. `DISPLACEMENT.md` explains the rating.
-- **Named businesses.** This public version names no business as a possible tenant. Brand names go in reports
-  only, not the public repo (the sponsor's rule, 26 Oct 2026): the reference brands are kept in the team report, and
-  a test checks the public files and the built page for them by hash. National chains whose filings, sites or
-  listings back a size or a benchmark are cited by link and labelled by kind ("a drive-thru coffee chain's 10-K").
-  The page still names businesses already trading on or next to the frontage (as the sponsor's storefront data
-  does), the reuse projects and corridors in the case library, and the local operators whose own figures are
-  checked against the ranges.
-- **Sources.** Every outside fact links to its source. The pipeline never drops the export's 126
-  sensitivity-flagged records, as the repo requires. None of them is among the frontage records, and none is quoted
-  on the page.
+- **Named businesses.** This public version names no business as a possible tenant. Brand names go in reports only
+  (the sponsor's rule, 26 October 2026), and a test checks the public files and the built page for them by hash. The
+  page names businesses already trading on the frontage, the reuse projects and corridors in the case library, and
+  the local operators whose own figures are checked against the sales scenarios.
+- **Photos.** The sponsor's storefront photos are for the team only and are not in the repo or on the page.
+- **Sources.** Every outside fact links to its source. The pipeline never drops the export's sensitivity-flagged
+  records, as the repo requires; none is among the frontage records and none is quoted on the page.
 
 ## Known limits
 
-See `MODEL_CARD.md`. In short:
+The page lists them under "Evidence and method", and `MODEL_CARD.md` explains them. The main ones:
 
-- **The weights are team judgement,** agreed with the sponsor as the default on 9 November 2026.
-- **Back-test v2 passes on blocks the model had not seen** (p = 0.023), but the gain over "how common is this use"
-  is modest, and history does not show cause.
-- **Project costs are adjusted for inflation only.** Scope differs between projects.
-- **The displacement rubric is applied by the team** from published sources. "Unknown" does not mean none.
-- **Long-standing businesses are found only where a record or a check documents them.** Others may exist.
+- **No human check yet.** A person has entered or checked <!--=human_checks.tenant_rows_entered_or_checked_by_a_person-->23<!--/-->
+  of the <!--=human_checks.tenant_rows-->79<!--/--> tenant rows, <!--=human_checks.outcome_rows_checked_by_a_person-->0<!--/--> of the
+  <!--=human_checks.outcome_rows-->52<!--/--> "use today" rows on the other blocks and
+  <!--=human_checks.comps_library_rows_checked_by_a_person-->0<!--/--> of the <!--=human_checks.comps_library_rows-->318<!--/--> rows of the comps
+  library.
+- **The back-test does not pass the agreed rule** (p = <!--=backtest.p_1960|p-->0.055<!--/--> after a leak was fixed;
+  <!--=backtest.p_1960_before_leak_fix|p-->0.023<!--/--> before). No dollar figure on the page rests on history.
+- **History records can sit on the wrong building.** <!--=evidence.placed_by_the_next_parcel-->691<!--/--> history rows
+  (<!--=evidence.share_placed_by_the_next_parcel|pct-->21%<!--/-->) were placed by the next street number, and the extractor has
+  found <!--=evidence.extractor_against_hand_timelines.independent.recall-->28<!--/-->% of the reference uses from sources that
+  were not used to build the references.
+- **The score has not been tested as a whole.** The back-test asks whether history predicts use. It does not test
+  the candidates the score puts first.
+- **Ground floors are estimates** from building outlines, because the export records whole buildings only.
 
 ## AI use
 
-Built with Claude (October 2026) from the team's notes and the sources linked in the data. Before merge, a team
-member reviews the code, checks a sample of the case library and the concept facts against their sources, and
-signs below.
+Built with Claude (October and November 2026) from the team's notes and the sources linked in the data. Before
+merge, a team member reviews the code, checks a sample of the case library and the concept facts against their
+sources, and signs below.
 
 Checked by: ____________________ Date: __________

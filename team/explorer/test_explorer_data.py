@@ -83,7 +83,8 @@ class TestPage(unittest.TestCase):
         with open(os.path.join(HERE, 'index.html'), encoding='utf-8') as fh:
             s = fh.read()
         self.assertNotIn('__DATA__', s)
-        for key in ('"backtest2"', '"displacement_rubric"', '"since"', 'Holds up', 'Rent pressure'):
+        for key in ('"backtest2"', '"displacement_rubric"', '"since"', 'Holds up', 'Rent-pressure watch', 'over a building with no record',
+                    'If this storefront ever stood empty', 'The page makes no recommendation for a building in use'):
             self.assertTrue(key in s, key)
         self.assertFalse('[sensitivity' in s)
         self.assertFalse('Made in Baltimore' in s, 'named prospects stay out of the public build')
@@ -212,17 +213,28 @@ class TestNeighbourhoods(unittest.TestCase):
                 self.assertAlmostEqual(r['nnn_equiv'], v - loads[r['lease_type']], places=2, msg=n['id'])
                 self.assertIn(r['kind'], ('listing', 'rent being paid'), n['id'])
 
-    def test_waverly_vacancy_is_the_sponsors_count(self):
+    def test_waverly_vacancy_is_one_number_everywhere(self):
+        """This frontage: the tenant list, which follows the sponsor's November audit, and the same count the plan uses.
+        All of Greenmount: the sponsor's October assessments, the only count of every block."""
         import csv
+        page = _page_data()
+        shops = [p for p in page['props'] if p['availability'] != 'house']
+        vac = sum(p['availability'] == 'available now' for p in shops)
+        v = self.d['rows'][0]['retail_vacancy'][0]
+        self.assertEqual(v['count_note'], f"{vac} of {len(shops)} storefront parcels vacant")
+        self.assertAlmostEqual(v['value_pct'], round(100 * vac / len(shops), 1))
+        self.assertEqual(page['frontage_now']['vacant'], vac)
+        self.assertEqual(page['frontage_now']['storefronts'], len(shops))
+        self.assertIn(f"{vac} of {len(shops)} storefronts are empty", page['lib']['waverly']['vacancy_note'])
+        self.assertIn(f"{vac} of {len(shops)} storefront parcels on this stretch are empty", {x['k']: x['t'] for x in self.d['compare']}['Vacancy'])
         with open(os.path.join(REPO, 'storefront_assessments.csv'), encoding='utf-8-sig') as fh:
             rows = list(csv.DictReader(fh))
-        ids = {p['id'] for p in _page_data()['props']}
-        fr = [r for r in rows if r['property_id'] in ids]
-        vac = sum(r['status'] in ('vacant_storefront', 'listed_likely_dead') for r in fr)
-        occ = sum(r['status'] in ('open_active', 'office_industrial', 'institution') for r in fr)
-        v = self.d['rows'][0]['retail_vacancy'][0]
-        self.assertEqual(v['count_note'], f"{vac} of {vac + occ} storefront parcels vacant")
-        self.assertAlmostEqual(v['value_pct'], round(100 * vac / (vac + occ), 1))
+        with open(os.path.join(REPO, 'properties.csv'), encoding='utf-8-sig') as fh:
+            green = {r['id'] for r in csv.DictReader(fh) if 'greenmount' in r['address'].lower()}
+        gr = [r for r in rows if r['property_id'] in green]
+        gv = sum(r['status'] in ('vacant_storefront', 'listed_likely_dead') for r in gr)
+        go = sum(r['status'] in ('open_active', 'office_industrial', 'institution') for r in gr)
+        self.assertEqual(self.d['rows'][0]['retail_vacancy'][1]['count_note'], f"{gv} of {gv + go} storefront parcels vacant")
 
     def test_comparison_quotes_the_rows(self):
         c = {x['k']: x['t'] for x in self.d['compare']}

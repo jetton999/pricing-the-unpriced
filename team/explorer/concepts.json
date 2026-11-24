@@ -1,5 +1,5 @@
 {
- "_note": "Draft concepts for three empty buildings with a 3D tour, 19 Oct 2026. This public version names no businesses as possible tenants. Facts about precedents come from the public sources linked, as of the dates shown.",
+ "_note": "Draft concepts for three empty buildings, written on 19 October 2026. Counts of businesses on a block are computed from today's tenant list; the rest of each text is as written that day. This public version names no businesses as possible tenants. Facts about precedents come from the public sources linked, as of the dates shown.",
  "order": [
   "742",
   "737",
@@ -55,11 +55,14 @@
   "fit": [
    {
     "ok": "yes",
-    "t": "Retail goods are proven here over 7 decades: furniture 1928-36 and 1989, toys 1957-76, clothing 1990."
+    "t": "Retail goods are on record here over 7 decades: furniture 1928-36 and 1989, toys 1957-76, clothing 1990."
    },
    {
     "ok": "yes",
-    "t": "Room on the block: the east side of the 3100 block has 1 retail business today."
+    "auto": "room",
+    "cats": [
+     "retail goods"
+    ]
    },
    {
     "ok": "yes",
@@ -67,7 +70,7 @@
    },
    {
     "ok": "partly",
-    "t": "The other proven use, automotive (1886-1955), cannot come back as a garage: vehicle service and repair is not permitted in C-1. A bike shop counts as retail, which is permitted."
+    "t": "The other use on record, automotive (1886-1955), cannot come back as a garage: vehicle service and repair is not permitted in C-1. A bike shop counts as retail, which is permitted."
    }
   ],
   "concepts": [
@@ -191,7 +194,7 @@
   "fit": [
    {
     "ok": "yes",
-    "t": "Personal services are proven here: a hairdresser in 1928, a barber pole in 1930, beauty supplies in 2011."
+    "t": "Personal services are on record here: a hairdresser in 1928, a barber pole in 1930, beauty supplies in 2011."
    },
    {
     "ok": "partly",
@@ -199,7 +202,11 @@
    },
    {
     "ok": "yes",
-    "t": "Room on the block: the east side of the 3100 block has no personal services and 1 food business today."
+    "auto": "room",
+    "cats": [
+     "personal services",
+     "food & drink"
+    ]
    },
    {
     "ok": "partly",
@@ -315,15 +322,20 @@
   "fit": [
    {
     "ok": "yes",
-    "t": "A trade workshop is proven here: a cabinetmaker, then a plumber, from 1915 to 1937."
+    "t": "A trade workshop is on record here: a cabinetmaker, then a plumber, from 1915 to 1937."
    },
    {
     "ok": "partly",
-    "t": "No food business is on record at this house. Food and drink is the frontage's most-proven trade, though, at 34 parcels."
+    "auto": "street",
+    "cat": "food & drink",
+    "pre": "No food business is on record at this house."
    },
    {
     "ok": "yes",
-    "t": "Room on the block: the west side of the 3000 block has no food business today (parcels with retail 5, personal services 2, office 1, institutional 1)."
+    "auto": "room",
+    "cats": [
+     "food & drink"
+    ]
    },
    {
     "ok": "partly",
@@ -386,7 +398,7 @@
     "name": "Red Emma's, 3128 Greenmount",
     "year": "this frontage",
     "t": "A worker-owned cafe and bookstore. Its worker-owners paid $1.6 million for its two buildings.",
-    "lesson": "Cafe demand on this street is already proven, and a tenant can end up as the owner (Idea 2).",
+    "lesson": "A cafe already trades on this street, and its worker-owners own the buildings it is in.",
     "src": [
      {
       "l": "The Banner, 5 Oct 2026",
