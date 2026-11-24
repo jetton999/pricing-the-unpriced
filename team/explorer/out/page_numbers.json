@@ -3,6 +3,7 @@
   "compared": 108,
   "within_half_a_percent_of_the_engine": true
  },
+ "default_since": "24 November 2026",
  "empty": 24,
  "empty_addresses": [
   "2920",
@@ -63,14 +64,14 @@
     100
    ],
    "size": [
-    41,
+    5,
     100
    ]
   },
   "services": {
    "at_a_building_with_no_record": {
     "community": 50,
-    "heritage": 19,
+    "heritage": 18,
     "neighbours": 50,
     "precedents": 27,
     "room": 100,
@@ -81,7 +82,7 @@
     50
    ],
    "heritage": [
-    19,
+    18,
     100
    ],
    "neighbours": [
@@ -131,7 +132,7 @@
     87
    ],
    "size": [
-    16,
+    27,
     100
    ]
   },
@@ -165,38 +166,38 @@
     87
    ],
    "size": [
-    21,
+    0,
     100
    ]
   }
  },
  "no_record_baseline": {
-  "bike": 38,
-  "cafe": 63,
-  "community": 30,
-  "counter": 44,
-  "fitness": 44,
+  "bike": 42,
+  "cafe": 54,
+  "community": 26,
+  "counter": 40,
+  "fitness": 45,
   "foodmaker": 51,
-  "office": 46,
-  "services": 47,
+  "office": 45,
+  "services": 48,
   "shop": 48,
   "showroom": 48,
-  "studio": 45,
-  "venue": 41,
-  "workshop": 43
+  "studio": 44,
+  "venue": 33,
+  "workshop": 44
  },
  "parcels": 69,
  "plan": {
   "cap_broken": [],
   "evidence": {
-   "none": 8,
-   "one": 2,
-   "two": 14
+   "none": 5,
+   "one": 4,
+   "two": 15
   },
-  "fit_mean": 72,
+  "fit_mean": 74,
   "ground_floor_sq_ft": 57133,
   "ground_floor_sq_ft_at_most": 70926,
-  "lift_mean": 19,
+  "lift_mean": 25,
   "no_area": 0,
   "pressure": {
    "block_sides": 4,
@@ -209,54 +210,122 @@
   "space_rent_mid": 937600,
   "to_measure": 3,
   "uses": {
-   "cafe": 10,
-   "office": 2,
-   "services": 6,
-   "shop": 3,
+   "cafe": 8,
+   "office": 5,
+   "services": 4,
+   "shop": 2,
    "showroom": 1,
-   "studio": 1,
+   "studio": 3,
    "workshop": 1
   },
   "whole_building_sq_ft": 82606
  },
  "ranking": [
   {
-   "cafe_top": 46,
-   "cafe_top_empty": 12,
+   "cafe_top": 29,
+   "cafe_top_empty": 7,
    "differs": 0,
    "differs_empty": 0,
    "evidence": {
-    "none": 17,
-    "one": 5,
-    "placed": 1,
-    "two": 39
+    "none": 9,
+    "one": 8,
+    "placed": 2,
+    "two": 43
    },
-   "food_top": 47,
-   "id": "agreed",
-   "name": "As agreed on 9 November 2026",
-   "no_lift": 6
+   "food_top": 29,
+   "id": "default",
+   "name": "Default: building evidence",
+   "no_lift": 0,
+   "no_record": {
+    "cafe": 54,
+    "shop": 48
+   }
   },
   {
-   "cafe_top": 54,
-   "cafe_top_empty": 17,
-   "differs": 14,
-   "differs_empty": 9,
+   "cafe_top": 42,
+   "cafe_top_empty": 11,
+   "differs": 19,
+   "differs_empty": 10,
    "evidence": {
-    "none": 27,
-    "one": 6,
+    "none": 14,
+    "one": 5,
     "placed": 1,
-    "two": 28
+    "two": 42
    },
-   "food_top": 54,
+   "food_top": 43,
+   "id": "nov9",
+   "name": "With the weights agreed on 9 November",
+   "no_lift": 5,
+   "no_record": {
+    "cafe": 63,
+    "shop": 48
+   }
+  },
+  {
+   "cafe_top": 13,
+   "cafe_top_empty": 6,
+   "differs": 46,
+   "differs_empty": 15,
+   "evidence": {
+    "none": 32,
+    "one": 14,
+    "placed": 1,
+    "two": 15
+   },
+   "food_top": 17,
    "id": "noher",
    "name": "Heritage weight at zero",
-   "no_lift": 16
+   "no_lift": 0,
+   "no_record": {
+    "cafe": 72,
+    "shop": 67
+   }
+  },
+  {
+   "cafe_top": 35,
+   "cafe_top_empty": 7,
+   "differs": 13,
+   "differs_empty": 7,
+   "evidence": {
+    "none": 18,
+    "one": 0,
+    "placed": 0,
+    "two": 44
+   },
+   "food_top": 36,
+   "id": "strict",
+   "name": "History from the firmest records only",
+   "no_lift": 3,
+   "no_record": {
+    "cafe": 54,
+    "shop": 46
+   }
+  },
+  {
+   "cafe_top": 28,
+   "cafe_top_empty": 7,
+   "differs": 4,
+   "differs_empty": 0,
+   "evidence": {
+    "none": 8,
+    "one": 9,
+    "placed": 2,
+    "two": 43
+   },
+   "food_top": 28,
+   "id": "today",
+   "name": "With today's tenant counted as history",
+   "no_lift": 0,
+   "no_record": {
+    "cafe": 54,
+    "shop": 49
+   }
   },
   {
    "cafe_top": 32,
    "cafe_top_empty": 9,
-   "differs": 19,
-   "differs_empty": 8,
+   "differs": 7,
+   "differs_empty": 4,
    "evidence": {
     "none": 8,
     "one": 8,
@@ -264,41 +333,13 @@
     "two": 44
    },
    "food_top": 32,
-   "id": "nock",
-   "name": "Without community and precedents",
-   "no_lift": 1
-  },
-  {
-   "cafe_top": 46,
-   "cafe_top_empty": 13,
-   "differs": 2,
-   "differs_empty": 1,
-   "evidence": {
-    "none": 22,
-    "one": 0,
-    "placed": 0,
-    "two": 40
-   },
-   "food_top": 46,
-   "id": "strict",
-   "name": "History from the firmest records only",
-   "no_lift": 11
-  },
-  {
-   "cafe_top": 44,
-   "cafe_top_empty": 12,
-   "differs": 4,
-   "differs_empty": 0,
-   "evidence": {
-    "none": 14,
-    "one": 5,
-    "placed": 2,
-    "two": 41
-   },
-   "food_top": 45,
-   "id": "today",
-   "name": "With today's tenant counted as history",
-   "no_lift": 5
+   "id": "whole",
+   "name": "With the whole building's floor area as the size",
+   "no_lift": 1,
+   "no_record": {
+    "cafe": 54,
+    "shop": 48
+   }
   }
  ],
  "storefronts": 62,
@@ -306,439 +347,509 @@
   "2900": {
    "counted_as": "in use",
    "evidence": "two",
-   "lift": 30,
-   "score": 74,
+   "lift": 36,
+   "score": 80,
+   "size": 80,
    "use": "studio"
   },
   "2920": {
    "counted_as": "empty",
    "evidence": "none",
-   "lift": -0.0,
-   "score": 63,
-   "use": "cafe"
+   "lift": 8,
+   "score": 56,
+   "size": 92,
+   "use": "showroom"
   },
   "2930": {
    "counted_as": "empty",
    "evidence": "none",
-   "lift": 9,
-   "score": 57,
-   "use": "shop"
+   "lift": 1,
+   "score": 50,
+   "size": 88,
+   "use": "services"
   },
   "2932": {
    "counted_as": "empty",
    "evidence": "none",
-   "lift": 9,
-   "score": 57,
-   "use": "shop"
+   "lift": 4,
+   "score": 49,
+   "size": 100,
+   "use": "office"
   },
   "2934": {
    "counted_as": "empty",
    "evidence": "none",
-   "lift": 9,
-   "score": 57,
-   "use": "shop"
+   "lift": 4,
+   "score": 49,
+   "size": 100,
+   "use": "office"
   },
   "2938": {
    "counted_as": "in use",
    "evidence": "none",
-   "lift": -5,
-   "score": 58,
-   "use": "cafe"
+   "lift": 4,
+   "score": 52,
+   "size": 100,
+   "use": "shop"
   },
   "2942": {
    "counted_as": "empty",
    "evidence": "two",
-   "lift": 25,
-   "score": 72,
+   "lift": 32,
+   "score": 81,
+   "size": 83,
    "use": "services"
   },
   "2946": {
    "counted_as": "empty",
    "evidence": "none",
-   "lift": 19,
-   "score": 67,
-   "use": "shop"
+   "lift": 14,
+   "score": 62,
+   "size": 91,
+   "use": "services"
   },
   "2958": {
    "counted_as": "empty",
    "evidence": "two",
-   "lift": 23,
-   "score": 70,
+   "lift": 28,
+   "score": 76,
+   "size": 90,
    "use": "services"
   },
   "3000": {
    "counted_as": "in use",
    "evidence": "none",
-   "lift": -0.0,
-   "score": 63,
+   "lift": 2,
+   "score": 56,
+   "size": 85,
    "use": "cafe"
   },
   "3009": {
    "counted_as": "in use",
-   "evidence": "none",
-   "lift": 1,
-   "score": 64,
-   "use": "cafe"
+   "evidence": "one",
+   "lift": 16,
+   "score": 59,
+   "size": 80,
+   "use": "studio"
   },
   "3010": {
    "counted_as": "empty",
    "evidence": "one",
-   "lift": 28,
-   "score": 91,
+   "lift": 36,
+   "score": 89,
+   "size": 80,
    "use": "cafe"
   },
   "3011": {
    "counted_as": "empty",
    "evidence": "two",
-   "lift": 27,
-   "score": 74,
+   "lift": 35,
+   "score": 83,
+   "size": 83,
    "use": "services"
   },
   "3015": {
    "counted_as": "empty",
    "evidence": "two",
-   "lift": 30,
-   "score": 77,
+   "lift": 39,
+   "score": 87,
+   "size": 84,
    "use": "services"
   },
   "3019": {
    "counted_as": "empty",
-   "evidence": "none",
-   "lift": 6,
-   "score": 69,
-   "use": "cafe"
+   "evidence": "one",
+   "lift": 25,
+   "score": 70,
+   "size": 100,
+   "use": "office"
   },
   "3021": {
    "counted_as": "in use",
    "evidence": "two",
-   "lift": 17,
-   "score": 80,
+   "lift": 8,
+   "score": 62,
+   "size": 12,
    "use": "cafe"
   },
   "3023": {
    "counted_as": "empty",
    "evidence": "two",
-   "lift": 27,
+   "lift": 36,
    "score": 90,
+   "size": 90,
    "use": "cafe"
   },
   "3026": {
    "counted_as": "empty",
    "evidence": "one",
-   "lift": 18,
-   "score": 69,
-   "use": "foodmaker"
+   "lift": 22,
+   "score": 66,
+   "size": 66,
+   "use": "workshop"
   },
   "3028": {
    "counted_as": "in use",
-   "evidence": "one",
-   "lift": 8,
-   "score": 71,
-   "use": "cafe"
+   "evidence": "two",
+   "lift": 32,
+   "score": 81,
+   "size": 90,
+   "use": "services"
   },
   "3029": {
    "counted_as": "empty",
    "evidence": "two",
-   "lift": 14,
-   "score": 77,
+   "lift": 20,
+   "score": 74,
+   "size": 100,
    "use": "cafe"
   },
   "3031": {
    "counted_as": "in use",
    "evidence": "two",
-   "lift": 26,
-   "score": 89,
+   "lift": 34,
+   "score": 88,
+   "size": 93,
    "use": "cafe"
   },
   "3034": {
    "counted_as": "in use",
    "evidence": "two",
-   "lift": 30,
-   "score": 93,
+   "lift": 37,
+   "score": 91,
+   "size": 95,
    "use": "cafe"
   },
   "3036": {
    "counted_as": "empty",
    "evidence": "two",
-   "lift": 24,
-   "score": 87,
+   "lift": 20,
+   "score": 74,
+   "size": 5,
    "use": "cafe"
   },
   "3038": {
    "counted_as": "empty",
    "evidence": "two",
    "lift": 20,
-   "score": 83,
+   "score": 73,
+   "size": 72,
    "use": "cafe"
   },
   "3040": {
    "counted_as": "in use",
-   "evidence": "none",
-   "lift": 2,
-   "score": 65,
-   "use": "cafe"
+   "evidence": "two",
+   "lift": 27,
+   "score": 75,
+   "size": 70,
+   "use": "services"
   },
   "3046": {
    "counted_as": "in use",
-   "evidence": "none",
-   "lift": 1,
-   "score": 64,
-   "use": "cafe"
+   "evidence": "two",
+   "lift": 24,
+   "score": 69,
+   "size": 100,
+   "use": "office"
   },
   "3048": {
    "counted_as": "in use",
    "evidence": "two",
-   "lift": 28,
+   "lift": 37,
    "score": 91,
+   "size": 92,
    "use": "cafe"
   },
   "3100": {
    "counted_as": "in use",
    "evidence": "two",
-   "lift": 8,
-   "score": 72,
-   "use": "cafe"
+   "lift": 30,
+   "score": 74,
+   "size": 80,
+   "use": "studio"
   },
   "3106": {
    "counted_as": "in use",
-   "evidence": "none",
-   "lift": -3,
-   "score": 60,
-   "use": "cafe"
+   "evidence": "two",
+   "lift": 10,
+   "score": 58,
+   "size": 100,
+   "use": "showroom"
   },
   "3107": {
    "counted_as": "empty",
    "evidence": "two",
-   "lift": 30,
-   "score": 93,
+   "lift": 37,
+   "score": 91,
+   "size": 85,
    "use": "cafe"
   },
   "3111": {
    "counted_as": "empty",
    "evidence": "two",
-   "lift": 32,
-   "score": 78,
+   "lift": 47,
+   "score": 92,
+   "size": 100,
    "use": "office"
   },
   "3112": {
    "counted_as": "in use",
    "evidence": "two",
-   "lift": 15,
-   "score": 63,
+   "lift": 10,
+   "score": 58,
+   "size": 100,
    "use": "shop"
   },
   "3113": {
    "counted_as": "in use",
    "evidence": "two",
-   "lift": 26,
+   "lift": 35,
    "score": 89,
+   "size": 95,
    "use": "cafe"
   },
   "3114": {
    "counted_as": "in use",
    "evidence": "none",
-   "lift": -4,
-   "score": 59,
-   "use": "cafe"
+   "lift": 8,
+   "score": 53,
+   "size": 100,
+   "use": "office"
   },
   "3117": {
    "counted_as": "empty",
    "evidence": "two",
-   "lift": 27,
-   "score": 75,
+   "lift": 33,
+   "score": 81,
+   "size": 100,
    "use": "showroom"
   },
   "3118": {
    "counted_as": "in use",
    "evidence": "two",
-   "lift": 19,
-   "score": 82,
+   "lift": 23,
+   "score": 77,
+   "size": 100,
    "use": "cafe"
   },
   "3120": {
    "counted_as": "empty",
-   "evidence": "none",
-   "lift": -6,
-   "score": 57,
-   "use": "cafe"
+   "evidence": "two",
+   "lift": 15,
+   "score": 60,
+   "size": 100,
+   "use": "office"
   },
   "3122": {
    "counted_as": "empty",
    "evidence": "two",
-   "lift": 7,
-   "score": 70,
+   "lift": 10,
+   "score": 64,
+   "size": 80,
    "use": "cafe"
   },
   "3123": {
    "counted_as": "in use",
    "evidence": "none",
-   "lift": 1,
-   "score": 64,
+   "lift": 7,
+   "score": 60,
+   "size": 85,
    "use": "cafe"
   },
   "3126": {
    "counted_as": "in use",
    "evidence": "two",
-   "lift": 20,
-   "score": 83,
+   "lift": 26,
+   "score": 80,
+   "size": 85,
    "use": "cafe"
   },
   "3127": {
    "counted_as": "in use",
    "evidence": "one",
-   "lift": 29,
-   "score": 92,
+   "lift": 36,
+   "score": 90,
+   "size": 80,
    "use": "cafe"
   },
   "3128": {
    "counted_as": "in use",
    "evidence": "two",
-   "lift": 23,
+   "lift": 32,
    "score": 86,
+   "size": 93,
    "use": "cafe"
   },
   "3130": {
    "counted_as": "in use",
-   "evidence": "two",
-   "lift": 26,
-   "score": 89,
-   "use": "cafe"
+   "evidence": "one",
+   "lift": 40,
+   "score": 84,
+   "size": 100,
+   "use": "studio"
   },
   "3133": {
    "counted_as": "in use",
    "evidence": "one",
-   "lift": 34,
-   "score": 97,
+   "lift": 42,
+   "score": 96,
+   "size": 100,
    "use": "cafe"
   },
   "3200": {
    "counted_as": "empty",
    "evidence": "two",
-   "lift": 25,
-   "score": 88,
-   "use": "cafe"
+   "lift": 31,
+   "score": 79,
+   "size": 85,
+   "use": "services"
   },
   "3201": {
    "counted_as": "in use",
    "evidence": "two",
-   "lift": 19,
-   "score": 82,
+   "lift": 25,
+   "score": 79,
+   "size": 100,
    "use": "cafe"
   },
   "3203": {
    "counted_as": "in use",
-   "evidence": "two",
-   "lift": 5,
-   "score": 68,
-   "use": "cafe"
+   "evidence": "one",
+   "lift": 21,
+   "score": 65,
+   "size": 80,
+   "use": "studio"
   },
   "3204": {
    "counted_as": "in use",
    "evidence": "two",
-   "lift": 25,
-   "score": 88,
+   "lift": 30,
+   "score": 83,
+   "size": 94,
    "use": "cafe"
   },
   "3208": {
    "counted_as": "in use",
    "evidence": "two",
-   "lift": 25,
-   "score": 88,
+   "lift": 31,
+   "score": 84,
+   "size": 77,
    "use": "cafe"
   },
   "3210": {
    "counted_as": "in use",
-   "evidence": "none",
-   "lift": 3,
-   "score": 66,
-   "use": "cafe"
+   "evidence": "two",
+   "lift": 12,
+   "score": 60,
+   "size": 100,
+   "use": "shop"
   },
   "3211": {
    "counted_as": "empty",
    "evidence": "two",
-   "lift": 37,
-   "score": 82,
+   "lift": 47,
+   "score": 91,
+   "size": 80,
    "use": "studio"
   },
   "3212": {
    "counted_as": "in use",
    "evidence": "placed",
-   "lift": 1,
-   "score": 64,
+   "lift": 4,
+   "score": 58,
+   "size": 100,
    "use": "cafe"
   },
   "3213": {
    "counted_as": "in use",
    "evidence": "two",
-   "lift": 27,
-   "score": 90,
+   "lift": 37,
+   "score": 91,
+   "size": 100,
    "use": "cafe"
   },
   "3216": {
    "counted_as": "in use",
    "evidence": "two",
-   "lift": 31,
-   "score": 79,
+   "lift": 30,
+   "score": 78,
+   "size": 100,
    "use": "shop"
   },
   "3217": {
    "counted_as": "in use",
    "evidence": "two",
-   "lift": 22,
-   "score": 86,
+   "lift": 28,
+   "score": 82,
+   "size": 100,
    "use": "cafe"
   },
   "3218": {
    "counted_as": "in use",
    "evidence": "two",
    "lift": 4,
-   "score": 67,
+   "score": 58,
+   "size": 90,
    "use": "cafe"
   },
   "3220": {
    "counted_as": "in use",
    "evidence": "two",
-   "lift": 28,
-   "score": 75,
+   "lift": 36,
+   "score": 84,
+   "size": 82,
    "use": "services"
   },
   "3221": {
    "counted_as": "in use",
    "evidence": "two",
-   "lift": 21,
-   "score": 84,
+   "lift": 23,
+   "score": 77,
+   "size": 86,
    "use": "cafe"
   },
   "3222": {
    "counted_as": "in use",
-   "evidence": "none",
-   "lift": 1,
-   "score": 64,
-   "use": "cafe"
+   "evidence": "placed",
+   "lift": 13,
+   "score": 59,
+   "size": 100,
+   "use": "office"
   },
   "3223": {
    "counted_as": "in use",
    "evidence": "two",
-   "lift": 27,
-   "score": 90,
+   "lift": 34,
+   "score": 88,
+   "size": 100,
    "use": "cafe"
   },
   "3224": {
    "counted_as": "empty",
    "evidence": "two",
-   "lift": 22,
-   "score": 86,
-   "use": "cafe"
+   "lift": 39,
+   "score": 88,
+   "size": 100,
+   "use": "services"
   },
   "3226": {
    "counted_as": "in use",
    "evidence": "two",
-   "lift": 16,
-   "score": 79,
+   "lift": 22,
+   "score": 75,
+   "size": 52,
    "use": "cafe"
   }
  },
  "weights": {
+  "a": 12,
+  "c": 0,
+  "f": 19,
+  "h": 44,
+  "k": 0,
+  "s": 25
+ },
+ "weights_agreed_9_nov": {
   "a": 10,
   "c": 10,
   "f": 15,
