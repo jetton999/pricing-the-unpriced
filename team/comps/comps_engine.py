@@ -287,11 +287,76 @@ def holdout(data, inp):
     kj = math.ceil((1 - a) * (n + 1))
     jk = (math.exp(lo_l[n - kj]), math.exp(hi_l[kj - 1])) if kj <= n else (None, None)
     cp = clopper_pearson(hits, n)
-    return dict(n=n, sources=len(keys), nominal_hits=hits, nominal_cover=hits / n, nominal_ci95=cp, below=below, above=above,
+    return dict(n=n, sources=len(keys), ids=sorted(r['id'] for r in recs), nominal_hits=hits, nominal_cover=hits / n, nominal_ci95=cp, below=below, above=above,
                 widen=c, honest_hits=honest, honest_cover=honest / n, honest_ci95=clopper_pearson(honest, n),
                 baltimore_n=len(bal), baltimore_nominal=bal_hits_n, baltimore_widened=bal_hits_w,
                 interval_score_model=is_model, interval_score_naive=is_naive, skill=1 - is_model / is_naive,
                 jackknife_plus_waverly_shop=jk)
+
+
+def fit_against_corridor_levels(data, iters=200):
+    """An estimator that was tried and not kept: each use's multiplier is estimated on what is left of a listing
+    after its corridor's level (not after its city's mean), alternating with the corridor levels until both settle."""
+    fmts = sorted(set(d['fmt'] for d in data if d['fmt'] != MIXED))
+    feff = dict({f: 0.0 for f in fmts}, **{MIXED: 0.0})
+    for _ in range(iters):
+        m = fit([dict(d, y=d['y'] - feff[d['fmt']], fmt=MIXED) for d in data])
+        res = {f: [d['y'] - feff[MIXED] - m['post'][d['grp']] for d in data if d['fmt'] == f] for f in fmts}
+        nf = {f: len(res[f]) for f in fmts}
+        centre = sum(sum(res[f]) for f in fmts) / sum(nf.values())       # a corridor's level is that of its average listing
+        fm = {f: st.mean(res[f]) - centre for f in fmts}
+        tf2 = max(0.0, st.pvariance(list(fm.values())) - st.mean([m['s2'] / nf[f] for f in fmts])) if len(fmts) > 1 else 0.0
+        new = dict({f: (tf2 / (tf2 + m['s2'] / nf[f]) if tf2 > 0 else 0.0) * fm[f] for f in fmts}, **{MIXED: 0.0})
+        step = max(abs(new[f] - feff[f]) for f in fmts)
+        feff = new
+        if step < 1e-9:
+            break
+    return dict(m, feff=feff)
+
+
+def fit_with_a_minimum_of_listings(n_min):
+    """An estimator that was tried and not kept: a use gets its own multiplier only from n_min listings up."""
+    def fitter(data):
+        thin = {f for f, n in fit(data)['nf'].items() if n < n_min}
+        return fit([dict(d, fmt=MIXED) if d['fmt'] in thin else d for d in data])
+    return fitter
+
+
+def fit_without_shrinking(data):
+    """An estimator that was tried and not kept: each use's multiplier is its raw average gap from its city's mean."""
+    raw = dict(fit(data)['fraw'], **{MIXED: 0.0})
+    return dict(fit([dict(d, y=d['y'] - raw[d['fmt']], fmt=MIXED) for d in data]), feff=raw)
+
+
+def alternatives(data, inp, ids):
+    """Each estimator predicts every listing from a model fitted without that listing's source, on the same listings
+    (ids: the ones the engine's own held-out check predicts). A use with no multiplier in the fit gets the corridor's
+    level alone, as on the page. Reported: the error of the middle figure in logs, the widening its 80% range needs,
+    and the interval score of the widened range (lower is better)."""
+    z, a = inp.z, inp.alpha
+    keys = sorted(set(d['key'] for d in data))
+    out = []
+    for name, fitter in (('as built', fit),
+                         ("each use's multiplier estimated against its corridor's level", fit_against_corridor_levels),
+                         ('multipliers not shrunk (raw averages)', fit_without_shrinking),
+                         ('a multiplier only from two listings up', fit_with_a_minimum_of_listings(2)),
+                         ('a multiplier only from three listings up', fit_with_a_minimum_of_listings(3)),
+                         ('no multipliers by use', fit_with_a_minimum_of_listings(10 ** 6))):
+        recs = []
+        for key in keys:
+            mi = fitter([d for d in data if d['key'] != key])
+            for d in data:
+                if d['key'] == key and d['id'] in ids:
+                    loc, pv = level(mi, d['grp'], d['city'])
+                    recs.append((d['y'], loc + mi['feff'].get(BORROW_A.get(d['fmt'], d['fmt']), 0.0), math.sqrt(mi['s2'] + pv)))
+        n = len(recs)
+        absz = sorted(abs(y - loc) / sd for y, loc, sd in recs)
+        c = max(1.0, absz[min(math.ceil((1 - a) * (n + 1)), n) - 1] / z)
+        out.append(dict(estimator=name, rows=n, log_rmse=math.sqrt(st.mean((y - loc) ** 2 for y, loc, sd in recs)),
+                        inside_plain_range=sum(abs(y - loc) <= z * sd for y, loc, sd in recs), widen=c,
+                        interval_score=st.mean(interval_score(math.exp(loc - c * z * sd), math.exp(loc + c * z * sd), math.exp(y), a)
+                                               for y, loc, sd in recs)))
+    return out
 
 
 def q_emp(xs, p):
@@ -351,7 +416,8 @@ def sales_scenarios(inp):
         for key, pt in pts.items():
             k = inp.cpi_factor(pt['year'])
             sales[key] = pt['v'] * k * lf
-            trail.append(dict(point=key, v=pt['v'], year=pt['year'], cpi=k, local=lf, out=sales[key], rows=pt['rows'], how=pt['how']))
+            trail.append(dict(point=key, v=pt['v'], year=pt['year'], cpi=k, local=lf, out=sales[key], rows=pt['rows'], how=pt['how'],
+                              assumed_sqft=pt.get('assumed_sqft')))
         sh = spec['share']
         out[f] = dict(applies=True, sales=sales, share=sh['mid'], share_low=sh.get('low'), share_high=sh.get('high'),
                       share_rows=sh['rows'], share_how=sh['how'], single='single' in s, trail=trail, local=lf)
@@ -385,6 +451,10 @@ def build(cfg=None):
     rows = rent_rows(inp)
     m = fit(rows)
     ho = holdout(rows, inp)
+    tried = alternatives(rows, inp, set(ho.pop('ids')))
+    # the comparison is on the engine's own held-out listings, so its first row must repeat the held-out check
+    assert (tried[0]['rows'], tried[0]['inside_plain_range']) == (ho['n'], ho['nominal_hits']) and abs(tried[0]['widen'] - ho['widen']) < 1e-9 \
+        and abs(tried[0]['interval_score'] - ho['interval_score_model']) < 1e-9, 'the comparison of estimators does not repeat the held-out check'
     c = ho['widen']
     z = inp.z
     S = sales_scenarios(inp)
@@ -423,7 +493,8 @@ def build(cfg=None):
         if basis == 'corridor level':
             flags.append("no listings for this use: the corridor's rent level is shown, with no multiplier for the use")
         elif nrows[f] < 3:
-            flags.append(f'only {nrows[f]} listing{"s" if nrows[f] != 1 else ""}: the multiplier is mostly pulled back to 1')
+            flags.append(f'only {nrows[f]} listing{"s" if nrows[f] != 1 else ""}: thin evidence; {m["fshr"][bf]:.0%} of '
+                         f"its gap from the city's mean is kept")
         if rec['borrowed_from']:
             flags.append(f'borrowed from {rec["borrowed_from"]}')
         if Sp.get('applies'):
@@ -431,10 +502,22 @@ def build(cfg=None):
             rec['sales'] = dict(scenarios={k: r2(v) for k, v in Sp['sales'].items()}, afford={k: r2(v) for k, v in aff.items()},
                                 share=Sp['share'], share_low=Sp.get('share_low'), share_high=Sp.get('share_high'),
                                 share_rows=Sp['share_rows'], share_how=Sp['share_how'], single=Sp['single'], local=Sp['local'],
-                                trail=[dict(t, cpi=r4(t['cpi']), out=r2(t['out'])) for t in Sp['trail']])
+                                trail=[{k: v for k, v in dict(t, cpi=r4(t['cpi']), out=r2(t['out'])).items() if v is not None} for t in Sp['trail']])
             rec['sales_na'] = None
             rec['check'] = dict(verdict=sales_check(math.exp(loc), aff['mid'], margin), asking_mid=r2(math.exp(loc)),
                                 afford_mid=r2(aff['mid']), margin=margin)
+            mid_pt = next(t for t in Sp['trail'] if t['point'] == 'mid')
+            if mid_pt.get('assumed_sqft'):
+                # the mid figure is receipts per business divided by a floor area the team assumed: say how far the
+                # verdict depends on it. receipts x share / area - taxes and insurance, set against the two margins
+                receipts = mid_pt['v'] * mid_pt['assumed_sqft'] * mid_pt['cpi'] * mid_pt['local']
+                covers_to = Sp['share'] * receipts / ((1 + margin) * math.exp(loc) + eti_med)
+                fails_from = Sp['share'] * receipts / ((1 - margin) * math.exp(loc) + eti_med)
+                rec['check'].update(assumed_sqft=mid_pt['assumed_sqft'], covers_up_to_sqft=int(round(covers_to, -1)),
+                                    does_not_cover_from_sqft=int(round(fails_from, -1)))
+                flags.append(f"the mid sales figure is receipts per business divided by an assumed {mid_pt['assumed_sqft']:,} sq ft: "
+                             f"the check reads 'covers' up to about {round(covers_to, -1):,.0f} sq ft and 'does not cover' from "
+                             f"about {round(fails_from, -1):,.0f}")
             impl = (math.exp(loc) + eti_med) / Sp['share']
             rec['implied_sales'] = r2(impl)
             if Sp['single']:
@@ -564,10 +647,10 @@ def build(cfg=None):
     def waverly_mid(rows_, model=None):
         return math.exp(level(model or fit(rows_), 'waverly')[0])
 
-    sens.append(dict(what='Lease-basis loads (modified gross / gross)', setting='$2 / $4 (default)', result=f'Waverly rent level ${waverly_mid(rows, m):.2f}'))
+    sens.append(dict(what='Allowance taken off a listed rent that includes some / all of the building costs', setting='$2 / $4 (default)', result=f'Waverly rent level ${waverly_mid(rows, m):.2f}'))
     for alt in inp.loads['sensitivity']:
         lo2 = dict(inp.loads); lo2.update(alt)
-        sens.append(dict(what='Lease-basis loads (modified gross / gross)', setting=f'${alt["modified gross"]:.0f} / ${alt["gross"]:.0f}',
+        sens.append(dict(what='Allowance taken off a listed rent that includes some / all of the building costs', setting=f'${alt["modified gross"]:.0f} / ${alt["gross"]:.0f}',
                          result=f'Waverly rent level ${waverly_mid(rent_rows(inp, loads=lo2)):.2f}'))
     inplace = sorted(d['id'] for d in rows if d['kind'] == 'in place')
     sens.append(dict(what='Rents in place (' + ', '.join(inplace) + ')', setting='left out: asking rents only',
@@ -615,7 +698,9 @@ def build(cfg=None):
         census=census,
         holdout=dict({k: (r4(v) if isinstance(v, float) else v) for k, v in ho.items() if k not in ('nominal_ci95', 'honest_ci95', 'jackknife_plus_waverly_shop')},
                      nominal_ci95=[r4(x) for x in ho['nominal_ci95']], honest_ci95=[r4(x) for x in ho['honest_ci95']],
-                     jackknife_plus_waverly_shop=[r2(x) for x in ho['jackknife_plus_waverly_shop']]),
+                     jackknife_plus_waverly_shop=[r2(x) for x in ho['jackknife_plus_waverly_shop']],
+                     # estimators that were tried on the same held-out listings; the first row is the engine as built
+                     alternatives=[dict({k: (r4(v) if isinstance(v, float) else v) for k, v in x.items()}) for x in tried]),
         sensitivity=sens,
         sales_check=dict(margin=margin, about=inp.cfg['sales_check']['about']),
         local_demand=inp.cfg['local_demand'],

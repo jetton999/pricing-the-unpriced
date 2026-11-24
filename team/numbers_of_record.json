@@ -104,6 +104,15 @@
   }
  },
  "score": {
+  "default_weights": {
+   "a": 12,
+   "c": 0,
+   "f": 19,
+   "h": 44,
+   "k": 0,
+   "s": 25
+  },
+  "default_since": "24 November 2026",
   "weights_agreed_9_nov_2026": {
    "a": 10,
    "c": 10,
@@ -113,19 +122,24 @@
    "s": 20
   },
   "a_building_with_no_record_scores": {
-   "bike": 38,
-   "cafe": 63,
-   "community": 30,
-   "counter": 44,
-   "fitness": 44,
+   "bike": 42,
+   "cafe": 54,
+   "community": 26,
+   "counter": 40,
+   "fitness": 45,
    "foodmaker": 51,
-   "office": 46,
-   "services": 47,
+   "office": 45,
+   "services": 48,
    "shop": 48,
    "showroom": 48,
-   "studio": 45,
-   "venue": 41,
-   "workshop": 43
+   "studio": 44,
+   "venue": 33,
+   "workshop": 44
+  },
+  "cafe_head_start_over_a_shop_with_no_record": {
+   "default": 6,
+   "agreed_9_nov": 15,
+   "cafe_agreed_9_nov": 63
   },
   "inputs_by_use": {
    "cafe": {
@@ -158,14 +172,14 @@
      100
     ],
     "size": [
-     41,
+     5,
      100
     ]
    },
    "services": {
     "at_a_building_with_no_record": {
      "community": 50,
-     "heritage": 19,
+     "heritage": 18,
      "neighbours": 50,
      "precedents": 27,
      "room": 100,
@@ -176,7 +190,7 @@
      50
     ],
     "heritage": [
-     19,
+     18,
      100
     ],
     "neighbours": [
@@ -226,7 +240,7 @@
      87
     ],
     "size": [
-     16,
+     27,
      100
     ]
    },
@@ -260,55 +274,63 @@
      87
     ],
     "size": [
-     21,
+     0,
      100
     ]
    }
   },
   "top_candidate_is_a_cafe": {
-   "of_storefronts": 46,
-   "of_empty": 12,
+   "of_storefronts": 29,
+   "of_empty": 7,
    "storefronts": 62
   },
-  "top_candidate_no_higher_than_no_record": 6,
+  "top_candidate_no_higher_than_no_record": 0,
   "evidence_behind_top_candidates": {
-   "none": 17,
-   "one": 5,
-   "placed": 1,
-   "two": 39
+   "none": 9,
+   "one": 8,
+   "placed": 2,
+   "two": 43
   },
   "if_heritage_weight_is_zero": {
-   "cafe_top": 54,
-   "top_candidate_changes": 14,
-   "of_empty": 9
+   "cafe_top": 13,
+   "top_candidate_changes": 46,
+   "of_empty": 15
   },
-  "without_community_and_precedents": {
-   "cafe_top": 32,
+  "with_the_weights_agreed_9_nov": {
+   "cafe_top": 42,
+   "cafe_top_empty": 11,
    "top_candidate_changes": 19,
-   "of_empty": 8
+   "of_empty": 10,
+   "top_candidates_with_no_record_of_the_use": 14,
+   "top_candidates_no_higher_than_no_record": 5
   },
   "firmest_records_only": {
-   "cafe_top": 46,
-   "top_candidate_changes": 2,
-   "of_empty": 1
+   "cafe_top": 35,
+   "top_candidate_changes": 13,
+   "of_empty": 7
   },
   "with_todays_tenant_as_history": {
-   "cafe_top": 44,
+   "cafe_top": 28,
    "top_candidate_changes": 4,
    "of_empty": 0
+  },
+  "with_the_whole_building_as_the_size": {
+   "cafe_top": 32,
+   "top_candidate_changes": 7,
+   "of_empty": 4
   }
  },
  "plan": {
   "cap_broken": [],
   "evidence": {
-   "none": 8,
-   "one": 2,
-   "two": 14
+   "none": 5,
+   "one": 4,
+   "two": 15
   },
-  "fit_mean": 72,
+  "fit_mean": 74,
   "ground_floor_sq_ft": 57133,
   "ground_floor_sq_ft_at_most": 70926,
-  "lift_mean": 19,
+  "lift_mean": 25,
   "no_area": 0,
   "pressure": {
    "block_sides": 4,
@@ -321,12 +343,12 @@
   "space_rent_mid": 937600,
   "to_measure": 3,
   "uses": {
-   "cafe": 10,
-   "office": 2,
-   "services": 6,
-   "shop": 3,
+   "cafe": 8,
+   "office": 5,
+   "services": 4,
+   "shop": 2,
    "showroom": 1,
-   "studio": 1,
+   "studio": 3,
    "workshop": 1
   },
   "whole_building_sq_ft": 82606
@@ -401,6 +423,64 @@
    "services": "covers",
    "fitness": "covers"
   },
+  "sales_check_floor_area": {
+   "shop": {
+    "assumed_sq_ft": 2000,
+    "covers_up_to_sq_ft": 3050,
+    "does_not_cover_from_sq_ft": 3640,
+    "usual_size_sq_ft": [
+     900,
+     2500
+    ]
+   },
+   "services": {
+    "assumed_sq_ft": 1250,
+    "covers_up_to_sq_ft": 1530,
+    "does_not_cover_from_sq_ft": 1830,
+    "usual_size_sq_ft": [
+     900,
+     1600
+    ]
+   }
+  },
+  "estimators_tried": [
+   {
+    "estimator": "as built",
+    "error_of_the_middle_figure_in_logs": 0.437,
+    "widening_its_range_needs": 1.2597,
+    "interval_score": 30.1087
+   },
+   {
+    "estimator": "each use's multiplier estimated against its corridor's level",
+    "error_of_the_middle_figure_in_logs": 0.4565,
+    "widening_its_range_needs": 1.4321,
+    "interval_score": 33.3239
+   },
+   {
+    "estimator": "multipliers not shrunk (raw averages)",
+    "error_of_the_middle_figure_in_logs": 0.4346,
+    "widening_its_range_needs": 1.2988,
+    "interval_score": 30.7379
+   },
+   {
+    "estimator": "a multiplier only from two listings up",
+    "error_of_the_middle_figure_in_logs": 0.506,
+    "widening_its_range_needs": 1.2591,
+    "interval_score": 32.6543
+   },
+   {
+    "estimator": "a multiplier only from three listings up",
+    "error_of_the_middle_figure_in_logs": 0.5521,
+    "widening_its_range_needs": 1.0881,
+    "interval_score": 36.8792
+   },
+   {
+    "estimator": "no multipliers by use",
+    "error_of_the_middle_figure_in_logs": 0.5717,
+    "widening_its_range_needs": 1.0,
+    "interval_score": 38.386
+   }
+  ],
   "sales_check_margin": 0.1,
   "library_rows_checked_by_a_person": 0,
   "library_rows": 318

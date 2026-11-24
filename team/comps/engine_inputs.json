@@ -437,7 +437,8 @@
        "B-076",
        "B-075"
       ],
-      "how": "$100,000, the low end of the band most gift retailers sit in, ÷ 2,000 sq ft"
+      "how": "$100,000, the low end of the band most gift retailers sit in, ÷ 2,000 sq ft",
+   "assumed_sqft": 2000
      },
      "mid": {
       "v": 325,
@@ -446,7 +447,8 @@
        "B-057",
        "B-075"
       ],
-      "how": "$650,440 per Baltimore gift retailer (2022 Economic Census) ÷ 2,000 sq ft"
+      "how": "$650,440 per Baltimore gift retailer (2022 Economic Census) ÷ 2,000 sq ft",
+   "assumed_sqft": 2000
      },
      "high": {
       "v": 649,
@@ -515,7 +517,8 @@
        "B-104",
        "B-123"
       ],
-      "how": "$265,284 per Baltimore beauty salon (2022 Economic Census) ÷ 1,250 sq ft, the middle of a typical 1,000-1,500 sq ft salon"
+      "how": "$265,284 per Baltimore beauty salon (2022 Economic Census) ÷ 1,250 sq ft, the middle of a typical 1,000-1,500 sq ft salon",
+   "assumed_sqft": 1250
      }
     },
     "share": {

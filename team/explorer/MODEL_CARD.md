@@ -1,6 +1,6 @@
 # Model card: Greenmount frontage explorer
 
-Working draft, 21 November 2026. Covers the use score (v0.4), the evidence grades, the block plan, the comps at three
+Working draft, 24 November 2026. Covers the use score (v0.5), the evidence grades, the block plan, the comps at three
 levels and the displacement flags. The rent figures have their own card: `team/comps/MODEL_CARD.md`. The back-test is
 described in `team/validation/README.md`. Every number below is filled in from `team/NUMBERS.md`.
 
@@ -33,18 +33,27 @@ described in `team/validation/README.md`. Every number below is filled in from `
    out. A business in two street numbers counts once.
 2. **Rules first.** C-1 zoning (the city's neighbourhood business zone, Baltimore code Table 10-301) and the Waverly
    Business Area Urban Renewal Plan remove uses that are not allowed and mark the ones that need an approval.
-3. **Score.** Each allowed use gets a score from six inputs, with the weights agreed with the sponsor on 9 November
-   2026 (<!--=score.weights_agreed_9_nov_2026.h-->35<!--/--> / <!--=score.weights_agreed_9_nov_2026.s-->20<!--/--> /
-   <!--=score.weights_agreed_9_nov_2026.f-->15<!--/--> / <!--=score.weights_agreed_9_nov_2026.c-->10<!--/--> /
-   <!--=score.weights_agreed_9_nov_2026.a-->10<!--/--> / <!--=score.weights_agreed_9_nov_2026.k-->10<!--/-->):
-   - **Heritage:** the decades the use is on record at the building. Today's tenant is not counted as history
-     (it was until 21 November 2026).
+3. **Score.** Each allowed use gets a score from six inputs. Since <!--=score.default_since-->24 November 2026<!--/--> four of them carry all the
+   weight by default: heritage <!--=score.default_weights.h-->44<!--/-->, room on the block <!--=score.default_weights.s-->25<!--/-->, size
+   <!--=score.default_weights.f-->19<!--/-->, neighbours <!--=score.default_weights.a-->12<!--/-->; community and precedents carry
+   <!--=score.default_weights.c-->0<!--/-->. These are the proportions of the six weights agreed with the sponsor on 9 November 2026
+   (<!--=score.weights_agreed_9_nov_2026.h-->35<!--/--> / <!--=score.weights_agreed_9_nov_2026.s-->20<!--/--> / <!--=score.weights_agreed_9_nov_2026.f-->15<!--/--> /
+   <!--=score.weights_agreed_9_nov_2026.c-->10<!--/--> / <!--=score.weights_agreed_9_nov_2026.a-->10<!--/--> / <!--=score.weights_agreed_9_nov_2026.k-->10<!--/-->), which
+   stay on the page as a preset. The section on the cafe prior below gives the reason.
+   - **Heritage:** the decades the use is on record at the building, counted in full only when the use is on record
+     in two decades or in two independent kinds of source. A building with no record of a use gets a small share
+     from how many frontage parcels have it on record. Today's tenant is not counted as history (it was until
+     21 November 2026). A copy of a source is not a second source: until 24 November 2026 this input counted source
+     files, so a sponsor's transcription of a directory counted beside the directory.
    - **Room on the block:** how many of the use are already on the block side and on the corridor, against the
      corridor's 1920-23 mix.
-   - **Size fit:** the building's floor area against the sourced typical range of the use.
-   - **Community:** what residents asked for or objected to. The same for every building.
+   - **Size fit:** the estimated ground floor against the sourced typical range of the use, since 24 November 2026
+     (until then the floor area of the whole building, upper floors included). Where the building outline may be
+     partial the ground floor is not measured, and the input is the mean of the fit at the estimate and at its upper
+     bound.
+   - **Community:** what residents asked for or objected to. The same for every building. No weight by default.
    - **Neighbours:** a matrix grounded in law and research.
-   - **Precedents:** how the most similar reuse cases in a hand-picked library turned out. <!--=library.cases_with_a_cafe-->20<!--/--> of the
+   - **Precedents:** how the most similar reuse cases in a hand-picked library turned out. No weight by default. <!--=library.cases_with_a_cafe-->20<!--/--> of the
      <!--=library.reuse_buildings-->32<!--/--> cases include a cafe or restaurant, so the input runs from
      <!--=score.inputs_by_use.cafe.precedents.0-->54<!--/--> to <!--=score.inputs_by_use.cafe.precedents.1-->100<!--/--> (of 100) for a cafe across the storefronts and is
      <!--=score.inputs_by_use.showroom.precedents.1-->0<!--/--> for a showroom at every one.
@@ -69,27 +78,44 @@ described in `team/validation/README.md`. Every number below is filled in from `
 
 ## The cafe prior, and what the page does about it
 
-The sponsor's review found that a cafe wins almost everywhere. The table is rebuilt from the page on every run.
+The sponsor's review of 17 November 2026 found that a cafe won almost everywhere, and asked the team to rebalance or
+drop the community and precedent inputs until they are sourced building by building. The table is rebuilt from the
+page on every run.
 
-| Ranking | Storefronts where a cafe or restaurant is the top candidate | Top candidate differs from the agreed ranking |
+| Ranking | Storefronts where a cafe or restaurant is the top candidate | Top candidate differs from the default ranking |
 |---|---|---|
-| Agreed weights | <!--=score.top_candidate_is_a_cafe.of_storefronts-->46<!--/--> of <!--=frontage.storefronts-->62<!--/--> (<!--=score.top_candidate_is_a_cafe.of_empty-->12<!--/--> of the <!--=frontage.empty-->24<!--/--> empty) | |
-| Heritage weight at zero | <!--=score.if_heritage_weight_is_zero.cafe_top-->54<!--/--> | <!--=score.if_heritage_weight_is_zero.top_candidate_changes-->14<!--/--> (<!--=score.if_heritage_weight_is_zero.of_empty-->9<!--/--> of the empty) |
-| Without community and precedents | <!--=score.without_community_and_precedents.cafe_top-->32<!--/--> | <!--=score.without_community_and_precedents.top_candidate_changes-->19<!--/--> (<!--=score.without_community_and_precedents.of_empty-->8<!--/--> of the empty) |
-| Firmest records only | <!--=score.firmest_records_only.cafe_top-->46<!--/--> | <!--=score.firmest_records_only.top_candidate_changes-->2<!--/--> (<!--=score.firmest_records_only.of_empty-->1<!--/--> of the empty) |
-| Today's tenant counted as history (the page until 21 November) | <!--=score.with_todays_tenant_as_history.cafe_top-->44<!--/--> | <!--=score.with_todays_tenant_as_history.top_candidate_changes-->4<!--/--> (<!--=score.with_todays_tenant_as_history.of_empty-->0<!--/--> of the empty) |
+| Default since <!--=score.default_since-->24 November 2026<!--/-->: community and precedents at no weight | <!--=score.top_candidate_is_a_cafe.of_storefronts-->29<!--/--> of <!--=frontage.storefronts-->62<!--/--> (<!--=score.top_candidate_is_a_cafe.of_empty-->7<!--/--> of the <!--=frontage.empty-->24<!--/--> empty) | |
+| The six weights agreed on 9 November 2026 | <!--=score.with_the_weights_agreed_9_nov.cafe_top-->42<!--/--> (<!--=score.with_the_weights_agreed_9_nov.cafe_top_empty-->11<!--/--> of the empty) | <!--=score.with_the_weights_agreed_9_nov.top_candidate_changes-->19<!--/--> (<!--=score.with_the_weights_agreed_9_nov.of_empty-->10<!--/--> of the empty) |
+| Heritage weight at zero | <!--=score.if_heritage_weight_is_zero.cafe_top-->13<!--/--> | <!--=score.if_heritage_weight_is_zero.top_candidate_changes-->46<!--/--> (<!--=score.if_heritage_weight_is_zero.of_empty-->15<!--/--> of the empty) |
+| Firmest records only | <!--=score.firmest_records_only.cafe_top-->35<!--/--> | <!--=score.firmest_records_only.top_candidate_changes-->13<!--/--> (<!--=score.firmest_records_only.of_empty-->7<!--/--> of the empty) |
+| Today's tenant counted as history (the page until 21 November) | <!--=score.with_todays_tenant_as_history.cafe_top-->28<!--/--> | <!--=score.with_todays_tenant_as_history.top_candidate_changes-->4<!--/--> (<!--=score.with_todays_tenant_as_history.of_empty-->0<!--/--> of the empty) |
+| Size read from the whole building (the page until 24 November) | <!--=score.with_the_whole_building_as_the_size.cafe_top-->32<!--/--> | <!--=score.with_the_whole_building_as_the_size.top_candidate_changes-->7<!--/--> (<!--=score.with_the_whole_building_as_the_size.of_empty-->4<!--/--> of the empty) |
 
-A building with no record at all scores <!--=score.a_building_with_no_record_scores.cafe-->63<!--/--> of 100 for a cafe or
-restaurant, because community and precedents favour it everywhere. Of the <!--=frontage.storefronts-->62<!--/--> top candidates,
-<!--=score.evidence_behind_top_candidates.two-->39<!--/--> rest on two kinds of source at the address,
-<!--=score.evidence_behind_top_candidates.one-->5<!--/--> on one kind, <!--=score.evidence_behind_top_candidates.placed-->1<!--/--> on
-inference only and <!--=score.evidence_behind_top_candidates.none-->17<!--/--> have no record of the use there;
-<!--=score.top_candidate_no_higher_than_no_record-->6<!--/--> score no higher than at a building with no record.
+**Why the two inputs carry no weight.** Neither comes from the building. Community is one number per use, the same at
+every storefront (<!--=score.inputs_by_use.cafe.community.0-->100<!--/--> of 100 for a cafe). Precedents differ from building to
+building, but through a library the team picked by hand, in which <!--=library.cases_with_a_cafe-->20<!--/--> of
+<!--=library.reuse_buildings-->32<!--/--> cases include a cafe or restaurant. With both at 10% a cafe started
+<!--=score.cafe_head_start_over_a_shop_with_no_record.agreed_9_nov-->15<!--/--> points ahead of a shop at a building with no record at
+all; with the default it starts <!--=score.cafe_head_start_over_a_shop_with_no_record.default-->6<!--/--> ahead
+(<!--=score.a_building_with_no_record_scores.cafe-->54<!--/--> against <!--=score.a_building_with_no_record_scores.shop-->48<!--/--> of 100), from the
+street's record and the room on the block. Top candidates with no record of the use at the address fall from
+<!--=score.with_the_weights_agreed_9_nov.top_candidates_with_no_record_of_the_use-->14<!--/--> to <!--=score.evidence_behind_top_candidates.none-->9<!--/-->, and those that score no
+higher than at a building with no record from <!--=score.with_the_weights_agreed_9_nov.top_candidates_no_higher_than_no_record-->5<!--/--> to
+<!--=score.top_candidate_no_higher_than_no_record-->0<!--/-->.
 
-**Open decision.** The review asks the team to rebalance or drop the community and precedent inputs until they are
-sourced per parcel. The weights were agreed with the sponsor, so the default has not been changed by one person: the
-page offers the ranking without the two inputs as the preset "Building evidence only" and shows the table above. The
-team and the sponsor decide whether it becomes the default.
+**What the default does not fix.** A cafe is still the top candidate on about half of the storefronts, and with the
+heritage weight at zero the top candidate changes on <!--=score.if_heritage_weight_is_zero.top_candidate_changes-->46<!--/--> of
+<!--=frontage.storefronts-->62<!--/-->, so the ranking now rests on the history input, which the back-test has not shown to predict
+use today (see "How it was checked"). Of the <!--=frontage.storefronts-->62<!--/--> top candidates,
+<!--=score.evidence_behind_top_candidates.two-->43<!--/--> rest on two kinds of source at the address,
+<!--=score.evidence_behind_top_candidates.one-->8<!--/--> on one kind, <!--=score.evidence_behind_top_candidates.placed-->2<!--/--> on inference only and
+<!--=score.evidence_behind_top_candidates.none-->9<!--/--> have no record of the use there.
+
+**To be confirmed by the sponsor.** The six weights were agreed with the sponsor by email on 9 November 2026. The
+team changed the default on <!--=score.default_since-->24 November 2026<!--/--> in answer to the review, and the pull request that carries the change asks
+the sponsor to confirm it.
+Until then both rankings are on the page: the set of 9 November is the preset "Agreed on 9 November", and the table
+above is on the Evidence tab. The two inputs come back when they are sourced building by building.
 
 ## How it was checked
 
@@ -124,8 +150,11 @@ team and the sponsor decide whether it becomes the default.
 - **Who trades where.** Of the <!--=frontage.in_use-->38<!--/--> storefronts in use,
   <!--=frontage.in_use_named_from_a_search_listing_only-->15<!--/--> rest on a search listing for the name of the business. The
   room-on-the-block and neighbour inputs read those names.
-- **Weights are a judgement.** A close call (labelled on the page) can flip under other weights.
-- **Size fit reads the whole building,** not the ground floor.
+- **Weights are a judgement.** A close call (labelled on the page) can flip under other weights. The default set has
+  still to be confirmed by the sponsor.
+- **Community and precedents are switched off, not fixed.** They carry no weight until they are sourced building by
+  building; nothing has been collected for that yet.
+- **The size fit and the rent read the same ground-floor estimate,** so a wrong building outline moves both.
 - **Ground floors are estimates.** <!--=plan.to_measure-->3<!--/--> of the <!--=plan.sheets-->24<!--/--> empty storefronts are marked "measure
   first".
 - **Rent rests on listed rents:** <!--=comps.asking-->57<!--/--> asking rents and <!--=comps.in_place-->3<!--/--> rents in place, none a newly

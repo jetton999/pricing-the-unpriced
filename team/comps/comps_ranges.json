@@ -574,7 +574,7 @@
    "sales_na": "No sales-per-sq-ft benchmark for a bakery or roaster with a shop; the only share (4%, B-051) is dominated by grocery stores.",
    "check": null,
    "flags": [
-    "only 1 listing: the multiplier is mostly pulled back to 1"
+    "only 1 listing: thin evidence; 48% of its gap from the city's mean is kept"
    ]
   },
   "tavern": {
@@ -719,7 +719,8 @@
        "B-076",
        "B-075"
       ],
-      "how": "$100,000, the low end of the band most gift retailers sit in, ÷ 2,000 sq ft"
+      "how": "$100,000, the low end of the band most gift retailers sit in, ÷ 2,000 sq ft",
+      "assumed_sqft": 2000
      },
      {
       "point": "mid",
@@ -732,7 +733,8 @@
        "B-057",
        "B-075"
       ],
-      "how": "$650,440 per Baltimore gift retailer (2022 Economic Census) ÷ 2,000 sq ft"
+      "how": "$650,440 per Baltimore gift retailer (2022 Economic Census) ÷ 2,000 sq ft",
+      "assumed_sqft": 2000
      },
      {
       "point": "high",
@@ -753,10 +755,15 @@
     "verdict": "covers",
     "asking_mid": 17.21,
     "afford_mid": 30.0,
-    "margin": 0.1
+    "margin": 0.1,
+    "assumed_sqft": 2000,
+    "covers_up_to_sqft": 3050,
+    "does_not_cover_from_sqft": 3640
    },
    "implied_sales": 215.52,
-   "flags": []
+   "flags": [
+    "the mid sales figure is receipts per business divided by an assumed 2,000 sq ft: the check reads 'covers' up to about 3,050 sq ft and 'does not cover' from about 3,640"
+   ]
   },
   "showroom": {
    "n_listings": 5,
@@ -923,7 +930,8 @@
        "B-104",
        "B-123"
       ],
-      "how": "$265,284 per Baltimore beauty salon (2022 Economic Census) ÷ 1,250 sq ft, the middle of a typical 1,000-1,500 sq ft salon"
+      "how": "$265,284 per Baltimore beauty salon (2022 Economic Census) ÷ 1,250 sq ft, the middle of a typical 1,000-1,500 sq ft salon",
+      "assumed_sqft": 1250
      }
     ]
    },
@@ -932,10 +940,14 @@
     "verdict": "covers",
     "asking_mid": 17.94,
     "afford_mid": 24.67,
-    "margin": 0.1
+    "margin": 0.1,
+    "assumed_sqft": 1250,
+    "covers_up_to_sqft": 1530,
+    "does_not_cover_from_sqft": 1830
    },
    "implied_sales": 175.02,
    "flags": [
+    "the mid sales figure is receipts per business divided by an assumed 1,250 sq ft: the check reads 'covers' up to about 1,530 sq ft and 'does not cover' from about 1,830",
     "one sales figure: a mid scenario only"
    ]
   },
@@ -1119,7 +1131,7 @@
    "sales_na": "No sales-per-sq-ft benchmark for a maker workshop with a counter.",
    "check": null,
    "flags": [
-    "only 2 listings: the multiplier is mostly pulled back to 1"
+    "only 2 listings: thin evidence; 65% of its gap from the city's mean is kept"
    ]
   },
   "community": {
@@ -4375,21 +4387,71 @@
   "jackknife_plus_waverly_shop": [
    9.85,
    31.21
+  ],
+  "alternatives": [
+   {
+    "estimator": "as built",
+    "rows": 59,
+    "log_rmse": 0.437,
+    "inside_plain_range": 41,
+    "widen": 1.2597,
+    "interval_score": 30.1087
+   },
+   {
+    "estimator": "each use's multiplier estimated against its corridor's level",
+    "rows": 59,
+    "log_rmse": 0.4565,
+    "inside_plain_range": 41,
+    "widen": 1.4321,
+    "interval_score": 33.3239
+   },
+   {
+    "estimator": "multipliers not shrunk (raw averages)",
+    "rows": 59,
+    "log_rmse": 0.4346,
+    "inside_plain_range": 40,
+    "widen": 1.2988,
+    "interval_score": 30.7379
+   },
+   {
+    "estimator": "a multiplier only from two listings up",
+    "rows": 59,
+    "log_rmse": 0.506,
+    "inside_plain_range": 40,
+    "widen": 1.2591,
+    "interval_score": 32.6543
+   },
+   {
+    "estimator": "a multiplier only from three listings up",
+    "rows": 59,
+    "log_rmse": 0.5521,
+    "inside_plain_range": 46,
+    "widen": 1.0881,
+    "interval_score": 36.8792
+   },
+   {
+    "estimator": "no multipliers by use",
+    "rows": 59,
+    "log_rmse": 0.5717,
+    "inside_plain_range": 48,
+    "widen": 1.0,
+    "interval_score": 38.386
+   }
   ]
  },
  "sensitivity": [
   {
-   "what": "Lease-basis loads (modified gross / gross)",
+   "what": "Allowance taken off a listed rent that includes some / all of the building costs",
    "setting": "$2 / $4 (default)",
    "result": "Waverly rent level $16.22"
   },
   {
-   "what": "Lease-basis loads (modified gross / gross)",
+   "what": "Allowance taken off a listed rent that includes some / all of the building costs",
    "setting": "$0 / $0",
    "result": "Waverly rent level $17.11"
   },
   {
-   "what": "Lease-basis loads (modified gross / gross)",
+   "what": "Allowance taken off a listed rent that includes some / all of the building costs",
    "setting": "$3 / $6",
    "result": "Waverly rent level $15.72"
   },

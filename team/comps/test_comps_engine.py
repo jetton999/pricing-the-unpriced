@@ -108,6 +108,7 @@ class TestModel(unittest.TestCase):
         cls.inp = E.Inputs(E.load_inputs())
         cls.rows = E.rent_rows(cls.inp)
         cls.m = E.fit(cls.rows)
+        cls.out = E.build()
 
     def test_pooling_formula(self):
         m = self.m
@@ -161,6 +162,35 @@ class TestModel(unittest.TestCase):
         src = read_text(os.path.join(HERE, 'comps_engine.py'))
         for gone in ('def supportable', 'def can_pay', 'def typical'):
             self.assertNotIn(gone, src, gone)
+
+    def test_an_assumed_floor_area_is_said_out_loud(self):
+        """Where a sales figure is receipts per business divided by a floor area the team assumed, the inputs name the
+        area, the output says how far the verdict depends on it, and the figure is that division."""
+        cfg = E.load_inputs()['sales_check']['uses']
+        found = 0
+        for use, spec in cfg.items():
+            for key, pt in (spec.get('sales') or {}).items():
+                m = re.search(r'\$([\d,]+)[^÷]*÷ ([\d,]+) sq ft', pt.get('how', ''))
+                if not m:
+                    self.assertNotIn('assumed_sqft', pt, (use, key))
+                    continue
+                found += 1
+                receipts, area = (float(g.replace(',', '')) for g in m.groups())
+                self.assertEqual(pt.get('assumed_sqft'), area, (use, key))
+                self.assertAlmostEqual(pt['v'], receipts / area, delta=0.006 * pt['v'], msg=(use, key))
+        self.assertGreaterEqual(found, 3)
+        for use in ('shop', 'services'):
+            ch = self.out['formats'][use]['check']
+            self.assertEqual(ch['verdict'], 'covers')
+            self.assertLess(ch['assumed_sqft'], ch['covers_up_to_sqft'])
+            self.assertLess(ch['covers_up_to_sqft'], ch['does_not_cover_from_sqft'])
+            self.assertTrue(any('assumed' in f for f in self.out['formats'][use]['flags']), use)
+
+    def test_a_use_with_one_or_two_listings_says_how_much_of_its_gap_is_kept(self):
+        for f, rec in self.out['formats'].items():
+            if rec.get('n_listings') in (1, 2) and rec['asking']['basis'] == 'own listings':
+                self.assertTrue(any('thin evidence' in x and '%' in x for x in rec['flags']), f)
+                self.assertNotIn('mostly pulled back', ' '.join(rec['flags']))
 
     def test_sales_check_is_a_flag(self):
         self.assertEqual(E.sales_check(20.0, 23.0, 0.1), 'covers')
@@ -217,6 +247,22 @@ class TestModel(unittest.TestCase):
         self.assertGreaterEqual(h['widen'], 1.0)
         self.assertEqual(h['nominal_hits'] + h['below'] + h['above'], h['n'])
         self.assertLessEqual(h['nominal_ci95'][0], h['nominal_cover'])
+
+    def test_the_estimators_that_were_tried_are_compared_on_the_same_listings(self):
+        """The model card says no estimator that was tried gives a better range than the engine as built. If a change
+        to the library makes that false, this fails: read the comparison again and rewrite the card."""
+        h = jload()['holdout']
+        tried = h['alternatives']
+        self.assertEqual([x['estimator'] for x in tried][0], 'as built')
+        self.assertEqual(len(tried), 6)
+        built = tried[0]
+        self.assertEqual((built['rows'], built['inside_plain_range'], built['widen'], built['interval_score']),
+                         (h['n'], h['nominal_hits'], h['widen'], h['interval_score_model']))
+        for x in tried[1:]:
+            self.assertEqual(x['rows'], built['rows'], x['estimator'])
+            self.assertGreater(x['interval_score'], built['interval_score'], x['estimator'])
+        # dropping every multiplier is clearly worse on the middle figure too
+        self.assertGreater(tried[-1]['log_rmse'], built['log_rmse'] + 0.05)
 
 
 class TestWords(unittest.TestCase):

@@ -42,29 +42,30 @@ The empty storefronts: 2920, 2930, 2932, 2934, 2942, 2946, 2958, 3010, 3011, 301
 
 ## The score
 
-Weights agreed with the sponsor on 9 November 2026: heritage 35, room on the block 20, size 15, community 10, neighbours 10, precedents 10. Read from the built page by `team/explorer/page_numbers.py`.
+Default weights since 24 November 2026: heritage 44, room on the block 25, size 19, neighbours 12; community 0 and precedents 0. The six weights agreed with the sponsor on 9 November 2026 (35 / 20 / 15 / 10 / 10 / 10) are a preset on the page; the sponsor has still to confirm the new default. Read from the built page by `team/explorer/page_numbers.py`.
 
 | | Number |
 |---|---|
-| A building with no record at all scores, for a cafe or restaurant | 63 of 100 |
-| Storefronts whose top candidate is a cafe or restaurant | 46 of 62 (12 of the 24 empty) |
-| The same with the heritage weight at zero | 54 of 62; the top candidate changes on 14 |
+| A building with no record at all scores, for a cafe or restaurant | 54 of 100, 6 more than for a shop (63 and 15 more with the weights of 9 November) |
+| Storefronts whose top candidate is a cafe or restaurant | 29 of 62 (7 of the 24 empty) |
+| The same with the heritage weight at zero | 13 of 62; the top candidate changes on 46 |
 | Precedent input for a cafe or restaurant, lowest and highest across the storefronts (0 to 100) | 54 to 100; for a showroom 0 to 0 |
 | Community input for a cafe or restaurant, the same at every storefront | 100 |
-| The same without community and precedents | 32 of 62; the top candidate changes on 19 (8 of the empty) |
-| Top candidate changes when today's tenant is counted as history (the page until 21 November 2026) | 4 of 62 |
-| Top candidate changes when only the firmest records count | 2 of 62 |
-| Top candidates that rest on two kinds of source at the address / one kind / inference only / no record of the use there | 39 / 5 / 1 / 17 |
-| Top candidates that score no higher than at a building with no record | 6 |
+| The same with the six weights agreed on 9 November (community and precedents back in) | 42 of 62 (11 of the empty); the top candidate changes on 19 (10 of the empty) |
+| Top candidate changes when today's tenant is counted as history (as the page did until 21 November 2026) | 4 of 62 |
+| Top candidate changes when only the firmest records count | 13 of 62 |
+| Top candidate changes when the size input reads the whole building, not the ground floor (as the page did until 24 November 2026) | 7 of 62 (4 of the empty) |
+| Top candidates that rest on two kinds of source at the address / one kind / inference only / no record of the use there | 43 / 8 / 2 / 9 |
+| Top candidates that score no higher than at a building with no record | 0 |
 
 ## The plan for the empty storefronts
 
 | | Number |
 |---|---|
 | Sheets | 24 |
-| Candidate uses | 10 cafe, 6 services, 3 shop, 2 office, 1 showroom, 1 studio, 1 workshop |
-| Fit, on average | 72 of 100, +19 over a building with no record |
-| Candidates resting on two kinds of source / one / inference only / no record of the use there | 14 / 2 / 0 / 8 |
+| Candidate uses | 8 cafe, 5 office, 4 services, 3 studio, 2 shop, 1 showroom, 1 workshop |
+| Fit, on average | 74 of 100, +25 over a building with no record |
+| Candidates resting on two kinds of source / one / inference only / no record of the use there | 15 / 4 / 0 / 5 |
 | Ground floor of the 24 buildings, estimated | 57,133 sq ft (at most 70,926; the whole buildings are 82,606) |
 | Ground floors to measure first | 3 of 24 |
 | **What the spaces rent for, a year** | **$538,200 in the low case**; $937,600 in the middle; $1,633,500 high |
@@ -81,6 +82,8 @@ The rent is for the space, from listed rents on this corridor, and is the same w
 | Rent level on Waverly's corridor, per sq ft a year, before taxes and insurance | $9.33 low, $16.22 middle, $28.22 high | the same |
 | Held-out rents inside the range | 48 of 59 (the range is widened ×1.26; 41 before widening) | the same |
 | Sales check, use by use | cafe: too close to call; counter: too close to call; tavern: too close to call; shop: covers; showroom: does not cover; bike: covers; services: covers; fitness: covers | the same |
+| Where the sales check rests on a floor area the team assumed | shop: 2,000 sq ft assumed; reads "covers" up to about 3,050 and "does not cover" from about 3,640 (usual size 900 to 2,500); services: 1,250 sq ft assumed; reads "covers" up to about 1,530 and "does not cover" from about 1,830 (usual size 900 to 1,600) | the same |
+| Estimators tried on the same held-out rents: error of the middle figure in logs, then the score of the range (lower is better on both) | as built: 0.437, 30.1; each use's multiplier estimated against its corridor's level: 0.457, 33.3; multipliers not shrunk (raw averages): 0.435, 30.7; a multiplier only from two listings up: 0.506, 32.7; a multiplier only from three listings up: 0.552, 36.9; no multipliers by use: 0.572, 38.4 | the same |
 | Library rows checked against their source by a person | 0 of 318 | `verified_by` in `team/comps/library/` |
 
 ## The back-test

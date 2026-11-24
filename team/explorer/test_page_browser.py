@@ -9,7 +9,8 @@ What it guards (the sponsor's review of 17 November 2026):
   - every empty storefront shows candidates with their evidence, and a rent for the space with the low case first;
   - the plan has one sheet per empty storefront, never one for a building in use, and never more than three of a kind
     on a block side unless the street already has them;
-  - the saved numbers the documents quote (out/page_numbers.json) are what the page gives today.
+  - the saved numbers the documents quote (out/page_numbers.json) are what the page gives today;
+  - no broken number when a reader marks every storefront empty or in use, and nothing past the edge of a phone screen.
 """
 import json
 import os
@@ -157,6 +158,43 @@ class TestPage(unittest.TestCase):
         self.page.click('#panel [data-vac="reset"]')
         self.assertEqual(self.page.evaluate('window.__ptu().plan.sheets'), 24)
         self.assertIsNone(DOLLARS.search(self.page.inner_text('#panel')))
+
+    def test_8_no_broken_number_when_a_reader_marks_every_storefront_empty_or_in_use(self):
+        """With no storefront left in use, today's share of every use is 0 of 0. The page once showed "NaN" there."""
+        shops = [p['id'] for p in self.props if p['availability'] != 'house']
+        for mark in ('empty', 'occupied'):
+            page = self.browser.new_context(viewport={'width': 1440, 'height': 900}).new_page()
+            page.route('**/*', lambda r: r.continue_() if r.request.url.startswith('file:') else r.abort())
+            errors = []
+            page.on('pageerror', lambda e: errors.append(str(e)))
+            page.add_init_script('localStorage.setItem("gm-empty-v1", %s)' % json.dumps(json.dumps({'set': 'team', 'marks': {i: mark for i in shops}})))
+            page.goto('file://' + os.path.join(HERE, 'index.html'))
+            page.wait_for_function('typeof window.__ptu === "function"')
+            n = page.evaluate('window.__ptu()')
+            self.assertEqual((n['empty'], n['plan']['sheets']), (62, 62) if mark == 'empty' else (0, 0))
+            for v in 'bpmwcer':
+                page.click(f'#tabs button[data-v="{v}"]')
+                page.evaluate('document.querySelectorAll("details").forEach(d => { d.open = true; })')
+                self.assertNotRegex(page.inner_text('body'), r'\b(NaN|undefined|Infinity)\b', (mark, v))
+            self.assertEqual(errors, [], mark)
+            page.context.close()
+
+    def test_9_nothing_runs_past_the_edge_of_a_phone_screen(self):
+        """At 360 px no tab is wider than the screen, and no text sticks out of it (the page clips what does)."""
+        page = self.browser.new_context(viewport={'width': 360, 'height': 800}).new_page()
+        page.route('**/*', lambda r: r.continue_() if r.request.url.startswith('file:') else r.abort())
+        page.goto('file://' + os.path.join(HERE, 'index.html'))
+        page.wait_for_function('typeof window.__ptu === "function"')
+        for v in 'bpmwcer':
+            page.click(f'#tabs button[data-v="{v}"]')
+            page.wait_for_timeout(150)
+            out = page.evaluate("""() => { const W = document.documentElement.clientWidth, out = [];
+                document.querySelectorAll('body *').forEach(e => { const r = e.getBoundingClientRect(); if (!r.width || r.right <= W + 1) return;
+                  for (let q = e.parentElement; q && q !== document.body; q = q.parentElement) if (/(auto|scroll)/.test(getComputedStyle(q).overflowX)) return;
+                  out.push((e.id || e.className || e.tagName) + ': ' + (e.textContent || '').trim().slice(0, 50)); });
+                return [document.documentElement.scrollWidth - W, out.slice(0, 3)]; }""")
+            self.assertEqual(out, [0, []], v)
+        page.context.close()
 
 
 if __name__ == '__main__':

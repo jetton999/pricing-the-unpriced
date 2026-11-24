@@ -6,7 +6,7 @@
 
 The score and the plan are computed in the page's own script, so the only honest way to quote them is to ask the page.
 This opens team/explorer/index.html in a headless browser and calls its test hook, window.__ptu(), which reruns the
-ranking from the agreed weights whatever the sliders say. Needs Playwright for Python (pip install playwright, then
+ranking from the default weights whatever the sliders say. Needs Playwright for Python (pip install playwright, then
 playwright install chromium); nothing else in the repo does. team/numbers_of_record.py reads the saved file.
 """
 import json

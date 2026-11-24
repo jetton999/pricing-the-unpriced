@@ -4,10 +4,12 @@ Each test is one finding of the sponsor's review of 17 November 2026, written so
 which storefronts are empty, what counts as history, one business counted once, the floor area behind a rent figure,
 no figure that ranks uses by money, and no statement about the sponsor. test_page_browser.py checks what a reader sees.
 """
+import ast
 import collections
 import csv
 import hashlib
 import json
+import math
 import os
 import re
 import sys
@@ -35,6 +37,12 @@ def rows(*parts):
 def page_data():
     m = re.search(r'<script id="data" type="application/json">(.*?)</script>', read('team', 'explorer', 'index.html'), re.S)
     return json.loads(m.group(1).replace('<\\/', '</'))
+
+
+def source_kinds():
+    """The build's map from a source to its kind, read from the build script's text without running it."""
+    m = re.search(r'^FAMILY = (\{.*?\})$', read('team', 'explorer', 'build_explorer.py'), re.S | re.M)
+    return ast.literal_eval(m.group(1))
 
 
 class TestWhichStorefrontsAreEmpty(unittest.TestCase):
@@ -84,6 +92,7 @@ class TestHistory(unittest.TestCase):
         """Heritage is rebuilt here from the evidence file with the 2026 tenant check left out, and must equal the page's."""
         generic = 'store building (generic)'
         summary = lambda e: e['source'].startswith('sponsor') and e['text'].startswith('Built ca') and 'B-5229' in e['text']
+        kind = source_kinds()
         g = collections.defaultdict(lambda: collections.defaultdict(list))
         for e in self.ev:
             if e['source'] == 'current_2026' or e['kind'] == 'current' or summary(e):
@@ -91,8 +100,22 @@ class TestHistory(unittest.TestCase):
             if e['use_category'] and e['year'] and e['use_subcategory'] != generic and e['use_category'] != 'vacant':
                 g[e['property_id']][e['use_category']].append(e)
         for p in self.P:
-            want = {c: [len({int(r['decade']) for r in rs}), len(rs), len({r['source'].split(':')[0] for r in rs})] for c, rs in g[p['id']].items()}
+            want = {c: [len({int(r['decade']) for r in rs}), len(rs), len({kind[r['source']] for r in rs})] for c, rs in g[p['id']].items()}
             self.assertEqual({c: v[:3] for c, v in p['h'].items()}, want, p['address'])
+
+    def test_a_copy_of_a_source_is_not_a_second_source(self):
+        """A sponsor record that transcribes a directory, a register entry or a city file is the same kind as its original."""
+        kind = source_kinds()
+        for copy, original in (('sponsor:polk', 'polk_directory'), ('sponsor:census_directory', 'polk_directory'),
+                               ('sponsor:nrhp', 'nr_inventory'), ('sponsor:bca_dhcd', 'dhcd_1970s')):
+            self.assertEqual(kind[copy], kind[original], copy)
+        self.assertEqual({e['source'] for e in self.ev if e['source'] != 'current_2026' and e['kind'] != 'current'} - set(kind), set())
+        # the firmest records are some of the records, so they cannot come from more kinds of source than all of them
+        for p in self.P:
+            for c, q in p['hq'].items():
+                self.assertLessEqual(len(q['fams']), p['h'][c][2], (p['address'], c))
+                if c in p['hs']:
+                    self.assertEqual(p['hs'][c][2], len(q['fams']), (p['address'], c))
 
     def test_the_old_reading_is_kept_only_for_comparison(self):
         differ = [p for p in self.P if p['h0']]
@@ -154,6 +177,42 @@ class TestCounting(unittest.TestCase):
             if p['gf_note'] == 'outline may be partial':
                 self.assertLess(p['gf'], 0.5 * p['gf_hi'], p['address'])
         self.assertGreater(notes['outline'], 40)
+
+    def test_the_size_input_reads_the_ground_floor(self):
+        """A storefront use takes the ground floor, so the size input of every top candidate is rebuilt here from the
+        estimated ground floor (the mean of the fit at the estimate and at its upper bound where the outline may be
+        partial) and must equal the page's. Until 24 November 2026 the page read the whole building."""
+        def fit(x, lo, hi):
+            return 1.0 if lo <= x <= hi else max(0.0, 1 - math.log(lo / x if x < lo else x / hi) / math.log(3))
+
+        def size_at(x, lo, hi, units):
+            v = fit(x, lo, hi)
+            if x >= 2500:
+                v = max(v, 0.85 * fit(x / 2, lo, hi))
+            if x >= 4000:
+                v = max(v, 0.8 * fit(x / 3, lo, hi))
+            n = 4
+            while n <= units and x / n >= lo:
+                v, n = max(v, 0.8 * fit(x / n, lo, hi)), n + 1
+            return v
+        usual = {f['id']: f['size'] for f in self.D['formats']}
+        usual.update({k: [z['low'], z['high']] for k, z in self.D['sizes']['formats'].items() if z.get('low') and z.get('high')})
+        with open(os.path.join(HERE, 'out', 'page_numbers.json'), encoding='utf-8') as fh:
+            tops = json.load(fh)['top_candidates']
+        whole_differs = 0
+        for p in self.P:
+            t = tops.get(p['address'])
+            if not t:
+                continue
+            lo, hi = usual[t['use']]
+            units = 12 if t['use'] in ('studio', 'office') else 3
+            want = size_at(p['gf'], lo, hi, units)
+            if p['gf_note'] == 'outline may be partial':
+                want = (want + size_at(p['gf_hi'], lo, hi, units)) / 2
+            self.assertEqual(t['size'], int(math.floor(100 * want + 0.5)), p['address'])
+            whole_differs += round(100 * size_at(p['sqft'], lo, hi, units)) != t['size']
+        self.assertEqual(len(tops), 62)
+        self.assertGreater(whole_differs, 5)       # the two readings are not the same thing
 
     def test_no_rent_figure_is_stored_for_any_building(self):
         """Rent is worked out on the page from one corridor level; the data carries no per-building dollar estimate."""

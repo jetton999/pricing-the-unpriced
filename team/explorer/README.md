@@ -1,4 +1,4 @@
-# Greenmount frontage explorer (working draft, 21 November 2026)
+# Greenmount frontage explorer (working draft, 24 November 2026)
 
 For each of the <!--=frontage.parcels-->69<!--/--> frontage parcels on Greenmount Ave, E 29th to E 33rd St, one page shows:
 
@@ -33,23 +33,37 @@ the CSV.
 | Money | **What a space rents for.** The rent level on Waverly's corridor from listed rents, and each empty storefront's rent at its estimated ground floor. The figure is for the space and is the same whatever the use.<br>**Use by use.** The listed rent for each use and a sales check: at typical sales, does a business of this kind cover that rent (covers, does not cover, or too close to call). The check is a flag. It never changes a rent figure and nothing is ranked by it.<br>**Folded.** The full table, the trail from each figure to its source rows, other corridors, the held-out check and what moves the numbers.<br>**Why no dollar figure rests on history.** The rule agreed with the sponsor and the test result. |
 | Who it is for | Seven customer groups: who they are, what they need from a building, what stops them, the programmes that help, and the empty storefronts that fit each group. |
 | Comps | **Three levels.** Buildings like this one (<!--=library.reuse_buildings-->32<!--/--> reuse cases), streets like Greenmount (<!--=library.corridors-->22<!--/--> corridors) and neighbourhoods like Waverly (<!--=library.benchmark_neighbourhoods-->8<!--/--> benchmark neighbourhoods), each with sources. |
-| Evidence and method | **Weights.** One pie that always adds to 100%, and five presets. **How much of each score is the building.** A table of the ranking with the heritage weight at zero, without the two inputs that are the same for every building, with only the firmest records, and with today's tenant counted as history.<br>**Back-test.** The corrected result, kind of use by kind of use, with one parcel left out at a time, and on blocks the model had not seen.<br>**Also:** the extractor check, the rules with their citation, the community and neighbour layers, retail in seven trades, and the known limits. |
+| Evidence and method | **Weights.** One pie that always adds to 100%, and five presets. **How much of each score is the building.** A table of the ranking with the six weights agreed on 9 November, with the heritage weight at zero, with only the firmest records, with today's tenant counted as history, and with the whole building as the size.<br>**Back-test.** The corrected result, kind of use by kind of use, with one parcel left out at a time, and on blocks the model had not seen.<br>**Also:** the extractor check, the rules with their citation, the community and neighbour layers, retail in seven trades, and the known limits. |
 | Roadmap | The road to the final deliverable, with what is done and what is not. |
 
 ## The score in one paragraph
 
-Six inputs with the weights agreed with the sponsor on 9 November 2026: heritage <!--=score.weights_agreed_9_nov_2026.h-->35<!--/-->,
-room on the block <!--=score.weights_agreed_9_nov_2026.s-->20<!--/-->, size <!--=score.weights_agreed_9_nov_2026.f-->15<!--/-->, community
-<!--=score.weights_agreed_9_nov_2026.c-->10<!--/-->, neighbours <!--=score.weights_agreed_9_nov_2026.a-->10<!--/-->, precedents
-<!--=score.weights_agreed_9_nov_2026.k-->10<!--/-->. Community is the same for every building, and precedents come from a hand-picked library of reuse cases in which
-<!--=library.cases_with_a_cafe-->20<!--/--> of <!--=library.reuse_buildings-->32<!--/--> include a cafe or restaurant, so a building with no record at all still scores <!--=score.a_building_with_no_record_scores.cafe-->63<!--/--> of 100 for a cafe or restaurant. That is why
-a cafe is the top candidate on <!--=score.top_candidate_is_a_cafe.of_storefronts-->46<!--/--> of the <!--=frontage.storefronts-->62<!--/-->
-storefronts (<!--=score.top_candidate_is_a_cafe.of_empty-->12<!--/--> of the <!--=frontage.empty-->24<!--/--> empty ones), and on
-<!--=score.if_heritage_weight_is_zero.cafe_top-->54<!--/--> with the heritage weight at zero. Without those two inputs it is the top
-candidate on <!--=score.without_community_and_precedents.cafe_top-->32<!--/-->. The page therefore shows every score next to its
-lift over a building with no record, and offers the ranking without the two inputs as the preset "Building evidence
-only". Whether that preset becomes the default is a decision for the team and the sponsor; `MODEL_CARD.md` has the
-table.
+Six inputs. Since <!--=score.default_since-->24 November 2026<!--/--> four of them carry all the weight by default (score v0.5): heritage
+<!--=score.default_weights.h-->44<!--/-->, room on the block <!--=score.default_weights.s-->25<!--/-->, size <!--=score.default_weights.f-->19<!--/--> and neighbours
+<!--=score.default_weights.a-->12<!--/-->. These are the proportions agreed with the sponsor on 9 November 2026, with community and
+precedents at <!--=score.default_weights.c-->0<!--/-->. Neither of the two comes from the building: community is the same number at every
+storefront, and precedents come from a hand-picked library of reuse cases in which <!--=library.cases_with_a_cafe-->20<!--/--> of
+<!--=library.reuse_buildings-->32<!--/--> include a cafe or restaurant, so the precedent input for a cafe runs from
+<!--=score.inputs_by_use.cafe.precedents.0-->54<!--/--> to <!--=score.inputs_by_use.cafe.precedents.1-->100<!--/--> of 100 across the storefronts and is
+<!--=score.inputs_by_use.showroom.precedents.1-->0<!--/--> for a showroom at every one.
+With the six weights of 9 November (<!--=score.weights_agreed_9_nov_2026.h-->35<!--/--> / <!--=score.weights_agreed_9_nov_2026.s-->20<!--/--> /
+<!--=score.weights_agreed_9_nov_2026.f-->15<!--/--> / <!--=score.weights_agreed_9_nov_2026.c-->10<!--/--> / <!--=score.weights_agreed_9_nov_2026.a-->10<!--/--> /
+<!--=score.weights_agreed_9_nov_2026.k-->10<!--/-->) a cafe is the top candidate on <!--=score.with_the_weights_agreed_9_nov.cafe_top-->42<!--/--> of the
+<!--=frontage.storefronts-->62<!--/--> storefronts; with the default it is on <!--=score.top_candidate_is_a_cafe.of_storefronts-->29<!--/-->
+(<!--=score.top_candidate_is_a_cafe.of_empty-->7<!--/--> of the <!--=frontage.empty-->24<!--/--> empty ones), and the top candidate differs on
+<!--=score.with_the_weights_agreed_9_nov.top_candidate_changes-->19<!--/--> (<!--=score.with_the_weights_agreed_9_nov.of_empty-->10<!--/--> empty).
+
+The set of 9 November stays on the page as the preset "Agreed on 9 November", and the Evidence tab shows the two
+rankings side by side. **The sponsor has still to confirm the new default.** A building with no record at all still
+scores <!--=score.a_building_with_no_record_scores.cafe-->54<!--/--> of 100 for a cafe or restaurant and
+<!--=score.a_building_with_no_record_scores.shop-->48<!--/--> for a shop, from the street's record and the room on the block, so the page
+shows every score next to its lift over such a building. `MODEL_CARD.md` has the table.
+
+Also since 24 November 2026, the size input reads the estimated ground floor, as the rent does, and no longer the
+floor area of the whole building: a storefront use takes the ground floor. With the whole building the top candidate
+differs on <!--=score.with_the_whole_building_as_the_size.top_candidate_changes-->7<!--/--> storefronts
+(<!--=score.with_the_whole_building_as_the_size.of_empty-->4<!--/--> empty). The history input counts independent kinds of source, so a
+copy of a directory is not a second source.
 
 ## Rebuild
 
@@ -74,8 +88,8 @@ python3 -m unittest team/explorer/test_explorer_data.py team/explorer/test_page_
 | `retail_types.json`, `typical_sqft.json` | Seven retail trades and the typical floor area of 20 uses, every claim with its source |
 | `research/` | The desk research of 26 October 2026 merged into `library.json`, and the script that merged it |
 | `test_explorer_data.py` | Sources, the neighbourhood arithmetic and the no-brand-names rule |
-| `test_page_rules.py` | The empty list, houses, history without today's tenant, the evidence grades, one business counted once, ground floors, no stored rent on a building in use, nothing ranked by money, and the statements removed after the sponsor's review |
-| `test_page_browser.py` | What a reader sees: no dollar figure and no recommendation on a building in use or a house, candidates with evidence and the low case first on every empty storefront, one sheet per empty storefront, the cap |
+| `test_page_rules.py` | The empty list, houses, history without today's tenant, a copy of a source not counted as a second source, the evidence grades, one business counted once, ground floors, the size input rebuilt from the ground floor, no stored rent on a building in use, nothing ranked by money, and the statements removed after the sponsor's review |
+| `test_page_browser.py` | What a reader sees: no dollar figure and no recommendation on a building in use or a house, candidates with evidence and the low case first on every empty storefront, one sheet per empty storefront, the cap, no broken number when every storefront is marked empty or in use, and nothing past the edge of a phone screen |
 | `DISPLACEMENT.md` | What the displacement rating measures and how it could be used in planning |
 | `MODEL_CARD.md` | What the page is for, what it must not be used for, how it was checked and where it fails |
 | `index.html` | The built page (generated; do not edit by hand) |
@@ -120,7 +134,10 @@ The page lists them under "Evidence and method", and `MODEL_CARD.md` explains th
   were not used to build the references.
 - **The score has not been tested as a whole.** The back-test asks whether history predicts use. It does not test
   the candidates the score puts first.
-- **Ground floors are estimates** from building outlines, because the export records whole buildings only.
+- **Ground floors are estimates** from building outlines, because the export records whole buildings only. The size
+  input and the rent both read them.
+- **The default weights have still to be confirmed by the sponsor.** Community and precedents are switched off, not
+  fixed.
 
 ## AI use
 
