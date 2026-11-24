@@ -53,6 +53,13 @@ class TestRows(unittest.TestCase):
                 self.assertRegex(x['accessed_on'], r'^\d{4}-\d{2}-\d{2}$', x['row_id'])
 
 
+    def test_no_brokers_names_in_notes(self):
+        # team rule: no private individuals' names in the public repo; a listing's broker is named by firm only
+        pat = re.compile(r"\b[Bb]rokers? [A-Z][\w'.-]+ [A-Z][\w'.-]+,|\((?:[A-Z]\. [A-Z][a-z]+(?:, )?)+\)")
+        for name in ('rents.csv', 'benchmarks.csv', 'operators.csv'):
+            for x in E.read_csv(name):
+                self.assertIsNone(pat.search(x.get('notes') or ''), x['row_id'])
+
     def test_filters(self):
         self.assertFalse(any(d['fmt'] == 'housing' for d in self.rows))
         self.assertFalse(any(d['sqft'] is not None and d['sqft'] < 300 for d in self.rows))
