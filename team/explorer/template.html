@@ -7,30 +7,32 @@
 /* Layout: a municipal ledger. A long north-pointing strip map of the block faces on top,
    then a decade-by-decade use ledger beside a property card, then the then/now mix and the full table. */
 :root {
-  --bg: #f3f5f4; --surface: #fcfcfb; --ink: #13202c; --ink-2: #4a5661; --muted: #7d8791;
+  --bg: #f3f5f4; --surface: #fcfcfb; --ink: #13202c; --ink-2: #4a5661; --muted: #616b75;
   --rule: #dde2e1; --rule-2: #c5cccb; --accent: #1c5cab; --accent-soft: #e3ecf8; --hi: #13202c;
   --c-retail: #2a78d6; --c-food: #eb6834; --c-pers: #1baf7a; --c-auto: #eda100; --c-ent: #e87ba4;
   --c-inst: #008300; --c-off: #6250d6; --c-prod: #e34948; --c-res: #b9bdb8; --c-none: #eef1f0;
   --w-h: #2a78d6; --w-s: #eb6834; --w-f: #1baf7a; --w-c: #eda100; --w-a: #e87ba4; --w-k: #008300;
   --good: #0ca30c; --warn: #b77800;
+  /* the same three states as text: dark enough to read at 10 to 12 px on every surface (4.5 to 1 or better) */
+  --good-ink: #087808; --warn-ink: #885900; --bad-ink: #b92a29;
   --f-display: "Barlow Condensed", "Arial Narrow", "Roboto Condensed", sans-serif;
   --f-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
   --f-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
 }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
-  --bg: #0f1215; --surface: #171b1f; --ink: #eef1f2; --ink-2: #b7c0c7; --muted: #87909a;
+  --bg: #0f1215; --surface: #171b1f; --ink: #eef1f2; --ink-2: #b7c0c7; --muted: #8f98a2;
   --rule: #262c31; --rule-2: #353d43; --accent: #6da7ec; --accent-soft: #1b2a3d; --hi: #eef1f2;
   --c-retail: #3987e5; --c-food: #d95926; --c-pers: #199e70; --c-auto: #c98500; --c-ent: #d55181;
   --c-inst: #008300; --c-off: #9085e9; --c-prod: #e66767; --c-res: #4d5459; --c-none: #1e2327;
   --w-h: #3987e5; --w-s: #d95926; --w-f: #199e70; --w-c: #c98500; --w-a: #d55181; --w-k: #008300;
-  --good: #0ca30c; --warn: #e0a020; color-scheme: dark; } }
+  --good: #0ca30c; --warn: #e0a020; --good-ink: #2fb82f; --warn-ink: #e0a020; --bad-ink: #ea7474; color-scheme: dark; } }
 :root[data-theme="dark"] {
-  --bg: #0f1215; --surface: #171b1f; --ink: #eef1f2; --ink-2: #b7c0c7; --muted: #87909a;
+  --bg: #0f1215; --surface: #171b1f; --ink: #eef1f2; --ink-2: #b7c0c7; --muted: #8f98a2;
   --rule: #262c31; --rule-2: #353d43; --accent: #6da7ec; --accent-soft: #1b2a3d; --hi: #eef1f2;
   --c-retail: #3987e5; --c-food: #d95926; --c-pers: #199e70; --c-auto: #c98500; --c-ent: #d55181;
   --c-inst: #008300; --c-off: #9085e9; --c-prod: #e66767; --c-res: #4d5459; --c-none: #1e2327;
   --w-h: #3987e5; --w-s: #d95926; --w-f: #199e70; --w-c: #c98500; --w-a: #d55181; --w-k: #008300;
-  --good: #0ca30c; --warn: #e0a020; color-scheme: dark; }
+  --good: #0ca30c; --warn: #e0a020; --good-ink: #2fb82f; --warn-ink: #e0a020; --bad-ink: #ea7474; color-scheme: dark; }
 body { background: var(--bg); color: var(--ink); font-family: var(--f-body); font-size: 15px; line-height: 1.5; }
 .wrap { max-width: 1240px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 28px 64px; display: grid; gap: 28px; }
 header { display: grid; gap: 8px; }
@@ -148,8 +150,8 @@ details summary { cursor: pointer; font-weight: 600; }
 .fit { list-style: none; margin: 0; padding: 0; display: grid; gap: 7px; font-size: 13px; }
 .fit li { display: grid; grid-template-columns: 58px minmax(0, 1fr); gap: 10px; align-items: start; }
 .tag { font-family: var(--f-mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: .05em; padding: 1px 6px; border-radius: 4px; text-align: center; border: 1px solid var(--rule-2); color: var(--ink-2); white-space: nowrap; }
-.tag.yes { border-color: var(--good); color: var(--good); }
-.tag.partly, .tag.check { border-color: var(--warn); color: var(--warn); }
+.tag.yes { border-color: var(--good); color: var(--good-ink); }
+.tag.partly, .tag.check { border-color: var(--warn); color: var(--warn-ink); }
 .ideas { display: grid; gap: 8px; }
 .idea { border: 1px solid var(--rule); border-radius: 6px; padding: 10px 12px; display: grid; gap: 4px; }
 .idea.lead { border-color: var(--ink-2); box-shadow: inset 3px 0 0 var(--ink); }
@@ -180,8 +182,8 @@ details summary { cursor: pointer; font-weight: 600; }
 .flow li.next { border-style: dashed; background: transparent; }
 .flow li.computed { background: var(--bg); }
 .st { font-family: var(--f-mono); font-size: 10px; text-transform: uppercase; letter-spacing: .05em; justify-self: start; padding: 0 5px; border-radius: 3px; border: 1px solid var(--rule-2); }
-.st.computed, .st.done { color: var(--good); border-color: var(--good); }
-.st.hand, .st.demo { color: var(--warn); border-color: var(--warn); }
+.st.computed, .st.done { color: var(--good-ink); border-color: var(--good); }
+.st.hand, .st.demo { color: var(--warn-ink); border-color: var(--warn); }
 .st.next, .st.later { color: var(--muted); border-style: dashed; }
 .wbox { border: 1px solid var(--rule); border-radius: 8px; padding: 14px; display: grid; gap: 10px; align-content: start; min-width: 0; }
 .wrow { display: grid; grid-template-columns: 140px minmax(0, 1fr) 44px; gap: 10px; align-items: center; font-size: 13px; }
@@ -200,7 +202,7 @@ details summary { cursor: pointer; font-weight: 600; }
 .cand .u .sc { margin-left: auto; font-family: var(--f-mono); font-weight: 500; font-size: 13px; }
 .cand .w b { color: var(--ink); font-weight: 500; }
 .pol { font-family: var(--f-mono); font-size: 10.5px; padding: 0 5px; border-radius: 3px; border: 1px solid var(--rule-2); color: var(--ink-2); font-weight: 400; }
-.pol.cb { color: var(--warn); border-color: var(--warn); }
+.pol.cb { color: var(--warn-ink); border-color: var(--warn); }
 .nogo { font-size: 13px; color: var(--ink-2); border-left: 3px solid var(--c-prod); padding: 2px 0 2px 10px; }
 .btt { width: 100%; border-collapse: collapse; font-size: 12.5px; }
 .btt td, .btt th { padding: 4px 6px; border-bottom: 1px solid var(--rule); text-align: left; }
@@ -218,8 +220,8 @@ details summary { cursor: pointer; font-weight: 600; }
 .mixline { display: flex; flex-wrap: wrap; gap: 4px; font-size: 12px; }
 .mixline .mc { display: inline-flex; gap: 4px; align-items: center; padding: 1px 6px; border-radius: 999px; border: 1px solid var(--rule-2); }
 .mixline .mc.up { border-color: var(--accent); }
-.mixline .mc.full { border-color: var(--c-prod); color: var(--c-prod); }
-.warn { font-size: 12.5px; color: var(--c-prod); }
+.mixline .mc.full { border-color: var(--c-prod); color: var(--bad-ink); }
+.warn { font-size: 12.5px; color: var(--bad-ink); }
 .miles { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0; border-top: 2px solid var(--rule-2); margin-top: 6px; }
 .mile { padding: 12px 12px 4px 0; position: relative; display: grid; gap: 4px; align-content: start; font-size: 13px; color: var(--ink-2); }
 .mile::before { content: ""; position: absolute; top: -7px; left: 0; width: 12px; height: 12px; border-radius: 50%; background: var(--surface); border: 2px solid var(--ink-2); }
@@ -380,6 +382,8 @@ details.ifempty > summary .small { font-weight: 400; margin-left: 4px; }
 .rtrack .af, .rkey .af { width: 9px; height: 9px; border-radius: 50%; border: 2px solid var(--accent); background: var(--surface); box-sizing: border-box; }
 .rtrack .af { position: absolute; top: 4.5px; margin-left: -4.5px; width: 10px; height: 10px; }
 .rkey { display: inline-flex; gap: 6px; align-items: center; margin-right: 16px; white-space: nowrap; } .rkey i { display: inline-block; } .rkey .ln { width: 22px; }
+/* a long pill or key label wraps on a phone rather than run past the edge of the screen */
+@media (max-width: 560px) { .pill, .rkey { white-space: normal; max-width: 100%; } .pill { border-radius: 12px; } .pill::before, .rkey i { flex: none; } }
 .meter { display: inline-block; width: 52px; height: 8px; border-radius: 4px; background: var(--rule); overflow: hidden; flex: none; }
 .meter i { display: block; height: 100%; background: var(--accent); border-radius: 4px; }
 @media (max-width: 900px) {
@@ -429,7 +433,8 @@ details.vacbox > summary .small { font-weight: 400; }
 .sheet dl { grid-template-columns: 78px minmax(0, 1fr); }
 .rrow2 .pay .pill { white-space: normal; }
 @media print {
-  :root, :root:not([data-theme="light"]), :root[data-theme="dark"] { --bg: #fff; --surface: #fff; --ink: #13202c; --ink-2: #4a5661; --muted: #7d8791; --rule: #dde2e1; --rule-2: #c5cccb; --accent: #1c5cab; --accent-soft: #e3ecf8; --hi: #13202c;
+  :root, :root:not([data-theme="light"]), :root[data-theme="dark"] { --bg: #fff; --surface: #fff; --ink: #13202c; --ink-2: #4a5661; --muted: #616b75; --rule: #dde2e1; --rule-2: #c5cccb; --accent: #1c5cab; --accent-soft: #e3ecf8; --hi: #13202c;
+    --good: #0ca30c; --warn: #b77800; --good-ink: #087808; --warn-ink: #885900; --bad-ink: #b92a29;
     --c-retail: #2a78d6; --c-food: #eb6834; --c-pers: #1baf7a; --c-auto: #eda100; --c-ent: #e87ba4; --c-inst: #008300; --c-off: #6250d6; --c-prod: #e34948; --c-res: #b9bdb8; --c-none: #eef1f0; color-scheme: light; }
   body { background: #fff; font-size: 12px; }
   .wrap { max-width: none; padding: 0; display: block; }
@@ -454,7 +459,7 @@ details.vacbox > summary .small { font-weight: 400; }
 
 <div class="wrap">
   <header>
-    <div class="eyebrow">Waverly, Baltimore · Greenmount Ave, E 29th to E 33rd St · 21 Nov 2026<span class="xcol"> · extractor v1 · score v0.4 · comps engine v2 · back-test v2 · comps at three levels</span></div>
+    <div class="eyebrow">Waverly, Baltimore · Greenmount Ave, E 29th to E 33rd St · 24 Nov 2026<span class="xcol"> · extractor v1 · score v0.5 · comps engine v2 · back-test v2 · comps at three levels</span></div>
     <h1>Greenmount Frontage Explorer</h1>
     <p class="lede">For every building on the Greenmount frontage, E 29th to E 33rd St: what it was, which uses its record supports, what the space rents for, who each use is for, and whether the mix works as a block. Every answer links to its sources. A working draft: nothing on it has been checked by a second person yet.</p>
     <ol class="start"><li>Pick a building on the map</li><li>Read its candidate uses and the evidence behind each on the right</li><li>See the plan for the empty storefronts in <b>Block plan</b>, and what a space rents for in <b>Money</b></li><li>See who each use is for in <b>Who it is for</b>, and how the building compares in <b>Comps</b></li></ol>
@@ -509,8 +514,8 @@ details.vacbox > summary .small { font-weight: 400; }
   </section>
 
   <section data-view="e" class="card" id="method" aria-labelledby="mh">
-    <div class="bar"><h2 id="mh">How the candidates are scored</h2><span class="small">score v0.4 · change the weights and every view updates</span></div>
-    <p class="lede" style="font-size:14px">After two rule filters, each use is scored on six inputs: heritage, saturation, size, community, neighbours and precedents. Heritage, room, size and neighbours come from the building and its block. Community is the same for every building, and precedents come from a hand-picked library of reuse cases, so neither says much about one building. Change the weights and every view updates.<span class="xcol"><span class="fbonly"> Team and sponsor votes are recorded beside each score; they change it only if you switch that on below.</span> The block plan places uses one at a time under a saturation limit. Rent is kept apart from the score: the comps engine gives the rent level of each space and a sales check for each use.</span> The concepts are written text drafted with AI assistance (Claude) from cited sources, for the team to review.</p>
+    <div class="bar"><h2 id="mh">How the candidates are scored</h2><span class="small">score v0.5 · change the weights and every view updates</span></div>
+    <p class="lede" style="font-size:14px">After two rule filters, each use is scored on six inputs: heritage, saturation, size, community, neighbours and precedents. Heritage, room, size and neighbours come from the building and its block. Community is the same for every building, and precedents come from a hand-picked library of reuse cases, so neither says much about one building: by default they carry no weight. Change the weights and every view updates.<span class="xcol"><span class="fbonly"> Team and sponsor votes are recorded beside each score; they change it only if you switch that on below.</span> The block plan places uses one at a time under a saturation limit. Rent is kept apart from the score: the comps engine gives the rent level of each space and a sales check for each use.</span> The concepts are written text drafted with AI assistance (Claude) from cited sources, for the team to review.</p>
     <ol class="flow" id="flow"></ol>
     <div class="grid2 even">
       <div class="wbox">
@@ -667,7 +672,7 @@ details.vacbox > summary .small { font-weight: 400; }
   const CX = D.concepts || {}, CXO = D.concept_order || [];
   let cxSel = CXO[0];
 
-  // ---------------- score engine (v0.4): six factors after the rule filters
+  // ---------------- score engine (v0.5): six factors after the rule filters; two carry no weight by default
   const L = D.lib || {};
   const AVER = {}; (L.aversion || []).forEach(a => { if (a.format_id) AVER[a.format_id] = a; });
   const EXTRA = [
@@ -686,17 +691,18 @@ details.vacbox > summary .small { font-weight: 400; }
   FMT.forEach(f => { f.av = AVER[f.id] || (f.id === 'tavern' ? AVER.tavern : null); });
   const REQ = {}; (L.requested || []).forEach(r => (r.format_ids || []).forEach(id => { (REQ[id] = REQ[id] || []).push(r); }));
   const MIXC = Object.fromEntries((D.mix || []).map(m => [m.cat, m]));
-  const WT = { h: 35, s: 20, f: 15, c: 10, a: 10, k: 10 };
-  // sponsor sign-offs, by email on 9 November 2026: the default weights and the back-test decision rule
-  const AGREED = { on: '9 November 2026' };
-  // weight presets: the team default is the set agreed with the sponsor; the others are starting points to compare
+  const WT = { h: 44, s: 25, f: 19, c: 0, a: 12, k: 0 };      // the default since 24 November 2026 (score v0.5)
+  // sponsor sign-offs, by email on 9 November 2026: six weights and the back-test decision rule. Since 24 November 2026
+  // the default leaves two of the six out (community and precedents), as the sponsor's review of 17 November asked.
+  const AGREED = { on: '9 November 2026' }, DEFAULT_SINCE = '24 November 2026';
+  // weight presets: the default first, then the set agreed with the sponsor on 9 November, then starting points to compare
   const WPRE = {
-    team: { name: 'Team default', w: { h: 35, s: 20, f: 15, c: 10, a: 10, k: 10 }, note: "The team's weights (score v0.4), agreed with the sponsor on 9 November 2026: history leads, then room on the block and size." },
-    building: { name: 'Building evidence only', w: { h: 44, s: 25, f: 19, c: 0, a: 12, k: 0 }, note: "Without community and precedents, the two inputs that do not come from the building's own record: community is the same for every building, and precedents come from a hand-picked library of reuse cases. The other four keep their proportions (35 : 20 : 15 : 10, rounded). The sponsor's review of 17 November 2026 asked for this. Whether it becomes the default is for the team and the sponsor to decide together." },
+    building: { name: 'Default: building evidence', w: { h: 44, s: 25, f: 19, c: 0, a: 12, k: 0 }, note: "The default since 24 November 2026 (score v0.5). Community and precedents carry no weight, because neither comes from the building's own record: community is the same for every building, and precedents come from a hand-picked library of reuse cases. The other four keep the proportions agreed on 9 November (35 : 20 : 15 : 10, rounded). The sponsor's review of 17 November 2026 asked for this; the sponsor has still to confirm it." },
+    team: { name: 'Agreed on 9 November', w: { h: 35, s: 20, f: 15, c: 10, a: 10, k: 10 }, note: "The six weights agreed with the sponsor on 9 November 2026 (score v0.4), with community and precedents at 10% each. The default until 24 November 2026; kept for comparison." },
     history: { name: 'History first', w: { h: 55, s: 15, f: 10, c: 7, a: 7, k: 6 }, note: 'History carries over half the weight: what a building has carried decides most of the score.' },
     neigh: { name: 'Neighbourhood first', w: { h: 20, s: 20, f: 10, c: 25, a: 15, k: 10 }, note: 'What residents asked for and how a use fits its neighbours lead; history counts less.' },
     prec: { name: 'Precedents first', w: { h: 20, s: 15, f: 15, c: 10, a: 10, k: 30 }, note: 'How similar buildings elsewhere turned out leads: uses that worked in comparable reuses score higher.' } };
-  let wpre = 'team';
+  let wpre = 'building';
   const WL = [['h', 'Heritage', 'var(--w-h)'], ['s', 'Room (saturation)', 'var(--w-s)'], ['f', 'Size fit', 'var(--w-f)'], ['c', 'Community', 'var(--w-c)'], ['a', 'Neighbours', 'var(--w-a)'], ['k', 'Precedents', 'var(--w-k)']];
   // weights are shares of one pie: they always add to 100, and moving one makes the others give way in proportion
   function setWeight(k, v) {
@@ -783,18 +789,31 @@ details.vacbox > summary .small { font-weight: 400; }
   function sat(p, f, C) {
     if (f.cat === 'residential') return { v: 0.5, n: null };
     const n = (C.side[p.side] || {})[f.cat] || 0, m = MIXC[f.cat];
-    const then = m ? m.then / m.then_base : 0, now = (C.corr[f.cat] || 0) / C.base;
+    const then = m ? m.then / m.then_base : 0, now = C.base > 0 ? (C.corr[f.cat] || 0) / C.base : 0;   // no storefront in use (a reader can mark them all empty): a share of 0, not 0 / 0
     const sS = SIDE_CAP[Math.min(n, 3)], sC = then > 0 ? (now <= then ? 1 : Math.max(0, then / now)) : (now > 0 ? 0.5 : 1);
     return { v: 0.5 * sS + 0.5 * sC, n, now, then };
   }
   function fit1(x, r) { if (x >= r[0] && x <= r[1]) return 1; const k = x < r[0] ? r[0] / x : x / r[1]; return Math.max(0, 1 - Math.log(k) / Math.log(3)); }
-  function sizeFit(p, f) {
-    const s = +p.sqft; if (!s) return [0.5, 'size not in the export'];
+  // The space a use would take is the storefront floor, so the size input reads the estimated ground floor (as the
+  // rent does), and the whole building only where there is no estimate. Where the building outline may be partial the
+  // ground floor is only known to lie between the estimate and its upper bound, and the input is the mean of the fit
+  // at the two. Until 24 November 2026 the input read the whole building, upper floors included; the Evidence tab
+  // keeps that reading for comparison (SIZE_WHOLE).
+  let SIZE_WHOLE = false;
+  const spaceSqft = p => SIZE_WHOLE ? (+p.sqft || 0) : (+p.gf || +p.sqft || 0);
+  const gfOpen = p => !SIZE_WHOLE && +p.gf && p.gf_note === 'outline may be partial' && +p.gf_hi > +p.gf;      // not measured: a range
+  const spaceWord = p => +p.gf ? `ground floor about ${fmt(+p.gf)} sq ft${gfOpen(p) ? ', or up to ' + fmt(+p.gf_hi) + ' (not measured)' : ''}` : +p.sqft ? `${fmt(+p.sqft)} sq ft in the whole building (no ground-floor estimate)` : 'floor area not known';
+  function sizeAt(s, f) {
     let v = fit1(s, f.size), how = 'as one unit';
     if (s >= 2500) { const v2 = 0.85 * fit1(s / 2, f.size); if (v2 > v) { v = v2; how = 'split in two'; } }
     if (s >= 4000) { const v3 = 0.8 * fit1(s / 3, f.size); if (v3 > v) { v = v3; how = 'split in three'; } }
     for (let n = 4; n <= f.maxUnits; n++) { if (s / n < f.size[0]) break; const vn = 0.8 * fit1(s / n, f.size); if (vn > v) { v = vn; how = 'split into ' + n + ' units'; } }
     return [v, how];
+  }
+  function sizeFit(p, f) {
+    const s = spaceSqft(p); if (!s) return [0.5, 'size not in the export'];
+    if (gfOpen(p)) return [(sizeAt(s, f)[0] + sizeAt(+p.gf_hi, f)[0]) / 2, 'ground floor not measured'];
+    return sizeAt(s, f);
   }
   // community: residents asked for it, or pushed back on it (research: community_aversion)
   function comm(f) {
@@ -841,15 +860,19 @@ details.vacbox > summary .small { font-weight: 400; }
     return { v: 0.35 * t + 0.25 * h + 0.2 * sz + 0.1 * era + 0.1 * ctx, t, h, sz, era, ctx };
   }
   const FMAP = { foodhall: ['cafe', 'foodmaker', 'counter'], lodging: ['housing'], bar: ['tavern'] };
-  const caseFormats = b => (b.new_formats || []).flatMap(x => FMAP[x] || [x]);
+  const caseFormats = b => b._fmts || (b._fmts = (b.new_formats || []).flatMap(x => FMAP[x] || [x]));   // fixed per case: worked out once
   const SUCC = { operating: 1, reopened: 0.8, 'in development': 0.5, unknown: 0.6, closed: 0 };
   const SIMS = {};
   function simsOf(p) { if (!SIMS[p.id]) SIMS[p.id] = (L.buildings || []).map(b => ({ b, s: caseSim(p, b) })).sort((x, y) => y.s.v - x.s.v); return SIMS[p.id]; }
   function prec(p, f) {
-    const top = simsOf(p).slice(0, 8), den = top.reduce((a, x) => a + x.s.v, 0) || 1;
+    // kept with the building's list of similar cases, so it is worked out once per building and use and is thrown
+    // away with that list whenever the building's record changes (the comparison table swaps records in and out)
+    const sims = simsOf(p), memo = sims._prec || (sims._prec = {});
+    if (memo[f.id]) return memo[f.id];
+    const top = sims.slice(0, 8), den = top.reduce((a, x) => a + x.s.v, 0) || 1;
     const hits = top.filter(x => caseFormats(x.b).includes(f.id));
     const num = hits.reduce((a, x) => a + x.s.v * (SUCC[x.b.status] ?? 0.6), 0);
-    return { v: Math.min(1, 2 * num / den), hits };
+    return (memo[f.id] = { v: Math.min(1, 2 * num / den), hits });
   }
   // team and sponsor feedback (shared db), applied as a multiplier when switched on
   let FB = {};
@@ -885,9 +908,9 @@ details.vacbox > summary .small { font-weight: 400; }
   const sgn = v => v > 0 ? '+1' : v < 0 ? '−1' : '0';
   function explain(r, p) {
     const f = r.f, hrow = p.h && p.h[r.via];
-    const hs = r.from === 'street' ? `<b>Heritage</b> from the street: ${esc(r.via)} is on record at ${STREET[r.via]} frontage parcels, none of it here` : r.h > 0 && hrow ? `<b>Heritage</b> ${esc(r.via)}: ${hrow[0]} decade${hrow[0] === 1 ? '' : 's'}, ${hrow[2]} source type${hrow[2] === 1 ? '' : 's'} (${hrow[3]}-${hrow[4]})${r.via !== f.cat ? ', borrowed from a related trade' : ''}` : '<b>Heritage</b> none: no record of this use here';
+    const hs = r.from === 'street' ? `<b>Heritage</b> from the street: ${esc(r.via)} is on record at ${STREET[r.via]} frontage parcels, none of it here` : r.h > 0 && hrow ? `<b>Heritage</b> ${esc(r.via)}: ${hrow[0]} decade${hrow[0] === 1 ? '' : 's'}, ${hrow[2]} kind${hrow[2] === 1 ? '' : 's'} of source (${hrow[3]}-${hrow[4]})${r.via !== f.cat ? ', borrowed from a related trade' : ''}` : '<b>Heritage</b> none: no record of this use here';
     const ss = r.s.n == null ? '<b>Saturation</b> not measured for housing' : `<b>Saturation</b> ${r.s.n} of this use on the block side today; corridor ${pct0(r.s.now)} of storefronts now vs ${pct0(r.s.then)} in 1920-23${r.s.now > r.s.then ? ', above its old share' : ''}`;
-    const fs = `<b>Size</b> ${p.sqft ? fmt(+p.sqft) + ' sq ft' : 'unknown'} against ${fmt(f.size[0])}-${fmt(f.size[1])} (${esc(r.how)})`;
+    const fs = `<b>Size</b> ${spaceWord(p)} against a usual ${fmt(f.size[0])}-${fmt(f.size[1])} (${esc(r.how)})`;
     const cs = r.cm.why === 'asked for' ? `<b>Community</b> asked for: ${esc(r.cm.r.map(x => x.type.toLowerCase()).join(', '))}` : r.cm.why === 'pushed back' ? `<b>Community</b> pushed back (${esc(r.cm.a.grade)}): ${esc(r.cm.a.waverly_evidence || '')}` : '<b>Community</b> no stated wish or objection';
     const ns = r.nb.list.length ? `<b>Neighbours</b> ${r.nb.list.map(x => `${x.where} ${esc(x.q.address)} ${esc(x.c)} ${sgn(x.v)}`).join(', ')}` : '<b>Neighbours</b> none with a known use';
     const ps = r.pr.hits.length ? `<b>Precedents</b> ${r.pr.hits.length} of the 8 most similar cases do this: ${r.pr.hits.slice(0, 3).map(x => esc(x.b.name) + (x.b.status === 'closed' ? ' (closed)' : '')).join('; ')}` : '<b>Precedents</b> none of the 8 most similar cases does this';
@@ -919,21 +942,22 @@ details.vacbox > summary .small { font-weight: 400; }
   const liftPill = r => { const v = Math.round(r.lift * 100); return `<span class="lift${v > 0 ? '' : ' flat'}" title="This use scores ${Math.round((BASE0[r.f.id] || 0) * 100)} at a building with no record at all. The difference is what this building's own record, size, block and neighbours add.">${v > 0 ? '+' + v + ' over a building with no record' : v === 0 ? 'the same as a building with no record' : Math.abs(v) + ' under a building with no record'}</span>`; };
 
   // ---------------- what moves the top candidate: the same ranking with one thing changed at a time
-  // Always from the weights agreed on 9 November 2026, whatever the sliders say, so the table reads the same for everyone.
+  // Always from the default weights, whatever the sliders say, so the table reads the same for everyone.
   function variant(change) {
     const keep = { WT: Object.assign({}, WT), h: P.map(p => p.h) };
-    Object.assign(WT, WPRE.team.w); change(); street(); for (const k in SIMS) delete SIMS[k];
+    Object.assign(WT, WPRE.building.w); change(); street(); for (const k in SIMS) delete SIMS[k];
     const base0 = Object.fromEntries(scoreAll(BLANK, BASE).map(r => [r.f.id, r.score]));
     const tops = {}; P.filter(isShop).forEach(p => { const t = scoreAll(p, BASE).find(r => r.ok && !r.f.av); tops[p.id] = t ? { id: t.f.id, cat: t.f.cat, lift: t.score - base0[t.f.id], g: evOf(p, t).grade } : null; });
-    Object.assign(WT, keep.WT); P.forEach((p, i) => { p.h = keep.h[i]; }); street(); for (const k in SIMS) delete SIMS[k];
+    Object.assign(WT, keep.WT); P.forEach((p, i) => { p.h = keep.h[i]; }); SIZE_WHOLE = false; street(); for (const k in SIMS) delete SIMS[k];
     return { tops, base0 };
   }
   const ABL = [
-    ['agreed', 'As agreed on 9 November 2026', "the default on this page: history from records only, today's tenant not counted", () => {}],
-    ['noher', 'Heritage weight at zero', 'the same score with no history at all: what the other five inputs say alone', () => { WT.h = 0; }],
-    ['nock', 'Without community and precedents', 'the two inputs that do not come from the building\'s own record; the other four keep their proportions (the "Building evidence only" preset)', () => { Object.assign(WT, WPRE.building.w); }],
+    ['default', 'Default: building evidence', "the default on this page since 24 November 2026: no weight on community or precedents; history from records only, today's tenant not counted", () => {}],
+    ['nov9', 'With the weights agreed on 9 November', 'community and precedents back in at 10% each: the default until 24 November 2026', () => { Object.assign(WT, WPRE.team.w); }],
+    ['noher', 'Heritage weight at zero', 'the same score with no history at all: what room on the block, size and neighbours say alone', () => { WT.h = 0; }],
     ['strict', 'History from the firmest records only', 'two independent kinds of source, at this address, from the building standing here', () => { P.forEach(p => { p.h = p.hs || {}; }); }],
-    ['today', "With today's tenant counted as history", 'how the page worked until 21 November 2026: the 2026 tenant check fed the heritage score', () => { P.forEach(p => { p.h = p.h0 || p.h; }); }]];
+    ['today', "With today's tenant counted as history", 'how the page worked until 21 November 2026: the 2026 tenant check fed the heritage score', () => { P.forEach(p => { p.h = p.h0 || p.h; }); }],
+    ['whole', "With the whole building's floor area as the size", 'how the page worked until 24 November 2026: the size input read every floor of the building, not the ground floor a storefront use would take', () => { SIZE_WHOLE = true; }]];
   function ablation() {
     const shops = P.filter(isShop), empty = shops.filter(isEmpty), res = ABL.map(([id, name, what, change]) => ({ id, name, what, v: variant(change) }));
     const base = res[0].v.tops, cnt = (ps, f) => ps.filter(p => f(p)).length;
@@ -974,7 +998,10 @@ details.vacbox > summary .small { font-weight: 400; }
   const CHECK_WORD = { 'covers': 'at typical sales it could pay the asking rent', 'does not cover': 'at typical sales it could not pay the asking rent', 'too close to call': 'at typical sales it is too close to call' };
   const CHECK_CLS = { 'covers': 'ok', 'does not cover': 'warn', 'too close to call': 'q' };
   const checkPill = ch => ch ? `<span class="pill ${CHECK_CLS[ch.verdict] || ''}">${esc(ch.verdict === 'covers' ? 'covers the rent' : ch.verdict === 'does not cover' ? 'does not cover the rent' : 'too close to call')}</span>` : '';
-  const checkLine = (cf, name) => !cf ? '' : cf.check ? `Sales check for ${esc(name)}: ${CHECK_WORD[cf.check.verdict]} (could pay about ${usd(cf.check.afford_mid)} per sq ft, against ${usd(cf.check.asking_mid)} asked${cf.sales.single ? '; one sales figure' : ''}).` : `No sales check for ${esc(name)}: ${esc((cf.sales_na || 'no sales benchmark').replace(/\.$/, '').replace(/^./, c => c.toLowerCase()))}.`;
+  // where a sales figure is receipts per business divided by an assumed floor area, say so and say how far the answer holds
+  const assumedNote = (cf, id) => { const ch = cf && cf.check; if (!ch || !ch.assumed_sqft) return ''; const z = id && SZ[id];
+    return `; the sales figure assumes a ${fmt(ch.assumed_sqft)} sq ft business, and the answer holds up to about ${fmt(ch.covers_up_to_sqft)} sq ft${z && z.low && z.high ? ` (such businesses usually run ${fmt(z.low)} to ${fmt(z.high)})` : ''}`; };
+  const checkLine = (cf, name, id) => !cf ? '' : cf.check ? `Sales check for ${esc(name)}: ${CHECK_WORD[cf.check.verdict]} (could pay about ${usd(cf.check.afford_mid)} per sq ft, against ${usd(cf.check.asking_mid)} asked${cf.sales.single ? '; one sales figure' : ''}${assumedNote(cf, id)}).` : `No sales check for ${esc(name)}: ${esc((cf.sales_na || 'no sales benchmark').replace(/\.$/, '').replace(/^./, c => c.toLowerCase()))}.`;
   const usd = x => x == null ? '—' : '$' + (x >= 100 ? Math.round(x).toLocaleString('en-US') : x.toFixed(2));
   const kusd = x => x == null ? '—' : x >= 1e6 ? '$' + (x / 1e6).toFixed(2) + 'M' : '$' + Math.round(x / 1000).toLocaleString('en-US') + 'k';
   const rng = (q, f = usd) => q ? `${f(q[1])} <span class="small">(${f(q[0])}–${f(q[2])})</span>` : '—';
@@ -996,10 +1023,11 @@ details.vacbox > summary .small { font-weight: 400; }
     const key = p.id + '|' + ranked.map(r => r.f.id + ':' + r.score.toFixed(3)).join(',') + '|' + ks.map(k => WT[k]).join(',');
     if (SMAA[slot] && SMAA[slot].key === key) return SMAA[slot];
     if (ranked.length < 2) return (SMAA[slot] = { key, rows: [] });
-    const R = rngOf(hashId(p.id)), w0 = ks.map(k => Math.max(0.02, WT[k] / tot));
+    // an input set to zero stays at zero: the nearby weightings do not bring back an input the reader (or the default) left out
+    const R = rngOf(hashId(p.id)), w0 = ks.map(k => WT[k] > 0 ? Math.max(0.02, WT[k] / tot) : 0);
     const first = ranked.map(() => 0), top3 = ranked.map(() => 0);
     for (let s = 0; s < SMAA_N; s++) {
-      const g = w0.map(w => gammaR(SMAA_CONC * w, R)), gs = g.reduce((a, b) => a + b, 0), w = g.map(x => x / gs);
+      const g = w0.map(w => w > 0 ? gammaR(SMAA_CONC * w, R) : 0), gs = g.reduce((a, b) => a + b, 0) || 1, w = g.map(x => x / gs);
       const U = ranked.map(r => { const x = [r.h, r.s.v, r.fi, r.cm.v, r.nb.v, r.pr.v]; return Math.min(1, r.mult * x.reduce((a, v, i) => a + w[i] * v, 0)); });
       const order = U.map((u, i) => [u, i]).sort((a, b) => b[0] - a[0]);
       first[order[0][1]]++; order.slice(0, 3).forEach(([, i]) => top3[i]++);
@@ -1017,7 +1045,7 @@ details.vacbox > summary .small { font-weight: 400; }
         <td class="num">${f ? `${fmt(f.sizeTeam[0])}–${f.sizeTeam[1] >= 100000 ? 'any' : fmt(f.sizeTeam[1])}` : '—'}</td><td class="small">${esc(z.basis)}${z.note ? `<div style="color:var(--ink-2)">${esc(z.note)}</div>` : ''}</td>
         <td class="small">${z.sources.map(x => `<div><a class="cxsrc" href="${esc(x.u)}" target="_blank" rel="noopener" title="${esc(x.q)}">${esc(x.t)}</a></div>`).join('')}</td></tr>`; }).join('')}
       </tbody></table></div>
-      <p class="small">Hover a source for the quote it supports. Read on ${esc(D.sizes.accessed_on)}. Since score v0.4 (team decision, 2 Nov 2026) the size fit in the score uses these sourced ranges; the team's earlier, wider ranges are shown for comparison. A typical range describes one unit, so a larger building is scored as split into units: up to 3, or up to 12 for studios and offices. The size fit reads the floor area of the whole building, which is all the export records; the rent figures use an estimate of the ground floor.</p>`;
+      <p class="small">Hover a source for the quote it supports. Read on ${esc(D.sizes.accessed_on)}. Since score v0.4 (team decision, 2 Nov 2026) the size fit in the score uses these sourced ranges; the team's earlier, wider ranges are shown for comparison. A typical range describes one unit, so a larger floor is scored as split into units: up to 3, or up to 12 for studios and offices. Since 24 November 2026 the size fit reads the estimated ground floor, as the rent figures do; until then it read the floor area of the whole building, which is all the export records. Where the building outline may be partial the ground floor is not measured, and the size fit is the mean of the fit at the estimate and at its upper bound.</p>`;
   }
   // how firm the top candidate is, in a sentence
   function robust(p, best) {
@@ -1248,11 +1276,11 @@ details.vacbox > summary .small { font-weight: 400; }
     const out = [], hrow = p.h && p.h[r.via];
     const items = [
       [r.parts[1], r.s.n == null ? '' : r.s.n === 0 ? 'none on this block side yet' : r.s.v >= 0.5 ? 'room for one more here' : ''],
-      [r.parts[2], r.fi >= 0.9 ? `the building's ${p.sqft ? fmt(+p.sqft) + ' sq ft' : 'size'} suits it${r.how !== 'as one unit' ? ' (' + r.how + ')' : ''}` : ''],
+      [r.parts[2], r.fi >= 0.9 ? `${gfOpen(p) ? 'the ground floor' : +p.gf ? 'the ground floor, about ' + fmt(+p.gf) + ' sq ft,' : p.sqft ? "the building's " + fmt(+p.sqft) + ' sq ft' : 'the size'} suits it${r.how !== 'as one unit' ? ' (' + r.how + ')' : ''}` : ''],
       [r.parts[3], r.cm.why === 'asked for' ? 'residents have asked for it' : ''],
       [r.parts[4], r.nb.raw > 0.2 ? 'good neighbours' : ''],
       [r.parts[5], r.pr.hits.length ? `${r.pr.hits.length} similar building${r.pr.hits.length > 1 ? 's' : ''} elsewhere did this` : '']];
-    items.filter(x => x[1]).sort((a, b) => b[0] - a[0]).slice(0, 3).forEach(x => out.push(x[1]));
+    items.filter(x => x[1] && x[0] > 0).sort((a, b) => b[0] - a[0]).slice(0, 3).forEach(x => out.push(x[1]));   // only inputs that carry weight
     return out.join(' · ');
   }
   const SA_CLS = { open_active: 'warn', institution: 'warn', office_industrial: 'warn', residential: 'warn', vacant_storefront: 'ok', vacant_lot: 'ok', listed_likely_dead: 'ok' };
@@ -1269,7 +1297,7 @@ details.vacbox > summary .small { font-weight: 400; }
   const HASB = RT.some(t => (t.brands || []).length);   // only the team's private build carries reference brands
   function retailBlock(p, show) {
     if (!RT.length || !show) return '';
-    const rt = p.rt || {}, sq = +p.sqft || 0;
+    const rt = p.rt || {}, sq = spaceSqft(p);
     const rows = RT.map(t => ({ t, here: rt[t.id] || null })).sort((a, b) => ((b.here ? b.here[0] : 0) - (a.here ? a.here[0] : 0)) || (b.t.street - a.t.street)).slice(0, 3);
     return `<div class="retail"><h3>What kind of shop</h3><div class="small">${HASB ? 'Retail broken down. The brands are reference points for the modern format, not prospects; nobody has been contacted.' : 'Retail broken down: the trades this building and the street have carried, and the modern version of each.'}</div>
       ${rows.map(({ t, here }) => { const fits = !sq || (sq >= t.size.low * 0.8 && sq <= t.size.high * 3); return `<div class="rrow"><div><b>${esc(t.name)}</b> <span class="small">${here ? `on record here ${here[1] || ''}${here[2] && here[2] !== here[1] ? '–' + here[2] : ''} (${here[0]} record${here[0] > 1 ? 's' : ''}${here[3] ? ', e.g. ' + esc(here[3]) : ''})` : `on ${t.street} building${t.street === 1 ? '' : 's'} on this frontage, not here`} · usual ${fmt(t.size.low)}–${fmt(t.size.high)} sq ft${fits ? '' : ' (size is a stretch here)'}</span></div>
@@ -1299,7 +1327,7 @@ details.vacbox > summary .small { font-weight: 400; }
         <div class="w"><b>Evidence here</b> ${gradePill(ev.grade)} ${esc(ev.text)} <a class="cxsrc" href="#evd">see the records</a></div>
         ${empty && whyLine(r, p) ? `<div class="w"><b>Also</b> ${esc(whyLine(r, p))}</div>` : ''}
         ${empty && r.lift <= 0.005 ? `<div class="w"><span class="pill warn">Not from this building</span> Nothing about this building lifts this use: it scores here no more than at a building with no record at all.</div>` : empty && !i && robust(p, r) ? `<div class="vrob">${robust(p, r)}</div>` : ''}
-        ${empty && cf ? `<div class="w">${checkLine(cf, r.f.name.toLowerCase())}</div>` : ''}
+        ${empty && cf ? `<div class="w">${checkLine(cf, r.f.name.toLowerCase(), r.f.id)}</div>` : ''}
         ${empty && whoLinks(r.f.id) ? `<div class="small"><b>Who it is for:</b> ${whoLinks(r.f.id)}</div>` : ''}
         <div class="cfoot">${fbBtns(p.id, r.f.id)}</div></div>`; };
     const nogoHTML = shop && (nogo.length || push.length) ? `<div class="nogo">${nogo.length ? `<b>On record here but not allowed:</b> ${nogo.join('; ')}. ` : ''}${push.length ? `<b>Fits, but residents have pushed back:</b> ${push.join('; ')}.` : ''}</div>` : '';
@@ -1414,7 +1442,7 @@ details.vacbox > summary .small { font-weight: 400; }
       ['computed', 'Rules', 'Bans in the urban renewal plan; C-1 zoning (the city\'s neighbourhood business zone), Table 10-301: permitted, conditional or not'],
       ['computed', 'Heritage', 'Decades a use is on record at the building and in how many kinds of source; with no record, a little from how often the street has it on record. Today\'s tenant does not count'],
       ['computed', 'Saturation', 'The same use on the block side today (3 = full), and whether its corridor share is above its 1920-23 share'],
-      ['computed', 'Size fit', 'Building size against the usual size of the format; a large building can be split'],
+      ['computed', 'Size fit', 'The estimated ground floor against the usual size of the format; a large floor can be split. Where the ground floor is not measured, the mean of the fit at the estimate and at its upper bound'],
       ['computed', 'Community', `What residents asked for (${(L.requested || []).length} wishes) or pushed back on (${(L.aversion || []).length} business types), from news, plans and testimony. The same for every building`],
       ['computed', 'Neighbours', 'What is next door and across the street: conflicts and complements from law and research'],
       ['computed', 'Precedents', `How the ${(L.buildings || []).length} reuse cases in the library turned out, weighted by similarity. A hand-picked library: ${(L.buildings || []).filter(b => caseFormats(b).includes('cafe')).length} of the cases include a cafe or restaurant, so it favours a cafe at every building`],
@@ -1430,14 +1458,14 @@ details.vacbox > summary .small { font-weight: 400; }
       <p class="small" id="wpiehelp" style="margin:0">The six inputs share one score, so the weights always add to 100%. Move one slider and the others give way in proportion to their size; a weight set to zero stays at zero until you raise it.</p>`;
     const setPre = k => { wpre = k; if (WPRE[k]) Object.assign(WT, WPRE[k].w); WL.forEach(([kk]) => { document.getElementById('w-' + kk).value = WT[kk]; });
       document.querySelectorAll('[data-wp]').forEach(b => b.setAttribute('aria-pressed', b.dataset.wp === wpre));
-      document.getElementById('wpnote').textContent = WPRE[wpre] ? WPRE[wpre].note : 'Your own weights. The team default is the set agreed with the sponsor on 9 November 2026.'; update(); };
+      document.getElementById('wpnote').textContent = WPRE[wpre] ? WPRE[wpre].note : 'Your own weights. The default gives community and precedents no weight; the six weights agreed with the sponsor on 9 November 2026 are a preset.'; update(); };
     document.querySelectorAll('[data-wp]').forEach(b => b.onclick = () => setPre(b.dataset.wp));
     document.getElementById('wpnote').textContent = WPRE[wpre].note;
     let wT = null;
     WL.forEach(([k]) => document.getElementById('w-' + k).addEventListener('input', e => {
       setWeight(k, +e.target.value); wpre = 'custom';
       document.querySelectorAll('[data-wp]').forEach(b => b.setAttribute('aria-pressed', 'false'));
-      document.getElementById('wpnote').textContent = 'Your own weights. The team default is the set agreed with the sponsor on 9 November 2026.';
+      document.getElementById('wpnote').textContent = 'Your own weights. The default gives community and precedents no weight; the six weights agreed with the sponsor on 9 November 2026 are a preset.';
       WL.forEach(([kk]) => { if (kk !== k) document.getElementById('w-' + kk).value = WT[kk]; });
       drawWeights(k); clearTimeout(wT); wT = setTimeout(update, 90);
     }));
@@ -1475,13 +1503,13 @@ details.vacbox > summary .small { font-weight: 400; }
       document.getElementById('bt').innerHTML = `<h3>Does a building's past predict its present?</h3>${v1html}`;
     }
     // what moves the top candidate
-    const A = ablation(), a0 = A.res[0];
+    const A = ablation(), a0 = A.res[0], a9 = A.res.find(x => x.id === 'nov9') || a0;
     document.getElementById('abl').innerHTML = `<h3>How much of each score is the building, and how much is the same everywhere</h3>
-      <p style="margin:0;font-size:13px;color:var(--ink-2)">A building with no record at all, no size and no neighbours still gets a score for every use, from the inputs that do not depend on the building: ${A.blank.slice(0, 4).map(([id, v]) => `${esc(FM[id].name.toLowerCase())} ${Math.round(v * 100)}`).join(', ')}. So the page shows each fit beside that baseline. The table reruns the ranking of the ${A.shops} storefronts with one thing changed at a time, always from the weights agreed on 9 November 2026.</p>
-      <div class="tblx"><table class="btt blk"><thead><tr><th>Ranking</th><th>Top candidate is a cafe or restaurant</th><th>of the ${A.empty} empty</th><th>Top candidate differs from the agreed ranking</th><th>of the ${A.empty} empty</th><th>Top candidate no higher than at a building with no record</th></tr></thead><tbody>
-      ${A.res.map(x => `<tr${x.id === 'agreed' ? ' class="cur"' : ''}><th scope="row">${esc(x.name)}<div class="small" style="font-weight:400">${esc(x.what)}</div></th><td class="num">${x.cafe} of ${A.shops}</td><td class="num">${x.cafeE}</td><td class="num">${x.id === 'agreed' ? '—' : x.diff}</td><td class="num">${x.id === 'agreed' ? '—' : x.diffE}</td><td class="num">${x.flat}</td></tr>`).join('')}
+      <p style="margin:0;font-size:13px;color:var(--ink-2)">A building with no record at all, no size and no neighbours still gets a score for every use, from the street's record and the room on the block: ${A.blank.slice(0, 4).map(([id, v]) => `${esc(FM[id].name.toLowerCase())} ${Math.round(v * 100)}`).join(', ')}. So the page shows each fit beside that baseline. The table reruns the ranking of the ${A.shops} storefronts with one thing changed at a time, always from the default weights, whatever the sliders say.</p>
+      <div class="tblx"><table class="btt blk"><thead><tr><th>Ranking</th><th>Top candidate is a cafe or restaurant</th><th>of the ${A.empty} empty</th><th>Top candidate differs from the default ranking</th><th>of the ${A.empty} empty</th><th>Top candidate no higher than at a building with no record</th></tr></thead><tbody>
+      ${A.res.map(x => `<tr${x.id === 'default' ? ' class="cur"' : ''}><th scope="row">${esc(x.name)}<div class="small" style="font-weight:400">${esc(x.what)}</div></th><td class="num">${x.cafe} of ${A.shops}</td><td class="num">${x.cafeE}</td><td class="num">${x.id === 'default' ? '—' : x.diff}</td><td class="num">${x.id === 'default' ? '—' : x.diffE}</td><td class="num">${x.flat}</td></tr>`).join('')}
       </tbody></table></div>
-      <p class="small" style="margin:0"><b>Evidence behind the top candidates</b> (agreed ranking, ${A.shops} storefronts): ${a0.grades.two} rest on two independent kinds of source at the address, ${a0.grades.one} on one kind, ${a0.grades.placed} on records placed by inference, and ${a0.grades.none} have no record of the use at the address. <b>Why a cafe leads so often:</b> residents asked for sit-down restaurants and cafes, so the community input is at its maximum for a cafe everywhere; ${(L.buildings || []).filter(b => caseFormats(b).includes('cafe')).length} of the ${(L.buildings || []).length} reuse cases in the hand-picked library include a cafe or restaurant (${(L.buildings || []).filter(b => caseFormats(b).includes('showroom')).length} include a showroom), so the precedent input is high for a cafe everywhere; and food and drink is below its 1920-23 share of the street. The sponsor's review of 17 November 2026 asked that the community and precedent inputs be rebalanced or dropped until they are sourced building by building. That changes the agreed weights, so it is a decision for the team and the sponsor together; the preset "Building evidence only" above shows the ranking without them.</p>`;
+      <p class="small" style="margin:0"><b>Evidence behind the top candidates</b> (default ranking, ${A.shops} storefronts): ${a0.grades.two} rest on two independent kinds of source at the address, ${a0.grades.one} on one kind, ${a0.grades.placed} on records placed by inference, and ${a0.grades.none} have no record of the use at the address. <b>Why community and precedents carry no weight by default:</b> residents asked for sit-down restaurants and cafes, so the community input is at its maximum for a cafe at every building; ${(L.buildings || []).filter(b => caseFormats(b).includes('cafe')).length} of the ${(L.buildings || []).length} reuse cases in the hand-picked library include a cafe or restaurant (${(L.buildings || []).filter(b => caseFormats(b).includes('showroom')).length} include a showroom), so the precedent input favours a cafe at every building. With both in, a cafe is the top candidate on ${a9.cafe} of the ${A.shops} storefronts; without them, on ${a0.cafe}. The sponsor's review of 17 November 2026 asked that the two inputs be rebalanced or dropped until they are sourced building by building. The default follows that since ${DEFAULT_SINCE}; the sponsor has still to confirm it, and the weights agreed on ${AGREED.on} stay as a preset. Objections residents have voiced still keep a use off the list of candidates.</p>`;
     // rules table
     const ZS = { P: 'permitted', CB: 'conditional (zoning board)', CO: 'conditional (ordinance)', NP: 'not permitted' };
     document.getElementById('rules').innerHTML = `<table><thead><tr><th>Format</th><th>Heritage from</th><th>Zoning row (Table 10-301)</th><th>C-1</th><th>Urban renewal plan</th><th>Community</th><th>Usual size, sq ft</th></tr></thead><tbody>${FMT.map(f => `<tr><td>${esc(f.name)}</td><td>${f.her.map(([c, k]) => esc(c) + (k < 1 ? ' ×' + k : '')).join(', ')}</td><td>${esc(f.z)}</td><td>${ZS[f.zs]}</td><td>${f.urp ? 'barred (no new ones since 1995)' : 'allowed; design rules apply'}</td><td>${f.av ? 'pushed back: ' + esc(f.av.grade || 'excluded') : REQ[f.id] ? 'asked for' : '—'}</td><td class="num">${fmt(f.size[0])}-${f.size[1] >= 100000 ? 'any' : fmt(f.size[1])}</td></tr>`).join('')}</tbody></table>
@@ -1507,9 +1535,9 @@ details.vacbox > summary .small { font-weight: 400; }
       'The score has not been tested as a whole. The back-test asks whether history predicts use; it does not test the recommendation the score makes. That test, on block sides held out, against a ranking with no history, is next.',
       'No demand data yet (households, spending, foot traffic). Planned for spring.',
       `Rent rests on listed rents: ${CO ? CO.built_from.asking : '57'} asking rents and ${CO ? CO.built_from.in_place : '3'} rents in place, none a newly signed lease, and ${CO ? CO.model.waverly.n : '6'} rows in Waverly. Real rents by phone are planned for spring.`,
-      `Ground-floor areas are estimates from building outlines; the export records whole buildings only. ${nMeasure} of the empty storefronts are marked "measure first". The size fit in the score still reads the whole building.`,
+      `Ground-floor areas are estimates from building outlines; the export records whole buildings only. ${nMeasure} of the empty storefronts are marked "measure first". The size fit in the score reads the same estimate since 24 November 2026, so a wrong outline moves both.`,
       'Corridor saturation is measured against the 1920-23 mix: a use is not penalised until its share of storefronts passes its 1920s share.',
-      'The weights are team judgement, agreed with the sponsor. Move the sliders to see how much the ranking depends on them.',
+      'The weights are team judgement. Of the six agreed with the sponsor on 9 November 2026, four carry all the weight by default; community and precedents carry none until they are sourced building by building, and the sponsor has still to confirm that change. Move the sliders to see how much the ranking depends on them.',
       'Building condition and repair cost are not in the score; the readiness flags (vacant-building notice, violations, receivership) show what the public record says.',
       'Precedent similarity uses building type, history, size, age and income context only; most cases lack a confirmed 2025-26 status.',
       'The community layer rests on news, testimony and plans, not a survey of residents. A short survey on the street would test it.',
@@ -1548,7 +1576,7 @@ details.vacbox > summary .small { font-weight: 400; }
     const t = WL.reduce((a, [k]) => a + WT[k], 0) || 1, pc = k => Math.round(100 * WT[k] / t) + '%';
     WL.forEach(([k]) => { document.getElementById('wn-' + k).textContent = pc(k); });
     drawPie(hot);
-    document.getElementById('formula').innerHTML = `score = heritage × ${pc('h')} + room × ${pc('s')} + size × ${pc('f')} + community × ${pc('c')} + neighbours × ${pc('a')} + precedents × ${pc('k')}, then times 0.75 for a conditional use, times 0.3 / 0.6 / 0.85 for a strong / moderate / weak community objection<span class="fbonly">, and, only when switched on, times the feedback multiplier</span>. Uses barred by the plan or not permitted in C-1 are left out. <b>Heritage</b> = decades on record at the building ÷ 5 (capped), halved for a single record, +0.1 for two kinds of source; with no record, the street's record at a third of the weight. <b>Room</b> = 1 − saturation: half a block-side term (0 of the same use → 1, 1 → 0.6, 2 → 0.25, 3+ → 0) and half a corridor term (1 while the use's storefront share is at or below its 1920-23 share). <b>Size</b> = 1 inside the usual range (the sourced typical range of the use), 0 at three times outside it; a building can be split into two units (× 0.85) or three (× 0.8), and for studios and offices into as many as 12 (× 0.8). <b>Neighbours</b> = the weighted mean of the matrix values for next-door and across-the-street uses, scaled to 0-1. <b>Precedents</b> = among the 8 most similar reuse cases, the similarity-weighted share that went this way and are still open (closed cases count against), doubled and capped at 1.<span class="fbonly"> <b>Feedback</b> = 1 + 0.1 × (agree − disagree), kept between 0.6 and 1.2.</span>`;
+    document.getElementById('formula').innerHTML = `score = heritage × ${pc('h')} + room × ${pc('s')} + size × ${pc('f')} + community × ${pc('c')} + neighbours × ${pc('a')} + precedents × ${pc('k')}, then times 0.75 for a conditional use, times 0.3 / 0.6 / 0.85 for a strong / moderate / weak community objection<span class="fbonly">, and, only when switched on, times the feedback multiplier</span>. Uses barred by the plan or not permitted in C-1 are left out. <b>Heritage</b> = decades on record at the building ÷ 5 (capped), halved unless the use is on record in two decades or in two kinds of source, +0.1 for two kinds of source; with no record, 0.3 times how the use compares with the best-recorded use on the street. <b>Room</b> = 1 − saturation: half a block-side term (0 of the same use → 1, 1 → 0.6, 2 → 0.25, 3+ → 0) and half a corridor term (1 while the use's storefront share is at or below its 1920-23 share). <b>Size</b> = the estimated ground floor against the usual range of the use (sourced): 1 inside it, 0 at three times outside it; a floor of 2,500 sq ft or more can be split into two units (× 0.85), one of 4,000 or more into three (× 0.8), and for studios and offices into as many as 12 (× 0.8). Where the ground floor is not measured, the mean of the fit at the estimate and at its upper bound. <b>Neighbours</b> = the weighted mean of the matrix values for next-door and across-the-street uses, scaled to 0-1. <b>Precedents</b> = among the 8 most similar reuse cases, the similarity-weighted share that went this way and are still open (closed cases count against), doubled and capped at 1.<span class="fbonly"> <b>Feedback</b> = 1 + 0.1 × (agree − disagree), kept between 0.6 and 1.2.</span>`;
   }
 
   // ---------------- block plan: one candidate use for each empty storefront, placed one at a time under a saturation limit
@@ -1645,7 +1673,7 @@ details.vacbox > summary .small { font-weight: 400; }
         <dt>Also</dt><dd>${esc(s.why) || 'the best-scoring permitted use here'}</dd>
         <dt>Space</dt><dd>${sp ? `ground floor about ${fmt(sp.gf)} sq ft${sp.hi > sp.gf ? `, up to ${fmt(sp.hi)}` : ''} <span class="small">(${esc(areaWord(sp))})</span>` : 'ground-floor area not known'}</dd>
         ${sp ? `<dt>Rent</dt><dd>${lowFirst(sp.ann)} a year for the space, whatever the use <span class="small">(${usd(sp.q[0])}–${usd(sp.q[2])} per sq ft; listed rents, not signed leases)</span></dd>` : ''}
-        ${cf ? `<dt>Sales check</dt><dd>${cf.check ? `${checkPill(cf.check)} a business of this kind could pay about ${usd(cf.check.afford_mid)} per sq ft from typical sales, against ${usd(cf.check.asking_mid)} asked` : esc((cf.sales_na || 'no sales benchmark for this use').replace(/\.$/, ''))}</dd>` : ''}
+        ${cf ? `<dt>Sales check</dt><dd>${cf.check ? `${checkPill(cf.check)} a business of this kind could pay about ${usd(cf.check.afford_mid)} per sq ft from typical sales, against ${usd(cf.check.asking_mid)} asked${cf.check.assumed_sqft ? ` <span class="small">(${assumedNote(cf, f.id).replace(/^; /, '')})</span>` : ''}` : esc((cf.sales_na || 'no sales benchmark for this use').replace(/\.$/, ''))}</dd>` : ''}
         <dt>Who for</dt><dd>${whoLinks(f.id) || 'no customer group matched yet'}${s.pain ? `<div class="small">first obstacle: ${esc(s.pain.charAt(0).toLowerCase() + s.pain.slice(1))}</div>` : ''}</dd>
         ${s.cost ? `<dt>Works</dt><dd>about ${kusd(s.cost.tot[0])}–${kusd(s.cost.tot[2])} to convert the whole building, if it costs what ${s.cost.xs.length} similar reuse projects did <span class="small">(a first range, not a quote)</span></dd>` : ''}
         <dt>Watch</dt><dd>${watch.length ? esc(watch.join('; ')) : 'nothing flagged'}</dd>
@@ -1732,7 +1760,7 @@ details.vacbox > summary .small { font-weight: 400; }
     const toMeasure = withSp.filter(s => s.sp.note !== 'outline').length, noArea = SHEETS.length - withSp.length;
     const fit = SHEETS.length ? SHEETS.reduce((a, s) => a + s.r.score, 0) / SHEETS.length : 0, lift = SHEETS.length ? SHEETS.reduce((a, s) => a + s.r.lift, 0) / SHEETS.length : 0;
     const g = { two: 0, one: 0, placed: 0, none: 0 }; SHEETS.forEach(s => { g[s.ev.grade]++; });
-    const teamW = Object.keys(WPRE.team.w).every(k => WT[k] === WPRE.team.w[k]);
+    const teamW = Object.keys(WPRE.building.w).every(k => WT[k] === WPRE.building.w[k]);
     const bt = D.backtest2 && D.backtest2.decision;
     tiles.innerHTML = `
       <div class="tile"><span class="k">Storefronts in the plan</span><span class="v">${placed.length}</span><span class="s">${mixTxt || 'none counted as empty'}${nYou ? `; ${nYou} marked empty by you` : ''}</span></div>
@@ -1740,7 +1768,7 @@ details.vacbox > summary .small { font-weight: 400; }
       <div class="tile"><span class="k">Fit, on average</span><span class="v">${Math.round(fit * 100)}<span style="font-size:18px;color:var(--ink-2)"> /100</span></span><span class="s">${Math.round(lift * 100) >= 0 ? '+' + Math.round(lift * 100) + ' over' : Math.abs(Math.round(lift * 100)) + ' under'} a building with no record: that part comes from the buildings themselves</span></div>
       ${CO ? `<div class="tile"><span class="k">What the spaces rent for</span><span class="v">${kusd(tot[0])}</span><span class="s">a year in the low case, ${kusd(tot[1])} in the middle, ${kusd(tot[2])} high, for about ${fmt(Math.round(area))} sq ft of ground floor (up to ${fmt(Math.round(areaHi))}). The same whatever the uses. ${toMeasure ? `${toMeasure} of the ${withSp.length} ground floors need measuring first. ` : ''}${noArea ? `${noArea} left out for lack of an area. ` : ''}Listed rents, not what a building is worth.</span></div>` : ''}
       <div class="tile"><span class="k">Rent-pressure watch</span><span class="v">${PR.flagged}</span><span class="s">${PR.flagged ? `block side${PR.flagged === 1 ? '' : 's'} where the plan fills three or more storefronts at once and businesses already trade: ${PR.n} of them${PR.legacy ? `, ${PR.legacy} long-standing` : ''}. See Block by block` : 'no block side where the plan fills three or more storefronts beside businesses already trading'}</span></div>`;
-    basis.innerHTML = `<b>What the plan obeys.</b> C-1 zoning and the Waverly Business Area Urban Renewal Plan (no new taverns, liquor stores or pawnshops since Amendment No. 2 of 4 December 1995). Only storefronts counted as empty are planned: here, those empty on the tenant list, which follows the sponsor's storefront audit of November 2026${nMk ? `, with ${nMk} changed by the reader` : ''}. Buildings in use and houses are never planned. State law bars new liquor licences in this alcoholic beverages district (the 43rd, as the team reads the 2022 legislative map; the 45th next to it has the same rule) except for a restaurant with at least 75 seats and $200,000 invested in its facilities (Md. Code, Alcoholic Beverages and Cannabis § 12-1603(b) and (c)(1)(ii), read on 21 November 2026 in the text published for 1 January 2025). A smaller place that wants to serve alcohol would have to take over an existing licence. This is the team's reading as students, not legal advice. Scores use ${teamW ? `the weights agreed with the sponsor on ${AGREED.on}` : 'your own weights, set on the Evidence and method page'}. Most of these storefronts have different owners, so a shared plan needs their agreement.
+    basis.innerHTML = `<b>What the plan obeys.</b> C-1 zoning and the Waverly Business Area Urban Renewal Plan (no new taverns, liquor stores or pawnshops since Amendment No. 2 of 4 December 1995). Only storefronts counted as empty are planned: here, those empty on the tenant list, which follows the sponsor's storefront audit of November 2026${nMk ? `, with ${nMk} changed by the reader` : ''}. Buildings in use and houses are never planned. State law bars new liquor licences in this alcoholic beverages district (the 43rd, as the team reads the 2022 legislative map; the 45th next to it has the same rule) except for a restaurant with at least 75 seats and $200,000 invested in its facilities (Md. Code, Alcoholic Beverages and Cannabis § 12-1603(b) and (c)(1)(ii), read on 21 November 2026 in the text published for 1 January 2025). A smaller place that wants to serve alcohol would have to take over an existing licence. This is the team's reading as students, not legal advice. Scores use ${teamW ? `the default weights: heritage, room on the block, size and neighbours, with no weight on community or precedents (the six weights agreed with the sponsor on ${AGREED.on} are a preset)` : 'your own weights, set on the Evidence and method page'}. Most of these storefronts have different owners, so a shared plan needs their agreement.
       ${bt ? `<br><b>Dollar figures and the back-test.</b> The rule agreed with the sponsor on ${AGREED.on} is that no dollar figure rests on history until history passes a test on buildings the model had not seen. The test ${bt.passes ? 'passes' : 'does not pass'} (p = ${bt.p_perm.toFixed(3)}; Evidence and method). So the rent on each sheet is for the space, from listed rents on this corridor: it does not depend on the use the history points to, and the total is the same for any mix of uses.` : ''}`;
     how.innerHTML = `<details class="noprint"><summary class="small">How the plan is made</summary><div class="wbox" style="margin-top:8px">
         <p class="small" style="margin:0">Each empty storefront gets its highest-scoring permitted use, best storefront first. After each placement that use scores lower on the same block side, and the placed use becomes a neighbour of the next storefront. A use that would be the fourth of its kind on a block side is passed over; one business in two street numbers counts once. Change any use on its sheet to see the effect on the others.</p>
@@ -1831,13 +1859,13 @@ details.vacbox > summary .small { font-weight: 400; }
     document.getElementById('earnchk').innerHTML = `<ul class="checks">
       <li><b>Held-out coverage.</b> Each source was left out in turn (two rows from the same page leave together) and predicted from the rest. The nominal 80% range held ${h.nominal_hits} of ${h.n} (${Math.round(h.nominal_cover * 100)}%; 95% interval ${Math.round(h.nominal_ci95[0] * 100)}–${Math.round(h.nominal_ci95[1] * 100)}%), with ${h.below} below and ${h.above} above, so the misses are balanced. All ranges are widened ×${CO.interval.widen.toFixed(2)}. Recomputing the widening without each held-out row, the widened range holds ${h.honest_hits} of ${h.n} (${Math.round(h.honest_ci95[0] * 100)}–${Math.round(h.honest_ci95[1] * 100)}%).</li>
       <li><b>Baltimore only.</b> Of ${h.baltimore_n} Baltimore rows, ${h.baltimore_nominal} fall inside the nominal range and ${h.baltimore_widened} inside the widened one.</li>
-      <li><b>A second way to the same range.</b> The jackknife+ method (no lognormal assumption) gives ${usd(jk[0])}–${usd(jk[1])} for a Waverly shop, against ${usd(CO.formats.shop.asking.q[0])}–${usd(CO.formats.shop.asking.q[2])} from the model.</li>
+      <li><b>A second way to the same range.</b> A method that assumes no particular shape for how rents spread (it takes the misses on held-out listings as they are; "jackknife+") gives ${usd(jk[0])}–${usd(jk[1])} for a Waverly shop, against ${usd(CO.formats.shop.asking.q[0])}–${usd(CO.formats.shop.asking.q[2])} from the model.</li>
       <li><b>Sample size.</b> With about ${h.n} held-out rows, a coverage check can only catch a range that is badly off; it cannot tell 75% from 85%.</li>
       <li><b>Asking is not paid.</b> ${bf.asking} of the ${bf.rows_used} rows are asking rents; signed rents are often lower. ${bf.in_place} are rents in place, read from sale listings (${bf.in_place_rows.map(srcA).join(', ')}), and a person has still to re-read them. None is a newly signed lease.</li>
       <li><b>Nobody has checked the library by hand yet.</b> The rows were collected with AI assistance on 16 and 20 October 2026. Each row has a place for the name and date of the person who checks it against its source; all are still empty.</li></ul>
       <h3 style="margin-top:10px">What moves the numbers</h3>
       <div class="tbl"><table class="btt"><thead><tr><th>Assumption</th><th>Setting</th><th>Result</th></tr></thead><tbody>${CO.sensitivity.map(x => `<tr><td>${esc(x.what)}</td><td class="num">${esc(x.setting)}</td><td class="num">${esc(x.result)}</td></tr>`).join('')}</tbody></table></div>
-      <p class="small">The lease-basis allowance moves Waverly's level by under a dollar. The three rents in place move it most: without them, on asking rents alone, the level is lower. One of them (3217) is read two ways until a person re-reads the listing.</p>`;
+      <p class="small">The allowance for building costs inside a listed rent moves Waverly's level by under a dollar. The three rents in place move it most: without them, on asking rents alone, the level is lower. One of them (3217) is read two ways until a person re-reads the listing.</p>`;
     // why
     const WHY = [
       ['Listed rents on one footing', 'Subtract a stated allowance for taxes, insurance and common charges ($2 for modified gross, $4 for gross)', 'Listings mix lease terms; without this a $20 rent that includes taxes and insurance and a $20 rent that leaves them out look the same', 'Leaving the terms mixed; a full adjustment grid (no paired listings to calibrate it)', 'The allowance is an assumption; the reruns at $0 and $3/$6 are in the table above', 'Sensitivity table'],
@@ -1846,7 +1874,7 @@ details.vacbox > summary .small { font-weight: 400; }
       ['Range width', 'Lognormal range widened by a factor taken from held-out residuals (the normalised conformal idea)', `The plain range covered ${Math.round(h.nominal_cover * 100)}% of unseen rows when it should cover 80%`, 'Split conformal (wastes half the rows); trusting the model\'s own width', 'Coverage holds on average, not for every corridor', 'Honest re-check without each row'],
       ['One basis for every dollar figure', 'The rent of a space is the corridor\'s listed-rent level times its ground floor, whatever the use', 'Rent belongs to the space more than to the tenant, and one basis cannot favour a use for having less evidence', 'Version 1: the lower of the asking rent and the affordable rent, treated as independent draws. It cut uses with two kinds of evidence (cafe −22%, shop −19%) and left uses with one kind uncut, so a bike shop came out on top everywhere', 'Says nothing about which use earns the owner more', 'Sponsor\'s review, 17 November 2026; a test that no such figure remains'],
       ['Sales check', 'Sales per sq ft in labelled scenarios × the usual share spent on rent − taxes and insurance, compared with the middle of the listed rents', 'Independent of local listings; says whether a kind of business could carry the rent at all', 'A "chance it can pay" (it treated benchmark points from different sources as percentiles of one distribution); Census receipts per business as a median (chains included, no floor area)', 'Shares are national medians or vendor guidance; benchmarks come from other years and places; one use rests on a single figure', 'Reruns with the low and high share and with a 5% and a 20% margin'],
-      ['How firm a candidate is', 'The share of 1,000 sets of weights, drawn close to the sliders, in which a use comes first', 'Shows whether a candidate survives disagreement about the weights', 'AHP and TOPSIS (rank reversal when a use is added); mixing money into the ranking', 'How close "close" is (about ±5 points on a weight of 35) is team judgement', 'Shown for every empty storefront'],
+      ['How firm a candidate is', 'The share of 1,000 sets of weights, drawn close to the sliders, in which a use comes first', 'Shows whether a candidate survives disagreement about the weights', 'AHP and TOPSIS (rank reversal when a use is added); mixing money into the ranking', 'How close "close" is (about ±5 points on a weight of 35) is team judgement. An input whose weight is zero stays at zero in every set', 'Shown for every empty storefront'],
       ['Block plan', 'One storefront at a time, best fit first, under a cap of three of a kind per block side', 'Simple to follow and to change by hand', 'Searching for the plan with the most rent (withdrawn with version 1\'s rent figure)', 'One-at-a-time placement is not guaranteed to give the best average fit', 'The reader can change any use and see the rest move'],
       ['Other cities', 'Rents enter only through pooling; operators\' figures move by CPI and BEA all-items price parity', 'The trail from source to Waverly-equivalent is shown factor by factor', `Housing price index (Pittsburgh ×1.64, implausible); propensity matching or synthetic control (${CO ? CO.built_from.corridors : 17} corridors, no time series)`, 'Benefit-transfer studies put the median error of moved values near 39%', 'Held-out corridor test with and without the factor']];
     document.getElementById('earnwhy').innerHTML = `<table class="btt wide"><thead><tr><th>Part</th><th>What it does</th><th>Why this one</th><th>Rejected</th><th>Limits</th><th>How it is checked</th></tr></thead><tbody>${WHY.map(r => `<tr>${r.map((c, i) => `<td${i ? '' : ' style="font-weight:600"'}>${esc(c)}</td>`).join('')}</tr>`).join('')}</tbody></table>
@@ -1911,7 +1939,7 @@ details.vacbox > summary .small { font-weight: 400; }
     const bt = (D.backtest2 || {}).decision || {}, FN = D.frontage_now || {}, bf = (CO || {}).built_from || {};
     const E = [
       ['done', 'What was it?', 'A sourced use timeline for every parcel.', 'Drafted for the 69 frontage parcels; not yet checked against blind timelines or by a second reader'],
-      ['demo', 'What could it become?', 'Candidate uses with the evidence behind each: heritage, rules, saturation, community, neighbours, precedents.', 'Score v0.4 on this page. Each candidate shows its evidence and how far the building lifts it above a building with no record'],
+      ['demo', 'What could it become?', 'Candidate uses with the evidence behind each: heritage, rules, saturation, community, neighbours, precedents.', 'Score v0.5 on this page. Each candidate shows its evidence and how far the building lifts it above a building with no record'],
       ['demo', 'What does the space rent for?', 'A rent range for each space from listed rents, and a check of whether each kind of business could pay it.', `Comps engine v2: ${bf.rows_used || 60} rents (${bf.asking || 57} asking, ${bf.in_place || 3} in place), ${bf.benchmarks || 192} benchmarks. One basis for every figure; no ranking by money`],
       ['demo', 'Does the mix work as a block?', 'A use plan for a block, under a saturation limit.', `A sheet for each of the ${FN.vacant || 24} empty storefronts with its candidate, evidence, rent and risks; a map; a block-by-block check; print and CSV`],
       ['demo', 'Who is it for?', 'The customer groups that would use, lease or buy each building, their obstacles and the programmes that help.', 'Seven groups on the Who it is for page; each plan sheet names the groups its use is for'],
@@ -1921,7 +1949,8 @@ details.vacbox > summary .small { font-weight: 400; }
     const M = [
       ['past', '4 Nov 2026', 'Midterm', 'Midterm Progress Report submitted with the signed Client Agreement'],
       ['past', '17 Nov 2026', 'Sponsor review', 'A review of the whole repo: a leak in the back-test, a cafe that wins almost everywhere, 24 empty storefronts where the page had 11, rent on whole-building floor area, and nothing checked by hand'],
-      ['now', '21 Nov 2026', 'Now', 'Leak fixed and both results reported; the 24 empty storefronts of the sponsor\'s audit; candidates with their evidence and no rent on buildings in use; one rent basis; statements about the sponsor removed'],
+      ['past', '21 Nov 2026', 'Review fixes', 'Leak fixed and both results reported; the 24 empty storefronts of the sponsor\'s audit; candidates with their evidence and no rent on buildings in use; one rent basis; statements about the sponsor removed'],
+      ['now', '24 Nov 2026', 'Now', 'Community and precedents carry no weight by default, for the sponsor to confirm; the size input reads the ground floor; the history input counts independent kinds of source; the sales check says where it rests on an assumed floor area'],
       ['', '23-29 Nov 2026', 'Verify', 'Two people code 200 history records and the 52 "use today" rows and report agreement; one reviewed address table; four blind timelines by someone outside the team; ground-floor areas; every "Checked by" line signed'],
       ['', '30 Nov-6 Dec 2026', 'Re-test', 'Test the recommendation itself on block sides held out, against a ranking with no history, with intervals; bring the literature review up to a systematized review'],
       ['', '7-16 Dec 2026', 'Present', 'One building end to end, with the honest headline; a progress report that sets the spring plan'],
@@ -1930,7 +1959,7 @@ details.vacbox > summary .small { font-weight: 400; }
     document.getElementById('miles').innerHTML = M.map(([c, d, t, x]) => `<div class="mile ${c}"><span class="d">${esc(d)}</span><span class="t">${esc(t)}</span><span>${esc(x)}</span></div>`).join('');
     const R = [
       ['Use-history timelines', 'demo', `${P.length} frontage parcels, ${(D.source_kinds || []).length} kinds of source. About one record in five is placed by a neighbouring street number`, 'A reviewed address table; narrative records coded from a reviewed label file; blind timelines', 'Whole corridor, with its gap map'],
-      ['Candidate uses', 'demo', 'Score v0.4 with the weights agreed on 9 Nov 2026. Each candidate shows its evidence and its lift over a building with no record; a table shows what moves the ranking', 'Decide with the sponsor whether the community and precedent inputs stay; test the ranking on held-out block sides', 'Generator v1 with documented weights'],
+      ['Candidate uses', 'demo', 'Score v0.5: heritage, room on the block, size and neighbours; community and precedents carry no weight by default (the six weights agreed on 9 Nov 2026 are a preset). Each candidate shows its evidence and its lift over a building with no record; a table shows what moves the ranking', 'Confirm the new default with the sponsor; test the ranking on held-out block sides', 'Generator v1 with documented weights'],
       ['Customer matching', 'demo', 'Seven customer groups with ranked obstacles and programmes', 'Interviews with 5-10 businesses per group; an intake form for both sides', 'Matching with tracked 12, 24 and 36-month survival against the BLS benchmark (about 68% at 3 years)'],
       ['Comps engine', 'demo', 'Engine v2: one rent basis for every use, a sales check as a flag, held-out check, other cities side by side', 'Ten to fifteen signed-lease rents by phone, logged; a person re-reads the rents in place; a spot-check log', 'Comps library, engine and model card'],
       ['Block plan', 'demo', 'One sheet per empty storefront (candidate, evidence, rent for the space, risks), a map and a block-by-block check with a rent-pressure watch', 'Measured ground floors; owners who opt in', 'A plan for a named group of buildings'],
@@ -2119,7 +2148,8 @@ details.vacbox > summary .small { font-weight: 400; }
     const pool = P.filter(p => p.availability === 'available now' || (segUnk && p.availability === 'possibly available'));
     const fits = pool.map(p => {
       const r = (SC[p.id] || []).find(x => x.ok && !x.f.av && (s.fit_formats || []).includes(x.f.id));
-      const sz = s.size_need && +p.sqft ? Math.max(fit1(+p.sqft, s.size_need), 0.85 * fit1(+p.sqft / 2, s.size_need), 0.8 * fit1(+p.sqft / 3, s.size_need)) : 0.7;
+      const need = x => Math.max(fit1(x, s.size_need), 0.85 * fit1(x / 2, s.size_need), 0.8 * fit1(x / 3, s.size_need));
+      const sq = spaceSqft(p), sz = s.size_need && sq ? (gfOpen(p) ? (need(sq) + need(+p.gf_hi)) / 2 : need(sq)) : 0.7;
       return r ? { p, r, sz, v: r.score * (0.5 + 0.5 * sz) } : null;
     }).filter(Boolean).sort((a, b) => b.v - a.v);
     const pains = (s.pains || []).slice().sort((a, b) => a.rank - b.rank);
@@ -2135,7 +2165,7 @@ details.vacbox > summary .small { font-weight: 400; }
       <div class="cx-col">
         <div><h3>Empty storefronts that fit this group</h3></div>
         <div class="fitlist">${fits.length ? fits.slice(0, 10).map((x, i) => `<div class="fitrow"><div class="hd"><span class="mono">${i + 1}</span><button type="button" class="a" data-go="${x.p.id}">${esc(x.p.address)}</button><b>${esc(x.r.f.name)}</b><span class="mono" style="margin-left:auto">${Math.round(x.v * 100)}</span></div>
-          <div class="small" style="color:var(--ink-2)">${x.p.sqft ? fmt(+x.p.sqft) + ' sq ft' : ''} · ${esc(x.p.status === 'unknown' ? 'occupant not confirmed' : x.p.status)} · use score ${Math.round(x.r.score * 100)} · size fit for this group ${Math.round(x.sz * 100)}%${x.p.ready && x.p.ready.vbn === 'open' ? ' · <b>open vacant-building notice</b>' : ''}</div>
+          <div class="small" style="color:var(--ink-2)">${esc(spaceWord(x.p))} · ${esc(x.p.status === 'unknown' ? 'occupant not confirmed' : x.p.status)} · use score ${Math.round(x.r.score * 100)} · size fit for this group ${Math.round(x.sz * 100)}%${x.p.ready && x.p.ready.vbn === 'open' ? ' · <b>open vacant-building notice</b>' : ''}</div>
           <div class="small">Use fit only; no financial scenario.</div></div>`).join('') : '<p class="small">No empty storefront fits this group\'s formats.</p>'}</div>
         <div class="guard"><b>Ground rules, from the sponsor's proposal.</b> ${(sp.guardrails || []).slice(0, 4).map(esc).join(' ')}</div>
       </div></div>`;
@@ -2351,7 +2381,7 @@ details.vacbox > summary .small { font-weight: 400; }
   // ---------------- mix (dumbbell)
   function drawMix() {
     const PC = PLAN ? PLAN.C : BASE;
-    const rows = D.mix.map(m => ({ c: m.cat, t: m.then / m.then_base, n: m.now / m.now_base, pl: (PC.corr[m.cat] || 0) / PC.base, tc: m.then, tb: m.then_base, nc: m.now, nb: m.now_base }));
+    const rows = D.mix.map(m => ({ c: m.cat, t: m.then / m.then_base, n: m.now / m.now_base, pl: PC.base > 0 ? (PC.corr[m.cat] || 0) / PC.base : 0, tc: m.then, tb: m.then_base, nc: m.now, nb: m.now_base }));
     const max = 0.6;
     let h = `<div class="axis"><span></span><div class="ticks"><span>0%</span><span>15%</span><span>30%</span><span>45%</span><span>60%</span></div><span></span></div>`;
     rows.forEach(r => {
@@ -2386,7 +2416,7 @@ details.vacbox > summary .small { font-weight: 400; }
     <p><b>Coding, and what can be wrong.</b> A keyword rule assigns each line to one of the team's use categories, so some lines are coded wrong, and most permit lines (signs, repairs, awnings) carry no use at all. A bare "store" on a permit or a Sanborn "S" says there was a shop front, not what it sold, so those records are listed but not coloured. A street number that is not a parcel in the export goes to the next parcel down the same side: ${fmt(D.placed.next)} of ${fmt(D.placed.total)} records are placed that way, and ${fmt(D.placed.inferred)} have an inferred address in all. Each record says so, and each candidate use says how many of its records name the address itself. The sponsor's review of 17 November 2026 found the wrong use or decade in 14 of 60 sampled sponsor records, which are written as narrative. ${esc(D.validation)}</p>
     <p><b>A rule that still binds.</b> The Waverly Business Area Urban Renewal Plan (first approved by Ordinance 1029 on 24 May 1979, amended to 2012) still covers the frontage. Since Amendment No. 2 of 4 December 1995 it does not permit new taverns, liquor stores or pawnshops (plan pp. 5-6), and it sets facade, sign and awning standards for every commercial building. It bars taverns, not restaurants. Where a building's food-and-drink record is mostly a saloon, the page says so. This is the team's reading as students, not legal advice.</p>
     <p><b>The concepts.</b> The three concepts were drafted with AI assistance (Claude) on 19 October 2026 from each building's records, the urban renewal plan and the comps, and are reviewed by the team before use. Nobody has been contacted, and the sponsor decides whether anyone is. Every outside fact links to its source; check it again before any outreach.</p>
-    <p><b>What it is not.</b> A planning aid: not an appraisal, not an offer and not a decision. It lists candidate uses for a building, never buildings by price: no valuation, no appraisal language and no acquisition targeting, following the sponsor's own rules. It makes no recommendation for a building in use. The owner of record comes from the state assessment snapshot. The sponsor agreed the default weights and the back-test rule on ${AGREED.on}; the back-test does not pass that rule, so no dollar figure on the page rests on history. "Longest record" ranks the uses a building has carried by how many decades of evidence it has, minus a penalty where the same use is already common on its block side today. The rent figures are ranges from listed rents and are not an appraisal. Every row should be checked against its source before it is used.</p>
+    <p><b>What it is not.</b> A planning aid: not an appraisal, not an offer and not a decision. It lists candidate uses for a building, never buildings by price: no valuation, no appraisal language and no acquisition targeting, following the sponsor's own rules. It makes no recommendation for a building in use. The owner of record comes from the state assessment snapshot. The sponsor agreed six weights and the back-test rule on ${AGREED.on}. Since ${DEFAULT_SINCE} the default gives two of the six, community and precedents, no weight, as the sponsor's review of 17 November asked; the sponsor has still to confirm that. The back-test does not pass the agreed rule, so no dollar figure on the page rests on history. "Longest record" ranks the uses a building has carried by how many decades of evidence it has, minus a penalty where the same use is already common on its block side today. The rent figures are ranges from listed rents and are not an appraisal. Every row should be checked against its source before it is used.</p>
     <p><b>How it was made.</b> The page, its data collection and its code were written with AI assistance (Claude), under the team's direction. The "Checked by" lines in the repo are unsigned, and the list under "Known limits of this version" says what a person has and has not verified.</p>
     <p><b>Still open.</b> The 1960s to 1990s are the thinnest decades in the record; the next sources are Polk 1930s to 1960s and newspapers through the research desk, and the 1931 Building Survey.</p>`;
 
@@ -2440,15 +2470,16 @@ details.vacbox > summary .small { font-weight: 400; }
   function update() { rescore(); drawWeights(); render(); replan(); drawSeg(); }
   // test hook: the numbers the documents quote, read from the page itself (team/explorer/page_numbers.py)
   window.__ptu = () => {
-    const keep = Object.assign({}, WT); Object.assign(WT, WPRE.team.w); rescore(); const A = ablation(); const plan = runPlan({});
+    const keep = Object.assign({}, WT); Object.assign(WT, WPRE.building.w); rescore(); const A = ablation(); const plan = runPlan({});
     const shops = P.filter(isShop), empty = shops.filter(isEmpty), sheets = streetOrder(plan.avail).filter(p => plan.out[p.id]).map(p => ({ p, o: plan.out[p.id], sp: spaceRent(p), ev: evOf(p, plan.out[p.id].r) }));
     const sum = i => Math.round(sheets.reduce((a, s) => a + (s.sp ? s.sp.ann[i] : 0), 0) / 100) * 100;
     const out = {
       parcels: P.length, storefronts: shops.length, houses: P.length - shops.length, empty: empty.length, in_use: shops.length - empty.length,
-      empty_addresses: empty.map(p => p.address).sort(), weights: Object.assign({}, WPRE.team.w),
+      empty_addresses: empty.map(p => p.address).sort(), weights: Object.assign({}, WPRE.building.w), weights_agreed_9_nov: Object.assign({}, WPRE.team.w), default_since: DEFAULT_SINCE,
       no_record_baseline: Object.fromEntries(A.blank.map(([id, v]) => [id, Math.round(v * 100)])),
-      ranking: A.res.map(x => ({ id: x.id, name: x.name, cafe_top: x.cafe, cafe_top_empty: x.cafeE, food_top: x.food, differs: x.diff, differs_empty: x.diffE, no_lift: x.flat, evidence: x.grades })),
-      top_candidates: Object.fromEntries(shops.map(p => { const t = topOf(p.id); return [p.address, t ? { use: t.f.id, score: Math.round(t.score * 100), lift: Math.round(t.lift * 100), evidence: evOf(p, t).grade, counted_as: isEmpty(p) ? 'empty' : 'in use' } : null]; })),
+      ranking: A.res.map(x => ({ id: x.id, name: x.name, cafe_top: x.cafe, cafe_top_empty: x.cafeE, food_top: x.food, differs: x.diff, differs_empty: x.diffE, no_lift: x.flat, evidence: x.grades,
+        no_record: { cafe: Math.round(100 * x.v.base0.cafe), shop: Math.round(100 * x.v.base0.shop) } })),   // the same two uses at a building with no record
+      top_candidates: Object.fromEntries(shops.map(p => { const t = topOf(p.id); return [p.address, t ? { use: t.f.id, score: Math.round(t.score * 100), lift: Math.round(t.lift * 100), size: Math.round(t.fi * 100), evidence: evOf(p, t).grade, counted_as: isEmpty(p) ? 'empty' : 'in use' } : null]; })),
       plan: { sheets: sheets.length, uses: sheets.reduce((a, s) => { a[s.o.r.f.id] = (a[s.o.r.f.id] || 0) + 1; return a; }, {}), fit_mean: Math.round(100 * sheets.reduce((a, s) => a + s.o.r.score, 0) / Math.max(1, sheets.length)),
         lift_mean: Math.round(100 * sheets.reduce((a, s) => a + s.o.r.lift, 0) / Math.max(1, sheets.length)), evidence: sheets.reduce((a, s) => { a[s.ev.grade] = (a[s.ev.grade] || 0) + 1; return a; }, {}),
         ground_floor_sq_ft: Math.round(sheets.reduce((a, s) => a + (s.sp ? s.sp.gf : 0), 0)), ground_floor_sq_ft_at_most: Math.round(sheets.reduce((a, s) => a + (s.sp ? s.sp.hi : 0), 0)),

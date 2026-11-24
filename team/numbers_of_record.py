@@ -43,6 +43,7 @@ MARK = re.compile(r'<!--=([A-Za-z0-9_.& -]+?)(?:\|([a-z0-9]+))?-->(.*?)<!--/-->'
 FORMATS = {
     None: lambda v: f'{v:,}' if isinstance(v, int) and not isinstance(v, bool) else str(v),
     'p': lambda v: f'{v:.3f}',            # a p-value
+    'f1': lambda v: f'{v:.1f}',
     'f2': lambda v: f'{v:.2f}',
     'f3': lambda v: f'{v:.3f}',
     'f4': lambda v: f'{v:.4f}',
@@ -150,20 +151,26 @@ def build():
     r0 = pn['ranking'][0]
     rank = {x['id']: x for x in pn['ranking']}
     score = collections.OrderedDict(
-        weights_agreed_9_nov_2026=pn['weights'],
+        default_weights=pn['weights'], default_since=pn['default_since'], weights_agreed_9_nov_2026=pn['weights_agreed_9_nov'],
         a_building_with_no_record_scores=pn['no_record_baseline'],
+        cafe_head_start_over_a_shop_with_no_record=dict(default=r0['no_record']['cafe'] - r0['no_record']['shop'],
+                                                        agreed_9_nov=rank['nov9']['no_record']['cafe'] - rank['nov9']['no_record']['shop'],
+                                                        cafe_agreed_9_nov=rank['nov9']['no_record']['cafe']),
         inputs_by_use=pn['inputs_by_use'],
         top_candidate_is_a_cafe=collections.OrderedDict(of_storefronts=r0['cafe_top'], of_empty=r0['cafe_top_empty'], storefronts=pn['storefronts']),
         top_candidate_no_higher_than_no_record=r0['no_lift'],
         evidence_behind_top_candidates=r0['evidence'],
         if_heritage_weight_is_zero=dict(cafe_top=rank['noher']['cafe_top'], top_candidate_changes=rank['noher']['differs'], of_empty=rank['noher']['differs_empty']),
-        without_community_and_precedents=dict(cafe_top=rank['nock']['cafe_top'], top_candidate_changes=rank['nock']['differs'], of_empty=rank['nock']['differs_empty']),
+        with_the_weights_agreed_9_nov=dict(cafe_top=rank['nov9']['cafe_top'], cafe_top_empty=rank['nov9']['cafe_top_empty'], top_candidate_changes=rank['nov9']['differs'], of_empty=rank['nov9']['differs_empty'],
+                                           top_candidates_with_no_record_of_the_use=rank['nov9']['evidence']['none'], top_candidates_no_higher_than_no_record=rank['nov9']['no_lift']),
         firmest_records_only=dict(cafe_top=rank['strict']['cafe_top'], top_candidate_changes=rank['strict']['differs'], of_empty=rank['strict']['differs_empty']),
-        with_todays_tenant_as_history=dict(cafe_top=rank['today']['cafe_top'], top_candidate_changes=rank['today']['differs'], of_empty=rank['today']['differs_empty']))
+        with_todays_tenant_as_history=dict(cafe_top=rank['today']['cafe_top'], top_candidate_changes=rank['today']['differs'], of_empty=rank['today']['differs_empty']),
+        with_the_whole_building_as_the_size=dict(cafe_top=rank['whole']['cafe_top'], top_candidate_changes=rank['whole']['differs'], of_empty=rank['whole']['differs_empty']))
 
     plan = collections.OrderedDict(pn['plan'])
 
     m, bf, h = co['model'], co['built_from'], co['holdout']
+    sizes = {x['id']: x for x in jload('team', 'explorer', 'typical_sqft.json')['formats']}      # the sourced usual size of each use
     comps = collections.OrderedDict(
         engine=co['version'], library_rent_rows=bf['rents'], rents_used=bf['rows_used'], asking=bf['asking'], in_place=bf['in_place'],
         in_place_rows=bf['in_place_rows'], newly_signed_leases=0, corridors=bf['corridors'], sources=bf['sources'],
@@ -182,6 +189,14 @@ def build():
             r004_read_with_the_tax_record_floor_area=sens(co, 'R-004', 'tax record'),
             r004_left_out=sens(co, 'R-004', 'row left out')),
         sales_check={f: r['check']['verdict'] for f, r in co['formats'].items() if r.get('check')},
+        # where the sales check rests on a floor area the team assumed, and where its answer would change
+        sales_check_floor_area={f: collections.OrderedDict(assumed_sq_ft=r['check']['assumed_sqft'], covers_up_to_sq_ft=r['check']['covers_up_to_sqft'],
+                                                           does_not_cover_from_sq_ft=r['check']['does_not_cover_from_sqft'],
+                                                           usual_size_sq_ft=[sizes[f]['low'], sizes[f]['high']])
+                                for f, r in co['formats'].items() if r.get('check') and r['check'].get('assumed_sqft')},
+        # the engine against the estimators that were tried on the same held-out listings (lower is better on both measures)
+        estimators_tried=[collections.OrderedDict(estimator=x['estimator'], error_of_the_middle_figure_in_logs=x['log_rmse'],
+                                                  widening_its_range_needs=x['widen'], interval_score=x['interval_score']) for x in h['alternatives']],
         sales_check_margin=co['sales_check']['margin'],
         library_rows_checked_by_a_person=sum(1 for n in ('rents.csv', 'benchmarks.csv', 'operators.csv') for r in rows('team', 'comps', 'library', n) if r.get('verified_by')),
         library_rows=sum(len(rows('team', 'comps', 'library', n)) for n in ('rents.csv', 'benchmarks.csv', 'operators.csv')))
@@ -221,9 +236,12 @@ def build():
 
     ten = rows('team', 'tenants', 'current_tenants_2026-10.csv')
     blind = rows('team', 'validation', 'blind_timelines', 'blind_timelines.csv')
-    md = sorted(glob.glob(os.path.join(HERE, '**', '*.md'), recursive=True))
-    unsigned = [os.path.relpath(f, REPO).replace(os.sep, '/') for f in md if re.search(r'Checked by:\s*_{3,}', open(f, encoding='utf-8').read())]
-    signed = [os.path.relpath(f, REPO).replace(os.sep, '/') for f in md if re.search(r'Checked by:\s*[A-Za-z]', open(f, encoding='utf-8').read())]
+    md = {}
+    for f in sorted(glob.glob(os.path.join(HERE, '**', '*.md'), recursive=True)):
+        with open(f, encoding='utf-8') as fh:
+            md[os.path.relpath(f, REPO).replace(os.sep, '/')] = fh.read()
+    unsigned = [f for f, text in md.items() if re.search(r'Checked by:\s*_{3,}', text)]
+    signed = [f for f, text in md.items() if re.search(r'Checked by:\s*[A-Za-z]', text)]
     checks = collections.OrderedDict(
         tenant_rows=len(ten), tenant_rows_entered_or_checked_by_a_person=sum(1 for r in ten if person(r['entered_by'])),
         outcome_rows_checked_by_a_person=backtest['outcome_rows_checked_by_a_person'], outcome_rows=len(oc),
@@ -300,18 +318,22 @@ def markdown(n):
          f"| The same with all sources (not a test: the timelines were built from the same sponsor records) | finds {v['all_sources']['recall']}%; {v['all_sources']['agreement']}% of {v['all_sources']['records']} | the same |",
          '',
          '## The score', '',
-         f"Weights agreed with the sponsor on 9 November 2026: heritage {s['weights_agreed_9_nov_2026']['h']}, room on the block {s['weights_agreed_9_nov_2026']['s']}, "
-         f"size {s['weights_agreed_9_nov_2026']['f']}, community {s['weights_agreed_9_nov_2026']['c']}, neighbours {s['weights_agreed_9_nov_2026']['a']}, precedents {s['weights_agreed_9_nov_2026']['k']}. "
+         f"Default weights since {s['default_since']}: heritage {s['default_weights']['h']}, room on the block {s['default_weights']['s']}, size {s['default_weights']['f']}, "
+         f"neighbours {s['default_weights']['a']}; community {s['default_weights']['c']} and precedents {s['default_weights']['k']}. "
+         f"The six weights agreed with the sponsor on 9 November 2026 ({s['weights_agreed_9_nov_2026']['h']} / {s['weights_agreed_9_nov_2026']['s']} / {s['weights_agreed_9_nov_2026']['f']} / "
+         f"{s['weights_agreed_9_nov_2026']['c']} / {s['weights_agreed_9_nov_2026']['a']} / {s['weights_agreed_9_nov_2026']['k']}) are a preset on the page; the sponsor has still to confirm the new default. "
          "Read from the built page by `team/explorer/page_numbers.py`.", '',
          '| | Number |', '|---|---|',
-         f"| A building with no record at all scores, for a cafe or restaurant | {s['a_building_with_no_record_scores']['cafe']} of 100 |",
+         f"| A building with no record at all scores, for a cafe or restaurant | {s['a_building_with_no_record_scores']['cafe']} of 100, {s['cafe_head_start_over_a_shop_with_no_record']['default']} more than for a shop "
+         f"({s['cafe_head_start_over_a_shop_with_no_record']['cafe_agreed_9_nov']} and {s['cafe_head_start_over_a_shop_with_no_record']['agreed_9_nov']} more with the weights of 9 November) |",
          f"| Storefronts whose top candidate is a cafe or restaurant | {s['top_candidate_is_a_cafe']['of_storefronts']} of {s['top_candidate_is_a_cafe']['storefronts']} ({s['top_candidate_is_a_cafe']['of_empty']} of the {f['empty']} empty) |",
          f"| The same with the heritage weight at zero | {s['if_heritage_weight_is_zero']['cafe_top']} of {f['storefronts']}; the top candidate changes on {s['if_heritage_weight_is_zero']['top_candidate_changes']} |",
          f"| Precedent input for a cafe or restaurant, lowest and highest across the storefronts (0 to 100) | {s['inputs_by_use']['cafe']['precedents'][0]} to {s['inputs_by_use']['cafe']['precedents'][1]}; for a showroom {s['inputs_by_use']['showroom']['precedents'][0]} to {s['inputs_by_use']['showroom']['precedents'][1]} |",
          f"| Community input for a cafe or restaurant, the same at every storefront | {s['inputs_by_use']['cafe']['community'][0]} |",
-         f"| The same without community and precedents | {s['without_community_and_precedents']['cafe_top']} of {f['storefronts']}; the top candidate changes on {s['without_community_and_precedents']['top_candidate_changes']} ({s['without_community_and_precedents']['of_empty']} of the empty) |",
-         f"| Top candidate changes when today's tenant is counted as history (the page until 21 November 2026) | {s['with_todays_tenant_as_history']['top_candidate_changes']} of {f['storefronts']} |",
+         f"| The same with the six weights agreed on 9 November (community and precedents back in) | {s['with_the_weights_agreed_9_nov']['cafe_top']} of {f['storefronts']} ({s['with_the_weights_agreed_9_nov']['cafe_top_empty']} of the empty); the top candidate changes on {s['with_the_weights_agreed_9_nov']['top_candidate_changes']} ({s['with_the_weights_agreed_9_nov']['of_empty']} of the empty) |",
+         f"| Top candidate changes when today's tenant is counted as history (as the page did until 21 November 2026) | {s['with_todays_tenant_as_history']['top_candidate_changes']} of {f['storefronts']} |",
          f"| Top candidate changes when only the firmest records count | {s['firmest_records_only']['top_candidate_changes']} of {f['storefronts']} |",
+         f"| Top candidate changes when the size input reads the whole building, not the ground floor (as the page did until 24 November 2026) | {s['with_the_whole_building_as_the_size']['top_candidate_changes']} of {f['storefronts']} ({s['with_the_whole_building_as_the_size']['of_empty']} of the empty) |",
          f"| Top candidates that rest on two kinds of source at the address / one kind / inference only / no record of the use there | {s['evidence_behind_top_candidates']['two']} / {s['evidence_behind_top_candidates']['one']} / {s['evidence_behind_top_candidates']['placed']} / {s['evidence_behind_top_candidates']['none']} |",
          f"| Top candidates that score no higher than at a building with no record | {s['top_candidate_no_higher_than_no_record']} |",
          '',
@@ -333,6 +355,11 @@ def markdown(n):
          f"| Rent level on Waverly's corridor, per sq ft a year, before taxes and insurance | ${c['waverly']['rent_level_low_mid_high'][0]:.2f} low, ${c['waverly']['rent_level_low_mid_high'][1]:.2f} middle, ${c['waverly']['rent_level_low_mid_high'][2]:.2f} high | the same |",
          f"| Held-out rents inside the range | {c['held_out']['inside_widened_range']} of {c['held_out']['rows']} (the range is widened ×{c['held_out']['widened_by']:.2f}; {c['held_out']['inside_plain_80_range']} before widening) | the same |",
          '| Sales check, use by use | ' + '; '.join(f'{k2}: {v2}' for k2, v2 in c['sales_check'].items()) + ' | the same |',
+         '| Where the sales check rests on a floor area the team assumed | ' + '; '.join(
+             f"{k2}: {v2['assumed_sq_ft']:,} sq ft assumed; reads \"covers\" up to about {v2['covers_up_to_sq_ft']:,} and \"does not cover\" from about "
+             f"{v2['does_not_cover_from_sq_ft']:,} (usual size {v2['usual_size_sq_ft'][0]:,} to {v2['usual_size_sq_ft'][1]:,})" for k2, v2 in c['sales_check_floor_area'].items()) + ' | the same |',
+         '| Estimators tried on the same held-out rents: error of the middle figure in logs, then the score of the range (lower is better on both) | ' + '; '.join(
+             f"{x['estimator']}: {x['error_of_the_middle_figure_in_logs']:.3f}, {x['interval_score']:.1f}" for x in c['estimators_tried']) + ' | the same |',
          f"| Library rows checked against their source by a person | {c['library_rows_checked_by_a_person']} of {c['library_rows']} | `verified_by` in `team/comps/library/` |",
          '',
          '## The back-test', '',

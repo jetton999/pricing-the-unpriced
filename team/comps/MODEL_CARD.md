@@ -1,4 +1,4 @@
-# Comps engine v2: model card (working draft, 21 November 2026)
+# Comps engine v2: model card (working draft, 24 November 2026)
 
 What ground-floor space on the Greenmount frontage rents for, from listed rents, and a check of which kinds of
 business could cover that rent from typical sales (Idea 1). Standard library only: `python3 team/comps/comps_engine.py`
@@ -51,7 +51,7 @@ No row has been checked against its source by a person: `verified_by` is filled 
 |---|---|---|---|
 | Lease terms | A listed rent that includes some or all building costs is reduced by $2 or $4 per sq ft, so every rent is before taxes and insurance | Makes listings comparable | A full adjustment grid: no paired listings to calibrate it |
 | Rent level | Log rents pooled by corridor toward the city mean (empirical Bayes, closed form) | <!--=comps.rents_used-->60<!--/--> rows in <!--=comps.corridors-->17<!--/--> corridors is a thin-cell problem. Each corridor's weight on its own rows follows from how many it has, and every estimate is a visible weighted sum of listings | Regression on many attributes: too many parameters for the rows. Pooling by three tiers: the spread between tiers comes out as zero |
-| Use multipliers | Each use's gap from its city mean, shrunk toward 1 by its number of listings. A multi-tenant average has no multiplier | One or two listings should not set a use's rent | Raw averages |
+| Use multipliers | Each use's gap from its city mean, shrunk toward 1 by its number of listings. A multi-tenant average has no multiplier | One or two listings should not set a use's rent alone, and the page says how much of the gap is kept | Raw averages; a multiplier only from two or three listings up; multipliers estimated against the corridor's level. Each was tried on the held-out listings: see "Estimators that were tried" |
 | Range | An 80% range, widened until it holds 80% of listings held out by source | The plain range held too few unseen listings | Splitting the sample in two: wastes half the rows |
 | Rent for a space | The corridor level times the estimated ground floor, the same whatever the use (computed in the explorer) | The owner of an empty storefront is letting a space, not a use | A rent per use ranked against other uses (v1) |
 | Sales check | Sales per sq ft in a low, mid and high scenario, times the usual share of sales spent on rent, minus the parcel's taxes and insurance. If the mid result is within <!--=comps.sales_check_margin|pct-->10%<!--/--> of the mid listed rent for the use, the answer is "too close to call" | Says something about viability without pretending to a probability | "Chance it can pay": no empirical basis |
@@ -81,6 +81,28 @@ No row has been checked against its source by a person: `verified_by` is filled 
 - The page's JavaScript reproduces the Python figures to within half a percent on every worked example; a browser test
   fails if it does not.
 
+## Estimators that were tried
+
+Each estimator predicts the same <!--=comps.held_out.rows-->59<!--/--> listings from a model fitted without that listing's source.
+Lower is better in both columns. The score of the range rewards a narrow range and penalises a listing that falls
+outside it.
+
+| Estimator | Error of the middle figure, in logs | Widening its 80% range needs | Score of the widened range |
+|---|---|---|---|
+| **As built** | <!--=comps.estimators_tried.0.error_of_the_middle_figure_in_logs|f3-->0.437<!--/--> | ×<!--=comps.estimators_tried.0.widening_its_range_needs|f2-->1.26<!--/--> | <!--=comps.estimators_tried.0.interval_score|f1-->30.1<!--/--> |
+| Each use's multiplier estimated against its corridor's level, in turns with the levels | <!--=comps.estimators_tried.1.error_of_the_middle_figure_in_logs|f3-->0.457<!--/--> | ×<!--=comps.estimators_tried.1.widening_its_range_needs|f2-->1.43<!--/--> | <!--=comps.estimators_tried.1.interval_score|f1-->33.3<!--/--> |
+| Multipliers not shrunk (raw averages) | <!--=comps.estimators_tried.2.error_of_the_middle_figure_in_logs|f3-->0.435<!--/--> | ×<!--=comps.estimators_tried.2.widening_its_range_needs|f2-->1.30<!--/--> | <!--=comps.estimators_tried.2.interval_score|f1-->30.7<!--/--> |
+| A multiplier only from two listings up | <!--=comps.estimators_tried.3.error_of_the_middle_figure_in_logs|f3-->0.506<!--/--> | ×<!--=comps.estimators_tried.3.widening_its_range_needs|f2-->1.26<!--/--> | <!--=comps.estimators_tried.3.interval_score|f1-->32.7<!--/--> |
+| A multiplier only from three listings up | <!--=comps.estimators_tried.4.error_of_the_middle_figure_in_logs|f3-->0.552<!--/--> | ×<!--=comps.estimators_tried.4.widening_its_range_needs|f2-->1.09<!--/--> | <!--=comps.estimators_tried.4.interval_score|f1-->36.9<!--/--> |
+| No multipliers by use | <!--=comps.estimators_tried.5.error_of_the_middle_figure_in_logs|f3-->0.572<!--/--> | ×<!--=comps.estimators_tried.5.widening_its_range_needs|f2-->1.00<!--/--> | <!--=comps.estimators_tried.5.interval_score|f1-->38.4<!--/--> |
+
+None of the five gives a better range. Raw averages give a middle figure that is as good, within what
+<!--=comps.held_out.rows-->59<!--/--> listings can tell apart, and a range that is slightly worse. Dropping the multiplier of a use
+with few listings is clearly worse: a workshop's two listings are thin, but they say that workshop space rents for
+well under the corridor's level, and a rule that ignores them misses those listings by a wide margin. So the
+estimator stays as built, and the page says beside each thin use how much of its gap is kept. The comparison is
+written by `comps_engine.py` into `comps_ranges.json` on every run.
+
 ## What moves the Waverly figure
 
 | If | Waverly rent level, per sq ft a year |
@@ -103,6 +125,17 @@ disagree, and the review asked for a person to re-read it. Until then the table 
   and places, and some uses have one sales figure only; the page says so beside the check.
 - The sales check compares two middle figures. It does not use the ranges, and a different rent share can change the
   answer (the page's sensitivity table shows which).
+- For a shop and for personal services the mid sales figure is Census receipts per business divided by a floor area
+  the team assumed, because the Census does not publish floor area. A shop is assumed at
+  <!--=comps.sales_check_floor_area.shop.assumed_sq_ft-->2,000<!--/--> sq ft: the check reads "covers" up to about
+  <!--=comps.sales_check_floor_area.shop.covers_up_to_sq_ft-->3,050<!--/--> sq ft and "does not cover" from about
+  <!--=comps.sales_check_floor_area.shop.does_not_cover_from_sq_ft-->3,640<!--/-->, against a sourced usual size of
+  <!--=comps.sales_check_floor_area.shop.usual_size_sq_ft.0-->900<!--/--> to <!--=comps.sales_check_floor_area.shop.usual_size_sq_ft.1-->2,500<!--/-->. Services
+  are assumed at <!--=comps.sales_check_floor_area.services.assumed_sq_ft-->1,250<!--/--> sq ft: "covers" up to about
+  <!--=comps.sales_check_floor_area.services.covers_up_to_sq_ft-->1,530<!--/--> and "does not cover" from about
+  <!--=comps.sales_check_floor_area.services.does_not_cover_from_sq_ft-->1,830<!--/-->, against a usual size of
+  <!--=comps.sales_check_floor_area.services.usual_size_sq_ft.0-->900<!--/--> to <!--=comps.sales_check_floor_area.services.usual_size_sq_ft.1-->1,600<!--/-->, so
+  at the top of that size the answer for services is no longer "covers". The page says this beside both checks.
 - With <!--=comps.held_out.rows-->59<!--/--> held-out rows the coverage check can catch a badly wrong range, not a slightly wrong
   one.
 - Other cities' listings enter Waverly's range only through the pooled model. For side-by-side comparison the corridor
@@ -112,7 +145,8 @@ disagree, and the review asked for a person to re-read it. Until then the table 
 
 1. `python3 team/comps/comps_engine.py`, then `python3 -m unittest team/comps/test_comps_engine.py`. The tests cover
    sources, the pooling arithmetic, the corridor of every Waverly row, the rents in place being read, one basis for
-   every figure, nothing ranked by money, the sales check being a flag, guardrail words and determinism.
+   every figure, nothing ranked by money, the sales check being a flag, an assumed floor area being said out loud,
+   the comparison of estimators, guardrail words and determinism.
 2. `python3 team/explorer/build_explorer.py`, then the rest of the rebuild in `team/explorer/README.md`.
 3. Read the sensitivity table on the page.
 

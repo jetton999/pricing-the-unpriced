@@ -54,9 +54,10 @@ class TestData(unittest.TestCase):
     def test_outcome_coding(self):
         with open(os.path.join(HERE, 'outcomes_other_greenmount_2026-10.csv'), encoding='utf-8') as fh:
             rows = list(csv.DictReader(fh))
-        frontage = {r['property_id'] for r in csv.DictReader(open(os.path.join(B.REPO, 'team', 'week1', 'out', 'focus_area_properties.csv'), encoding='utf-8-sig'))
-                    if r['block_side_id'] in B.FRONTAGE_SIDES}
-        props = {r['id'] for r in csv.DictReader(open(os.path.join(B.REPO, 'properties.csv'), encoding='utf-8-sig'))}
+        with open(os.path.join(B.REPO, 'team', 'week1', 'out', 'focus_area_properties.csv'), encoding='utf-8-sig') as fh:
+            frontage = {r['property_id'] for r in csv.DictReader(fh) if r['block_side_id'] in B.FRONTAGE_SIDES}
+        with open(os.path.join(B.REPO, 'properties.csv'), encoding='utf-8-sig') as fh:
+            props = {r['id'] for r in csv.DictReader(fh)}
         for r in rows:
             self.assertIn(r['property_id'], props)
             self.assertNotIn(r['property_id'], frontage)

@@ -112,7 +112,9 @@ for e in ev:
 
 def summarise(rows):
     decs = sorted({int(r['decade']) for r in rows})
-    srcs = {r['source'].split(':')[0] for r in rows}
+    # kinds of source that are independent of each other (a sponsor record that transcribes a directory is the same
+    # kind as the directory), as everywhere else on the page; until 24 November 2026 this counted source files
+    srcs = {FAMILY.get(r['source'], 'tenant check') for r in rows}
     bar = sum(1 for r in rows if r['use_subcategory'] == 'bar / tavern')
     return dict(nd=len(decs), ne=len(rows), first=min(int(r['year']) for r in rows), last=max(int(r['year']) for r in rows),
                 strong=len(decs) >= 2 or len(srcs) >= 2, bar_share=bar / len(rows), nsrc=len(srcs))
